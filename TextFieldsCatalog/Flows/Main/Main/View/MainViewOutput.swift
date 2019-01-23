@@ -9,4 +9,7 @@
 protocol MainViewOutput {
     /// Notify presenter that view is ready
     func viewLoaded()
+
+    /// Notify presenter that user wants to see some field
+    func openField(with type: TextFieldType)
 }

@@ -1,5 +1,5 @@
 //
-//  Closures.swift
+//  UITableViewCell.swift
 //  TextFieldsCatalog
 //
 //  Created by Александр Чаусов on 23/01/2019.
@@ -8,6 +8,10 @@
 
 import UIKit
 
-typealias EmptyClosure = () -> Void
-typealias CGFloatClosure = (CGFloat) -> Void
-typealias TextFieldTypeClosure = (TextFieldType) -> Void
+extension UITableViewCell {
+
+    class func identifier() -> String {
+        return self.nameOfClass
+    }
+
+}

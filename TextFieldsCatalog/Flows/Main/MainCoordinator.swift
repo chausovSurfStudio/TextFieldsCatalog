@@ -38,8 +38,11 @@ private extension MainCoordinator {
 
     func showMain() {
         let (view, output) = MainModuleConfigurator().configure()
-        output.onBorderedFieldOpen = { [weak self] in
-            self?.runBorderedFieldFlow()
+        output.onFieldOpen = { [weak self] fieldType in
+            switch fieldType {
+            case .bordered:
+                self?.runBorderedFieldFlow()
+            }
         }
         router.setRootModule(view)
     }

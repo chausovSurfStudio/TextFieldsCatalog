@@ -10,7 +10,7 @@ final class MainPresenter: MainModuleOutput {
 
     // MARK: - MainModuleOutput
 
-    var onBorderedFieldOpen: EmptyClosure?
+    var onFieldOpen: TextFieldTypeClosure?
 
     // MARK: - Properties
 
@@ -28,7 +28,13 @@ extension MainPresenter: MainModuleInput {
 extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: [], title: "Каталог")
+        view?.setupInitialState(with: [.message("Какое-то сообщение о том, зачем вообще все это сделано"),
+                                       .field(.bordered)],
+                                title: "Каталог")
+    }
+
+    func openField(with type: TextFieldType) {
+        onFieldOpen?(type)
     }
 
 }

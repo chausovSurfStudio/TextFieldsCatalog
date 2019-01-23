@@ -13,7 +13,7 @@ final class MainAdapter: NSObject {
     // MARK: - Properties
 
     var onScrolled: CGFloatClosure?
-    var onItemSelect: CGFloatClosure?
+    var onFieldTypeSelect: TextFieldTypeClosure?
 
     // MARK: - Private Properties
 
@@ -33,7 +33,7 @@ final class MainAdapter: NSObject {
 
 }
 
-// MARK: - Private Methods
+// MARK: - Configure
 
 private extension MainAdapter {
 
@@ -45,6 +45,8 @@ private extension MainAdapter {
     }
 
     func registerCells() {
+        tableView.registerNib(MainFieldTableViewCell.self)
+        tableView.registerNib(MainMessageTableViewCell.self)
     }
 
 }
@@ -55,6 +57,13 @@ extension MainAdapter: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let item = items[indexPath.row]
+        switch item {
+        case .field(let fieldType):
+            onFieldTypeSelect?(fieldType)
+        case .message(_):
+            break
+        }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -72,8 +81,34 @@ extension MainAdapter: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "identifier")
-        cell.textLabel?.text = "asd"
+        let item = items[indexPath.row]
+        switch item {
+        case .field(let fieldType):
+            return fieldCell(for: fieldType, indexPath: indexPath)
+        case .message(let message):
+            return messageCell(for: message, indexPath: indexPath)
+        }
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension MainAdapter {
+
+    func fieldCell(for fieldType: TextFieldType, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(MainFieldTableViewCell.self, indexPath: indexPath) else {
+            return UITableViewCell()
+        }
+        cell.configure(with: fieldType)
+        return cell
+    }
+
+    func messageCell(for message: String, indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(MainMessageTableViewCell.self, indexPath: indexPath) else {
+            return UITableViewCell()
+        }
+        cell.configure(with: message)
         return cell
     }
 

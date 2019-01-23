@@ -59,6 +59,9 @@ private extension MainViewController {
         adapter?.onScrolled = { [weak self] offset in
             self?.updateNavigationTitle(for: offset)
         }
+        adapter?.onFieldTypeSelect = { [weak self] type in
+            self?.output?.openField(with: type)
+        }
     }
 
 }

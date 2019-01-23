@@ -7,5 +7,5 @@
 //
 
 protocol MainModuleOutput: class {
-    var onBorderedFieldOpen: EmptyClosure? { get set }
+    var onFieldOpen: TextFieldTypeClosure? { get set }
 }
