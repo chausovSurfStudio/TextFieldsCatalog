@@ -7,4 +7,5 @@
 //
 
 protocol BorderedFieldExampleModuleInput: class {
+    func applyPreset(_ preset: BorderedFieldPreset)
 }

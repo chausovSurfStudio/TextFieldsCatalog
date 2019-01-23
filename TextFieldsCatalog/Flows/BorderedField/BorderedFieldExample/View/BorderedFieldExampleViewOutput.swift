@@ -12,4 +12,7 @@ protocol BorderedFieldExampleViewOutput {
 
     /// Notify presenter that user wants to close current module
     func close()
+
+    /// notify presenter that user wants to change preset
+    func changePreset()
 }

@@ -11,6 +11,7 @@ final class BorderedFieldExamplePresenter: BorderedFieldExampleModuleOutput {
     // MARK: - BorderedFieldExampleModuleOutput
 
     var onClose: EmptyClosure?
+    var onChangePreset: EmptyClosure?
 
     // MARK: - Properties
 
@@ -21,6 +22,11 @@ final class BorderedFieldExamplePresenter: BorderedFieldExampleModuleOutput {
 // MARK: - BorderedFieldExampleModuleInput
 
 extension BorderedFieldExamplePresenter: BorderedFieldExampleModuleInput {
+
+    func applyPreset(_ preset: BorderedFieldPreset) {
+        view?.applyPreset(preset)
+    }
+
 }
 
 // MARK: - BorderedFieldExampleViewOutput
@@ -28,11 +34,15 @@ extension BorderedFieldExamplePresenter: BorderedFieldExampleModuleInput {
 extension BorderedFieldExamplePresenter: BorderedFieldExampleViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState()
+        view?.setupInitialState(with: .password)
     }
 
     func close() {
         onClose?()
+    }
+
+    func changePreset() {
+        onChangePreset?()
     }
 
 }

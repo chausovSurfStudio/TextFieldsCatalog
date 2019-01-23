@@ -10,14 +10,14 @@ import UIKit
 
 final class BorderedFieldExampleModuleConfigurator {
 
-    func configure() -> (UIViewController, BorderedFieldExampleModuleOutput) {
+    func configure() -> (UIViewController, BorderedFieldExampleModuleOutput, BorderedFieldExampleModuleInput) {
         let view = BorderedFieldExampleViewController()
         let presenter = BorderedFieldExamplePresenter()
 
         presenter.view = view
         view.output = presenter
 
-        return (view, presenter)
+        return (view, presenter, presenter)
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SurfUtils
 
 final class BorderedFieldExampleViewController: UIViewController {
 
@@ -14,7 +15,9 @@ final class BorderedFieldExampleViewController: UIViewController {
 
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var resetButton: UIButton!
+    @IBOutlet private weak var changePresetButton: UIButton!
     @IBOutlet private weak var textField: BorderedTextField!
+    @IBOutlet private weak var descriptionLabel: UILabel!
 
     // MARK: - Properties
 
@@ -37,25 +40,16 @@ final class BorderedFieldExampleViewController: UIViewController {
 
 extension BorderedFieldExampleViewController: BorderedFieldExampleViewInput {
 
-    func setupInitialState() {
+    func setupInitialState(with preset: BorderedFieldPreset) {
         configureAppearance()
+        applyPreset(preset)
+    }
 
-        textField.configure(placeholder: "Пароль", maxLength: nil)
-        textField.configure(correction: .no, keyboardType: .asciiCapable)
-        textField.disablePasteAction()
-        textField.setHint("Текст подсказки")
-        textField.setReturnKeyType(.next)
-        textField.setTextFieldMode(.password)
-
-        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: Regex.password)
-        validator.shortErrorText = "Пароль слишком короткий"
-        textField.validator = validator
-
-        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
-
-        textField.onShouldReturn = { [weak self] _ in
-            self?.textField.resignFirstResponder()
-        }
+    func applyPreset(_ preset: BorderedFieldPreset) {
+        textField.reset()
+        descriptionLabel.attributedText = preset.description.with(attributes: [.lineHeight(18, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
+                                                                               .foregroundColor(Color.Text.white)])
+        preset.apply(for: textField)
     }
 
 }
@@ -72,6 +66,15 @@ private extension BorderedFieldExampleViewController {
         textField.reset()
     }
 
+    @IBAction func tapOnChangePresetButton(_ sender: Any) {
+        output?.changePreset()
+    }
+
+    @objc
+    func handleBackgroundTap() {
+        view.endEditing(true)
+    }
+
 }
 
 // MARK: - Configure
@@ -80,10 +83,30 @@ private extension BorderedFieldExampleViewController {
 
     func configureAppearance() {
         view.backgroundColor = Color.Main.background
+        descriptionLabel.numberOfLines = 0
+        configureButtons()
+        configureTextField()
+        configureGestures()
+    }
+
+    func configureButtons() {
         closeButton.setImage(UIImage(asset: Asset.close), for: .normal)
         closeButton.tintColor = Color.Main.active
         resetButton.setTitle("Сбросить", for: .normal)
         resetButton.tintColor = Color.Main.active
+        changePresetButton.setTitle("Изменить", for: .normal)
+        changePresetButton.tintColor = Color.Main.active
+    }
+
+    func configureTextField() {
+        textField.onShouldReturn = { [weak self] _ in
+            self?.textField.resignFirstResponder()
+        }
+    }
+
+    func configureGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
+        view.addGestureRecognizer(tapGesture)
     }
 
 }

@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BorderedFieldExampleViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
             <connections>
+                <outlet property="changePresetButton" destination="j7K-uc-r1b" id="iLv-1a-IaV"/>
                 <outlet property="closeButton" destination="nxM-zB-Kq0" id="bbC-aa-BTq"/>
+                <outlet property="descriptionLabel" destination="GOA-il-zIp" id="3eb-gI-XVd"/>
                 <outlet property="resetButton" destination="bCU-Qe-D19" id="gfm-jq-yg3"/>
                 <outlet property="textField" destination="qER-c7-0tB" id="yKu-nF-hiP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
@@ -35,7 +37,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qER-c7-0tB" customClass="BorderedTextField" customModule="TextFieldsCatalog" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="130" width="320" height="130"/>
+                    <rect key="frame" x="0.0" y="110" width="320" height="130"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="130" id="HYq-86-KY9"/>
@@ -48,15 +50,33 @@
                         <action selector="tapOnResetButton:" destination="-1" eventType="touchUpInside" id="sfu-ZH-K6S"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7K-uc-r1b">
+                    <rect key="frame" x="126" y="43" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tapOnChangePresetButton:" destination="-1" eventType="touchUpInside" id="jMe-je-fbZ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOA-il-zIp">
+                    <rect key="frame" x="16" y="270" width="288" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="qER-c7-0tB" firstAttribute="leading" secondItem="M2K-AU-UaV" secondAttribute="leading" id="3ye-cv-pAO"/>
                 <constraint firstItem="nxM-zB-Kq0" firstAttribute="top" secondItem="M2K-AU-UaV" secondAttribute="top" constant="16" id="7Qp-Gn-jhb"/>
+                <constraint firstItem="M2K-AU-UaV" firstAttribute="trailing" secondItem="GOA-il-zIp" secondAttribute="trailing" constant="16" id="NQW-4n-PoQ"/>
                 <constraint firstItem="bCU-Qe-D19" firstAttribute="leading" secondItem="nxM-zB-Kq0" secondAttribute="trailing" constant="16" id="PaN-fu-8a9"/>
+                <constraint firstItem="j7K-uc-r1b" firstAttribute="leading" secondItem="bCU-Qe-D19" secondAttribute="trailing" constant="10" id="QW9-fd-rtt"/>
                 <constraint firstItem="nxM-zB-Kq0" firstAttribute="leading" secondItem="M2K-AU-UaV" secondAttribute="leading" constant="10" id="Qpa-mS-zl3"/>
                 <constraint firstItem="bCU-Qe-D19" firstAttribute="centerY" secondItem="nxM-zB-Kq0" secondAttribute="centerY" id="Rww-xt-T8K"/>
-                <constraint firstItem="qER-c7-0tB" firstAttribute="top" secondItem="nxM-zB-Kq0" secondAttribute="bottom" constant="50" id="caB-av-avQ"/>
+                <constraint firstItem="GOA-il-zIp" firstAttribute="top" secondItem="qER-c7-0tB" secondAttribute="bottom" constant="30" id="VRK-4d-4B9"/>
+                <constraint firstItem="qER-c7-0tB" firstAttribute="top" secondItem="nxM-zB-Kq0" secondAttribute="bottom" constant="30" id="caB-av-avQ"/>
+                <constraint firstItem="j7K-uc-r1b" firstAttribute="centerY" secondItem="bCU-Qe-D19" secondAttribute="centerY" id="lDW-Z4-LpO"/>
+                <constraint firstItem="GOA-il-zIp" firstAttribute="leading" secondItem="M2K-AU-UaV" secondAttribute="leading" constant="16" id="mKq-MB-1Oe"/>
                 <constraint firstItem="M2K-AU-UaV" firstAttribute="trailing" secondItem="qER-c7-0tB" secondAttribute="trailing" id="y93-iC-zRs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="M2K-AU-UaV"/>

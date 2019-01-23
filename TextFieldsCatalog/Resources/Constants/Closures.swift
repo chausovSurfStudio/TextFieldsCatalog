@@ -11,3 +11,4 @@ import UIKit
 typealias EmptyClosure = () -> Void
 typealias CGFloatClosure = (CGFloat) -> Void
 typealias TextFieldTypeClosure = (TextFieldType) -> Void
+typealias BorderedFieldPresetClosure = (BorderedFieldPreset) -> Void

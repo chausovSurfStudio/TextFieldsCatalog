@@ -8,5 +8,8 @@
 
 protocol BorderedFieldExampleViewInput: class {
     /// Method for setup initial state of view
-    func setupInitialState()
+    func setupInitialState(with preset: BorderedFieldPreset)
+
+    /// Method for apply some preset
+    func applyPreset(_ preset: BorderedFieldPreset)
 }
