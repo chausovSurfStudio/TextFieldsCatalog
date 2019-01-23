@@ -17,7 +17,8 @@ final class MainModuleConfigurator {
         presenter.view = view
         view.output = presenter
 
-        return (view, presenter)
+        let navigationController = CommonNavigationController(rootViewController: view)
+        return (navigationController, presenter)
     }
 
 }

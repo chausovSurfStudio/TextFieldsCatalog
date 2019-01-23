@@ -8,5 +8,5 @@
 
 protocol MainViewInput: class {
     /// Method for setup initial state of view
-    func setupInitialState()
+    func setupInitialState(with models: [MainModuleViewModel], title: String)
 }

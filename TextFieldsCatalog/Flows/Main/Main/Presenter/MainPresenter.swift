@@ -28,11 +28,7 @@ extension MainPresenter: MainModuleInput {
 extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState()
-    }
-
-    func openBorderedFieldExample() {
-        onBorderedFieldOpen?()
+        view?.setupInitialState(with: [], title: "Каталог")
     }
 
 }
