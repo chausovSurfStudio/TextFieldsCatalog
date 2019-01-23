@@ -14,6 +14,19 @@
 		90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */; };
 		90736C4B21F86668003B8B78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C4921F86668003B8B78 /* MainViewController.swift */; };
 		90736C4C21F86668003B8B78 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736C4A21F86668003B8B78 /* MainViewController.xib */; };
+		90736C5221F877B4003B8B78 /* InnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5121F877B4003B8B78 /* InnerTextField.swift */; };
+		90736C5521F87827003B8B78 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5421F87827003B8B78 /* TextFieldValidation.swift */; };
+		90736C5821F8786C003B8B78 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5721F8786C003B8B78 /* TextFieldValidator.swift */; };
+		90736C5A21F878F0003B8B78 /* MaskTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5921F878F0003B8B78 /* MaskTextFieldFormatter.swift */; };
+		90736C5C21F87958003B8B78 /* FormatterMasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5B21F87958003B8B78 /* FormatterMasks.swift */; };
+		90736C5F21F87A1B003B8B78 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5E21F87A1B003B8B78 /* BorderedTextField.swift */; };
+		90736C6321F87A5E003B8B78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6221F87A5E003B8B78 /* Color.swift */; };
+		90736C6521F87B4C003B8B78 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6421F87B4C003B8B78 /* DesignableView.swift */; };
+		90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6721F87B7A003B8B78 /* Foundation.swift */; };
+		90736C6A21F87CFD003B8B78 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6921F87CFD003B8B78 /* CommonButton.swift */; };
+		90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6B21F87D65003B8B78 /* UIImage.swift */; };
+		90736C6F21F87DD5003B8B78 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6E21F87DD5003B8B78 /* IconButton.swift */; };
+		90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7021F87EAD003B8B78 /* UIColor.swift */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +55,19 @@
 		90736C3D21F8609B003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C4921F86668003B8B78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		90736C4A21F86668003B8B78 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		90736C5121F877B4003B8B78 /* InnerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTextField.swift; sourceTree = "<group>"; };
+		90736C5421F87827003B8B78 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
+		90736C5721F8786C003B8B78 /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
+		90736C5921F878F0003B8B78 /* MaskTextFieldFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTextFieldFormatter.swift; sourceTree = "<group>"; };
+		90736C5B21F87958003B8B78 /* FormatterMasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterMasks.swift; sourceTree = "<group>"; };
+		90736C5E21F87A1B003B8B78 /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
+		90736C6221F87A5E003B8B78 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		90736C6421F87B4C003B8B78 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		90736C6721F87B7A003B8B78 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
+		90736C6921F87CFD003B8B78 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		90736C6B21F87D65003B8B78 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		90736C6E21F87DD5003B8B78 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		90736C7021F87EAD003B8B78 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,8 +115,11 @@
 		90736C2521F86099003B8B78 /* TextFieldsCatalog */ = {
 			isa = PBXGroup;
 			children = (
-				90736C4721F8651B003B8B78 /* Screens */,
 				90736C4621F86514003B8B78 /* Application */,
+				90736C4E21F87725003B8B78 /* Library */,
+				90736C4F21F87739003B8B78 /* Resources */,
+				90736C4721F8651B003B8B78 /* Screens */,
+				90736C4D21F8770D003B8B78 /* TextFields */,
 				90736C3221F8609A003B8B78 /* Info.plist */,
 			);
 			path = TextFieldsCatalog;
@@ -109,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				90736C2621F86099003B8B78 /* AppDelegate.swift */,
-				90736C2D21F8609A003B8B78 /* Assets.xcassets */,
 				90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
@@ -130,6 +158,105 @@
 				90736C4A21F86668003B8B78 /* MainViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		90736C4D21F8770D003B8B78 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				90736C5D21F879ED003B8B78 /* BorderedTextField */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		90736C4E21F87725003B8B78 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				90736C5021F87796003B8B78 /* BaseClasses */,
+				90736C6621F87B64003B8B78 /* Extensions */,
+				90736C5321F87818003B8B78 /* Protocols */,
+				90736C6D21F87D98003B8B78 /* Reusable */,
+				90736C5621F8784C003B8B78 /* Utils */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		90736C4F21F87739003B8B78 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				90736C6121F87A4B003B8B78 /* Colors */,
+				90736C6021F87A46003B8B78 /* Images */,
+				90736C2D21F8609A003B8B78 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		90736C5021F87796003B8B78 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				90736C6921F87CFD003B8B78 /* CommonButton.swift */,
+				90736C6421F87B4C003B8B78 /* DesignableView.swift */,
+				90736C5121F877B4003B8B78 /* InnerTextField.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		90736C5321F87818003B8B78 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				90736C5421F87827003B8B78 /* TextFieldValidation.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		90736C5621F8784C003B8B78 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				90736C5B21F87958003B8B78 /* FormatterMasks.swift */,
+				90736C5921F878F0003B8B78 /* MaskTextFieldFormatter.swift */,
+				90736C5721F8786C003B8B78 /* TextFieldValidator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		90736C5D21F879ED003B8B78 /* BorderedTextField */ = {
+			isa = PBXGroup;
+			children = (
+				90736C5E21F87A1B003B8B78 /* BorderedTextField.swift */,
+			);
+			path = BorderedTextField;
+			sourceTree = "<group>";
+		};
+		90736C6021F87A46003B8B78 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		90736C6121F87A4B003B8B78 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				90736C6221F87A5E003B8B78 /* Color.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		90736C6621F87B64003B8B78 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90736C6721F87B7A003B8B78 /* Foundation.swift */,
+				90736C7021F87EAD003B8B78 /* UIColor.swift */,
+				90736C6B21F87D65003B8B78 /* UIImage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		90736C6D21F87D98003B8B78 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				90736C6E21F87DD5003B8B78 /* IconButton.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
@@ -325,8 +452,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90736C5821F8786C003B8B78 /* TextFieldValidator.swift in Sources */,
+				90736C5521F87827003B8B78 /* TextFieldValidation.swift in Sources */,
+				90736C6F21F87DD5003B8B78 /* IconButton.swift in Sources */,
+				90736C5F21F87A1B003B8B78 /* BorderedTextField.swift in Sources */,
+				90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */,
 				90736C4B21F86668003B8B78 /* MainViewController.swift in Sources */,
 				90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */,
+				90736C5A21F878F0003B8B78 /* MaskTextFieldFormatter.swift in Sources */,
+				90736C5C21F87958003B8B78 /* FormatterMasks.swift in Sources */,
+				90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */,
+				90736C5221F877B4003B8B78 /* InnerTextField.swift in Sources */,
+				90736C6521F87B4C003B8B78 /* DesignableView.swift in Sources */,
+				90736C6A21F87CFD003B8B78 /* CommonButton.swift in Sources */,
+				90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */,
+				90736C6321F87A5E003B8B78 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
