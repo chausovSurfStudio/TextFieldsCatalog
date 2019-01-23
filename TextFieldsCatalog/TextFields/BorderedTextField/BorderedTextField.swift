@@ -67,9 +67,13 @@ final class BorderedTextField: DesignableView {
     var validator: TextFieldValidation?
     var maskFormatter: MaskTextFieldFormatter? {
         didSet {
-            textField.delegate = maskFormatter?.delegateForTextField()
-            maskFormatter?.setListenerToFormatter(listener: self)
-            textField.autocorrectionType = .no
+            if maskFormatter != nil {
+                textField.delegate = maskFormatter?.delegateForTextField()
+                maskFormatter?.setListenerToFormatter(listener: self)
+                textField.autocorrectionType = .no
+            } else {
+                textField.delegate = self
+            }
         }
     }
     var hideOnReturn: Bool = true
@@ -185,6 +189,11 @@ final class BorderedTextField: DesignableView {
     /// Allows you to disable paste action for textField
     func disablePasteAction() {
         textField.pasteActionEnabled = false
+    }
+
+    /// Allows you to enable paste action for textField
+    func enablePasteAction() {
+        textField.pasteActionEnabled = true
     }
 
     /// Allows you to disable textField

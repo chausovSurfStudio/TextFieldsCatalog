@@ -10,11 +10,14 @@ import Foundation
 
 enum BorderedFieldPreset: CaseIterable {
     case password
+    case email
 
     var name: String {
         switch self {
         case .password:
             return "Пароль"
+        case .email:
+            return "Email"
         }
     }
 
@@ -22,6 +25,8 @@ enum BorderedFieldPreset: CaseIterable {
         switch self {
         case .password:
             return "Типичный кейс для ввода пароля. Здесь должно быть подробное описание"
+        case .email:
+            return "Типичный кейс для поля ввода email."
         }
     }
 
@@ -29,6 +34,8 @@ enum BorderedFieldPreset: CaseIterable {
         switch self {
         case .password:
             tuneFieldForPassword(textField)
+        case .email:
+            tuneFieldForEmail(textField)
         }
     }
 }
@@ -48,6 +55,20 @@ private extension BorderedFieldPreset {
         textField.validator = validator
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
+    }
+
+    func tuneFieldForEmail(_ textField: BorderedTextField) {
+        textField.configure(placeholder: "Email", maxLength: nil)
+        textField.configure(correction: .no, keyboardType: .emailAddress)
+        textField.enablePasteAction()
+        textField.setHint(" ")
+        textField.setReturnKeyType(.default)
+        textField.setTextFieldMode(.plain)
+
+        let validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
+        textField.validator = validator
+
+        textField.maskFormatter = nil
     }
 
 }

@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BorderedFieldPresetsViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
             <connections>
                 <outlet property="container" destination="v9u-jo-h3K" id="3AN-hr-CBK"/>
+                <outlet property="tableView" destination="deY-PA-pbO" id="Ymh-HR-0XE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
             </connections>
         </placeholder>
@@ -23,7 +24,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9u-jo-h3K">
                     <rect key="frame" x="20" y="70" width="280" height="448"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="deY-PA-pbO">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="448"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="deY-PA-pbO" firstAttribute="top" secondItem="v9u-jo-h3K" secondAttribute="top" id="4SZ-ss-i93"/>
+                        <constraint firstAttribute="bottom" secondItem="deY-PA-pbO" secondAttribute="bottom" id="6q0-4e-fxa"/>
+                        <constraint firstItem="deY-PA-pbO" firstAttribute="leading" secondItem="v9u-jo-h3K" secondAttribute="leading" id="Ef1-KN-BJG"/>
+                        <constraint firstAttribute="trailing" secondItem="deY-PA-pbO" secondAttribute="trailing" id="dKq-Nv-uQv"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

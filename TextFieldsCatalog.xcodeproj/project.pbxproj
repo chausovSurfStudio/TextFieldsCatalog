@@ -74,6 +74,9 @@
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
 		90736CCB21F8B361003B8B78 /* BorderedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CCA21F8B361003B8B78 /* BorderedTextField.xib */; };
 		90736CCE21F8B830003B8B78 /* BorderedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */; };
+		90736CD321F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CD121F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.swift */; };
+		90736CD421F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CD221F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib */; };
+		90736CD621F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CD521F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		91B738AB2E625DBD829DA155 /* BorderedFieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1956B354DF417B17436D53F1 /* BorderedFieldPresetsPresenter.swift */; };
 		93F7CA1A179F2C6B9AAD197E /* BorderedFieldPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB46447B5D8B8C6470F5148 /* BorderedFieldPresetsViewController.swift */; };
@@ -177,6 +180,9 @@
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		90736CCA21F8B361003B8B78 /* BorderedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BorderedTextField.xib; sourceTree = "<group>"; };
 		90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPreset.swift; sourceTree = "<group>"; };
+		90736CD121F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetTableViewCell.swift; sourceTree = "<group>"; };
+		90736CD221F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BorderedFieldPresetTableViewCell.xib; sourceTree = "<group>"; };
+		90736CD521F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsAdapter.swift; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		97D8D77A5364A11DA0368B2B /* BorderedFieldExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleViewController.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,7 +221,6 @@
 			children = (
 				BCD315F70CE52CE609DB0467 /* BorderedFieldPresetsModuleConfigurator.swift */,
 			);
-			name = Configurator;
 			path = Configurator;
 			sourceTree = "<group>";
 		};
@@ -244,12 +249,12 @@
 		30AA900A322BA13098CB1F76 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90736CCF21F8C37C003B8B78 /* Adapter */,
 				7FB46447B5D8B8C6470F5148 /* BorderedFieldPresetsViewController.swift */,
 				5D3B79FA2AE74B14263CFF2B /* BorderedFieldPresetsViewController.xib */,
 				BA12B3F82CE83B0A1E3FC85E /* BorderedFieldPresetsViewInput.swift */,
 				31452CBFF0BB86A15B98C088 /* BorderedFieldPresetsViewOutput.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -309,7 +314,6 @@
 				37B6FEDAB000FBB41CB85AAD /* BorderedFieldPresetsModuleInput.swift */,
 				C193F93D9205EA9468DA048C /* BorderedFieldPresetsModuleOutput.swift */,
 			);
-			name = Presenter;
 			path = Presenter;
 			sourceTree = "<group>";
 		};
@@ -620,6 +624,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		90736CCF21F8C37C003B8B78 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				90736CD021F8C383003B8B78 /* Cell */,
+				90736CD521F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		90736CD021F8C383003B8B78 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				90736CD121F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.swift */,
+				90736CD221F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,7 +669,6 @@
 				8159B4BDF55A06EA4B03C600 /* Presenter */,
 				30AA900A322BA13098CB1F76 /* View */,
 			);
-			name = BorderedFieldPresets;
 			path = BorderedFieldPresets;
 			sourceTree = "<group>";
 		};
@@ -747,6 +768,7 @@
 				90736CBF21F8A313003B8B78 /* MainMessageTableViewCell.xib in Resources */,
 				90736CCB21F8B361003B8B78 /* BorderedTextField.xib in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
+				90736CD421F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib in Resources */,
 				90736CBB21F8A01E003B8B78 /* CommonTableHeader.xib in Resources */,
 				940C82E87B01A75021D62269 /* MainViewController.xib in Resources */,
 				90736CB021F899D8003B8B78 /* CustomTitleView.xib in Resources */,
@@ -933,6 +955,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90736CD321F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.swift in Sources */,
 				90736CBE21F8A313003B8B78 /* MainMessageTableViewCell.swift in Sources */,
 				90736C5821F8786C003B8B78 /* TextFieldValidator.swift in Sources */,
 				90736C5521F87827003B8B78 /* TextFieldValidation.swift in Sources */,
@@ -964,6 +987,7 @@
 				7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */,
 				90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */,
 				90736C9E21F891DD003B8B78 /* BorderedFieldCoordinator.swift in Sources */,
+				90736CD621F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift in Sources */,
 				6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */,
 				04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */,
 				90736C9521F88CD9003B8B78 /* MainCoordinator.swift in Sources */,
