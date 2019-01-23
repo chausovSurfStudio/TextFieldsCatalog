@@ -10,6 +10,8 @@ final class MainPresenter: MainModuleOutput {
 
     // MARK: - MainModuleOutput
 
+    var onBorderedFieldOpen: EmptyClosure?
+
     // MARK: - Properties
 
     weak var view: MainViewInput?
@@ -27,6 +29,10 @@ extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
         view?.setupInitialState()
+    }
+
+    func openBorderedFieldExample() {
+        onBorderedFieldOpen?()
     }
 
 }

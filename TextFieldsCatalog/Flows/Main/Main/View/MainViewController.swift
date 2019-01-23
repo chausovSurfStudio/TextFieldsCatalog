@@ -21,6 +21,10 @@ final class MainViewController: UIViewController {
         output?.viewLoaded()
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
 }
 
 // MARK: - MainViewInput
@@ -28,6 +32,17 @@ final class MainViewController: UIViewController {
 extension MainViewController: MainViewInput {
 
     func setupInitialState() {
+        view.backgroundColor = Color.Main.background
+    }
+
+}
+
+// MARK: - Actions
+
+private extension MainViewController {
+
+    @IBAction func openBorderedFieldExample(_ sender: Any) {
+        output?.openBorderedFieldExample()
     }
 
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BorderedFieldExampleViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="nxM-zB-Kq0" id="bbC-aa-BTq"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст-филд с границей" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvt-Cz-tNO">
+                    <rect key="frame" x="66" y="283.5" width="188" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxM-zB-Kq0">
+                    <rect key="frame" x="16" y="36" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="TOw-x2-fiP"/>
+                        <constraint firstAttribute="height" constant="44" id="Zw8-PI-H31"/>
+                    </constraints>
+                    <state key="normal" image="close"/>
+                    <connections>
+                        <action selector="tapOnCloseButton:" destination="-1" eventType="touchUpInside" id="Spc-O2-UZd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="kvt-Cz-tNO" firstAttribute="centerY" secondItem="M2K-AU-UaV" secondAttribute="centerY" id="0Uk-nG-HUZ"/>
+                <constraint firstItem="nxM-zB-Kq0" firstAttribute="top" secondItem="M2K-AU-UaV" secondAttribute="top" constant="16" id="7Qp-Gn-jhb"/>
+                <constraint firstItem="nxM-zB-Kq0" firstAttribute="leading" secondItem="M2K-AU-UaV" secondAttribute="leading" constant="16" id="Qpa-mS-zl3"/>
+                <constraint firstItem="kvt-Cz-tNO" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jwl-jw-hWy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="M2K-AU-UaV"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close" width="24" height="24"/>
+    </resources>
+</document>

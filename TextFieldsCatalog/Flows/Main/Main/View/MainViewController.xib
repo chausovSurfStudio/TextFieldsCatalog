@@ -23,14 +23,23 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Главная" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hh-or-eDk">
                     <rect key="frame" x="128.5" y="283.5" width="63" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbt-Nx-8ne">
+                    <rect key="frame" x="137" y="324.5" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="openBorderedFieldExample:" destination="-1" eventType="touchUpInside" id="GjQ-KC-E7H"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8Hh-or-eDk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0J8-Ks-BJ4"/>
                 <constraint firstItem="8Hh-or-eDk" firstAttribute="centerY" secondItem="jZK-PN-MIY" secondAttribute="centerY" id="4YB-in-VSs"/>
+                <constraint firstItem="sbt-Nx-8ne" firstAttribute="top" secondItem="8Hh-or-eDk" secondAttribute="bottom" constant="20" id="LS6-iS-WKc"/>
+                <constraint firstItem="sbt-Nx-8ne" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qof-Ab-WWb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="jZK-PN-MIY"/>
         </view>

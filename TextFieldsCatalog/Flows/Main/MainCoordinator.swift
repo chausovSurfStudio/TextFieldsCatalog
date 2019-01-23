@@ -37,8 +37,20 @@ final class MainCoordinator: BaseCoordinator, MainCoordinatorOutput {
 private extension MainCoordinator {
 
     func showMain() {
-        let (view, _) = MainModuleConfigurator().configure()
+        let (view, output) = MainModuleConfigurator().configure()
+        output.onBorderedFieldOpen = { [weak self] in
+            self?.runBorderedFieldFlow()
+        }
         router.setRootModule(view)
+    }
+
+    func runBorderedFieldFlow() {
+        let coordinator = BorderedFieldCoordinator(router: router)
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+        }
+        self.addDependency(coordinator)
+        coordinator.start()
     }
 
 }
