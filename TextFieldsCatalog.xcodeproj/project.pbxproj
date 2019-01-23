@@ -41,6 +41,11 @@
 		90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8B21F88B3B003B8B78 /* UIApplication.swift */; };
 		90736C8F21F88B75003B8B78 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8E21F88B75003B8B78 /* MainRouter.swift */; };
 		90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9021F88C55003B8B78 /* DeepLinkOption.swift */; };
+		90736C9321F88CBE003B8B78 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9221F88CBE003B8B78 /* ApplicationCoordinator.swift */; };
+		90736C9521F88CD9003B8B78 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9421F88CD9003B8B78 /* MainCoordinator.swift */; };
+		90736C9721F88CF2003B8B78 /* MainCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */; };
+		90736C9A21F88D11003B8B78 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9921F88D11003B8B78 /* Closures.swift */; };
+		90736C9C21F88D29003B8B78 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9B21F88D29003B8B78 /* Regex.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
@@ -99,6 +104,11 @@
 		90736C8B21F88B3B003B8B78 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		90736C8E21F88B75003B8B78 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		90736C9021F88C55003B8B78 /* DeepLinkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOption.swift; sourceTree = "<group>"; };
+		90736C9221F88CBE003B8B78 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		90736C9421F88CD9003B8B78 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorOutput.swift; sourceTree = "<group>"; };
+		90736C9921F88D11003B8B78 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
+		90736C9B21F88D29003B8B78 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		D0A29BF97393846546F44A61 /* MainViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
@@ -213,6 +223,7 @@
 				90736C2621F86099003B8B78 /* AppDelegate.swift */,
 				90736C9021F88C55003B8B78 /* DeepLinkOption.swift */,
 				90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */,
+				90736C9221F88CBE003B8B78 /* ApplicationCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -242,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				90736C6121F87A4B003B8B78 /* Colors */,
+				90736C9821F88D03003B8B78 /* Constants */,
 				90736C6021F87A46003B8B78 /* Images */,
 				90736C7221F88207003B8B78 /* Strings */,
 			);
@@ -345,6 +357,8 @@
 		90736C8121F889D3003B8B78 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				90736C9421F88CD9003B8B78 /* MainCoordinator.swift */,
+				90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */,
 				602B6DD1698D1144B3DD9E13 /* Main */,
 			);
 			path = Main;
@@ -363,6 +377,15 @@
 				90736C8E21F88B75003B8B78 /* MainRouter.swift */,
 			);
 			path = Routers;
+			sourceTree = "<group>";
+		};
+		90736C9821F88D03003B8B78 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				90736C9921F88D11003B8B78 /* Closures.swift */,
+				90736C9B21F88D29003B8B78 /* Regex.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
@@ -666,6 +689,7 @@
 				90736C8F21F88B75003B8B78 /* MainRouter.swift in Sources */,
 				90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */,
 				90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */,
+				90736C9721F88CF2003B8B78 /* MainCoordinatorOutput.swift in Sources */,
 				90736C8821F88B0A003B8B78 /* Presentable.swift in Sources */,
 				90736C5A21F878F0003B8B78 /* MaskTextFieldFormatter.swift in Sources */,
 				90736C5C21F87958003B8B78 /* FormatterMasks.swift in Sources */,
@@ -683,11 +707,15 @@
 				90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */,
 				6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */,
 				04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */,
+				90736C9521F88CD9003B8B78 /* MainCoordinator.swift in Sources */,
 				90736C8A21F88B1E003B8B78 /* Router.swift in Sources */,
 				2025FD598129275E76AD5751 /* MainViewController.swift in Sources */,
 				8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */,
 				90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */,
+				90736C9C21F88D29003B8B78 /* Regex.swift in Sources */,
+				90736C9A21F88D11003B8B78 /* Closures.swift in Sources */,
 				574AF82577C54960C5CD52BA /* MainViewOutput.swift in Sources */,
+				90736C9321F88CBE003B8B78 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
