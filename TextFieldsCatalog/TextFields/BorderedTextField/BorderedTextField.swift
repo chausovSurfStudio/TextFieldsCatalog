@@ -474,4 +474,3 @@ private extension BorderedTextField {
     }
 
 }
-
