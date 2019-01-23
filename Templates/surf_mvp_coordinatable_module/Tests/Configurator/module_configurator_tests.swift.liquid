@@ -1,0 +1,41 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import {{ module_info.product_module_name  }}
+
+final class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
+
+	// MARK: - Main tests
+
+    func testThatViewControllerLoadsCorrectly() {
+        if UIStoryboard(name: String(describing: {{ module_info.name }}ViewController.self),
+                        bundle: Bundle.main).instantiateInitialViewController() == nil {
+            XCTFail("Can't load {{ module_info.name }}ViewController from storyboard, check that controller is initial view controller")
+        }
+    }
+
+    func testThatScreenConfiguresCorrectly() {
+        // when
+        let (viewController, output) = {{ module_info.name }}ModuleConfigurator().configure()
+
+        // then
+        XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
+        XCTAssertTrue(viewController.output is {{ module_info.name }}Presenter, "output is not {{ module_info.name }}Presenter")
+        XCTAssertTrue(output is {{ module_info.name }}Presenter, "module output is not {{ module_info.name }}Presenter")
+
+        guard let presenter: {{ module_info.name }}Presenter = viewController.output as? {{ module_info.name }}Presenter else {
+            XCTFail("Cannot assign viewController.output as {{ module_info.name }}Presenter")
+            return
+        }
+
+        XCTAssertNotNil(presenter.view, "view in {{ module_info.name }}Presenter is nil after configuration")
+
+    }
+
+}

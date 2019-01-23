@@ -1,0 +1,53 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import {{ module_info.product_module_name }}
+
+final class {{ module_info.name }}ViewTests: XCTestCase {
+
+    // MARK: - Properties
+
+    private var view: {{ module_info.name }}ViewController?
+    private var output: {{ module_info.name }}ViewOutputMock?
+
+    // MARK: - XCTestCase
+
+    override func setUp() {
+        super.setUp()
+        view = {{ module_info.name }}ViewController()
+        output = {{ module_info.name }}ViewOutputMock()
+        view?.output = output
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        view = nil
+        output = nil
+    }
+
+    // MARK: - Main tests
+
+    func testThatViewNotifiesPresenterOnDidLoad() {
+        // when
+        self.view?.viewDidLoad()
+        // then
+        XCTAssert(self.output?.viewLoadedWasCalled == true)
+    }
+
+    // MARK: - Mocks
+
+    final class {{ module_info.name }}ViewOutputMock: {{ module_info.name }}ViewOutput {
+        var viewLoadedWasCalled: Bool = false
+
+        func viewLoaded() {
+            viewLoadedWasCalled = true
+        }
+    }
+
+}

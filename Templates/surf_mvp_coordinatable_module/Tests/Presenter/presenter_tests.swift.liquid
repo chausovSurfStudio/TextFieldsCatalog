@@ -1,0 +1,59 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import {{ module_info.product_module_name  }}
+
+final class {{ module_info.name }}PresenterTest: XCTestCase {
+
+    // MARK: - Properties
+
+    private var presenter: {{ module_info.name }}Presenter?
+    private var view: MockViewController?
+    private var output: MockModuleOutput?
+
+    // MARK: - XCTestCase
+
+    override func setUp() {
+        super.setUp()
+        presenter = {{ module_info.name }}Presenter()
+        output = MockModuleOutput()
+        view = MockViewController()
+        presenter?.view = view
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        presenter = nil
+        view = nil
+    }
+
+    // MARK: - Main tests
+
+    func testThatPresenterHandlesViewLoadedEvent() {
+        // when 
+        presenter?.viewLoaded()
+        // then
+        XCTAssertTrue((presenter?.view as? MockViewController)?.setupInitialStateWasCalled == true)
+    }
+
+    // MARK: - Mocks
+
+    private final class MockViewController: {{ module_info.name }}ViewInput {
+        var setupInitialStateWasCalled: Bool = false
+
+        func setupInitialState() {
+            setupInitialStateWasCalled = true
+        }
+    }
+
+    private final class MockModuleOutput {
+
+    }
+
+}

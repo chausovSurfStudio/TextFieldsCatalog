@@ -1,0 +1,25 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ module_info.name }}AlertConfigurator {
+
+    func configure() -> ({{ module_info.name }}Controller, {{ module_info.name }}ModuleOutput) {
+
+        // TODO: Change title and message
+        let view = {{ module_info.name }}Controller(title: nil, message: nil, preferredStyle: .alert)
+        let presenter = {{ module_info.name }}Presenter()
+
+        presenter.view = view
+        view.output = presenter
+
+        return (view, presenter)
+    }
+
+}

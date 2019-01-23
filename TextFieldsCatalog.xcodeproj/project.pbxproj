@@ -185,7 +185,7 @@
 			children = (
 				90736C6121F87A4B003B8B78 /* Colors */,
 				90736C6021F87A46003B8B78 /* Images */,
-				90736C2D21F8609A003B8B78 /* Assets.xcassets */,
+				90736C7221F88207003B8B78 /* Strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -229,6 +229,7 @@
 		90736C6021F87A46003B8B78 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				90736C2D21F8609A003B8B78 /* Assets.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -257,6 +258,13 @@
 				90736C6E21F87DD5003B8B78 /* IconButton.swift */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		90736C7221F88207003B8B78 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
@@ -291,6 +299,7 @@
 				90736C2021F86099003B8B78 /* Frameworks */,
 				90736C2121F86099003B8B78 /* Resources */,
 				4959D569EE0B4C3077CB78E1 /* [CP] Embed Pods Frameworks */,
+				84CA9E5D9ED2236A884F2F76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +318,8 @@
 				90736C3321F8609B003B8B78 /* Sources */,
 				90736C3421F8609B003B8B78 /* Frameworks */,
 				90736C3521F8609B003B8B78 /* Resources */,
+				8106CD66C8552EF209EED45D /* [CP] Embed Pods Frameworks */,
+				05B4986644691EB0C5C13BD8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -379,6 +390,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		05B4986644691EB0C5C13BD8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4959D569EE0B4C3077CB78E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,6 +451,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8106CD66C8552EF209EED45D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84CA9E5D9ED2236A884F2F76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D56EE1966639A5C6A92F1FA2 /* [CP] Check Pods Manifest.lock */ = {
