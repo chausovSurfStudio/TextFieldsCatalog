@@ -18,8 +18,6 @@
 		90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2D21F8609A003B8B78 /* Assets.xcassets */; };
 		90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */; };
 		90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */; };
-		90736C4B21F86668003B8B78 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C4921F86668003B8B78 /* MainViewController.swift */; };
-		90736C4C21F86668003B8B78 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736C4A21F86668003B8B78 /* MainViewController.xib */; };
 		90736C5221F877B4003B8B78 /* InnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5121F877B4003B8B78 /* InnerTextField.swift */; };
 		90736C5521F87827003B8B78 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5421F87827003B8B78 /* TextFieldValidation.swift */; };
 		90736C5821F8786C003B8B78 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C5721F8786C003B8B78 /* TextFieldValidator.swift */; };
@@ -36,6 +34,13 @@
 		90736C7521F886B2003B8B78 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7421F886B2003B8B78 /* Assets.swift */; };
 		90736C7921F88737003B8B78 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90736C7B21F88737003B8B78 /* Localizable.strings */; };
 		90736C7E21F88891003B8B78 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7D21F88891003B8B78 /* Strings.swift */; };
+		90736C8421F88ACE003B8B78 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8321F88ACE003B8B78 /* BaseCoordinator.swift */; };
+		90736C8621F88AF2003B8B78 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8521F88AF2003B8B78 /* Coordinator.swift */; };
+		90736C8821F88B0A003B8B78 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8721F88B0A003B8B78 /* Presentable.swift */; };
+		90736C8A21F88B1E003B8B78 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8921F88B1E003B8B78 /* Router.swift */; };
+		90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8B21F88B3B003B8B78 /* UIApplication.swift */; };
+		90736C8F21F88B75003B8B78 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C8E21F88B75003B8B78 /* MainRouter.swift */; };
+		90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9021F88C55003B8B78 /* DeepLinkOption.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
@@ -69,8 +74,6 @@
 		90736C3721F8609B003B8B78 /* TextFieldsCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsCatalogTests.swift; sourceTree = "<group>"; };
 		90736C3D21F8609B003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90736C4921F86668003B8B78 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		90736C4A21F86668003B8B78 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		90736C5121F877B4003B8B78 /* InnerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTextField.swift; sourceTree = "<group>"; };
 		90736C5421F87827003B8B78 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		90736C5721F8786C003B8B78 /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
@@ -89,6 +92,13 @@
 		90736C7A21F88737003B8B78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		90736C7C21F8873B003B8B78 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		90736C7D21F88891003B8B78 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		90736C8321F88ACE003B8B78 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		90736C8521F88AF2003B8B78 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		90736C8721F88B0A003B8B78 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		90736C8921F88B1E003B8B78 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		90736C8B21F88B3B003B8B78 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		90736C8E21F88B75003B8B78 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		90736C9021F88C55003B8B78 /* DeepLinkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOption.swift; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		D0A29BF97393846546F44A61 /* MainViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
@@ -121,7 +131,6 @@
 			children = (
 				0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */,
 			);
-			name = Configurator;
 			path = Configurator;
 			sourceTree = "<group>";
 		};
@@ -132,7 +141,6 @@
 				77C4BA989AAC20CB2E6E76BA /* Presenter */,
 				74F3C3DE30B752FA02FD67A5 /* View */,
 			);
-			name = Main;
 			path = Main;
 			sourceTree = "<group>";
 		};
@@ -144,7 +152,6 @@
 				D0A29BF97393846546F44A61 /* MainViewInput.swift */,
 				87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -155,7 +162,6 @@
 				4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */,
 				ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */,
 			);
-			name = Presenter;
 			path = Presenter;
 			sourceTree = "<group>";
 		};
@@ -186,7 +192,6 @@
 				90736C8021F889A3003B8B78 /* Flows */,
 				90736C4E21F87725003B8B78 /* Library */,
 				90736C4F21F87739003B8B78 /* Resources */,
-				90736C4721F8651B003B8B78 /* Screens */,
 				90736C4D21F8770D003B8B78 /* TextFields */,
 				90736C3221F8609A003B8B78 /* Info.plist */,
 			);
@@ -206,26 +211,10 @@
 			isa = PBXGroup;
 			children = (
 				90736C2621F86099003B8B78 /* AppDelegate.swift */,
+				90736C9021F88C55003B8B78 /* DeepLinkOption.swift */,
 				90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		90736C4721F8651B003B8B78 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				90736C4821F86643003B8B78 /* Main */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		90736C4821F86643003B8B78 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				90736C4921F86668003B8B78 /* MainViewController.swift */,
-				90736C4A21F86668003B8B78 /* MainViewController.xib */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		90736C4D21F8770D003B8B78 /* TextFields */ = {
@@ -243,6 +232,7 @@
 				90736C6621F87B64003B8B78 /* Extensions */,
 				90736C5321F87818003B8B78 /* Protocols */,
 				90736C6D21F87D98003B8B78 /* Reusable */,
+				90736C8D21F88B67003B8B78 /* Routers */,
 				90736C5621F8784C003B8B78 /* Utils */,
 			);
 			path = Library;
@@ -261,6 +251,7 @@
 		90736C5021F87796003B8B78 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				90736C8321F88ACE003B8B78 /* BaseCoordinator.swift */,
 				90736C6921F87CFD003B8B78 /* CommonButton.swift */,
 				90736C6421F87B4C003B8B78 /* DesignableView.swift */,
 				90736C5121F877B4003B8B78 /* InnerTextField.swift */,
@@ -271,6 +262,9 @@
 		90736C5321F87818003B8B78 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				90736C8521F88AF2003B8B78 /* Coordinator.swift */,
+				90736C8721F88B0A003B8B78 /* Presentable.swift */,
+				90736C8921F88B1E003B8B78 /* Router.swift */,
 				90736C5421F87827003B8B78 /* TextFieldValidation.swift */,
 			);
 			path = Protocols;
@@ -315,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				90736C6721F87B7A003B8B78 /* Foundation.swift */,
+				90736C8B21F88B3B003B8B78 /* UIApplication.swift */,
 				90736C7021F87EAD003B8B78 /* UIColor.swift */,
 				90736C6B21F87D65003B8B78 /* UIImage.swift */,
 			);
@@ -360,6 +355,14 @@
 			children = (
 			);
 			path = BorderedField;
+			sourceTree = "<group>";
+		};
+		90736C8D21F88B67003B8B78 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				90736C8E21F88B75003B8B78 /* MainRouter.swift */,
+			);
+			path = Routers;
 			sourceTree = "<group>";
 		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
@@ -475,7 +478,6 @@
 				90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */,
 				90736C7921F88737003B8B78 /* Localizable.strings in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
-				90736C4C21F86668003B8B78 /* MainViewController.xib in Resources */,
 				940C82E87B01A75021D62269 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,11 +660,13 @@
 			files = (
 				90736C5821F8786C003B8B78 /* TextFieldValidator.swift in Sources */,
 				90736C5521F87827003B8B78 /* TextFieldValidation.swift in Sources */,
+				90736C8621F88AF2003B8B78 /* Coordinator.swift in Sources */,
 				90736C6F21F87DD5003B8B78 /* IconButton.swift in Sources */,
 				90736C5F21F87A1B003B8B78 /* BorderedTextField.swift in Sources */,
+				90736C8F21F88B75003B8B78 /* MainRouter.swift in Sources */,
 				90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */,
-				90736C4B21F86668003B8B78 /* MainViewController.swift in Sources */,
 				90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */,
+				90736C8821F88B0A003B8B78 /* Presentable.swift in Sources */,
 				90736C5A21F878F0003B8B78 /* MaskTextFieldFormatter.swift in Sources */,
 				90736C5C21F87958003B8B78 /* FormatterMasks.swift in Sources */,
 				90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */,
@@ -671,14 +675,18 @@
 				90736C7E21F88891003B8B78 /* Strings.swift in Sources */,
 				90736C6521F87B4C003B8B78 /* DesignableView.swift in Sources */,
 				90736C6A21F87CFD003B8B78 /* CommonButton.swift in Sources */,
+				90736C8421F88ACE003B8B78 /* BaseCoordinator.swift in Sources */,
 				90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */,
 				90736C6321F87A5E003B8B78 /* Color.swift in Sources */,
 				914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */,
 				7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */,
+				90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */,
 				6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */,
 				04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */,
+				90736C8A21F88B1E003B8B78 /* Router.swift in Sources */,
 				2025FD598129275E76AD5751 /* MainViewController.swift in Sources */,
 				8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */,
+				90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */,
 				574AF82577C54960C5CD52BA /* MainViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
