@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  TextFieldsCatalog
+
+  Created by Александр Чаусов on 23/01/2019.
+  Copyright © 2019 Александр Чаусов. All rights reserved.
+*/
+
+// MARK: - Errors
+
+"Errors.TextField.empty" = "Поле должно быть заполнено";
+"Errors.TextField.short" = "Поле должно содержать минимум %@ символов";
+"Errors.TextField.notValid" = "Неверный формат";

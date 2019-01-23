@@ -27,6 +27,9 @@
 		90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6B21F87D65003B8B78 /* UIImage.swift */; };
 		90736C6F21F87DD5003B8B78 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6E21F87DD5003B8B78 /* IconButton.swift */; };
 		90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7021F87EAD003B8B78 /* UIColor.swift */; };
+		90736C7521F886B2003B8B78 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7421F886B2003B8B78 /* Assets.swift */; };
+		90736C7921F88737003B8B78 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90736C7B21F88737003B8B78 /* Localizable.strings */; };
+		90736C7E21F88891003B8B78 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C7D21F88891003B8B78 /* Strings.swift */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,11 @@
 		90736C6B21F87D65003B8B78 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		90736C6E21F87DD5003B8B78 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		90736C7021F87EAD003B8B78 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		90736C7421F886B2003B8B78 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		90736C7621F8870C003B8B78 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		90736C7A21F88737003B8B78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90736C7C21F8873B003B8B78 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90736C7D21F88891003B8B78 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -229,6 +237,7 @@
 		90736C6021F87A46003B8B78 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				90736C7421F886B2003B8B78 /* Assets.swift */,
 				90736C2D21F8609A003B8B78 /* Assets.xcassets */,
 			);
 			path = Images;
@@ -263,6 +272,8 @@
 		90736C7221F88207003B8B78 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				90736C7B21F88737003B8B78 /* Localizable.strings */,
+				90736C7D21F88891003B8B78 /* Strings.swift */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 			buildConfigurationList = 90736C4021F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalog" */;
 			buildPhases = (
 				56040F5E1A5AECCA1DC9222E /* [CP] Check Pods Manifest.lock */,
+				90736C7321F88630003B8B78 /* SwiftGen Script */,
 				90736C1F21F86099003B8B78 /* Sources */,
 				90736C2021F86099003B8B78 /* Frameworks */,
 				90736C2121F86099003B8B78 /* Resources */,
@@ -357,6 +369,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 90736C1A21F86099003B8B78;
 			productRefGroup = 90736C2421F86099003B8B78 /* Products */;
@@ -375,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */,
+				90736C7921F88737003B8B78 /* Localizable.strings in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
 				90736C4C21F86668003B8B78 /* MainViewController.xib in Resources */,
 			);
@@ -491,6 +505,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		90736C7321F88630003B8B78 /* SwiftGen Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT\"/SwiftGen/bin/swiftgen\n";
+		};
 		D56EE1966639A5C6A92F1FA2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -530,7 +562,9 @@
 				90736C5A21F878F0003B8B78 /* MaskTextFieldFormatter.swift in Sources */,
 				90736C5C21F87958003B8B78 /* FormatterMasks.swift in Sources */,
 				90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */,
+				90736C7521F886B2003B8B78 /* Assets.swift in Sources */,
 				90736C5221F877B4003B8B78 /* InnerTextField.swift in Sources */,
+				90736C7E21F88891003B8B78 /* Strings.swift in Sources */,
 				90736C6521F87B4C003B8B78 /* DesignableView.swift in Sources */,
 				90736C6A21F87CFD003B8B78 /* CommonButton.swift in Sources */,
 				90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */,
@@ -561,8 +595,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				90736C3021F8609A003B8B78 /* Base */,
+				90736C7621F8870C003B8B78 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		90736C7B21F88737003B8B78 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90736C7A21F88737003B8B78 /* en */,
+				90736C7C21F8873B003B8B78 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -572,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -633,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

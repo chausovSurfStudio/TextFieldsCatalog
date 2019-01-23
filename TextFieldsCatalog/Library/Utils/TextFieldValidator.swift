@@ -19,11 +19,11 @@ final class TextFieldValidator {
     // MARK: - Constants
 
     private enum Constant {
-        static let emptyErrorText: String? = "Поле должно быть заполнено"
+        static let emptyErrorText = L10n.Errors.Textfield.empty
         static func shortErrorText(minLength: Int) -> String {
-            return "Поле должно содержать минимум \(minLength) символов"
+            return L10n.Errors.Textfield.short(String(minLength))
         }
-        static let notValidErrorText: String? = "Неверный формат"
+        static let notValidErrorText = L10n.Errors.Textfield.notValid
     }
 
     // MARK: - Private Properties

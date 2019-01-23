@@ -15,9 +15,9 @@ final class MaskTextFieldFormatter: NSObject {
     // MARK: - Properties
 
     /// Error message for case, when user leave empty text field
-    var emptyStringErrorMessage: String = "Поле должно быть заполнено"
+    var emptyStringErrorMessage: String = L10n.Errors.Textfield.empty
     /// Error message for case, when user leave incorrect text field
-    var incorrectStringErrorMessage: String = "Неверный формат"
+    var incorrectStringErrorMessage: String = L10n.Errors.Textfield.notValid
 
     // MARK: - Private Properties
 

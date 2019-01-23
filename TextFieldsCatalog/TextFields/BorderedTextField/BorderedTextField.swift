@@ -129,7 +129,7 @@ final class BorderedTextField: DesignableView {
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
             textField.textPadding = Constants.increasedTextPadding
-            actionButton.setImageForAllState(UIImage(named: "qrCode"))
+            actionButton.setImageForAllState(UIImage(asset: Asset.qrCode))
         }
     }
 
@@ -373,7 +373,7 @@ private extension BorderedTextField {
             return
         }
         let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? UIImage(named: "eyeOff") : UIImage(named: "eyeOn")
+        let image = isSecure ? UIImage(asset: Asset.eyeOff) : UIImage(asset: Asset.eyeOn)
         actionButton.setImageForAllState(image)
     }
 
