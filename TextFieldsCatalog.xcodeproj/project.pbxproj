@@ -68,6 +68,7 @@
 		90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */; };
 		90736CC721F8A350003B8B78 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC621F8A350003B8B78 /* UITableView.swift */; };
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
+		90736CCB21F8B361003B8B78 /* BorderedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CCA21F8B361003B8B78 /* BorderedTextField.xib */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
@@ -160,6 +161,7 @@
 		90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFieldTableViewCell.xib; sourceTree = "<group>"; };
 		90736CC621F8A350003B8B78 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		90736CCA21F8B361003B8B78 /* BorderedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BorderedTextField.xib; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		97D8D77A5364A11DA0368B2B /* BorderedFieldExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleViewController.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				90736C5E21F87A1B003B8B78 /* BorderedTextField.swift */,
+				90736CCA21F8B361003B8B78 /* BorderedTextField.xib */,
 			);
 			path = BorderedTextField;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				90736C7921F88737003B8B78 /* Localizable.strings in Resources */,
 				90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */,
 				90736CBF21F8A313003B8B78 /* MainMessageTableViewCell.xib in Resources */,
+				90736CCB21F8B361003B8B78 /* BorderedTextField.xib in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
 				90736CBB21F8A01E003B8B78 /* CommonTableHeader.xib in Resources */,
 				940C82E87B01A75021D62269 /* MainViewController.xib in Resources */,
