@@ -16,12 +16,16 @@ final class BorderedFieldExampleViewController: UIViewController {
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var resetButton: UIButton!
     @IBOutlet private weak var changePresetButton: UIButton!
-    @IBOutlet private weak var textField: BorderedTextField!
+    @IBOutlet private weak var textFieldContainer: UIView!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
     // MARK: - Properties
 
     var output: BorderedFieldExampleViewOutput?
+
+    // MARK: - Private Properties
+
+    private var textField: BorderedTextField?
 
     // MARK: - UIViewController
 
@@ -46,10 +50,16 @@ extension BorderedFieldExampleViewController: BorderedFieldExampleViewInput {
     }
 
     func applyPreset(_ preset: BorderedFieldPreset) {
-        textField.reset()
         descriptionLabel.attributedText = preset.description.with(attributes: [.lineHeight(18, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
                                                                                .foregroundColor(Color.Text.white)])
-        preset.apply(for: textField)
+        if let textField = textField {
+            textField.removeFromSuperview()
+        }
+        let newField = BorderedTextField(frame: textFieldContainer.bounds)
+        newField.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        textFieldContainer.addSubview(newField)
+        textField = newField
+        preset.apply(for: newField)
     }
 
 }
@@ -63,7 +73,7 @@ private extension BorderedFieldExampleViewController {
     }
 
     @IBAction func tapOnResetButton(_ sender: Any) {
-        textField.reset()
+        textField?.reset()
     }
 
     @IBAction func tapOnChangePresetButton(_ sender: Any) {
@@ -99,8 +109,8 @@ private extension BorderedFieldExampleViewController {
     }
 
     func configureTextField() {
-        textField.onShouldReturn = { [weak self] _ in
-            self?.textField.resignFirstResponder()
+        textField?.onShouldReturn = { [weak self] _ in
+            self?.textField?.resignFirstResponder()
         }
     }
 

@@ -62,15 +62,7 @@ private extension BorderedFieldPreset {
     func tuneFieldForEmail(_ textField: BorderedTextField) {
         textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
-        textField.enablePasteAction()
-        textField.setHint(" ")
-        textField.setReturnKeyType(.default)
-        textField.setTextFieldMode(.plain)
-
-        let validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
-        textField.validator = validator
-
-        textField.maskFormatter = nil
+        textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
     }
 
 }

@@ -90,6 +90,18 @@ final class BorderedTextField: DesignableView {
         return self.textField
     }
 
+    // MARK: - Initialization
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureAppearance()
+        updateUI()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     // MARK: - UIView
 
     override func awakeFromNib() {
