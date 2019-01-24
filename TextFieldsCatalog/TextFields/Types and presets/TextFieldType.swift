@@ -8,13 +8,16 @@
 
 import UIKit
 
-enum TextFieldType {
+enum TextFieldType: CaseIterable {
     case bordered
+    case underlined
 
     var title: String {
         switch self {
         case .bordered:
             return L10n.Textfieldtype.Bordered.title
+        case .underlined:
+            return "С подчеркиванием"
         }
     }
 
@@ -22,6 +25,8 @@ enum TextFieldType {
         switch self {
         case .bordered:
             return L10n.Textfieldtype.Bordered.description
+        case .underlined:
+            return "Описание для этого поля, что оно может и зачем"
         }
     }
 
@@ -29,6 +34,8 @@ enum TextFieldType {
         switch self {
         case .bordered:
             return BorderedFieldPreset.allCases
+        case .underlined:
+            return []
         }
     }
 
@@ -37,6 +44,8 @@ enum TextFieldType {
         switch self {
         case .bordered:
             return (BorderedTextField(frame: frame), 130)
+        case .underlined:
+            return (UnderlinedTextField(frame: frame), 77)
         }
     }
 

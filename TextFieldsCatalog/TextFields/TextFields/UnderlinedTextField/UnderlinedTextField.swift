@@ -54,7 +54,6 @@ final class UnderlinedTextField: DesignableView {
 
     @IBOutlet private weak var placeholderTopOffsetConstraint: NSLayoutConstraint!
     @IBOutlet private weak var separatorViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var textFieldLeftOffsetConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
@@ -83,7 +82,20 @@ final class UnderlinedTextField: DesignableView {
     }
     var validator: TextFieldValidation?
 
-    // MARK: - Lifecycle
+    // MARK: - Initialization
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureUI()
+        configureTexts()
+        updateUI(animated: false)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: - UIView
 
     override func awakeFromNib() {
         super.awakeFromNib()

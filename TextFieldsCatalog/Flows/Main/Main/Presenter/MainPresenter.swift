@@ -28,9 +28,9 @@ extension MainPresenter: MainModuleInput {
 extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: [.message(L10n.Main.Main.message),
-                                       .field(.bordered)],
-                                title: L10n.Main.Main.title)
+        var models = TextFieldType.allCases.map { MainModuleViewModel.field($0) }
+        models.insert(.message(L10n.Main.Main.message), at: 0)
+        view?.setupInitialState(with: models, title: L10n.Main.Main.title)
     }
 
     func openField(with type: TextFieldType) {
