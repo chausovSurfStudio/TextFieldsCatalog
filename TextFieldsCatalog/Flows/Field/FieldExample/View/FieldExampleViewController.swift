@@ -49,10 +49,12 @@ final class FieldExampleViewController: UIViewController {
 
 extension FieldExampleViewController: FieldExampleViewInput {
 
-    func setupInitialState(with fieldType: TextFieldType, preset: AppliedPreset) {
+    func setupInitialState(with fieldType: TextFieldType, preset: AppliedPreset?) {
         self.fieldType = fieldType
         configureAppearance()
-        applyPreset(preset)
+        if let preset = preset {
+            applyPreset(preset)
+        }
     }
 
     func applyPreset(_ preset: AppliedPreset) {

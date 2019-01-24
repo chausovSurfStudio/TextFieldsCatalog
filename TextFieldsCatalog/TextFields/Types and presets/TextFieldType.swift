@@ -33,4 +33,11 @@ enum TextFieldType {
         }
     }
 
+    func presets() -> [AppliedPreset] {
+        switch self {
+        case .bordered:
+            return BorderedFieldPreset.allCases
+        }
+    }
+
 }

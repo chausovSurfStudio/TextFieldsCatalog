@@ -37,6 +37,12 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
         apply(for: field)
     }
 
+}
+
+// MARK: - Tune
+
+private extension BorderedFieldPreset {
+
     func apply(for textField: BorderedTextField) {
         switch self {
         case .password:
@@ -45,11 +51,6 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
             tuneFieldForEmail(textField)
         }
     }
-}
-
-// MARK: - Tune
-
-private extension BorderedFieldPreset {
 
     func tuneFieldForPassword(_ textField: BorderedTextField) {
         textField.configure(placeholder: L10n.Presets.Borderedfield.Password.placeholder, maxLength: nil)
