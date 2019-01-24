@@ -17,6 +17,7 @@
                 <outlet property="descriptionLabel" destination="TSs-fx-08U" id="JNy-kl-Fis"/>
                 <outlet property="resetButton" destination="lkR-RD-8Sk" id="6Pf-y5-8sG"/>
                 <outlet property="textFieldContainer" destination="2Xp-dD-FUW" id="IG8-8Y-AjC"/>
+                <outlet property="textFieldContainerHeight" destination="BRu-4X-I9t" id="6Uq-bn-UGY"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
             </connections>
         </placeholder>

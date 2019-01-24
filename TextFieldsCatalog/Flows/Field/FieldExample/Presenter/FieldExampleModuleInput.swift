@@ -7,4 +7,5 @@
 //
 
 protocol FieldExampleModuleInput: class {
+    func applyPreset(_ preset: AppliedPreset)
 }

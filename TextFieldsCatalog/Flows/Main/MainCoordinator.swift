@@ -53,13 +53,4 @@ private extension MainCoordinator {
         coordinator.start()
     }
 
-    func runBorderedFieldFlow() {
-        let coordinator = BorderedFieldCoordinator(router: router)
-        coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.removeDependency(coordinator)
-        }
-        self.addDependency(coordinator)
-        coordinator.start()
-    }
-
 }

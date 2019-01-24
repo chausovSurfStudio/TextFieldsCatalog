@@ -19,9 +19,18 @@ final class FieldExampleViewController: UIViewController {
     @IBOutlet private weak var textFieldContainer: UIView!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
+    // MARK: - NSLayoutConstraints
+
+    @IBOutlet private weak var textFieldContainerHeight: NSLayoutConstraint!
+
     // MARK: - Properties
 
     var output: FieldExampleViewOutput?
+
+    // MARK: - Private Properties
+
+    private var textField: UIView?
+    private var fieldType: TextFieldType?
 
     // MARK: - UIViewController
 
@@ -40,8 +49,26 @@ final class FieldExampleViewController: UIViewController {
 
 extension FieldExampleViewController: FieldExampleViewInput {
 
-    func setupInitialState(with fieldType: TextFieldType) {
+    func setupInitialState(with fieldType: TextFieldType, preset: AppliedPreset) {
+        self.fieldType = fieldType
         configureAppearance()
+        applyPreset(preset)
+    }
+
+    func applyPreset(_ preset: AppliedPreset) {
+        descriptionLabel.attributedText = preset.description.with(attributes: [.lineHeight(18, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
+                                                                               .foregroundColor(Color.Text.white)])
+        textFieldContainer.subviews.forEach { $0.removeFromSuperview() }
+        guard let fieldType = fieldType else {
+            return
+        }
+        let (newField, height) = fieldType.createField(for: textFieldContainer.bounds)
+        newField.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        textFieldContainer.addSubview(newField)
+        textField = newField
+        textFieldContainerHeight.constant = height
+        view.layoutIfNeeded()
+        preset.apply(for: newField)
     }
 
 }
@@ -55,7 +82,9 @@ private extension FieldExampleViewController {
     }
 
     @IBAction func tapOnResetButton(_ sender: Any) {
-//        textField?.reset()
+        if let textField = textField as? ResetableField {
+            textField.reset()
+        }
     }
 
     @IBAction func tapOnChangePresetButton(_ sender: Any) {

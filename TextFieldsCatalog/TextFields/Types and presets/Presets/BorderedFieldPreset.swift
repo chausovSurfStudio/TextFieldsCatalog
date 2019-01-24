@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BorderedFieldPreset: CaseIterable {
+enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     case password
     case email
 
@@ -28,6 +28,13 @@ enum BorderedFieldPreset: CaseIterable {
         case .email:
             return L10n.Presets.Borderedfield.Email.description
         }
+    }
+
+    func apply(for field: Any) {
+        guard let field = field as? BorderedTextField else {
+            return
+        }
+        apply(for: field)
     }
 
     func apply(for textField: BorderedTextField) {

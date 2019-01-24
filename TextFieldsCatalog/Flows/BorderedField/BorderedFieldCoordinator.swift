@@ -37,27 +37,27 @@ final class BorderedFieldCoordinator: BaseCoordinator, BorderedFieldCoordinatorO
 private extension BorderedFieldCoordinator {
 
     func showExample() {
-        let (view, output, input) = BorderedFieldExampleModuleConfigurator().configure()
-        output.onClose = { [weak self] in
-            self?.router.dismissModule()
-            self?.finishFlow?()
-        }
-        output.onChangePreset = { [weak self, weak input] in
-            self?.showPresetsList(input: input)
-        }
-        router.present(view)
+//        let (view, output, input) = BorderedFieldExampleModuleConfigurator().configure()
+//        output.onClose = { [weak self] in
+//            self?.router.dismissModule()
+//            self?.finishFlow?()
+//        }
+//        output.onChangePreset = { [weak self, weak input] in
+//            self?.showPresetsList(input: input)
+//        }
+//        router.present(view)
     }
 
-    func showPresetsList(input: BorderedFieldExampleModuleInput?) {
-        let (view, output) = BorderedFieldPresetsModuleConfigurator().configure()
-        output.onClose = { [weak self] in
-            self?.router.dismissModule()
-        }
-        output.onSelectPreset = { [weak self, weak input] preset in
-            input?.applyPreset(preset)
-            self?.router.dismissModule()
-        }
-        router.present(view)
-    }
+//    func showPresetsList(input: BorderedFieldExampleModuleInput?) {
+//        let (view, output) = BorderedFieldPresetsModuleConfigurator().configure()
+//        output.onClose = { [weak self] in
+//            self?.router.dismissModule()
+//        }
+//        output.onSelectPreset = { [weak self, weak input] preset in
+//            input?.applyPreset(preset)
+//            self?.router.dismissModule()
+//        }
+//        router.present(view)
+//    }
 
 }

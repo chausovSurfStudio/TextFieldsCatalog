@@ -32,6 +32,11 @@ final class FieldExamplePresenter: FieldExampleModuleOutput {
 // MARK: - FieldExampleModuleInput
 
 extension FieldExamplePresenter: FieldExampleModuleInput {
+
+    func applyPreset(_ preset: AppliedPreset) {
+        view?.applyPreset(preset)
+    }
+
 }
 
 // MARK: - FieldExampleViewOutput
@@ -39,7 +44,7 @@ extension FieldExamplePresenter: FieldExampleModuleInput {
 extension FieldExamplePresenter: FieldExampleViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: fieldType)
+        view?.setupInitialState(with: fieldType, preset: BorderedFieldPreset.password)
     }
 
     func close() {

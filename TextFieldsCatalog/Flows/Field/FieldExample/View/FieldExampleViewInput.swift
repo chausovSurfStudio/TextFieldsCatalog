@@ -8,5 +8,8 @@
 
 protocol FieldExampleViewInput: class {
     /// Method for setup initial state of view
-    func setupInitialState(with fieldType: TextFieldType)
+    func setupInitialState(with fieldType: TextFieldType, preset: AppliedPreset)
+
+    /// Method for apply some preset
+    func applyPreset(_ preset: AppliedPreset)
 }

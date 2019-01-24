@@ -6,7 +6,7 @@
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum TextFieldType {
     case bordered
@@ -24,4 +24,13 @@ enum TextFieldType {
             return L10n.Textfieldtype.Bordered.description
         }
     }
+
+    /// Returns new instance of needed text field and its default height
+    func createField(for frame: CGRect) -> (UIView, CGFloat) {
+        switch self {
+        case .bordered:
+            return (BorderedTextField(frame: frame), 130)
+        }
+    }
+
 }
