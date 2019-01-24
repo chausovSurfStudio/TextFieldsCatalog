@@ -52,7 +52,7 @@ final class BorderedTextField: DesignableView, ResetableField {
     // MARK: - Private Properties
 
     private var state: BorderedTextFieldState = .normal {
-        didSet(newValue) {
+        didSet {
             updateUI()
         }
     }
@@ -201,11 +201,6 @@ final class BorderedTextField: DesignableView, ResetableField {
     /// Allows you to disable paste action for textField
     func disablePasteAction() {
         textField.pasteActionEnabled = false
-    }
-
-    /// Allows you to enable paste action for textField
-    func enablePasteAction() {
-        textField.pasteActionEnabled = true
     }
 
     /// Allows you to disable textField

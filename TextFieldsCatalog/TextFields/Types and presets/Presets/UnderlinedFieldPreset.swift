@@ -46,8 +46,9 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForPlain(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Введите что-нибудь", infoString: "Что душе угодно", maxLength: nil)
+        textField.configure(placeholder: "Введите что-нибудь", maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: nil)
+        textField.setTextFieldMode(.password)
     }
 
 }
