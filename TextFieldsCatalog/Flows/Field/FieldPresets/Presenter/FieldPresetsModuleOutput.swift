@@ -7,4 +7,6 @@
 //
 
 protocol FieldPresetsModuleOutput: class {
+    var onClose: EmptyClosure? { get set }
+    var onSelectPreset: FieldPresetClosure? { get set }
 }

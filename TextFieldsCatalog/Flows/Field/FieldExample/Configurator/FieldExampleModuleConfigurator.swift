@@ -10,14 +10,14 @@ import UIKit
 
 final class FieldExampleModuleConfigurator {
 
-    func configure(with fieldType: TextFieldType) -> (UIViewController, FieldExampleModuleOutput) {
+    func configure(with fieldType: TextFieldType) -> (UIViewController, FieldExampleModuleOutput, FieldExampleModuleInput) {
         let view = FieldExampleViewController()
         let presenter = FieldExamplePresenter(with: fieldType)
 
         presenter.view = view
         view.output = presenter
 
-        return (view, presenter)
+        return (view, presenter, presenter)
     }
 
 }

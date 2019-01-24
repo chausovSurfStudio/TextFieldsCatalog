@@ -25,18 +25,18 @@ enum TextFieldType {
         }
     }
 
+    var presets: [AppliedPreset] {
+        switch self {
+        case .bordered:
+            return BorderedFieldPreset.allCases
+        }
+    }
+
     /// Returns new instance of needed text field and its default height
     func createField(for frame: CGRect) -> (UIView, CGFloat) {
         switch self {
         case .bordered:
             return (BorderedTextField(frame: frame), 130)
-        }
-    }
-
-    func presets() -> [AppliedPreset] {
-        switch self {
-        case .bordered:
-            return BorderedFieldPreset.allCases
         }
     }
 

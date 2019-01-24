@@ -10,12 +10,15 @@ import UIKit
 
 final class FieldPresetsModuleConfigurator {
 
-    func configure() -> (UIViewController, FieldPresetsModuleOutput) {
+    func configure(with presets: [AppliedPreset]) -> (UIViewController, FieldPresetsModuleOutput) {
         let view = FieldPresetsViewController()
-        let presenter = FieldPresetsPresenter()
+        let presenter = FieldPresetsPresenter(with: presets)
 
         presenter.view = view
         view.output = presenter
+
+        view.modalPresentationStyle = .overFullScreen
+        view.modalTransitionStyle = .crossDissolve
 
         return (view, presenter)
     }

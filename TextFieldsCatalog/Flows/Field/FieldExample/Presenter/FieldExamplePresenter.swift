@@ -44,7 +44,7 @@ extension FieldExamplePresenter: FieldExampleModuleInput {
 extension FieldExamplePresenter: FieldExampleViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: fieldType, preset: fieldType.presets().first)
+        view?.setupInitialState(with: fieldType, preset: fieldType.presets.first)
     }
 
     func close() {

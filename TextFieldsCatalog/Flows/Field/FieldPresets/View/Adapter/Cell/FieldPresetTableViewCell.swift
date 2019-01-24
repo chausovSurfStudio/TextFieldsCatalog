@@ -1,14 +1,14 @@
 //
-//  BorderedFieldPresetTableViewCell.swift
+//  FieldPresetTableViewCell.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 24/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
 import UIKit
 
-final class BorderedFieldPresetTableViewCell: UITableViewCell {
+final class FieldPresetTableViewCell: UITableViewCell {
 
     // MARK: - Constants
 
@@ -41,7 +41,7 @@ final class BorderedFieldPresetTableViewCell: UITableViewCell {
 
     // MARK: - Internal Methods
 
-    func configure(with preset: BorderedFieldPreset) {
+    func configure(with preset: AppliedPreset) {
         nameLabel.text = preset.name
     }
 
@@ -49,7 +49,7 @@ final class BorderedFieldPresetTableViewCell: UITableViewCell {
 
 // MARK: - Configure
 
-private extension BorderedFieldPresetTableViewCell {
+private extension FieldPresetTableViewCell {
 
     func setupInitialState() {
         contentView.backgroundColor = Color.Cell.container

@@ -10,6 +10,7 @@ import UIKit
 
 /// Describes preset type which can be applied to the text field
 protocol AppliedPreset {
+    var name: String { get }
     var description: String { get }
     func apply(for field: Any)
 }

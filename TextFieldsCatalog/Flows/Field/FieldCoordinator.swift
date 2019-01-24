@@ -39,14 +39,26 @@ final class FieldCoordinator: BaseCoordinator, FieldCoordinatorOutput {
 private extension FieldCoordinator {
 
     func showExample() {
-        let (view, output) = FieldExampleModuleConfigurator().configure(with: fieldType)
+        let (view, output, input) = FieldExampleModuleConfigurator().configure(with: fieldType)
         output.onClose = { [weak self] in
             self?.router.dismissModule()
             self?.finishFlow?()
         }
-//        output.onChangePreset = { [weak self, weak input] in
-//            self?.showPresetsList(input: input)
-//        }
+        output.onChangePreset = { [weak self, weak input] in
+            self?.showPresetsList(input: input)
+        }
+        router.present(view)
+    }
+
+    func showPresetsList(input: FieldExampleModuleInput?) {
+        let (view, output) = FieldPresetsModuleConfigurator().configure(with: fieldType.presets)
+        output.onClose = { [weak self] in
+            self?.router.dismissModule()
+        }
+        output.onSelectPreset = { [weak self, weak input] preset in
+            input?.applyPreset(preset)
+            self?.router.dismissModule()
+        }
         router.present(view)
     }
 

@@ -10,9 +10,22 @@ final class FieldPresetsPresenter: FieldPresetsModuleOutput {
 
     // MARK: - FieldPresetsModuleOutput
 
+    var onClose: EmptyClosure?
+    var onSelectPreset: FieldPresetClosure?
+
     // MARK: - Properties
 
     weak var view: FieldPresetsViewInput?
+
+    // MARK: - Private Properties
+
+    private let presets: [AppliedPreset]
+
+    // MARK: - Initialization
+
+    init(with presets: [AppliedPreset]) {
+        self.presets = presets
+    }
 
 }
 
@@ -26,7 +39,15 @@ extension FieldPresetsPresenter: FieldPresetsModuleInput {
 extension FieldPresetsPresenter: FieldPresetsViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState()
+        view?.setupInitialState(with: presets)
+    }
+
+    func close() {
+        onClose?()
+    }
+
+    func selectPreset(_ preset: AppliedPreset) {
+        onSelectPreset?(preset)
     }
 
 }

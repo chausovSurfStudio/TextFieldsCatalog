@@ -9,4 +9,10 @@
 protocol FieldPresetsViewOutput {
     /// Notify presenter that view is ready
     func viewLoaded()
+
+    /// Notify presenter that user wants to close module
+    func close()
+
+    /// Notify presenter that user select some preset
+    func selectPreset(_ preset: AppliedPreset)
 }
