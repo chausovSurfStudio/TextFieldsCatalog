@@ -14,7 +14,7 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     var name: String {
         switch self {
         case .plain:
-            return "Введите имя"
+            return "Тестовый пресет"
         }
     }
 
@@ -46,9 +46,8 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForPlain(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Введите что-нибудь", maxLength: nil)
+        textField.configure(placeholder: "Имя", maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: nil)
-        textField.setTextFieldMode(.password)
     }
 
 }

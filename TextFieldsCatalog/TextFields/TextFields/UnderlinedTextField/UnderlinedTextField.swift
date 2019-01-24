@@ -39,10 +39,10 @@ final class UnderlinedTextField: DesignableView {
         static let smallSeparatorHeight: CGFloat = 1
         static let bigSeparatorHeight: CGFloat = 2
 
-        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 7, width: 288, height: 15)
-        static let bottomPlaceholderPosition: CGRect = CGRect(x: 16, y: 16, width: 288, height: 15)
-        static let bigPlaceholderFont: CGFloat = 14
-        static let smallPlaceholderFont: CGFloat = 11
+        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 5, width: 288, height: 15)
+        static let bottomPlaceholderPosition: CGRect = CGRect(x: 15, y: 23, width: 288, height: 15)
+        static let bigPlaceholderFont: CGFloat = 16
+        static let smallPlaceholderFont: CGFloat = 12
 
         static let defaultTextPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         static let increasedTextPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 40)
@@ -296,7 +296,7 @@ private extension UnderlinedTextField {
     func configureTextField() {
         textField.delegate = self
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.textColor = Color.Text.black
+        textField.textColor = Color.Text.white
         textField.tintColor = Color.Text.active
         textField.returnKeyType = .done
         textField.textPadding = Constants.defaultTextPadding
