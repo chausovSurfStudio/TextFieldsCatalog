@@ -35,7 +35,7 @@ enum TextFieldType: CaseIterable {
         case .bordered:
             return BorderedFieldPreset.allCases
         case .underlined:
-            return []
+            return UnderlinedFieldPreset.allCases
         }
     }
 

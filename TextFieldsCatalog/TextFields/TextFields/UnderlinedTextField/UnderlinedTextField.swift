@@ -215,6 +215,8 @@ final class UnderlinedTextField: DesignableView {
 private extension UnderlinedTextField {
 
     func configureUI() {
+        view.backgroundColor = Color.Main.background
+
         topPlaceholderLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         bottomInfoLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
 
