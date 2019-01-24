@@ -14,11 +14,9 @@
             <connections>
                 <outlet property="bottomInfoLabel" destination="B8b-xj-ysW" id="w41-fK-Sop"/>
                 <outlet property="eyeButton" destination="hZM-WG-Dn7" id="z5n-qb-fPk"/>
-                <outlet property="placeholderTopOffsetConstraint" destination="2dJ-2e-YeI" id="shP-ln-ejy"/>
                 <outlet property="separatorView" destination="KGe-vF-j0k" id="L0H-cb-4BY"/>
                 <outlet property="separatorViewHeightConstraint" destination="9Te-bl-jNA" id="Rqo-uq-WNF"/>
                 <outlet property="textfield" destination="nxT-nZ-3cy" id="hYA-dQ-HDF"/>
-                <outlet property="topPlaceholderLabel" destination="saB-ON-bwJ" id="ijX-YG-qFF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,15 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saB-ON-bwJ">
-                    <rect key="frame" x="16" y="0.0" width="288" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="15" id="q9A-Kf-lou"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxT-nZ-3cy" customClass="InnerTextField" customModule="TextFieldsCatalog" customModuleProvider="target">
                     <rect key="frame" x="16" y="18" width="288" height="30"/>
                     <constraints>
@@ -67,18 +56,15 @@
             </subviews>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KGe-vF-j0k" secondAttribute="trailing" constant="16" id="0y6-yF-7ID"/>
-                <constraint firstItem="saB-ON-bwJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2dJ-2e-YeI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="B8b-xj-ysW" secondAttribute="trailing" constant="16" id="2nU-Fg-biu"/>
                 <constraint firstItem="B8b-xj-ysW" firstAttribute="top" secondItem="nxT-nZ-3cy" secondAttribute="bottom" constant="9" id="42h-wY-1Km"/>
                 <constraint firstItem="hZM-WG-Dn7" firstAttribute="centerY" secondItem="nxT-nZ-3cy" secondAttribute="centerY" id="EHf-Yj-RVZ"/>
                 <constraint firstItem="B8b-xj-ysW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="JVz-MB-yj7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hZM-WG-Dn7" secondAttribute="trailing" constant="16" id="Mf4-ti-Lxr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="saB-ON-bwJ" secondAttribute="trailing" constant="16" id="PPe-sM-UYm"/>
                 <constraint firstItem="KGe-vF-j0k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="T3i-xb-FZp"/>
                 <constraint firstItem="KGe-vF-j0k" firstAttribute="top" secondItem="nxT-nZ-3cy" secondAttribute="bottom" constant="5" id="TCB-CK-8qK"/>
                 <constraint firstItem="nxT-nZ-3cy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="kKY-OT-SfB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nxT-nZ-3cy" secondAttribute="trailing" constant="16" id="lu4-gD-IsA"/>
-                <constraint firstItem="saB-ON-bwJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="reN-bU-XnT"/>
                 <constraint firstItem="nxT-nZ-3cy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="ssf-sV-Hvp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

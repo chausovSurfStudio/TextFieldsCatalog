@@ -42,11 +42,15 @@ final class UnderlinedTextField: DesignableView {
         static let smallTextFieldLeftOffset: CGFloat = 16
         static let bigTextFieldLeftOffset: CGFloat = 38
         static let placeholderOnTopColorAlpha: CGFloat = 0.4
+
+        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 7, width: 288, height: 15)
+        static let bottomPlaceholderPosition: CGRect = CGRect(x: 16, y: 16, width: 288, height: 15)
+        static let bigPlaceholderFont: CGFloat = 14
+        static let smallPlaceholderFont: CGFloat = 11
     }
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var topPlaceholderLabel: UILabel!
     @IBOutlet private weak var textfield: InnerTextField!
     @IBOutlet private weak var separatorView: UIView!
     @IBOutlet private weak var bottomInfoLabel: UILabel!
@@ -63,7 +67,7 @@ final class UnderlinedTextField: DesignableView {
         }
     }
 
-    private var placeholder: String?
+    private let placeholder: CATextLayer = CATextLayer()
     private var infoString: String?
     private var maxLength: Int?
 
@@ -108,10 +112,9 @@ final class UnderlinedTextField: DesignableView {
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
     func configure(placeholder: String?, infoString: String?, maxLength: Int?) {
-        self.placeholder = placeholder
+        self.placeholder.string = placeholder
         self.infoString = infoString
         self.maxLength = maxLength
-
         configureTexts()
     }
 
@@ -217,7 +220,15 @@ private extension UnderlinedTextField {
     func configureUI() {
         view.backgroundColor = Color.Main.background
 
-        topPlaceholderLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        placeholder.string = ""
+        placeholder.font = UIFont.systemFont(ofSize: Constant.bigPlaceholderFont, weight: .regular).fontName as CFTypeRef?
+        placeholder.fontSize = Constant.bigPlaceholderFont
+        placeholder.foregroundColor = placeholderColor()
+        placeholder.contentsScale = UIScreen.main.scale
+        placeholder.frame = Constant.bottomPlaceholderPosition
+        placeholder.truncationMode = CATextLayerTruncationMode.end
+        self.layer.addSublayer(placeholder)
+
         bottomInfoLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
 
         textfield.delegate = self
@@ -233,9 +244,7 @@ private extension UnderlinedTextField {
     }
 
     func configureTexts() {
-        topPlaceholderLabel.text = placeholder
         bottomInfoLabel.text = infoString
-        showTextFieldPlaceholder(show: true)
     }
 
     func setEyeButtonStyle(open: Bool) {
@@ -244,14 +253,11 @@ private extension UnderlinedTextField {
     }
 
     func updateUI(animated: Bool) {
-        var textIsEmpty = true
-        if let text = textfield.text, !text.isEmpty {
-            textIsEmpty = false
-        }
-
         updateElementsColor(animated: animated)
-        showTopPlaceholder(state == .active || !textIsEmpty, animated: animated)
-        showTextFieldPlaceholder(show: state != .active)
+        updatePlaceholderColor()
+        updatePlaceholderPosition()
+        updatePlaceholderFont()
+
         showBotomInfoLabel(error || (state == .active && self.infoString != nil), animated: animated)
         increaseSeparatorView(state == .active, animated: animated)
     }
@@ -278,51 +284,23 @@ private extension UnderlinedTextField {
 private extension UnderlinedTextField {
 
     func updateElementsColor(animated: Bool) {
-        let currentTopPlaceholderColor = topPlaceholderColor()
         let currentSeparatorColor = separatorColor()
         let currentBottomInfoColor = bottomInfoColor()
 
         let animationDuration = animated ? Constant.animationDuration : 0.0
+//        transitionLabelColor(label: bottomInfoLabel, color: currentBottomInfoColor, duration: animationDuration)
 
-        transitionLabelColor(label: topPlaceholderLabel, color: currentTopPlaceholderColor, duration: animationDuration)
-        transitionLabelColor(label: bottomInfoLabel, color: currentBottomInfoColor, duration: animationDuration)
-
-        UIView.animate(withDuration: animationDuration) {
-            self.separatorView.backgroundColor = currentSeparatorColor
+        UIView.animate(withDuration: animationDuration) { [weak self] in
+            self?.separatorView.backgroundColor = currentSeparatorColor
+            self?.bottomInfoLabel.textColor = currentBottomInfoColor
         }
     }
 
-    func transitionLabelColor(label: UILabel, color: UIColor, duration: TimeInterval = Constant.animationDuration) {
-        UIView.transition(with: label, duration: duration, options: .transitionCrossDissolve, animations: {
-            label.textColor = color
-        })
-    }
-
-    func showTopPlaceholder(_ show: Bool, animated: Bool) {
-        let actualOffset = show ? Constant.topPlaceholderVisibleOffset : Constant.topPlaceholderHiddenOffset
-        let alpha: CGFloat = show ? 1.0 : 0.0
-        placeholderTopOffsetConstraint.constant = actualOffset
-        if animated {
-            UIView.animate(withDuration: Constant.animationDuration) { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
-                self.topPlaceholderLabel.alpha = alpha
-                self.view.layoutIfNeeded()
-            }
-        } else {
-            self.topPlaceholderLabel.alpha = alpha
-        }
-    }
-
-    func showTextFieldPlaceholder(show: Bool) {
-        if let placeholder = self.placeholder, show {
-            textfield.attributedPlaceholder = placeholder.with(attributes: [.foregroundColor(Color.Text.gray),
-                                                                            .font(UIFont.systemFont(ofSize: 16, weight: .regular))])
-        } else {
-            textfield.placeholder = nil
-        }
-    }
+//    func transitionLabelColor(label: UILabel, color: UIColor, duration: TimeInterval = Constant.animationDuration) {
+//        UIView.transition(with: label, duration: duration, options: .transitionCrossDissolve, animations: {
+//            label.textColor = color
+//        })
+//    }
 
     func showBotomInfoLabel(_ show: Bool, animated: Bool) {
         let alpha: CGFloat = show ? 1.0 : 0.0
@@ -350,25 +328,93 @@ private extension UnderlinedTextField {
         }
     }
 
+    func updatePlaceholderColor() {
+        let startColor: CGColor = currentPlaceholderColor()
+        let endColor: CGColor = placeholderColor()
+        placeholder.foregroundColor = endColor
+
+        let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
+        colorAnimation.fromValue = startColor
+        colorAnimation.toValue = endColor
+        colorAnimation.duration = Constant.animationDuration
+        colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        placeholder.add(colorAnimation, forKey: nil)
+    }
+
+    func updatePlaceholderPosition() {
+        let startPosition: CGRect = currentPlaceholderPosition()
+        let endPosition: CGRect = placeholderPosition()
+        placeholder.frame = endPosition
+
+        let frameAnimation = CABasicAnimation(keyPath: "frame")
+        frameAnimation.fromValue = startPosition
+        frameAnimation.toValue = endPosition
+        frameAnimation.duration = Constant.animationDuration
+        frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        placeholder.add(frameAnimation, forKey: nil)
+    }
+
+    func updatePlaceholderFont() {
+        let startFontSize: CGFloat = currentPlaceholderFontSize()
+        let endFontSize: CGFloat = placeholderFontSize()
+        placeholder.fontSize = endFontSize
+
+        let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
+        fontSizeAnimation.fromValue = startFontSize
+        fontSizeAnimation.toValue = endFontSize
+        fontSizeAnimation.duration = Constant.animationDuration
+        fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        placeholder.add(fontSizeAnimation, forKey: nil)
+    }
+
+    /// Return true, if floating placeholder should placed on top in current state, false in other case
+    func shouldMovePlaceholderOnTop() -> Bool {
+        return state == .active || !textIsEmpty()
+    }
+
+    /// Return true, if current input string is empty
+    func textIsEmpty() -> Bool {
+        guard let text = textfield.text else {
+            return true
+        }
+        return text.isEmpty
+    }
+
 }
 
 // MARK: - Elements colors
 
 private extension UnderlinedTextField {
 
-    func topPlaceholderColor() -> UIColor {
-        if error {
-            return Color.Text.gray
-        }
+    func currentPlaceholderColor() -> CGColor {
+        return placeholder.foregroundColor ?? Color.Text.white.cgColor
+    }
 
+    func placeholderColor() -> CGColor {
         switch state {
-        case .normal:
-            return Color.Text.gray
         case .active:
-            return Color.Text.active
+            return Color.Text.active.cgColor
+        case .normal:
+            return shouldMovePlaceholderOnTop() ? Color.Text.active.cgColor : Color.Text.white.cgColor
         case .disabled:
-            return Color.Text.disabled
+            return Color.Text.gray.cgColor
         }
+    }
+
+    func currentPlaceholderPosition() -> CGRect {
+        return placeholder.frame
+    }
+
+    func placeholderPosition() -> CGRect {
+        return shouldMovePlaceholderOnTop() ? Constant.topPlaceholderPosition : Constant.bottomPlaceholderPosition
+    }
+
+    func currentPlaceholderFontSize() -> CGFloat {
+        return placeholder.fontSize
+    }
+
+    func placeholderFontSize() -> CGFloat {
+        return shouldMovePlaceholderOnTop() ? Constant.smallPlaceholderFont : Constant.bigPlaceholderFont
     }
 
     func separatorColor() -> UIColor {
