@@ -39,12 +39,18 @@ private extension MainCoordinator {
     func showMain() {
         let (view, output) = MainModuleConfigurator().configure()
         output.onFieldOpen = { [weak self] fieldType in
-            switch fieldType {
-            case .bordered:
-                self?.runBorderedFieldFlow()
-            }
+            self?.runFieldFlow(with: fieldType)
         }
         router.setRootModule(view)
+    }
+
+    func runFieldFlow(with fieldType: TextFieldType) {
+        let coordinator = FieldCoordinator(router: router, fieldType: fieldType)
+        coordinator.finishFlow = { [weak self, weak coordinator] in
+            self?.removeDependency(coordinator)
+        }
+        self.addDependency(coordinator)
+        coordinator.start()
     }
 
     func runBorderedFieldFlow() {

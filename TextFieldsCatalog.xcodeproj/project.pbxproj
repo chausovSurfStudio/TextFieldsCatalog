@@ -10,17 +10,26 @@
 		04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */; };
 		0F32093C542C1D35D5B10FD2 /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */; };
 		16EB969CE74359E1EEB87E33 /* BorderedFieldExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8D77A5364A11DA0368B2B /* BorderedFieldExampleViewController.swift */; };
+		1AF04E6693D06397802D1321 /* FieldExampleModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */; };
 		2025FD598129275E76AD5751 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9E1ECAFA665E89FD59024 /* MainViewController.swift */; };
+		3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */; };
+		37A8EFECD58C0007674C2719 /* FieldPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */; };
 		3CBA77A6FBA0C2DA5C38E447 /* BorderedFieldPresetsModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6FEDAB000FBB41CB85AAD /* BorderedFieldPresetsModuleInput.swift */; };
 		3D65C4C7EFC718EACD4203EA /* BorderedFieldPresetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D3B79FA2AE74B14263CFF2B /* BorderedFieldPresetsViewController.xib */; };
+		49FB60CDE6CD6F88CCFE525B /* FieldExampleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */; };
 		52FADB87BBC9E3AD301F63B7 /* BorderedFieldPresetsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31452CBFF0BB86A15B98C088 /* BorderedFieldPresetsViewOutput.swift */; };
 		574AF82577C54960C5CD52BA /* MainViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */; };
+		5A5D90A731491A93D986DF82 /* FieldExampleModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79098781BD806E2DBE089E0C /* FieldExampleModuleInput.swift */; };
+		6158FD49A06A50B9CDBFF6D7 /* FieldPresetsModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */; };
 		6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */; };
 		70FD7545F96FFB53F0433FC3 /* BorderedFieldExampleModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647334B31EFAFC00893CF54 /* BorderedFieldExampleModuleInput.swift */; };
+		7382E0D919891CB3809AAC42 /* FieldPresetsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */; };
 		7525BB51471E3CED78A77DB4 /* BorderedFieldExampleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D1C3FABA61A3C964DC08D /* BorderedFieldExampleViewOutput.swift */; };
 		7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */; };
 		8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29BF97393846546F44A61 /* MainViewInput.swift */; };
 		8EEAF701398D38CF72E8D720 /* BorderedFieldPresetsModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD315F70CE52CE609DB0467 /* BorderedFieldPresetsModuleConfigurator.swift */; };
+		904A19AA21F9D5C100B9A846 /* FieldCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19A921F9D5C100B9A846 /* FieldCoordinator.swift */; };
+		904A19AC21F9D5D700B9A846 /* FieldCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19AB21F9D5D700B9A846 /* FieldCoordinatorOutput.swift */; };
 		90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C2621F86099003B8B78 /* AppDelegate.swift */; };
 		90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2D21F8609A003B8B78 /* Assets.xcassets */; };
 		90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */; };
@@ -79,11 +88,20 @@
 		90736CD621F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CD521F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		91B738AB2E625DBD829DA155 /* BorderedFieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1956B354DF417B17436D53F1 /* BorderedFieldPresetsPresenter.swift */; };
+		9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */; };
 		93F7CA1A179F2C6B9AAD197E /* BorderedFieldPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB46447B5D8B8C6470F5148 /* BorderedFieldPresetsViewController.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
+		9DE9899587424746804B617B /* FieldExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D63B32FA109A81E63344D /* FieldExampleViewController.swift */; };
 		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
+		A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */; };
 		ABC484D679F52731BA5EEFDB /* BorderedFieldExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70AD814A498246A9514610A2 /* BorderedFieldExampleViewController.xib */; };
+		AD6BCF59A9451DF953E356E8 /* FieldExampleModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */; };
 		B34998F7EAC446FB9F3D2695 /* BorderedFieldExampleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C5942F2316B38A6F5EB2B4 /* BorderedFieldExampleViewInput.swift */; };
+		C852A58772725BC43EF5979E /* FieldExampleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */; };
+		CA52F4DB993991A6DBC7DD01 /* FieldPresetsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */; };
+		CB2B33FF7A75453DF285FC70 /* FieldPresetsModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */; };
+		CC5A01F5679D004EAB01578E /* FieldExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */; };
+		D15DB61CCECCD4C5F7BFCACA /* FieldPresetsModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */; };
 		D36C61033A3D3AD1BEFDDD60 /* BorderedFieldExampleModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDBAE209D9B5ECA8890B086 /* BorderedFieldExampleModuleConfigurator.swift */; };
 		E52C8BEE32604892286CB117 /* BorderedFieldPresetsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA12B3F82CE83B0A1E3FC85E /* BorderedFieldPresetsViewInput.swift */; };
 		EBB082B1188AB0B167435077 /* BorderedFieldExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D136F435E9C5DEDF1001697 /* BorderedFieldExamplePresenter.swift */; };
@@ -102,25 +120,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010D63B32FA109A81E63344D /* FieldExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewController.swift; sourceTree = "<group>"; };
+		089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewInput.swift; sourceTree = "<group>"; };
 		08F9E1ECAFA665E89FD59024 /* MainViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
+		0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewInput.swift; sourceTree = "<group>"; };
 		1956B354DF417B17436D53F1 /* BorderedFieldPresetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsPresenter.swift; sourceTree = "<group>"; };
+		226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewOutput.swift; sourceTree = "<group>"; };
 		2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		31452CBFF0BB86A15B98C088 /* BorderedFieldPresetsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsViewOutput.swift; sourceTree = "<group>"; };
+		364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleConfigurator.swift; sourceTree = "<group>"; };
 		37B6FEDAB000FBB41CB85AAD /* BorderedFieldPresetsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsModuleInput.swift; sourceTree = "<group>"; };
 		47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleInput.swift; sourceTree = "<group>"; };
+		56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldPresetsViewController.xib; sourceTree = "<group>"; };
 		5D3B79FA2AE74B14263CFF2B /* BorderedFieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = BorderedFieldPresetsViewController.xib; sourceTree = "<group>"; };
+		605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleOutput.swift; sourceTree = "<group>"; };
+		615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsPresenter.swift; sourceTree = "<group>"; };
 		63BCA0129C1D70CDC1C3E6E3 /* Pods-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B9F409927AD029A70C26A8B /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewController.swift; sourceTree = "<group>"; };
 		70AD814A498246A9514610A2 /* BorderedFieldExampleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = BorderedFieldExampleViewController.xib; sourceTree = "<group>"; };
 		769890F734CD1746A10C76A5 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
+		79098781BD806E2DBE089E0C /* FieldExampleModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleInput.swift; sourceTree = "<group>"; };
 		7F0D1C3FABA61A3C964DC08D /* BorderedFieldExampleViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleViewOutput.swift; sourceTree = "<group>"; };
 		7FB46447B5D8B8C6470F5148 /* BorderedFieldPresetsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsViewController.swift; sourceTree = "<group>"; };
 		8647334B31EFAFC00893CF54 /* BorderedFieldExampleModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleModuleInput.swift; sourceTree = "<group>"; };
 		87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
 		8D136F435E9C5DEDF1001697 /* BorderedFieldExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExamplePresenter.swift; sourceTree = "<group>"; };
 		8FDBAE209D9B5ECA8890B086 /* BorderedFieldExampleModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleModuleConfigurator.swift; sourceTree = "<group>"; };
+		904A19A921F9D5C100B9A846 /* FieldCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCoordinator.swift; sourceTree = "<group>"; };
+		904A19AB21F9D5D700B9A846 /* FieldCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCoordinatorOutput.swift; sourceTree = "<group>"; };
 		90736C2321F86099003B8B78 /* TextFieldsCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldsCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C2621F86099003B8B78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90736C2D21F8609A003B8B78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,13 +214,19 @@
 		90736CD221F8C3B7003B8B78 /* BorderedFieldPresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BorderedFieldPresetTableViewCell.xib; sourceTree = "<group>"; };
 		90736CD521F8C492003B8B78 /* BorderedFieldPresetsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsAdapter.swift; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
 		97D8D77A5364A11DA0368B2B /* BorderedFieldExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleViewController.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
+		AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewOutput.swift; sourceTree = "<group>"; };
 		BA12B3F82CE83B0A1E3FC85E /* BorderedFieldPresetsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsViewInput.swift; sourceTree = "<group>"; };
 		BCD315F70CE52CE609DB0467 /* BorderedFieldPresetsModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsModuleConfigurator.swift; sourceTree = "<group>"; };
+		BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldExampleViewController.xib; sourceTree = "<group>"; };
 		C193F93D9205EA9468DA048C /* BorderedFieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
+		C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleConfigurator.swift; sourceTree = "<group>"; };
 		C445B18542FFD202A4ABF826 /* BorderedFieldExampleModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleModuleOutput.swift; sourceTree = "<group>"; };
 		D0A29BF97393846546F44A61 /* MainViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
+		E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleInput.swift; sourceTree = "<group>"; };
+		EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExamplePresenter.swift; sourceTree = "<group>"; };
 		ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleOutput.swift; sourceTree = "<group>"; };
 		F5C5942F2316B38A6F5EB2B4 /* BorderedFieldExampleViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BorderedFieldExampleViewInput.swift; sourceTree = "<group>"; };
 		FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,13 +263,22 @@
 		0A7988E1188290EDFEF03AFC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				90736CCC21F8B81A003B8B78 /* ViewModel */,
 				97D8D77A5364A11DA0368B2B /* BorderedFieldExampleViewController.swift */,
 				70AD814A498246A9514610A2 /* BorderedFieldExampleViewController.xib */,
 				F5C5942F2316B38A6F5EB2B4 /* BorderedFieldExampleViewInput.swift */,
 				7F0D1C3FABA61A3C964DC08D /* BorderedFieldExampleViewOutput.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2AB16610AF4D563D850039A3 /* FieldExample */ = {
+			isa = PBXGroup;
+			children = (
+				97E8EAA59E35805EA0B0FD22 /* Configurator */,
+				CF541C66F7BF3F166D98211C /* Presenter */,
+				73245A6C949C684B8A40A291 /* View */,
+			);
+			path = FieldExample;
 			sourceTree = "<group>";
 		};
 		304573A13D605253B6ED0DC7 /* BorderedFieldExample */ = {
@@ -284,6 +329,35 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		628765AF8185F6D6E59BAAD0 /* FieldPresets */ = {
+			isa = PBXGroup;
+			children = (
+				66E6D54E6ADD1CC647C8172D /* Configurator */,
+				D6CFA3122BA6DCCFF02090B7 /* Presenter */,
+				9424A9038CA0899BAD62EBC5 /* View */,
+			);
+			path = FieldPresets;
+			sourceTree = "<group>";
+		};
+		66E6D54E6ADD1CC647C8172D /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		73245A6C949C684B8A40A291 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				010D63B32FA109A81E63344D /* FieldExampleViewController.swift */,
+				BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */,
+				089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */,
+				226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		74F3C3DE30B752FA02FD67A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +399,34 @@
 				C445B18542FFD202A4ABF826 /* BorderedFieldExampleModuleOutput.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		904A19A621F9D3B000B9A846 /* Types and presets */ = {
+			isa = PBXGroup;
+			children = (
+				904A19A721F9D3C400B9A846 /* Presets */,
+				90736CA621F8977B003B8B78 /* TextFieldType.swift */,
+			);
+			path = "Types and presets";
+			sourceTree = "<group>";
+		};
+		904A19A721F9D3C400B9A846 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
+		904A19A821F9D58600B9A846 /* Field */ = {
+			isa = PBXGroup;
+			children = (
+				904A19A921F9D5C100B9A846 /* FieldCoordinator.swift */,
+				904A19AB21F9D5D700B9A846 /* FieldCoordinatorOutput.swift */,
+				2AB16610AF4D563D850039A3 /* FieldExample */,
+				628765AF8185F6D6E59BAAD0 /* FieldPresets */,
+			);
+			path = Field;
 			sourceTree = "<group>";
 		};
 		90736C1A21F86099003B8B78 = {
@@ -383,6 +485,7 @@
 		90736C4D21F8770D003B8B78 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				904A19A621F9D3B000B9A846 /* Types and presets */,
 				90736C5D21F879ED003B8B78 /* BorderedTextField */,
 			);
 			path = TextFields;
@@ -508,6 +611,7 @@
 		90736C8021F889A3003B8B78 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				904A19A821F9D58600B9A846 /* Field */,
 				90736C8221F889DA003B8B78 /* BorderedField */,
 				90736C8121F889D3003B8B78 /* Main */,
 			);
@@ -557,7 +661,6 @@
 			isa = PBXGroup;
 			children = (
 				90736CA821F897C7003B8B78 /* MainModuleViewModel.swift */,
-				90736CA621F8977B003B8B78 /* TextFieldType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -616,14 +719,6 @@
 			path = MainFieldTableViewCell;
 			sourceTree = "<group>";
 		};
-		90736CCC21F8B81A003B8B78 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		90736CCF21F8C37C003B8B78 /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +746,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9424A9038CA0899BAD62EBC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */,
+				56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */,
+				0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */,
+				AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		97E8EAA59E35805EA0B0FD22 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		B268FBCC51EEC64B6CB442EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +774,26 @@
 				63BCA0129C1D70CDC1C3E6E3 /* Pods-TextFieldsCatalogTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF541C66F7BF3F166D98211C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */,
+				79098781BD806E2DBE089E0C /* FieldExampleModuleInput.swift */,
+				605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D6CFA3122BA6DCCFF02090B7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */,
+				E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */,
+				90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		DDFF088DDD7A3BA83C163C53 /* BorderedFieldPresets */ = {
@@ -774,6 +908,8 @@
 				90736CB021F899D8003B8B78 /* CustomTitleView.xib in Resources */,
 				ABC484D679F52731BA5EEFDB /* BorderedFieldExampleViewController.xib in Resources */,
 				3D65C4C7EFC718EACD4203EA /* BorderedFieldPresetsViewController.xib in Resources */,
+				3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */,
+				A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -994,12 +1130,14 @@
 				90736C8A21F88B1E003B8B78 /* Router.swift in Sources */,
 				90736CAF21F899D8003B8B78 /* CustomTitleView.swift in Sources */,
 				2025FD598129275E76AD5751 /* MainViewController.swift in Sources */,
+				904A19AA21F9D5C100B9A846 /* FieldCoordinator.swift in Sources */,
 				8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */,
 				90736CAB21F8991F003B8B78 /* CommonNavigationController.swift in Sources */,
 				90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */,
 				90736CB221F89C3D003B8B78 /* CustomNavigationTitlePresentable.swift in Sources */,
 				90736CA721F8977B003B8B78 /* TextFieldType.swift in Sources */,
 				90736C9C21F88D29003B8B78 /* Regex.swift in Sources */,
+				904A19AC21F9D5D700B9A846 /* FieldCoordinatorOutput.swift in Sources */,
 				90736C9A21F88D11003B8B78 /* Closures.swift in Sources */,
 				90736CA221F89680003B8B78 /* Constants.swift in Sources */,
 				90736CA921F897C7003B8B78 /* MainModuleViewModel.swift in Sources */,
@@ -1022,6 +1160,20 @@
 				93F7CA1A179F2C6B9AAD197E /* BorderedFieldPresetsViewController.swift in Sources */,
 				E52C8BEE32604892286CB117 /* BorderedFieldPresetsViewInput.swift in Sources */,
 				52FADB87BBC9E3AD301F63B7 /* BorderedFieldPresetsViewOutput.swift in Sources */,
+				1AF04E6693D06397802D1321 /* FieldExampleModuleConfigurator.swift in Sources */,
+				CC5A01F5679D004EAB01578E /* FieldExamplePresenter.swift in Sources */,
+				5A5D90A731491A93D986DF82 /* FieldExampleModuleInput.swift in Sources */,
+				AD6BCF59A9451DF953E356E8 /* FieldExampleModuleOutput.swift in Sources */,
+				9DE9899587424746804B617B /* FieldExampleViewController.swift in Sources */,
+				49FB60CDE6CD6F88CCFE525B /* FieldExampleViewInput.swift in Sources */,
+				C852A58772725BC43EF5979E /* FieldExampleViewOutput.swift in Sources */,
+				6158FD49A06A50B9CDBFF6D7 /* FieldPresetsModuleConfigurator.swift in Sources */,
+				9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */,
+				D15DB61CCECCD4C5F7BFCACA /* FieldPresetsModuleInput.swift in Sources */,
+				CB2B33FF7A75453DF285FC70 /* FieldPresetsModuleOutput.swift in Sources */,
+				37A8EFECD58C0007674C2719 /* FieldPresetsViewController.swift in Sources */,
+				7382E0D919891CB3809AAC42 /* FieldPresetsViewInput.swift in Sources */,
+				CA52F4DB993991A6DBC7DD01 /* FieldPresetsViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

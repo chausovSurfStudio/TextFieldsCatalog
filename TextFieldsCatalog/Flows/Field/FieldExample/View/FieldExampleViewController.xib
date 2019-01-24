@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldExampleViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
+            <connections>
+                <outlet property="changePresetButton" destination="U6W-02-dgj" id="see-El-JJX"/>
+                <outlet property="closeButton" destination="Fp3-5x-LY3" id="Nch-92-UPQ"/>
+                <outlet property="descriptionLabel" destination="TSs-fx-08U" id="JNy-kl-Fis"/>
+                <outlet property="resetButton" destination="lkR-RD-8Sk" id="6Pf-y5-8sG"/>
+                <outlet property="textFieldContainer" destination="2Xp-dD-FUW" id="IG8-8Y-AjC"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp3-5x-LY3">
+                    <rect key="frame" x="10" y="30" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="kZs-pL-4d6"/>
+                        <constraint firstAttribute="height" constant="44" id="uCj-Mv-1zy"/>
+                    </constraints>
+                    <state key="normal" image="close"/>
+                    <connections>
+                        <action selector="tapOnCloseButton:" destination="-1" eventType="touchUpInside" id="RRQ-e3-kew"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkR-RD-8Sk">
+                    <rect key="frame" x="70" y="37" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tapOnResetButton:" destination="-1" eventType="touchUpInside" id="Cx5-YM-gYv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6W-02-dgj">
+                    <rect key="frame" x="132" y="37" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tapOnChangePresetButton:" destination="-1" eventType="touchUpInside" id="nL7-sC-8xn"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-dD-FUW">
+                    <rect key="frame" x="0.0" y="104" width="320" height="130"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="BRu-4X-I9t"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSs-fx-08U">
+                    <rect key="frame" x="16" y="264" width="288" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="U6W-02-dgj" firstAttribute="leading" secondItem="lkR-RD-8Sk" secondAttribute="trailing" constant="16" id="0H8-Ix-sdn"/>
+                <constraint firstItem="TSs-fx-08U" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" constant="16" id="1al-I2-MiW"/>
+                <constraint firstItem="U6W-02-dgj" firstAttribute="centerY" secondItem="lkR-RD-8Sk" secondAttribute="centerY" id="3Yw-TD-I6o"/>
+                <constraint firstItem="lkR-RD-8Sk" firstAttribute="centerY" secondItem="Fp3-5x-LY3" secondAttribute="centerY" id="4pE-OO-gw4"/>
+                <constraint firstItem="TSs-fx-08U" firstAttribute="top" secondItem="2Xp-dD-FUW" secondAttribute="bottom" constant="30" id="G97-oj-SvR"/>
+                <constraint firstItem="rBa-lK-ZEj" firstAttribute="trailing" secondItem="2Xp-dD-FUW" secondAttribute="trailing" id="OeV-bc-5LG"/>
+                <constraint firstItem="2Xp-dD-FUW" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" id="TeV-tp-4dF"/>
+                <constraint firstItem="Fp3-5x-LY3" firstAttribute="top" secondItem="rBa-lK-ZEj" secondAttribute="top" constant="10" id="feX-Wl-Un8"/>
+                <constraint firstItem="Fp3-5x-LY3" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" constant="10" id="hJj-Xf-uxg"/>
+                <constraint firstItem="2Xp-dD-FUW" firstAttribute="top" secondItem="Fp3-5x-LY3" secondAttribute="bottom" constant="30" id="odD-Tn-DaG"/>
+                <constraint firstItem="lkR-RD-8Sk" firstAttribute="leading" secondItem="Fp3-5x-LY3" secondAttribute="trailing" constant="16" id="qQr-8s-BOe"/>
+                <constraint firstItem="rBa-lK-ZEj" firstAttribute="trailing" secondItem="TSs-fx-08U" secondAttribute="trailing" constant="16" id="zYR-Vs-mAb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="rBa-lK-ZEj"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close" width="24" height="24"/>
+    </resources>
+</document>
