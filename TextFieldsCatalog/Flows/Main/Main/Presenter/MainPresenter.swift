@@ -28,9 +28,9 @@ extension MainPresenter: MainModuleInput {
 extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: [.message("Какое-то сообщение о том, зачем вообще все это сделано"),
+        view?.setupInitialState(with: [.message(L10n.Main.Main.message),
                                        .field(.bordered)],
-                                title: "Каталог")
+                                title: L10n.Main.Main.title)
     }
 
     func openField(with type: TextFieldType) {

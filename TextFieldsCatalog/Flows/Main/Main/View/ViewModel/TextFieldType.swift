@@ -14,14 +14,14 @@ enum TextFieldType {
     var title: String {
         switch self {
         case .bordered:
-            return "Поле ввода с обводкой"
+            return L10n.Textfieldtype.Bordered.title
         }
     }
 
     var description: String {
         switch self {
         case .bordered:
-            return "Границы поля ввода скруглены и подсвечены, имеется плейсхолдер над полем ввода, информационное-сообщение или сообщение об ошибке внизу, в одну строку. Есть возможность кастомизации с помощью своей кнопки. Кастомизируется под ввод пароля. Поддержка валидаторов и форматтеров."
+            return L10n.Textfieldtype.Bordered.description
         }
     }
 }

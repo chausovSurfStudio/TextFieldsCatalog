@@ -15,18 +15,18 @@ enum BorderedFieldPreset: CaseIterable {
     var name: String {
         switch self {
         case .password:
-            return "Пароль"
+            return L10n.Presets.Borderedfield.Password.name
         case .email:
-            return "Email"
+            return L10n.Presets.Borderedfield.Email.name
         }
     }
 
     var description: String {
         switch self {
         case .password:
-            return "Типичный кейс для ввода пароля. Здесь должно быть подробное описание"
+            return L10n.Presets.Borderedfield.Password.description
         case .email:
-            return "Типичный кейс для поля ввода email."
+            return L10n.Presets.Borderedfield.Email.description
         }
     }
 
@@ -40,25 +40,27 @@ enum BorderedFieldPreset: CaseIterable {
     }
 }
 
+// MARK: - Tune
+
 private extension BorderedFieldPreset {
 
     func tuneFieldForPassword(_ textField: BorderedTextField) {
-        textField.configure(placeholder: "Пароль", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Borderedfield.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.disablePasteAction()
-        textField.setHint("Текст подсказки")
+        textField.setHint(L10n.Presets.Borderedfield.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: Regex.password)
-        validator.shortErrorText = "Пароль слишком короткий"
+        validator.shortErrorText = L10n.Presets.Borderedfield.Password.shortErrorText
         textField.validator = validator
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
     }
 
     func tuneFieldForEmail(_ textField: BorderedTextField) {
-        textField.configure(placeholder: "Email", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.enablePasteAction()
         textField.setHint(" ")

@@ -11,3 +11,33 @@
 "Errors.TextField.empty" = "Поле должно быть заполнено";
 "Errors.TextField.short" = "Поле должно содержать минимум %@ символов";
 "Errors.TextField.notValid" = "Неверный формат";
+
+// MARK: - Button
+
+"Button.changePreset" = "Изменить пресет";
+"Button.reset" = "Сбросить";
+
+// MARK: - TextFieldType
+
+"TextFieldType.Bordered.title" = "Поле ввода с обводкой";
+"TextFieldType.Bordered.description" = "Границы поля ввода скруглены и подсвечены, имеется плейсхолдер над полем ввода, информационное-сообщение или сообщение об ошибке внизу, в одну строку. Есть возможность кастомизации с помощью своей кнопки. Кастомизируется под ввод пароля. Поддержка валидаторов и форматтеров.";
+
+// MARK: - Presets
+
+// MARK: BorderedField
+"Presets.BorderedField.password.name" = "Пароль";
+"Presets.BorderedField.password.description" = "Типичный кейс для ввода пароля. Здесь должно быть подробное описание";
+"Presets.BorderedField.password.placeholder" = "Пароль";
+"Presets.BorderedField.password.hint" = "Текст подсказки";
+"Presets.BorderedField.password.shortErrorText" = "Пароль слишком короткий";
+"Presets.BorderedField.email.name" = "Email";
+"Presets.BorderedField.email.description" = "Типичный кейс для поля ввода email";
+"Presets.BorderedField.email.placeholder" = "Email";
+
+// MARK: - Flows
+
+// MARK: - Main
+
+// MARK: Main
+"Main.Main.title" = "Каталог";
+"Main.Main.message" = "Какое-то сообщение о том, зачем вообще все это сделано";

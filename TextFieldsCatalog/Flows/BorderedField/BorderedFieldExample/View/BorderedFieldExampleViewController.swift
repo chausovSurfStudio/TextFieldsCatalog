@@ -92,9 +92,9 @@ private extension BorderedFieldExampleViewController {
     func configureButtons() {
         closeButton.setImage(UIImage(asset: Asset.close), for: .normal)
         closeButton.tintColor = Color.Main.active
-        resetButton.setTitle("Сбросить", for: .normal)
+        resetButton.setTitle(L10n.Button.reset, for: .normal)
         resetButton.tintColor = Color.Main.active
-        changePresetButton.setTitle("Изменить", for: .normal)
+        changePresetButton.setTitle(L10n.Button.changePreset, for: .normal)
         changePresetButton.tintColor = Color.Main.active
     }
 
