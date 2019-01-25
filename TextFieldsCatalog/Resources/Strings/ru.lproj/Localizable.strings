@@ -21,18 +21,47 @@
 
 "TextFieldType.Bordered.title" = "Поле ввода с обводкой";
 "TextFieldType.Bordered.description" = "Границы поля ввода скруглены и подсвечены, имеется плейсхолдер над полем ввода, информационное-сообщение или сообщение об ошибке внизу, в одну строку. Есть возможность кастомизации с помощью своей кнопки. Кастомизируется под ввод пароля. Поддержка валидаторов и форматтеров.";
+"TextFieldType.Underlined.title" = "Подчеркнутое поле ввода";
+"TextFieldType.Underlined.description" = "Под полем ввода присутствует линия. Плейсхолдер выполнен как CATextLayer, что позволяет анимационно изменять его кегль, цвет и позицию при переходе между состояниями. Кастомизируется под ввод пароля. Поддержка валидаторов и форматтеров.";
 
 // MARK: - Presets
 
-// MARK: BorderedField
-"Presets.BorderedField.password.name" = "Пароль";
-"Presets.BorderedField.password.description" = "Типичный кейс для ввода пароля. Здесь должно быть подробное описание";
-"Presets.BorderedField.password.placeholder" = "Пароль";
-"Presets.BorderedField.password.hint" = "Текст подсказки";
-"Presets.BorderedField.password.shortErrorText" = "Пароль слишком короткий";
-"Presets.BorderedField.email.name" = "Email";
-"Presets.BorderedField.email.description" = "Типичный кейс для поля ввода email";
-"Presets.BorderedField.email.placeholder" = "Email";
+// MARK: Password
+"Presets.password.name" = "Пароль";
+"Presets.password.description" = "Типичный кейс для ввода пароля. Здесь должно быть подробное описание";
+"Presets.password.placeholder" = "Пароль";
+"Presets.password.hint" = "Текст подсказки";
+"Presets.password.shortErrorText" = "Пароль слишком короткий";
+"Presets.password.largeErrorText" = "Пароль должен содержать не более %@ символов";
+
+// MARK: Email
+"Presets.email.name" = "Email";
+"Presets.email.description" = "Типичный кейс для поля ввода email";
+"Presets.email.placeholder" = "Email";
+
+// MARK: Phone
+"Presets.phone.name" = "Номер телефона";
+"Presets.phone.description" = "Пример поля ввода для номера телефона";
+"Presets.phone.placeholder" = "Номер телефона";
+"Presets.phone.errorMessage" = "Номер телефона должен содержать 10 цифр";
+
+// MARK: CardExpirationDate
+"Presets.cardExpirationDate.name" = "Срок действия карты";
+"Presets.cardExpirationDate.description" = "Пример поля ввода для срока окончания действия карты";
+"Presets.cardExpirationDate.placeholder" = "Срок действия карты";
+"Presets.cardExpirationDate.errorMessage" = "Введите месяц и год окончания срока действия";
+
+// MARK: Cvc
+"Presets.cvc.name" = "CVC-код";
+"Presets.cvc.description" = "Пример поля для ввода CVC-кода карты";
+"Presets.cvc.placeholder" = "CVC";
+"Presets.cvc.errorMessage" = "CVC-код должен содержать 3 цифры";
+
+// MARK: CardNumber
+"Presets.cardNumber.name" = "Номер карты";
+"Presets.cardNumber.description" = "Пример поля для ввода номера карты";
+"Presets.cardNumber.placeholder" = "Номер карты";
+"Presets.cardNumber.errorMessage" = "Введите правильно номер Вашей карты";
 
 // MARK: - Flows
 

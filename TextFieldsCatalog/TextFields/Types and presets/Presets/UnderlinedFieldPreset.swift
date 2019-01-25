@@ -19,34 +19,34 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     var name: String {
         switch self {
         case .password:
-            return "Пароль"
+            return L10n.Presets.Password.name
         case .email:
-            return "Email"
+            return L10n.Presets.Email.name
         case .phone:
-            return "Номер телефона"
+            return L10n.Presets.Phone.name
         case .cardExpirationDate:
-            return "Срок действия карты"
+            return L10n.Presets.Cardexpirationdate.name
         case .cvc:
-            return "CVC-код"
+            return L10n.Presets.Cvc.name
         case .cardNumber:
-            return "Номер карты"
+            return L10n.Presets.Cardnumber.name
         }
     }
 
     var description: String {
         switch self {
         case .password:
-            return "Пример поля ввода для пароля"
+            return L10n.Presets.Password.description
         case .email:
-            return "Пример поля ввода для email"
+            return L10n.Presets.Email.description
         case .phone:
-            return "Пример поля ввода для номера телефона"
+            return L10n.Presets.Phone.description
         case .cardExpirationDate:
-            return "Пример поля ввода поля для срока окончания действия карты"
+            return L10n.Presets.Cardexpirationdate.description
         case .cvc:
-            return "Пример поля для ввода CVC-кода карты"
+            return L10n.Presets.Cvc.description
         case .cardNumber:
-            return "Пример поля для ввода номера карты"
+            return L10n.Presets.Cardnumber.description
         }
     }
 
@@ -81,52 +81,52 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForPassword(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: L10n.Presets.Borderedfield.Password.placeholder, maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.disablePasteAction()
-        textField.setHint(L10n.Presets.Borderedfield.Password.hint)
+        textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: Regex.password)
-        validator.shortErrorText = L10n.Presets.Borderedfield.Password.shortErrorText
-        validator.largeErrorText = "Пароль должен содержать не более 20 символов"
+        validator.shortErrorText = L10n.Presets.Password.shortErrorText
+        validator.largeErrorText = L10n.Presets.Password.largeErrorText(String(20))
         textField.validator = validator
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
     }
 
     func tuneFieldForPhone(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Номер телефона", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Phone.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .phonePad)
-        textField.validator = TextFieldValidator(minLength: 18, maxLength: nil, regex: nil, globalErrorMessage: "Номер телефона должен содержать 10 цифр")
+        textField.validator = TextFieldValidator(minLength: 18, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Phone.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
     }
 
     func tuneFieldForCardExpirationDate(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Срок действия карты", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Cardexpirationdate.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 5, maxLength: nil, regex: nil, globalErrorMessage: "Введите месяц и год окончания срока действия")
+        textField.validator = TextFieldValidator(minLength: 5, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardExpirationDate)
     }
 
     func tuneFieldForCvc(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "CVC", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Cvc.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 3, maxLength: nil, regex: nil, globalErrorMessage: "CVC-код должен содержать 3 цифры")
+        textField.validator = TextFieldValidator(minLength: 3, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cvc.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
     }
 
     func tuneFieldForCardNumber(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Номер карты", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Cardnumber.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: "Введите правильно номер Вашей карты")
+        textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
     }
 

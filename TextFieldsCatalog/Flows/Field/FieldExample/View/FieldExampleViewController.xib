@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp3-5x-LY3">
-                    <rect key="frame" x="10" y="30" width="44" height="44"/>
+                    <rect key="frame" x="0.0" y="30" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="kZs-pL-4d6"/>
                         <constraint firstAttribute="height" constant="44" id="uCj-Mv-1zy"/>
@@ -38,14 +38,14 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkR-RD-8Sk">
-                    <rect key="frame" x="70" y="37" width="46" height="30"/>
+                    <rect key="frame" x="60" y="37" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="tapOnResetButton:" destination="-1" eventType="touchUpInside" id="Cx5-YM-gYv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6W-02-dgj">
-                    <rect key="frame" x="132" y="37" width="46" height="30"/>
+                    <rect key="frame" x="122" y="37" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="tapOnChangePresetButton:" destination="-1" eventType="touchUpInside" id="nL7-sC-8xn"/>
@@ -75,7 +75,7 @@
                 <constraint firstItem="rBa-lK-ZEj" firstAttribute="trailing" secondItem="2Xp-dD-FUW" secondAttribute="trailing" id="OeV-bc-5LG"/>
                 <constraint firstItem="2Xp-dD-FUW" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" id="TeV-tp-4dF"/>
                 <constraint firstItem="Fp3-5x-LY3" firstAttribute="top" secondItem="rBa-lK-ZEj" secondAttribute="top" constant="10" id="feX-Wl-Un8"/>
-                <constraint firstItem="Fp3-5x-LY3" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" constant="10" id="hJj-Xf-uxg"/>
+                <constraint firstItem="Fp3-5x-LY3" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" id="hJj-Xf-uxg"/>
                 <constraint firstItem="2Xp-dD-FUW" firstAttribute="top" secondItem="Fp3-5x-LY3" secondAttribute="bottom" constant="30" id="odD-Tn-DaG"/>
                 <constraint firstItem="lkR-RD-8Sk" firstAttribute="leading" secondItem="Fp3-5x-LY3" secondAttribute="trailing" constant="16" id="qQr-8s-BOe"/>
                 <constraint firstItem="rBa-lK-ZEj" firstAttribute="trailing" secondItem="TSs-fx-08U" secondAttribute="trailing" constant="16" id="zYR-Vs-mAb"/>
