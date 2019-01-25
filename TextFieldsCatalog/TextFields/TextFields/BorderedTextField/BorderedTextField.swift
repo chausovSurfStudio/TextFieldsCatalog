@@ -9,7 +9,7 @@
 import UIKit
 import InputMask
 
-/// Class for custom textField. Default height equals to 130.
+/// Class for custom textField, where text field have a highlighted border. Default height equals to 130.
 final class BorderedTextField: DesignableView, ResetableField {
 
     // MARK: - Enums

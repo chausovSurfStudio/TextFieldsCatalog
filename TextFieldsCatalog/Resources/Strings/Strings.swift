@@ -124,6 +124,13 @@ enum L10n {
       static let title = L10n.tr("Localizable", "TextFieldType.Bordered.title")
     }
 
+    enum Customunderlined {
+      /// • То же самое, что и поле ввода с подчеркиванием, но кастомизированное.\n• Отсутствует лейбл с подсказкой/ошибкой.
+      static let description = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.description")
+      /// Кастомизированое поле ввода с подчеркивание
+      static let title = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.title")
+    }
+
     enum Underlined {
       /// • Под полем ввода присутствует линия.\n• Плейсхолдер выполнен как CATextLayer, что позволяет анимационно изменять его кегль, цвет и позицию при переходе между состояниями.\n• Кастомизируется под ввод пароля.\n• Информационное-сообщение или сообщение об ошибке внизу, в одну строку.\n• Поддержка валидаторов и форматтеров.
       static let description = L10n.tr("Localizable", "TextFieldType.Underlined.description")

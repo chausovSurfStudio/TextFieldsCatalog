@@ -22,6 +22,7 @@ fileprivate enum CustomColor {
     }
 }
 
+/// Custom subclass for Underlined text field.
 final class CustomUnderlinedTextField: UnderlinedTextField {
 
     // MARK: - Initialization

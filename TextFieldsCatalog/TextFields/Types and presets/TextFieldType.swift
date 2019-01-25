@@ -20,7 +20,7 @@ enum TextFieldType: CaseIterable {
         case .underlined:
             return L10n.Textfieldtype.Underlined.title
         case .customUnderlined:
-            return "Кастомизированое поле ввода с подчеркивание"
+            return L10n.Textfieldtype.Customunderlined.title
         }
     }
 
@@ -31,7 +31,7 @@ enum TextFieldType: CaseIterable {
         case .underlined:
             return L10n.Textfieldtype.Underlined.description
         case .customUnderlined:
-            return "То же самое, что и поле ввода с подчеркиванием, но кастомизированное. Отсутствует лейбл с подсказкой/ошибкой."
+            return L10n.Textfieldtype.Customunderlined.description
         }
     }
 
