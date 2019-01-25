@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ed-Gd-RsV">
-                    <rect key="frame" x="16" y="64" width="288" height="1"/>
+                    <rect key="frame" x="16" y="62" width="288" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="jXU-lS-9nh"/>
@@ -70,7 +70,7 @@
                 <constraint firstItem="sC5-en-3Q1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aXy-jy-7bh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LEN-89-cR6" secondAttribute="trailing" constant="16" id="aqo-u2-dl7"/>
                 <constraint firstAttribute="trailing" secondItem="sC5-en-3Q1" secondAttribute="trailing" id="eiA-Cc-OIV"/>
-                <constraint firstItem="8ed-Gd-RsV" firstAttribute="top" secondItem="LEN-89-cR6" secondAttribute="bottom" constant="6" id="hW9-ve-PSf"/>
+                <constraint firstItem="8ed-Gd-RsV" firstAttribute="top" secondItem="LEN-89-cR6" secondAttribute="bottom" constant="4" id="hW9-ve-PSf"/>
                 <constraint firstItem="8ed-Gd-RsV" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-16" id="nqd-EZ-AQd"/>
                 <constraint firstItem="pzg-nf-s0z" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-8" id="ygO-5b-ITE"/>
             </constraints>
