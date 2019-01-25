@@ -19,7 +19,7 @@ final class MainFieldTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var separatorView: UIView!
+    @IBOutlet private weak var container: UIView!
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
@@ -32,13 +32,13 @@ final class MainFieldTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.contentView.backgroundColor = selected ? Color.Cell.pressed : Color.Cell.background
+            self?.container.backgroundColor = selected ? Color.Cell.pressed : Color.Cell.container
         }
     }
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.contentView.backgroundColor = highlighted ? Color.Cell.pressed : Color.Cell.background
+            self?.container.backgroundColor = highlighted ? Color.Cell.pressed : Color.Cell.container
         }
     }
 
@@ -47,7 +47,7 @@ final class MainFieldTableViewCell: UITableViewCell {
     func configure(with fieldType: TextFieldType) {
         headerLabel.attributedText = fieldType.title.with(attributes: [.lineHeight(22, font: UIFont.systemFont(ofSize: 18, weight: .semibold)),
                                                                        .foregroundColor(Color.Text.white)])
-        descriptionLabel.attributedText = fieldType.description.with(attributes: [.lineHeight(18, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
+        descriptionLabel.attributedText = fieldType.description.with(attributes: [.lineHeight(20, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
                                                                                   .foregroundColor(Color.Text.white)])
     }
 
@@ -59,7 +59,9 @@ private extension MainFieldTableViewCell {
 
     func setupInitialState() {
         contentView.backgroundColor = Color.Cell.background
-        separatorView.backgroundColor = Color.Cell.pressed
+        container.backgroundColor = Color.Cell.container
+        container.layer.cornerRadius = 12
+        container.layer.masksToBounds = true
         headerLabel.numberOfLines = 0
         descriptionLabel.numberOfLines = 0
     }

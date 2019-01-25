@@ -11,6 +11,7 @@ final class MainPresenter: MainModuleOutput {
     // MARK: - MainModuleOutput
 
     var onFieldOpen: TextFieldTypeClosure?
+    var onInfoOpen: EmptyClosure?
 
     // MARK: - Properties
 
@@ -28,13 +29,16 @@ extension MainPresenter: MainModuleInput {
 extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
-        var models = TextFieldType.allCases.map { MainModuleViewModel.field($0) }
-        models.insert(.message(L10n.Main.Main.message), at: 0)
+        let models = TextFieldType.allCases.map { MainModuleViewModel.field($0) }
         view?.setupInitialState(with: models, title: L10n.Main.Main.title)
     }
 
     func openField(with type: TextFieldType) {
         onFieldOpen?(type)
+    }
+
+    func openInfo() {
+        onInfoOpen?()
     }
 
 }

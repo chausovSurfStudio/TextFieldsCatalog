@@ -47,6 +47,7 @@ enum Asset {
   static let close = ImageAsset(name: "close")
   static let eyeOff = ImageAsset(name: "eyeOff")
   static let eyeOn = ImageAsset(name: "eyeOn")
+  static let info = ImageAsset(name: "info")
   static let qrCode = ImageAsset(name: "qrCode")
 
   // swiftlint:disable trailing_comma
@@ -56,6 +57,7 @@ enum Asset {
     close,
     eyeOff,
     eyeOn,
+    info,
     qrCode,
   ]
   // swiftlint:enable trailing_comma

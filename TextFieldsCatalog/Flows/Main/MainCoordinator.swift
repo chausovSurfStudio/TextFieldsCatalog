@@ -41,7 +41,15 @@ private extension MainCoordinator {
         output.onFieldOpen = { [weak self] fieldType in
             self?.runFieldFlow(with: fieldType)
         }
+        output.onInfoOpen = { [weak self] in
+            self?.showInfo()
+        }
         router.setRootModule(view)
+    }
+
+    func showInfo() {
+        let (view, _) = InfoModuleConfigurator().configure()
+        router.push(view)
     }
 
     func runFieldFlow(with fieldType: TextFieldType) {

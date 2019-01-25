@@ -8,4 +8,5 @@
 
 protocol MainModuleOutput: class {
     var onFieldOpen: TextFieldTypeClosure? { get set }
+    var onInfoOpen: EmptyClosure? { get set }
 }

@@ -13,9 +13,7 @@ final class FieldExampleViewController: UIViewController {
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var resetButton: UIButton!
-    @IBOutlet private weak var changePresetButton: UIButton!
+    @IBOutlet private weak var changePresetButton: MainButton!
     @IBOutlet private weak var textFieldContainer: UIView!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
@@ -79,11 +77,13 @@ extension FieldExampleViewController: FieldExampleViewInput {
 
 private extension FieldExampleViewController {
 
-    @IBAction func tapOnCloseButton(_ sender: Any) {
+    @objc
+    func tapOnCloseButton() {
         output?.close()
     }
 
-    @IBAction func tapOnResetButton(_ sender: Any) {
+    @objc
+    func tapOnResetButton() {
         if let textField = textField as? ResetableField {
             textField.reset()
         }
@@ -112,12 +112,9 @@ private extension FieldExampleViewController {
     }
 
     func configureButtons() {
-        closeButton.setImage(UIImage(asset: Asset.close), for: .normal)
-        closeButton.tintColor = Color.Main.active
-        resetButton.setTitle(L10n.Button.reset, for: .normal)
-        resetButton.tintColor = Color.Main.active
+        addLeftBarButton(.close, selector: #selector(tapOnCloseButton))
+        addRightBarButton(.text(L10n.Button.reset), selector: #selector(tapOnResetButton))
         changePresetButton.setTitle(L10n.Button.changePreset, for: .normal)
-        changePresetButton.tintColor = Color.Main.active
     }
 
     func configureGestures() {

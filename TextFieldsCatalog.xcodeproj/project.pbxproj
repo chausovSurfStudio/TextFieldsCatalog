@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01657C0E6E3BF9105EFE61FB /* InfoModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB28B012142A4983A13B48 /* InfoModuleInput.swift */; };
 		04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */; };
 		0F32093C542C1D35D5B10FD2 /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */; };
+		157289149F767AAFF55AEB57 /* InfoViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E0C3FED9158FF978B108A /* InfoViewOutput.swift */; };
 		1AF04E6693D06397802D1321 /* FieldExampleModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */; };
 		2025FD598129275E76AD5751 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9E1ECAFA665E89FD59024 /* MainViewController.swift */; };
+		2AC4FAA3461D4C8B72D62613 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2DD37025760D3DF6A86950 /* InfoPresenter.swift */; };
 		3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */; };
 		37A8EFECD58C0007674C2719 /* FieldPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */; };
 		49FB60CDE6CD6F88CCFE525B /* FieldExampleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */; };
@@ -20,6 +23,7 @@
 		6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */; };
 		7382E0D919891CB3809AAC42 /* FieldPresetsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */; };
 		7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */; };
+		7FEA0650091FCD97EB3C585B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046C6E5920DE1294C32E7D2 /* InfoViewController.swift */; };
 		8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29BF97393846546F44A61 /* MainViewInput.swift */; };
 		904A19AA21F9D5C100B9A846 /* FieldCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19A921F9D5C100B9A846 /* FieldCoordinator.swift */; };
 		904A19AC21F9D5D700B9A846 /* FieldCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19AB21F9D5D700B9A846 /* FieldCoordinatorOutput.swift */; };
@@ -82,6 +86,8 @@
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
 		90736CCB21F8B361003B8B78 /* BorderedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CCA21F8B361003B8B78 /* BorderedTextField.xib */; };
 		90736CCE21F8B830003B8B78 /* BorderedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */; };
+		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
+		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
@@ -94,6 +100,10 @@
 		CB2B33FF7A75453DF285FC70 /* FieldPresetsModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */; };
 		CC5A01F5679D004EAB01578E /* FieldExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */; };
 		D15DB61CCECCD4C5F7BFCACA /* FieldPresetsModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */; };
+		D992556AC789D62F45A79803 /* InfoModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */; };
+		DC98335449389E921BACD8E0 /* InfoViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */; };
+		EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C93D3C539EA5A6E9172731 /* InfoViewController.xib */; };
+		F70F2368D3A2DD2DBF029EE3 /* InfoModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,15 +122,20 @@
 		08F9E1ECAFA665E89FD59024 /* MainViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
 		0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewInput.swift; sourceTree = "<group>"; };
+		20C93D3C539EA5A6E9172731 /* InfoViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewOutput.swift; sourceTree = "<group>"; };
 		2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleConfigurator.swift; sourceTree = "<group>"; };
+		3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleConfigurator.swift; sourceTree = "<group>"; };
 		47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleInput.swift; sourceTree = "<group>"; };
 		56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldPresetsViewController.xib; sourceTree = "<group>"; };
+		5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewInput.swift; sourceTree = "<group>"; };
 		605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleOutput.swift; sourceTree = "<group>"; };
 		615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsPresenter.swift; sourceTree = "<group>"; };
+		630E0C3FED9158FF978B108A /* InfoViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewOutput.swift; sourceTree = "<group>"; };
 		63BCA0129C1D70CDC1C3E6E3 /* Pods-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
+		6B2DD37025760D3DF6A86950 /* InfoPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		6B9F409927AD029A70C26A8B /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewController.swift; sourceTree = "<group>"; };
 		769890F734CD1746A10C76A5 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,11 +209,16 @@
 		90736CCA21F8B361003B8B78 /* BorderedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BorderedTextField.xib; sourceTree = "<group>"; };
 		90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPreset.swift; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		90BB28B012142A4983A13B48 /* InfoModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleInput.swift; sourceTree = "<group>"; };
+		90D3778221FB21180068F5F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		90D3778421FB2FF80068F5F8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewOutput.swift; sourceTree = "<group>"; };
+		AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleOutput.swift; sourceTree = "<group>"; };
 		BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldExampleViewController.xib; sourceTree = "<group>"; };
 		C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleConfigurator.swift; sourceTree = "<group>"; };
+		D046C6E5920DE1294C32E7D2 /* InfoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		D0A29BF97393846546F44A61 /* MainViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleInput.swift; sourceTree = "<group>"; };
 		EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExamplePresenter.swift; sourceTree = "<group>"; };
@@ -236,6 +256,17 @@
 			path = FieldExample;
 			sourceTree = "<group>";
 		};
+		49C673D9ADDFA6FD2D54833A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D046C6E5920DE1294C32E7D2 /* InfoViewController.swift */,
+				20C93D3C539EA5A6E9172731 /* InfoViewController.xib */,
+				5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */,
+				630E0C3FED9158FF978B108A /* InfoViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4D11911D5411AA7B0E57C69F /* Configurator */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +301,16 @@
 				364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */,
 			);
 			path = Configurator;
+			sourceTree = "<group>";
+		};
+		6869C240FBA76EE06A11D5AF /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				EE7F165DDBE68A4E9ED0CBED /* Configurator */,
+				A3863A6F06274631135EB4C6 /* Presenter */,
+				49C673D9ADDFA6FD2D54833A /* View */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		73245A6C949C684B8A40A291 /* View */ = {
@@ -528,6 +569,7 @@
 				90736C6B21F87D65003B8B78 /* UIImage.swift */,
 				90736CC621F8A350003B8B78 /* UITableView.swift */,
 				90736CC821F8A371003B8B78 /* UITableViewCell.swift */,
+				90D3778221FB21180068F5F8 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -539,6 +581,7 @@
 				90736CAC21F899C8003B8B78 /* CustomTitleView */,
 				90736CAA21F8991F003B8B78 /* CommonNavigationController.swift */,
 				90736C6E21F87DD5003B8B78 /* IconButton.swift */,
+				90D3778421FB2FF80068F5F8 /* MainButton.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -567,6 +610,7 @@
 				90736C9421F88CD9003B8B78 /* MainCoordinator.swift */,
 				90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */,
 				602B6DD1698D1144B3DD9E13 /* Main */,
+				6869C240FBA76EE06A11D5AF /* Info */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -680,6 +724,16 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		A3863A6F06274631135EB4C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6B2DD37025760D3DF6A86950 /* InfoPresenter.swift */,
+				90BB28B012142A4983A13B48 /* InfoModuleInput.swift */,
+				AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		B268FBCC51EEC64B6CB442EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +763,14 @@
 				90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EE7F165DDBE68A4E9ED0CBED /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -814,6 +876,7 @@
 				90736CB021F899D8003B8B78 /* CustomTitleView.xib in Resources */,
 				3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */,
 				A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */,
+				EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,11 +1096,13 @@
 				90736C8A21F88B1E003B8B78 /* Router.swift in Sources */,
 				90736CAF21F899D8003B8B78 /* CustomTitleView.swift in Sources */,
 				2025FD598129275E76AD5751 /* MainViewController.swift in Sources */,
+				90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */,
 				904A19AA21F9D5C100B9A846 /* FieldCoordinator.swift in Sources */,
 				8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */,
 				90736CAB21F8991F003B8B78 /* CommonNavigationController.swift in Sources */,
 				90736C9121F88C55003B8B78 /* DeepLinkOption.swift in Sources */,
 				90736CB221F89C3D003B8B78 /* CustomNavigationTitlePresentable.swift in Sources */,
+				90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */,
 				90736CA721F8977B003B8B78 /* TextFieldType.swift in Sources */,
 				90736C9C21F88D29003B8B78 /* Regex.swift in Sources */,
 				904A19AC21F9D5D700B9A846 /* FieldCoordinatorOutput.swift in Sources */,
@@ -1066,6 +1131,13 @@
 				37A8EFECD58C0007674C2719 /* FieldPresetsViewController.swift in Sources */,
 				7382E0D919891CB3809AAC42 /* FieldPresetsViewInput.swift in Sources */,
 				CA52F4DB993991A6DBC7DD01 /* FieldPresetsViewOutput.swift in Sources */,
+				D992556AC789D62F45A79803 /* InfoModuleConfigurator.swift in Sources */,
+				2AC4FAA3461D4C8B72D62613 /* InfoPresenter.swift in Sources */,
+				01657C0E6E3BF9105EFE61FB /* InfoModuleInput.swift in Sources */,
+				F70F2368D3A2DD2DBF029EE3 /* InfoModuleOutput.swift in Sources */,
+				7FEA0650091FCD97EB3C585B /* InfoViewController.swift in Sources */,
+				DC98335449389E921BACD8E0 /* InfoViewInput.swift in Sources */,
+				157289149F767AAFF55AEB57 /* InfoViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
