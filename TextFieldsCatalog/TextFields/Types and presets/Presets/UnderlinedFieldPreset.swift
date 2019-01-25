@@ -9,19 +9,24 @@
 import Foundation
 
 enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
-    case plain
+    case password
+    case email
 
     var name: String {
         switch self {
-        case .plain:
-            return "Тестовый пресет"
+        case .password:
+            return "Пароль"
+        case .email:
+            return "Email"
         }
     }
 
     var description: String {
         switch self {
-        case .plain:
-            return "Тестовый пресет"
+        case .password:
+            return "Пример поля ввода для пароля"
+        case .email:
+            return "Пример поля ввода для email"
         }
     }
 
@@ -40,14 +45,31 @@ private extension UnderlinedFieldPreset {
 
     func apply(for textField: UnderlinedTextField) {
         switch self {
-        case .plain:
-            tuneFieldForPlain(textField)
+        case .password:
+            tuneFieldForPassword(textField)
+        case .email:
+            tuneFieldForEmail(textField)
         }
     }
 
-    func tuneFieldForPlain(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Имя", maxLength: nil)
-        textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: nil)
+    func tuneFieldForPassword(_ textField: UnderlinedTextField) {
+        textField.configure(placeholder: L10n.Presets.Borderedfield.Password.placeholder, maxLength: nil)
+        textField.configure(correction: .no, keyboardType: .asciiCapable)
+        textField.disablePasteAction()
+        textField.setHint(L10n.Presets.Borderedfield.Password.hint)
+        textField.setTextFieldMode(.password)
+
+        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: Regex.password)
+        validator.shortErrorText = L10n.Presets.Borderedfield.Password.shortErrorText
+        textField.validator = validator
+
+        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
+    }
+
+    func tuneFieldForEmail(_ textField: UnderlinedTextField) {
+        textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
+        textField.configure(correction: .no, keyboardType: .emailAddress)
+        textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
     }
 
 }

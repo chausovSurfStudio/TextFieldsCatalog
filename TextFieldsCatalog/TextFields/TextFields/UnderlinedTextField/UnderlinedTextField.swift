@@ -12,7 +12,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77. Colors, fonts and offsets do not change, they are protected inside (for now =))
-final class UnderlinedTextField: DesignableView {
+final class UnderlinedTextField: DesignableView, ResetableField {
 
     // MARK: - Enums
 
@@ -39,8 +39,8 @@ final class UnderlinedTextField: DesignableView {
         static let smallSeparatorHeight: CGFloat = 1
         static let bigSeparatorHeight: CGFloat = 2
 
-        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 5, width: 288, height: 15)
-        static let bottomPlaceholderPosition: CGRect = CGRect(x: 15, y: 23, width: 288, height: 15)
+        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 5, width: 288, height: 19)
+        static let bottomPlaceholderPosition: CGRect = CGRect(x: 15, y: 23, width: 288, height: 19)
         static let bigPlaceholderFont: CGFloat = 16
         static let smallPlaceholderFont: CGFloat = 12
 
@@ -294,7 +294,7 @@ private extension UnderlinedTextField {
     }
 
     func configureTextField() {
-        textField.delegate = self
+        textField.delegate = maskFormatter?.delegateForTextField() ?? self
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.textColor = Color.Text.white
         textField.tintColor = Color.Text.active
@@ -345,7 +345,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
         onBeginEditing?(self)
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validate()
         state = .normal
         onEndEditing?(self)
