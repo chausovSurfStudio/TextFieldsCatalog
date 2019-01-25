@@ -17,6 +17,22 @@ final class InnerTextField: UITextField {
     var textPadding: UIEdgeInsets = UIEdgeInsets.zero
     var placeholderPadding: UIEdgeInsets = UIEdgeInsets.zero
 
+    // MARK: - UIView
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        removeRightView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        removeRightView()
+    }
+
     // MARK: - UITextField
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
@@ -62,6 +78,16 @@ final class InnerTextField: UITextField {
         selectedTextRange = textRange(from: beginning, to: beginning)
         let end = endOfDocument
         selectedTextRange = textRange(from: end, to: end)
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension InnerTextField {
+
+    func removeRightView() {
+        rightView = UIView(frame: CGRect.zero)
     }
 
 }
