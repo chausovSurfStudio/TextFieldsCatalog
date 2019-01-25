@@ -17,7 +17,7 @@ enum TextFieldType: CaseIterable {
         case .bordered:
             return L10n.Textfieldtype.Bordered.title
         case .underlined:
-            return "С подчеркиванием"
+            return L10n.Textfieldtype.Underlined.title
         }
     }
 
@@ -26,7 +26,7 @@ enum TextFieldType: CaseIterable {
         case .bordered:
             return L10n.Textfieldtype.Bordered.description
         case .underlined:
-            return "Описание для этого поля, что оно может и зачем"
+            return L10n.Textfieldtype.Underlined.description
         }
     }
 

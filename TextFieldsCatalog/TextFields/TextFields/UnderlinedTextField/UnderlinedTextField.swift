@@ -39,7 +39,7 @@ final class UnderlinedTextField: DesignableView, ResetableField {
         static let smallSeparatorHeight: CGFloat = 1
         static let bigSeparatorHeight: CGFloat = 2
 
-        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 5, width: 288, height: 19)
+        static let topPlaceholderPosition: CGRect = CGRect(x: 16, y: 2, width: 288, height: 19)
         static let bottomPlaceholderPosition: CGRect = CGRect(x: 15, y: 23, width: 288, height: 19)
         static let bigPlaceholderFont: CGFloat = 16
         static let smallPlaceholderFont: CGFloat = 12
@@ -276,6 +276,7 @@ private extension UnderlinedTextField {
         configureTextField()
         configureHintLabel()
         configureActionButton()
+        configureLineView()
     }
 
     func configureBackground() {
@@ -313,6 +314,11 @@ private extension UnderlinedTextField {
 
     func configureActionButton() {
         actionButton.isHidden = true
+    }
+
+    func configureLineView() {
+        lineView.layer.cornerRadius = 1
+        lineView.layer.masksToBounds = true
     }
 
 }
@@ -554,7 +560,7 @@ private extension UnderlinedTextField {
         case .active:
             return Color.Text.active.cgColor
         case .normal:
-            return shouldMovePlaceholderOnTop() ? Color.Text.active.cgColor : Color.Text.white.cgColor
+            return shouldMovePlaceholderOnTop() ? Color.Text.gray.cgColor : Color.Text.white.cgColor
         case .disabled:
             return Color.Text.gray.cgColor
         }
