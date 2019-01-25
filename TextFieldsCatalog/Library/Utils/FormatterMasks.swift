@@ -13,7 +13,7 @@ import InputMask
 /// As additional notations for this masks you can use "s" character for all characters except newlines and whitespaces
 enum FormatterMasks {
     static let password = "[ssssssss][s…]"
-    static let phone = "+[000000000009]"
+    static let phone = "+7 ([000]) [000]-[00]-[00]"
     static let cardExpirationDate = "[00]/[00]"
     static let cvc = "[000]"
     static let cardNumber = "[0000] [0000] [0000] [0000] [999]"

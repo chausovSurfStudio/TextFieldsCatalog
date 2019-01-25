@@ -11,6 +11,7 @@ import Foundation
 enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case password
     case email
+    case phone
 
     var name: String {
         switch self {
@@ -18,6 +19,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return "Пароль"
         case .email:
             return "Email"
+        case .phone:
+            return "Номер телефона"
         }
     }
 
@@ -27,6 +30,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return "Пример поля ввода для пароля"
         case .email:
             return "Пример поля ввода для email"
+        case .phone:
+            return "Пример поля ввода для номера телефона"
         }
     }
 
@@ -49,6 +54,8 @@ private extension UnderlinedFieldPreset {
             tuneFieldForPassword(textField)
         case .email:
             tuneFieldForEmail(textField)
+        case .phone:
+            tuneFieldForPhone(textField)
         }
     }
 
@@ -70,6 +77,13 @@ private extension UnderlinedFieldPreset {
         textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
+    }
+
+    func tuneFieldForPhone(_ textField: UnderlinedTextField) {
+        textField.configure(placeholder: "Номер телефона", maxLength: nil)
+        textField.configure(correction: .no, keyboardType: .phonePad)
+        textField.validator = TextFieldValidator(minLength: 18, maxLength: 18, regex: nil, globalErrorMessage: "Номер телефона должен содержать 10 цифр")
+        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
     }
 
 }

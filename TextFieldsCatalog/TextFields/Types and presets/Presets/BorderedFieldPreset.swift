@@ -11,6 +11,7 @@ import Foundation
 enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     case password
     case email
+    case phone
 
     var name: String {
         switch self {
@@ -18,6 +19,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Borderedfield.Password.name
         case .email:
             return L10n.Presets.Borderedfield.Email.name
+        case .phone:
+            return "Номер телефона"
         }
     }
 
@@ -27,6 +30,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Borderedfield.Password.description
         case .email:
             return L10n.Presets.Borderedfield.Email.description
+        case .phone:
+            return "Пример поля ввода для номера телефона"
         }
     }
 
@@ -49,6 +54,8 @@ private extension BorderedFieldPreset {
             tuneFieldForPassword(textField)
         case .email:
             tuneFieldForEmail(textField)
+        case .phone:
+            tuneFieldForPhone(textField)
         }
     }
 
@@ -71,6 +78,13 @@ private extension BorderedFieldPreset {
         textField.configure(placeholder: L10n.Presets.Borderedfield.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
+    }
+
+    func tuneFieldForPhone(_ textField: BorderedTextField) {
+        textField.configure(placeholder: "Номер телефона", maxLength: nil)
+        textField.configure(correction: .no, keyboardType: .phonePad)
+        textField.validator = TextFieldValidator(minLength: 18, maxLength: 18, regex: nil, globalErrorMessage: "Номер телефона должен содержать 10 цифр")
+        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
     }
 
 }
