@@ -45,6 +45,8 @@ struct ColorAsset {
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Asset {
   static let close = ImageAsset(name: "close")
+  static let customEyeOff = ImageAsset(name: "customEyeOff")
+  static let customEyeOn = ImageAsset(name: "customEyeOn")
   static let eyeOff = ImageAsset(name: "eyeOff")
   static let eyeOn = ImageAsset(name: "eyeOn")
   static let info = ImageAsset(name: "info")
@@ -55,6 +57,8 @@ enum Asset {
   ]
   static let allImages: [ImageAsset] = [
     close,
+    customEyeOff,
+    customEyeOn,
     eyeOff,
     eyeOn,
     info,

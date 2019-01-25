@@ -145,7 +145,7 @@ final class BorderedTextField: DesignableView, ResetableField {
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
             textField.textPadding = Constants.increasedTextPadding
-            actionButton.setImageForAllState(UIImage(asset: Asset.qrCode))
+            actionButton.setImageForAllState(UIImage(asset: Asset.qrCode), normalColor: Color.Button.active, pressedColor: Color.Button.pressed)
         }
     }
 
@@ -390,7 +390,7 @@ private extension BorderedTextField {
         }
         let isSecure = textField.isSecureTextEntry
         let image = isSecure ? UIImage(asset: Asset.eyeOff) : UIImage(asset: Asset.eyeOn)
-        actionButton.setImageForAllState(image)
+        actionButton.setImageForAllState(image, normalColor: Color.Button.active, pressedColor: Color.Button.pressed)
     }
 
     func shouldShowHint() -> Bool {

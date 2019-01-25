@@ -11,6 +11,7 @@ import UIKit
 enum TextFieldType: CaseIterable {
     case bordered
     case underlined
+    case customUnderlined
 
     var title: String {
         switch self {
@@ -18,6 +19,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Bordered.title
         case .underlined:
             return L10n.Textfieldtype.Underlined.title
+        case .customUnderlined:
+            return "Кастомизированое поле ввода с подчеркивание"
         }
     }
 
@@ -27,6 +30,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Bordered.description
         case .underlined:
             return L10n.Textfieldtype.Underlined.description
+        case .customUnderlined:
+            return "То же самое, что и поле ввода с подчеркиванием, но кастомизированное. Отсутствует лейбл с подсказкой/ошибкой."
         }
     }
 
@@ -35,6 +40,8 @@ enum TextFieldType: CaseIterable {
         case .bordered:
             return BorderedFieldPreset.allCases
         case .underlined:
+            return UnderlinedFieldPreset.allCases
+        case .customUnderlined:
             return UnderlinedFieldPreset.allCases
         }
     }
@@ -46,6 +53,8 @@ enum TextFieldType: CaseIterable {
             return (BorderedTextField(frame: frame), 130)
         case .underlined:
             return (UnderlinedTextField(frame: frame), 77)
+        case .customUnderlined:
+            return (CustomUnderlinedTextField(frame: frame), 64)
         }
     }
 
