@@ -14,8 +14,6 @@
             <connections>
                 <outlet property="actionButton" destination="hZM-WG-Dn7" id="z5n-qb-fPk"/>
                 <outlet property="hintLabel" destination="B8b-xj-ysW" id="w41-fK-Sop"/>
-                <outlet property="lineView" destination="KGe-vF-j0k" id="L0H-cb-4BY"/>
-                <outlet property="lineViewHeightConstraint" destination="9Te-bl-jNA" id="Rqo-uq-WNF"/>
                 <outlet property="textField" destination="nxT-nZ-3cy" id="hYA-dQ-HDF"/>
             </connections>
         </placeholder>
@@ -33,13 +31,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGe-vF-j0k">
-                    <rect key="frame" x="16" y="53" width="288" height="2"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="9Te-bl-jNA"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8b-xj-ysW">
                     <rect key="frame" x="16" y="57" width="288" height="15"/>
                     <constraints>
@@ -61,14 +52,11 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KGe-vF-j0k" secondAttribute="trailing" constant="16" id="0y6-yF-7ID"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="B8b-xj-ysW" secondAttribute="trailing" constant="16" id="2nU-Fg-biu"/>
                 <constraint firstItem="B8b-xj-ysW" firstAttribute="top" secondItem="nxT-nZ-3cy" secondAttribute="bottom" constant="9" id="42h-wY-1Km"/>
                 <constraint firstItem="hZM-WG-Dn7" firstAttribute="centerY" secondItem="nxT-nZ-3cy" secondAttribute="centerY" id="EHf-Yj-RVZ"/>
                 <constraint firstItem="B8b-xj-ysW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="JVz-MB-yj7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hZM-WG-Dn7" secondAttribute="trailing" constant="16" id="Mf4-ti-Lxr"/>
-                <constraint firstItem="KGe-vF-j0k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="T3i-xb-FZp"/>
-                <constraint firstItem="KGe-vF-j0k" firstAttribute="top" secondItem="nxT-nZ-3cy" secondAttribute="bottom" constant="5" id="TCB-CK-8qK"/>
                 <constraint firstItem="nxT-nZ-3cy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="kKY-OT-SfB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nxT-nZ-3cy" secondAttribute="trailing" constant="16" id="lu4-gD-IsA"/>
                 <constraint firstItem="nxT-nZ-3cy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="ssf-sV-Hvp"/>

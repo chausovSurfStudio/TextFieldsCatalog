@@ -6,7 +6,7 @@
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     case password
@@ -15,6 +15,7 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     case cardExpirationDate
     case cvc
     case cardNumber
+    case qrCode
 
     var name: String {
         switch self {
@@ -30,6 +31,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cvc.name
         case .cardNumber:
             return L10n.Presets.Cardnumber.name
+        case .qrCode:
+            return L10n.Presets.Qrcode.name
         }
     }
 
@@ -47,6 +50,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cvc.description
         case .cardNumber:
             return L10n.Presets.Cardnumber.description
+        case .qrCode:
+            return L10n.Presets.Qrcode.description
         }
     }
 
@@ -77,6 +82,8 @@ private extension BorderedFieldPreset {
             tuneFieldForCvc(textField)
         case .cardNumber:
             tuneFieldForCardNumber(textField)
+        case .qrCode:
+            tuneFieldForQRCode(textField)
         }
     }
 
@@ -128,6 +135,21 @@ private extension BorderedFieldPreset {
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
+    }
+
+    func tuneFieldForQRCode(_ textField: BorderedTextField) {
+        textField.configure(placeholder: L10n.Presets.Qrcode.placeholder, maxLength: 10)
+        textField.configure(correction: .no, keyboardType: .asciiCapable)
+        textField.setHint(L10n.Presets.Qrcode.hint)
+        textField.validator = TextFieldValidator(minLength: 10, maxLength: 10, regex: nil)
+
+        let actionButtonConfig = ActionButtonConfiguration(image: UIImage(asset: Asset.qrCode),
+                                                           normalColor: Color.Button.active,
+                                                           pressedColor: Color.Button.pressed)
+        textField.setTextFieldMode(.custom(actionButtonConfig))
+        textField.onActionButtonTap = { _ in
+            print("did tap on action button")
+        }
     }
 
 }

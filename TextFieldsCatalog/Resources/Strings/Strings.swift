@@ -113,6 +113,17 @@ enum L10n {
       /// Номер телефона
       static let placeholder = L10n.tr("Localizable", "Presets.phone.placeholder")
     }
+
+    enum Qrcode {
+      /// Пример работы поля с кастомной кнопкой справа.\n\n• Контент для кнопки устанавливается вместе с модом самого текстового поля (метод setTextFieldMode).\n• Есть возможность указать необходимую иконку для кнопки, а также ее цвет в нормальном состоянии и состояниях highlighted/selected
+      static let description = L10n.tr("Localizable", "Presets.qrCode.description")
+      /// Можно считать QR-код с помощью камеры
+      static let hint = L10n.tr("Localizable", "Presets.qrCode.hint")
+      /// QR-код
+      static let name = L10n.tr("Localizable", "Presets.qrCode.name")
+      /// Введите QR-код
+      static let placeholder = L10n.tr("Localizable", "Presets.qrCode.placeholder")
+    }
   }
 
   enum Textfieldtype {
@@ -122,6 +133,13 @@ enum L10n {
       static let description = L10n.tr("Localizable", "TextFieldType.Bordered.description")
       /// Поле ввода с обводкой
       static let title = L10n.tr("Localizable", "TextFieldType.Bordered.title")
+    }
+
+    enum Customunderlined {
+      /// • То же самое, что и поле ввода с подчеркиванием, но кастомизированное.\n• Отсутствует лейбл с подсказкой/ошибкой.
+      static let description = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.description")
+      /// Кастомизированое поле ввода с подчеркивание
+      static let title = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.title")
     }
 
     enum Underlined {

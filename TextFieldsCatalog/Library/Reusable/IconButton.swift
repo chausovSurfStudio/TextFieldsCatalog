@@ -27,15 +27,15 @@ final class IconButton: CommonButton {
         setupInitialState()
     }
 
-    // MARK: - CommonButton
+    // MARK: - Internal Methods
 
-    override func setImageForAllState(_ image: UIImage?) {
+    func setImageForAllState(_ image: UIImage?, normalColor: UIColor, pressedColor: UIColor) {
         guard let image = image else {
             return
         }
-        setImage(image.mask(with: Color.Button.active), for: .normal)
-        setImage(image.mask(with: Color.Button.pressed), for: .selected)
-        setImage(image.mask(with: Color.Button.pressed), for: .highlighted)
+        setImage(image.mask(with: normalColor), for: .normal)
+        setImage(image.mask(with: pressedColor), for: .selected)
+        setImage(image.mask(with: pressedColor), for: .highlighted)
     }
 
 }
