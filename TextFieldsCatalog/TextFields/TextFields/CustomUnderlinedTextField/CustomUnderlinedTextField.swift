@@ -52,8 +52,9 @@ private extension CustomUnderlinedTextField {
 
     func configureAppearance() {
         let configuration = UnderlinedTextFieldConfiguration()
-        configuration.line = LineConfiguration(smallHeight: 1,
-                                               bigHeight: 2,
+        configuration.line = LineConfiguration(insets: UIEdgeInsets(top: 62, left: 16, bottom: 0, right: 16),
+                                               defaultHeight: 1,
+                                               increasedHeight: 2,
                                                cornerRadius: 1,
                                                colors: ColorConfiguration(error: CustomColor.Main.error,
                                                                           normal: CustomColor.Main.gray.withAlphaComponent(0.5),

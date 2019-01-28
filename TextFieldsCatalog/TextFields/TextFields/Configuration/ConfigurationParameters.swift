@@ -10,21 +10,25 @@ import UIKit
 
 /// Configuration class with parameters for line in UnderlinedTextField
 final class LineConfiguration {
+    /// Insets for line, set it to .zero if you don't want to show it
+    let insets: UIEdgeInsets
     /// This height will be applied when text field is inactive
-    let smallHeight: CGFloat
+    let defaultHeight: CGFloat
     /// This height will be applied when text field is active
-    let bigHeight: CGFloat
+    let increasedHeight: CGFloat
     /// Corner radius for line under text field
     let cornerRadius: CGFloat
     /// Colors for line under text field
     let colors: ColorConfiguration
 
-    init(smallHeight: CGFloat,
-         bigHeight: CGFloat,
+    init(insets: UIEdgeInsets,
+         defaultHeight: CGFloat,
+         increasedHeight: CGFloat,
          cornerRadius: CGFloat,
          colors: ColorConfiguration) {
-        self.smallHeight = smallHeight
-        self.bigHeight = bigHeight
+        self.insets = insets
+        self.defaultHeight = defaultHeight
+        self.increasedHeight = increasedHeight
         self.cornerRadius = cornerRadius
         self.colors = colors
     }

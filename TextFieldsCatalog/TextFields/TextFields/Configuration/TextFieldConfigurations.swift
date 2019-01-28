@@ -17,8 +17,9 @@ final class UnderlinedTextFieldConfiguration {
     var background: BackgroundConfiguration
 
     init() {
-        line = LineConfiguration(smallHeight: 1,
-                                 bigHeight: 2,
+        line = LineConfiguration(insets: UIEdgeInsets(top: 53, left: 16, bottom: 0, right: 16),
+                                 defaultHeight: 1,
+                                 increasedHeight: 2,
                                  cornerRadius: 1,
                                  colors: ColorConfiguration(error: Color.Main.red,
                                                             normal: Color.Main.container,

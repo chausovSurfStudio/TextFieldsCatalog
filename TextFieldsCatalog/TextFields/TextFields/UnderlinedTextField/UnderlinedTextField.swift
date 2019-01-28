@@ -43,16 +43,12 @@ class UnderlinedTextField: DesignableView, ResetableField {
     // MARK: - IBOutlets
 
     @IBOutlet private weak var textField: InnerTextField!
-    @IBOutlet private weak var lineView: UIView!
     @IBOutlet private weak var hintLabel: UILabel!
     @IBOutlet private weak var actionButton: IconButton!
 
-    // MARK: - NSLayoutConstraints
-
-    @IBOutlet private weak var lineViewHeightConstraint: NSLayoutConstraint!
-
     // MARK: - Private Properties
 
+    private let lineView = UIView()
     private var state: UnderlinedTextFieldState = .normal {
         didSet {
             updateUI()
@@ -323,6 +319,11 @@ private extension UnderlinedTextField {
     }
 
     func configureLineView() {
+        if lineView.superview == nil, configuration.line.insets != .zero {
+            view.addSubview(lineView)
+        }
+        lineView.frame = linePosition()
+        lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
         lineView.layer.cornerRadius = configuration.line.cornerRadius
         lineView.layer.masksToBounds = true
     }
@@ -502,10 +503,9 @@ private extension UnderlinedTextField {
     }
 
     func updateLineViewHeight() {
-        let height = state == .active ? configuration.line.bigHeight : configuration.line.smallHeight
-        lineViewHeightConstraint.constant = height
+        let height = lineHeight()
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.view.layoutIfNeeded()
+            self?.lineView.frame.size.height = height
         }
     }
 
@@ -592,6 +592,17 @@ private extension UnderlinedTextField {
 
     func lineColor() -> UIColor {
         return suitableColor(from: configuration.line.colors)
+    }
+
+    func linePosition() -> CGRect {
+        let height = lineHeight()
+        var lineFrame = view.bounds.inset(by: configuration.line.insets)
+        lineFrame.size.height = height
+        return lineFrame
+    }
+
+    func lineHeight() -> CGFloat {
+        return state == .active ? configuration.line.increasedHeight : configuration.line.defaultHeight
     }
 
     func hintTextColor() -> UIColor {
