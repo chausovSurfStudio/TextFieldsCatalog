@@ -30,6 +30,8 @@ class UnderlinedTextField: DesignableView, ResetableField {
         case plain
         /// mode for password textField
         case password
+        /// mode for textField with custom action button
+        case custom(ActionButtonConfiguration)
     }
 
     // MARK: - Constants
@@ -151,6 +153,13 @@ class UnderlinedTextField: DesignableView, ResetableField {
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
             updatePasswordVisibilityButton()
+        case .custom(let actionButtonConfig):
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.increasedPadding
+            actionButton.setImageForAllState(actionButtonConfig.image,
+                                             normalColor: actionButtonConfig.normalColor,
+                                             pressedColor: actionButtonConfig.pressedColor)
         }
     }
 
@@ -326,6 +335,9 @@ private extension UnderlinedTextField {
 
     @IBAction func tapOnActionButton(_ sender: UIButton) {
         onActionButtonTap?(self)
+        guard case .password = mode else {
+            return
+        }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
         updatePasswordVisibilityButton()
@@ -411,7 +423,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePasswordVisibilityButton() {
-        guard mode == .password else {
+        guard case .password = mode else {
             return
         }
         let isSecure = textField.isSecureTextEntry

@@ -65,6 +65,12 @@
 "Presets.cardNumber.placeholder" = "Номер карты";
 "Presets.cardNumber.errorMessage" = "Введите правильно номер Вашей карты";
 
+// MARK: QrCode
+"Presets.qrCode.name" = "QR-код";
+"Presets.qrCode.description" = "Пример работы поля с кастомной кнопкой справа.\n\n• Контент для кнопки устанавливается вместе с модом самого текстового поля (метод setTextFieldMode).\n• Есть возможность указать необходимую иконку для кнопки, а также ее цвет в нормальном состоянии и состояниях highlighted/selected";
+"Presets.qrCode.placeholder" = "Введите QR-код";
+"Presets.qrCode.hint" = "Можно считать QR-код с помощью камеры";
+
 // MARK: - Flows
 
 // MARK: - Main

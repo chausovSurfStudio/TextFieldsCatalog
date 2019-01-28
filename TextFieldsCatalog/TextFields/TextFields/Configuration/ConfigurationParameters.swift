@@ -139,6 +139,23 @@ final class PasswordModeConfiguration {
     }
 }
 
+final class ActionButtonConfiguration {
+    /// Button image for action button on text field
+    let image: UIImage
+    /// Color of button image in normal state
+    let normalColor: UIColor
+    /// Color of button image in highlighted and selected state
+    let pressedColor: UIColor
+
+    init(image: UIImage,
+         normalColor: UIColor,
+         pressedColor: UIColor) {
+        self.image = image
+        self.normalColor = normalColor
+        self.pressedColor = pressedColor
+    }
+}
+
 /// Configuration class with parameters for tuning background color
 final class BackgroundConfiguration {
     /// Text field background color
