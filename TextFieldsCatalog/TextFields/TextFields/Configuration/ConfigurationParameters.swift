@@ -34,10 +34,12 @@ final class LineConfiguration {
 final class FloatingPlaceholderConfiguration {
     /// This is text font for placeholder
     let font: UIFont
-    /// This is frame for placeholder in top position
-    let topPosition: CGRect
-    /// This is frame for placeholder in bottom position
-    let bottomPosition: CGRect
+    /// Height of floating placeholder
+    let height: CGFloat
+    /// This is insets for placeholder in top position. Bottom value is ignored, position is relative to the top.
+    let topInsets: UIEdgeInsets
+    /// This is insets for placeholder in bottom position. Bottom value is ignored, position is relative to the top.
+    let bottomInsets: UIEdgeInsets
     /// Font size for placeholder in top position
     let smallFontSize: CGFloat
     /// Font size for placeholder in bottom position
@@ -48,15 +50,17 @@ final class FloatingPlaceholderConfiguration {
     let bottomColors: ColorConfiguration
 
     init(font: UIFont,
-         topPosition: CGRect,
-         bottomPosition: CGRect,
+         height: CGFloat,
+         topInsets: UIEdgeInsets,
+         bottomInsets: UIEdgeInsets,
          smallFontSize: CGFloat,
          bigFontSize: CGFloat,
          topColors: ColorConfiguration,
          bottomColors: ColorConfiguration) {
         self.font = font
-        self.topPosition = topPosition
-        self.bottomPosition = bottomPosition
+        self.height = height
+        self.topInsets = topInsets
+        self.bottomInsets = bottomInsets
         self.smallFontSize = smallFontSize
         self.bigFontSize = bigFontSize
         self.topColors = topColors

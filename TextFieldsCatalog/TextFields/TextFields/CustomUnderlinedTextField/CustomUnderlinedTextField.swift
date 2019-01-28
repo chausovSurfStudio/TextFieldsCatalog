@@ -23,6 +23,7 @@ fileprivate enum CustomColor {
 }
 
 /// Custom subclass for Underlined text field.
+/// Standart height equals 64.
 final class CustomUnderlinedTextField: UnderlinedTextField {
 
     // MARK: - Initialization
@@ -59,8 +60,9 @@ private extension CustomUnderlinedTextField {
                                                                           active: CustomColor.Main.blue,
                                                                           disabled: CustomColor.Main.gray.withAlphaComponent(0.5)))
         configuration.placeholder = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                                     topPosition: CGRect(x: 16, y: 10, width: 288, height: 24),
-                                                                     bottomPosition: CGRect(x: 16, y: 21, width: 288, height: 24),
+                                                                     height: 24,
+                                                                     topInsets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16),
+                                                                     bottomInsets: UIEdgeInsets(top: 21, left: 15, bottom: 0, right: 16),
                                                                      smallFontSize: 14,
                                                                      bigFontSize: 16,
                                                                      topColors: ColorConfiguration(error: CustomColor.Main.error,

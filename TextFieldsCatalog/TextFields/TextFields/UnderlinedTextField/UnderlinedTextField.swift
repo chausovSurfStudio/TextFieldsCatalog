@@ -286,7 +286,7 @@ private extension UnderlinedTextField {
         placeholder.fontSize = configuration.placeholder.bigFontSize
         placeholder.foregroundColor = placeholderColor()
         placeholder.contentsScale = UIScreen.main.scale
-        placeholder.frame = configuration.placeholder.bottomPosition
+        placeholder.frame = placeholderPosition()
         placeholder.truncationMode = CATextLayerTruncationMode.end
         self.layer.addSublayer(placeholder)
     }
@@ -564,7 +564,10 @@ private extension UnderlinedTextField {
     }
 
     func placeholderPosition() -> CGRect {
-        return shouldMovePlaceholderOnTop() ? configuration.placeholder.topPosition : configuration.placeholder.bottomPosition
+        let targetInsets = shouldMovePlaceholderOnTop() ? configuration.placeholder.topInsets : configuration.placeholder.bottomInsets
+        var placeholderFrame = view.bounds.inset(by: targetInsets)
+        placeholderFrame.size.height = configuration.placeholder.height
+        return placeholderFrame
     }
 
     func currentPlaceholderFontSize() -> CGFloat {

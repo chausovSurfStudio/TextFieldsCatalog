@@ -25,8 +25,9 @@ final class UnderlinedTextFieldConfiguration {
                                                             active: Color.Main.active,
                                                             disabled: Color.Main.container))
         placeholder = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                       topPosition: CGRect(x: 16, y: 2, width: 288, height: 19),
-                                                       bottomPosition: CGRect(x: 15, y: 23, width: 288, height: 19),
+                                                       height: 19,
+                                                       topInsets: UIEdgeInsets(top: 2, left: 16, bottom: 0, right: 16),
+                                                       bottomInsets: UIEdgeInsets(top: 23, left: 15, bottom: 0, right: 16),
                                                        smallFontSize: 12,
                                                        bigFontSize: 16,
                                                        topColors: ColorConfiguration(error: Color.Text.gray,
