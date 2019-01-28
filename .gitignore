@@ -30,6 +30,8 @@ DerivedData
 #
 Example/Podfile.lock
 Example/Pods/
+Pods
+Podfile.lock
 
 # Exported environment variables for XcodeCoverage
 env.sh
@@ -48,3 +50,6 @@ fastlane/report.xml
 Example/.bundle/
 Example/Gemfile.lock
 Example/vendor/
+.bundle/
+Gemfile.lock
+vendor/
