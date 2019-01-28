@@ -10,6 +10,16 @@
 		903863DF21FF550D00BAA761 /* TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903863D521FF550D00BAA761 /* TextFieldsCatalog.framework */; };
 		903863E421FF550D00BAA761 /* TextFieldsCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903863E321FF550D00BAA761 /* TextFieldsCatalogTests.swift */; };
 		903863E621FF550D00BAA761 /* TextFieldsCatalog.h in Headers */ = {isa = PBXBuildFile; fileRef = 903863D821FF550D00BAA761 /* TextFieldsCatalog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		903863FE21FF590700BAA761 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903863FD21FF590700BAA761 /* Color.swift */; };
+		9038640021FF592100BAA761 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903863FF21FF592100BAA761 /* UIColor.swift */; };
+		9038640221FF595300BAA761 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640121FF595300BAA761 /* UIImage.swift */; };
+		9038640421FF597600BAA761 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640321FF597600BAA761 /* CommonButton.swift */; };
+		9038640621FF599D00BAA761 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640521FF599D00BAA761 /* DesignableView.swift */; };
+		9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640721FF59BC00BAA761 /* InnerTextField.swift */; };
+		9038640A21FF59D300BAA761 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640921FF59D300BAA761 /* Foundation.swift */; };
+		9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640B21FF5A0100BAA761 /* ResetableField.swift */; };
+		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
+		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +39,16 @@
 		903863DE21FF550D00BAA761 /* TextFieldsCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		903863E321FF550D00BAA761 /* TextFieldsCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsCatalogTests.swift; sourceTree = "<group>"; };
 		903863E521FF550D00BAA761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		903863FD21FF590700BAA761 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		903863FF21FF592100BAA761 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		9038640121FF595300BAA761 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		9038640321FF597600BAA761 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		9038640521FF599D00BAA761 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		9038640721FF59BC00BAA761 /* InnerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTextField.swift; sourceTree = "<group>"; };
+		9038640921FF59D300BAA761 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
+		9038640B21FF5A0100BAA761 /* ResetableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetableField.swift; sourceTree = "<group>"; };
+		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
+		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +91,9 @@
 		903863D721FF550D00BAA761 /* TextFieldsCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				903863F021FF57EC00BAA761 /* Library */,
+				903863F621FF587100BAA761 /* Resources */,
+				903863EF21FF57D300BAA761 /* TextFields */,
 				903863D821FF550D00BAA761 /* TextFieldsCatalog.h */,
 				903863D921FF550D00BAA761 /* Info.plist */,
 			);
@@ -84,6 +107,125 @@
 				903863E521FF550D00BAA761 /* Info.plist */,
 			);
 			path = TextFieldsCatalogTests;
+			sourceTree = "<group>";
+		};
+		903863EF21FF57D300BAA761 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				903863FC21FF58E100BAA761 /* BorderedTextField */,
+				903863FB21FF58D500BAA761 /* UnderlinedTextField */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		903863F021FF57EC00BAA761 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				903863F121FF57FE00BAA761 /* BaseClasses */,
+				903863F221FF581300BAA761 /* Extensions */,
+				903863F321FF583A00BAA761 /* Protocols */,
+				903863F421FF584E00BAA761 /* Reusable */,
+				903863F521FF585A00BAA761 /* Utils */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		903863F121FF57FE00BAA761 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				9038640321FF597600BAA761 /* CommonButton.swift */,
+				9038640521FF599D00BAA761 /* DesignableView.swift */,
+				9038640721FF59BC00BAA761 /* InnerTextField.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		903863F221FF581300BAA761 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9038640921FF59D300BAA761 /* Foundation.swift */,
+				903863FF21FF592100BAA761 /* UIColor.swift */,
+				9038640121FF595300BAA761 /* UIImage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		903863F321FF583A00BAA761 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9038640B21FF5A0100BAA761 /* ResetableField.swift */,
+				9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		903863F421FF584E00BAA761 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				9038640F21FF5A3600BAA761 /* IconButton.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		903863F521FF585A00BAA761 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		903863F621FF587100BAA761 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				903863FA21FF58AA00BAA761 /* Colors */,
+				903863F921FF589300BAA761 /* Constants */,
+				903863F821FF588E00BAA761 /* Images */,
+				903863F721FF588900BAA761 /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		903863F721FF588900BAA761 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		903863F821FF588E00BAA761 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		903863F921FF589300BAA761 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		903863FA21FF58AA00BAA761 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				903863FD21FF590700BAA761 /* Color.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		903863FB21FF58D500BAA761 /* UnderlinedTextField */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UnderlinedTextField;
+			sourceTree = "<group>";
+		};
+		903863FC21FF58E100BAA761 /* BorderedTextField */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BorderedTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +290,7 @@
 				TargetAttributes = {
 					903863D421FF550D00BAA761 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					903863DD21FF550D00BAA761 = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +337,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
+				903863FE21FF590700BAA761 /* Color.swift in Sources */,
+				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
+				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
+				9038640421FF597600BAA761 /* CommonButton.swift in Sources */,
+				9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */,
+				9038640621FF599D00BAA761 /* DesignableView.swift in Sources */,
+				9038640021FF592100BAA761 /* UIColor.swift in Sources */,
+				9038641021FF5A3600BAA761 /* IconButton.swift in Sources */,
+				9038640A21FF59D300BAA761 /* Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +494,7 @@
 		903863EA21FF550D00BAA761 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -359,6 +513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -367,6 +522,7 @@
 		903863EB21FF550D00BAA761 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -393,6 +549,7 @@
 		903863ED21FF550D00BAA761 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
@@ -411,6 +568,7 @@
 		903863EE21FF550D00BAA761 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
