@@ -28,8 +28,8 @@ DerivedData
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
-Podfile.lock
-Pods/
+Example/Podfile.lock
+Example/Pods/
 
 # Exported environment variables for XcodeCoverage
 env.sh
@@ -45,6 +45,6 @@ fastlane/Build
 fastlane/report.xml
 
 # Bundler
-.bundle/
-Gemfile.lock
-vendor/
+Example/.bundle/
+Example/Gemfile.lock
+Example/vendor/
