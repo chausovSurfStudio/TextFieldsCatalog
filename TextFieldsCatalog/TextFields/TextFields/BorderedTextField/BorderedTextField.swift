@@ -28,8 +28,8 @@ final class BorderedTextField: DesignableView, ResetableField {
         case plain
         /// mode for password textField
         case password
-        /// mode for textField with qr-code button
-        case qr
+        /// mode for textField with custom action button
+        case custom(ActionButtonConfiguration)
     }
 
     // MARK: - Constants
@@ -143,11 +143,13 @@ final class BorderedTextField: DesignableView, ResetableField {
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
             updatePasswordVisibilityButton()
-        case .qr:
+        case .custom(let actionButtonConfig):
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
             textField.textPadding = configuration.textField.increasedPadding
-            actionButton.setImageForAllState(UIImage(asset: Asset.qrCode), normalColor: Color.Button.active, pressedColor: Color.Button.pressed)
+            actionButton.setImageForAllState(actionButtonConfig.image,
+                                             normalColor: actionButtonConfig.normalColor,
+                                             pressedColor: actionButtonConfig.pressedColor)
         }
     }
 
@@ -306,6 +308,9 @@ private extension BorderedTextField {
 
     @IBAction func tapOnActionButton(_ sender: UIButton) {
         onActionButtonTap?(self)
+        guard case .password = mode else {
+            return
+        }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
         updatePasswordVisibilityButton()
@@ -387,7 +392,7 @@ private extension BorderedTextField {
     }
 
     func updatePasswordVisibilityButton() {
-        guard mode == .password else {
+        guard case .password = mode else {
             return
         }
         let isSecure = textField.isSecureTextEntry
@@ -471,7 +476,7 @@ private extension BorderedTextField {
     func placeholderTextColor() -> UIColor {
         return suitableColor(from: configuration.placeholder.colors)
     }
-    
+
     func hintTextColor() -> UIColor {
         return suitableColor(from: configuration.hint.colors)
     }
