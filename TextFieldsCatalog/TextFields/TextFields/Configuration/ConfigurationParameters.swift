@@ -74,7 +74,16 @@ final class FloatingPlaceholderConfiguration {
 
 /// Configuration class with parameters for static placeholder
 final class PlaceholderConfiguration {
+    /// Font of placeholder
+    let font: UIFont
+    /// Colors for placeholder in various states
+    let colors: ColorConfiguration
 
+    init(font: UIFont,
+         colors: ColorConfiguration) {
+        self.font = font
+        self.colors = colors
+    }
 }
 
 /// Configuration class with parameters for inner text field inside custom text fields
@@ -105,7 +114,20 @@ final class TextFieldConfiguration {
 
 /// Configuration class with parameters for text field border in BorderedTextField
 final class TextFieldBorderConfiguration {
+    /// Corner radius for text field border
+    let cornerRadius: CGFloat
+    /// Text field border width
+    let width: CGFloat
+    /// Colors for text field border in various states
+    let colors: ColorConfiguration
 
+    init(cornerRadius: CGFloat,
+         width: CGFloat,
+         colors: ColorConfiguration) {
+        self.cornerRadius = cornerRadius
+        self.width = width
+        self.colors = colors
+    }
 }
 
 /// Configuration class with parameters for hint label

@@ -36,10 +36,6 @@ final class BorderedTextField: DesignableView, ResetableField {
 
     private enum Constants {
         static let animationDuration: TimeInterval = 0.3
-        static let defaultTextPadding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        static let increasedTextPadding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 56)
-        static let textFieldBorderWidth: CGFloat = 2
-        static let textFieldCornerRadius: CGFloat = 6
     }
 
     // MARK: - IBOutlets
@@ -64,6 +60,12 @@ final class BorderedTextField: DesignableView, ResetableField {
 
     // MARK: - Properties
 
+    var configuration = BorderedTextFieldConfiguration() {
+        didSet {
+            configureAppearance()
+            updateUI()
+        }
+    }
     var validator: TextFieldValidation?
     var maskFormatter: MaskTextFieldFormatter? {
         didSet {
@@ -135,16 +137,16 @@ final class BorderedTextField: DesignableView, ResetableField {
         case .plain:
             actionButton.isHidden = true
             textField.isSecureTextEntry = false
-            textField.textPadding = Constants.defaultTextPadding
+            textField.textPadding = configuration.textField.defaultPadding
         case .password:
             actionButton.isHidden = false
             textField.isSecureTextEntry = true
-            textField.textPadding = Constants.increasedTextPadding
+            textField.textPadding = configuration.textField.increasedPadding
             updatePasswordVisibilityButton()
         case .qr:
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
-            textField.textPadding = Constants.increasedTextPadding
+            textField.textPadding = configuration.textField.increasedPadding
             actionButton.setImageForAllState(UIImage(asset: Asset.qrCode), normalColor: Color.Button.active, pressedColor: Color.Button.pressed)
         }
     }
@@ -260,34 +262,34 @@ private extension BorderedTextField {
     }
 
     func configureBackground() {
-        view.backgroundColor = Color.Main.background
+        view.backgroundColor = configuration.background.color
     }
 
     func configurePlaceholder() {
-        placeholderLabel.textColor = Color.Text.gray
-        placeholderLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        placeholderLabel.textColor = placeholderTextColor()
+        placeholderLabel.font = configuration.placeholder.font
         placeholderLabel.text = ""
     }
 
     func configureTextField() {
         textField.delegate = maskFormatter?.delegateForTextField() ?? self
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        textField.textColor = Color.Text.white
-        textField.tintColor = Color.Main.active
+        textField.font = configuration.textField.font
+        textField.textColor = textColor()
+        textField.tintColor = configuration.textField.tintColor
 
-        textField.layer.borderColor = Color.Main.container.cgColor
-        textField.layer.borderWidth = Constants.textFieldBorderWidth
-        textField.layer.cornerRadius = Constants.textFieldCornerRadius
-        textField.backgroundColor = Color.Main.background
-        textField.textPadding = Constants.defaultTextPadding
+        textField.layer.borderColor = textFieldBorderColor()
+        textField.layer.borderWidth = configuration.textFieldBorder.width
+        textField.layer.cornerRadius = configuration.textFieldBorder.cornerRadius
+        textField.backgroundColor = configuration.background.color
+        textField.textPadding = configuration.textField.defaultPadding
 
         textField.returnKeyType = .done
         textField.addTarget(self, action: #selector(textFieldEditingChange(_:)), for: .editingChanged)
     }
 
     func configureHintLabel() {
-        hintLabel.textColor = Color.Text.red
-        hintLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        hintLabel.textColor = hintTextColor()
+        hintLabel.font = configuration.hint.font
         hintLabel.text = ""
         hintLabel.alpha = 0
     }
@@ -389,8 +391,10 @@ private extension BorderedTextField {
             return
         }
         let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? UIImage(asset: Asset.eyeOff) : UIImage(asset: Asset.eyeOn)
-        actionButton.setImageForAllState(image, normalColor: Color.Button.active, pressedColor: Color.Button.pressed)
+        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
+        actionButton.setImageForAllState(image,
+                                         normalColor: configuration.passwordMode.normalColor,
+                                         pressedColor: configuration.passwordMode.pressedColor)
     }
 
     func shouldShowHint() -> Bool {
@@ -464,28 +468,37 @@ private extension BorderedTextField {
 
 private extension BorderedTextField {
 
+    func placeholderTextColor() -> UIColor {
+        return suitableColor(from: configuration.placeholder.colors)
+    }
+    
     func hintTextColor() -> UIColor {
-        return error ? Color.Text.red : Color.Text.gray
+        return suitableColor(from: configuration.hint.colors)
     }
 
     func textColor() -> UIColor {
-        return Color.Text.white
+        return suitableColor(from: configuration.textField.colors)
     }
 
     func currentTextFieldBorderColor() -> CGColor {
-        return textField.layer.borderColor ?? Color.Main.container.cgColor
+        return textField.layer.borderColor ?? configuration.textFieldBorder.colors.normal.cgColor
     }
 
     func textFieldBorderColor() -> CGColor {
-        if error {
-            return Color.Main.red.cgColor
-        } else {
-            switch state {
-            case .active:
-                return Color.Main.active.cgColor
-            case .disabled, .normal:
-                return Color.Main.container.cgColor
-            }
+        return suitableColor(from: configuration.textFieldBorder.colors).cgColor
+    }
+
+    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
+        guard !error else {
+            return colorConfiguration.error
+        }
+        switch state {
+        case .active:
+            return colorConfiguration.active
+        case .normal:
+            return colorConfiguration.normal
+        case .disabled:
+            return colorConfiguration.disabled
         }
     }
 

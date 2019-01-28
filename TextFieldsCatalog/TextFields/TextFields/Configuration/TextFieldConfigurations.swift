@@ -61,19 +61,42 @@ final class UnderlinedTextFieldConfiguration {
 }
 
 final class BorderedTextFieldConfiguration {
-//    let placeholder: PlaceholderConfiguration
-//    let textField: TextFieldConfiguration
-//    let textFieldBorder: TextFieldBorderConfiguration
-//    let hint: HintConfiguration
-//    let passwordMode: PasswordModeConfiguration
-//    let background: BackgroundConfiguration
-//
-//    init() {
-//        placeholder = PlaceholderConfiguration()
-//        textField = TextFieldConfiguration()
-//        textFieldBorder = TextFieldBorderConfiguration()
-//        hint = HintConfiguration()
-//        passwordMode = PasswordModeConfiguration()
-//        background = BackgroundConfiguration()
-//    }
+    let placeholder: PlaceholderConfiguration
+    let textField: TextFieldConfiguration
+    let textFieldBorder: TextFieldBorderConfiguration
+    let hint: HintConfiguration
+    let passwordMode: PasswordModeConfiguration
+    let background: BackgroundConfiguration
+
+    init() {
+        placeholder = PlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                                               colors: ColorConfiguration(error: Color.Text.gray,
+                                                                          normal: Color.Text.gray,
+                                                                          active: Color.Text.gray,
+                                                                          disabled: Color.Text.gray))
+        textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                           defaultPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+                                           increasedPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 56),
+                                           tintColor: Color.Main.active,
+                                           colors: ColorConfiguration(error: Color.Text.white,
+                                                                      normal: Color.Text.white,
+                                                                      active: Color.Text.white,
+                                                                      disabled: Color.Text.white))
+        textFieldBorder = TextFieldBorderConfiguration(cornerRadius: 6,
+                                                       width: 2,
+                                                       colors: ColorConfiguration(error: Color.Main.red,
+                                                                                  normal: Color.Main.container,
+                                                                                  active: Color.Main.active,
+                                                                                  disabled: Color.Main.container))
+        hint = HintConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .regular),
+                                 colors: ColorConfiguration(error: Color.Text.red,
+                                                            normal: Color.Text.gray,
+                                                            active: Color.Text.gray,
+                                                            disabled: Color.Text.gray))
+        passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.eyeOn),
+                                                 secureModeOffImage: UIImage(asset: Asset.eyeOff),
+                                                 normalColor: Color.Button.active,
+                                                 pressedColor: Color.Button.pressed)
+        background = BackgroundConfiguration(color: Color.Main.background)
+    }
 }
