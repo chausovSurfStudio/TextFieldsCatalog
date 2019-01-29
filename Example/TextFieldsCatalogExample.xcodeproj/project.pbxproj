@@ -155,12 +155,12 @@
 		904A19BC21F9EE9300B9A846 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		904A19BE21F9EE9A00B9A846 /* UnderlinedTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnderlinedTextField.xib; sourceTree = "<group>"; };
 		904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedFieldPreset.swift; sourceTree = "<group>"; };
-		90736C2321F86099003B8B78 /* TextFieldsCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldsCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90736C2321F86099003B8B78 /* TextFieldsCatalogExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldsCatalogExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C2621F86099003B8B78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90736C2D21F8609A003B8B78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90736C3021F8609A003B8B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90736C3221F8609A003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90736C3721F8609B003B8B78 /* TextFieldsCatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90736C3721F8609B003B8B78 /* TextFieldsCatalogExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsCatalogTests.swift; sourceTree = "<group>"; };
 		90736C3D21F8609B003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C5121F877B4003B8B78 /* InnerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTextField.swift; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 		90736C1A21F86099003B8B78 = {
 			isa = PBXGroup;
 			children = (
-				90736C2521F86099003B8B78 /* TextFieldsCatalog */,
+				90736C2521F86099003B8B78 /* TextFieldsCatalogExample */,
 				90736C3A21F8609B003B8B78 /* TextFieldsCatalogTests */,
 				90736C2421F86099003B8B78 /* Products */,
 				B268FBCC51EEC64B6CB442EE /* Pods */,
@@ -436,13 +436,13 @@
 		90736C2421F86099003B8B78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90736C2321F86099003B8B78 /* TextFieldsCatalog.app */,
-				90736C3721F8609B003B8B78 /* TextFieldsCatalogTests.xctest */,
+				90736C2321F86099003B8B78 /* TextFieldsCatalogExample.app */,
+				90736C3721F8609B003B8B78 /* TextFieldsCatalogExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		90736C2521F86099003B8B78 /* TextFieldsCatalog */ = {
+		90736C2521F86099003B8B78 /* TextFieldsCatalogExample */ = {
 			isa = PBXGroup;
 			children = (
 				90736C4621F86514003B8B78 /* Application */,
@@ -452,7 +452,7 @@
 				90736C4D21F8770D003B8B78 /* TextFields */,
 				90736C3221F8609A003B8B78 /* Info.plist */,
 			);
-			path = TextFieldsCatalog;
+			path = TextFieldsCatalogExample;
 			sourceTree = "<group>";
 		};
 		90736C3A21F8609B003B8B78 /* TextFieldsCatalogTests */ = {
@@ -804,9 +804,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		90736C2221F86099003B8B78 /* TextFieldsCatalog */ = {
+		90736C2221F86099003B8B78 /* TextFieldsCatalogExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90736C4021F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalog" */;
+			buildConfigurationList = 90736C4021F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogExample" */;
 			buildPhases = (
 				56040F5E1A5AECCA1DC9222E /* [CP] Check Pods Manifest.lock */,
 				90736C7321F88630003B8B78 /* SwiftGen Script */,
@@ -821,14 +821,14 @@
 			);
 			dependencies = (
 			);
-			name = TextFieldsCatalog;
+			name = TextFieldsCatalogExample;
 			productName = TextFieldsCatalog;
-			productReference = 90736C2321F86099003B8B78 /* TextFieldsCatalog.app */;
+			productReference = 90736C2321F86099003B8B78 /* TextFieldsCatalogExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		90736C3621F8609B003B8B78 /* TextFieldsCatalogTests */ = {
+		90736C3621F8609B003B8B78 /* TextFieldsCatalogExampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90736C4321F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogTests" */;
+			buildConfigurationList = 90736C4321F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogExampleTests" */;
 			buildPhases = (
 				D56EE1966639A5C6A92F1FA2 /* [CP] Check Pods Manifest.lock */,
 				90736C3321F8609B003B8B78 /* Sources */,
@@ -842,9 +842,9 @@
 			dependencies = (
 				90736C3921F8609B003B8B78 /* PBXTargetDependency */,
 			);
-			name = TextFieldsCatalogTests;
+			name = TextFieldsCatalogExampleTests;
 			productName = TextFieldsCatalogTests;
-			productReference = 90736C3721F8609B003B8B78 /* TextFieldsCatalogTests.xctest */;
+			productReference = 90736C3721F8609B003B8B78 /* TextFieldsCatalogExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -866,7 +866,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 90736C1E21F86099003B8B78 /* Build configuration list for PBXProject "TextFieldsCatalog" */;
+			buildConfigurationList = 90736C1E21F86099003B8B78 /* Build configuration list for PBXProject "TextFieldsCatalogExample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -880,8 +880,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				90736C2221F86099003B8B78 /* TextFieldsCatalog */,
-				90736C3621F8609B003B8B78 /* TextFieldsCatalogTests */,
+				90736C2221F86099003B8B78 /* TextFieldsCatalogExample */,
+				90736C3621F8609B003B8B78 /* TextFieldsCatalogExampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1188,7 +1188,7 @@
 /* Begin PBXTargetDependency section */
 		90736C3921F8609B003B8B78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 90736C2221F86099003B8B78 /* TextFieldsCatalog */;
+			target = 90736C2221F86099003B8B78 /* TextFieldsCatalogExample */;
 			targetProxy = 90736C3821F8609B003B8B78 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1340,7 +1340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
-				INFOPLIST_FILE = TextFieldsCatalog/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TextFieldsCatalogExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1360,7 +1360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
-				INFOPLIST_FILE = TextFieldsCatalog/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TextFieldsCatalogExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1391,7 +1391,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalog.app/TextFieldsCatalog";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalogExample.app/TextFieldsCatalogExample";
 			};
 			name = Debug;
 		};
@@ -1413,14 +1413,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalog.app/TextFieldsCatalog";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalogExample.app/TextFieldsCatalogExample";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		90736C1E21F86099003B8B78 /* Build configuration list for PBXProject "TextFieldsCatalog" */ = {
+		90736C1E21F86099003B8B78 /* Build configuration list for PBXProject "TextFieldsCatalogExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90736C3E21F8609B003B8B78 /* Debug */,
@@ -1429,7 +1429,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		90736C4021F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalog" */ = {
+		90736C4021F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90736C4121F8609B003B8B78 /* Debug */,
@@ -1438,7 +1438,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		90736C4321F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogTests" */ = {
+		90736C4321F8609B003B8B78 /* Build configuration list for PBXNativeTarget "TextFieldsCatalogExampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90736C4421F8609B003B8B78 /* Debug */,

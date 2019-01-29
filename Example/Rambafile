@@ -2,18 +2,18 @@
 company: Surf
 
 ### Xcode project settings
-project_name: TextFieldsCatalog
-xcodeproj_path: TextFieldsCatalog.xcodeproj
+project_name: TextFieldsCatalogExample
+xcodeproj_path: TextFieldsCatalogExample.xcodeproj
 
 ### Code generation settings section
 # The main project target name
-project_targets: [TextFieldsCatalog]
+project_targets: [TextFieldsCatalogExample]
 
 # The file path for new modules
-project_file_path: TextFieldsCatalog/Screens
+project_file_path: TextFieldsCatalogExample/Screens
 
 # The Xcode group path to new modules
-project_group_path: TextFieldsCatalog/Screens
+project_group_path: TextFieldsCatalogExample/Screens
 
 
 ### Dependencies settings section
