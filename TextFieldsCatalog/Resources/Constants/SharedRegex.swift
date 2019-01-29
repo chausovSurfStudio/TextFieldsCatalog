@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SharedRegex {
+public enum SharedRegex {
     static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     static let everything = "(.*)"
     static let password = "^((?=(.*\\d))(?=.*[A-Z])(?=.*[a-z]))(.{8,})"

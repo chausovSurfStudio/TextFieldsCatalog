@@ -11,7 +11,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77. Colors, fonts and offsets do not change, they are protected inside (for now =))
-class UnderlinedTextField: DesignableView, ResetableField {
+open class UnderlinedTextField: DesignableView, ResetableField {
 
     // MARK: - Enums
 
@@ -24,7 +24,7 @@ class UnderlinedTextField: DesignableView, ResetableField {
         case disabled
     }
 
-    enum UnderlinedTextFieldMode {
+    public enum UnderlinedTextFieldMode {
         /// normal textField mode without any action buttons
         case plain
         /// mode for password textField
@@ -64,14 +64,14 @@ class UnderlinedTextField: DesignableView, ResetableField {
 
     // MARK: - Properties
 
-    var configuration = UnderlinedTextFieldConfiguration() {
+    public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
             updateUI()
         }
     }
-    var validator: TextFieldValidation?
-    var maskFormatter: MaskTextFieldFormatter? {
+    public var validator: TextFieldValidation?
+    public var maskFormatter: MaskTextFieldFormatter? {
         didSet {
             if maskFormatter != nil {
                 textField.delegate = maskFormatter?.delegateForTextField()
@@ -82,15 +82,15 @@ class UnderlinedTextField: DesignableView, ResetableField {
             }
         }
     }
-    var hideOnReturn: Bool = true
-    var validateWithFormatter: Bool = false
+    public var hideOnReturn: Bool = true
+    public var validateWithFormatter: Bool = false
 
-    var onBeginEditing: ((UnderlinedTextField) -> Void)?
-    var onEndEditing: ((UnderlinedTextField) -> Void)?
-    var onTextChanged: ((UnderlinedTextField) -> Void)?
-    var onShouldReturn: ((UnderlinedTextField) -> Void)?
-    var onActionButtonTap: ((UnderlinedTextField) -> Void)?
-    var onValidateFail: ((UnderlinedTextField) -> Void)?
+    public var onBeginEditing: ((UnderlinedTextField) -> Void)?
+    public var onEndEditing: ((UnderlinedTextField) -> Void)?
+    public var onTextChanged: ((UnderlinedTextField) -> Void)?
+    public var onShouldReturn: ((UnderlinedTextField) -> Void)?
+    public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
+    public var onValidateFail: ((UnderlinedTextField) -> Void)?
 
     // MARK: - Initialization
 
@@ -100,28 +100,28 @@ class UnderlinedTextField: DesignableView, ResetableField {
         updateUI()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     // MARK: - UIView
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         configureAppearance()
         updateUI()
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
-    func configure(placeholder: String?, maxLength: Int?) {
+    public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
     }
 
     /// Allows you to set autocorrection and keyboardType for textField
-    func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
+    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
         if let correction = correction {
             textField.autocorrectionType = correction
         }
@@ -131,12 +131,12 @@ class UnderlinedTextField: DesignableView, ResetableField {
     }
 
     /// Allows you to set textContent type for textField
-    func configureContentType(_ contentType: UITextContentType) {
+    public func configureContentType(_ contentType: UITextContentType) {
         textField.textContentType = contentType
     }
 
     /// Allows you to change current mode
-    func setTextFieldMode(_ mode: UnderlinedTextFieldMode) {
+    public func setTextFieldMode(_ mode: UnderlinedTextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
@@ -159,7 +159,7 @@ class UnderlinedTextField: DesignableView, ResetableField {
     }
 
     /// Allows you to set text in textField and update all UI elements
-    func setText(_ text: String?) {
+    public func setText(_ text: String?) {
         if let formatter = maskFormatter {
             formatter.format(string: text, field: textField)
         } else {
@@ -170,22 +170,22 @@ class UnderlinedTextField: DesignableView, ResetableField {
     }
 
     /// Return current input string in textField
-    func currentText() -> String? {
+    public func currentText() -> String? {
         return textField.text
     }
 
     /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
-    func hideKeyboard() {
+    public func hideKeyboard() {
         textField.inputView = UIView()
     }
 
     /// Allows to set accessibilityIdentifier for textField
-    func setTextFieldIdentifier(_ identifier: String) {
+    public func setTextFieldIdentifier(_ identifier: String) {
         textField.accessibilityIdentifier = identifier
     }
 
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous info message
-    func setError(with errorMessage: String?, animated: Bool) {
+    public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         if let message = errorMessage {
             hintLabel.text = message
@@ -195,7 +195,7 @@ class UnderlinedTextField: DesignableView, ResetableField {
 
     /// Allows you to know current state: return true in case of current state is valid
     @discardableResult
-    func isValidState(forceValidate: Bool = false) -> Bool {
+    public func isValidState(forceValidate: Bool = false) -> Bool {
         if !error || forceValidate {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
@@ -205,37 +205,37 @@ class UnderlinedTextField: DesignableView, ResetableField {
     }
 
     /// Clear text, reset error and update all UI elements - reset to default state
-    func reset() {
+    public func reset() {
         textField.text = ""
         error = false
         updateUI()
     }
 
     /// Reset only error state and update all UI elements
-    func resetErrorState() {
+    public func resetErrorState() {
         error = false
         updateUI()
     }
 
     /// Disable paste action for textField
-    func disablePasteAction() {
+    public func disablePasteAction() {
         textField.pasteActionEnabled = false
     }
 
     /// Disable text field
-    func disableTextField() {
+    public func disableTextField() {
         state = .disabled
         textField.isEnabled = false
         updateUI()
     }
 
     /// Return true if current state allows you to interact with this field
-    func isEnabled() -> Bool {
+    public func isEnabled() -> Bool {
         return state != .disabled
     }
 
     /// Allows you to set some string as hint message
-    func setHint(_ hint: String) {
+    public func setHint(_ hint: String) {
         guard !hint.isEmpty else {
             return
         }
@@ -244,23 +244,23 @@ class UnderlinedTextField: DesignableView, ResetableField {
     }
 
     /// Return true, if field is current firstResponder
-    func isCurrentFirstResponder() -> Bool {
+    public func isCurrentFirstResponder() -> Bool {
         return textField.isFirstResponder
     }
 
     /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
-    func setNextResponder(_ nextResponder: UIResponder) {
+    public func setNextResponder(_ nextResponder: UIResponder) {
         textField.returnKeyType = .next
         nextInput = nextResponder
     }
 
     /// Makes textField is current first responder
-    func makeFirstResponder() {
+    public func makeFirstResponder() {
         _ = textField.becomeFirstResponder()
     }
 
     /// Allows you to manage keyboard returnKeyType
-    func setReturnKeyType(_ type: UIReturnKeyType) {
+    public func setReturnKeyType(_ type: UIReturnKeyType) {
         textField.returnKeyType = type
     }
 

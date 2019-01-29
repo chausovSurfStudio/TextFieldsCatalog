@@ -10,7 +10,7 @@ import UIKit
 import InputMask
 
 /// Class for custom textField, where text field have a highlighted border. Default height equals to 130.
-class BorderedTextField: DesignableView, ResetableField {
+open class BorderedTextField: DesignableView, ResetableField {
 
     // MARK: - Enums
 
@@ -23,7 +23,7 @@ class BorderedTextField: DesignableView, ResetableField {
         case disabled
     }
 
-    enum BorderedTextFieldMode {
+    public enum BorderedTextFieldMode {
         /// normal textField mode without any action buttons
         case plain
         /// mode for password textField
@@ -60,14 +60,14 @@ class BorderedTextField: DesignableView, ResetableField {
 
     // MARK: - Properties
 
-    var configuration = BorderedTextFieldConfiguration() {
+    public var configuration = BorderedTextFieldConfiguration() {
         didSet {
             configureAppearance()
             updateUI()
         }
     }
-    var validator: TextFieldValidation?
-    var maskFormatter: MaskTextFieldFormatter? {
+    public var validator: TextFieldValidation?
+    public var maskFormatter: MaskTextFieldFormatter? {
         didSet {
             if maskFormatter != nil {
                 textField.delegate = maskFormatter?.delegateForTextField()
@@ -78,17 +78,17 @@ class BorderedTextField: DesignableView, ResetableField {
             }
         }
     }
-    var hideOnReturn: Bool = true
-    var validateWithFormatter: Bool = false
+    public var hideOnReturn: Bool = true
+    public var validateWithFormatter: Bool = false
 
-    var onBeginEditing: ((BorderedTextField) -> Void)?
-    var onEndEditing: ((BorderedTextField) -> Void)?
-    var onTextChanged: ((BorderedTextField) -> Void)?
-    var onShouldReturn: ((BorderedTextField) -> Void)?
-    var onActionButtonTap: ((BorderedTextField) -> Void)?
-    var onValidateFail: ((BorderedTextField) -> Void)?
+    public var onBeginEditing: ((BorderedTextField) -> Void)?
+    public var onEndEditing: ((BorderedTextField) -> Void)?
+    public var onTextChanged: ((BorderedTextField) -> Void)?
+    public var onShouldReturn: ((BorderedTextField) -> Void)?
+    public var onActionButtonTap: ((BorderedTextField) -> Void)?
+    public var onValidateFail: ((BorderedTextField) -> Void)?
 
-    var responder: UIResponder {
+    public var responder: UIResponder {
         return self.textField
     }
 
@@ -100,28 +100,28 @@ class BorderedTextField: DesignableView, ResetableField {
         updateUI()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     // MARK: - UIView
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         configureAppearance()
         updateUI()
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
     /// Method for configure text field with placeholder and max length for input string
-    func configure(placeholder: String?, maxLength: Int?) {
+    public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholderLabel.text = placeholder
         self.maxLength = maxLength
     }
 
     /// Allows you to set autocorrection and keyboardType for textField
-    func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
+    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
         if let correction = correction {
             textField.autocorrectionType = correction
         }
@@ -131,7 +131,7 @@ class BorderedTextField: DesignableView, ResetableField {
     }
 
     /// Allows you to change current mode
-    func setTextFieldMode(_ mode: BorderedTextFieldMode) {
+    public func setTextFieldMode(_ mode: BorderedTextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
@@ -154,7 +154,7 @@ class BorderedTextField: DesignableView, ResetableField {
     }
 
     /// Allows you to set text in textField and update all UI elements
-    func setText(_ text: String?) {
+    public func setText(_ text: String?) {
         if let formatter = maskFormatter {
             formatter.format(string: text, field: textField)
         } else {
@@ -165,12 +165,12 @@ class BorderedTextField: DesignableView, ResetableField {
     }
 
     /// Return current input string in textField
-    func currentText() -> String? {
+    public func currentText() -> String? {
         return textField.text
     }
 
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous hint message
-    func setError(with errorMessage: String?) {
+    public func setError(with errorMessage: String?) {
         error = true
         if let message = errorMessage {
             hintLabel.text = message
@@ -180,7 +180,7 @@ class BorderedTextField: DesignableView, ResetableField {
 
     /// Allows you to know current state: return true in case of current state is valid
     @discardableResult
-    func isValidState(forceValidate: Bool = false) -> Bool {
+    public func isValidState(forceValidate: Bool = false) -> Bool {
         if !error || forceValidate {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
@@ -190,37 +190,37 @@ class BorderedTextField: DesignableView, ResetableField {
     }
 
     /// Clear text, reset error and update all UI elements - reset to default state
-    func reset() {
+    public func reset() {
         textField.text = ""
         error = false
         updateUI()
     }
 
     /// Reset only error state and update all UI elements
-    func resetErrorState() {
+    public func resetErrorState() {
         error = false
         updateUI()
     }
 
     /// Allows you to disable paste action for textField
-    func disablePasteAction() {
+    public func disablePasteAction() {
         textField.pasteActionEnabled = false
     }
 
     /// Allows you to disable textField
-    func disableTextField(_ disable: Bool) {
+    public func disableTextField(_ disable: Bool) {
         state = disable ? .disabled : .normal
         textField.isEnabled = !disable
         updateUI()
     }
 
     /// Return true if current state allows you to interact with this field
-    func isEnabled() -> Bool {
+    public func isEnabled() -> Bool {
         return state != .disabled
     }
 
     /// Allows you to set some string as hint message
-    func setHint(_ hint: String) {
+    public func setHint(_ hint: String) {
         guard !hint.isEmpty else {
             return
         }
@@ -229,23 +229,23 @@ class BorderedTextField: DesignableView, ResetableField {
     }
 
     /// Return true, if field is current firstResponder
-    func isCurrentFirstResponder() -> Bool {
+    public func isCurrentFirstResponder() -> Bool {
         return textField.isFirstResponder
     }
 
     /// Allows you to set next textField and go to him on return keyboard button tap
-    func setNextResponder(_ nextResponder: UIResponder) {
+    public func setNextResponder(_ nextResponder: UIResponder) {
         textField.returnKeyType = .next
         nextInput = nextResponder
     }
 
     /// Makes textField is current first responder
-    func makeFirstResponder() {
+    public func makeFirstResponder() {
         _ = textField.becomeFirstResponder()
     }
 
     /// Allows you to manage keyboard returnKeyType
-    func setReturnKeyType(_ type: UIReturnKeyType) {
+    public func setReturnKeyType(_ type: UIReturnKeyType) {
         textField.returnKeyType = type
     }
 

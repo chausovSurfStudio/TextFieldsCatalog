@@ -9,6 +9,6 @@
 import Foundation
 
 /// Describes type of field which can reset its state
-protocol ResetableField {
+public protocol ResetableField {
     func reset()
 }

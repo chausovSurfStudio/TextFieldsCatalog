@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BorderedTextFieldConfiguration {
+public final class BorderedTextFieldConfiguration {
     let placeholder: PlaceholderConfiguration
     let textField: TextFieldConfiguration
     let textFieldBorder: TextFieldBorderConfiguration
@@ -49,7 +49,7 @@ final class BorderedTextFieldConfiguration {
     }
 }
 
-final class UnderlinedTextFieldConfiguration {
+public final class UnderlinedTextFieldConfiguration {
     var line: LineConfiguration
     var placeholder: FloatingPlaceholderConfiguration
     var textField: TextFieldConfiguration

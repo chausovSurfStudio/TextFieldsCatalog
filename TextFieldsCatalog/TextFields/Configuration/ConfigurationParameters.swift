@@ -9,7 +9,7 @@
 import UIKit
 
 /// Configuration class with parameters for line in UnderlinedTextField
-final class LineConfiguration {
+public final class LineConfiguration {
     /// Insets for line, set it to .zero if you don't want to show it
     let insets: UIEdgeInsets
     /// This height will be applied when text field is inactive
@@ -35,7 +35,7 @@ final class LineConfiguration {
 }
 
 /// Configuration class with parameters for floating placeholder
-final class FloatingPlaceholderConfiguration {
+public final class FloatingPlaceholderConfiguration {
     /// This is text font for placeholder
     let font: UIFont
     /// Height of floating placeholder
@@ -73,7 +73,7 @@ final class FloatingPlaceholderConfiguration {
 }
 
 /// Configuration class with parameters for static placeholder
-final class PlaceholderConfiguration {
+public final class PlaceholderConfiguration {
     /// Font of placeholder
     let font: UIFont
     /// Colors for placeholder in various states
@@ -87,7 +87,7 @@ final class PlaceholderConfiguration {
 }
 
 /// Configuration class with parameters for inner text field inside custom text fields
-final class TextFieldConfiguration {
+public final class TextFieldConfiguration {
     /// Text font in text field
     let font: UIFont
     /// Default text padding for text in text field
@@ -113,7 +113,7 @@ final class TextFieldConfiguration {
 }
 
 /// Configuration class with parameters for text field border in BorderedTextField
-final class TextFieldBorderConfiguration {
+public final class TextFieldBorderConfiguration {
     /// Corner radius for text field border
     let cornerRadius: CGFloat
     /// Text field border width
@@ -131,7 +131,7 @@ final class TextFieldBorderConfiguration {
 }
 
 /// Configuration class with parameters for hint label
-final class HintConfiguration {
+public final class HintConfiguration {
     /// Text font for hint label
     let font: UIFont
     /// Text colors for hint label
@@ -144,7 +144,7 @@ final class HintConfiguration {
 }
 
 /// Configuration class with parameters for tuning action button inside custom text fields
-final class PasswordModeConfiguration {
+public final class PasswordModeConfiguration {
     /// The image that will be shown in secure mode state
     let secureModeOnImage: UIImage
     /// The image that will be shown in not secure mode state
@@ -165,7 +165,7 @@ final class PasswordModeConfiguration {
     }
 }
 
-final class ActionButtonConfiguration {
+public final class ActionButtonConfiguration {
     /// Button image for action button on text field
     let image: UIImage
     /// Color of button image in normal state
@@ -183,7 +183,7 @@ final class ActionButtonConfiguration {
 }
 
 /// Configuration class with parameters for tuning background color
-final class BackgroundConfiguration {
+public final class BackgroundConfiguration {
     /// Text field background color
     let color: UIColor
 
@@ -193,7 +193,7 @@ final class BackgroundConfiguration {
 }
 
 /// Configuration class with parameters for tuning color in various text feild states
-final class ColorConfiguration {
+public final class ColorConfiguration {
     /// Item color in error state. Error has top priority over other states
     let error: UIColor
     /// Item color in inactive state

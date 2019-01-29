@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol TextFieldValidation: class {
+public protocol TextFieldValidation: class {
     func validate(_ text: String?) -> (isValid: Bool, errorMessage: String?)
 }

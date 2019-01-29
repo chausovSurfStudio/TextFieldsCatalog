@@ -14,7 +14,7 @@ import UIKit
  * You can add you own error text! In this case you must set text for error in public properties.
  * Or you can set global message for all errors (use 'globalErrorMessage' in constructor)
  */
-final class TextFieldValidator {
+public final class TextFieldValidator {
 
     // MARK: - Constants
 
@@ -36,13 +36,13 @@ final class TextFieldValidator {
     // MARK: - Properties
 
     /// Text for error, when input string does not exist
-    var emptyErrorText: String?
+    public var emptyErrorText: String?
     /// Text for error, when input string too short (< minLength)
-    var shortErrorText: String?
+    public var shortErrorText: String?
     /// Text for error, when input string too big (> maxLength)
-    var largeErrorText: String?
+    public var largeErrorText: String?
     /// Text for error, when input string does not match a regular expression
-    var notValidErrorText: String?
+    public var notValidErrorText: String?
 
     // MARK: - Initialization
 
@@ -68,7 +68,7 @@ final class TextFieldValidator {
 
 extension TextFieldValidator: TextFieldValidation {
 
-    func validate(_ text: String?) -> (isValid: Bool, errorMessage: String?) {
+    public func validate(_ text: String?) -> (isValid: Bool, errorMessage: String?) {
         guard let text = text, !text.isEmpty else {
             if self.minLength == 0 || !requiredField {
                 return (true, nil)

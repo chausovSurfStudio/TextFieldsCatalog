@@ -13,13 +13,13 @@ import UIKit
 ///     set the file's owner and do not set the View's class,
 ///     =>
 ///     It renders in the IB!
-class DesignableView: UIView {
+open class DesignableView: UIView {
 
     var view: UIView {
         return subviews.first ?? UIView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         _ = setup()
     }

@@ -10,7 +10,7 @@ import Foundation
 import InputMask
 
 /// Special formatter for input field with mask (work only with text field)
-final class MaskTextFieldFormatter: NSObject {
+public final class MaskTextFieldFormatter: NSObject {
 
     // MARK: - Properties
 
