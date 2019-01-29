@@ -47,8 +47,6 @@ enum Asset {
   static let close = ImageAsset(name: "close")
   static let customEyeOff = ImageAsset(name: "customEyeOff")
   static let customEyeOn = ImageAsset(name: "customEyeOn")
-  static let eyeOff = ImageAsset(name: "eyeOff")
-  static let eyeOn = ImageAsset(name: "eyeOn")
   static let info = ImageAsset(name: "info")
   static let qrCode = ImageAsset(name: "qrCode")
 
@@ -59,8 +57,6 @@ enum Asset {
     close,
     customEyeOff,
     customEyeOn,
-    eyeOff,
-    eyeOn,
     info,
     qrCode,
   ]

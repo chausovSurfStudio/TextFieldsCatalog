@@ -12,4 +12,3 @@ typealias EmptyClosure = () -> Void
 typealias CGFloatClosure = (CGFloat) -> Void
 typealias TextFieldTypeClosure = (TextFieldType) -> Void
 typealias FieldPresetClosure = (AppliedPreset) -> Void
-typealias BorderedFieldPresetClosure = (BorderedFieldPreset) -> Void

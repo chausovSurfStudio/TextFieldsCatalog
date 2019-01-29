@@ -96,7 +96,7 @@ private extension BorderedFieldPreset {
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
 
-        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: Regex.password)
+        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText
         validator.largeErrorText = L10n.Presets.Password.largeErrorText(String(20))
         textField.validator = validator
@@ -107,7 +107,7 @@ private extension BorderedFieldPreset {
     func tuneFieldForEmail(_ textField: BorderedTextField) {
         textField.configure(placeholder: L10n.Presets.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
-        textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: Regex.email)
+        textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: SharedRegex.email)
     }
 
     func tuneFieldForPhone(_ textField: BorderedTextField) {

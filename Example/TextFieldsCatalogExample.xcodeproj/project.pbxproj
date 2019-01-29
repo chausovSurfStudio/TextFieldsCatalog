@@ -55,8 +55,6 @@
 		90736C9521F88CD9003B8B78 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9421F88CD9003B8B78 /* MainCoordinator.swift */; };
 		90736C9721F88CF2003B8B78 /* MainCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */; };
 		90736C9A21F88D11003B8B78 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9921F88D11003B8B78 /* Closures.swift */; };
-		90736C9C21F88D29003B8B78 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C9B21F88D29003B8B78 /* Regex.swift */; };
-		90736CA221F89680003B8B78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CA121F89680003B8B78 /* Constants.swift */; };
 		90736CA721F8977B003B8B78 /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CA621F8977B003B8B78 /* TextFieldType.swift */; };
 		90736CA921F897C7003B8B78 /* MainModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CA821F897C7003B8B78 /* MainModuleViewModel.swift */; };
 		90736CAB21F8991F003B8B78 /* CommonNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CAA21F8991F003B8B78 /* CommonNavigationController.swift */; };
@@ -172,8 +170,6 @@
 		90736C9421F88CD9003B8B78 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		90736C9621F88CF2003B8B78 /* MainCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorOutput.swift; sourceTree = "<group>"; };
 		90736C9921F88D11003B8B78 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
-		90736C9B21F88D29003B8B78 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
-		90736CA121F89680003B8B78 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90736CA621F8977B003B8B78 /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		90736CA821F897C7003B8B78 /* MainModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewModel.swift; sourceTree = "<group>"; };
 		90736CAA21F8991F003B8B78 /* CommonNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNavigationController.swift; sourceTree = "<group>"; };
@@ -580,8 +576,6 @@
 			isa = PBXGroup;
 			children = (
 				90736C9921F88D11003B8B78 /* Closures.swift */,
-				90736CA121F89680003B8B78 /* Constants.swift */,
-				90736C9B21F88D29003B8B78 /* Regex.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1063,10 +1057,8 @@
 				90736CB221F89C3D003B8B78 /* CustomNavigationTitlePresentable.swift in Sources */,
 				90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */,
 				90736CA721F8977B003B8B78 /* TextFieldType.swift in Sources */,
-				90736C9C21F88D29003B8B78 /* Regex.swift in Sources */,
 				904A19AC21F9D5D700B9A846 /* FieldCoordinatorOutput.swift in Sources */,
 				90736C9A21F88D11003B8B78 /* Closures.swift in Sources */,
-				90736CA221F89680003B8B78 /* Constants.swift in Sources */,
 				90736CA921F897C7003B8B78 /* MainModuleViewModel.swift in Sources */,
 				574AF82577C54960C5CD52BA /* MainViewOutput.swift in Sources */,
 				90736CB821F8A000003B8B78 /* CommonTableHeader.swift in Sources */,

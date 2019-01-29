@@ -15,20 +15,6 @@ enum L10n {
     static let reset = L10n.tr("Localizable", "Button.reset")
   }
 
-  enum Errors {
-
-    enum Textfield {
-      /// Поле должно быть заполнено
-      static let empty = L10n.tr("Localizable", "Errors.TextField.empty")
-      /// Неверный формат
-      static let notValid = L10n.tr("Localizable", "Errors.TextField.notValid")
-      /// Поле должно содержать минимум %@ символов
-      static func short(_ p1: String) -> String {
-        return L10n.tr("Localizable", "Errors.TextField.short", p1)
-      }
-    }
-  }
-
   enum Main {
 
     enum Info {

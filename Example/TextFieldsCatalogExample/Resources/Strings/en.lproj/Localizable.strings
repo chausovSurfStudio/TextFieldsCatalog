@@ -6,12 +6,6 @@
   Copyright © 2019 Александр Чаусов. All rights reserved.
 */
 
-// MARK: - Errors
-
-"Errors.TextField.empty" = "Поле должно быть заполнено";
-"Errors.TextField.short" = "Поле должно содержать минимум %@ символов";
-"Errors.TextField.notValid" = "Неверный формат";
-
 // MARK: - Button
 
 "Button.changePreset" = "Изменить пресет";
