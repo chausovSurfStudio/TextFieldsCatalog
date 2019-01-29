@@ -2,17 +2,17 @@
 //  IconButton.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 28/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
 import UIKit
 
-final class IconButton: CommonButton {
+public final class IconButton: CommonButton {
 
     // MARK: - Initialization
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         setupInitialState()
     }

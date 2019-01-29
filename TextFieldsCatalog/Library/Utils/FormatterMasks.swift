@@ -2,7 +2,7 @@
 //  FormatterMasks.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 28/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
@@ -11,12 +11,12 @@ import InputMask
 
 /// Masks for text field formatters. Rules for this masks you can see in https://github.com/RedMadRobot/input-mask-ios
 /// As additional notations for this masks you can use "s" character for all characters except newlines and whitespaces
-enum FormatterMasks {
-    static let password = "[ssssssss][s…]"
-    static let phone = "+7 ([000]) [000]-[00]-[00]"
-    static let cardExpirationDate = "[00]/[00]"
-    static let cvc = "[000]"
-    static let cardNumber = "[0000] [0000] [0000] [0000] [999]"
+public enum FormatterMasks {
+    public static let password = "[ssssssss][s…]"
+    public static let phone = "+7 ([000]) [000]-[00]-[00]"
+    public static let cardExpirationDate = "[00]/[00]"
+    public static let cvc = "[000]"
+    public static let cardNumber = "[0000] [0000] [0000] [0000] [999]"
 }
 
 // MARK: - Custom Notations

@@ -9,8 +9,7 @@ end
 
 def common_pods
     utils
-    pod 'InputMask'
-    pod 'SurfUtils/StringAttributes', :git => "https://github.com/surfstudio/iOS-Utils.git"
+    pod 'InputMask', '4.0.2'
 end
 
 target 'TextFieldsCatalog' do

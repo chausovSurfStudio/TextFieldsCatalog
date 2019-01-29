@@ -2,7 +2,7 @@
 //  MaskTextFieldFormatter.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 28/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import InputMask
 
 /// Special formatter for input field with mask (work only with text field)
-final class MaskTextFieldFormatter: NSObject {
+public final class MaskTextFieldFormatter: NSObject {
 
     // MARK: - Properties
 
@@ -32,7 +32,7 @@ final class MaskTextFieldFormatter: NSObject {
 
     // MARK: - Initialization
 
-    init(mask: String) {
+    public init(mask: String) {
         self.maskedDelegate = MaskedTextFieldDelegate(primaryFormat: mask)
         self.maskedDelegate.customNotations = FormatterMasks.notations()
         super.init()
@@ -73,7 +73,7 @@ final class MaskTextFieldFormatter: NSObject {
 
 extension MaskTextFieldFormatter: MaskedTextFieldDelegateListener {
 
-    func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         self.rawValue = value
         self.inputIsCompleted = complete
     }

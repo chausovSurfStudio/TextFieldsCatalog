@@ -1,0 +1,29 @@
+### Headers settings
+company: Surf
+
+### Xcode project settings
+project_name: TextFieldsCatalogExample
+xcodeproj_path: TextFieldsCatalogExample.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_targets: [TextFieldsCatalogExample]
+
+# The file path for new modules
+project_file_path: TextFieldsCatalogExample/Screens
+
+# The Xcode group path to new modules
+project_group_path: TextFieldsCatalogExample/Screens
+
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Catalogs
+# catalogs:
+# - 'https://github.com/surfstudio/generamba-templates'
+
+### Templates
+templates:
+- {name: surf_mvp_coordinatable_module}
+- {name: surf_mvp_coordinatable_alert}

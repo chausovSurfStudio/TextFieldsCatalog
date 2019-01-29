@@ -2,7 +2,7 @@
 //  UIImage.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 28/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
@@ -23,15 +23,6 @@ extension UIImage {
             return nil
         }
         self.init(cgImage: cgImage)
-    }
-
-    /// Method allows you to create UIImage from base64String
-    convenience init?(base64String: String?) {
-        if let base64String = base64String, let imageData = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) {
-            self.init(data: imageData)
-        } else {
-            return nil
-        }
     }
 
     /// Method returns UIImage with given tint color

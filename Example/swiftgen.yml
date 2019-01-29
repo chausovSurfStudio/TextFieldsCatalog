@@ -1,0 +1,8 @@
+xcassets:
+  paths: TextFieldsCatalogExample/Resources/Images/Assets.xcassets
+  templateName: swift4
+  output: TextFieldsCatalogExample/Resources/Images/Assets.swift
+strings:
+  paths: TextFieldsCatalogExample/Resources/Strings/en.lproj/Localizable.strings
+  templateName: structured-swift4
+  output: TextFieldsCatalogExample/Resources/Strings/Strings.swift

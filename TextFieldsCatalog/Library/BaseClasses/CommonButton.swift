@@ -2,13 +2,13 @@
 //  CommonButton.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 23/01/2019.
+//  Created by Александр Чаусов on 28/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
 import UIKit
 
-class CommonButton: UIButton {
+open class CommonButton: UIButton {
 
     // MARK: - Properties
 
@@ -67,11 +67,11 @@ class CommonButton: UIButton {
     }
 
     /// Increase touch area
-    var addedTouchArea: CGFloat = 0.0
+    public var addedTouchArea: CGFloat = 0.0
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -79,13 +79,13 @@ class CommonButton: UIButton {
         super.init(coder: aDecoder)
     }
 
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
     }
 
     // MARK: - UIButton
 
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let newBound = CGRect(
             x: bounds.origin.x - addedTouchArea,
             y: bounds.origin.y - addedTouchArea,
@@ -95,16 +95,16 @@ class CommonButton: UIButton {
         return newBound.contains(point)
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
-    func setTitleForAllState(_ title: String?) {
+    public func setTitleForAllState(_ title: String?) {
         setTitle(title, for: .normal)
         setTitle(title, for: .disabled)
         setTitle(title, for: .highlighted)
         setTitle(title, for: .selected)
     }
 
-    func setImageForAllState(_ image: UIImage?) {
+    public func setImageForAllState(_ image: UIImage?) {
         setImage(image, for: .normal)
         setImage(image, for: .disabled)
         setImage(image, for: .highlighted)
