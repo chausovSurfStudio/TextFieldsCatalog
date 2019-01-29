@@ -1,0 +1,10 @@
+language: Swift
+osx_image: xcode10
+xcode_project: TextFieldsCatalog.xcodeproj
+xcode_scheme: TextFieldsCatalog
+before_install:
+  - gem install xcpretty -N
+  - brew install swiftlint || true
+script:
+  - set -o pipefail
+  - xcodebuild clean build -sdk iphonesimulator -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.0' | xcpretty -c
