@@ -8,6 +8,7 @@
 
 import UIKit
 import SurfUtils
+import TextFieldsCatalog
 
 final class FieldExampleViewController: UIViewController {
 

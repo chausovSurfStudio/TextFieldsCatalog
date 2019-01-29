@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextFieldsCatalog
 
 enum TextFieldType: CaseIterable {
     case bordered

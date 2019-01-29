@@ -1,5 +1,5 @@
 //
-//  DesignableView.swift
+//  InnerDesignableView.swift
 //  TextFieldsCatalog
 //
 //  Created by Alexandr Olferuk on 21/07/16.
@@ -13,7 +13,7 @@ import UIKit
 ///     set the file's owner and do not set the View's class,
 ///     =>
 ///     It renders in the IB!
-open class DesignableView: UIView {
+open class InnerDesignableView: UIView {
 
     var view: UIView {
         return subviews.first ?? UIView()

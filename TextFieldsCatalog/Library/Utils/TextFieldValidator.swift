@@ -46,7 +46,7 @@ public final class TextFieldValidator {
 
     // MARK: - Initialization
 
-    init(minLength: Int?, maxLength: Int?, regex: String?, globalErrorMessage: String? = nil, requiredField: Bool = true) {
+    public init(minLength: Int?, maxLength: Int?, regex: String?, globalErrorMessage: String? = nil, requiredField: Bool = true) {
         self.minLength = minLength ?? 0
         self.maxLength = maxLength
         self.requiredField = requiredField

@@ -67,11 +67,11 @@ open class CommonButton: UIButton {
     }
 
     /// Increase touch area
-    var addedTouchArea: CGFloat = 0.0
+    public var addedTouchArea: CGFloat = 0.0
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -95,16 +95,16 @@ open class CommonButton: UIButton {
         return newBound.contains(point)
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
-    func setTitleForAllState(_ title: String?) {
+    public func setTitleForAllState(_ title: String?) {
         setTitle(title, for: .normal)
         setTitle(title, for: .disabled)
         setTitle(title, for: .highlighted)
         setTitle(title, for: .selected)
     }
 
-    func setImageForAllState(_ image: UIImage?) {
+    public func setImageForAllState(_ image: UIImage?) {
         setImage(image, for: .normal)
         setImage(image, for: .disabled)
         setImage(image, for: .highlighted)

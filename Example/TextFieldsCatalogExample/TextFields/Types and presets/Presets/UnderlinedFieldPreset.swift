@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextFieldsCatalog
 
 enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case password

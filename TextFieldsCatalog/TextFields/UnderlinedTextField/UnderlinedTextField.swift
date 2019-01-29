@@ -11,7 +11,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77. Colors, fonts and offsets do not change, they are protected inside (for now =))
-open class UnderlinedTextField: DesignableView, ResetableField {
+open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Enums
 
@@ -94,7 +94,7 @@ open class UnderlinedTextField: DesignableView, ResetableField {
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         configureAppearance()
         updateUI()

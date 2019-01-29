@@ -27,7 +27,7 @@
 		9038640021FF592100BAA761 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903863FF21FF592100BAA761 /* UIColor.swift */; };
 		9038640221FF595300BAA761 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640121FF595300BAA761 /* UIImage.swift */; };
 		9038640421FF597600BAA761 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640321FF597600BAA761 /* CommonButton.swift */; };
-		9038640621FF599D00BAA761 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640521FF599D00BAA761 /* DesignableView.swift */; };
+		9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640521FF599D00BAA761 /* InnerDesignableView.swift */; };
 		9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640721FF59BC00BAA761 /* InnerTextField.swift */; };
 		9038640A21FF59D300BAA761 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640921FF59D300BAA761 /* Foundation.swift */; };
 		9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640B21FF5A0100BAA761 /* ResetableField.swift */; };
@@ -75,7 +75,7 @@
 		903863FF21FF592100BAA761 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		9038640121FF595300BAA761 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		9038640321FF597600BAA761 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
-		9038640521FF599D00BAA761 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		9038640521FF599D00BAA761 /* InnerDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerDesignableView.swift; sourceTree = "<group>"; };
 		9038640721FF59BC00BAA761 /* InnerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTextField.swift; sourceTree = "<group>"; };
 		9038640921FF59D300BAA761 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		9038640B21FF5A0100BAA761 /* ResetableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetableField.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				9038640321FF597600BAA761 /* CommonButton.swift */,
-				9038640521FF599D00BAA761 /* DesignableView.swift */,
+				9038640521FF599D00BAA761 /* InnerDesignableView.swift */,
 				9038640721FF59BC00BAA761 /* InnerTextField.swift */,
 			);
 			path = BaseClasses;
@@ -587,7 +587,7 @@
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
 				9038640421FF597600BAA761 /* CommonButton.swift in Sources */,
 				9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */,
-				9038640621FF599D00BAA761 /* DesignableView.swift in Sources */,
+				9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */,
 				9038640021FF592100BAA761 /* UIColor.swift in Sources */,
 				9038641021FF5A3600BAA761 /* IconButton.swift in Sources */,
 				902CE30221FF719B00AC21D4 /* UnderlinedTextField.swift in Sources */,

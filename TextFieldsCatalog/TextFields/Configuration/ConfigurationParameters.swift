@@ -21,7 +21,7 @@ public final class LineConfiguration {
     /// Colors for line under text field
     let colors: ColorConfiguration
 
-    init(insets: UIEdgeInsets,
+    public init(insets: UIEdgeInsets,
          defaultHeight: CGFloat,
          increasedHeight: CGFloat,
          cornerRadius: CGFloat,
@@ -53,7 +53,7 @@ public final class FloatingPlaceholderConfiguration {
     /// Colors for text in bottom position
     let bottomColors: ColorConfiguration
 
-    init(font: UIFont,
+    public init(font: UIFont,
          height: CGFloat,
          topInsets: UIEdgeInsets,
          bottomInsets: UIEdgeInsets,
@@ -79,7 +79,7 @@ public final class PlaceholderConfiguration {
     /// Colors for placeholder in various states
     let colors: ColorConfiguration
 
-    init(font: UIFont,
+    public init(font: UIFont,
          colors: ColorConfiguration) {
         self.font = font
         self.colors = colors
@@ -99,7 +99,7 @@ public final class TextFieldConfiguration {
     /// Text colors for text in text field
     let colors: ColorConfiguration
 
-    init(font: UIFont,
+    public init(font: UIFont,
          defaultPadding: UIEdgeInsets,
          increasedPadding: UIEdgeInsets,
          tintColor: UIColor,
@@ -121,7 +121,7 @@ public final class TextFieldBorderConfiguration {
     /// Colors for text field border in various states
     let colors: ColorConfiguration
 
-    init(cornerRadius: CGFloat,
+    public init(cornerRadius: CGFloat,
          width: CGFloat,
          colors: ColorConfiguration) {
         self.cornerRadius = cornerRadius
@@ -137,7 +137,7 @@ public final class HintConfiguration {
     /// Text colors for hint label
     let colors: ColorConfiguration
 
-    init(font: UIFont, colors: ColorConfiguration) {
+    public init(font: UIFont, colors: ColorConfiguration) {
         self.font = font
         self.colors = colors
     }
@@ -154,7 +154,7 @@ public final class PasswordModeConfiguration {
     /// Color of button image in highlighted and selected state
     let pressedColor: UIColor
 
-    init(secureModeOnImage: UIImage,
+    public init(secureModeOnImage: UIImage,
          secureModeOffImage: UIImage,
          normalColor: UIColor,
          pressedColor: UIColor) {
@@ -173,7 +173,7 @@ public final class ActionButtonConfiguration {
     /// Color of button image in highlighted and selected state
     let pressedColor: UIColor
 
-    init(image: UIImage,
+    public init(image: UIImage,
          normalColor: UIColor,
          pressedColor: UIColor) {
         self.image = image
@@ -187,7 +187,7 @@ public final class BackgroundConfiguration {
     /// Text field background color
     let color: UIColor
 
-    init(color: UIColor) {
+    public init(color: UIColor) {
         self.color = color
     }
 }
@@ -203,7 +203,7 @@ public final class ColorConfiguration {
     /// Item color in disabled state
     let disabled: UIColor
 
-    init(error: UIColor, normal: UIColor, active: UIColor, disabled: UIColor) {
+    public init(error: UIColor, normal: UIColor, active: UIColor, disabled: UIColor) {
         self.error = error
         self.normal = normal
         self.active = active

@@ -9,14 +9,14 @@
 import UIKit
 
 public final class BorderedTextFieldConfiguration {
-    let placeholder: PlaceholderConfiguration
-    let textField: TextFieldConfiguration
-    let textFieldBorder: TextFieldBorderConfiguration
-    let hint: HintConfiguration
-    let passwordMode: PasswordModeConfiguration
-    let background: BackgroundConfiguration
+    public var placeholder: PlaceholderConfiguration
+    public var textField: TextFieldConfiguration
+    public var textFieldBorder: TextFieldBorderConfiguration
+    public var hint: HintConfiguration
+    public var passwordMode: PasswordModeConfiguration
+    public var background: BackgroundConfiguration
 
-    init() {
+    public init() {
         placeholder = PlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
                                                colors: ColorConfiguration(error: Color.Text.gray,
                                                                           normal: Color.Text.gray,
@@ -50,14 +50,14 @@ public final class BorderedTextFieldConfiguration {
 }
 
 public final class UnderlinedTextFieldConfiguration {
-    var line: LineConfiguration
-    var placeholder: FloatingPlaceholderConfiguration
-    var textField: TextFieldConfiguration
-    var hint: HintConfiguration
-    var passwordMode: PasswordModeConfiguration
-    var background: BackgroundConfiguration
+    public var line: LineConfiguration
+    public var placeholder: FloatingPlaceholderConfiguration
+    public var textField: TextFieldConfiguration
+    public var hint: HintConfiguration
+    public var passwordMode: PasswordModeConfiguration
+    public var background: BackgroundConfiguration
 
-    init() {
+    public init() {
         line = LineConfiguration(insets: UIEdgeInsets(top: 53, left: 16, bottom: 0, right: 16),
                                  defaultHeight: 1,
                                  increasedHeight: 2,

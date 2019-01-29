@@ -10,7 +10,7 @@ import UIKit
 import InputMask
 
 /// Class for custom textField, where text field have a highlighted border. Default height equals to 130.
-open class BorderedTextField: DesignableView, ResetableField {
+open class BorderedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Enums
 
@@ -94,7 +94,7 @@ open class BorderedTextField: DesignableView, ResetableField {
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         configureAppearance()
         updateUI()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextFieldsCatalog
 
 fileprivate enum CustomColor {
     enum Main {

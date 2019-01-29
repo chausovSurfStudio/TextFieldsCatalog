@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TextFieldsCatalog
 
 final class MainButton: CommonButton {
 

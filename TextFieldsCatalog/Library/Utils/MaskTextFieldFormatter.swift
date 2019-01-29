@@ -32,7 +32,7 @@ public final class MaskTextFieldFormatter: NSObject {
 
     // MARK: - Initialization
 
-    init(mask: String) {
+    public init(mask: String) {
         self.maskedDelegate = MaskedTextFieldDelegate(primaryFormat: mask)
         self.maskedDelegate.customNotations = FormatterMasks.notations()
         super.init()
