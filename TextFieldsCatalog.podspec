@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
   s.swift_version = '4.2'
 
   s.source = { :git => "https://github.com/chausovSurfStudio/TextFieldsCatalog.git", :tag => "#{s.version}" }
-  s.source_files = 'TextFieldsCatalog/**/*.{swift,xib,xcassets,strings}'
+  s.source_files = 'TextFieldsCatalog/**/*.{swift,xib,strings}'
+  s.resource_bundles = { 'TextFieldsCatalog' => ['TextFieldsCatalog/Resources/Images/*.{png}'] }
 
 
   s.framework  = "UIKit"

@@ -41,8 +41,8 @@ public final class BorderedTextFieldConfiguration {
                                                             normal: Color.Text.gray,
                                                             active: Color.Text.gray,
                                                             disabled: Color.Text.gray))
-        passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.eyeOn),
-                                                 secureModeOffImage: UIImage(asset: Asset.eyeOff),
+        passwordMode = PasswordModeConfiguration(secureModeOnImage: AssetManager().getImage("eyeOn"),
+                                                 secureModeOffImage: AssetManager().getImage("eyeOff"),
                                                  normalColor: Color.Button.active,
                                                  pressedColor: Color.Button.pressed)
         background = BackgroundConfiguration(color: Color.Main.background)
@@ -93,8 +93,8 @@ public final class UnderlinedTextFieldConfiguration {
                                                             normal: Color.Text.gray,
                                                             active: Color.Text.gray,
                                                             disabled: Color.Text.gray))
-        passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.eyeOn),
-                                                 secureModeOffImage: UIImage(asset: Asset.eyeOff),
+        passwordMode = PasswordModeConfiguration(secureModeOnImage: AssetManager().getImage("eyeOn"),
+                                                 secureModeOffImage: AssetManager().getImage("eyeOff"),
                                                  normalColor: Color.Button.active,
                                                  pressedColor: Color.Button.pressed)
         background = BackgroundConfiguration(color: Color.Main.background)

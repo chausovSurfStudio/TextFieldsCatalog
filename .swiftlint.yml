@@ -95,13 +95,6 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Example
 
 custom_rules:
-  image_name_initialization: # Disable UIImage init from name
-      included: ".*.swift"
-      name: "Image initialization"
-      regex: 'UIImage\(named:[^)]+\)'
-      message: "Use UIImage(assetName: ) instead"
-      severity: error
-
   realm_in_ui:
       included: "Screens/.*.swift|User Stories/.*.swift"
       name: "Realm can be used only in services"
