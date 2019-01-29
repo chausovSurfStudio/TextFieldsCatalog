@@ -949,6 +949,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/InputMask/InputMask.framework",
 				"${BUILT_PRODUCTS_DIR}/SurfUtils/SurfUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldsCatalog/TextFieldsCatalog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -956,6 +957,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputMask.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SurfUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldsCatalog.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

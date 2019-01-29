@@ -9,7 +9,7 @@ end
 
 def common_pods
     utils
-    pod 'InputMask'
+    pod 'InputMask', '4.0.2'
 end
 
 target 'TextFieldsCatalog' do
