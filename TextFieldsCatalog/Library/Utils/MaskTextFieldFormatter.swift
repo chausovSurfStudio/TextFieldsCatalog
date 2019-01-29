@@ -73,7 +73,7 @@ public final class MaskTextFieldFormatter: NSObject {
 
 extension MaskTextFieldFormatter: MaskedTextFieldDelegateListener {
 
-    func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         self.rawValue = value
         self.inputIsCompleted = complete
     }

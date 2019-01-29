@@ -355,18 +355,18 @@ private extension UnderlinedTextField {
 
 extension UnderlinedTextField: UITextFieldDelegate {
 
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         state = .active
         onBeginEditing?(self)
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validate()
         state = .normal
         onEndEditing?(self)
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text, let textRange = Range(range, in: text), !validateWithFormatter else {
             return true
         }
@@ -380,7 +380,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
         return isValid
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = nextInput {
             nextField.becomeFirstResponder()
         } else {
@@ -399,7 +399,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
 
 extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
-    func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         onTextChanged?(self)
