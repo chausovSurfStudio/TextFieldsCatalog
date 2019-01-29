@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Volumes/USBSSD/Users/chausov/Documents/SurfProjects/TextFieldsCatalog/Example/TextFieldsCatalogExample.xcodeproj">
+      location = "group:TextFieldsCatalogExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:TextFieldsCatalogExample.xcodeproj">
    </FileRef>
 </Workspace>
