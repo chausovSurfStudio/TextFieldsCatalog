@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class IconButton: CommonButton {
+public final class IconButton: CommonButton {
 
     // MARK: - Initialization
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         setupInitialState()
     }

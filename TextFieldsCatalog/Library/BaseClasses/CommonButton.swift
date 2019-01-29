@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommonButton: UIButton {
+open class CommonButton: UIButton {
 
     // MARK: - Properties
 
@@ -79,13 +79,13 @@ class CommonButton: UIButton {
         super.init(coder: aDecoder)
     }
 
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
     }
 
     // MARK: - UIButton
 
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let newBound = CGRect(
             x: bounds.origin.x - addedTouchArea,
             y: bounds.origin.y - addedTouchArea,
