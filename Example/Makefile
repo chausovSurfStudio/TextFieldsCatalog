@@ -36,11 +36,11 @@ init:
 
 ## Used to create a new module. Example: make screen modName=<ModuleName> flow=<FlowName>
 screen:
-	bundle exec generamba gen $(modName) surf_mvp_coordinatable_module --module_path 'TextFieldsCatalog/Flows/$(flow)'
+	bundle exec generamba gen $(modName) surf_mvp_coordinatable_module --module_path 'TextFieldsCatalogExample/Flows/$(flow)'
 
 ## Used to create a new alert. Example: make alert modName=<AlertName> flow=<FlowName>
 alert:
-	bundle exec generamba gen $(modName) surf_mvp_coordinatable_alert --module_path 'TextFieldsCatalog/Flows/$(flow)'
+	bundle exec generamba gen $(modName) surf_mvp_coordinatable_alert --module_path 'TextFieldsCatalogExample/Flows/$(flow)'
 
 ## Allows you to perfrom swiftlint lint command.
 lint:
