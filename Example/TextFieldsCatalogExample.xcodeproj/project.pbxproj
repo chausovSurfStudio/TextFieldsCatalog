@@ -19,6 +19,7 @@
 		49FB60CDE6CD6F88CCFE525B /* FieldExampleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */; };
 		574AF82577C54960C5CD52BA /* MainViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */; };
 		5A5D90A731491A93D986DF82 /* FieldExampleModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79098781BD806E2DBE089E0C /* FieldExampleModuleInput.swift */; };
+		5B03F1D59D90FAEDF7788D72 /* Pods_TextFieldsCatalogExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788773D111B99BDD147B7FD6 /* Pods_TextFieldsCatalogExampleTests.framework */; };
 		6158FD49A06A50B9CDBFF6D7 /* FieldPresetsModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */; };
 		6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */; };
 		7382E0D919891CB3809AAC42 /* FieldPresetsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */; };
@@ -96,12 +97,12 @@
 		9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
 		9DE9899587424746804B617B /* FieldExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D63B32FA109A81E63344D /* FieldExampleViewController.swift */; };
-		A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */; };
 		A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */; };
 		AD6BCF59A9451DF953E356E8 /* FieldExampleModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */; };
 		C852A58772725BC43EF5979E /* FieldExampleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */; };
 		CA52F4DB993991A6DBC7DD01 /* FieldPresetsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */; };
 		CB2B33FF7A75453DF285FC70 /* FieldPresetsModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */; };
+		CB86F27CF777E624E2BAF363 /* Pods_TextFieldsCatalogExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9137A7D2B3EF2F6394D0BBE /* Pods_TextFieldsCatalogExample.framework */; };
 		CC5A01F5679D004EAB01578E /* FieldExamplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */; };
 		D15DB61CCECCD4C5F7BFCACA /* FieldPresetsModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */; };
 		D992556AC789D62F45A79803 /* InfoModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */; };
@@ -124,13 +125,16 @@
 		010D63B32FA109A81E63344D /* FieldExampleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewController.swift; sourceTree = "<group>"; };
 		089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewInput.swift; sourceTree = "<group>"; };
 		08F9E1ECAFA665E89FD59024 /* MainViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
 		0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewInput.swift; sourceTree = "<group>"; };
 		20C93D3C539EA5A6E9172731 /* InfoViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewOutput.swift; sourceTree = "<group>"; };
 		2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		3220339971BDB3B555BC49A7 /* Pods-TextFieldsCatalogExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample.debug.xcconfig"; sourceTree = "<group>"; };
 		364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleConfigurator.swift; sourceTree = "<group>"; };
 		3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleConfigurator.swift; sourceTree = "<group>"; };
+		3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleInput.swift; sourceTree = "<group>"; };
 		56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldPresetsViewController.xib; sourceTree = "<group>"; };
@@ -143,7 +147,9 @@
 		6B9F409927AD029A70C26A8B /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewController.swift; sourceTree = "<group>"; };
 		769890F734CD1746A10C76A5 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
+		788773D111B99BDD147B7FD6 /* Pods_TextFieldsCatalogExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79098781BD806E2DBE089E0C /* FieldExampleModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleInput.swift; sourceTree = "<group>"; };
+		8412C6AC0801EE7F4018F298 /* Pods-TextFieldsCatalogExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample.release.xcconfig"; sourceTree = "<group>"; };
 		87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
 		904A19A921F9D5C100B9A846 /* FieldCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCoordinator.swift; sourceTree = "<group>"; };
 		904A19AB21F9D5D700B9A846 /* FieldCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldCoordinatorOutput.swift; sourceTree = "<group>"; };
@@ -224,6 +230,7 @@
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewOutput.swift; sourceTree = "<group>"; };
 		AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleOutput.swift; sourceTree = "<group>"; };
+		B9137A7D2B3EF2F6394D0BBE /* Pods_TextFieldsCatalogExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldExampleViewController.xib; sourceTree = "<group>"; };
 		C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleConfigurator.swift; sourceTree = "<group>"; };
 		D046C6E5920DE1294C32E7D2 /* InfoViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -239,7 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CE939BC7665566C1D7211F /* Pods_TextFieldsCatalog.framework in Frameworks */,
+				CB86F27CF777E624E2BAF363 /* Pods_TextFieldsCatalogExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F32093C542C1D35D5B10FD2 /* Pods_TextFieldsCatalogTests.framework in Frameworks */,
+				5B03F1D59D90FAEDF7788D72 /* Pods_TextFieldsCatalogExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				90736C2521F86099003B8B78 /* TextFieldsCatalogExample */,
-				90736C3A21F8609B003B8B78 /* TextFieldsCatalogTests */,
+				90736C3A21F8609B003B8B78 /* TextFieldsCatalogExampleTests */,
 				90736C2421F86099003B8B78 /* Products */,
 				B268FBCC51EEC64B6CB442EE /* Pods */,
 				92363513AD4BDB3330A97626 /* Frameworks */,
@@ -455,13 +463,13 @@
 			path = TextFieldsCatalogExample;
 			sourceTree = "<group>";
 		};
-		90736C3A21F8609B003B8B78 /* TextFieldsCatalogTests */ = {
+		90736C3A21F8609B003B8B78 /* TextFieldsCatalogExampleTests */ = {
 			isa = PBXGroup;
 			children = (
 				90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */,
 				90736C3D21F8609B003B8B78 /* Info.plist */,
 			);
-			path = TextFieldsCatalogTests;
+			path = TextFieldsCatalogExampleTests;
 			sourceTree = "<group>";
 		};
 		90736C4621F86514003B8B78 /* Application */ = {
@@ -728,6 +736,8 @@
 			children = (
 				47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */,
 				FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */,
+				B9137A7D2B3EF2F6394D0BBE /* Pods_TextFieldsCatalogExample.framework */,
+				788773D111B99BDD147B7FD6 /* Pods_TextFieldsCatalogExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -769,6 +779,10 @@
 				AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */,
 				6B9F409927AD029A70C26A8B /* Pods-TextFieldsCatalogTests.debug.xcconfig */,
 				63BCA0129C1D70CDC1C3E6E3 /* Pods-TextFieldsCatalogTests.release.xcconfig */,
+				3220339971BDB3B555BC49A7 /* Pods-TextFieldsCatalogExample.debug.xcconfig */,
+				8412C6AC0801EE7F4018F298 /* Pods-TextFieldsCatalogExample.release.xcconfig */,
+				0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */,
+				3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -935,7 +949,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4959D569EE0B4C3077CB78E1 /* [CP] Embed Pods Frameworks */ = {
@@ -946,7 +960,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/InputMask/InputMask.framework",
 				"${BUILT_PRODUCTS_DIR}/SurfUtils/SurfUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldsCatalog/TextFieldsCatalog.framework",
@@ -961,7 +975,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		56040F5E1A5AECCA1DC9222E /* [CP] Check Pods Manifest.lock */ = {
@@ -979,7 +993,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalog-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalogExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1002,7 +1016,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		84CA9E5D9ED2236A884F2F76 /* [CP] Copy Pods Resources */ = {
@@ -1021,7 +1035,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90736C7321F88630003B8B78 /* SwiftGen Script */ = {
@@ -1075,7 +1089,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalogTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalogExampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1335,7 +1349,7 @@
 		};
 		90736C4121F8609B003B8B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 769890F734CD1746A10C76A5 /* Pods-TextFieldsCatalog.debug.xcconfig */;
+			baseConfigurationReference = 3220339971BDB3B555BC49A7 /* Pods-TextFieldsCatalogExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1355,7 +1369,7 @@
 		};
 		90736C4221F8609B003B8B78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */;
+			baseConfigurationReference = 8412C6AC0801EE7F4018F298 /* Pods-TextFieldsCatalogExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1375,7 +1389,7 @@
 		};
 		90736C4421F8609B003B8B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B9F409927AD029A70C26A8B /* Pods-TextFieldsCatalogTests.debug.xcconfig */;
+			baseConfigurationReference = 0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1397,7 +1411,7 @@
 		};
 		90736C4521F8609B003B8B78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63BCA0129C1D70CDC1C3E6E3 /* Pods-TextFieldsCatalogTests.release.xcconfig */;
+			baseConfigurationReference = 3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

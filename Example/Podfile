@@ -14,11 +14,11 @@ def common_pods
     pod 'TextFieldsCatalog', :path => '../'
 end
 
-target 'TextFieldsCatalog' do
+target 'TextFieldsCatalogExample' do
   use_frameworks!
   common_pods
 
-  target 'TextFieldsCatalogTests' do
+  target 'TextFieldsCatalogExampleTests' do
     inherit! :search_paths
   end
 
