@@ -56,20 +56,20 @@ enum CustomUnderlinedFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any) {
+    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
         guard let field = field as? CustomUnderlinedTextField else {
             return
         }
-        apply(for: field)
+        apply(for: field, heightConstraint: heightConstraint)
     }
 
 }
 
 // MARK: - Tune
 
-private extension UnderlinedFieldPreset {
+private extension CustomUnderlinedFieldPreset {
 
-    func apply(for textField: CustomUnderlinedTextField) {
+    func apply(for textField: CustomUnderlinedTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
             tuneFieldForPassword(textField)

@@ -56,11 +56,11 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any) {
+    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
         guard let field = field as? BorderedTextField else {
             return
         }
-        apply(for: field)
+        apply(for: field, heightConstraint: heightConstraint)
     }
 
 }
@@ -69,7 +69,7 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
 
 private extension BorderedFieldPreset {
 
-    func apply(for textField: BorderedTextField) {
+    func apply(for textField: BorderedTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
             tuneFieldForPassword(textField)

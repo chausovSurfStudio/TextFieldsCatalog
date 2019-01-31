@@ -43,7 +43,7 @@ enum TextFieldType: CaseIterable {
         case .underlined:
             return UnderlinedFieldPreset.allCases
         case .customUnderlined:
-            return UnderlinedFieldPreset.allCases
+            return CustomUnderlinedFieldPreset.allCases
         }
     }
 

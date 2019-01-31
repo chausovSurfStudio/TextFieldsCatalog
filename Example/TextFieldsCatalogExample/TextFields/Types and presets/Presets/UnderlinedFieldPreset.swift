@@ -56,11 +56,11 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any) {
+    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
         guard let field = field as? UnderlinedTextField else {
             return
         }
-        apply(for: field)
+        apply(for: field, heightConstraint: heightConstraint)
     }
 
 }
@@ -69,10 +69,10 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
 
 private extension UnderlinedFieldPreset {
 
-    func apply(for textField: UnderlinedTextField) {
+    func apply(for textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
-            tuneFieldForPassword(textField)
+            tuneFieldForPassword(textField, heightConstraint: heightConstraint)
         case .email:
             tuneFieldForEmail(textField)
         case .phone:
@@ -88,9 +88,10 @@ private extension UnderlinedFieldPreset {
         }
     }
 
-    func tuneFieldForPassword(_ textField: UnderlinedTextField) {
+    func tuneFieldForPassword(_ textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
         textField.configure(placeholder: L10n.Presets.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
+        textField.configure(heightConstraint: heightConstraint)
         textField.disablePasteAction()
         textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
