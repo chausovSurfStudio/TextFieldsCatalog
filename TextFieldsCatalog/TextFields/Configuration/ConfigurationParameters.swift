@@ -134,11 +134,14 @@ public final class TextFieldBorderConfiguration {
 public final class HintConfiguration {
     /// Text font for hint label
     let font: UIFont
+    /// Line height for hint
+    let lineHeight: CGFloat
     /// Text colors for hint label
     let colors: ColorConfiguration
 
-    public init(font: UIFont, colors: ColorConfiguration) {
+    public init(font: UIFont, lineHeight: CGFloat, colors: ColorConfiguration) {
         self.font = font
+        self.lineHeight = lineHeight
         self.colors = colors
     }
 }

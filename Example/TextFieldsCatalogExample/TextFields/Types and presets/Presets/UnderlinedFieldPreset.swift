@@ -95,6 +95,7 @@ private extension UnderlinedFieldPreset {
         textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
+        textField.heightLayoutPolicy = .flexible(77, 5)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText

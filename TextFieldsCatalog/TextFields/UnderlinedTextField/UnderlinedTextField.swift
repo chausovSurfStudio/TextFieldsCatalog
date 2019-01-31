@@ -33,6 +33,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         case custom(ActionButtonConfiguration)
     }
 
+    public enum HeightLayoutPolicy {
+        /// Fixed height of text field
+        case fixed
+        /// Flexible height of text field.
+        /// Also allows you to configure minimal height for text field and bottom space value under hint label
+        case flexible(CGFloat, CGFloat)
+    }
+
     // MARK: - Constants
 
     private enum Constants {
@@ -61,6 +69,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var error: Bool = false
     private var mode: UnderlinedTextFieldMode = .plain
     private var nextInput: UIResponder?
+    private var heightConstraint: NSLayoutConstraint?
 
     // MARK: - Properties
 
@@ -84,6 +93,16 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
+    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
+        didSet {
+            switch heightLayoutPolicy {
+            case .fixed:
+                hintLabel.numberOfLines = 1
+            case .flexible(_, _):
+                hintLabel.numberOfLines = 0
+            }
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
@@ -91,6 +110,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var onShouldReturn: ((UnderlinedTextField) -> Void)?
     public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
     public var onValidateFail: ((UnderlinedTextField) -> Void)?
+    public var onHeightChanged: ((CGFloat) -> Void)?
 
     // MARK: - Initialization
 
@@ -118,6 +138,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
+    }
+
+    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
+    public func configure(heightConstraint: NSLayoutConstraint) {
+        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set autocorrection and keyboardType for textField
@@ -420,6 +445,7 @@ private extension UnderlinedTextField {
         updatePlaceholderColor()
         updatePlaceholderPosition()
         updatePlaceholderFont()
+        updateViewHeight()
     }
 
     func updatePasswordVisibilityButton() {
@@ -551,11 +577,30 @@ private extension UnderlinedTextField {
         placeholder.add(fontSizeAnimation, forKey: nil)
     }
 
+    func updateViewHeight() {
+        switch heightLayoutPolicy {
+        case .fixed:
+            return
+        case .flexible(let minHeight, let bottomSpace):
+            let hintHeight: CGFloat = hintLabelHeight()
+            let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
+            let viewHeight = max(minHeight, actualViewHeight)
+            heightConstraint?.constant = viewHeight
+            onHeightChanged?(viewHeight)
+            break
+        }
+    }
+
 }
 
-// MARK: - Elements colors
+// MARK: - Computed values
 
 private extension UnderlinedTextField {
+
+    func hintLabelHeight() -> CGFloat {
+        let hint = hintLabel.text ?? ""
+        return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
+    }
 
     func textColor() -> UIColor {
         return suitableColor(from: configuration.textField.colors)
