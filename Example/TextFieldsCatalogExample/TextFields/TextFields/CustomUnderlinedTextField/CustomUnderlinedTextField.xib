@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomUnderlinedTextField" customModule="TextFieldsCatalog" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomUnderlinedTextField" customModule="TextFieldsCatalogExample" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="pzg-nf-s0z" id="qFp-pC-f4i"/>
                 <outlet property="hintLabel" destination="sC5-en-3Q1" id="mFc-Dh-cMQ"/>
@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-89-cR6" customClass="InnerTextField" customModule="TextFieldsCatalog" customModuleProvider="target">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEN-89-cR6" customClass="InnerTextField" customModule="TextFieldsCatalog">
                     <rect key="frame" x="16" y="28" width="288" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="aOG-gb-eCW"/>
@@ -31,7 +31,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-nf-s0z" customClass="IconButton" customModule="TextFieldsCatalog" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-nf-s0z" customClass="IconButton" customModule="TextFieldsCatalog">
                     <rect key="frame" x="268" y="10" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="w8P-5h-uL4"/>
