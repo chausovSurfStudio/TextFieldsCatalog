@@ -598,7 +598,10 @@ private extension UnderlinedTextField {
 private extension UnderlinedTextField {
 
     func hintLabelHeight() -> CGFloat {
-        let hint = hintLabel.text ?? ""
+        var hint = ""
+        if let text = hintLabel.text, shouldShowHint() {
+            hint = text
+        }
         return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
     }
 
