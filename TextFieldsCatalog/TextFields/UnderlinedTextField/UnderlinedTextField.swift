@@ -515,8 +515,13 @@ private extension UnderlinedTextField {
 
     func updateHintLabelVisibility() {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.hintLabel.alpha = alpha
+        switch heightLayoutPolicy {
+        case .fixed:
+            UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+                self?.hintLabel.alpha = alpha
+            }
+        case .flexible(_, _):
+            hintLabel.alpha = alpha
         }
     }
 
@@ -598,11 +603,11 @@ private extension UnderlinedTextField {
 private extension UnderlinedTextField {
 
     func hintLabelHeight() -> CGFloat {
-        var hint = ""
-        if let text = hintLabel.text, shouldShowHint() {
-            hint = text
+        let hintIsVisible = shouldShowHint()
+        if let hint = hintLabel.text, hintIsVisible {
+            return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
         }
-        return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
+        return 0
     }
 
     func textColor() -> UIColor {
