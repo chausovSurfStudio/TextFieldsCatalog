@@ -20,4 +20,13 @@ extension String {
         return ceil(boundingBox.height)
     }
 
+    func with(lineHeight: CGFloat, font: UIFont, color: UIColor) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineHeight - font.lineHeight
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font,
+                                                         NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                                                         NSAttributedString.Key.foregroundColor: color]
+        return NSAttributedString(string: self, attributes: attributes)
+    }
+
 }

@@ -213,7 +213,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         if let message = errorMessage {
-            hintLabel.text = message
+            setupHintText(message)
         }
         updateUI()
     }
@@ -265,7 +265,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             return
         }
         hintMessage = hint
-        hintLabel.text = hint
+        setupHintText(hint)
     }
 
     /// Return true, if field is current firstResponder
@@ -464,13 +464,13 @@ private extension UnderlinedTextField {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         } else if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         }
         if error {
@@ -480,7 +480,7 @@ private extension UnderlinedTextField {
 
     func removeError() {
         if error {
-            hintLabel.text = hintMessage
+            setupHintText(hintMessage ?? "")
             error = false
             updateUI()
         }
@@ -501,6 +501,12 @@ private extension UnderlinedTextField {
             return true
         }
         return text.isEmpty
+    }
+
+    func setupHintText(_ hintText: String) {
+        hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
+                                                 font: configuration.hint.font,
+                                                 color: hintLabel.textColor)
     }
 
 }
