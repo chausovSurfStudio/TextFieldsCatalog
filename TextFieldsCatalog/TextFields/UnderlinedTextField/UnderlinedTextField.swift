@@ -33,14 +33,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         case custom(ActionButtonConfiguration)
     }
 
-    public enum HeightLayoutPolicy {
-        /// Fixed height of text field
-        case fixed
-        /// Flexible height of text field.
-        /// Also allows you to configure minimal height for text field and bottom space value under hint label
-        case flexible(CGFloat, CGFloat)
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -102,6 +94,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                 hintLabel.numberOfLines = 0
             }
         }
+    }
+    public var responder: UIResponder {
+        return self.textField
     }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
@@ -591,14 +586,13 @@ private extension UnderlinedTextField {
     func updateViewHeight() {
         switch heightLayoutPolicy {
         case .fixed:
-            return
+            break
         case .flexible(let minHeight, let bottomSpace):
             let hintHeight: CGFloat = hintLabelHeight()
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
             let viewHeight = max(minHeight, actualViewHeight)
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
-            break
         }
     }
 

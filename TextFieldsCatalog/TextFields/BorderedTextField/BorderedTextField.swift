@@ -57,6 +57,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     private var error: Bool = false
     private var mode: BorderedTextFieldMode = .plain
     private var nextInput: UIResponder?
+    private var heightConstraint: NSLayoutConstraint?
 
     // MARK: - Properties
 
@@ -80,6 +81,19 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     }
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
+    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
+        didSet {
+            switch heightLayoutPolicy {
+            case .fixed:
+                hintLabel.numberOfLines = 1
+            case .flexible(_, _):
+                hintLabel.numberOfLines = 0
+            }
+        }
+    }
+    public var responder: UIResponder {
+        return self.textField
+    }
 
     public var onBeginEditing: ((BorderedTextField) -> Void)?
     public var onEndEditing: ((BorderedTextField) -> Void)?
@@ -87,10 +101,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     public var onShouldReturn: ((BorderedTextField) -> Void)?
     public var onActionButtonTap: ((BorderedTextField) -> Void)?
     public var onValidateFail: ((BorderedTextField) -> Void)?
-
-    public var responder: UIResponder {
-        return self.textField
-    }
+    public var onHeightChanged: ((CGFloat) -> Void)?
 
     // MARK: - Initialization
 
@@ -118,6 +129,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholderLabel.text = placeholder
         self.maxLength = maxLength
+    }
+
+    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
+    public func configure(heightConstraint: NSLayoutConstraint) {
+        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set autocorrection and keyboardType for textField
@@ -173,7 +189,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     public func setError(with errorMessage: String?) {
         error = true
         if let message = errorMessage {
-            hintLabel.text = message
+            setupHintText(message)
         }
         updateUI()
     }
@@ -225,7 +241,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
             return
         }
         hintMessage = hint
-        hintLabel.text = hint
+        setupHintText(hint)
     }
 
     /// Return true, if field is current firstResponder
@@ -389,6 +405,7 @@ private extension BorderedTextField {
         updateHintLabelVisibility()
         updateTextColor()
         updateTextFieldBorderColor()
+        updateViewHeight()
     }
 
     func updatePasswordVisibilityButton() {
@@ -411,13 +428,13 @@ private extension BorderedTextField {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         } else if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         }
         if error {
@@ -427,10 +444,16 @@ private extension BorderedTextField {
 
     func removeError() {
         if error {
-            hintLabel.text = hintMessage
+            setupHintText(hintMessage ?? "")
             error = false
             updateUI()
         }
+    }
+
+    func setupHintText(_ hintText: String) {
+        hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
+                                                 font: configuration.hint.font,
+                                                 color: hintLabel.textColor)
     }
 
 }
@@ -445,8 +468,13 @@ private extension BorderedTextField {
 
     func updateHintLabelVisibility() {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.hintLabel.alpha = alpha
+        switch heightLayoutPolicy {
+        case .fixed:
+            UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+                self?.hintLabel.alpha = alpha
+            }
+        case .flexible(_, _):
+            hintLabel.alpha = alpha
         }
     }
 
@@ -467,11 +495,32 @@ private extension BorderedTextField {
         textField.layer.add(colorAnimation, forKey: nil)
     }
 
+    func updateViewHeight() {
+        switch heightLayoutPolicy {
+        case .fixed:
+            break
+        case .flexible(let minHeight, let bottomSpace):
+            let hintHeight: CGFloat = hintLabelHeight()
+            let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
+            let viewHeight = max(minHeight, actualViewHeight)
+            heightConstraint?.constant = viewHeight
+            onHeightChanged?(viewHeight)
+        }
+    }
+
 }
 
 // MARK: - Computed Colors
 
 private extension BorderedTextField {
+
+    func hintLabelHeight() -> CGFloat {
+        let hintIsVisible = shouldShowHint()
+        if let hint = hintLabel.text, hintIsVisible {
+            return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
+        }
+        return 0
+    }
 
     func placeholderTextColor() -> UIColor {
         return suitableColor(from: configuration.placeholder.colors)
