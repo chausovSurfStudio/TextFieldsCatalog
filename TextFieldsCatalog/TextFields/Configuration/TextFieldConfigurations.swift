@@ -37,6 +37,7 @@ public final class BorderedTextFieldConfiguration {
                                                                                   active: Color.Main.active,
                                                                                   disabled: Color.Main.container))
         hint = HintConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .regular),
+                                 lineHeight: 17,
                                  colors: ColorConfiguration(error: Color.Text.red,
                                                             normal: Color.Text.gray,
                                                             active: Color.Text.gray,
@@ -89,6 +90,7 @@ public final class UnderlinedTextFieldConfiguration {
                                                                       active: Color.Text.white,
                                                                       disabled: Color.Text.gray))
         hint = HintConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .regular),
+                                 lineHeight: 16,
                                  colors: ColorConfiguration(error: Color.Main.red,
                                                             normal: Color.Text.gray,
                                                             active: Color.Text.gray,

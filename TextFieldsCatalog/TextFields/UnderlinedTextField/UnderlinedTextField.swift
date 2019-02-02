@@ -61,6 +61,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var error: Bool = false
     private var mode: UnderlinedTextFieldMode = .plain
     private var nextInput: UIResponder?
+    private var heightConstraint: NSLayoutConstraint?
 
     // MARK: - Properties
 
@@ -84,6 +85,19 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
+    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
+        didSet {
+            switch heightLayoutPolicy {
+            case .fixed:
+                hintLabel.numberOfLines = 1
+            case .flexible(_, _):
+                hintLabel.numberOfLines = 0
+            }
+        }
+    }
+    public var responder: UIResponder {
+        return self.textField
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
@@ -91,6 +105,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var onShouldReturn: ((UnderlinedTextField) -> Void)?
     public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
     public var onValidateFail: ((UnderlinedTextField) -> Void)?
+    public var onHeightChanged: ((CGFloat) -> Void)?
 
     // MARK: - Initialization
 
@@ -118,6 +133,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
+    }
+
+    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
+    public func configure(heightConstraint: NSLayoutConstraint) {
+        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set autocorrection and keyboardType for textField
@@ -188,7 +208,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         if let message = errorMessage {
-            hintLabel.text = message
+            setupHintText(message)
         }
         updateUI()
     }
@@ -240,7 +260,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             return
         }
         hintMessage = hint
-        hintLabel.text = hint
+        setupHintText(hint)
     }
 
     /// Return true, if field is current firstResponder
@@ -420,6 +440,7 @@ private extension UnderlinedTextField {
         updatePlaceholderColor()
         updatePlaceholderPosition()
         updatePlaceholderFont()
+        updateViewHeight()
     }
 
     func updatePasswordVisibilityButton() {
@@ -438,13 +459,13 @@ private extension UnderlinedTextField {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         } else if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintLabel.text = message
+                setupHintText(message)
             }
         }
         if error {
@@ -454,7 +475,7 @@ private extension UnderlinedTextField {
 
     func removeError() {
         if error {
-            hintLabel.text = hintMessage
+            setupHintText(hintMessage ?? "")
             error = false
             updateUI()
         }
@@ -477,6 +498,12 @@ private extension UnderlinedTextField {
         return text.isEmpty
     }
 
+    func setupHintText(_ hintText: String) {
+        hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
+                                                 font: configuration.hint.font,
+                                                 color: hintLabel.textColor)
+    }
+
 }
 
 // MARK: - Updating
@@ -489,8 +516,13 @@ private extension UnderlinedTextField {
 
     func updateHintLabelVisibility() {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.hintLabel.alpha = alpha
+        switch heightLayoutPolicy {
+        case .fixed:
+            UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+                self?.hintLabel.alpha = alpha
+            }
+        case .flexible(_, _):
+            hintLabel.alpha = alpha
         }
     }
 
@@ -551,11 +583,32 @@ private extension UnderlinedTextField {
         placeholder.add(fontSizeAnimation, forKey: nil)
     }
 
+    func updateViewHeight() {
+        switch heightLayoutPolicy {
+        case .fixed:
+            break
+        case .flexible(let minHeight, let bottomSpace):
+            let hintHeight: CGFloat = hintLabelHeight()
+            let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
+            let viewHeight = max(minHeight, actualViewHeight)
+            heightConstraint?.constant = viewHeight
+            onHeightChanged?(viewHeight)
+        }
+    }
+
 }
 
-// MARK: - Elements colors
+// MARK: - Computed values
 
 private extension UnderlinedTextField {
+
+    func hintLabelHeight() -> CGFloat {
+        let hintIsVisible = shouldShowHint()
+        if let hint = hintLabel.text, hintIsVisible {
+            return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
+        }
+        return 0
+    }
 
     func textColor() -> UIColor {
         return suitableColor(from: configuration.textField.colors)

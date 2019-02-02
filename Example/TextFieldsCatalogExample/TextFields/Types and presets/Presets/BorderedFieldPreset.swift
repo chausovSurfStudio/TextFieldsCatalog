@@ -56,11 +56,11 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any) {
+    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
         guard let field = field as? BorderedTextField else {
             return
         }
-        apply(for: field)
+        apply(for: field, heightConstraint: heightConstraint)
     }
 
 }
@@ -69,10 +69,10 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
 
 private extension BorderedFieldPreset {
 
-    func apply(for textField: BorderedTextField) {
+    func apply(for textField: BorderedTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
-            tuneFieldForPassword(textField)
+            tuneFieldForPassword(textField, heightConstraint: heightConstraint)
         case .email:
             tuneFieldForEmail(textField)
         case .phone:
@@ -88,13 +88,15 @@ private extension BorderedFieldPreset {
         }
     }
 
-    func tuneFieldForPassword(_ textField: BorderedTextField) {
+    func tuneFieldForPassword(_ textField: BorderedTextField, heightConstraint: NSLayoutConstraint) {
         textField.configure(placeholder: L10n.Presets.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
+        textField.configure(heightConstraint: heightConstraint)
         textField.disablePasteAction()
         textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
+        textField.heightLayoutPolicy = .flexible(130, 5)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText

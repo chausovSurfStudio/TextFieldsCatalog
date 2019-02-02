@@ -69,7 +69,7 @@ extension FieldExampleViewController: FieldExampleViewInput {
         textField = newField
         textFieldContainerHeight.constant = height
         view.layoutIfNeeded()
-        preset.apply(for: newField)
+        preset.apply(for: newField, with: textFieldContainerHeight)
     }
 
 }

@@ -1,15 +1,15 @@
 //
-//  UnderlinedFieldPreset.swift
-//  TextFieldsCatalog
+//  CustomUnderlinedFieldPreset.swift
+//  TextFieldsCatalogExample
 //
-//  Created by Александр Чаусов on 24/01/2019.
+//  Created by Александр Чаусов on 31/01/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
 import UIKit
 import TextFieldsCatalog
 
-enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
+enum CustomUnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case password
     case email
     case phone
@@ -57,7 +57,7 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     }
 
     func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
-        guard let field = field as? UnderlinedTextField else {
+        guard let field = field as? CustomUnderlinedTextField else {
             return
         }
         apply(for: field, heightConstraint: heightConstraint)
@@ -67,12 +67,12 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
 
 // MARK: - Tune
 
-private extension UnderlinedFieldPreset {
+private extension CustomUnderlinedFieldPreset {
 
-    func apply(for textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
+    func apply(for textField: CustomUnderlinedTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
-            tuneFieldForPassword(textField, heightConstraint: heightConstraint)
+            tuneFieldForPassword(textField)
         case .email:
             tuneFieldForEmail(textField)
         case .phone:
@@ -88,15 +88,12 @@ private extension UnderlinedFieldPreset {
         }
     }
 
-    func tuneFieldForPassword(_ textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
+    func tuneFieldForPassword(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
-        textField.configure(heightConstraint: heightConstraint)
         textField.disablePasteAction()
-        textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password)
-        textField.heightLayoutPolicy = .flexible(77, 5)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText
@@ -106,41 +103,41 @@ private extension UnderlinedFieldPreset {
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
     }
 
-    func tuneFieldForEmail(_ textField: UnderlinedTextField) {
+    func tuneFieldForEmail(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: SharedRegex.email)
     }
 
-    func tuneFieldForPhone(_ textField: UnderlinedTextField) {
+    func tuneFieldForPhone(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Phone.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .phonePad)
         textField.validator = TextFieldValidator(minLength: 18, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Phone.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
     }
 
-    func tuneFieldForCardExpirationDate(_ textField: UnderlinedTextField) {
+    func tuneFieldForCardExpirationDate(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cardexpirationdate.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 5, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardExpirationDate)
     }
 
-    func tuneFieldForCvc(_ textField: UnderlinedTextField) {
+    func tuneFieldForCvc(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cvc.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 3, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cvc.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
     }
 
-    func tuneFieldForCardNumber(_ textField: UnderlinedTextField) {
+    func tuneFieldForCardNumber(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cardnumber.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
     }
 
-    func tuneFieldForQRCode(_ textField: UnderlinedTextField) {
+    func tuneFieldForQRCode(_ textField: CustomUnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Qrcode.placeholder, maxLength: 10)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.setHint(L10n.Presets.Qrcode.hint)

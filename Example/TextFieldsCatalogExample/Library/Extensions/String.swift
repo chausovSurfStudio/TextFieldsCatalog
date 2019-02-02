@@ -11,7 +11,6 @@ import UIKit
 extension String {
 
     func height(forWidth width: CGFloat, attributes: [NSAttributedString.Key: Any]) -> CGFloat {
-        let attributes: [NSAttributedString.Key: Any] = attributes
         let rect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: rect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         return ceil(boundingBox.height)

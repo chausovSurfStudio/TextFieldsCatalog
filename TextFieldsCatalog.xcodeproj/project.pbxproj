@@ -33,6 +33,8 @@
 		9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640B21FF5A0100BAA761 /* ResetableField.swift */; };
 		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
+		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
+		90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */; };
 		90BB47272200651800F6DB39 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB47262200651800F6DB39 /* AssetManager.swift */; };
 		90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB4729220065F000F6DB39 /* eyeOff@2x.png */; };
 		90BB4730220065F000F6DB39 /* eyeOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472A220065F000F6DB39 /* eyeOn@2x.png */; };
@@ -86,6 +88,8 @@
 		9038640B21FF5A0100BAA761 /* ResetableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetableField.swift; sourceTree = "<group>"; };
 		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightLayoutPolicy.swift; sourceTree = "<group>"; };
 		90BB47262200651800F6DB39 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		90BB4729220065F000F6DB39 /* eyeOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@2x.png"; sourceTree = "<group>"; };
 		90BB472A220065F000F6DB39 /* eyeOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOn@2x.png"; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				9038640921FF59D300BAA761 /* Foundation.swift */,
 				903863FF21FF592100BAA761 /* UIColor.swift */,
 				9038640121FF595300BAA761 /* UIImage.swift */,
+				909DB886220355F000F0C5B7 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
+				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 			files = (
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
+				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
@@ -613,6 +620,7 @@
 				902CE30221FF719B00AC21D4 /* UnderlinedTextField.swift in Sources */,
 				902CE2F821FF70E500AC21D4 /* ConfigurationParameters.swift in Sources */,
 				902CE2ED21FF6D9C00AC21D4 /* Strings.swift in Sources */,
+				909DB887220355F000F0C5B7 /* String.swift in Sources */,
 				902CE2F121FF707E00AC21D4 /* FormatterMasks.swift in Sources */,
 				9038640A21FF59D300BAA761 /* Foundation.swift in Sources */,
 			);
