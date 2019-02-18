@@ -62,6 +62,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var mode: UnderlinedTextFieldMode = .plain
     private var nextInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
+    private var lastViewHeight: CGFloat = 0
 
     // MARK: - Properties
 
@@ -345,6 +346,7 @@ private extension UnderlinedTextField {
         lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
         lineView.layer.cornerRadius = configuration.line.cornerRadius
         lineView.layer.masksToBounds = true
+        lineView.backgroundColor = configuration.line.colors.normal
     }
 
 }
@@ -516,13 +518,17 @@ private extension UnderlinedTextField {
 
     func updateHintLabelVisibility() {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
+        var duration: TimeInterval = Constants.animationDuration
         switch heightLayoutPolicy {
         case .fixed:
-            UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-                self?.hintLabel.alpha = alpha
-            }
+            // update always with animation
+            break
         case .flexible(_, _):
-            hintLabel.alpha = alpha
+            // update with animation on hint appear
+            duration = shouldShowHint() ? Constants.animationDuration : 0
+        }
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.hintLabel.alpha = alpha
         }
     }
 
@@ -591,6 +597,10 @@ private extension UnderlinedTextField {
             let hintHeight: CGFloat = hintLabelHeight()
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
             let viewHeight = max(minHeight, actualViewHeight)
+            guard lastViewHeight != viewHeight else {
+                return
+            }
+            lastViewHeight = viewHeight
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
         }
