@@ -225,10 +225,17 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         textField.pasteActionEnabled = false
     }
 
-    /// Allows you to disable textField
-    public func disableTextField(_ disable: Bool) {
-        state = disable ? .disabled : .normal
-        textField.isEnabled = !disable
+    /// Disable text field
+    public func disableTextField() {
+        state = .disabled
+        textField.isEnabled = false
+        updateUI()
+    }
+
+    /// Enable text field
+    public func enableTextField() {
+        state = .normal
+        textField.isEnabled = true
         updateUI()
     }
 

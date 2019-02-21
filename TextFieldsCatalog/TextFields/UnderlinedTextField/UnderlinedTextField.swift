@@ -250,6 +250,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    /// Enable text field
+    public func enableTextField() {
+        state = .normal
+        textField.isEnabled = true
+        updateUI()
+    }
+
     /// Return true if current state allows you to interact with this field
     public func isEnabled() -> Bool {
         return state != .disabled
