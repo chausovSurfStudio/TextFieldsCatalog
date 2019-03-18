@@ -148,6 +148,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         }
     }
 
+    /// Allows you to set autocapitalization type for textField
+    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
+        textField.autocapitalizationType = autocapitalizationType
+    }
+
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: BorderedTextFieldMode) {
         self.mode = mode

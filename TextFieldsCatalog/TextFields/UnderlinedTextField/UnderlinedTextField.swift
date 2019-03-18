@@ -151,6 +151,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
     }
 
+    /// Allows you to set autocapitalization type for textField
+    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
+        textField.autocapitalizationType = autocapitalizationType
+    }
+
     /// Allows you to set textContent type for textField
     public func configureContentType(_ contentType: UITextContentType) {
         textField.textContentType = contentType
