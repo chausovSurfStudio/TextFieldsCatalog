@@ -69,7 +69,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
-            updateUI()
+            updateUI(animated: false)
         }
     }
     public var validator: TextFieldValidation?
@@ -113,7 +113,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     override public init(frame: CGRect) {
         super.init(frame: frame)
         configureAppearance()
-        updateUI()
+        updateUI(animated: false)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -125,7 +125,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     override open func awakeFromNib() {
         super.awakeFromNib()
         configureAppearance()
-        updateUI()
+        updateUI(animated: false)
     }
 
     // MARK: - Public Methods
@@ -185,14 +185,15 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     /// Allows you to set text in textField and update all UI elements
-    public func setText(_ text: String?) {
+    /// Also you can set text with animation or without it (with animation by default)
+    public func setText(_ text: String?, animated: Bool = true) {
         if let formatter = maskFormatter {
             formatter.format(string: text, field: textField)
         } else {
             textField.text = text
         }
         validate()
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Return current input string in textField
@@ -216,7 +217,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         if let message = errorMessage {
             setupHintText(message)
         }
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Allows you to know current state: return true in case of current state is valid
@@ -252,7 +253,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func disableTextField() {
         state = .disabled
         textField.isEnabled = false
-        updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
         textField.text = currentText()
     }
@@ -261,7 +261,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func enableTextField() {
         state = .normal
         textField.isEnabled = true
-        updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
         textField.text = currentText()
     }
@@ -449,15 +448,15 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
 private extension UnderlinedTextField {
 
-    func updateUI(animated: Bool = false) {
+    func updateUI(animated: Bool = true) {
         updateHintLabelColor()
-        updateHintLabelVisibility()
-        updateLineViewColor()
-        updateLineViewHeight()
+        updateHintLabelVisibility(animated: animated)
+        updateLineViewColor(animated: animated)
+        updateLineViewHeight(animated: animated)
         updateTextColor()
-        updatePlaceholderColor()
-        updatePlaceholderPosition()
-        updatePlaceholderFont()
+        updatePlaceholderColor(animated: animated)
+        updatePlaceholderPosition(animated: animated)
+        updatePlaceholderFont(animated: animated)
         updateViewHeight()
     }
 
@@ -532,7 +531,7 @@ private extension UnderlinedTextField {
         hintLabel.textColor = hintTextColor()
     }
 
-    func updateHintLabelVisibility() {
+    func updateHintLabelVisibility(animated: Bool) {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
         var duration: TimeInterval = Constants.animationDuration
         switch heightLayoutPolicy {
@@ -541,23 +540,25 @@ private extension UnderlinedTextField {
             break
         case .flexible(_, _):
             // update with animation on hint appear
-            duration = shouldShowHint() ? Constants.animationDuration : 0
+            duration = shouldShowHint() && animated ? Constants.animationDuration : 0
         }
         UIView.animate(withDuration: duration) { [weak self] in
             self?.hintLabel.alpha = alpha
         }
     }
 
-    func updateLineViewColor() {
+    func updateLineViewColor(animated: Bool) {
         let color = lineColor()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+        let duration = animated ? Constants.animationDuration : 0
+        UIView.animate(withDuration: duration) { [weak self] in
             self?.lineView.backgroundColor = color
         }
     }
 
-    func updateLineViewHeight() {
+    func updateLineViewHeight(animated: Bool) {
         let height = lineHeight()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+        let duration = animated ? Constants.animationDuration : 0
+        UIView.animate(withDuration: duration) { [weak self] in
             self?.lineView.frame.size.height = height
         }
     }
@@ -566,7 +567,7 @@ private extension UnderlinedTextField {
         textField.textColor = textColor()
     }
 
-    func updatePlaceholderColor() {
+    func updatePlaceholderColor(animated: Bool) {
         let startColor: CGColor = currentPlaceholderColor()
         let endColor: CGColor = placeholderColor()
         placeholder.foregroundColor = endColor
@@ -574,12 +575,12 @@ private extension UnderlinedTextField {
         let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
         colorAnimation.fromValue = startColor
         colorAnimation.toValue = endColor
-        colorAnimation.duration = Constants.animationDuration
+        colorAnimation.duration = animated ? Constants.animationDuration : 0
         colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition() {
+    func updatePlaceholderPosition(animated: Bool) {
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition()
         placeholder.frame = endPosition
@@ -587,12 +588,12 @@ private extension UnderlinedTextField {
         let frameAnimation = CABasicAnimation(keyPath: "frame")
         frameAnimation.fromValue = startPosition
         frameAnimation.toValue = endPosition
-        frameAnimation.duration = Constants.animationDuration
+        frameAnimation.duration = animated ? Constants.animationDuration : 0
         frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(frameAnimation, forKey: nil)
     }
 
-    func updatePlaceholderFont() {
+    func updatePlaceholderFont(animated: Bool) {
         let startFontSize: CGFloat = currentPlaceholderFontSize()
         let endFontSize: CGFloat = placeholderFontSize()
         placeholder.fontSize = endFontSize
@@ -600,7 +601,7 @@ private extension UnderlinedTextField {
         let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
         fontSizeAnimation.fromValue = startFontSize
         fontSizeAnimation.toValue = endFontSize
-        fontSizeAnimation.duration = Constants.animationDuration
+        fontSizeAnimation.duration = animated ? Constants.animationDuration : 0
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(fontSizeAnimation, forKey: nil)
     }
