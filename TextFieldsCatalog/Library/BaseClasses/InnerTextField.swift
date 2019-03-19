@@ -9,33 +9,33 @@
 import UIKit
 
 /// Class for UITextField with some extra features, it uses inside custom textFields in the project
-final class InnerTextField: UITextField {
+public final class InnerTextField: UITextField {
 
     // MARK: - Properties
 
-    var pasteActionEnabled: Bool = true
-    var textPadding: UIEdgeInsets = UIEdgeInsets.zero
-    var placeholderPadding: UIEdgeInsets = UIEdgeInsets.zero
+    public var pasteActionEnabled: Bool = true
+    public var textPadding: UIEdgeInsets = UIEdgeInsets.zero
+    public var placeholderPadding: UIEdgeInsets = UIEdgeInsets.zero
 
     // MARK: - UIView
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         removeRightView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         removeRightView()
     }
 
     // MARK: - UITextField
 
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if !pasteActionEnabled, action == #selector(UIResponderStandardEditActions.paste(_:)) {
             return false
         }
@@ -54,7 +54,7 @@ final class InnerTextField: UITextField {
         return bounds.inset(by: placeholderPadding)
     }
 
-    override var isSecureTextEntry: Bool {
+    override public var isSecureTextEntry: Bool {
         didSet {
             if isFirstResponder {
                 _ = becomeFirstResponder()
@@ -62,7 +62,7 @@ final class InnerTextField: UITextField {
         }
     }
 
-    override func becomeFirstResponder() -> Bool {
+    override public func becomeFirstResponder() -> Bool {
         let success = super.becomeFirstResponder()
         if isSecureTextEntry, let text = self.text {
             self.text?.removeAll()
@@ -73,7 +73,7 @@ final class InnerTextField: UITextField {
 
     // MARK: - Internal Methods
 
-    func fixCursorPosition() {
+    public func fixCursorPosition() {
         let beginning = beginningOfDocument
         selectedTextRange = textRange(from: beginning, to: beginning)
         let end = endOfDocument

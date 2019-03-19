@@ -148,6 +148,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         }
     }
 
+    /// Allows you to set autocapitalization type for textField
+    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
+        textField.autocapitalizationType = autocapitalizationType
+    }
+
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: BorderedTextFieldMode) {
         self.mode = mode
@@ -230,6 +235,8 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         state = .disabled
         textField.isEnabled = false
         updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        textField.text = currentText()
     }
 
     /// Enable text field
@@ -237,6 +244,8 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         state = .normal
         textField.isEnabled = true
         updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        textField.text = currentText()
     }
 
     /// Return true if current state allows you to interact with this field

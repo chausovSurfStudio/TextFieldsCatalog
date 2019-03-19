@@ -151,6 +151,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
     }
 
+    /// Allows you to set autocapitalization type for textField
+    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
+        textField.autocapitalizationType = autocapitalizationType
+    }
+
     /// Allows you to set textContent type for textField
     public func configureContentType(_ contentType: UITextContentType) {
         textField.textContentType = contentType
@@ -248,6 +253,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         state = .disabled
         textField.isEnabled = false
         updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        textField.text = currentText()
     }
 
     /// Enable text field
@@ -255,6 +262,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         state = .normal
         textField.isEnabled = true
         updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        textField.text = currentText()
     }
 
     /// Return true if current state allows you to interact with this field
