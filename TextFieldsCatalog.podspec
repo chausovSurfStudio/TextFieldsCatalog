@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = "TextFieldsCatalog"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
   s.summary = "This is catalog of various input field with great opportunities for validation and formatting."
   s.homepage = "https://github.com/chausovSurfStudio/TextFieldsCatalog"
   s.license = { :type => "MIT", :file => "LICENSE" }
