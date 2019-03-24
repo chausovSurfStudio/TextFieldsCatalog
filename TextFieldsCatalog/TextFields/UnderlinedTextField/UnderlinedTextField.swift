@@ -452,7 +452,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
 private extension UnderlinedTextField {
 
-    func updateUI(animated: Bool = true) {
+    func updateUI(animated: Bool = false) {
         updateHintLabelColor()
         updateHintLabelVisibility(animated: animated)
         updateLineViewColor(animated: animated)
@@ -464,9 +464,12 @@ private extension UnderlinedTextField {
         let duration = animationDuration(animated: animated)
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
-        updatePlaceholderColor(animated: animated)
-        updatePlaceholderPosition(animated: animated)
-        updatePlaceholderFont(animated: animated)
+        let animation1 = updatePlaceholderColor(animated: animated)
+        let animation2 = updatePlaceholderPosition(animated: animated)
+        let animation3 = updatePlaceholderFont(animated: animated)
+        placeholder.add(animation1, forKey: nil)
+        placeholder.add(animation2, forKey: nil)
+        placeholder.add(animation3, forKey: nil)
         CATransaction.commit()
     }
 
@@ -576,17 +579,18 @@ private extension UnderlinedTextField {
         textField.textColor = textColor()
     }
 
-    func updatePlaceholderColor(animated: Bool) {
+    func updatePlaceholderColor(animated: Bool) -> CABasicAnimation {
         let endColor: CGColor = placeholderColor()
         placeholder.foregroundColor = endColor
 
         let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
         colorAnimation.toValue = endColor
         colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(colorAnimation, forKey: nil)
+        return colorAnimation
+//        placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition(animated: Bool) {
+    func updatePlaceholderPosition(animated: Bool) -> CABasicAnimation {
         let endFrame: CGRect = placeholderPosition()
         let endPosition: CGPoint = CGPoint(x: endFrame.midX, y: endFrame.midY)
         placeholder.position = endPosition
@@ -594,17 +598,19 @@ private extension UnderlinedTextField {
         let frameAnimation = CABasicAnimation(keyPath: "position")
         frameAnimation.toValue = endPosition
         frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(frameAnimation, forKey: nil)
+        return frameAnimation
+//        placeholder.add(frameAnimation, forKey: nil)
     }
 
-    func updatePlaceholderFont(animated: Bool) {
+    func updatePlaceholderFont(animated: Bool) -> CABasicAnimation {
         let endFontSize: CGFloat = placeholderFontSize()
         placeholder.fontSize = endFontSize
 
         let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
         fontSizeAnimation.toValue = endFontSize
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(fontSizeAnimation, forKey: nil)
+        return fontSizeAnimation
+//        placeholder.add(fontSizeAnimation, forKey: nil)
     }
 
     func updateViewHeight() {
