@@ -96,12 +96,12 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textField
     }
-    public var inputView: UIView? {
+    override open var inputView: UIView? {
         get {
             return textField.inputView
         }
         set {
-            textField.inputView = inputView
+            textField.inputView = newValue
         }
     }
 

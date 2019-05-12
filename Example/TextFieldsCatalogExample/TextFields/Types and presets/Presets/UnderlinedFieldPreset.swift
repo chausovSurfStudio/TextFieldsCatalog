@@ -17,6 +17,7 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case cvc
     case cardNumber
     case qrCode
+    case birthday
 
     var name: String {
         switch self {
@@ -34,6 +35,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cardnumber.name
         case .qrCode:
             return L10n.Presets.Qrcode.name
+        case .birthday:
+            return "Дата"
         }
     }
 
@@ -53,6 +56,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cardnumber.description
         case .qrCode:
             return L10n.Presets.Qrcode.description
+        case .birthday:
+            return "Пример работы поля для ввода какой либо даты. К примеру, даты рождения"
         }
     }
 
@@ -85,6 +90,8 @@ private extension UnderlinedFieldPreset {
             tuneFieldForCardNumber(textField)
         case .qrCode:
             tuneFieldForQRCode(textField)
+        case .birthday:
+            tuneFieldForBirthday(textField)
         }
     }
 
@@ -153,6 +160,14 @@ private extension UnderlinedFieldPreset {
         textField.onActionButtonTap = { field in
             field.setText("qrcode1234")
         }
+    }
+
+    func tuneFieldForBirthday(_ textField: UnderlinedTextField) {
+        textField.configure(placeholder: "Дата рождения", maxLength: 10)
+
+        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 200))
+        inputView.backgroundColor = UIColor.red
+        textField.inputView = inputView
     }
 
 }
