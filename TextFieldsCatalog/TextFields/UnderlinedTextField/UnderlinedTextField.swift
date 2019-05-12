@@ -115,6 +115,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
     public var onValidateFail: ((UnderlinedTextField) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
+    public var onDateChanged: ((Date) -> Void)?
 
     // MARK: - Initialization
 
@@ -449,6 +450,17 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         onTextChanged?(self)
+    }
+
+}
+
+// MARK: - DateTextField
+
+extension UnderlinedTextField: DateTextField {
+
+    public func processDateChange(_ date: Date, text: String) {
+        textField.text = text
+        onDateChanged?(date)
     }
 
 }

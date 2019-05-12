@@ -165,9 +165,14 @@ private extension UnderlinedFieldPreset {
     func tuneFieldForBirthday(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: "Дата рождения", maxLength: 10)
 
-        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 200))
-        inputView.backgroundColor = UIColor.red
+        let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
+        let inputView = DatePickerView.view(size: inputViewSize,
+                                            textField: textField)
         textField.inputView = inputView
+
+        textField.onDateChanged = { date in
+            print("this is selected date - \(date)")
+        }
     }
 
 }

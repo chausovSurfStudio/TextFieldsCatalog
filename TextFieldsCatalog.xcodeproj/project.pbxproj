@@ -42,6 +42,8 @@
 		90BB4732220065F000F6DB39 /* eyeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472C220065F000F6DB39 /* eyeOn.png */; };
 		90BB4733220065F000F6DB39 /* eyeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472D220065F000F6DB39 /* eyeOff.png */; };
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
+		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
+		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		C54243D867C082DEEE6837E3 /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE916FD724CB5EEEA122919 /* Pods_TextFieldsCatalogTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		90BB472C220065F000F6DB39 /* eyeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeOn.png; sourceTree = "<group>"; };
 		90BB472D220065F000F6DB39 /* eyeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeOff.png; sourceTree = "<group>"; };
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
+		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		90FAC49D22887EFB0032A7F1 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85FAD03B2BFDDF9E9787A91 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 		903863F321FF583A00BAA761 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				90FAC49D22887EFB0032A7F1 /* DateTextField.swift */,
 				9038640B21FF5A0100BAA761 /* ResetableField.swift */,
 				9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */,
 			);
@@ -237,6 +242,7 @@
 		903863F421FF584E00BAA761 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				90FAC49A22886E3A0032A7F1 /* Pickers */,
 				9038640F21FF5A3600BAA761 /* IconButton.swift */,
 			);
 			path = Reusable;
@@ -319,6 +325,14 @@
 				902CE2FC21FF712900AC21D4 /* BorderedTextField.xib */,
 			);
 			path = BorderedTextField;
+			sourceTree = "<group>";
+		};
+		90FAC49A22886E3A0032A7F1 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		F34EC8AAFBCB28C6FC910AF7 /* Pods */ = {
@@ -602,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
+				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
@@ -613,6 +628,7 @@
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
 				9038640421FF597600BAA761 /* CommonButton.swift in Sources */,
 				9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */,
+				90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */,
 				9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */,
 				90BB47272200651800F6DB39 /* AssetManager.swift in Sources */,
 				9038640021FF592100BAA761 /* UIColor.swift in Sources */,
