@@ -168,6 +168,7 @@ private extension UnderlinedFieldPreset {
         let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
         let inputView = DatePickerView.view(size: inputViewSize,
                                             textField: textField)
+        inputView.datePicker.backgroundColor = UIColor.white
         textField.inputView = inputView
 
         textField.onDateChanged = { date in

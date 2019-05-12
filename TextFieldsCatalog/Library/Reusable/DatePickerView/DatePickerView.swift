@@ -57,6 +57,7 @@ private extension DatePickerView {
 
     func configureAppearance() {
         configureDatePicker()
+        configureTopView()
     }
 
     func configureDatePicker() {
@@ -73,6 +74,14 @@ private extension DatePickerView {
         datePicker.date = Date(timeIntervalSince1970: 0)
         datePicker.addTarget(self, action: #selector(dateChanged(picker:)), for: .valueChanged)
         addSubview(datePicker)
+    }
+
+    func configureTopView() {
+        let topView = DatePickerTopView(frame: CGRect(x: 0,
+                                                      y: 0,
+                                                      width: bounds.width,
+                                                      height: Constants.topViewHeight))
+        addSubview(topView)
     }
 
 }
