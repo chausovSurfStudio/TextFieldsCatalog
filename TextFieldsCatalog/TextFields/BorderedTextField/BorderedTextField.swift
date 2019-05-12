@@ -96,6 +96,14 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textField
     }
+    public var inputView: UIView? {
+        get {
+            return textField.inputView
+        }
+        set {
+            textField.inputView = inputView
+        }
+    }
 
     public var onBeginEditing: ((BorderedTextField) -> Void)?
     public var onEndEditing: ((BorderedTextField) -> Void)?

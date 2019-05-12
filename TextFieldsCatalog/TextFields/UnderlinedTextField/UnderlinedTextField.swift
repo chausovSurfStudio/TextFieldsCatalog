@@ -99,6 +99,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textField
     }
+    public var inputView: UIView? {
+        get {
+            return textField.inputView
+        }
+        set {
+            textField.inputView = inputView
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
