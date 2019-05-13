@@ -454,6 +454,16 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
 }
 
+// MARK: - GuidedTextField
+
+extension UnderlinedTextField: GuidedTextField {
+
+    public func processReturnAction() {
+        textField.resignFirstResponder()
+    }
+
+}
+
 // MARK: - DateTextField
 
 extension UnderlinedTextField: DateTextField {
@@ -463,8 +473,14 @@ extension UnderlinedTextField: DateTextField {
         onDateChanged?(date)
     }
 
-    public func processReturnAction() {
-        textField.resignFirstResponder()
+}
+
+// MARK: - PickerTextField
+
+extension UnderlinedTextField: PickerTextField {
+
+    public func processValueChange(_ value: String) {
+        setText(value)
     }
 
 }

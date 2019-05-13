@@ -9,7 +9,6 @@
 import Foundation
 
 /// Protocols for text field which can communicate with DatePickerView as its inputView
-public protocol DateTextField: class {
+public protocol DateTextField: GuidedTextField {
     func processDateChange(_ date: Date, text: String)
-    func processReturnAction()
 }

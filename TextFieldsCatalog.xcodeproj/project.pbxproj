@@ -35,6 +35,9 @@
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
 		90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */; };
+		90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7C228975730036C634 /* PlainPickerView.swift */; };
+		90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7E2289792D0036C634 /* PickerTextField.swift */; };
+		90A32B81228984540036C634 /* GuidedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B80228984540036C634 /* GuidedTextField.swift */; };
 		90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */; };
 		90BB47272200651800F6DB39 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB47262200651800F6DB39 /* AssetManager.swift */; };
 		90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB4729220065F000F6DB39 /* eyeOff@2x.png */; };
@@ -95,6 +98,9 @@
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopViewConfiguration.swift; sourceTree = "<group>"; };
+		90A32B7C228975730036C634 /* PlainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPickerView.swift; sourceTree = "<group>"; };
+		90A32B7E2289792D0036C634 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
+		90A32B80228984540036C634 /* GuidedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedTextField.swift; sourceTree = "<group>"; };
 		90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightLayoutPolicy.swift; sourceTree = "<group>"; };
 		90BB47262200651800F6DB39 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		90BB4729220065F000F6DB39 /* eyeOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@2x.png"; sourceTree = "<group>"; };
@@ -238,8 +244,7 @@
 		903863F321FF583A00BAA761 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				90FAC49D22887EFB0032A7F1 /* DateTextField.swift */,
-				9038640B21FF5A0100BAA761 /* ResetableField.swift */,
+				90A32B82228985840036C634 /* TextField */,
 				9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */,
 			);
 			path = Protocols;
@@ -333,11 +338,23 @@
 			path = BorderedTextField;
 			sourceTree = "<group>";
 		};
+		90A32B82228985840036C634 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				90FAC49D22887EFB0032A7F1 /* DateTextField.swift */,
+				90A32B80228984540036C634 /* GuidedTextField.swift */,
+				90A32B7E2289792D0036C634 /* PickerTextField.swift */,
+				9038640B21FF5A0100BAA761 /* ResetableField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		90FAC49F228880250032A7F1 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
 				90FAC4A0228880310032A7F1 /* TopView */,
 				90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */,
+				90A32B7C228975730036C634 /* PlainPickerView.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -644,11 +661,14 @@
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
 				903863FE21FF590700BAA761 /* Color.swift in Sources */,
 				902CE2FD21FF712900AC21D4 /* BorderedTextField.swift in Sources */,
+				90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
+				90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */,
 				9038640421FF597600BAA761 /* CommonButton.swift in Sources */,
 				9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */,
 				90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */,
+				90A32B81228984540036C634 /* GuidedTextField.swift in Sources */,
 				9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */,
 				90BB47272200651800F6DB39 /* AssetManager.swift in Sources */,
 				9038640021FF592100BAA761 /* UIColor.swift in Sources */,

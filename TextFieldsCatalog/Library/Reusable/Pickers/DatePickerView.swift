@@ -10,6 +10,7 @@ import UIKit
 
 /// Custom input view for text fields with UIDatePicker.
 /// Have date picker and top view with custom "return" button.
+/// You have to provide linked textField in init method, then string with date will set in textField automatically.
 public final class DatePickerView: UIView {
 
     // MARK: - Constants
@@ -44,6 +45,7 @@ public final class DatePickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Method for creating DatePickerView with specific size, linked textField and custom dateFormat ("dd.MM.yyyy" by default)
     static public func view(size: CGSize,
                             textField: DateTextField,
                             dateFormat: String? = nil) -> DatePickerView {
