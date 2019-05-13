@@ -164,6 +164,10 @@ private extension UnderlinedFieldPreset {
 
     func tuneFieldForBirthday(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: "Дата рождения", maxLength: 10)
+        textField.validator = TextFieldValidator(minLength: 1,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: "Вы должны выбрать дату своего рождения")
 
         let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
         let inputView = DatePickerView.view(size: inputViewSize,

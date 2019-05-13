@@ -34,6 +34,7 @@
 		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
+		90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */; };
 		90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */; };
 		90BB47272200651800F6DB39 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB47262200651800F6DB39 /* AssetManager.swift */; };
 		90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB4729220065F000F6DB39 /* eyeOff@2x.png */; };
@@ -44,8 +45,8 @@
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
-		90FAC4A2228880420032A7F1 /* DatePickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* DatePickerTopView.swift */; };
-		90FAC4A42288804A0032A7F1 /* DatePickerTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FAC4A32288804A0032A7F1 /* DatePickerTopView.xib */; };
+		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
+		90FAC4A42288804A0032A7F1 /* PickerTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FAC4A32288804A0032A7F1 /* PickerTopView.xib */; };
 		C54243D867C082DEEE6837E3 /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE916FD724CB5EEEA122919 /* Pods_TextFieldsCatalogTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopViewConfiguration.swift; sourceTree = "<group>"; };
 		90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightLayoutPolicy.swift; sourceTree = "<group>"; };
 		90BB47262200651800F6DB39 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		90BB4729220065F000F6DB39 /* eyeOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@2x.png"; sourceTree = "<group>"; };
@@ -103,8 +105,8 @@
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		90FAC49D22887EFB0032A7F1 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
-		90FAC4A1228880420032A7F1 /* DatePickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTopView.swift; sourceTree = "<group>"; };
-		90FAC4A32288804A0032A7F1 /* DatePickerTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTopView.xib; sourceTree = "<group>"; };
+		90FAC4A1228880420032A7F1 /* PickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopView.swift; sourceTree = "<group>"; };
+		90FAC4A32288804A0032A7F1 /* PickerTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTopView.xib; sourceTree = "<group>"; };
 		AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85FAD03B2BFDDF9E9787A91 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -246,7 +248,7 @@
 		903863F421FF584E00BAA761 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
-				90FAC49F228880250032A7F1 /* DatePickerView */,
+				90FAC49F228880250032A7F1 /* Pickers */,
 				9038640F21FF5A3600BAA761 /* IconButton.swift */,
 			);
 			path = Reusable;
@@ -331,20 +333,21 @@
 			path = BorderedTextField;
 			sourceTree = "<group>";
 		};
-		90FAC49F228880250032A7F1 /* DatePickerView */ = {
+		90FAC49F228880250032A7F1 /* Pickers */ = {
 			isa = PBXGroup;
 			children = (
 				90FAC4A0228880310032A7F1 /* TopView */,
 				90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */,
 			);
-			path = DatePickerView;
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		90FAC4A0228880310032A7F1 /* TopView */ = {
 			isa = PBXGroup;
 			children = (
-				90FAC4A1228880420032A7F1 /* DatePickerTopView.swift */,
-				90FAC4A32288804A0032A7F1 /* DatePickerTopView.xib */,
+				90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */,
+				90FAC4A1228880420032A7F1 /* PickerTopView.swift */,
+				90FAC4A32288804A0032A7F1 /* PickerTopView.xib */,
 			);
 			path = TopView;
 			sourceTree = "<group>";
@@ -462,7 +465,7 @@
 			files = (
 				90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */,
 				90BB4730220065F000F6DB39 /* eyeOn@2x.png in Resources */,
-				90FAC4A42288804A0032A7F1 /* DatePickerTopView.xib in Resources */,
+				90FAC4A42288804A0032A7F1 /* PickerTopView.xib in Resources */,
 				90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */,
 				90BB4731220065F000F6DB39 /* eyeOn@3x.png in Resources */,
 				90BB4733220065F000F6DB39 /* eyeOff.png in Resources */,
@@ -633,7 +636,8 @@
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
-				90FAC4A2228880420032A7F1 /* DatePickerTopView.swift in Sources */,
+				90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */,
+				90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */,
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,

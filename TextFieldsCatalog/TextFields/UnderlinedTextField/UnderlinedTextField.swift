@@ -459,8 +459,12 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 extension UnderlinedTextField: DateTextField {
 
     public func processDateChange(_ date: Date, text: String) {
-        textField.text = text
+        setText(text)
         onDateChanged?(date)
+    }
+
+    public func processReturnAction() {
+        textField.resignFirstResponder()
     }
 
 }

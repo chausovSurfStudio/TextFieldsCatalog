@@ -11,3 +11,7 @@
 "Errors.TextField.empty" = "Поле должно быть заполнено";
 "Errors.TextField.short" = "Поле должно содержать минимум %@ символов";
 "Errors.TextField.notValid" = "Неверный формат";
+
+// MARK: - Button
+
+"Button.Done" = "Готово";

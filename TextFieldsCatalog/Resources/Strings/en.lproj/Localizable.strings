@@ -11,3 +11,7 @@
 "Errors.TextField.empty" = "Field must be filled";
 "Errors.TextField.short" = "The field must contain at least %@ characters.";
 "Errors.TextField.notValid" = "Wrong format";
+
+// MARK: - Button
+
+"Button.Done" = "Done";

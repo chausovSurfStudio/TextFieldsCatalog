@@ -21,11 +21,17 @@ public final class DatePickerView: UIView {
     // MARK: - Properties
 
     public let datePicker = UIDatePicker()
+    public var topViewConfiguration = PickerTopViewConfiguration() {
+        didSet {
+            topView?.configuration = topViewConfiguration
+        }
+    }
 
     // MARK: - Private Properties
 
     private weak var textField: DateTextField?
     private var dateFormat = "dd.MM.yyyy"
+    private var topView: PickerTopView?
 
     // MARK: - Initialization
 
@@ -77,10 +83,14 @@ private extension DatePickerView {
     }
 
     func configureTopView() {
-        let topView = DatePickerTopView(frame: CGRect(x: 0,
-                                                      y: 0,
-                                                      width: bounds.width,
-                                                      height: Constants.topViewHeight))
+        let topView = PickerTopView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: bounds.width,
+                                                  height: Constants.topViewHeight))
+        topView.onReturn = { [weak self] in
+            self?.textField?.processReturnAction()
+        }
+        self.topView = topView
         addSubview(topView)
     }
 
