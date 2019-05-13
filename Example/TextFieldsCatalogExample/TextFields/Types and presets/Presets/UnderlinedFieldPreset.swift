@@ -211,10 +211,3 @@ private extension UnderlinedFieldPreset {
     }
 
 }
-
-// MARK: - Support Classes
-
-private enum Sex: String, CaseIterable {
-    case male = "Мужской"
-    case female = "Женский"
-}
