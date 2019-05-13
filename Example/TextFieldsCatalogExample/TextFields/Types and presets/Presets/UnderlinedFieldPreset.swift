@@ -37,9 +37,9 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .qrCode:
             return L10n.Presets.Qrcode.name
         case .birthday:
-            return "Дата"
+            return L10n.Presets.Birthday.name
         case .sex:
-            return "Пол"
+            return L10n.Presets.Sex.name
         }
     }
 
@@ -60,9 +60,9 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .qrCode:
             return L10n.Presets.Qrcode.description
         case .birthday:
-            return "Пример работы поля для ввода какой либо даты. К примеру, даты рождения"
+            return L10n.Presets.Birthday.description
         case .sex:
-            return "Пример работы поля для выбора какого-то значения из заранее заготовленного списка. Для более простого выбора используется барабан"
+            return L10n.Presets.Sex.description
         }
     }
 
@@ -170,11 +170,11 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForBirthday(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Дата рождения", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Birthday.placeholder, maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1,
                                                  maxLength: nil,
                                                  regex: nil,
-                                                 globalErrorMessage: "Вы должны выбрать дату своего рождения")
+                                                 globalErrorMessage: L10n.Presets.Birthday.hint)
 
         let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
         let inputView = DatePickerView.view(size: inputViewSize,
@@ -188,11 +188,11 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForSex(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Пол", maxLength: nil)
+        textField.configure(placeholder: L10n.Presets.Sex.placeholder, maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1,
                                                  maxLength: nil,
                                                  regex: nil,
-                                                 globalErrorMessage: "Вы должны определиться со своим полом")
+                                                 globalErrorMessage: L10n.Presets.Sex.hint)
 
         let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
         let inputView = PlainPickerView.view(size: inputViewSize,

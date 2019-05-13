@@ -30,6 +30,17 @@ enum L10n {
 
   enum Presets {
 
+    enum Birthday {
+      /// Пример работы поля для ввода какой либо даты. К примеру, даты рождения. Особенность состоит в том, что для ввода даты используется UIDatePicker.\n\n• Для корректной работы поля необходимо создать кастомное inputView, предоставляемое библиотекой, указав его размер, поле ввода, к которому оно будет относится, а также dateFormat (который по умолчанию установлен в dd.MM.yyyy).\n• При смене даты - текст в поле ввода будет меняться автоматически, в соответствии с установленным dateFormat, а саму дату можно получить, реализовав замыкание onDateChanged.\n• Toolbar кастомизируется, можно поменять текст 'return' кнопки, цвет кнопок, цвет бэкграунда, цвет сепараторов.\n• При установке previous/next input в полях ввода - в тулбаре автоматически появятся кнопки для навигации между полями. При этом создавать inputView необходимо до установки этих значений.\n• Имеется доступ к UIDatePicker, а соответственно, и его настройкам.
+      static let description = L10n.tr("Localizable", "Presets.birthday.description")
+      /// Вы должны выбрать дату своего рождения
+      static let hint = L10n.tr("Localizable", "Presets.birthday.hint")
+      /// Дата
+      static let name = L10n.tr("Localizable", "Presets.birthday.name")
+      /// Дата рождения
+      static let placeholder = L10n.tr("Localizable", "Presets.birthday.placeholder")
+    }
+
     enum Cardexpirationdate {
       /// Пример работы поля для случая ввода срока действия карты.\n\n• Для соответствия содержимого корректному формату - используется форматтер с определенной маской.
       static let description = L10n.tr("Localizable", "Presets.cardExpirationDate.description")
@@ -111,6 +122,17 @@ enum L10n {
       static let name = L10n.tr("Localizable", "Presets.qrCode.name")
       /// Введите QR-код
       static let placeholder = L10n.tr("Localizable", "Presets.qrCode.placeholder")
+    }
+
+    enum Sex {
+      /// Пример работы поля для выбора какого-то значения из заранее заготовленного списка. Для более простого выбора используется барабан (UIPickerView).\n\n• Для корректной работы поля необходимо создать кастомное inputView, предоставляемое библиотекой, указав его размер, поле ввода, к которому оно будет относится, а также передать список необходимых к отображению значений.\n• При смене значения - текст в поле ввода будет меняться автоматически.\n• Toolbar кастомизируется, можно поменять текст 'return' кнопки, цвет кнопок, цвет бэкграунда, цвет сепараторов.\n• При установке previous/next input в полях ввода - в тулбаре автоматически появятся кнопки для навигации между полями. При этом создавать inputView необходимо до установки этих значений.
+      static let description = L10n.tr("Localizable", "Presets.sex.description")
+      /// Вы должны определиться со своим полом
+      static let hint = L10n.tr("Localizable", "Presets.sex.hint")
+      /// Пол
+      static let name = L10n.tr("Localizable", "Presets.sex.name")
+      /// Пол
+      static let placeholder = L10n.tr("Localizable", "Presets.sex.placeholder")
     }
   }
 
