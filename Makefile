@@ -43,5 +43,5 @@ format:
 	./Pods/SwiftLint/swiftlint autocorrect --config .swiftlint.yml
 
 ## Allows you to perform pod install command via bundler settings. Use it instead plain pod install command.
-pod_install:
+pod:
 	bundle exec pod install

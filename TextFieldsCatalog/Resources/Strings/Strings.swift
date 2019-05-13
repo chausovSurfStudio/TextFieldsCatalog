@@ -8,6 +8,11 @@ import Foundation
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum L10n {
 
+  enum Button {
+    /// Done
+    static let done = L10n.tr("Localizable", "Button.Done")
+  }
+
   enum Errors {
 
     enum Textfield {

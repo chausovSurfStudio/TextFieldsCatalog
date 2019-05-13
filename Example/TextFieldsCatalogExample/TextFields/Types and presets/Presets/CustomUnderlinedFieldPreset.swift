@@ -17,6 +17,8 @@ enum CustomUnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case cvc
     case cardNumber
     case qrCode
+    case birthday
+    case sex
 
     var name: String {
         switch self {
@@ -34,6 +36,10 @@ enum CustomUnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cardnumber.name
         case .qrCode:
             return L10n.Presets.Qrcode.name
+        case .birthday:
+            return L10n.Presets.Birthday.name
+        case .sex:
+            return L10n.Presets.Sex.name
         }
     }
 
@@ -53,6 +59,10 @@ enum CustomUnderlinedFieldPreset: CaseIterable, AppliedPreset {
             return L10n.Presets.Cardnumber.description
         case .qrCode:
             return L10n.Presets.Qrcode.description
+        case .birthday:
+            return L10n.Presets.Birthday.description
+        case .sex:
+            return L10n.Presets.Sex.description
         }
     }
 
@@ -85,6 +95,10 @@ private extension CustomUnderlinedFieldPreset {
             tuneFieldForCardNumber(textField)
         case .qrCode:
             tuneFieldForQRCode(textField)
+        case .birthday:
+            tuneFieldForBirthday(textField)
+        case .sex:
+            tuneFieldForSex(textField)
         }
     }
 
@@ -149,6 +163,47 @@ private extension CustomUnderlinedFieldPreset {
         textField.setTextFieldMode(.custom(actionButtonConfig))
         textField.onActionButtonTap = { field in
             field.setText("qrcode1234")
+        }
+    }
+
+    func tuneFieldForBirthday(_ textField: CustomUnderlinedTextField) {
+        textField.configure(placeholder: L10n.Presets.Birthday.placeholder, maxLength: nil)
+        textField.validator = TextFieldValidator(minLength: 1,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: L10n.Presets.Birthday.hint)
+
+        let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
+        let inputView = DatePickerView.view(size: inputViewSize,
+                                            textField: textField)
+        inputView.datePicker.backgroundColor = .white
+        textField.inputView = inputView
+
+        textField.onDateChanged = { date in
+            print("this is selected date - \(date)")
+        }
+    }
+
+    func tuneFieldForSex(_ textField: CustomUnderlinedTextField) {
+        textField.configure(placeholder: L10n.Presets.Sex.placeholder, maxLength: nil)
+        textField.validator = TextFieldValidator(minLength: 1,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: L10n.Presets.Sex.hint)
+
+        let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
+        let inputView = PlainPickerView.view(size: inputViewSize,
+                                             textField: textField,
+                                             data: Sex.allCases.map { $0.value })
+        inputView.picker.backgroundColor = .white
+        textField.inputView = inputView
+
+        textField.onTextChanged = { field in
+            if let value = Sex.sex(by: field.currentText()) {
+                print(value)
+            } else {
+                print("sex is undefined")
+            }
         }
     }
 
