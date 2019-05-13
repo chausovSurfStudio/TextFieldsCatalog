@@ -197,12 +197,12 @@ private extension BorderedFieldPreset {
         let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
         let inputView = PlainPickerView.view(size: inputViewSize,
                                              textField: textField,
-                                             data: Sex.allCases.map { $0.rawValue })
+                                             data: Sex.allCases.map { $0.value })
         inputView.picker.backgroundColor = .white
         textField.inputView = inputView
 
         textField.onTextChanged = { field in
-            if let value = field.currentText().flatMap({ Sex(rawValue: $0) }) {
+            if let value = Sex.sex(by: field.currentText()) {
                 print(value)
             } else {
                 print("sex is undefined")

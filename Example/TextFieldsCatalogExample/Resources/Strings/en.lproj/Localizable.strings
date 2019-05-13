@@ -11,6 +11,12 @@
 "Button.changePreset" = "Изменить пресет";
 "Button.reset" = "Сбросить";
 
+// MARK: - Constants
+
+// MARK: Sex
+"Constants.Sex.male" = "Мужской";
+"Constants.Sex.female" = "Женский";
+
 // MARK: - TextFieldType
 
 "TextFieldType.Bordered.title" = "Поле ввода с обводкой";

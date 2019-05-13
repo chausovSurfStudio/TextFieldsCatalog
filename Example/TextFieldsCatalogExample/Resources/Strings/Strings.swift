@@ -15,6 +15,16 @@ enum L10n {
     static let reset = L10n.tr("Localizable", "Button.reset")
   }
 
+  enum Constants {
+
+    enum Sex {
+      /// Женский
+      static let female = L10n.tr("Localizable", "Constants.Sex.female")
+      /// Мужской
+      static let male = L10n.tr("Localizable", "Constants.Sex.male")
+    }
+  }
+
   enum Main {
 
     enum Info {
