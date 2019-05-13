@@ -55,6 +55,7 @@ public final class PlainPickerView: UIView {
         view.textField = textField
         view.data = data
         view.picker.reloadAllComponents()
+        view.updateNavigationButtonsVisibility()
         return view
     }
 
@@ -91,8 +92,20 @@ private extension PlainPickerView {
         topView.onReturn = { [weak self] in
             self?.textField?.processReturnAction()
         }
+        topView.onSwitchToPreviousInput = { [weak self] in
+            self?.textField?.switchToPreviousInput()
+        }
+        topView.onSwitchToNextInput = { [weak self] in
+            self?.textField?.switchToNextInput()
+        }
         self.topView = topView
         addSubview(topView)
+    }
+
+    func updateNavigationButtonsVisibility() {
+        let showBackButton = textField?.havePreviousInput ?? false
+        let showNextButton = textField?.haveNextInput ?? false
+        topView?.configureNavigationButtons(showBackButton: showBackButton, nextButton: showNextButton)
     }
 
 }

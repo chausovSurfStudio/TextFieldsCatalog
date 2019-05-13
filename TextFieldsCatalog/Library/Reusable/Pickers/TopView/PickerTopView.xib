@@ -13,7 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickerTopView" customModule="TextFieldsCatalog" customModuleProvider="target">
             <connections>
                 <outlet property="bottomSeparator" destination="qPv-BJ-zn3" id="4Fr-qh-F2C"/>
+                <outlet property="leftNavigationButton" destination="6to-hU-OI3" id="esj-IP-XUa"/>
+                <outlet property="leftNavigationButtonWidth" destination="jkH-Vc-vHb" id="7DM-9n-VrK"/>
                 <outlet property="returnButton" destination="2JF-qe-XW3" id="uSf-pq-VcZ"/>
+                <outlet property="rightNavigationButton" destination="dvc-Kw-zjN" id="bPL-dA-Fqj"/>
                 <outlet property="topSeparator" destination="wnj-tj-ETS" id="hBd-PO-Axa"/>
             </connections>
         </placeholder>
@@ -46,16 +49,42 @@
                         <constraint firstAttribute="height" constant="1" id="f6C-XU-Jl8"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6to-hU-OI3" customClass="IconButton" customModule="TextFieldsCatalog" customModuleProvider="target">
+                    <rect key="frame" x="10" y="1" width="35" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="jkH-Vc-vHb"/>
+                    </constraints>
+                    <state key="normal" image="leftArrow.png"/>
+                    <connections>
+                        <action selector="switchToPreviousInput:" destination="-1" eventType="touchUpInside" id="xOD-JX-jUj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvc-Kw-zjN" customClass="IconButton" customModule="TextFieldsCatalog" customModuleProvider="target">
+                    <rect key="frame" x="45" y="1" width="35" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="dKe-Cm-WQk"/>
+                    </constraints>
+                    <state key="normal" image="rightArrow.png"/>
+                    <connections>
+                        <action selector="switchToNextInput:" destination="-1" eventType="touchUpInside" id="oAW-hI-ejb"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2JF-qe-XW3" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="23E-mX-7EN"/>
                 <constraint firstAttribute="trailing" secondItem="wnj-tj-ETS" secondAttribute="trailing" id="2Nw-Ao-YGM"/>
+                <constraint firstItem="dvc-Kw-zjN" firstAttribute="leading" secondItem="6to-hU-OI3" secondAttribute="trailing" id="3bd-fz-ctI"/>
                 <constraint firstAttribute="trailing" secondItem="qPv-BJ-zn3" secondAttribute="trailing" id="AOr-eR-IPY"/>
                 <constraint firstItem="qPv-BJ-zn3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="AnZ-qE-QGr"/>
+                <constraint firstItem="6to-hU-OI3" firstAttribute="top" secondItem="wnj-tj-ETS" secondAttribute="bottom" id="Aot-2x-Uvg"/>
                 <constraint firstItem="wnj-tj-ETS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DXo-uh-0xv"/>
+                <constraint firstItem="dvc-Kw-zjN" firstAttribute="top" secondItem="wnj-tj-ETS" secondAttribute="bottom" id="QOu-fQ-SSc"/>
                 <constraint firstItem="2JF-qe-XW3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="SPy-fT-odt"/>
                 <constraint firstItem="qPv-BJ-zn3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vq5-6X-b6d"/>
+                <constraint firstItem="6to-hU-OI3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="XFI-Nd-QxN"/>
+                <constraint firstItem="dvc-Kw-zjN" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="YEs-gs-dgN"/>
+                <constraint firstItem="qPv-BJ-zn3" firstAttribute="top" secondItem="6to-hU-OI3" secondAttribute="bottom" id="ZBf-TF-5IQ"/>
                 <constraint firstItem="wnj-tj-ETS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="oDs-oC-jws"/>
                 <constraint firstItem="2JF-qe-XW3" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="y1j-h9-KvJ"/>
             </constraints>
@@ -64,4 +93,8 @@
             <point key="canvasLocation" x="131.25" y="-122.00704225352113"/>
         </view>
     </objects>
+    <resources>
+        <image name="leftArrow.png" width="24" height="24"/>
+        <image name="rightArrow.png" width="24" height="24"/>
+    </resources>
 </document>

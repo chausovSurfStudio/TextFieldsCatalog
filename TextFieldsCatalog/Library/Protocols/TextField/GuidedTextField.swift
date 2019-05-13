@@ -10,5 +10,10 @@ import Foundation
 
 /// Protocols for manageable text field, which can switch responder or resign it
 public protocol GuidedTextField: class {
+    var havePreviousInput: Bool { get }
+    var haveNextInput: Bool { get }
+
     func processReturnAction()
+    func switchToPreviousInput()
+    func switchToNextInput()
 }

@@ -14,7 +14,7 @@ public final class PickerTopViewConfiguration {
     let backgroundColor: UIColor
     /// Separators color into the topView. You can setup .clear color for hiding it
     let separatorsColor: UIColor
-    /// Configuration for return button
+    /// Configuration for return and navigations button
     let button: PickerTopViewButtonConfiguration
 
     public init(backgroundColor: UIColor,
@@ -34,13 +34,13 @@ public final class PickerTopViewConfiguration {
     }
 }
 
-/// Configuration class with parameters for topView return button
+/// Configuration class with parameters for topView return and navigations button
 public final class PickerTopViewButtonConfiguration {
-    /// Text into the button
+    /// Text into the return button
     let text: String
-    /// Color for button text in normal state
+    /// Color for buttons text and image in normal state
     let activeColor: UIColor
-    /// Color for button text in highlighted state
+    /// Color for buttons text and image in highlighted state
     let highlightedColor: UIColor
 
     public init(text: String,

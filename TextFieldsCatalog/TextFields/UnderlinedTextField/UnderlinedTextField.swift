@@ -61,6 +61,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var error: Bool = false
     private var mode: UnderlinedTextFieldMode = .plain
     private var nextInput: UIResponder?
+    private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
 
@@ -300,6 +301,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         nextInput = nextResponder
     }
 
+    /// Sets previous responder, which will be activated after 'Back' button in keyboard toolbar will be pressed.
+    /// 'Back' button appears only into the topView in custom input views, which you can find in this library.
+    public func setPreviousResponder(_ nextResponder: UIResponder) {
+        previousInput = nextResponder
+    }
+
     /// Makes textField is current first responder
     public func makeFirstResponder() {
         _ = textField.becomeFirstResponder()
@@ -458,8 +465,24 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
 extension UnderlinedTextField: GuidedTextField {
 
+    public var havePreviousInput: Bool {
+        return previousInput != nil
+    }
+
+    public var haveNextInput: Bool {
+        return nextInput != nil
+    }
+
     public func processReturnAction() {
         textField.resignFirstResponder()
+    }
+
+    public func switchToPreviousInput() {
+        previousInput?.becomeFirstResponder()
+    }
+
+    public func switchToNextInput() {
+        nextInput?.becomeFirstResponder()
     }
 
 }
@@ -481,6 +504,7 @@ extension UnderlinedTextField: PickerTextField {
 
     public func processValueChange(_ value: String) {
         setText(value)
+        onTextChanged?(self)
     }
 
 }

@@ -54,6 +54,7 @@ public final class DatePickerView: UIView {
         if let dateFormat = dateFormat {
             view.dateFormat = dateFormat
         }
+        view.updateNavigationButtonsVisibility()
         return view
     }
 
@@ -92,8 +93,20 @@ private extension DatePickerView {
         topView.onReturn = { [weak self] in
             self?.textField?.processReturnAction()
         }
+        topView.onSwitchToPreviousInput = { [weak self] in
+            self?.textField?.switchToPreviousInput()
+        }
+        topView.onSwitchToNextInput = { [weak self] in
+            self?.textField?.switchToNextInput()
+        }
         self.topView = topView
         addSubview(topView)
+    }
+
+    func updateNavigationButtonsVisibility() {
+        let showBackButton = textField?.havePreviousInput ?? false
+        let showNextButton = textField?.haveNextInput ?? false
+        topView?.configureNavigationButtons(showBackButton: showBackButton, nextButton: showNextButton)
     }
 
 }
