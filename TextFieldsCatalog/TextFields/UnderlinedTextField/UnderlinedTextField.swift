@@ -215,9 +215,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.inputView = UIView()
     }
 
-    /// Allows to set accessibilityIdentifier for textField
+    /// Allows to set accessibilityIdentifier for textField and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
-        textField.accessibilityIdentifier = identifier
+        view.accessibilityIdentifier = identifier
+        textField.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
+        actionButton.accessibilityIdentifier = identifier + AccessibilityIdentifiers.button
+        hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
     }
 
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous info message
