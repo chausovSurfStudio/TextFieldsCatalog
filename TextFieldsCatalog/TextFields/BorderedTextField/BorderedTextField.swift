@@ -202,6 +202,19 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         return textField.text
     }
 
+    /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
+    public func hideKeyboard() {
+        textField.inputView = UIView()
+    }
+
+    /// Allows to set accessibilityIdentifier for textField and its internal elements
+    public func setTextFieldIdentifier(_ identifier: String) {
+        view.accessibilityIdentifier = identifier
+        textField.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
+        actionButton.accessibilityIdentifier = identifier + AccessibilityIdentifiers.button
+        hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
+    }
+
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous hint message
     public func setError(with errorMessage: String?) {
         error = true
