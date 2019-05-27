@@ -51,7 +51,7 @@ private extension UnderlinedTextViewPreset {
         textView.configure(correction: .no, keyboardType: .default)
         textView.configure(heightConstraint: heightConstraint)
         textView.setHint("Напишите комментарий к заказу")
-        textView.setReturnKeyType(.next)
+        textView.hideClearButton = true
 
         let validator = TextFieldValidator(minLength: 30, maxLength: 200, regex: nil)
         validator.shortErrorText = "Оставьте развернутый комментарий к доставке, он должен быть не менее 30 символов"

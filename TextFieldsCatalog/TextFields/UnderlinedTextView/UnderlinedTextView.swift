@@ -60,8 +60,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var maxLength: Int?
 
     private var error: Bool = false
-    private var nextInput: UIResponder?
-    private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     private var lastLinePosition: CGRect = .zero
@@ -75,17 +73,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         }
     }
     public var validator: TextFieldValidation?
-    public var hideOnReturn: Bool = true
+    public var hideClearButton = false
     public var responder: UIResponder {
         return self.textView
-    }
-    override open var inputView: UIView? {
-        get {
-            return textView.inputView
-        }
-        set {
-            textView.inputView = newValue
-        }
     }
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
@@ -245,26 +235,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         return textView.isFirstResponder
     }
 
-    /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
-    public func setNextResponder(_ nextResponder: UIResponder) {
-        textView.returnKeyType = .next
-        nextInput = nextResponder
-    }
-
-    /// Sets previous responder, which will be activated after 'Back' button in keyboard toolbar will be pressed.
-    /// 'Back' button appears only into the topView in custom input views, which you can find in this library.
-    public func setPreviousResponder(_ nextResponder: UIResponder) {
-        previousInput = nextResponder
-    }
-
     /// Makes textField is current first responder
     public func makeFirstResponder() {
         _ = textView.becomeFirstResponder()
-    }
-
-    /// Allows you to manage keyboard returnKeyType
-    public func setReturnKeyType(_ type: UIReturnKeyType) {
-        textView.returnKeyType = type
     }
 
 }
@@ -556,7 +529,7 @@ private extension UnderlinedTextView {
     }
 
     func updateClearButtonVisibility() {
-        clearButton.isHidden = textView.text.isEmpty
+        clearButton.isHidden = textView.text.isEmpty || hideClearButton
     }
 
 }
