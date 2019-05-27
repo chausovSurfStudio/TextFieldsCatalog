@@ -10,11 +10,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnderlinedTextView" customModule="TextFieldsCatalog" customModuleProvider="target">
+            <connections>
+                <outlet property="hintLabel" destination="ZCF-Sk-dJU" id="JZE-Q0-jBY"/>
+                <outlet property="textView" destination="mpb-Kh-o2r" id="ITP-LH-26F"/>
+                <outlet property="textViewHeightConstraint" destination="ElT-0x-VoV" id="rXz-bE-ecf"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mpb-Kh-o2r">
+                    <rect key="frame" x="16" y="18" width="288" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ElT-0x-VoV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-Sk-dJU">
+                    <rect key="frame" x="16" y="57" width="288" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="Z1R-4h-TTz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="mpb-Kh-o2r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="0bX-As-kQt"/>
+                <constraint firstItem="ZCF-Sk-dJU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="L7z-X8-qrJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZCF-Sk-dJU" secondAttribute="trailing" constant="16" id="QLO-IM-0YQ"/>
+                <constraint firstItem="ZCF-Sk-dJU" firstAttribute="top" secondItem="mpb-Kh-o2r" secondAttribute="bottom" constant="9" id="f8I-TO-SYc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mpb-Kh-o2r" secondAttribute="trailing" constant="16" id="gGi-VM-FpG"/>
+                <constraint firstItem="mpb-Kh-o2r" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="yWg-X3-yZt"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.25" y="-106.69014084507042"/>

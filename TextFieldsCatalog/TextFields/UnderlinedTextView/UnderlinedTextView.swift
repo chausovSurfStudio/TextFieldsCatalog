@@ -31,13 +31,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var textField: InnerTextField!
+    @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var hintLabel: UILabel!
 
     // MARK: - NSLayoutConstraints
 
     @IBOutlet private weak var textViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var hintLabelTopOffsetConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
@@ -69,14 +68,14 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validator: TextFieldValidation?
     public var hideOnReturn: Bool = true
     public var responder: UIResponder {
-        return self.textField
+        return self.textView
     }
     override open var inputView: UIView? {
         get {
-            return textField.inputView
+            return textView.inputView
         }
         set {
-            textField.inputView = newValue
+            textView.inputView = newValue
         }
     }
     public var heightLayoutPolicy: HeightLayoutPolicy = .flexible(77, 5)
@@ -124,44 +123,44 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     /// Allows you to set autocorrection and keyboardType for textField
     public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
         if let correction = correction {
-            textField.autocorrectionType = correction
+            textView.autocorrectionType = correction
         }
         if let keyboardType = keyboardType {
-            textField.keyboardType = keyboardType
+            textView.keyboardType = keyboardType
         }
     }
 
     /// Allows you to set autocapitalization type for textField
     public func configure(autocapitalizationType: UITextAutocapitalizationType) {
-        textField.autocapitalizationType = autocapitalizationType
+        textView.autocapitalizationType = autocapitalizationType
     }
 
     /// Allows you to set textContent type for textField
     public func configureContentType(_ contentType: UITextContentType) {
-        textField.textContentType = contentType
+        textView.textContentType = contentType
     }
 
     /// Allows you to set text in textField and update all UI elements
     public func setText(_ text: String?) {
-        textField.text = text
+        textView.text = text ?? ""
         validate()
         updateUI()
     }
 
     /// Return current input string in textField
-    public func currentText() -> String? {
-        return textField.text
+    public func currentText() -> String {
+        return textView.text
     }
 
     /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
     public func hideKeyboard() {
-        textField.inputView = UIView()
+        textView.inputView = UIView()
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier
-        textField.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
+        textView.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
         hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
     }
 
@@ -187,7 +186,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
-        textField.text = ""
+        textView.text = ""
         error = false
         updateUI()
     }
@@ -201,19 +200,19 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     /// Disable text field
     public func disableTextField() {
         state = .disabled
-        textField.isEnabled = false
+        textView.isEditable = false
         updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
+        textView.text = currentText()
     }
 
     /// Enable text field
     public func enableTextField() {
         state = .normal
-        textField.isEnabled = true
+        textView.isEditable = true
         updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
+        textView.text = currentText()
     }
 
     /// Return true if current state allows you to interact with this field
@@ -232,12 +231,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     /// Return true, if field is current firstResponder
     public func isCurrentFirstResponder() -> Bool {
-        return textField.isFirstResponder
+        return textView.isFirstResponder
     }
 
     /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
     public func setNextResponder(_ nextResponder: UIResponder) {
-        textField.returnKeyType = .next
+        textView.returnKeyType = .next
         nextInput = nextResponder
     }
 
@@ -249,12 +248,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     /// Makes textField is current first responder
     public func makeFirstResponder() {
-        _ = textField.becomeFirstResponder()
+        _ = textView.becomeFirstResponder()
     }
 
     /// Allows you to manage keyboard returnKeyType
     public func setReturnKeyType(_ type: UIReturnKeyType) {
-        textField.returnKeyType = type
+        textView.returnKeyType = type
     }
 
 }
@@ -266,13 +265,14 @@ private extension UnderlinedTextView {
     func configureAppearance() {
         configureBackground()
         configurePlaceholder()
-        configureTextField()
+        configureTextView()
         configureHintLabel()
         configureLineView()
     }
 
     func configureBackground() {
         view.backgroundColor = configuration.background.color
+        textView.backgroundColor = UIColor.clear
     }
 
     func configurePlaceholder() {
@@ -287,21 +287,23 @@ private extension UnderlinedTextView {
         self.layer.addSublayer(placeholder)
     }
 
-    func configureTextField() {
-        textField.delegate = self
-        textField.font = configuration.textField.font
-        textField.textColor = configuration.textField.colors.normal
-        textField.tintColor = configuration.textField.tintColor
-        textField.returnKeyType = .done
-        textField.textPadding = configuration.textField.defaultPadding
-        textField.addTarget(self, action: #selector(textfieldEditingChange(_:)), for: .editingChanged)
+    func configureTextView() {
+        textView.delegate = self
+        textView.font = configuration.textField.font
+        textView.textColor = configuration.textField.colors.normal
+        textView.tintColor = configuration.textField.tintColor
+        textView.returnKeyType = .done
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textView.textContainer.lineFragmentPadding = 0
+        textView.contentOffset = CGPoint(x: 0, y: 0)
+        textView.isScrollEnabled = false
     }
 
     func configureHintLabel() {
         hintLabel.textColor = configuration.hint.colors.normal
         hintLabel.font = configuration.hint.font
         hintLabel.text = ""
-        hintLabel.numberOfLines = 1
+        hintLabel.numberOfLines = 0
         hintLabel.alpha = 0
     }
 
@@ -318,39 +320,27 @@ private extension UnderlinedTextView {
 
 }
 
-// MARK: - Actions
+// MARK: - UITextViewDelegate
 
-private extension UnderlinedTextView {
+extension UnderlinedTextView: UITextViewDelegate {
 
-    @objc
-    func textfieldEditingChange(_ textField: UITextField) {
-        removeError()
-        onTextChanged?(self)
-    }
-
-}
-
-// MARK: - UITextFieldDelegate
-
-extension UnderlinedTextView: UITextFieldDelegate {
-
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
         state = .active
         onBeginEditing?(self)
     }
 
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    public func textViewDidEndEditing(_ textView: UITextView) {
         validate()
         state = .normal
         onEndEditing?(self)
     }
 
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text) else {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let text = textView.text, let textRange = Range(range, in: text) else {
             return true
         }
 
-        let newText = text.replacingCharacters(in: textRange, with: string)
+        let newText = text.replacingCharacters(in: textRange, with: text)
         var isValid = true
         if let maxLength = self.maxLength {
             isValid = newText.count <= maxLength
@@ -359,17 +349,9 @@ extension UnderlinedTextView: UITextFieldDelegate {
         return isValid
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = nextInput {
-            nextField.becomeFirstResponder()
-        } else {
-            if hideOnReturn {
-                textField.resignFirstResponder()
-            }
-            onShouldReturn?(self)
-            return true
-        }
-        return false
+    public func textViewDidChange(_ textView: UITextView) {
+        removeError()
+        onTextChanged?(self)
     }
 
 }
@@ -381,18 +363,22 @@ private extension UnderlinedTextView {
     func updateUI(animated: Bool = false) {
         updateHintLabelColor()
         updateHintLabelVisibility()
+        updateHintLabelPosition()
+
         updateLineViewColor()
         updateLineViewHeight()
-        updateTextColor()
+
         updatePlaceholderColor()
         updatePlaceholderPosition()
         updatePlaceholderFont()
+
+        updateTextColor()
         updateViewHeight()
     }
 
     func validate() {
         if let currentValidator = validator {
-            let (isValid, errorMessage) = currentValidator.validate(textField.text)
+            let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
             if let message = errorMessage, !isValid {
                 setupHintText(message)
@@ -422,7 +408,7 @@ private extension UnderlinedTextView {
 
     /// Return true, if current input string is empty
     func textIsEmpty() -> Bool {
-        guard let text = textField.text else {
+        guard let text = textView.text else {
             return true
         }
         return text.isEmpty
@@ -452,6 +438,10 @@ private extension UnderlinedTextView {
         }
     }
 
+    func updateHintLabelPosition() {
+
+    }
+
     func updateLineViewColor() {
         let color = lineColor()
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
@@ -464,10 +454,6 @@ private extension UnderlinedTextView {
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
             self?.lineView.frame.size.height = height
         }
-    }
-
-    func updateTextColor() {
-        textField.textColor = textColor()
     }
 
     func updatePlaceholderColor() {
@@ -507,6 +493,10 @@ private extension UnderlinedTextView {
         fontSizeAnimation.duration = Constants.animationDuration
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(fontSizeAnimation, forKey: nil)
+    }
+
+    func updateTextColor() {
+        textView.textColor = textColor()
     }
 
     func updateViewHeight() {
