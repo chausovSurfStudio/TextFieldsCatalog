@@ -189,6 +189,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textView.text = ""
+        setupHintText(hintMessage ?? "")
         error = false
         updateUI()
         updateClearButtonVisibility()
