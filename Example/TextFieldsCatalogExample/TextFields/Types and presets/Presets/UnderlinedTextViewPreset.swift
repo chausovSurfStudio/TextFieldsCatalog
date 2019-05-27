@@ -50,9 +50,8 @@ private extension UnderlinedTextViewPreset {
         textView.configure(placeholder: "Комментарий", maxLength: nil)
         textView.configure(correction: .no, keyboardType: .default)
         textView.configure(heightConstraint: heightConstraint)
-//        textView.setHint(L10n.Presets.Password.hint)
+        textView.setHint("Напишите комментарий к заказу")
         textView.setReturnKeyType(.next)
-        textView.heightLayoutPolicy = .flexible(77, 5)
 
 //        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
 //        validator.shortErrorText = L10n.Presets.Password.shortErrorText

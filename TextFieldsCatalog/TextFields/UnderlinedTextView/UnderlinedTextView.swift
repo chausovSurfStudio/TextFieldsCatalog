@@ -12,6 +12,13 @@ import UIKit
 /// Standart height equals 77.
 open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
+    // MARK: - Struct
+
+    public struct FlexibleHeightPolicy {
+        let minHeight: CGFloat
+        let bottomOffset: CGFloat
+    }
+
     // MARK: - Enums
 
     private enum UnderlinedTextViewState {
@@ -78,7 +85,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
             textView.inputView = newValue
         }
     }
-    public var heightLayoutPolicy: HeightLayoutPolicy = .flexible(77, 5)
+    public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
+                                                           bottomOffset: 5)
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -271,7 +279,7 @@ private extension UnderlinedTextView {
     }
 
     func configureBackground() {
-        view.backgroundColor = configuration.background.color
+        view.backgroundColor = UIColor.black//configuration.background.color
         textView.backgroundColor = UIColor.clear
     }
 
@@ -394,6 +402,9 @@ private extension UnderlinedTextView {
             setupHintText(hintMessage ?? "")
             error = false
             updateUI()
+        } else {
+            updateHintLabelPosition()
+            updateViewHeight()
         }
     }
 
@@ -500,20 +511,24 @@ private extension UnderlinedTextView {
     }
 
     func updateViewHeight() {
-        switch heightLayoutPolicy {
-        case .fixed:
-            break
-        case .flexible(let minHeight, let bottomSpace):
-            let hintHeight: CGFloat = hintLabelHeight()
-            let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
-            let viewHeight = max(minHeight, actualViewHeight)
-            guard lastViewHeight != viewHeight else {
-                return
-            }
-            lastViewHeight = viewHeight
-            heightConstraint?.constant = viewHeight
-            onHeightChanged?(viewHeight)
+        let hintHeight = hintLabelHeight()
+        let textHeight = textViewHeight()
+        let actualViewHeight = 23 + textHeight + 9 + hintHeight + flexibleHeightPolicy.bottomOffset
+        let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
+
+        textViewHeightConstraint.constant = textHeight
+        view.layoutIfNeeded()
+
+        guard lastViewHeight != viewHeight else {
+            return
         }
+        lastViewHeight = viewHeight
+        heightConstraint?.constant = viewHeight
+        onHeightChanged?(viewHeight)
+    }
+
+    func textViewHeight() -> CGFloat {
+        return textView.text.height(forWidth: textView.bounds.size.width, font: configuration.textField.font, lineHeight: nil)
     }
 
 }
