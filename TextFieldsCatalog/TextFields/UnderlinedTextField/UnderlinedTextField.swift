@@ -337,7 +337,7 @@ private extension UnderlinedTextField {
     }
 
     func configureBackground() {
-        view.backgroundColor = UIColor.black//configuration.background.color
+        view.backgroundColor = configuration.background.color
     }
 
     func configurePlaceholder() {

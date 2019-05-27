@@ -9,6 +9,7 @@
 import UIKit
 
 /// Class for custom textView. Contains UITextView, top floating placeholder, underline line under textView and bottom label with some info.
+/// Also have button for text clear, but you can hide it.
 /// Standart height equals 77.
 open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
@@ -16,6 +17,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     public struct FlexibleHeightPolicy {
         let minHeight: CGFloat
+        /// offset between hint label and view bottom
         let bottomOffset: CGFloat
     }
 
@@ -111,7 +113,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Public Methods
 
-    /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
+    /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
     public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
@@ -122,7 +124,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         self.heightConstraint = heightConstraint
     }
 
-    /// Allows you to set autocorrection and keyboardType for textField
+    /// Allows you to set autocorrection and keyboardType for textView
     public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
         if let correction = correction {
             textView.autocorrectionType = correction
@@ -132,34 +134,29 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         }
     }
 
-    /// Allows you to set autocapitalization type for textField
+    /// Allows you to set autocapitalization type for textView
     public func configure(autocapitalizationType: UITextAutocapitalizationType) {
         textView.autocapitalizationType = autocapitalizationType
     }
 
-    /// Allows you to set textContent type for textField
+    /// Allows you to set textContent type for textView
     public func configureContentType(_ contentType: UITextContentType) {
         textView.textContentType = contentType
     }
 
-    /// Allows you to set text in textField and update all UI elements
+    /// Allows you to set text in textView and update all UI elements
     public func setText(_ text: String?) {
         textView.text = text ?? ""
         validate()
         updateUI()
     }
 
-    /// Return current input string in textField
+    /// Return current input string in textView
     public func currentText() -> String {
         return textView.text
     }
 
-    /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
-    public func hideKeyboard() {
-        textView.inputView = UIView()
-    }
-
-    /// Allows to set accessibilityIdentifier for textField and its internal elements
+    /// Allows to set accessibilityIdentifier for textView and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier
         textView.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
@@ -201,7 +198,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Disable text field
+    /// Disable textView
     public func disableTextField() {
         state = .disabled
         textView.isEditable = false
@@ -259,7 +256,7 @@ private extension UnderlinedTextView {
     }
 
     func configureBackground() {
-        view.backgroundColor = UIColor.black//configuration.background.color
+        view.backgroundColor = configuration.background.color
         textView.backgroundColor = UIColor.clear
     }
 
@@ -341,17 +338,14 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let currentText = textView.text, let textRange = Range(range, in: currentText) else {
-            return true
+        guard
+            let currentText = textView.text,
+            let textRange = Range(range, in: currentText),
+            let maxLength = self.maxLength else {
+                return true
         }
-
         let newText = currentText.replacingCharacters(in: textRange, with: text)
-        var isValid = true
-        if let maxLength = self.maxLength {
-            isValid = newText.count <= maxLength
-        }
-
-        return isValid
+        return newText.count <= maxLength
     }
 
     public func textViewDidChange(_ textView: UITextView) {
@@ -416,10 +410,7 @@ private extension UnderlinedTextView {
 
     /// Return true, if current input string is empty
     func textIsEmpty() -> Bool {
-        guard let text = textView.text else {
-            return true
-        }
-        return text.isEmpty
+        return textView.text.isEmpty
     }
 
     func setupHintText(_ hintText: String) {
@@ -444,22 +435,6 @@ private extension UnderlinedTextView {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.hintLabel.alpha = alpha
         }
-    }
-
-    func updateLineViewColor() {
-        let color = lineColor()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.backgroundColor = color
-        }
-    }
-
-    func updateLineFrame() {
-        let actualPosition = linePosition()
-        guard lastLinePosition != actualPosition else {
-            return
-        }
-        lineView.frame = actualPosition
-        view.layoutIfNeeded()
     }
 
     func updatePlaceholderColor() {
@@ -522,8 +497,20 @@ private extension UnderlinedTextView {
         onHeightChanged?(viewHeight)
     }
 
-    func textViewHeight() -> CGFloat {
-        return textView.text.height(forWidth: textView.bounds.size.width, font: configuration.textField.font, lineHeight: nil)
+    func updateLineViewColor() {
+        let color = lineColor()
+        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+            self?.lineView.backgroundColor = color
+        }
+    }
+
+    func updateLineFrame() {
+        let actualPosition = linePosition()
+        guard lastLinePosition != actualPosition else {
+            return
+        }
+        lineView.frame = actualPosition
+        view.layoutIfNeeded()
     }
 
     func updateClearButtonVisibility() {
@@ -598,6 +585,10 @@ private extension UnderlinedTextView {
 
     func freeVerticalSpace() -> CGFloat {
         return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
+    }
+
+    func textViewHeight() -> CGFloat {
+        return textView.text.height(forWidth: textView.bounds.size.width, font: configuration.textField.font, lineHeight: nil)
     }
 
     func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
