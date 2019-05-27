@@ -40,6 +40,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var hintLabel: UILabel!
+    @IBOutlet private weak var clearButton: IconButton!
 
     // MARK: - NSLayoutConstraints
 
@@ -67,7 +68,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Properties
 
-    public var configuration = UnderlinedTextFieldConfiguration() {
+    public var configuration = UnderlinedTextViewConfiguration() {
         didSet {
             configureAppearance()
             updateUI()
@@ -198,6 +199,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         textView.text = ""
         error = false
         updateUI()
+        updateClearButtonVisibility()
     }
 
     /// Reset only error state and update all UI elements
@@ -277,6 +279,7 @@ private extension UnderlinedTextView {
         configureTextView()
         configureHintLabel()
         configureLineView()
+        configureClearButton()
     }
 
     func configureBackground() {
@@ -328,6 +331,23 @@ private extension UnderlinedTextView {
         lastLinePosition = lineView.frame
     }
 
+    func configureClearButton() {
+        clearButton.setImageForAllState(configuration.clearButton.image,
+                                        normalColor: configuration.clearButton.normalColor,
+                                        pressedColor: configuration.clearButton.pressedColor)
+        updateClearButtonVisibility()
+    }
+
+}
+
+// MARK: - Actions
+
+private extension UnderlinedTextView {
+
+    @IBAction func tapOnClearButton(_ sender: UIButton) {
+        reset()
+    }
+
 }
 
 // MARK: - UITextViewDelegate
@@ -346,11 +366,11 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard let text = textView.text, let textRange = Range(range, in: text) else {
+        guard let currentText = textView.text, let textRange = Range(range, in: currentText) else {
             return true
         }
 
-        let newText = text.replacingCharacters(in: textRange, with: text)
+        let newText = currentText.replacingCharacters(in: textRange, with: text)
         var isValid = true
         if let maxLength = self.maxLength {
             isValid = newText.count <= maxLength
@@ -360,6 +380,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textViewDidChange(_ textView: UITextView) {
+        updateClearButtonVisibility()
         removeError()
         onTextChanged?(self)
     }
@@ -516,7 +537,7 @@ private extension UnderlinedTextView {
     func updateViewHeight() {
         let hintHeight = hintLabelHeight()
         let textHeight = textViewHeight()
-        let actualViewHeight = 23 + textHeight + 9 + hintHeight + flexibleHeightPolicy.bottomOffset
+        let actualViewHeight = 28 + textHeight + 9 + hintHeight + flexibleHeightPolicy.bottomOffset
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
@@ -532,6 +553,10 @@ private extension UnderlinedTextView {
 
     func textViewHeight() -> CGFloat {
         return textView.text.height(forWidth: textView.bounds.size.width, font: configuration.textField.font, lineHeight: nil)
+    }
+
+    func updateClearButtonVisibility() {
+        clearButton.isHidden = textView.text.isEmpty
     }
 
 }

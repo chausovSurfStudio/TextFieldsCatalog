@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnderlinedTextView" customModule="TextFieldsCatalog" customModuleProvider="target">
             <connections>
+                <outlet property="clearButton" destination="hDZ-Nk-vhL" id="chR-eD-Shd"/>
                 <outlet property="hintLabel" destination="ZCF-Sk-dJU" id="JZE-Q0-jBY"/>
                 <outlet property="textView" destination="mpb-Kh-o2r" id="ITP-LH-26F"/>
                 <outlet property="textViewHeightConstraint" destination="ElT-0x-VoV" id="rXz-bE-ecf"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mpb-Kh-o2r">
-                    <rect key="frame" x="16" y="23" width="288" height="20"/>
+                    <rect key="frame" x="16" y="28" width="288" height="20"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="ElT-0x-VoV"/>
@@ -32,7 +33,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-Sk-dJU">
-                    <rect key="frame" x="16" y="52" width="288" height="15"/>
+                    <rect key="frame" x="16" y="57" width="288" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="Z1R-4h-TTz"/>
                     </constraints>
@@ -40,18 +41,35 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDZ-Nk-vhL" customClass="IconButton" customModule="TextFieldsCatalog" customModuleProvider="target">
+                    <rect key="frame" x="276" y="0.0" width="44" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="3F1-DZ-UwL"/>
+                        <constraint firstAttribute="height" constant="28" id="sby-Xt-mUt"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                    <state key="normal" image="close.png"/>
+                    <connections>
+                        <action selector="tapOnClearButton:" destination="-1" eventType="touchUpInside" id="2hv-nR-YMF"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="mpb-Kh-o2r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="0bX-As-kQt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hDZ-Nk-vhL" secondAttribute="trailing" id="Jbq-an-BfH"/>
                 <constraint firstItem="ZCF-Sk-dJU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="L7z-X8-qrJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZCF-Sk-dJU" secondAttribute="trailing" constant="16" id="QLO-IM-0YQ"/>
+                <constraint firstItem="hDZ-Nk-vhL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Z4h-bp-2Sa"/>
                 <constraint firstItem="ZCF-Sk-dJU" firstAttribute="top" secondItem="mpb-Kh-o2r" secondAttribute="bottom" constant="9" id="f8I-TO-SYc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mpb-Kh-o2r" secondAttribute="trailing" constant="16" id="gGi-VM-FpG"/>
-                <constraint firstItem="mpb-Kh-o2r" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="23" id="yWg-X3-yZt"/>
+                <constraint firstItem="mpb-Kh-o2r" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="28" id="yWg-X3-yZt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.25" y="-106.69014084507042"/>
         </view>
     </objects>
+    <resources>
+        <image name="close.png" width="10" height="10"/>
+    </resources>
 </document>

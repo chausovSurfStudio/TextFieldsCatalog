@@ -47,16 +47,15 @@ private extension UnderlinedTextViewPreset {
     }
 
     func tuneFieldForComment(_ textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
-        textView.configure(placeholder: "Комментарий", maxLength: nil)
+        textView.configure(placeholder: "Комментарий", maxLength: 200)
         textView.configure(correction: .no, keyboardType: .default)
         textView.configure(heightConstraint: heightConstraint)
         textView.setHint("Напишите комментарий к заказу")
         textView.setReturnKeyType(.next)
 
-//        let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
-//        validator.shortErrorText = L10n.Presets.Password.shortErrorText
-//        validator.largeErrorText = L10n.Presets.Password.largeErrorText(String(20))
-//        textField.validator = validator
+        let validator = TextFieldValidator(minLength: 30, maxLength: 200, regex: nil)
+        validator.shortErrorText = "Оставьте развернутый комментарий к доставке, он должен быть не менее 30 символов"
+        textView.validator = validator
 
     }
 
