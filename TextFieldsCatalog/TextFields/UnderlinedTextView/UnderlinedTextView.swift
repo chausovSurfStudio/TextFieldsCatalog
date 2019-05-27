@@ -45,6 +45,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - NSLayoutConstraints
 
     @IBOutlet private weak var textViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textViewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
@@ -277,7 +279,6 @@ private extension UnderlinedTextView {
         textView.font = configuration.textField.font
         textView.textColor = configuration.textField.colors.normal
         textView.tintColor = configuration.textField.tintColor
-        textView.returnKeyType = .done
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textView.textContainer.lineFragmentPadding = 0
         textView.contentOffset = CGPoint(x: 0, y: 0)
@@ -457,11 +458,7 @@ private extension UnderlinedTextView {
             return
         }
         lineView.frame = actualPosition
-//        let height = lineHeight()
         view.layoutIfNeeded()
-//        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-//            self?.lineView.frame.size.height = height
-//        }
     }
 
     func updatePlaceholderColor() {
@@ -510,7 +507,7 @@ private extension UnderlinedTextView {
     func updateViewHeight() {
         let hintHeight = hintLabelHeight()
         let textHeight = textViewHeight()
-        let actualViewHeight = 28 + textHeight + 9 + hintHeight + flexibleHeightPolicy.bottomOffset
+        let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
@@ -596,6 +593,10 @@ private extension UnderlinedTextView {
 
     func hintTextColor() -> UIColor {
         return suitableColor(from: configuration.hint.colors)
+    }
+
+    func freeVerticalSpace() -> CGFloat {
+        return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
     }
 
     func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
