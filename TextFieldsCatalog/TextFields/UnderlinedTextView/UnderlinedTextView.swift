@@ -1,36 +1,26 @@
 //
-//  UnderlinedTextField.swift
+//  UnderlinedTextView.swift
 //  TextFieldsCatalog
 //
-//  Created by Александр Чаусов on 24/01/2019.
+//  Created by Александр Чаусов on 27/05/2019.
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
 import UIKit
-import InputMask
 
-/// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
+/// Class for custom textView. Contains UITextView, top floating placeholder, underline line under textView and bottom label with some info.
 /// Standart height equals 77.
-open class UnderlinedTextField: InnerDesignableView, ResetableField {
+open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Enums
 
-    private enum UnderlinedTextFieldState {
+    private enum UnderlinedTextViewState {
         /// textField not in focus
         case normal
         /// state with active textField
         case active
         /// state for disabled textField
         case disabled
-    }
-
-    public enum UnderlinedTextFieldMode {
-        /// normal textField mode without any action buttons
-        case plain
-        /// mode for password textField
-        case password
-        /// mode for textField with custom action button
-        case custom(ActionButtonConfiguration)
     }
 
     // MARK: - Constants
@@ -43,12 +33,16 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     @IBOutlet private weak var textField: InnerTextField!
     @IBOutlet private weak var hintLabel: UILabel!
-    @IBOutlet private weak var actionButton: IconButton!
+
+    // MARK: - NSLayoutConstraints
+
+    @IBOutlet private weak var textViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var hintLabelTopOffsetConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
     private let lineView = UIView()
-    private var state: UnderlinedTextFieldState = .normal {
+    private var state: UnderlinedTextViewState = .normal {
         didSet {
             updateUI()
         }
@@ -59,7 +53,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var maxLength: Int?
 
     private var error: Bool = false
-    private var mode: UnderlinedTextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
@@ -74,29 +67,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
     }
     public var validator: TextFieldValidation?
-    public var maskFormatter: MaskTextFieldFormatter? {
-        didSet {
-            if maskFormatter != nil {
-                textField.delegate = maskFormatter?.delegateForTextField()
-                maskFormatter?.setListenerToFormatter(listener: self)
-                textField.autocorrectionType = .no
-            } else {
-                textField.delegate = self
-            }
-        }
-    }
     public var hideOnReturn: Bool = true
-    public var validateWithFormatter: Bool = false
-    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
-        didSet {
-            switch heightLayoutPolicy {
-            case .fixed:
-                hintLabel.numberOfLines = 1
-            case .flexible(_, _):
-                hintLabel.numberOfLines = 0
-            }
-        }
-    }
     public var responder: UIResponder {
         return self.textField
     }
@@ -108,15 +79,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             textField.inputView = newValue
         }
     }
+    public var heightLayoutPolicy: HeightLayoutPolicy = .flexible(77, 5)
 
-    public var onBeginEditing: ((UnderlinedTextField) -> Void)?
-    public var onEndEditing: ((UnderlinedTextField) -> Void)?
-    public var onTextChanged: ((UnderlinedTextField) -> Void)?
-    public var onShouldReturn: ((UnderlinedTextField) -> Void)?
-    public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
-    public var onValidateFail: ((UnderlinedTextField) -> Void)?
+    public var onBeginEditing: ((UnderlinedTextView) -> Void)?
+    public var onEndEditing: ((UnderlinedTextView) -> Void)?
+    public var onTextChanged: ((UnderlinedTextView) -> Void)?
+    public var onShouldReturn: ((UnderlinedTextView) -> Void)?
+    public var onValidateFail: ((UnderlinedTextView) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
-    public var onDateChanged: ((Date) -> Void)?
 
     // MARK: - Initialization
 
@@ -171,36 +141,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.textContentType = contentType
     }
 
-    /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: UnderlinedTextFieldMode) {
-        self.mode = mode
-        switch mode {
-        case .plain:
-            actionButton.isHidden = true
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.defaultPadding
-        case .password:
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = true
-            textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordVisibilityButton()
-        case .custom(let actionButtonConfig):
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.increasedPadding
-            actionButton.setImageForAllState(actionButtonConfig.image,
-                                             normalColor: actionButtonConfig.normalColor,
-                                             pressedColor: actionButtonConfig.pressedColor)
-        }
-    }
-
     /// Allows you to set text in textField and update all UI elements
     public func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
+        textField.text = text
         validate()
         updateUI()
     }
@@ -219,7 +162,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier
         textField.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
-        actionButton.accessibilityIdentifier = identifier + AccessibilityIdentifiers.button
         hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
     }
 
@@ -254,11 +196,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func resetErrorState() {
         error = false
         updateUI()
-    }
-
-    /// Disable paste action for textField
-    public func disablePasteAction() {
-        textField.pasteActionEnabled = false
     }
 
     /// Disable text field
@@ -324,14 +261,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
 // MARK: - Configure
 
-private extension UnderlinedTextField {
+private extension UnderlinedTextView {
 
     func configureAppearance() {
         configureBackground()
         configurePlaceholder()
         configureTextField()
         configureHintLabel()
-        configureActionButton()
         configureLineView()
     }
 
@@ -352,7 +288,7 @@ private extension UnderlinedTextField {
     }
 
     func configureTextField() {
-        textField.delegate = maskFormatter?.delegateForTextField() ?? self
+        textField.delegate = self
         textField.font = configuration.textField.font
         textField.textColor = configuration.textField.colors.normal
         textField.tintColor = configuration.textField.tintColor
@@ -367,10 +303,6 @@ private extension UnderlinedTextField {
         hintLabel.text = ""
         hintLabel.numberOfLines = 1
         hintLabel.alpha = 0
-    }
-
-    func configureActionButton() {
-        actionButton.isHidden = true
     }
 
     func configureLineView() {
@@ -388,17 +320,7 @@ private extension UnderlinedTextField {
 
 // MARK: - Actions
 
-private extension UnderlinedTextField {
-
-    @IBAction func tapOnActionButton(_ sender: UIButton) {
-        onActionButtonTap?(self)
-        guard case .password = mode else {
-            return
-        }
-        textField.isSecureTextEntry.toggle()
-        textField.fixCursorPosition()
-        updatePasswordVisibilityButton()
-    }
+private extension UnderlinedTextView {
 
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
@@ -410,7 +332,7 @@ private extension UnderlinedTextField {
 
 // MARK: - UITextFieldDelegate
 
-extension UnderlinedTextField: UITextFieldDelegate {
+extension UnderlinedTextView: UITextFieldDelegate {
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         state = .active
@@ -424,7 +346,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text), !validateWithFormatter else {
+        guard let text = textField.text, let textRange = Range(range, in: text) else {
             return true
         }
 
@@ -452,69 +374,9 @@ extension UnderlinedTextField: UITextFieldDelegate {
 
 }
 
-// MARK: - MaskedTextFieldDelegateListener
-
-extension UnderlinedTextField: MaskedTextFieldDelegateListener {
-
-    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
-        maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
-        removeError()
-        onTextChanged?(self)
-    }
-
-}
-
-// MARK: - GuidedTextField
-
-extension UnderlinedTextField: GuidedTextField {
-
-    public var havePreviousInput: Bool {
-        return previousInput != nil
-    }
-
-    public var haveNextInput: Bool {
-        return nextInput != nil
-    }
-
-    public func processReturnAction() {
-        textField.resignFirstResponder()
-    }
-
-    public func switchToPreviousInput() {
-        previousInput?.becomeFirstResponder()
-    }
-
-    public func switchToNextInput() {
-        nextInput?.becomeFirstResponder()
-    }
-
-}
-
-// MARK: - DateTextField
-
-extension UnderlinedTextField: DateTextField {
-
-    public func processDateChange(_ date: Date, text: String) {
-        setText(text)
-        onDateChanged?(date)
-    }
-
-}
-
-// MARK: - PickerTextField
-
-extension UnderlinedTextField: PickerTextField {
-
-    public func processValueChange(_ value: String) {
-        setText(value)
-        onTextChanged?(self)
-    }
-
-}
-
 // MARK: - Private Methods
 
-private extension UnderlinedTextField {
+private extension UnderlinedTextView {
 
     func updateUI(animated: Bool = false) {
         updateHintLabelColor()
@@ -528,25 +390,8 @@ private extension UnderlinedTextField {
         updateViewHeight()
     }
 
-    func updatePasswordVisibilityButton() {
-        guard case .password = mode else {
-            return
-        }
-        let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
-        actionButton.setImageForAllState(image,
-                                         normalColor: configuration.passwordMode.normalColor,
-                                         pressedColor: configuration.passwordMode.pressedColor)
-    }
-
     func validate() {
-        if let formatter = maskFormatter, validateWithFormatter {
-            let (isValid, errorMessage) = formatter.validate()
-            error = !isValid
-            if let message = errorMessage, !isValid {
-                setupHintText(message)
-            }
-        } else if let currentValidator = validator {
+        if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
@@ -593,7 +438,7 @@ private extension UnderlinedTextField {
 
 // MARK: - Updating
 
-private extension UnderlinedTextField {
+private extension UnderlinedTextView {
 
     func updateHintLabelColor() {
         hintLabel.textColor = hintTextColor()
@@ -601,15 +446,7 @@ private extension UnderlinedTextField {
 
     func updateHintLabelVisibility() {
         let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        var duration: TimeInterval = Constants.animationDuration
-        switch heightLayoutPolicy {
-        case .fixed:
-            // update always with animation
-            break
-        case .flexible(_, _):
-            // update with animation on hint appear
-            duration = shouldShowHint() ? Constants.animationDuration : 0
-        }
+        let duration: TimeInterval = shouldShowHint() ? Constants.animationDuration : 0
         UIView.animate(withDuration: duration) { [weak self] in
             self?.hintLabel.alpha = alpha
         }
@@ -693,7 +530,7 @@ private extension UnderlinedTextField {
 
 // MARK: - Computed values
 
-private extension UnderlinedTextField {
+private extension UnderlinedTextView {
 
     func hintLabelHeight() -> CGFloat {
         let hintIsVisible = shouldShowHint()
