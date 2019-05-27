@@ -15,14 +15,14 @@ enum UnderlinedTextViewPreset: CaseIterable, AppliedPreset {
     var name: String {
         switch self {
         case .comment:
-            return "Комментарий"
+            return L10n.Presets.Comment.name
         }
     }
 
     var description: String {
         switch self {
         case .comment:
-            return "Поле ввода для какого-нибудь длинного комментария"
+            return L10n.Presets.Comment.description
         }
     }
 
@@ -47,13 +47,13 @@ private extension UnderlinedTextViewPreset {
     }
 
     func tuneFieldForComment(_ textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
-        textView.configure(placeholder: "Комментарий", maxLength: 200)
+        textView.configure(placeholder: L10n.Presets.Comment.placeholder, maxLength: 200)
         textView.configure(correction: .no, keyboardType: .default)
         textView.configure(heightConstraint: heightConstraint)
-        textView.setHint("Напишите комментарий к заказу")
+        textView.setHint(L10n.Presets.Comment.hint)
 
         let validator = TextFieldValidator(minLength: 30, maxLength: 200, regex: nil)
-        validator.shortErrorText = "Оставьте развернутый комментарий к доставке, он должен быть не менее 30 символов"
+        validator.shortErrorText = L10n.Presets.Comment.errorMessage
         textView.validator = validator
 
     }

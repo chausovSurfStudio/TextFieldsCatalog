@@ -73,6 +73,19 @@ enum L10n {
       static let placeholder = L10n.tr("Localizable", "Presets.cardNumber.placeholder")
     }
 
+    enum Comment {
+      /// Пример работы поля в случае ввода какого-либо комментария, в данном случае - комментария к доставке.\n\n• Имеется возможность скрыть кнопку очистки содержимого.\n• Есть возможность полностью кастомизировать поле.
+      static let description = L10n.tr("Localizable", "Presets.comment.description")
+      /// Оставьте развернутый комментарий к доставке, он должен быть не менее 30 символов
+      static let errorMessage = L10n.tr("Localizable", "Presets.comment.errorMessage")
+      /// Пожалуйста, поделитесь с нами Вашим мнением
+      static let hint = L10n.tr("Localizable", "Presets.comment.hint")
+      /// Комментарий
+      static let name = L10n.tr("Localizable", "Presets.comment.name")
+      /// Комментарий к доставке
+      static let placeholder = L10n.tr("Localizable", "Presets.comment.placeholder")
+    }
+
     enum Cvc {
       /// Пример работы поля для случая ввода срока действия карты.\n\n• Для соответствия содержимого корректному формату - используется форматтер с определенной маской, вставка текста разрешена.\n• При этом возможно применение обычного валидатора, в котором необходимо задать минимальную и максимальную длину содержимого равной трем, установить соответствующий тип клавиатуры и запретить вставку в поле ввода.
       static let description = L10n.tr("Localizable", "Presets.cvc.description")
@@ -167,6 +180,13 @@ enum L10n {
       static let description = L10n.tr("Localizable", "TextFieldType.Underlined.description")
       /// Подчеркнутое поле ввода
       static let title = L10n.tr("Localizable", "TextFieldType.Underlined.title")
+    }
+
+    enum Underlinedtextview {
+      /// • По дизайну - то же самое, что и просто подчеркнутое поле ввода.\n• Имеет практически все его возможности, за некоторым исключением (нет тех методов, которые данному полю в принципе не нужны).\n• В основном используется для полей ввода комментариев - то есть в тех местах, где текст будет явно превышать одну строку. Именно по этому данное поле - пока что единственная в этой библиотеке обертка именно над UITextView, а не UITextField\n• Имеется возможность показа/скрытия кнопки очистки содержимого.
+      static let description = L10n.tr("Localizable", "TextFieldType.UnderlinedTextView.description")
+      /// UITextView с подчеркиванием
+      static let title = L10n.tr("Localizable", "TextFieldType.UnderlinedTextView.title")
     }
   }
 }
