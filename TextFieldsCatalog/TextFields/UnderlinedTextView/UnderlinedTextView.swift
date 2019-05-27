@@ -63,6 +63,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
+    private var lastLinePosition: CGRect = .zero
 
     // MARK: - Properties
 
@@ -324,6 +325,7 @@ private extension UnderlinedTextView {
         lineView.layer.cornerRadius = configuration.line.cornerRadius
         lineView.layer.masksToBounds = true
         lineView.backgroundColor = configuration.line.colors.normal
+        lastLinePosition = lineView.frame
     }
 
 }
@@ -371,10 +373,6 @@ private extension UnderlinedTextView {
     func updateUI(animated: Bool = false) {
         updateHintLabelColor()
         updateHintLabelVisibility()
-        updateHintLabelPosition()
-
-        updateLineViewColor()
-        updateLineViewHeight()
 
         updatePlaceholderColor()
         updatePlaceholderPosition()
@@ -382,6 +380,9 @@ private extension UnderlinedTextView {
 
         updateTextColor()
         updateViewHeight()
+
+        updateLineViewColor()
+        updateLineFrame()
     }
 
     func validate() {
@@ -403,8 +404,8 @@ private extension UnderlinedTextView {
             error = false
             updateUI()
         } else {
-            updateHintLabelPosition()
             updateViewHeight()
+            updateLineFrame()
         }
     }
 
@@ -449,10 +450,6 @@ private extension UnderlinedTextView {
         }
     }
 
-    func updateHintLabelPosition() {
-
-    }
-
     func updateLineViewColor() {
         let color = lineColor()
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
@@ -460,11 +457,17 @@ private extension UnderlinedTextView {
         }
     }
 
-    func updateLineViewHeight() {
-        let height = lineHeight()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.frame.size.height = height
+    func updateLineFrame() {
+        let actualPosition = linePosition()
+        guard lastLinePosition != actualPosition else {
+            return
         }
+        lineView.frame = actualPosition
+//        let height = lineHeight()
+        view.layoutIfNeeded()
+//        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+//            self?.lineView.frame.size.height = height
+//        }
     }
 
     func updatePlaceholderColor() {
@@ -583,8 +586,9 @@ private extension UnderlinedTextView {
 
     func linePosition() -> CGRect {
         let height = lineHeight()
-        var lineFrame = view.bounds.inset(by: configuration.line.insets)
+        var lineFrame = view.bounds.inset(by: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
         lineFrame.size.height = height
+        lineFrame.origin.y += textView.frame.maxY
         return lineFrame
     }
 
