@@ -34,6 +34,11 @@
 		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
+		909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F257F229BE146006926E7 /* UnderlinedTextView.swift */; };
+		909F2582229BE14E006926E7 /* UnderlinedTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909F2581229BE14E006926E7 /* UnderlinedTextView.xib */; };
+		909F2597229C22D8006926E7 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2594229C22D8006926E7 /* close.png */; };
+		909F2598229C22D8006926E7 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2595229C22D8006926E7 /* close@3x.png */; };
+		909F2599229C22D8006926E7 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2596229C22D8006926E7 /* close@2x.png */; };
 		90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */; };
 		90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7C228975730036C634 /* PlainPickerView.swift */; };
 		90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7E2289792D0036C634 /* PickerTextField.swift */; };
@@ -104,6 +109,11 @@
 		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		909F257F229BE146006926E7 /* UnderlinedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextView.swift; sourceTree = "<group>"; };
+		909F2581229BE14E006926E7 /* UnderlinedTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnderlinedTextView.xib; sourceTree = "<group>"; };
+		909F2594229C22D8006926E7 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		909F2595229C22D8006926E7 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
+		909F2596229C22D8006926E7 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopViewConfiguration.swift; sourceTree = "<group>"; };
 		90A32B7C228975730036C634 /* PlainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPickerView.swift; sourceTree = "<group>"; };
 		90A32B7E2289792D0036C634 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
@@ -218,6 +228,7 @@
 				902CE2F621FF70D700AC21D4 /* Configuration */,
 				903863FC21FF58E100BAA761 /* BorderedTextField */,
 				903863FB21FF58D500BAA761 /* UnderlinedTextField */,
+				909F257E229BE12D006926E7 /* UnderlinedTextView */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -307,6 +318,9 @@
 		903863F821FF588E00BAA761 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				909F2594229C22D8006926E7 /* close.png */,
+				909F2596229C22D8006926E7 /* close@2x.png */,
+				909F2595229C22D8006926E7 /* close@3x.png */,
 				90BB472D220065F000F6DB39 /* eyeOff.png */,
 				90BB4729220065F000F6DB39 /* eyeOff@2x.png */,
 				90BB472E220065F000F6DB39 /* eyeOff@3x.png */,
@@ -357,6 +371,15 @@
 				902CE2FC21FF712900AC21D4 /* BorderedTextField.xib */,
 			);
 			path = BorderedTextField;
+			sourceTree = "<group>";
+		};
+		909F257E229BE12D006926E7 /* UnderlinedTextView */ = {
+			isa = PBXGroup;
+			children = (
+				909F257F229BE146006926E7 /* UnderlinedTextView.swift */,
+				909F2581229BE14E006926E7 /* UnderlinedTextView.xib */,
+			);
+			path = UnderlinedTextView;
 			sourceTree = "<group>";
 		};
 		90A32B82228985840036C634 /* TextField */ = {
@@ -501,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909F2597229C22D8006926E7 /* close.png in Resources */,
 				90A32B8A228991900036C634 /* leftArrow@3x.png in Resources */,
 				90A32B8C228991900036C634 /* leftArrow@2x.png in Resources */,
 				90A32B8D228991900036C634 /* rightArrow@2x.png in Resources */,
@@ -509,13 +533,16 @@
 				90BB4730220065F000F6DB39 /* eyeOn@2x.png in Resources */,
 				90FAC4A42288804A0032A7F1 /* PickerTopView.xib in Resources */,
 				90A32B89228991900036C634 /* rightArrow@3x.png in Resources */,
+				909F2598229C22D8006926E7 /* close@3x.png in Resources */,
 				90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */,
 				90BB4731220065F000F6DB39 /* eyeOn@3x.png in Resources */,
 				90A32B8E228991900036C634 /* rightArrow.png in Resources */,
 				90BB4733220065F000F6DB39 /* eyeOff.png in Resources */,
 				902CE2FE21FF712900AC21D4 /* BorderedTextField.xib in Resources */,
+				909F2599229C22D8006926E7 /* close@2x.png in Resources */,
 				902CE2E821FF6D6D00AC21D4 /* Localizable.strings in Resources */,
 				90BB4732220065F000F6DB39 /* eyeOn.png in Resources */,
+				909F2582229BE14E006926E7 /* UnderlinedTextView.xib in Resources */,
 				902CE30121FF719B00AC21D4 /* UnderlinedTextField.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +715,7 @@
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
 				903863FE21FF590700BAA761 /* Color.swift in Sources */,
 				902CE2FD21FF712900AC21D4 /* BorderedTextField.swift in Sources */,
+				909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */,
 				90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
@@ -794,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -853,7 +881,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

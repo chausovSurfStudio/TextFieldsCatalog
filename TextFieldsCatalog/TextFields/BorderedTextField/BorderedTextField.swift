@@ -238,6 +238,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textField.text = ""
+        setupHintText(hintMessage ?? "")
         error = false
         updateUI()
     }
