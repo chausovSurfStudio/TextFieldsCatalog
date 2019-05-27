@@ -13,6 +13,7 @@ enum TextFieldType: CaseIterable {
     case bordered
     case underlined
     case customUnderlined
+    case underlinedTextView
 
     var title: String {
         switch self {
@@ -22,6 +23,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Underlined.title
         case .customUnderlined:
             return L10n.Textfieldtype.Customunderlined.title
+        case .underlinedTextView:
+            return "Подчеркнутое UITextView"
         }
     }
 
@@ -33,6 +36,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Underlined.description
         case .customUnderlined:
             return L10n.Textfieldtype.Customunderlined.description
+        case .underlinedTextView:
+            return "То же самое, что и UnderlinedTextField, только поле ввода умеет расширяться в высоту"
         }
     }
 
@@ -44,6 +49,8 @@ enum TextFieldType: CaseIterable {
             return UnderlinedFieldPreset.allCases
         case .customUnderlined:
             return CustomUnderlinedFieldPreset.allCases
+        case .underlinedTextView:
+            return UnderlinedTextViewPreset.allCases
         }
     }
 
@@ -56,6 +63,8 @@ enum TextFieldType: CaseIterable {
             return (UnderlinedTextField(frame: frame), 77)
         case .customUnderlined:
             return (CustomUnderlinedTextField(frame: frame), 64)
+        case .underlinedTextView:
+            return (UnderlinedTextView(frame: frame), 77)
         }
     }
 
