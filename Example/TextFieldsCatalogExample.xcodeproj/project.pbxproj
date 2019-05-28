@@ -74,6 +74,8 @@
 		90736CCE21F8B830003B8B78 /* BorderedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */; };
 		909DB8892203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB8882203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift */; };
 		909F2584229BF365006926E7 /* UnderlinedTextViewPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F2583229BF365006926E7 /* UnderlinedTextViewPreset.swift */; };
+		909F25A1229C3DD7006926E7 /* FormatterMasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F25A0229C3DD7006926E7 /* FormatterMasks.swift */; };
+		909F25A3229C4067006926E7 /* SharedRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F25A2229C4067006926E7 /* SharedRegex.swift */; };
 		90A32B9022899AE70036C634 /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B8F22899AE70036C634 /* Sex.swift */; };
 		90BB47252200536C00F6DB39 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB47242200536C00F6DB39 /* DesignableView.swift */; };
 		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
@@ -193,6 +195,8 @@
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		909DB8882203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedFieldPreset.swift; sourceTree = "<group>"; };
 		909F2583229BF365006926E7 /* UnderlinedTextViewPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextViewPreset.swift; sourceTree = "<group>"; };
+		909F25A0229C3DD7006926E7 /* FormatterMasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterMasks.swift; sourceTree = "<group>"; };
+		909F25A2229C4067006926E7 /* SharedRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedRegex.swift; sourceTree = "<group>"; };
 		90A32B8F22899AE70036C634 /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		90BB28B012142A4983A13B48 /* InfoModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleInput.swift; sourceTree = "<group>"; };
 		90BB47242200536C00F6DB39 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 		90736C6621F87B64003B8B78 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				909F25A0229C3DD7006926E7 /* FormatterMasks.swift */,
 				90736C6721F87B7A003B8B78 /* Foundation.swift */,
 				90736CB321F89D38003B8B78 /* String.swift */,
 				90736C8B21F88B3B003B8B78 /* UIApplication.swift */,
@@ -585,6 +590,7 @@
 			children = (
 				90736C9921F88D11003B8B78 /* Closures.swift */,
 				90A32B8F22899AE70036C634 /* Sex.swift */,
+				909F25A2229C4067006926E7 /* SharedRegex.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1034,11 +1040,13 @@
 				90736C8621F88AF2003B8B78 /* Coordinator.swift in Sources */,
 				90736C8F21F88B75003B8B78 /* MainRouter.swift in Sources */,
 				90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */,
+				909F25A1229C3DD7006926E7 /* FormatterMasks.swift in Sources */,
 				90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */,
 				90736C9721F88CF2003B8B78 /* MainCoordinatorOutput.swift in Sources */,
 				90736C8821F88B0A003B8B78 /* Presentable.swift in Sources */,
 				904A19C121F9FAC200B9A846 /* UnderlinedFieldPreset.swift in Sources */,
 				90736CC721F8A350003B8B78 /* UITableView.swift in Sources */,
+				909F25A3229C4067006926E7 /* SharedRegex.swift in Sources */,
 				90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */,
 				90736C7521F886B2003B8B78 /* Assets.swift in Sources */,
 				904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */,
