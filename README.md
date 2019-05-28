@@ -5,6 +5,8 @@
 
 # TextFieldsCatalog
 
+![Demo2](https://gfycat.com/DrearyOccasionalJackal)
+
 Этот репозиторий содержит коллекцию различных полей ввода, предоставляющих богатые возможности по проверке введенных значений и форматированию текста при вводе.
 
 ![Demo](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/TextFieldCatalog.png)
