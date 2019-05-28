@@ -10,7 +10,7 @@
 Данный репозиторий содержит коллекцию различных полей ввода, предоставляющих богатые возможности по проверке введенных значений и форматированию текста при вводе. К тому же, они просто симпатичные и хорошо кастомизируются :)
 
 <p align="center">
-	![Demo](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/documentation/TextFieldsCatalog_video.gif)
+  <img src="https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/documentation/TextFieldsCatalog_video.gif" />
 </p>
 
 ## Installation
@@ -29,9 +29,10 @@ pod 'TextFieldsCatalog'
 
 ## Документация
 
-[Документация по тестовому проекту](/Docs.ExampleProject.md)
+[Документация по тестовому проекту](/Docs/ExampleProject.md)
+
 [Документация по возможностям полей ввода](/Docs/Usage.md)
 
 ## Лицензия
 
-TextFieldsCatalog распространяется под MIT [лицензией](LICENSE.md)
+TextFieldsCatalog распространяется под MIT [лицензией](./LICENSE.md)
