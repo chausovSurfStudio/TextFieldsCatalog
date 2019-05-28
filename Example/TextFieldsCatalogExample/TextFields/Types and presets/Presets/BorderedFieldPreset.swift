@@ -11,6 +11,7 @@ import TextFieldsCatalog
 
 enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     case password
+    case name
     case email
     case phone
     case cardExpirationDate
@@ -24,6 +25,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
         switch self {
         case .password:
             return L10n.Presets.Password.name
+        case .name:
+            return L10n.Presets.Name.name
         case .email:
             return L10n.Presets.Email.name
         case .phone:
@@ -47,6 +50,8 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
         switch self {
         case .password:
             return L10n.Presets.Password.description
+        case .name:
+            return L10n.Presets.Name.description
         case .email:
             return L10n.Presets.Email.description
         case .phone:
@@ -83,6 +88,8 @@ private extension BorderedFieldPreset {
         switch self {
         case .password:
             tuneFieldForPassword(textField, heightConstraint: heightConstraint)
+        case .name:
+            tuneFieldForName(textField)
         case .email:
             tuneFieldForEmail(textField)
         case .phone:
@@ -118,6 +125,25 @@ private extension BorderedFieldPreset {
         textField.validator = validator
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
+    }
+
+    func tuneFieldForName(_ textField: BorderedTextField) {
+        textField.configure(placeholder: L10n.Presets.Name.placeholder, maxLength: 20)
+        textField.configure(correction: .no, keyboardType: .default)
+        textField.configure(autocapitalizationType: .words)
+        textField.setHint(L10n.Presets.Name.hint)
+
+        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
+
+        let validator = TextFieldValidator(minLength: 1, maxLength: 20, regex: SharedRegex.name)
+        validator.notValidErrorText = L10n.Presets.Name.notValidError
+        validator.largeErrorText = L10n.Presets.Name.largeTextError
+        textField.validator = validator
+
+        textField.onEndEditing = { field in
+            let text = field.currentText()
+            field.setText(text?.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
     }
 
     func tuneFieldForEmail(_ textField: BorderedTextField) {
