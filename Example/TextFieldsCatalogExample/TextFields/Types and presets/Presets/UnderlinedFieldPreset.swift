@@ -26,7 +26,7 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .password:
             return L10n.Presets.Password.name
         case .name:
-            return "Имя"
+            return L10n.Presets.Name.name
         case .email:
             return L10n.Presets.Email.name
         case .phone:
@@ -51,7 +51,7 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .password:
             return L10n.Presets.Password.description
         case .name:
-            return "Пример ввода поля имени, в котором разрешены только русские буквы и пробелы"
+            return L10n.Presets.Name.description
         case .email:
             return L10n.Presets.Email.description
         case .phone:
@@ -128,17 +128,22 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForName(_ textField: UnderlinedTextField) {
-        textField.configure(placeholder: "Имя", maxLength: 20)
+        textField.configure(placeholder: L10n.Presets.Name.placeholder, maxLength: 20)
         textField.configure(correction: .no, keyboardType: .default)
         textField.configure(autocapitalizationType: .words)
-        textField.setHint("Используйте только русские буквы")
+        textField.setHint(L10n.Presets.Name.hint)
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
 
         let validator = TextFieldValidator(minLength: 1, maxLength: 20, regex: SharedRegex.name)
-        validator.notValidErrorText = "Используйте только русские буквы"
-        validator.largeErrorText = "Имя должно быть не более 20 символов"
+        validator.notValidErrorText = L10n.Presets.Name.notValidError
+        validator.largeErrorText = L10n.Presets.Name.largeTextError
         textField.validator = validator
+
+        textField.onEndEditing = { field in
+            let text = field.currentText()
+            field.setText(text?.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {
