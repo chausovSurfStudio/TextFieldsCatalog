@@ -32,9 +32,13 @@ public final class MaskTextFieldFormatter: NSObject {
 
     // MARK: - Initialization
 
-    public init(mask: String) {
+    public convenience init(mask: String) {
+        self.init(mask: mask, notations: FormatterMasks.notations())
+    }
+
+    public init(mask: String, notations: [Notation]) {
         self.maskedDelegate = MaskedTextFieldDelegate(primaryFormat: mask)
-        self.maskedDelegate.customNotations = FormatterMasks.notations()
+        self.maskedDelegate.customNotations = notations
         super.init()
     }
 

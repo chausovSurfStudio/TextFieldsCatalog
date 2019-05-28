@@ -11,6 +11,7 @@ import TextFieldsCatalog
 
 enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
     case password
+    case name
     case email
     case phone
     case cardExpirationDate
@@ -24,6 +25,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         switch self {
         case .password:
             return L10n.Presets.Password.name
+        case .name:
+            return "Имя"
         case .email:
             return L10n.Presets.Email.name
         case .phone:
@@ -47,6 +50,8 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         switch self {
         case .password:
             return L10n.Presets.Password.description
+        case .name:
+            return "Пример ввода поля имени, в котором разрешены только русские буквы и пробелы"
         case .email:
             return L10n.Presets.Email.description
         case .phone:
@@ -83,6 +88,8 @@ private extension UnderlinedFieldPreset {
         switch self {
         case .password:
             tuneFieldForPassword(textField, heightConstraint: heightConstraint)
+        case .name:
+            tuneFieldForName(textField)
         case .email:
             tuneFieldForEmail(textField)
         case .phone:
@@ -118,6 +125,20 @@ private extension UnderlinedFieldPreset {
         textField.validator = validator
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
+    }
+
+    func tuneFieldForName(_ textField: UnderlinedTextField) {
+        textField.configure(placeholder: "Имя", maxLength: 20)
+        textField.configure(correction: .no, keyboardType: .default)
+        textField.configure(autocapitalizationType: .words)
+        textField.setHint("Используйте только русские буквы")
+
+        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
+
+        let validator = TextFieldValidator(minLength: 1, maxLength: 20, regex: SharedRegex.name)
+        validator.notValidErrorText = "Используйте только русские буквы"
+        validator.largeErrorText = "Имя должно быть не более 20 символов"
+        textField.validator = validator
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {
