@@ -31,6 +31,8 @@ pod 'TextFieldsCatalog'
 
 [Документация по тестовому проекту](/Docs/ExampleProject.md)
 
+[Документ по проекту с каталогом полей ввода](/Docs/PodProject.md)
+
 [Документация по возможностям полей ввода](/Docs/Usage.md)
 
 ## Лицензия
