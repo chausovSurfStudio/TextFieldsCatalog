@@ -64,12 +64,16 @@
 * `bottomInsets: UIEdgeInsets` - отступы плейсхолдера от границ контейнера, когда он находится в нижнем положении. Итоговое положение рассчитывается относительно верхней границы контейнера, потому параметр `bottom` будет игнорироваться
 * `smallFontSize: CGFloat` - кегль шрифта для плейсхолдера, когда он будет находиться вверху
 * `bigFontSize: CGFloat` - кегль шрифта для плейсхолдера, когда он будет находиться внизу
-* `topColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он вверху
-* `bottomColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он внизу
+* `topColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он вверху ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
+* `bottomColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он внизу ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
 
 ### Текстовое поле (TextFieldConfiguration)
 
-* `` -
+* `font: UIFont` - шрифт текста в поле ввода
+* `defaultPadding: UIEdgeInsets` - отступы для текста в обычном состоянии, без каких-либо кнопок
+* `increasedPadding: UIEdgeInsets` - данные отступы для текста в поле ввода будут применены при наличии `action` кнопки, к примеру, в режиме ввода пароля
+* `tintColor: UIColor` - `tintColor` для поля ввода (фактически, цвет курсора)
+* `colors: ColorConfiguration` - настройка цвета текста в различных состояниях поля ввода ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
 
 ### Граница текстового поля (TextFieldBorderConfiguration)
 
