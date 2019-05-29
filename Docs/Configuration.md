@@ -4,16 +4,16 @@
 
 - [Возможности кастомизации](#Возможности-кастомизации)
 - [Параметры конфигурации](#Параметры-конфигурации)
-	- [Обычный плейсхолдер (PlaceholderConfiguration)](#Обычный-плейсхолдер-(PlaceholderConfiguration))
-	- [Плавающий плейсхолдер (FloatingPlaceholderConfiguration)](#Плавающий-плейсхолдер-(FloatingPlaceholderConfiguration))
-	- [Текстовое поле (TextFieldConfiguration)](#Текстовое-поле-(TextFieldConfiguration))
-	- [Граница текстового поля (TextFieldBorderConfiguration)](#Граница-текстового-поля-(TextFieldBorderConfiguration))
-	- [Линия под текстовым полем (LineConfiguration)](#Линия-под-текстовым-полем-(LineConfiguration))
-	- [Подсказка (HintConfiguration)](#Подсказка-(HintConfiguration))
-	- [Режим ввода пароля (PasswordModeConfiguration)](#Режим-ввода-пароля-(PasswordModeConfiguration))
-	- [Кнопка очистки (ActionButtonConfiguration)](#Кнопка-очистки-(ActionButtonConfiguration))
-	- [Background (BackgroundConfiguration)](#Background-(BackgroundConfiguration))
-	- [Настройка цвета (ColorConfiguration)](#Настройка-цвета-(ColorConfiguration))
+	- [Обычный плейсхолдер (PlaceholderConfiguration)](#PlaceholderConfiguration)
+	- [Плавающий плейсхолдер (FloatingPlaceholderConfiguration)](#FloatingPlaceholderConfiguration)
+	- [Текстовое поле (TextFieldConfiguration)](#TextFieldConfiguration)
+	- [Граница текстового поля (TextFieldBorderConfiguration)](#TextFieldBorderConfiguration)
+	- [Линия под текстовым полем (LineConfiguration)](#LineConfiguration)
+	- [Подсказка (HintConfiguration)](#HintConfiguration)
+	- [Режим ввода пароля (PasswordModeConfiguration)](#PasswordModeConfiguration)
+	- [Кнопка очистки (ActionButtonConfiguration)](#ActionButtonConfiguration)
+	- [Background (BackgroundConfiguration)](#BackgroundConfiguration)
+	- [Настройка цвета (ColorConfiguration)](#ColorConfiguration)
 
 ## Возможности кастомизации
 
@@ -24,37 +24,37 @@
 Рассмотрим более подробно элементы, доступные для изменения:
 
 * BorderedTextField
-	* [Обычный плейсхолдер](#Обычный-плейсхолдер-(PlaceholderConfiguration))
-	* [Текстовое поле](#Текстовое-поле-(TextFieldConfiguration))
-	* [Граница текстового поля](#Граница-текстового-поля-(TextFieldBorderConfiguration))
-	* [Подсказка](#Подсказка-(HintConfiguration))
-	* [Режим ввода пароля](#Режим-ввода-пароля-(PasswordModeConfiguration))
-	* [Background](#Background-(BackgroundConfiguration))
+	* [Обычный плейсхолдер](#PlaceholderConfiguration)
+	* [Текстовое поле](#TextFieldConfiguration)
+	* [Граница текстового поля](#TextFieldBorderConfiguration)
+	* [Подсказка](#HintConfiguration)
+	* [Режим ввода пароля](#PasswordModeConfiguration)
+	* [Background](#BackgroundConfiguration)
 * UnderlinedTextField
-	* [Плавающий плейсхолдер](#Плавающий-плейсхолдер-(FloatingPlaceholderConfiguration))
-	* [Текстовое поле](#Текстовое-поле-(TextFieldConfiguration))
-	* [Линия под текстовым полем](#Линия-под-текстовым-полем-(LineConfiguration))
-	* [Подсказка](#Подсказка-(HintConfiguration))
-	* [Режим ввода пароля](#Режим-ввода-пароля-(PasswordModeConfiguration))
-	* [Background](#Background-(BackgroundConfiguration))
+	* [Плавающий плейсхолдер](#FloatingPlaceholderConfiguration)
+	* [Текстовое поле](#TextFieldConfiguration)
+	* [Линия под текстовым полем](#LineConfiguration)
+	* [Подсказка](#HintConfiguration)
+	* [Режим ввода пароля](#PasswordModeConfiguration)
+	* [Background](#BackgroundConfiguration)
 * UnderlinedTextView
-	* [Плавающий плейсхолдер](#Плавающий-плейсхолдер-(FloatingPlaceholderConfiguration))
-	* [Текстовое поле](#Текстовое-поле-(TextFieldConfiguration))
-	* [Линия под текстовым полем](#Линия-под-текстовым-полем-(LineConfiguration))
+	* [Плавающий плейсхолдер](#FloatingPlaceholderConfiguration)
+	* [Текстовое поле](#TextFieldConfiguration)
+	* [Линия под текстовым полем](#LineConfiguration)
 	* [Подсказка](#Подсказка-(HintConfiguration))
-	* [Кнопка очистки](#Кнопка-очистки-(ActionButtonConfiguration))
-	* [Background](#Background-(BackgroundConfiguration))
+	* [Кнопка очистки](#ActionButtonConfiguration)
+	* [Background](#BackgroundConfiguration)
 
 ## Параметры конфигурации
 
-### Обычный плейсхолдер (PlaceholderConfiguration)
+### PlaceholderConfiguration
 
 Параметры конфигурации обычного плейсхолдера, используется в данный момент только в поле `BorderedTextField`.
 
 * `font: UIFont` - шрифт плейсхолдера
-* `colors: ColorConfiguration` - настройка цвета плейсхолдера в разных состояниях (смотри [ColorConfiguration](#Настройка-цвета-(ColorConfiguration)))
+* `colors: ColorConfiguration` - настройка цвета плейсхолдера в разных состояниях (смотри [ColorConfiguration](#ColorConfiguration))
 
-### Плавающий плейсхолдер (FloatingPlaceholderConfiguration)
+### FloatingPlaceholderConfiguration
 
 Параметры конфигурации 'плавающего' плейсхолдера, изменяющего свое положение и размеры в зависимости от состояния поля ввода.
 
@@ -64,27 +64,27 @@
 * `bottomInsets: UIEdgeInsets` - отступы плейсхолдера от границ контейнера, когда он находится в нижнем положении. Итоговое положение рассчитывается относительно верхней границы контейнера, потому параметр `bottom` будет игнорироваться
 * `smallFontSize: CGFloat` - кегль шрифта для плейсхолдера, когда он будет находиться вверху
 * `bigFontSize: CGFloat` - кегль шрифта для плейсхолдера, когда он будет находиться внизу
-* `topColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он вверху ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
-* `bottomColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он внизу ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
+* `topColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он вверху ([ColorConfiguration](#ColorConfiguration))
+* `bottomColors: ColorConfiguration` - настройка цвета плейсхолдера в состоянии, когда он внизу ([ColorConfiguration](#ColorConfiguration))
 
-### Текстовое поле (TextFieldConfiguration)
+### TextFieldConfiguration
 
 * `font: UIFont` - шрифт текста в поле ввода
 * `defaultPadding: UIEdgeInsets` - отступы для текста в обычном состоянии, без каких-либо кнопок
 * `increasedPadding: UIEdgeInsets` - данные отступы для текста в поле ввода будут применены при наличии `action` кнопки, к примеру, в режиме ввода пароля
 * `tintColor: UIColor` - `tintColor` для поля ввода (фактически, цвет курсора)
-* `colors: ColorConfiguration` - настройка цвета текста в различных состояниях поля ввода ([ColorConfiguration](#Настройка-цвета-(ColorConfiguration))
+* `colors: ColorConfiguration` - настройка цвета текста в различных состояниях поля ввода ([ColorConfiguration](#ColorConfiguration))
 
-### Граница текстового поля (TextFieldBorderConfiguration)
+### TextFieldBorderConfiguration
 
-### Линия под текстовым полем (LineConfiguration)
+### LineConfiguration
 
-### Подсказка (HintConfiguration)
+### HintConfiguration
 
-### Режим ввода пароля (PasswordModeConfiguration)
+### PasswordModeConfiguration
 
-### Кнопка очистки (ActionButtonConfiguration)
+### ActionButtonConfiguration
 
-### Background (BackgroundConfiguration)
+### BackgroundConfiguration
 
-### Настройка цвета (ColorConfiguration)
+### ColorConfiguration
