@@ -1,7 +1,9 @@
 # TextFieldsCatalog
 
 [![Build Status](https://travis-ci.org/chausovSurfStudio/TextFieldsCatalog.svg?branch=master)](https://travis-ci.org/chausovSurfStudio/TextFieldsCatalog)
-[![Platform](https://img.shields.io/badge/Platform-iOS-red.svg)](https://developer.apple.com/iphone/)
+[![Version](https://img.shields.io/cocoapods/v/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
+[![Platform](https://img.shields.io/cocoapods/p/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
+[![License](https://img.shields.io/cocoapods/l/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
 [![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)](https://developer.apple.com/swift/)
 [![codebeat badge](https://codebeat.co/badges/ae1cc1f8-72c1-4a84-9400-7e14defc904d)](https://codebeat.co/projects/github-com-chausovsurfstudio-textfieldscatalog-master)
 
@@ -29,7 +31,7 @@ pod 'TextFieldsCatalog'
 
 Вам необходимо выполнить следующие шаги:
 
-* добавить в Podfile `pod 'TextFieldsCatalog'`, обновить его, открыть `.workspace`
+* добавить в Podfile `pod 'TextFieldsCatalog'`, выполнить `pod install`, открыть `.workspace`
 * добавить на экран UIView, изменить его класс на `UnderlinedTextField`, установить высоту равной 77
 * во ViewController сделать `IBOutlet` на это поле, назвать, к примеру, `textField`
 * сконфигурировать поле ввода
