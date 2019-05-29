@@ -23,6 +23,24 @@
 pod 'TextFieldsCatalog'
 ````
 
+## First Step Guide
+
+Предположим, вам необходимо реализовать поле ввода для Имени пользователя, которое должно быть от 5 до 25 символов и вас устраивает дизайн `UnderlinedTextField`, предоставляемый из коробки.
+
+Вам необходимо выполнить следующие шаги:
+
+* добавить в Podfile `pod 'TextFieldsCatalog'`, обновить его, открыть `.workspace`
+* добавить на экран UIView, изменить его класс на `UnderlinedTextField`, установить высоту равной 77
+* во ViewController сделать `IBOutlet` на это поле, назвать, к примеру, `textField`
+* сконфигурировать поле ввода
+````swift
+textField.configure(placeholder: "Имя", maxLength: 25)
+textField.configure(autocapitalizationType: .words)
+textField.validator = TextFieldValidator(minLength: 5, maxLength: 25, regex: nil)
+````
+
+Этих действий вполне достаточно для базовой конфигурации поля ввода. Для получения более подробной информации - рекомендуется посмотреть Example проект и прочитать [документацию](/Docs/Usage.md).
+
 ## Строение репозитория
 
 Фактически, репозиторий включает в себя как и сам `pod`, так и полноценный Example проект, на котором можно сразу протестировать на деле новое поле или изменения в существующих.
