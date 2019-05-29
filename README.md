@@ -12,7 +12,7 @@
 Данный репозиторий содержит коллекцию различных полей ввода, предоставляющих богатые возможности по проверке введенных значений и форматированию текста при вводе. К тому же, они просто симпатичные и хорошо кастомизируются :)
 
 <p align="center">
-  <img src="https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/documentation/TextFieldsCatalog_video.gif" />
+	<img src="./Docs/Images/TextFieldsCatalog_video.gif" />
 </p>
 
 ## Installation
