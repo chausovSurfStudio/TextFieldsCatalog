@@ -14,6 +14,7 @@
 	- [Кнопка очистки (ActionButtonConfiguration)](#ActionButtonConfiguration)
 	- [Background (BackgroundConfiguration)](#BackgroundConfiguration)
 	- [Настройка цвета (ColorConfiguration)](#ColorConfiguration)
+- [Создание собственного наследника](#Создание-собственного-наследника)
 
 ## Возможности кастомизации
 
@@ -69,6 +70,8 @@
 
 ### TextFieldConfiguration
 
+Параметры настройки текста и его отступов в поле ввода.
+
 * `font: UIFont` - шрифт текста в поле ввода
 * `defaultPadding: UIEdgeInsets` - отступы для текста в обычном состоянии, без каких-либо кнопок
 * `increasedPadding: UIEdgeInsets` - данные отступы для текста в поле ввода будут применены при наличии `action` кнопки, к примеру, в режиме ввода пароля
@@ -77,14 +80,60 @@
 
 ### TextFieldBorderConfiguration
 
+Параметры для настройки границы таблицы, используется в данный момент только в поле `BorderedTextField`.
+
+* `cornerRadius: CGFloat` - радиус скругления границы
+* `width: CGFloat` - ширина границы
+* `colors: ColorConfiguration` - цвета границы в различных состояниях поля ввода ([ColorConfiguration](#ColorConfiguration))
+
 ### LineConfiguration
+
+Параметры для настройки цвета, размера и положения линии под полем ввода.
+
+* `insets: UIEdgeInsets` - параметр позволяет управлять положением линии, отступы рассчитываются относительно верха контейнера, параметр `.bottom` будет в силу этого проигнорирован. При установке в `.zero` - линия не будет отрисована.
+* `defaultHeight: CGFloat` - высота линии в неактивном состоянии поля ввода
+* `increasedHeight: CGFloat` - высота линии, когда поле ввода в фокусе
+* `cornerRadius: CGFloat` - радиус скругления линии
+* `colors: ColorConfiguration` - цвета линии в различных состояниях поля ввода ([ColorConfiguration](#ColorConfiguration))
 
 ### HintConfiguration
 
+Параметры конфигурации для лейбла сподсказкой/сообщением об ошибке.
+
+* `font: UIFont` - шрифт для текста в лейбле с подсказкой
+* `lineHeight: CGFloat` - под капотом в лейбле будет показана `attributedString` с нестандартным межстрочным интервалом, данным параметром можно управлять этим интервалом. Соответствует параметру `lineHeight` в Figma.
+* `colors: ColorConfiguration` - цвет текста в лейбле в зависимости от состояния поля ввода ([ColorConfiguration](#ColorConfiguration))
+
 ### PasswordModeConfiguration
+
+Параметры для настройки режима ввода пароля, позволяет определить цвета и иконки для кнопки, переключающей `isSecureTextEntry` значение.
+
+* `secureModeOnImage: UIImage` - иконка кнопки, которая будет показана в режиме secure ввода
+* `secureModeOffImage: UIImage` - иконка кнопки, которая будет показана при отключенном режиме secure ввода
+* `normalColor: UIColor` - цвет иконки в нормальном состоянии
+* `pressedColor: UIColor` - цвет иконки в нажатом состоянии
 
 ### ActionButtonConfiguration
 
+У некоторых полей ввода присутствует возможность показа некой своей кастомной кнопки. С помощью данных параметров можно настроить ее визуальное отображение.
+
+* `image: UIImage` - иконка в кнопке
+* `normalColor: UIColor` - цвет иконки в нормальном состоянии
+* `pressedColor: UIColor` - цвет иконки в нажатом состоянии
+
 ### BackgroundConfiguration
 
+Данный параметр позволяет переопределить цвет backgroundColor для контейнера с полем ввода.
+
+* `color: UIColor` - backgroundColor контейнера с полем ввода
+
 ### ColorConfiguration
+
+Данные параметры позволяют переопределить цвет различных элементов внутри полей ввода.
+
+* `error: UIColor` - цвет элемента в состоянии ошибки
+* `normal: UIColor` - цвет элемента в нормальном состоянии (поле ввода не в фокусе)
+* `active: UIColor` - цвет элемента в активном состоянии (когда поле ввода в фокусе)
+* `disabled: UIColor` - цвет элемента в задизейбленном состоянии
+
+## Создание собственного наследника
