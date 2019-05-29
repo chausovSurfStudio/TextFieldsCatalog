@@ -214,11 +214,11 @@ func setReturnKeyType(_ type: UIReturnKeyType)
 	<img src="./Images/DatePickerView.png" />
 </p>
 
-Клавиатуры представляет собой обертку над обычным UIDatePicker. В самом простом случае - вам будет достаточно выполнить следующие шаги:
+Клавиатура представляет собой обертку над обычным UIDatePicker. В самом простом случае - вам будет достаточно выполнить следующие шаги:
 
 ````swift
 textField.inputView = DatePickerView.view(size: inputViewSize,
-										  textField: textField)
+                                          textField: textField)
 ````
 
 * Создать клавиатуру нужного вам размера, при создании указав размер и поле ввода, к которому клавиатуры будет привязана
@@ -231,7 +231,59 @@ textField.inputView = DatePickerView.view(size: inputViewSize,
 
 Доступ к содержащемуся внутри клавиатуры UIDatePicker открыт, потому у вас есть возможность настроить его так, как вы считаете необходимым.
 
+Более сложный вариант создания клавиатуры, включающий в себя кастомизацию, выглядит следующим образом:
 
+````swift
+import TextFieldsCatalog
+
+private enum Constants {
+    static let inputViewHeight: CGFloat = 261
+}
+
+extension DatePickerView {
+
+    static func `default`(for textField: DateTextField) -> DatePickerView {
+        let viewSize = CGSize(width: UIScreen.main.bounds.width,
+                              height: Constants.inputViewHeight)
+        let view = DatePickerView.view(size: viewSize, textField: textField)
+        view.datePicker.backgroundColor = Color.TextField.Picker.background
+        view.topViewConfiguration = PickerTopViewConfiguration.default()
+        return view
+    }
+
+}
+
+private extension PickerTopViewConfiguration {
+
+    static func `default`() -> PickerTopViewConfiguration {
+        let buttonsConfiguration = PickerTopViewButtonConfiguration(text: L10n.Buttons.done,
+                                                                    activeColor: Color.TextField.Toolbar.buttonActive,
+                                                                    highlightedColor: Color.TextField.Toolbar.buttonPressed)
+        return PickerTopViewConfiguration(backgroundColor: Color.TextField.Toolbar.background,
+                                          separatorsColor: Color.TextField.Toolbar.separator,
+                                          button: buttonsConfiguration)
+    }
+
+}
+
+...
+
+field.inputView = DatePickerView.default(for: field)
+````
+
+* Само `view` клавиатуры создается точно таким же образом, что и раньше
+* Переопределяется background для UIDatePicker
+* Переопределяется стиль тулбара:
+	* необходимо указать заголовок кнопки "Готово"
+	* цвет кнопок тулбара в обычном и нажатом состояниях
+	* цвет бэкграунда для тулбара
+	* и цвет его сепараторов
+
+В результате, DatePickerView может выглядеть следующим образом:
+
+<p align="center">
+	<img src="./Images/DatePickerViewCustomized.png" />
+</p>
 
 
 
