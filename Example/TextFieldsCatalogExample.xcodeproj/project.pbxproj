@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01657C0E6E3BF9105EFE61FB /* InfoModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB28B012142A4983A13B48 /* InfoModuleInput.swift */; };
 		04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */; };
-		0F32093C542C1D35D5B10FD2 /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */; };
 		157289149F767AAFF55AEB57 /* InfoViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E0C3FED9158FF978B108A /* InfoViewOutput.swift */; };
 		1AF04E6693D06397802D1321 /* FieldExampleModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */; };
 		2025FD598129275E76AD5751 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9E1ECAFA665E89FD59024 /* MainViewController.swift */; };
@@ -124,7 +123,6 @@
 		364B32B613AB0DB559854299 /* FieldPresetsModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleConfigurator.swift; sourceTree = "<group>"; };
 		3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleConfigurator.swift; sourceTree = "<group>"; };
 		3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleInput.swift; sourceTree = "<group>"; };
 		56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldPresetsViewController.xib; sourceTree = "<group>"; };
 		5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewInput.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 		E05F9F39566CEF31DDE8E3BD /* FieldPresetsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleInput.swift; sourceTree = "<group>"; };
 		EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExamplePresenter.swift; sourceTree = "<group>"; };
 		ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleOutput.swift; sourceTree = "<group>"; };
-		FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +229,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F32093C542C1D35D5B10FD2 /* Pods_TextFieldsCatalogTests.framework in Frameworks */,
 				5B03F1D59D90FAEDF7788D72 /* Pods_TextFieldsCatalogExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,8 +665,6 @@
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				47A2F52770325B87F8802778 /* Pods_TextFieldsCatalog.framework */,
-				FB3F76F65A96DD4D9A117E0E /* Pods_TextFieldsCatalogTests.framework */,
 				B9137A7D2B3EF2F6394D0BBE /* Pods_TextFieldsCatalogExample.framework */,
 				788773D111B99BDD147B7FD6 /* Pods_TextFieldsCatalogExampleTests.framework */,
 			);
@@ -1319,7 +1313,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
-				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
+				INFOPLIST_FILE = TextFieldsCatalogExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1341,7 +1335,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
-				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
+				INFOPLIST_FILE = TextFieldsCatalogExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
