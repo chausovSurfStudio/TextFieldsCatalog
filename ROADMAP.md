@@ -6,12 +6,12 @@
 
 Необходимо решить внутренние архитектурные проблемы, обновить документацию, добавить более подробные примеры работы с полями - это позволит стороннему наблюдателю быстро разобраться с тем, как именно лучше применять разработанные поля ввода на практике, а также существенно улучшит внутреннюю структуру полей ввода.
 
-🚀 &nbsp;**Открыто** &nbsp;&nbsp;📉 &nbsp;&nbsp;**0 / 7** целей выполнено **(0%)**
+🚀 &nbsp;**Открыто** &nbsp;&nbsp;📉 &nbsp;&nbsp;**2 / 7** целей выполнено **(28%)**
 
 | Завершенность | Цель | Статус |
 | :---: | :--- | --- |
-| ❌ | [Swift 5](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/24) |`ready to start`|
-| ❌ | [Swift 5 Example проект](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/25) | |
+| ❌ | [Swift 5](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/24) |`done`|
+| ❌ | [Swift 5 Example проект](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/25) |`done`|
 | ❌ | [Глобальный рефакторинг внутренней архитектуры](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/9) |`ready to start`|
 | ❌ | [Добавить примеры работы с полями](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/7) |`ready to start`|
 | ❌ | [Установка текста без анимации](https://github.com/chausovSurfStudio/TextFieldsCatalog/issues/26) |`ready to start`|
