@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
 [![Platform](https://img.shields.io/cocoapods/p/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
 [![License](https://img.shields.io/cocoapods/l/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
-[![Swift Version](https://img.shields.io/badge/swift-4.2-orange.svg)](https://developer.apple.com/swift/)
+[![Swift Version](https://img.shields.io/badge/swift-5.0-orange.svg)](https://developer.apple.com/swift/)
 [![codebeat badge](https://codebeat.co/badges/ae1cc1f8-72c1-4a84-9400-7e14defc904d)](https://codebeat.co/projects/github-com-chausovsurfstudio-textfieldscatalog-master)
 
 ## Overview
