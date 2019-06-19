@@ -802,9 +802,11 @@
 				TargetAttributes = {
 					90736C2221F86099003B8B78 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					90736C3621F8609B003B8B78 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 90736C2221F86099003B8B78;
 					};
 				};
@@ -1280,7 +1282,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalogExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1300,7 +1302,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalogExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1321,7 +1323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalogExample.app/TextFieldsCatalogExample";
 			};
@@ -1343,7 +1345,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFieldsCatalogExample.app/TextFieldsCatalogExample";
 			};
