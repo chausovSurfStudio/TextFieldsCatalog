@@ -30,14 +30,14 @@
 
 ### BorderedTextField
 <p align="center">
-	<img src="./Images/BorderedTextField.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/BorderedTextField.png" />
 </p>
  
 Отличительная особенность поля - оно имеет статичный плейсхолдер, а UITextField имеет границу.
 
 ### UnderlinedTextField
 <p align="center">
-	<img src="./Images/UnderlinedTextField.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/UnderlinedTextField.png" />
 </p>
 
 Отличительными особенностями данного поля являются:
@@ -47,7 +47,7 @@
 
 ### UnderlinedTextView
 <p align="center">
-	<img src="./Images/UnderlinedTextView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/UnderlinedTextView.png" />
 </p>
 
 Данное поле - обертка над UITextView, а не над UITextField, как предыдущие. Область применения - поля ввода, где ожидается наличие большого количества текста, который пользователь должен видеть полностью, потому поле при увеличении количества текста растягивается в высоту.
@@ -205,7 +205,7 @@ func setReturnKeyType(_ type: UIReturnKeyType)
 ### DatePickerView
 
 <p align="center">
-	<img src="./Images/DatePickerView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/DatePickerView.png" />
 </p>
 
 Клавиатура представляет собой обертку над обычным UIDatePicker. В самом простом случае - вам будет достаточно выполнить следующие шаги:
@@ -278,13 +278,13 @@ field.inputView = DatePickerView.default(for: field)
 В результате, DatePickerView может выглядеть следующим образом:
 
 <p align="center">
-	<img src="./Images/DatePickerViewCustomized.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/DatePickerViewCustomized.png" />
 </p>
 
 ### PlainPickerView
 
 <p align="center">
-	<img src="./Images/PlainPickerView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/PlainPickerView.png" />
 </p>
 
 Представляет собой обертку над самым обычным UIPickerView. Принцип работы и кастомизации аналогичен DatePickerView, потому в данной секции будут описаны только особенности PlainPickerView:
@@ -453,4 +453,4 @@ final class TextFormatter {
 
 ## Кастомизация
 
-В следующем [документе](./Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
+В следующем [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
