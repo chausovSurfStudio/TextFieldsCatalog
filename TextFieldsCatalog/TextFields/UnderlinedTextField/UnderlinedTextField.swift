@@ -510,6 +510,7 @@ private extension UnderlinedTextField {
         updatePlaceholderPosition()
         updatePlaceholderFont()
         updateViewHeight()
+        updatePasswordButtonVisibility()
     }
 
     func updatePasswordButtonIcon() {
