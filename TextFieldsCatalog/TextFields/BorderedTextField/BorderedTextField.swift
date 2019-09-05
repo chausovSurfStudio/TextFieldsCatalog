@@ -155,9 +155,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
             actionButton.isHidden = false
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordVisibilityButton()
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
         case .custom(let actionButtonConfig):
             actionButton.isHidden = false
+            actionButton.alpha = 1
             textField.isSecureTextEntry = false
             textField.textPadding = configuration.textField.increasedPadding
             actionButton.setImageForAllState(actionButtonConfig.image,
@@ -357,12 +359,13 @@ private extension BorderedTextField {
         }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
-        updatePasswordVisibilityButton()
+        updatePasswordButtonIcon()
     }
 
     @objc
     func textFieldEditingChange(_ textField: UITextField) {
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -419,6 +422,7 @@ extension BorderedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -482,9 +486,10 @@ private extension BorderedTextField {
         updateTextColor()
         updateTextFieldBorderColor()
         updateViewHeight()
+        updatePasswordButtonVisibility()
     }
 
-    func updatePasswordVisibilityButton() {
+    func updatePasswordButtonIcon() {
         guard case .password = mode else {
             return
         }
@@ -589,6 +594,21 @@ private extension BorderedTextField {
             lastViewHeight = viewHeight
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
+        }
+    }
+
+    func updatePasswordButtonVisibility() {
+        guard case .password = mode else {
+            return
+        }
+        let textIsEmpty = textField.text?.isEmpty ?? true
+        let alpha: CGFloat = textIsEmpty ? 0 : 1
+        guard alpha != actionButton.alpha else {
+            return
+        }
+        let duration = alpha == 0 ? 0 : Constants.animationDuration
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.actionButton.alpha = alpha
         }
     }
 
