@@ -116,7 +116,7 @@ private extension BorderedFieldPreset {
         textField.disablePasteAction()
         textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
-        textField.setTextFieldMode(.password)
+        textField.setTextFieldMode(.password(.alwaysVisible))
         textField.heightLayoutPolicy = .flexible(130, 5)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)

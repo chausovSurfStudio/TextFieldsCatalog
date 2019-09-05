@@ -13,26 +13,6 @@ import InputMask
 /// Standart height equals 77.
 open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Enums
-
-    private enum UnderlinedTextFieldState {
-        /// textField not in focus
-        case normal
-        /// state with active textField
-        case active
-        /// state for disabled textField
-        case disabled
-    }
-
-    public enum UnderlinedTextFieldMode {
-        /// normal textField mode without any action buttons
-        case plain
-        /// mode for password textField
-        case password
-        /// mode for textField with custom action button
-        case custom(ActionButtonConfiguration)
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -48,7 +28,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Private Properties
 
     private let lineView = UIView()
-    private var state: UnderlinedTextFieldState = .normal {
+    private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
@@ -59,7 +39,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var maxLength: Int?
 
     private var error: Bool = false
-    private var mode: UnderlinedTextFieldMode = .plain
+    private var mode: TextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
@@ -172,7 +152,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: UnderlinedTextFieldMode) {
+    public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
@@ -183,7 +163,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             actionButton.isHidden = false
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordVisibilityButton()
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
         case .custom(let actionButtonConfig):
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
@@ -398,12 +379,13 @@ private extension UnderlinedTextField {
         }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
-        updatePasswordVisibilityButton()
+        updatePasswordButtonIcon()
     }
 
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -460,6 +442,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -527,9 +510,10 @@ private extension UnderlinedTextField {
         updatePlaceholderPosition()
         updatePlaceholderFont()
         updateViewHeight()
+        updatePasswordButtonVisibility()
     }
 
-    func updatePasswordVisibilityButton() {
+    func updatePasswordButtonIcon() {
         guard case .password = mode else {
             return
         }
@@ -578,10 +562,7 @@ private extension UnderlinedTextField {
 
     /// Return true, if current input string is empty
     func textIsEmpty() -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        return text.isEmpty
+        return textField.text?.isEmpty ?? true
     }
 
     func setupHintText(_ hintText: String) {
@@ -690,6 +671,25 @@ private extension UnderlinedTextField {
         }
     }
 
+    func updatePasswordButtonVisibility() {
+        guard case .password(let behavior) = mode else {
+            return
+        }
+        guard behavior == .visibleOnNotEmptyText else {
+            actionButton.alpha = 1
+            return
+        }
+        let textIsEmpty = textField.text?.isEmpty ?? true
+        let alpha: CGFloat = textIsEmpty ? 0 : 1
+        guard alpha != actionButton.alpha else {
+            return
+        }
+        let duration = alpha == 0 ? 0 : Constants.animationDuration
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.actionButton.alpha = alpha
+        }
+    }
+
 }
 
 // MARK: - Computed values
@@ -705,7 +705,7 @@ private extension UnderlinedTextField {
     }
 
     func textColor() -> UIColor {
-        return suitableColor(from: configuration.textField.colors)
+        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func currentPlaceholderColor() -> CGColor {
@@ -714,7 +714,7 @@ private extension UnderlinedTextField {
 
     func placeholderColor() -> CGColor {
         let colorsConfiguration = shouldMovePlaceholderOnTop() ? configuration.placeholder.topColors : configuration.placeholder.bottomColors
-        return suitableColor(from: colorsConfiguration).cgColor
+        return colorsConfiguration.suitableColor(fieldState: state, isActiveError: error).cgColor
     }
 
     func currentPlaceholderPosition() -> CGRect {
@@ -737,7 +737,7 @@ private extension UnderlinedTextField {
     }
 
     func lineColor() -> UIColor {
-        return suitableColor(from: configuration.line.colors)
+        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func linePosition() -> CGRect {
@@ -752,21 +752,7 @@ private extension UnderlinedTextField {
     }
 
     func hintTextColor() -> UIColor {
-        return suitableColor(from: configuration.hint.colors)
-    }
-
-    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
-        guard !error else {
-            return colorConfiguration.error
-        }
-        switch state {
-        case .active:
-            return colorConfiguration.active
-        case .normal:
-            return colorConfiguration.normal
-        case .disabled:
-            return colorConfiguration.disabled
-        }
+        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
 }

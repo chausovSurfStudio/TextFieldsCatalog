@@ -114,7 +114,7 @@ private extension CustomUnderlinedFieldPreset {
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.disablePasteAction()
         textField.setReturnKeyType(.next)
-        textField.setTextFieldMode(.password)
+        textField.setTextFieldMode(.password(.visibleOnNotEmptyText))
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText

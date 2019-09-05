@@ -12,26 +12,6 @@ import InputMask
 /// Class for custom textField, where text field have a highlighted border. Default height equals to 130.
 open class BorderedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Enums
-
-    private enum BorderedTextFieldState {
-        /// textField not in focus
-        case normal
-        /// state for active textField
-        case active
-        /// state for disabled textField
-        case disabled
-    }
-
-    public enum BorderedTextFieldMode {
-        /// normal textField mode without any action buttons
-        case plain
-        /// mode for password textField
-        case password
-        /// mode for textField with custom action button
-        case custom(ActionButtonConfiguration)
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -47,7 +27,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Private Properties
 
-    private var state: BorderedTextFieldState = .normal {
+    private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
@@ -56,7 +36,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     private var hintMessage: String?
 
     private var error: Bool = false
-    private var mode: BorderedTextFieldMode = .plain
+    private var mode: TextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
@@ -164,7 +144,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     }
 
     /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: BorderedTextFieldMode) {
+    public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
@@ -175,9 +155,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
             actionButton.isHidden = false
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordVisibilityButton()
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
         case .custom(let actionButtonConfig):
             actionButton.isHidden = false
+            actionButton.alpha = 1
             textField.isSecureTextEntry = false
             textField.textPadding = configuration.textField.increasedPadding
             actionButton.setImageForAllState(actionButtonConfig.image,
@@ -377,12 +359,13 @@ private extension BorderedTextField {
         }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
-        updatePasswordVisibilityButton()
+        updatePasswordButtonIcon()
     }
 
     @objc
     func textFieldEditingChange(_ textField: UITextField) {
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -439,6 +422,7 @@ extension BorderedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -502,9 +486,10 @@ private extension BorderedTextField {
         updateTextColor()
         updateTextFieldBorderColor()
         updateViewHeight()
+        updatePasswordButtonVisibility()
     }
 
-    func updatePasswordVisibilityButton() {
+    func updatePasswordButtonIcon() {
         guard case .password = mode else {
             return
         }
@@ -612,6 +597,25 @@ private extension BorderedTextField {
         }
     }
 
+    func updatePasswordButtonVisibility() {
+        guard case .password(let behavior) = mode else {
+            return
+        }
+        guard behavior == .visibleOnNotEmptyText else {
+            actionButton.alpha = 1
+            return
+        }
+        let textIsEmpty = textField.text?.isEmpty ?? true
+        let alpha: CGFloat = textIsEmpty ? 0 : 1
+        guard alpha != actionButton.alpha else {
+            return
+        }
+        let duration = alpha == 0 ? 0 : Constants.animationDuration
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.actionButton.alpha = alpha
+        }
+    }
+
 }
 
 // MARK: - Computed Colors
@@ -627,15 +631,15 @@ private extension BorderedTextField {
     }
 
     func placeholderTextColor() -> UIColor {
-        return suitableColor(from: configuration.placeholder.colors)
+        return configuration.placeholder.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func hintTextColor() -> UIColor {
-        return suitableColor(from: configuration.hint.colors)
+        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func textColor() -> UIColor {
-        return suitableColor(from: configuration.textField.colors)
+        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func currentTextFieldBorderColor() -> CGColor {
@@ -643,21 +647,7 @@ private extension BorderedTextField {
     }
 
     func textFieldBorderColor() -> CGColor {
-        return suitableColor(from: configuration.textFieldBorder.colors).cgColor
-    }
-
-    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
-        guard !error else {
-            return colorConfiguration.error
-        }
-        switch state {
-        case .active:
-            return colorConfiguration.active
-        case .normal:
-            return colorConfiguration.normal
-        case .disabled:
-            return colorConfiguration.disabled
-        }
+        return configuration.textFieldBorder.colors.suitableColor(fieldState: state, isActiveError: error).cgColor
     }
 
 }
