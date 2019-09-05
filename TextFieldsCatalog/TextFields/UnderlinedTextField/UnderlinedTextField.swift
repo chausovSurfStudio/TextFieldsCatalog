@@ -685,7 +685,7 @@ private extension UnderlinedTextField {
     }
 
     func textColor() -> UIColor {
-        return suitableColor(from: configuration.textField.colors)
+        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func currentPlaceholderColor() -> CGColor {
@@ -694,7 +694,7 @@ private extension UnderlinedTextField {
 
     func placeholderColor() -> CGColor {
         let colorsConfiguration = shouldMovePlaceholderOnTop() ? configuration.placeholder.topColors : configuration.placeholder.bottomColors
-        return suitableColor(from: colorsConfiguration).cgColor
+        return colorsConfiguration.suitableColor(fieldState: state, isActiveError: error).cgColor
     }
 
     func currentPlaceholderPosition() -> CGRect {
@@ -717,7 +717,7 @@ private extension UnderlinedTextField {
     }
 
     func lineColor() -> UIColor {
-        return suitableColor(from: configuration.line.colors)
+        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func linePosition() -> CGRect {
@@ -732,21 +732,7 @@ private extension UnderlinedTextField {
     }
 
     func hintTextColor() -> UIColor {
-        return suitableColor(from: configuration.hint.colors)
-    }
-
-    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
-        guard !error else {
-            return colorConfiguration.error
-        }
-        switch state {
-        case .active:
-            return colorConfiguration.active
-        case .normal:
-            return colorConfiguration.normal
-        case .disabled:
-            return colorConfiguration.disabled
-        }
+        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
 }

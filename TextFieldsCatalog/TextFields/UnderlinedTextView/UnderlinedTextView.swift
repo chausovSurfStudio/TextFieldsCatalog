@@ -521,7 +521,7 @@ private extension UnderlinedTextView {
     }
 
     func textColor() -> UIColor {
-        return suitableColor(from: configuration.textField.colors)
+        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func currentPlaceholderColor() -> CGColor {
@@ -530,7 +530,7 @@ private extension UnderlinedTextView {
 
     func placeholderColor() -> CGColor {
         let colorsConfiguration = shouldMovePlaceholderOnTop() ? configuration.placeholder.topColors : configuration.placeholder.bottomColors
-        return suitableColor(from: colorsConfiguration).cgColor
+        return colorsConfiguration.suitableColor(fieldState: state, isActiveError: error).cgColor
     }
 
     func currentPlaceholderPosition() -> CGRect {
@@ -553,7 +553,7 @@ private extension UnderlinedTextView {
     }
 
     func lineColor() -> UIColor {
-        return suitableColor(from: configuration.line.colors)
+        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func linePosition() -> CGRect {
@@ -569,7 +569,7 @@ private extension UnderlinedTextView {
     }
 
     func hintTextColor() -> UIColor {
-        return suitableColor(from: configuration.hint.colors)
+        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func freeVerticalSpace() -> CGFloat {
@@ -578,20 +578,6 @@ private extension UnderlinedTextView {
 
     func textViewHeight() -> CGFloat {
         return textView.text.height(forWidth: textView.bounds.size.width, font: configuration.textField.font, lineHeight: nil)
-    }
-
-    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
-        guard !error else {
-            return colorConfiguration.error
-        }
-        switch state {
-        case .active:
-            return colorConfiguration.active
-        case .normal:
-            return colorConfiguration.normal
-        case .disabled:
-            return colorConfiguration.disabled
-        }
     }
 
 }

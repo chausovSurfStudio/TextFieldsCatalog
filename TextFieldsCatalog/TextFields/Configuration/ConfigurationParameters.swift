@@ -212,4 +212,19 @@ public final class ColorConfiguration {
         self.active = active
         self.disabled = disabled
     }
+
+    func suitableColor(fieldState: FieldState, isActiveError: Bool) -> UIColor {
+        guard !isActiveError else {
+            return error
+        }
+        switch fieldState {
+        case .active:
+            return active
+        case .normal:
+            return normal
+        case .disabled:
+            return disabled
+        }
+    }
+
 }

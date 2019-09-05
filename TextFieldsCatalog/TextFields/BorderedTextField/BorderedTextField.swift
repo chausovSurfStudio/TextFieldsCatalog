@@ -607,15 +607,15 @@ private extension BorderedTextField {
     }
 
     func placeholderTextColor() -> UIColor {
-        return suitableColor(from: configuration.placeholder.colors)
+        return configuration.placeholder.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func hintTextColor() -> UIColor {
-        return suitableColor(from: configuration.hint.colors)
+        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func textColor() -> UIColor {
-        return suitableColor(from: configuration.textField.colors)
+        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
     func currentTextFieldBorderColor() -> CGColor {
@@ -623,21 +623,7 @@ private extension BorderedTextField {
     }
 
     func textFieldBorderColor() -> CGColor {
-        return suitableColor(from: configuration.textFieldBorder.colors).cgColor
-    }
-
-    func suitableColor(from colorConfiguration: ColorConfiguration) -> UIColor {
-        guard !error else {
-            return colorConfiguration.error
-        }
-        switch state {
-        case .active:
-            return colorConfiguration.active
-        case .normal:
-            return colorConfiguration.normal
-        case .disabled:
-            return colorConfiguration.disabled
-        }
+        return configuration.textFieldBorder.colors.suitableColor(fieldState: state, isActiveError: error).cgColor
     }
 
 }
