@@ -453,4 +453,4 @@ final class TextFormatter {
 
 ## Кастомизация
 
-В следующем [документе](./Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
+В следующем [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.

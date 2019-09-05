@@ -41,7 +41,7 @@ textField.configure(autocapitalizationType: .words)
 textField.validator = TextFieldValidator(minLength: 5, maxLength: 25, regex: nil)
 ````
 
-Этих действий вполне достаточно для базовой конфигурации поля ввода. Для получения более подробной информации - рекомендуется посмотреть Example проект и прочитать [документацию](/Docs/Usage.md).
+Этих действий вполне достаточно для базовой конфигурации поля ввода. Для получения более подробной информации - рекомендуется посмотреть Example проект и прочитать [документацию][usage].
 
 ## Строение репозитория
 
@@ -49,12 +49,21 @@ textField.validator = TextFieldValidator(minLength: 5, maxLength: 25, regex: nil
 
 ## Документация
 
-[Документация по тестовому проекту](/Docs/ExampleProject.md)
+[Документация по тестовому проекту][exampleProject]
 
-[Документ по проекту с каталогом полей ввода](/Docs/PodProject.md)
+[Документ по проекту с каталогом полей ввода][podProject]
 
-[Документация по возможностям полей ввода](/Docs/Usage.md)
+[Документация по возможностям полей ввода][usage]
 
 ## Лицензия
 
-TextFieldsCatalog распространяется под MIT [лицензией](./LICENSE.md)
+TextFieldsCatalog распространяется под MIT [лицензией][license]
+
+
+
+
+[configuration]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md
+[exampleProject]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/ExampleProject.md
+[podProject]:		https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/PodProject.md
+[usage]:			https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Usage.md
+[license]:			https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/LICENSE
