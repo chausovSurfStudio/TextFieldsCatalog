@@ -12,26 +12,6 @@ import InputMask
 /// Class for custom textField, where text field have a highlighted border. Default height equals to 130.
 open class BorderedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Enums
-
-    private enum BorderedTextFieldState {
-        /// textField not in focus
-        case normal
-        /// state for active textField
-        case active
-        /// state for disabled textField
-        case disabled
-    }
-
-    public enum BorderedTextFieldMode {
-        /// normal textField mode without any action buttons
-        case plain
-        /// mode for password textField
-        case password
-        /// mode for textField with custom action button
-        case custom(ActionButtonConfiguration)
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -47,7 +27,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Private Properties
 
-    private var state: BorderedTextFieldState = .normal {
+    private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
@@ -56,7 +36,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     private var hintMessage: String?
 
     private var error: Bool = false
-    private var mode: BorderedTextFieldMode = .plain
+    private var mode: TextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
@@ -164,7 +144,7 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     }
 
     /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: BorderedTextFieldMode) {
+    public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
