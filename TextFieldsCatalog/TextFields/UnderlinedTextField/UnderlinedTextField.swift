@@ -163,7 +163,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             actionButton.isHidden = false
             textField.isSecureTextEntry = true
             textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordVisibilityButton()
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
         case .custom(let actionButtonConfig):
             actionButton.isHidden = false
             textField.isSecureTextEntry = false
@@ -378,12 +379,13 @@ private extension UnderlinedTextField {
         }
         textField.isSecureTextEntry.toggle()
         textField.fixCursorPosition()
-        updatePasswordVisibilityButton()
+        updatePasswordButtonIcon()
     }
 
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -440,6 +442,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
+        updatePasswordButtonVisibility()
         onTextChanged?(self)
     }
 
@@ -507,9 +510,10 @@ private extension UnderlinedTextField {
         updatePlaceholderPosition()
         updatePlaceholderFont()
         updateViewHeight()
+        updatePasswordButtonVisibility()
     }
 
-    func updatePasswordVisibilityButton() {
+    func updatePasswordButtonIcon() {
         guard case .password = mode else {
             return
         }
@@ -667,6 +671,25 @@ private extension UnderlinedTextField {
             lastViewHeight = viewHeight
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
+        }
+    }
+
+    func updatePasswordButtonVisibility() {
+        guard case .password(let behavior) = mode else {
+            return
+        }
+        guard behavior == .visibleOnNotEmptyText else {
+            actionButton.alpha = 1
+            return
+        }
+        let textIsEmpty = textField.text?.isEmpty ?? true
+        let alpha: CGFloat = textIsEmpty ? 0 : 1
+        guard alpha != actionButton.alpha else {
+            return
+        }
+        let duration = alpha == 0 ? 0 : Constants.animationDuration
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.actionButton.alpha = alpha
         }
     }
 

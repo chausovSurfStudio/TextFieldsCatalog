@@ -59,7 +59,7 @@
 		90BB4733220065F000F6DB39 /* eyeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472D220065F000F6DB39 /* eyeOff.png */; };
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
-		90E13DB12320FD3C004995E4 /* FieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* FieldMode.swift */; };
+		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
@@ -136,7 +136,7 @@
 		90BB472D220065F000F6DB39 /* eyeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeOff.png; sourceTree = "<group>"; };
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
-		90E13DB02320FD3C004995E4 /* FieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldMode.swift; sourceTree = "<group>"; };
+		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		90FAC49D22887EFB0032A7F1 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		90FAC4A1228880420032A7F1 /* PickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopView.swift; sourceTree = "<group>"; };
@@ -344,11 +344,11 @@
 		903863F921FF589300BAA761 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
-				90E13DB02320FD3C004995E4 /* FieldMode.swift */,
+				90A5D38C228E9AEF000322A2 /* AccessibilityIdentifiers.swift */,
 				90E13DAE2320FCAA004995E4 /* FieldState.swift */,
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
-				90A5D38C228E9AEF000322A2 /* AccessibilityIdentifiers.swift */,
+				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
+				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -738,7 +738,7 @@
 				9038641021FF5A3600BAA761 /* IconButton.swift in Sources */,
 				902CE30221FF719B00AC21D4 /* UnderlinedTextField.swift in Sources */,
 				902CE2F821FF70E500AC21D4 /* ConfigurationParameters.swift in Sources */,
-				90E13DB12320FD3C004995E4 /* FieldMode.swift in Sources */,
+				90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */,
 				902CE2ED21FF6D9C00AC21D4 /* Strings.swift in Sources */,
 				909DB887220355F000F0C5B7 /* String.swift in Sources */,
 				90A5D38D228E9AEF000322A2 /* AccessibilityIdentifiers.swift in Sources */,
