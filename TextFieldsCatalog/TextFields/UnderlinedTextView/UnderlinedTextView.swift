@@ -21,17 +21,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         let bottomOffset: CGFloat
     }
 
-    // MARK: - Enums
-
-    private enum UnderlinedTextViewState {
-        /// textField not in focus
-        case normal
-        /// state with active textField
-        case active
-        /// state for disabled textField
-        case disabled
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -53,7 +42,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - Private Properties
 
     private let lineView = UIView()
-    private var state: UnderlinedTextViewState = .normal {
+    private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
