@@ -498,6 +498,7 @@ private extension UnderlinedTextView {
         guard lastLinePosition != actualPosition else {
             return
         }
+        lastLinePosition = actualPosition
         lineView.frame = actualPosition
         view.layoutIfNeeded()
     }

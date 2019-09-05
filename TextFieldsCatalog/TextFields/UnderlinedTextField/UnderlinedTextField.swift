@@ -562,10 +562,7 @@ private extension UnderlinedTextField {
 
     /// Return true, if current input string is empty
     func textIsEmpty() -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        return text.isEmpty
+        return textField.text?.isEmpty ?? true
     }
 
     func setupHintText(_ hintText: String) {
