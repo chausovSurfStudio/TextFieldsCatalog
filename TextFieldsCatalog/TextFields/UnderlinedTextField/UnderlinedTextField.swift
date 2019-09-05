@@ -13,26 +13,6 @@ import InputMask
 /// Standart height equals 77.
 open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Enums
-
-    private enum UnderlinedTextFieldState {
-        /// textField not in focus
-        case normal
-        /// state with active textField
-        case active
-        /// state for disabled textField
-        case disabled
-    }
-
-    public enum UnderlinedTextFieldMode {
-        /// normal textField mode without any action buttons
-        case plain
-        /// mode for password textField
-        case password
-        /// mode for textField with custom action button
-        case custom(ActionButtonConfiguration)
-    }
-
     // MARK: - Constants
 
     private enum Constants {
@@ -48,7 +28,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Private Properties
 
     private let lineView = UIView()
-    private var state: UnderlinedTextFieldState = .normal {
+    private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
@@ -59,7 +39,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var maxLength: Int?
 
     private var error: Bool = false
-    private var mode: UnderlinedTextFieldMode = .plain
+    private var mode: TextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
@@ -172,7 +152,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: UnderlinedTextFieldMode) {
+    public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
         switch mode {
         case .plain:
