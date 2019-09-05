@@ -598,7 +598,11 @@ private extension BorderedTextField {
     }
 
     func updatePasswordButtonVisibility() {
-        guard case .password = mode else {
+        guard case .password(let behavior) = mode else {
+            return
+        }
+        guard behavior == .visibleOnNotEmptyText else {
+            actionButton.alpha = 1
             return
         }
         let textIsEmpty = textField.text?.isEmpty ?? true
