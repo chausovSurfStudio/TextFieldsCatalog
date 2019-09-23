@@ -356,12 +356,10 @@ private extension UnderlinedTextField {
     }
 
     func configureLineView() {
-        if lineView.superview == nil, configuration.line.insets != .zero {
-            if let superview = configuration.line.superview {
-                superview.addSubview(lineView)
-            } else {
-                view.addSubview(lineView)
-            }
+        let superview = configuration.line.superview ?? view
+        if lineView.superview == nil || lineView.superview != superview {
+            lineView.removeFromSuperview()
+            superview.addSubview(lineView)
         }
         lineView.frame = linePosition()
         lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
