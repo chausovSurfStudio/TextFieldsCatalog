@@ -561,7 +561,8 @@ private extension UnderlinedTextView {
 
     func linePosition() -> CGRect {
         let height = lineHeight()
-        var lineFrame = view.bounds.inset(by: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
+        let superview = configuration.line.superview ?? view
+        var lineFrame = superview.bounds.inset(by: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
         lineFrame.size.height = height
         lineFrame.origin.y += textView.frame.maxY
         return lineFrame

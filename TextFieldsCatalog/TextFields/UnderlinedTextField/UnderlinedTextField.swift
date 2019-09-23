@@ -744,7 +744,8 @@ private extension UnderlinedTextField {
 
     func linePosition() -> CGRect {
         let height = lineHeight()
-        var lineFrame = view.bounds.inset(by: configuration.line.insets)
+        let superview = configuration.line.superview ?? view
+        var lineFrame = superview.bounds.inset(by: configuration.line.insets)
         lineFrame.size.height = height
         return lineFrame
     }
