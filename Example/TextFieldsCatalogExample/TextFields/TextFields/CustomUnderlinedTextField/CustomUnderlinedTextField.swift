@@ -57,6 +57,7 @@ private extension CustomUnderlinedTextField {
                                                defaultHeight: 1,
                                                increasedHeight: 2,
                                                cornerRadius: 1,
+                                               superview: nil,
                                                colors: ColorConfiguration(error: CustomColor.Main.error,
                                                                           normal: CustomColor.Main.gray.withAlphaComponent(0.5),
                                                                           active: CustomColor.Main.blue,

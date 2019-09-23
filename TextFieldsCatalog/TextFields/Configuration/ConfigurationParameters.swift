@@ -18,18 +18,22 @@ public final class LineConfiguration {
     let increasedHeight: CGFloat
     /// Corner radius for line under text field
     let cornerRadius: CGFloat
+    /// Superview for line, define as `nil` if you want to place it on default level with other elements
+    weak var superview: UIView?
     /// Colors for line under text field
     let colors: ColorConfiguration
 
     public init(insets: UIEdgeInsets,
-         defaultHeight: CGFloat,
-         increasedHeight: CGFloat,
-         cornerRadius: CGFloat,
-         colors: ColorConfiguration) {
+                defaultHeight: CGFloat,
+                increasedHeight: CGFloat,
+                cornerRadius: CGFloat,
+                superview: UIView?,
+                colors: ColorConfiguration) {
         self.insets = insets
         self.defaultHeight = defaultHeight
         self.increasedHeight = increasedHeight
         self.cornerRadius = cornerRadius
+        self.superview = superview
         self.colors = colors
     }
 }
@@ -54,13 +58,13 @@ public final class FloatingPlaceholderConfiguration {
     let bottomColors: ColorConfiguration
 
     public init(font: UIFont,
-         height: CGFloat,
-         topInsets: UIEdgeInsets,
-         bottomInsets: UIEdgeInsets,
-         smallFontSize: CGFloat,
-         bigFontSize: CGFloat,
-         topColors: ColorConfiguration,
-         bottomColors: ColorConfiguration) {
+                height: CGFloat,
+                topInsets: UIEdgeInsets,
+                bottomInsets: UIEdgeInsets,
+                smallFontSize: CGFloat,
+                bigFontSize: CGFloat,
+                topColors: ColorConfiguration,
+                bottomColors: ColorConfiguration) {
         self.font = font
         self.height = height
         self.topInsets = topInsets
@@ -80,7 +84,7 @@ public final class PlaceholderConfiguration {
     let colors: ColorConfiguration
 
     public init(font: UIFont,
-         colors: ColorConfiguration) {
+                colors: ColorConfiguration) {
         self.font = font
         self.colors = colors
     }
@@ -100,10 +104,10 @@ public final class TextFieldConfiguration {
     let colors: ColorConfiguration
 
     public init(font: UIFont,
-         defaultPadding: UIEdgeInsets,
-         increasedPadding: UIEdgeInsets,
-         tintColor: UIColor,
-         colors: ColorConfiguration) {
+                defaultPadding: UIEdgeInsets,
+                increasedPadding: UIEdgeInsets,
+                tintColor: UIColor,
+                colors: ColorConfiguration) {
         self.font = font
         self.defaultPadding = defaultPadding
         self.increasedPadding = increasedPadding
@@ -122,8 +126,8 @@ public final class TextFieldBorderConfiguration {
     let colors: ColorConfiguration
 
     public init(cornerRadius: CGFloat,
-         width: CGFloat,
-         colors: ColorConfiguration) {
+                width: CGFloat,
+                colors: ColorConfiguration) {
         self.cornerRadius = cornerRadius
         self.width = width
         self.colors = colors
@@ -158,9 +162,9 @@ public final class PasswordModeConfiguration {
     let pressedColor: UIColor
 
     public init(secureModeOnImage: UIImage,
-         secureModeOffImage: UIImage,
-         normalColor: UIColor,
-         pressedColor: UIColor) {
+                secureModeOffImage: UIImage,
+                normalColor: UIColor,
+                pressedColor: UIColor) {
         self.secureModeOnImage = secureModeOnImage
         self.secureModeOffImage = secureModeOffImage
         self.normalColor = normalColor
@@ -177,8 +181,8 @@ public final class ActionButtonConfiguration {
     let pressedColor: UIColor
 
     public init(image: UIImage,
-         normalColor: UIColor,
-         pressedColor: UIColor) {
+                normalColor: UIColor,
+                pressedColor: UIColor) {
         self.image = image
         self.normalColor = normalColor
         self.pressedColor = pressedColor
