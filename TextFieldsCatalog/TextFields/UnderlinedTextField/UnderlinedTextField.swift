@@ -356,8 +356,10 @@ private extension UnderlinedTextField {
     }
 
     func configureLineView() {
-        if lineView.superview == nil, configuration.line.insets != .zero {
-            view.addSubview(lineView)
+        let superview = configuration.line.superview ?? view
+        if lineView.superview == nil || lineView.superview != superview {
+            lineView.removeFromSuperview()
+            superview.addSubview(lineView)
         }
         lineView.frame = linePosition()
         lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
@@ -742,7 +744,8 @@ private extension UnderlinedTextField {
 
     func linePosition() -> CGRect {
         let height = lineHeight()
-        var lineFrame = view.bounds.inset(by: configuration.line.insets)
+        let superview = configuration.line.superview ?? view
+        var lineFrame = superview.bounds.inset(by: configuration.line.insets)
         lineFrame.size.height = height
         return lineFrame
     }
