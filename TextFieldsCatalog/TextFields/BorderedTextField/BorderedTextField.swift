@@ -624,7 +624,7 @@ private extension BorderedTextField {
 
     func hintLabelHeight() -> CGFloat {
         let hintIsVisible = shouldShowHint()
-        if let hint = hintLabel.text, hintIsVisible {
+        if let hint = hintLabel.text, !hint.isEmpty, hintIsVisible {
             return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
         }
         return 0
