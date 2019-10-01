@@ -21,6 +21,7 @@ enum Color {
         static let error = Asset.Colors.error.color
         static let placeholderGray = Asset.Colors.placeholderGray.color
         static let fieldNormal = Asset.Colors.fieldNormal.color
+        static let mainButtonText = Asset.Colors.mainButtonText.color
     }
     /// Main colors of application
     enum Main {
@@ -35,6 +36,7 @@ enum Color {
     enum Button {
         static let active = Color.Figma.active
         static let pressed = Color.Figma.activePress
+        static let text = Color.Figma.mainButtonText
     }
     /// Colors for navigation bar
     enum NavBar {

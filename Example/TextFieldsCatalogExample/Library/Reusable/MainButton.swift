@@ -28,6 +28,11 @@ final class MainButton: CommonButton {
         setupInitialState()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupInitialState()
+    }
+
 }
 
 private extension MainButton {
@@ -35,8 +40,8 @@ private extension MainButton {
     func setupInitialState() {
         activeBackgroundColor = Color.Button.active
         highlightedBackgroundColor = Color.Button.pressed
-        activeTitleColor = Color.Text.white
-        highlightedTitleColor = Color.Text.white
+        activeTitleColor = Color.Button.text
+        highlightedTitleColor = Color.Button.text
         layer.cornerRadius = 12
         titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         layer.masksToBounds = true
