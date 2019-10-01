@@ -18,6 +18,9 @@ enum Color {
         static let activePress = Asset.Colors.activePress.color
         static let text = Asset.Colors.text.color
         static let buttonPressed = Asset.Colors.buttonPress.color
+        static let error = Asset.Colors.error.color
+        static let placeholderGray = Asset.Colors.placeholderGray.color
+        static let fieldNormal = Asset.Colors.fieldNormal.color
     }
     /// Main colors of application
     enum Main {
@@ -44,5 +47,17 @@ enum Color {
         static let container = Color.Figma.regular
         static let pressed = Color.Figma.buttonPressed
         static let background = Color.Figma.bold
+    }
+    /// Custom Underline TextField
+    enum UnderlineTextField {
+        static let error = Color.Figma.error
+        static let tint = Color.Figma.active
+        static let placeholder = Color.Figma.placeholderGray
+        static let normal = Color.Figma.fieldNormal
+
+        enum ActionButton {
+            static let normal = Color.Figma.placeholderGray
+            static let pressed = Color.Figma.placeholderGray.withAlphaComponent(0.5)
+        }
     }
 }

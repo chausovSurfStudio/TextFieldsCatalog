@@ -49,6 +49,9 @@ enum Asset {
     static let activePress = ColorAsset(name: "activePress")
     static let background = ColorAsset(name: "background")
     static let buttonPress = ColorAsset(name: "buttonPress")
+    static let error = ColorAsset(name: "error")
+    static let fieldNormal = ColorAsset(name: "fieldNormal")
+    static let placeholderGray = ColorAsset(name: "placeholderGray")
     static let regular = ColorAsset(name: "regular")
     static let text = ColorAsset(name: "text")
   }
@@ -64,6 +67,9 @@ enum Asset {
     Colors.activePress,
     Colors.background,
     Colors.buttonPress,
+    Colors.error,
+    Colors.fieldNormal,
+    Colors.placeholderGray,
     Colors.regular,
     Colors.text,
   ]
