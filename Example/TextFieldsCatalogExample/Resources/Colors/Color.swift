@@ -12,12 +12,12 @@ import UIKit
 enum Color {
     /// Main color with its names from Figma
     private enum Figma {
-        static let bold = UIColor(hexString: "1F2032")
-        static let regular = UIColor(hexString: "34364E")
-        static let active = UIColor(hexString: "FF9D2B")
-        static let activePress = UIColor(hexString: "D47506")
-        static let white = UIColor(hexString: "FEFEFE")
-        static let buttonPressed = UIColor(hexString: "2B2D43")
+        static let bold = Asset.Colors.background.color
+        static let regular = Asset.Colors.regular.color
+        static let active = Asset.Colors.active.color
+        static let activePress = Asset.Colors.activePress.color
+        static let text = Asset.Colors.text.color
+        static let buttonPressed = Asset.Colors.buttonPress.color
     }
     /// Main colors of application
     enum Main {
@@ -26,7 +26,7 @@ enum Color {
     }
     /// Colors for labels and button text
     enum Text {
-        static let white = Color.Figma.white
+        static let white = Color.Figma.text
     }
     /// Colors for buttons
     enum Button {
@@ -37,7 +37,7 @@ enum Color {
     enum NavBar {
         static let background = Color.Figma.bold
         static let tint = Color.Figma.active
-        static let text = Color.Figma.white
+        static let text = Color.Figma.text
     }
     /// Colors for cells(buttons)
     enum Cell {

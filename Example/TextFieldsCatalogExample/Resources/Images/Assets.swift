@@ -44,6 +44,14 @@ struct ColorAsset {
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Asset {
+  enum Colors {
+    static let active = ColorAsset(name: "active")
+    static let activePress = ColorAsset(name: "activePress")
+    static let background = ColorAsset(name: "background")
+    static let buttonPress = ColorAsset(name: "buttonPress")
+    static let regular = ColorAsset(name: "regular")
+    static let text = ColorAsset(name: "text")
+  }
   static let close = ImageAsset(name: "close")
   static let customEyeOff = ImageAsset(name: "customEyeOff")
   static let customEyeOn = ImageAsset(name: "customEyeOn")
@@ -52,6 +60,12 @@ enum Asset {
 
   // swiftlint:disable trailing_comma
   static let allColors: [ColorAsset] = [
+    Colors.active,
+    Colors.activePress,
+    Colors.background,
+    Colors.buttonPress,
+    Colors.regular,
+    Colors.text,
   ]
   static let allImages: [ImageAsset] = [
     close,
