@@ -324,7 +324,7 @@ private extension UnderlinedTextField {
     func configurePlaceholder() {
         placeholder.removeFromSuperlayer()
         placeholder.string = ""
-        placeholder.font = configuration.placeholder.font.fontName as CFTypeRef?
+        placeholder.font = configuration.placeholder.font
         placeholder.fontSize = configuration.placeholder.bigFontSize
         placeholder.foregroundColor = placeholderColor()
         placeholder.contentsScale = UIScreen.main.scale
