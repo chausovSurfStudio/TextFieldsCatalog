@@ -722,11 +722,6 @@ private extension UnderlinedTextField {
     func placeholderColor() -> CGColor {
         let colorsConfiguration = shouldMovePlaceholderOnTop() ? configuration.placeholder.topColors : configuration.placeholder.bottomColors
         return colorsConfiguration.suitableColor(fieldState: state, isActiveError: error).cgColor
-//        if #available(iOS 13.0, *) {
-//            return suitableColor.resolvedColor(with: view.traitCollection).cgColor
-//        } else {
-//            return suitableColor.cgColor
-//        }
     }
 
     func currentPlaceholderPosition() -> CGRect {

@@ -115,6 +115,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
+
     // MARK: - Public Methods
 
     /// Method for configure text field with placeholder and max length for input string
