@@ -20,7 +20,8 @@ class CustomTitleView: DesignableView {
 
     // MARK: - Internal methods
 
-    func configure(with title: String) {
+    func configure(with title: String, titleColor: UIColor) {
+        headerLabel.textColor = titleColor
         headerLabel.text = title
         headerLabel.alpha = 0
     }

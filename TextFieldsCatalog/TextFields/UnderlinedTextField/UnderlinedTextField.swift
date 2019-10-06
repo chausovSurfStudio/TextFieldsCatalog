@@ -118,6 +118,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
+
     // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
@@ -324,7 +329,7 @@ private extension UnderlinedTextField {
     func configurePlaceholder() {
         placeholder.removeFromSuperlayer()
         placeholder.string = ""
-        placeholder.font = configuration.placeholder.font.fontName as CFTypeRef?
+        placeholder.font = configuration.placeholder.font
         placeholder.fontSize = configuration.placeholder.bigFontSize
         placeholder.foregroundColor = placeholderColor()
         placeholder.contentsScale = UIScreen.main.scale
@@ -356,8 +361,10 @@ private extension UnderlinedTextField {
     }
 
     func configureLineView() {
-        if lineView.superview == nil, configuration.line.insets != .zero {
-            view.addSubview(lineView)
+        let superview = configuration.line.superview ?? view
+        if lineView.superview == nil || lineView.superview != superview {
+            lineView.removeFromSuperview()
+            superview.addSubview(lineView)
         }
         lineView.frame = linePosition()
         lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
@@ -698,7 +705,7 @@ private extension UnderlinedTextField {
 
     func hintLabelHeight() -> CGFloat {
         let hintIsVisible = shouldShowHint()
-        if let hint = hintLabel.text, hintIsVisible {
+        if let hint = hintLabel.text, !hint.isEmpty, hintIsVisible {
             return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
         }
         return 0
@@ -742,7 +749,8 @@ private extension UnderlinedTextField {
 
     func linePosition() -> CGRect {
         let height = lineHeight()
-        var lineFrame = view.bounds.inset(by: configuration.line.insets)
+        let superview = configuration.line.superview ?? view
+        var lineFrame = superview.bounds.inset(by: configuration.line.insets)
         lineFrame.size.height = height
         return lineFrame
     }

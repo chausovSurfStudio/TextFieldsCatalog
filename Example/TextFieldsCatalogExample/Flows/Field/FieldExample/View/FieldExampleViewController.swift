@@ -60,6 +60,7 @@ extension FieldExampleViewController: FieldExampleViewInput {
         descriptionLabel.attributedText = preset.description.with(attributes: [.lineHeight(18, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
                                                                                .foregroundColor(Color.Text.white)])
         textFieldContainer.subviews.forEach { $0.removeFromSuperview() }
+        textFieldContainer.backgroundColor = Color.Main.background
         guard let fieldType = fieldType else {
             return
         }

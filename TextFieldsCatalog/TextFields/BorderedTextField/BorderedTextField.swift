@@ -115,6 +115,11 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
+
     // MARK: - Public Methods
 
     /// Method for configure text field with placeholder and max length for input string
@@ -624,7 +629,7 @@ private extension BorderedTextField {
 
     func hintLabelHeight() -> CGFloat {
         let hintIsVisible = shouldShowHint()
-        if let hint = hintLabel.text, hintIsVisible {
+        if let hint = hintLabel.text, !hint.isEmpty, hintIsVisible {
             return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
         }
         return 0
