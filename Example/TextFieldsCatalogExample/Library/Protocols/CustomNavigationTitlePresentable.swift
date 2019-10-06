@@ -36,7 +36,7 @@ extension CustomNavigationTitlePresentable where Self: UIViewController {
         let navTitleHeight = title.height(forWidth: (UIScreen.main.bounds.width - CustomNavigationTitleConstants.horizontalOffset),
                                           attributes: attributesForTitle())
         let threshold = navTitleHeight + CustomNavigationTitleConstants.topOffset
-        titleView.configure(with: title)
+        titleView.configure(with: title, titleColor: Color.NavBar.text)
         titleView.updateThreshold(threshold)
         navigationItem.titleView = titleView
     }

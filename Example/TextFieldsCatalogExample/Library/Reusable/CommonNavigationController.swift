@@ -32,7 +32,6 @@ private extension CommonNavigationController {
                                              .font: UIFont.systemFont(ofSize: 17, weight: .medium)]
         navigationBar.shadowImage = UIImage()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.barStyle = .black
         navigationBar.isTranslucent = false
     }
 

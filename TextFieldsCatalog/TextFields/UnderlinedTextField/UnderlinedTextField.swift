@@ -118,6 +118,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
+
     // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
