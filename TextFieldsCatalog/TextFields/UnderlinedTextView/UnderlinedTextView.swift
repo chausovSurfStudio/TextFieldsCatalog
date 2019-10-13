@@ -56,6 +56,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     private var lastLinePosition: CGRect = .zero
+    private var isChangesWereMade = false
 
     // MARK: - Properties
 
@@ -70,6 +71,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textView
     }
+    public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
 
@@ -328,7 +330,18 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
-        validate()
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isChangesWereMade {
+                validate()
+            }
+        }
         state = .normal
         onEndEditing?(self)
     }
@@ -347,7 +360,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
         removeError()
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -372,6 +385,7 @@ private extension UnderlinedTextView {
     }
 
     func validate() {
+        isChangesWereMade = true
         if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
@@ -413,6 +427,13 @@ private extension UnderlinedTextView {
         hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
                                                  font: configuration.hint.font,
                                                  color: hintLabel.textColor)
+    }
+
+    func performOnTextChangedCall() {
+        if !isChangesWereMade {
+            isChangesWereMade = !textIsEmpty()
+        }
+        onTextChanged?(self)
     }
 
 }

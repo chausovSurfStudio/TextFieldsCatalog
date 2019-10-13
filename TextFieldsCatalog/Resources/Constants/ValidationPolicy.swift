@@ -15,6 +15,6 @@ public enum ValidationPolicy {
     /// Validation performs if current text is not empty
     case notEmptyText
     /// Validation performs if user make some changes into the text
-    /// (entered at least one character, set the text, or manually validat the field)
+    /// (entered at least one character, set the text, or manually validate the field)
     case afterChanges
 }
