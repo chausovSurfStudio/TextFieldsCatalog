@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TextFieldsCatalog
+import SurfUtils
 
 final class MainButton: CommonButton {
 
@@ -38,13 +38,11 @@ final class MainButton: CommonButton {
 private extension MainButton {
 
     func setupInitialState() {
-        activeBackgroundColor = Color.Button.active
-        highlightedBackgroundColor = Color.Button.pressed
-        activeTitleColor = Color.Button.text
-        highlightedTitleColor = Color.Button.text
-        layer.cornerRadius = 12
+        set(backgroundColor: Color.Button.active, for: .normal)
+        set(backgroundColor: Color.Button.pressed, for: [.highlighted, .selected, .disabled])
+        set(titleColor: Color.Button.text, for: [.normal, .highlighted])
+        cornerRadius = 12
         titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        layer.masksToBounds = true
     }
 
 }
