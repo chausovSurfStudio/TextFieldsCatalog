@@ -35,7 +35,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     private let placeholder: CATextLayer = CATextLayer()
-    private var isFloating: Bool = true
+    private var isFloating = true
     private var hintMessage: String?
     private var maxLength: Int?
 
