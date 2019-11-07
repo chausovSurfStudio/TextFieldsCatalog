@@ -466,6 +466,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         updatePasswordButtonVisibility()
+        updatePlaceholderVisibility()
         performOnTextChangedCall()
     }
 
@@ -725,7 +726,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderVisibility() {
-        placeholder.isHidden = !isFloating && (textField.text?.count ?? 0) > 0
+        placeholder.isHidden = !isFloating && !textIsEmpty()
     }
 
 }
