@@ -49,6 +49,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     }
 
     private let placeholder: CATextLayer = CATextLayer()
+    private var isFloating = true
     private var hintMessage: String?
     private var maxLength: Int?
 
@@ -110,9 +111,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
-    public func configure(placeholder: String?, maxLength: Int?) {
+    public func configure(placeholder: String?, maxLength: Int?, isFloating: Bool = true) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
+        self.isFloating = isFloating
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
@@ -186,6 +188,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
     }
 
     /// Reset only error state and update all UI elements
@@ -359,6 +362,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
         removeError()
         performOnTextChangedCall()
     }
@@ -375,6 +379,7 @@ private extension UnderlinedTextView {
 
         updatePlaceholderColor()
         updatePlaceholderPosition()
+        updatePlaceholderVisibility()
         updatePlaceholderFont()
 
         updateTextColor()
@@ -468,6 +473,9 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderPosition() {
+        guard isFloating else {
+            return
+        }
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition()
         placeholder.frame = endPosition
@@ -533,6 +541,10 @@ private extension UnderlinedTextView {
 
     func updateClearButtonVisibility() {
         clearButton.isHidden = textView.text.isEmpty || hideClearButton
+    }
+
+    func updatePlaceholderVisibility() {
+        placeholder.isHidden = !isFloating && !textIsEmpty()
     }
 
 }
