@@ -410,20 +410,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        switch validationPolicy {
-        case .always:
-            validate()
-        case .notEmptyText:
-            if !textIsEmpty() {
-                validate()
-            }
-        case .afterChanges:
-            if isChangesWereMade {
-                validate()
-            }
-        case .never:
-            break
-        }
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -544,6 +531,23 @@ private extension UnderlinedTextField {
         actionButton.setImageForAllState(image,
                                          normalColor: configuration.passwordMode.normalColor,
                                          pressedColor: configuration.passwordMode.pressedColor)
+    }
+
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isChangesWereMade {
+                validate()
+            }
+        case .never:
+            break
+        }
     }
 
     func validate() {

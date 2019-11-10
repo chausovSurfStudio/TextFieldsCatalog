@@ -388,20 +388,7 @@ extension BorderedTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        switch validationPolicy {
-        case .always:
-            validate()
-        case .notEmptyText:
-            if !textIsEmpty() {
-                validate()
-            }
-        case .afterChanges:
-            if isChangesWereMade {
-                validate()
-            }
-        case .never:
-            break
-        }
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -522,6 +509,23 @@ private extension BorderedTextField {
 
     func shouldShowHint() -> Bool {
         return (state == .active && hintMessage != nil) || error
+    }
+
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isChangesWereMade {
+                validate()
+            }
+        case .never:
+            break
+        }
     }
 
     func validate() {

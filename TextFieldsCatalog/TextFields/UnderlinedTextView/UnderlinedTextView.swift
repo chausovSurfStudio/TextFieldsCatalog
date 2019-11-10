@@ -330,20 +330,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
-        switch validationPolicy {
-        case .always:
-            validate()
-        case .notEmptyText:
-            if !textIsEmpty() {
-                validate()
-            }
-        case .afterChanges:
-            if isChangesWereMade {
-                validate()
-            }
-        case .never:
-            break
-        }
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -384,6 +371,23 @@ private extension UnderlinedTextView {
 
         updateLineViewColor()
         updateLineFrame()
+    }
+
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isChangesWereMade {
+                validate()
+            }
+        case .never:
+            break
+        }
     }
 
     func validate() {
