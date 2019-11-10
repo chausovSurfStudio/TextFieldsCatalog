@@ -421,6 +421,8 @@ extension UnderlinedTextField: UITextFieldDelegate {
             if isChangesWereMade {
                 validate()
             }
+        case .never:
+            break
         }
         state = .normal
         onEndEditing?(self)

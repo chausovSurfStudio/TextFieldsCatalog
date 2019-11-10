@@ -341,6 +341,8 @@ extension UnderlinedTextView: UITextViewDelegate {
             if isChangesWereMade {
                 validate()
             }
+        case .never:
+            break
         }
         state = .normal
         onEndEditing?(self)
