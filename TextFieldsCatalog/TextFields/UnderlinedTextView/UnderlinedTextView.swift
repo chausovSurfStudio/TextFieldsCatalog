@@ -56,7 +56,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     private var lastLinePosition: CGRect = .zero
-    private var isChangesWereMade = false
+    /// This flag set to `true` after first text changes and first call of validate() method
+    private var isInteractionOccured = false
 
     // MARK: - Properties
 
@@ -382,7 +383,7 @@ private extension UnderlinedTextView {
                 validate()
             }
         case .afterChanges:
-            if isChangesWereMade {
+            if isInteractionOccured {
                 validate()
             }
         case .never:
@@ -391,7 +392,7 @@ private extension UnderlinedTextView {
     }
 
     func validate() {
-        isChangesWereMade = true
+        isInteractionOccured = true
         if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
@@ -436,8 +437,8 @@ private extension UnderlinedTextView {
     }
 
     func performOnTextChangedCall() {
-        if !isChangesWereMade {
-            isChangesWereMade = !textIsEmpty()
+        if !isInteractionOccured {
+            isInteractionOccured = !textIsEmpty()
         }
         onTextChanged?(self)
     }

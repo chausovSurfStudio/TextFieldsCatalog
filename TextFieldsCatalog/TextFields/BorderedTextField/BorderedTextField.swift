@@ -41,7 +41,8 @@ open class BorderedTextField: InnerDesignableView, ResetableField {
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
-    private var isChangesWereMade = false
+    /// This flag set to `true` after first text changes and first call of validate() method
+    private var isInteractionOccured = false
 
     // MARK: - Properties
 
@@ -520,7 +521,7 @@ private extension BorderedTextField {
                 validate()
             }
         case .afterChanges:
-            if isChangesWereMade {
+            if isInteractionOccured {
                 validate()
             }
         case .never:
@@ -529,7 +530,7 @@ private extension BorderedTextField {
     }
 
     func validate() {
-        isChangesWereMade = true
+        isInteractionOccured = true
         if let formatter = maskFormatter, validateWithFormatter {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
@@ -568,8 +569,8 @@ private extension BorderedTextField {
     }
 
     func performOnTextChangedCall() {
-        if !isChangesWereMade {
-            isChangesWereMade = !textIsEmpty()
+        if !isInteractionOccured {
+            isInteractionOccured = !textIsEmpty()
         }
         onTextChanged?(self)
     }
