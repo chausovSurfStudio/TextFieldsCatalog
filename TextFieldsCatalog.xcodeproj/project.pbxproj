@@ -33,6 +33,7 @@
 		9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640B21FF5A0100BAA761 /* ResetableField.swift */; };
 		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
+		909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CE8E623534E50001E3B7F /* ValidationPolicy.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
 		909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F257F229BE146006926E7 /* UnderlinedTextView.swift */; };
 		909F2582229BE14E006926E7 /* UnderlinedTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909F2581229BE14E006926E7 /* UnderlinedTextView.xib */; };
@@ -110,6 +111,7 @@
 		9038640B21FF5A0100BAA761 /* ResetableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetableField.swift; sourceTree = "<group>"; };
 		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		909CE8E623534E50001E3B7F /* ValidationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPolicy.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		909F257F229BE146006926E7 /* UnderlinedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextView.swift; sourceTree = "<group>"; };
 		909F2581229BE14E006926E7 /* UnderlinedTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnderlinedTextView.xib; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
+				909CE8E623534E50001E3B7F /* ValidationPolicy.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */,
 				902CE2ED21FF6D9C00AC21D4 /* Strings.swift in Sources */,
 				909DB887220355F000F0C5B7 /* String.swift in Sources */,
+				909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */,
 				90A5D38D228E9AEF000322A2 /* AccessibilityIdentifiers.swift in Sources */,
 				902CE2F121FF707E00AC21D4 /* FormatterMasks.swift in Sources */,
 				9038640A21FF59D300BAA761 /* Foundation.swift in Sources */,

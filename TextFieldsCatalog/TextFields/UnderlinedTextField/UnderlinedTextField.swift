@@ -44,6 +44,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
+    /// This flag set to `true` after first text changes and first call of validate() method
+    private var isInteractionOccured = false
 
     // MARK: - Properties
 
@@ -67,6 +69,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
+    public var validationPolicy: ValidationPolicy = .always
     public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
         didSet {
             switch heightLayoutPolicy {
@@ -393,7 +396,7 @@ private extension UnderlinedTextField {
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
         updatePasswordButtonVisibility()
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -408,7 +411,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        validate()
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -450,7 +453,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         updatePasswordButtonVisibility()
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -498,7 +501,7 @@ extension UnderlinedTextField: PickerTextField {
 
     public func processValueChange(_ value: String) {
         setText(value)
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -531,7 +534,25 @@ private extension UnderlinedTextField {
                                          pressedColor: configuration.passwordMode.pressedColor)
     }
 
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isInteractionOccured {
+                validate()
+            }
+        case .never:
+            break
+        }
+    }
+
     func validate() {
+        isInteractionOccured = true
         if let formatter = maskFormatter, validateWithFormatter {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
@@ -576,6 +597,13 @@ private extension UnderlinedTextField {
         hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
                                                  font: configuration.hint.font,
                                                  color: hintLabel.textColor)
+    }
+
+    func performOnTextChangedCall() {
+        if !isInteractionOccured {
+            isInteractionOccured = !textIsEmpty()
+        }
+        onTextChanged?(self)
     }
 
 }

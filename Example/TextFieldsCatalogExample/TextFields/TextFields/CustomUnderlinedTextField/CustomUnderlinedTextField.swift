@@ -38,6 +38,7 @@ final class CustomUnderlinedTextField: UnderlinedTextField {
 private extension CustomUnderlinedTextField {
 
     func configureAppearance() {
+        validationPolicy = .afterChanges
         let configuration = UnderlinedTextFieldConfiguration()
         configuration.line = LineConfiguration(insets: UIEdgeInsets(top: 62, left: 16, bottom: 0, right: 16),
                                                defaultHeight: 1,

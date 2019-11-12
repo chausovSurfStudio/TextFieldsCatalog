@@ -56,6 +56,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     private var lastLinePosition: CGRect = .zero
+    /// This flag set to `true` after first text changes and first call of validate() method
+    private var isInteractionOccured = false
 
     // MARK: - Properties
 
@@ -70,6 +72,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textView
     }
+    public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
 
@@ -328,7 +331,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
-        validate()
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -347,7 +350,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
         removeError()
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -371,7 +374,25 @@ private extension UnderlinedTextView {
         updateLineFrame()
     }
 
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isInteractionOccured {
+                validate()
+            }
+        case .never:
+            break
+        }
+    }
+
     func validate() {
+        isInteractionOccured = true
         if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
@@ -413,6 +434,13 @@ private extension UnderlinedTextView {
         hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
                                                  font: configuration.hint.font,
                                                  color: hintLabel.textColor)
+    }
+
+    func performOnTextChangedCall() {
+        if !isInteractionOccured {
+            isInteractionOccured = !textIsEmpty()
+        }
+        onTextChanged?(self)
     }
 
 }
