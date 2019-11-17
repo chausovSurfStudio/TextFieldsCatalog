@@ -79,7 +79,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var isFloatingPlaceholder = true
+    public var isNativePlaceholder = true
     public var responder: UIResponder {
         return self.textField
     }
@@ -661,7 +661,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderPosition() {
-        guard isFloatingPlaceholder else {
+        guard !isNativePlaceholder else {
             return
         }
         let startPosition: CGRect = currentPlaceholderPosition()
@@ -726,7 +726,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderVisibility() {
-        placeholder.isHidden = !isFloatingPlaceholder && !textIsEmpty()
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }

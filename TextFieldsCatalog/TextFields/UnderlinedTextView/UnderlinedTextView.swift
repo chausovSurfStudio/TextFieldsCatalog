@@ -74,7 +74,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
-    public var isFloatingPlaceholder = true
+    public var isNativePlaceholder = false
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -472,7 +472,7 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderPosition() {
-        guard isFloatingPlaceholder else {
+        guard !isNativePlaceholder else {
             return
         }
         let startPosition: CGRect = currentPlaceholderPosition()
@@ -543,7 +543,7 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderVisibility() {
-        placeholder.isHidden = !isFloatingPlaceholder && !textIsEmpty()
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }
