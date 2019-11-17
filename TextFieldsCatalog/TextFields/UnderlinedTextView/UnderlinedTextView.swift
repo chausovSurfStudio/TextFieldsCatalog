@@ -49,7 +49,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     }
 
     private let placeholder: CATextLayer = CATextLayer()
-    private var isFloating = true
     private var hintMessage: String?
     private var maxLength: Int?
 
@@ -75,6 +74,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
+    public var isFloatingPlaceholder = true
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -111,10 +111,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
-    public func configure(placeholder: String?, maxLength: Int?, isFloating: Bool = true) {
+    public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
-        self.isFloating = isFloating
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
@@ -473,7 +472,7 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderPosition() {
-        guard isFloating else {
+        guard isFloatingPlaceholder else {
             return
         }
         let startPosition: CGRect = currentPlaceholderPosition()
@@ -544,7 +543,7 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderVisibility() {
-        placeholder.isHidden = !isFloating && !textIsEmpty()
+        placeholder.isHidden = !isFloatingPlaceholder && !textIsEmpty()
     }
 
 }

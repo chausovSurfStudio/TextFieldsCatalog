@@ -35,7 +35,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     private let placeholder: CATextLayer = CATextLayer()
-    private var isFloating = true
     private var hintMessage: String?
     private var maxLength: Int?
 
@@ -80,6 +79,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
+    public var isFloatingPlaceholder = true
     public var responder: UIResponder {
         return self.textField
     }
@@ -129,8 +129,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Public Methods
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
-    public func configure(placeholder: String?, maxLength: Int?, isFloating: Bool = true) {
-        self.isFloating = isFloating
+    public func configure(placeholder: String?, maxLength: Int?) {
         self.placeholder.string = placeholder
         self.maxLength = maxLength
     }
@@ -662,7 +661,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderPosition() {
-        guard isFloating else {
+        guard isFloatingPlaceholder else {
             return
         }
         let startPosition: CGRect = currentPlaceholderPosition()
@@ -727,7 +726,7 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderVisibility() {
-        placeholder.isHidden = !isFloating && !textIsEmpty()
+        placeholder.isHidden = !isFloatingPlaceholder && !textIsEmpty()
     }
 
 }
