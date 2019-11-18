@@ -62,8 +62,10 @@ public final class MaskTextFieldFormatter: NSObject {
     }
 
     /// Method for formatting with current mask without field
-    public func format(string: String?) -> String {
-        let text = string ?? ""
+    public func format(string: String?) -> String? {
+        guard let text = string else {
+            return nil
+        }
         let result = maskedDelegate.primaryMask.apply(toText: CaretString(string: text, caretPosition: text.endIndex), autocomplete: true)
         return result.formattedText.string
     }
