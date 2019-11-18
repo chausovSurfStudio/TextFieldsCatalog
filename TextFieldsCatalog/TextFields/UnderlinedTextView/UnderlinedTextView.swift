@@ -75,6 +75,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
+    public var isNativePlaceholder = false
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -187,6 +188,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
     }
 
     /// Reset only error state and update all UI elements
@@ -349,6 +351,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
         removeError()
         performOnTextChangedCall()
     }
@@ -365,6 +368,7 @@ private extension UnderlinedTextView {
 
         updatePlaceholderColor()
         updatePlaceholderPosition()
+        updatePlaceholderVisibility()
         updatePlaceholderFont()
 
         updateTextColor()
@@ -475,6 +479,9 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderPosition() {
+        guard !isNativePlaceholder else {
+            return
+        }
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition()
         placeholder.frame = endPosition
@@ -540,6 +547,10 @@ private extension UnderlinedTextView {
 
     func updateClearButtonVisibility() {
         clearButton.isHidden = textView.text.isEmpty || hideClearButton
+    }
+
+    func updatePlaceholderVisibility() {
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }

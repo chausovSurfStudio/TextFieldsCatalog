@@ -80,6 +80,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
+    public var isNativePlaceholder = true
     public var responder: UIResponder {
         return self.textField
     }
@@ -396,6 +397,7 @@ private extension UnderlinedTextField {
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
         updatePasswordButtonVisibility()
+        updatePlaceholderVisibility()
         performOnTextChangedCall()
     }
 
@@ -453,6 +455,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         updatePasswordButtonVisibility()
+        updatePlaceholderVisibility()
         performOnTextChangedCall()
     }
 
@@ -521,6 +524,7 @@ private extension UnderlinedTextField {
         updatePlaceholderFont()
         updateViewHeight()
         updatePasswordButtonVisibility()
+        updatePlaceholderVisibility()
     }
 
     func updatePasswordButtonIcon() {
@@ -664,6 +668,9 @@ private extension UnderlinedTextField {
     }
 
     func updatePlaceholderPosition() {
+        guard !isNativePlaceholder else {
+            return
+        }
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition()
         placeholder.frame = endPosition
@@ -723,6 +730,10 @@ private extension UnderlinedTextField {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.actionButton.alpha = alpha
         }
+    }
+
+    func updatePlaceholderVisibility() {
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }
