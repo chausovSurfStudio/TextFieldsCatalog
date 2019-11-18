@@ -9,7 +9,8 @@ end
 
 def common_pods
     utils
-    pod 'SurfUtils/StringAttributes', :git => "https://github.com/surfstudio/iOS-Utils.git"
+    pod 'SurfUtils/StringAttributes', :git => "https://github.com/surfstudio/iOS-Utils.git", :tag => "10.0.0"
+    pod 'SurfUtils/CommonButton', :git => "https://github.com/surfstudio/iOS-Utils.git", :tag => "10.0.0"
     pod 'TextFieldsCatalog', :path => '../'
 end
 
