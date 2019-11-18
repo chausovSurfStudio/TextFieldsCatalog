@@ -61,6 +61,15 @@ public final class MaskTextFieldFormatter: NSObject {
         maskedDelegate.put(text: text, into: field)
     }
 
+    /// Method for formatting with current mask without field
+    public func format(string: String?) -> String? {
+        guard let text = string else {
+            return nil
+        }
+        let result = maskedDelegate.primaryMask.apply(toText: CaretString(string: text, caretPosition: text.endIndex), autocomplete: true)
+        return result.formattedText.string
+    }
+
     /// Method returns object, which you must access to delegate property of needed UITextField
     public func delegateForTextField() -> UITextFieldDelegate {
         return maskedDelegate
