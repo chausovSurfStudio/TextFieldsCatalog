@@ -7,6 +7,7 @@
 - [Замыкания](#Замыкания)
 - [HeightLayoutPolicy](#HeightLayoutPolicy)
 - [ValidationPolicy](#ValidationPolicy)
+- [NativePlaceholder](#NativePlaceholder)
 - [TextFieldMode](#TextFieldMode)
 - [Кастомные клавиатуры и переключение полей](#Кастомные-клавиатуры-и-переключение-полей)
 	- [DatePickerView](#DatePickerView)
