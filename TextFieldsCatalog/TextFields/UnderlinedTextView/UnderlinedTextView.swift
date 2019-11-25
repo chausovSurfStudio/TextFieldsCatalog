@@ -522,7 +522,11 @@ private extension UnderlinedTextView {
         let hintHeight = hintLabelHeight()
         let textHeight = textViewHeight()
         let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
-        let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
+        var viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
+
+        if let maxHeight = flexibleHeightPolicy.maxHeight {
+            viewHeight = min(viewHeight, maxHeight)
+        }
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
