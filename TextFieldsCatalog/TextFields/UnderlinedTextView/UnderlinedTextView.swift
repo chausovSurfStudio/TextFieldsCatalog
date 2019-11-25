@@ -16,9 +16,16 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - Struct
 
     public struct FlexibleHeightPolicy {
-        let minHeight: CGFloat
+        public let minHeight: CGFloat
+        public let maxHeight: CGFloat?
         /// offset between hint label and view bottom
-        let bottomOffset: CGFloat
+        public let bottomOffset: CGFloat
+
+        public init(minHeight: CGFloat, maxHeight: CGFloat? = nil, bottomOffset: CGFloat) {
+            self.minHeight = minHeight
+            self.maxHeight = maxHeight
+            self.bottomOffset = bottomOffset
+        }
     }
 
     // MARK: - Constants
