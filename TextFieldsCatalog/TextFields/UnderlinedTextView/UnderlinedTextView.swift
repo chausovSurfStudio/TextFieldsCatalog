@@ -83,6 +83,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
     public var isNativePlaceholder = false
+    public var isScrollEnabled = false {
+        didSet {
+            textView.isScrollEnabled = isScrollEnabled
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
