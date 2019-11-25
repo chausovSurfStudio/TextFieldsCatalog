@@ -520,12 +520,13 @@ private extension UnderlinedTextView {
 
     func updateViewHeight() {
         let hintHeight = hintLabelHeight()
-        let textHeight = textViewHeight()
+        var textHeight = textViewHeight()
         let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
         var viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         if let maxHeight = flexibleHeightPolicy.maxHeight {
             viewHeight = min(viewHeight, maxHeight)
+            textHeight = min(textHeight, maxHeight)
         }
 
         textViewHeightConstraint.constant = textHeight
