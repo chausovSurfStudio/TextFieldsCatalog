@@ -17,14 +17,14 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     public struct FlexibleHeightPolicy {
         public let minHeight: CGFloat
-        public let maxHeight: CGFloat?
+        public let maxTextHeight: CGFloat?
         /// offset between hint label and view bottom
         public let bottomOffset: CGFloat
 
-        public init(minHeight: CGFloat, maxHeight: CGFloat? = nil, bottomOffset: CGFloat) {
+        public init(minHeight: CGFloat, bottomOffset: CGFloat, maxTextHeight: CGFloat? = nil) {
             self.minHeight = minHeight
-            self.maxHeight = maxHeight
             self.bottomOffset = bottomOffset
+            self.maxTextHeight = maxTextHeight
         }
     }
 
@@ -521,13 +521,12 @@ private extension UnderlinedTextView {
     func updateViewHeight() {
         let hintHeight = hintLabelHeight()
         var textHeight = textViewHeight()
-        let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
-        var viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
-
-        if let maxHeight = flexibleHeightPolicy.maxHeight {
-            viewHeight = min(viewHeight, maxHeight)
-            textHeight = min(textHeight, maxHeight)
+        if let maxTextHeight = flexibleHeightPolicy.maxTextHeight {
+            textHeight = min(maxTextHeight, textHeight)
         }
+
+        let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
+        let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
