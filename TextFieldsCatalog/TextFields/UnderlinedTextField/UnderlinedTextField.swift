@@ -80,7 +80,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var isNativePlaceholder = true
+    public var isNativePlaceholder = false
     public var responder: UIResponder {
         return self.textField
     }
