@@ -44,7 +44,6 @@ final class BoxTextField: UnderlinedTextField {
 private extension BoxTextField {
 
     func configureAppearance() {
-        validationPolicy = .always
         let configuration = UnderlinedTextFieldConfiguration()
         configuration.line = LineConfiguration(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
                                                defaultHeight: 1,
@@ -79,7 +78,10 @@ private extension BoxTextField {
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
                                                                pressedColor: Color.UnderlineTextField.ActionButton.pressed)
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
+
         self.configuration = configuration
+        self.heightLayoutPolicy = .flexible(130, 5)
+        self.validationPolicy = .always
     }
 
     func configureContainer() {

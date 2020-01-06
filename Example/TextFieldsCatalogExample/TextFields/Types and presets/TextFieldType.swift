@@ -43,12 +43,8 @@ enum TextFieldType: CaseIterable {
 
     var presets: [AppliedPreset] {
         switch self {
-        case .bordered:
-            return BorderedFieldPreset.allCases
-        case .underlined:
+        case .underlined, .bordered, .customUnderlined:
             return UnderlinedFieldPreset.allCases
-        case .customUnderlined:
-            return CustomUnderlinedFieldPreset.allCases
         case .underlinedTextView:
             return UnderlinedTextViewPreset.allCases
         }
@@ -60,7 +56,10 @@ enum TextFieldType: CaseIterable {
         case .bordered:
             return (BoxTextField(frame: frame), 130)
         case .underlined:
-            return (UnderlinedTextField(frame: frame), 77)
+            let height: CGFloat = 77
+            let field = UnderlinedTextField(frame: frame)
+            field.heightLayoutPolicy = .flexible(height, 5)
+            return (field, height)
         case .customUnderlined:
             return (CustomUnderlinedTextField(frame: frame), 64)
         case .underlinedTextView:

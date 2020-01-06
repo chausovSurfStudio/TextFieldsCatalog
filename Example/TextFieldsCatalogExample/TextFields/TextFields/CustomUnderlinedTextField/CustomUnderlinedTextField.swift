@@ -38,7 +38,6 @@ final class CustomUnderlinedTextField: UnderlinedTextField {
 private extension CustomUnderlinedTextField {
 
     func configureAppearance() {
-        validationPolicy = .afterChanges
         let configuration = UnderlinedTextFieldConfiguration()
         configuration.line = LineConfiguration(insets: UIEdgeInsets(top: 62, left: 16, bottom: 0, right: 16),
                                                defaultHeight: 1,
@@ -76,7 +75,9 @@ private extension CustomUnderlinedTextField {
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
                                                                pressedColor: Color.UnderlineTextField.ActionButton.pressed)
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
+
         self.configuration = configuration
+        self.validationPolicy = .afterChanges
     }
 
 }
