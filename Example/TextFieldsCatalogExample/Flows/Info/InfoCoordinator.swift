@@ -33,6 +33,8 @@ final class InfoCoordinator: BaseCoordinator, InfoCoordinatorOutput {
 private extension InfoCoordinator {
 
     func showInfo() {
+        let (view, _) = InfoModuleConfigurator().configure()
+        router.setNavigationControllerRootModule(view, animated: false, hideBar: false)
     }
 
 }

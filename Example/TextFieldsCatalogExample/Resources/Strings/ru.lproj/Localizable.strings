@@ -17,6 +17,11 @@
 "Constants.Sex.male" = "Мужской";
 "Constants.Sex.female" = "Женский";
 
+// MARK: - MainTab
+"Constants.MainTab.catalog" = "Каталог";
+"Constants.MainTab.example" = "Примеры";
+"Constants.MainTab.info" = "Инфо";
+
 // MARK: - TextFieldType
 
 "TextFieldType.Box.title" = "Поле ввода с обводкой";
@@ -105,7 +110,7 @@
 
 // MARK: - Main
 
-// MARK: Main
+// MARK: - Main
 "Main.Main.title" = "Каталог";
 
 // MARK: Info

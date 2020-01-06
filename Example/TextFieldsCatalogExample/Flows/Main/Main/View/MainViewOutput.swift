@@ -12,7 +12,4 @@ protocol MainViewOutput {
 
     /// Notify presenter that user wants to see some field
     func openField(with type: TextFieldType)
-
-    /// Notify presenter that user wants to see info about this app
-    func openInfo()
 }

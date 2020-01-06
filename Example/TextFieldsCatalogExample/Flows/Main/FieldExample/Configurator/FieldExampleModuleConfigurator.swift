@@ -17,8 +17,7 @@ final class FieldExampleModuleConfigurator {
         presenter.view = view
         view.output = presenter
 
-        let navigationController = CommonNavigationController(rootViewController: view)
-        return (navigationController, presenter, presenter)
+        return (view, presenter, presenter)
     }
 
 }

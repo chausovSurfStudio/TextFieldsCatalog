@@ -38,10 +38,6 @@ final class FieldExampleViewController: UIViewController {
         output?.viewLoaded()
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
 }
 
 // MARK: - FieldExampleViewInput
@@ -80,11 +76,6 @@ extension FieldExampleViewController: FieldExampleViewInput {
 private extension FieldExampleViewController {
 
     @objc
-    func tapOnCloseButton() {
-        output?.close()
-    }
-
-    @objc
     func tapOnResetButton() {
         if let textField = textField as? ResetableField {
             textField.reset()
@@ -114,7 +105,6 @@ private extension FieldExampleViewController {
     }
 
     func configureButtons() {
-        addLeftBarButton(.close, selector: #selector(tapOnCloseButton))
         addRightBarButton(.text(L10n.Button.reset), selector: #selector(tapOnResetButton))
         changePresetButton.setTitle(L10n.Button.changePreset, for: .normal)
     }

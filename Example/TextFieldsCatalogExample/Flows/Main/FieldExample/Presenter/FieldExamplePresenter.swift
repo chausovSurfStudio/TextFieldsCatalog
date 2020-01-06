@@ -10,8 +10,7 @@ final class FieldExamplePresenter: FieldExampleModuleOutput {
 
     // MARK: - FieldExampleModuleOutput
 
-    var onClose: EmptyClosure?
-    var onChangePreset: EmptyClosure?
+    var onChangePreset: ((TextFieldType) -> Void)?
 
     // MARK: - Properties
 
@@ -47,12 +46,8 @@ extension FieldExamplePresenter: FieldExampleViewOutput {
         view?.setupInitialState(with: fieldType, preset: fieldType.presets.first)
     }
 
-    func close() {
-        onClose?()
-    }
-
     func changePreset() {
-        onChangePreset?()
+        onChangePreset?(fieldType)
     }
 
 }

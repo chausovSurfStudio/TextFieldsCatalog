@@ -83,12 +83,15 @@ private extension MainTabBarViewController {
         let shadowImage = UIImage(color: Color.TabBar.separator)
         if #available(iOS 13, *) {
             let appearance = tabBar.standardAppearance.copy()
+            let normalTitleAttributes = [NSAttributedString.Key.foregroundColor: Color.TabBar.itemTint]
+            let selectedTitleAttributes = [NSAttributedString.Key.foregroundColor: Color.TabBar.selectedItemTint]
+
             appearance.backgroundImage = backgroundImage
             appearance.shadowImage = shadowImage
             appearance.stackedLayoutAppearance.normal.iconColor = Color.TabBar.itemTint
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.TabBar.itemTint]
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = normalTitleAttributes
             appearance.stackedLayoutAppearance.selected.iconColor = Color.TabBar.selectedItemTint
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.TabBar.selectedItemTint]
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedTitleAttributes
             tabBar.standardAppearance = appearance
         } else {
             tabBar.backgroundImage = backgroundImage

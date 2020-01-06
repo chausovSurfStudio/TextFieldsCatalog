@@ -7,6 +7,5 @@
 //
 
 protocol FieldExampleModuleOutput: class {
-    var onClose: EmptyClosure? { get set }
-    var onChangePreset: EmptyClosure? { get set }
+    var onChangePreset: ((TextFieldType) -> Void)? { get set }
 }

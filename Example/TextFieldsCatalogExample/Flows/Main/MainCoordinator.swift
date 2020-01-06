@@ -39,26 +39,29 @@ private extension MainCoordinator {
     func showMain() {
         let (view, output) = MainModuleConfigurator().configure()
         output.onFieldOpen = { [weak self] fieldType in
-            self?.runFieldFlow(with: fieldType)
-        }
-        output.onInfoOpen = { [weak self] in
-            self?.showInfo()
+            self?.showField(fieldType: fieldType)
         }
         router.setNavigationControllerRootModule(view, animated: false, hideBar: false)
     }
 
-    func showInfo() {
-        let (view, _) = InfoModuleConfigurator().configure()
+    func showField(fieldType: TextFieldType) {
+        let (view, output, input) = FieldExampleModuleConfigurator().configure(with: fieldType)
+        output.onChangePreset = { [weak self, weak input] fieldType in
+            self?.showPresetsList(fieldType: fieldType, input: input)
+        }
         router.push(view)
     }
 
-    func runFieldFlow(with fieldType: TextFieldType) {
-        let coordinator = FieldCoordinator(router: router, fieldType: fieldType)
-        coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.removeDependency(coordinator)
+    func showPresetsList(fieldType: TextFieldType, input: FieldExampleModuleInput?) {
+        let (view, output) = FieldPresetsModuleConfigurator().configure(with: fieldType.presets)
+        output.onClose = { [weak self] in
+            self?.router.dismissModule()
         }
-        self.addDependency(coordinator)
-        coordinator.start()
+        output.onSelectPreset = { [weak self, weak input] preset in
+            input?.applyPreset(preset)
+            self?.router.dismissModule()
+        }
+        router.present(view)
     }
 
 }

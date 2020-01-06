@@ -17,6 +17,15 @@ enum L10n {
 
   enum Constants {
 
+    enum Maintab {
+      /// Каталог
+      static let catalog = L10n.tr("Localizable", "Constants.MainTab.catalog")
+      /// Примеры
+      static let example = L10n.tr("Localizable", "Constants.MainTab.example")
+      /// Инфо
+      static let info = L10n.tr("Localizable", "Constants.MainTab.info")
+    }
+
     enum Sex {
       /// Женский
       static let female = L10n.tr("Localizable", "Constants.Sex.female")
