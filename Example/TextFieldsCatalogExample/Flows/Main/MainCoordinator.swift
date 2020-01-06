@@ -44,7 +44,7 @@ private extension MainCoordinator {
         output.onInfoOpen = { [weak self] in
             self?.showInfo()
         }
-        router.setRootModule(view)
+        router.setNavigationControllerRootModule(view, animated: false, hideBar: false)
     }
 
     func showInfo() {
