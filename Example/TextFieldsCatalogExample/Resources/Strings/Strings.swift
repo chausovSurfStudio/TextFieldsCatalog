@@ -176,11 +176,11 @@ enum L10n {
 
   enum Textfieldtype {
 
-    enum Bordered {
+    enum Box {
       /// • Границы поля ввода скруглены и подсвечены.\n• Имеется плейсхолдер над полем ввода.\n• Информационное-сообщение или сообщение об ошибке внизу, в одну строку.\n• Кастомизируется под ввод пароля.\n• Поддержка валидаторов и форматтеров.
-      static let description = L10n.tr("Localizable", "TextFieldType.Bordered.description")
+      static let description = L10n.tr("Localizable", "TextFieldType.Box.description")
       /// Поле ввода с обводкой
-      static let title = L10n.tr("Localizable", "TextFieldType.Bordered.title")
+      static let title = L10n.tr("Localizable", "TextFieldType.Box.title")
     }
 
     enum Customunderlined {

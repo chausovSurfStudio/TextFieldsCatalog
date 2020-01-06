@@ -17,7 +17,7 @@ enum Color {
         static let active = Asset.Colors.active.color
         static let activePress = Asset.Colors.activePress.color
         static let text = Asset.Colors.text.color
-        static let buttonPressed = Asset.Colors.buttonPress.color
+        static let highlighted = Asset.Colors.highlighted.color
         static let error = Asset.Colors.error.color
         static let placeholderGray = Asset.Colors.placeholderGray.color
         static let fieldNormal = Asset.Colors.fieldNormal.color
@@ -47,7 +47,7 @@ enum Color {
     /// Colors for cells(buttons)
     enum Cell {
         static let container = Color.Figma.regular
-        static let pressed = Color.Figma.buttonPressed
+        static let pressed = Color.Figma.highlighted
         static let background = Color.Figma.bold
     }
     /// Custom Underline TextField

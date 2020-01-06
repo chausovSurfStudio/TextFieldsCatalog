@@ -131,6 +131,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
+        perfromOnContainerStateChangedCall()
+        setTextFieldMode(mode)
     }
 
     // MARK: - Public Methods
