@@ -1,5 +1,5 @@
 language: Swift
-osx_image: xcode10.2
+osx_image: xcode11.2
 xcode_project: TextFieldsCatalog.xcodeproj
 xcode_scheme: TextFieldsCatalog
 before_install:
