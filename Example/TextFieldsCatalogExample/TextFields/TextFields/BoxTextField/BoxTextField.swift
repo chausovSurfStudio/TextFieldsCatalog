@@ -89,7 +89,7 @@ private extension BoxTextField {
         containerView.backgroundColor = .clear
         containerView.layer.borderWidth = 2
         containerView.layer.cornerRadius = 6
-        containerView.layer.borderColor = Color.UnderlineTextField.placeholder.cgColor
+        containerView.layer.borderColor = Color.UnderlineTextField.normal.cgColor
 
         onContainerStateChanged = { [weak self] state in
             self?.updateContainerBorder(for: state)
@@ -110,7 +110,7 @@ private extension BoxTextField {
         case .active:
             color = Color.UnderlineTextField.tint
         case .normal, .disabled:
-            color = Color.UnderlineTextField.placeholder.withAlphaComponent(0.5)
+            color = Color.UnderlineTextField.normal
         }
         containerView.layer.borderColor = color.cgColor
     }
