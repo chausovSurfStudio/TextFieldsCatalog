@@ -7,4 +7,4 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end if Gem::Version.new(Bundler::VERSION) < Gem::Version.new('2')
 
-gem 'cocoapods', "1.7.3"
+gem 'cocoapods', "1.8.4"
