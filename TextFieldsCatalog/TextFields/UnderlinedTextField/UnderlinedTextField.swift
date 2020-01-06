@@ -132,6 +132,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
         perfromOnContainerStateChangedCall()
+        setTextFieldMode(mode)
     }
 
     // MARK: - Public Methods
