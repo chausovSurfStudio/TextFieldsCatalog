@@ -25,14 +25,6 @@
 pod 'TextFieldsCatalog'
 ````
 
-### Carthage
-
-Добавьте следующую строку в ваш Cartfile:
-
-````ruby
-github "chausovSurfStudio/TextFieldsCatalog"
-````
-
 ## First Step Guide
 
 Предположим, вам необходимо реализовать поле ввода для Имени пользователя, которое должно быть от 5 до 25 символов и вас устраивает дизайн `UnderlinedTextField`, предоставляемый из коробки.
