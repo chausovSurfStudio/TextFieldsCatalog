@@ -33,6 +33,7 @@
 		9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640B21FF5A0100BAA761 /* ResetableField.swift */; };
 		9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */; };
 		9038641021FF5A3600BAA761 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038640F21FF5A3600BAA761 /* IconButton.swift */; };
+		9082577523C367B5000767EB /* FieldContainerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577423C367B5000767EB /* FieldContainerState.swift */; };
 		909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CE8E623534E50001E3B7F /* ValidationPolicy.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
 		909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F257F229BE146006926E7 /* UnderlinedTextView.swift */; };
@@ -111,6 +112,7 @@
 		9038640B21FF5A0100BAA761 /* ResetableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetableField.swift; sourceTree = "<group>"; };
 		9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		9038640F21FF5A3600BAA761 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		9082577423C367B5000767EB /* FieldContainerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainerState.swift; sourceTree = "<group>"; };
 		909CE8E623534E50001E3B7F /* ValidationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPolicy.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		909F257F229BE146006926E7 /* UnderlinedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextView.swift; sourceTree = "<group>"; };
@@ -348,10 +350,11 @@
 			children = (
 				90A5D38C228E9AEF000322A2 /* AccessibilityIdentifiers.swift */,
 				90E13DAE2320FCAA004995E4 /* FieldState.swift */,
+				9082577423C367B5000767EB /* FieldContainerState.swift */,
+				909CE8E623534E50001E3B7F /* ValidationPolicy.swift */,
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
-				909CE8E623534E50001E3B7F /* ValidationPolicy.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
+				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
 				90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */,

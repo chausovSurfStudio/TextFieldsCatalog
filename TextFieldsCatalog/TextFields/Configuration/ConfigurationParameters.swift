@@ -210,12 +210,23 @@ public final class ColorConfiguration {
     /// Item color in disabled state
     let disabled: UIColor
 
+    // MARK: - Initialization
+
     public init(error: UIColor, normal: UIColor, active: UIColor, disabled: UIColor) {
         self.error = error
         self.normal = normal
         self.active = active
         self.disabled = disabled
     }
+
+    public init(color: UIColor) {
+        self.error = color
+        self.normal = color
+        self.active = color
+        self.disabled = color
+    }
+
+    // MARK: - Internal Methods
 
     func suitableColor(fieldState: FieldState, isActiveError: Bool) -> UIColor {
         guard !isActiveError else {
