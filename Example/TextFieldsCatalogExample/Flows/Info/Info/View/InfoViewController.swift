@@ -34,6 +34,7 @@ extension InfoViewController: InfoViewInput {
 
     func setupInitialState(with description: String) {
         view.backgroundColor = Color.Main.background
+        navigationItem.title = "Инфо"
         descriptionLabel.numberOfLines = 0
         descriptionLabel.attributedText = description.with(attributes: [.lineHeight(20, font: UIFont.systemFont(ofSize: 14, weight: .regular)),
                                                                         .foregroundColor(Color.Text.white)])

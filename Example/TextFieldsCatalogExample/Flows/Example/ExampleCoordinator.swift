@@ -33,6 +33,8 @@ final class ExampleCoordinator: BaseCoordinator, ExampleCoordinatorOutput {
 private extension ExampleCoordinator {
 
     func showExamples() {
+        let (view, _) = ExamplesModuleConfigurator().configure()
+        router.setNavigationControllerRootModule(view, animated: false, hideBar: false)
     }
 
 }

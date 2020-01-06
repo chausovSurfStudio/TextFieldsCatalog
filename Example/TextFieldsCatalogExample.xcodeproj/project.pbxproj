@@ -10,9 +10,11 @@
 		01657C0E6E3BF9105EFE61FB /* InfoModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB28B012142A4983A13B48 /* InfoModuleInput.swift */; };
 		04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */; };
 		157289149F767AAFF55AEB57 /* InfoViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E0C3FED9158FF978B108A /* InfoViewOutput.swift */; };
+		15BB46562624C950CA740CB8 /* ExamplesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5384479F9E1D06B6F0DC8ACA /* ExamplesViewController.xib */; };
 		1AF04E6693D06397802D1321 /* FieldExampleModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27F19167AAFDEED8223EDFC /* FieldExampleModuleConfigurator.swift */; };
 		2025FD598129275E76AD5751 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9E1ECAFA665E89FD59024 /* MainViewController.swift */; };
 		2AC4FAA3461D4C8B72D62613 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2DD37025760D3DF6A86950 /* InfoPresenter.swift */; };
+		2D15B6C714461CEE94F2D7BB /* ExamplesModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97F83A7AF8E6798D47E858 /* ExamplesModuleOutput.swift */; };
 		3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE137FF31C594AC36C443196 /* FieldExampleViewController.xib */; };
 		37A8EFECD58C0007674C2719 /* FieldPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E575F42D2E25F60116E7535 /* FieldPresetsViewController.swift */; };
 		49FB60CDE6CD6F88CCFE525B /* FieldExampleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089047875369A2EFD9C344B6 /* FieldExampleViewInput.swift */; };
@@ -25,10 +27,13 @@
 		747E607743B8795BF4CA1462 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B537720F15E7FF93A8ED4C43 /* MainTabBarViewController.swift */; };
 		75521FA957AFD8679B600407 /* MainTabBarViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DAD0104E69493D630E8C6 /* MainTabBarViewOutput.swift */; };
 		7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1D2FB5D0AF7225009E3D9F /* MainPresenter.swift */; };
+		7D3329C45040E3AD07113AC1 /* ExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F71634A2601707557A0AB8A /* ExamplesViewController.swift */; };
 		7FEA0650091FCD97EB3C585B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D046C6E5920DE1294C32E7D2 /* InfoViewController.swift */; };
 		8263C31ED8CCE65D82510AF8 /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396FCB26F56ECB1570984B8 /* MainTabBarPresenter.swift */; };
+		8362A2E73F2D3A26466AF703 /* ExamplesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DEF9BC7871E21B094EDEC /* ExamplesPresenter.swift */; };
 		8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29BF97393846546F44A61 /* MainViewInput.swift */; };
 		89B03271DB703408CF996E40 /* MainTabBarViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CFB54B7AB93D8C3DC00E7 /* MainTabBarViewInput.swift */; };
+		8B43783863D2AC05209F304B /* ExamplesViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC759D69070E7F14B23CC44 /* ExamplesViewOutput.swift */; };
 		904A19B121F9DBA500B9A846 /* AppliedPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B021F9DBA500B9A846 /* AppliedPreset.swift */; };
 		904A19B521F9E83100B9A846 /* FieldPresetsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B421F9E83100B9A846 /* FieldPresetsAdapter.swift */; };
 		904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B621F9E84300B9A846 /* FieldPresetTableViewCell.swift */; };
@@ -95,8 +100,10 @@
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
 		9DE9899587424746804B617B /* FieldExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D63B32FA109A81E63344D /* FieldExampleViewController.swift */; };
 		A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */; };
+		AB1F650313E13C7CACDACF3D /* ExamplesViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9556DEEEFB2EB82141DAB99A /* ExamplesViewInput.swift */; };
 		AD597C82038C1AB1838C295C /* MainTabBarModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14964F04BCF85212773D5D6 /* MainTabBarModuleConfigurator.swift */; };
 		AD6BCF59A9451DF953E356E8 /* FieldExampleModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */; };
+		B0B30A0404FFB8440C84EFC2 /* ExamplesModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979D3C66746F3E77F7B7C61A /* ExamplesModuleInput.swift */; };
 		C852A58772725BC43EF5979E /* FieldExampleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */; };
 		CA52F4DB993991A6DBC7DD01 /* FieldPresetsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */; };
 		CB2B33FF7A75453DF285FC70 /* FieldPresetsModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */; };
@@ -107,6 +114,7 @@
 		D96733CDC0572A97C76B8475 /* MainTabBarModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E24A44D4DDA795046DAD200 /* MainTabBarModuleOutput.swift */; };
 		D992556AC789D62F45A79803 /* InfoModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */; };
 		DC98335449389E921BACD8E0 /* InfoViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */; };
+		E2626B4342D699A176957CC0 /* ExamplesModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FA7015C35580BCBC843DE /* ExamplesModuleConfigurator.swift */; };
 		EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C93D3C539EA5A6E9172731 /* InfoViewController.xib */; };
 		F70F2368D3A2DD2DBF029EE3 /* InfoModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */; };
 /* End PBXBuildFile section */
@@ -127,8 +135,11 @@
 		08F9E1ECAFA665E89FD59024 /* MainViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
+		0DC759D69070E7F14B23CC44 /* ExamplesViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesViewOutput.swift; sourceTree = "<group>"; };
 		0E9D99F82A50788D61A34D3A /* FieldPresetsViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewInput.swift; sourceTree = "<group>"; };
 		104DAD0104E69493D630E8C6 /* MainTabBarViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarViewOutput.swift; sourceTree = "<group>"; };
+		168FA7015C35580BCBC843DE /* ExamplesModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesModuleConfigurator.swift; sourceTree = "<group>"; };
+		171DEF9BC7871E21B094EDEC /* ExamplesPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesPresenter.swift; sourceTree = "<group>"; };
 		1FD9EEE749EFFA4C32BE6591 /* MainTabBarModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarModuleInput.swift; sourceTree = "<group>"; };
 		20C93D3C539EA5A6E9172731 /* InfoViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		226D1C18CE5996E650B807C9 /* FieldExampleViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleViewOutput.swift; sourceTree = "<group>"; };
@@ -138,8 +149,10 @@
 		3C8A69F14EF1696C93A2EEE6 /* InfoModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleConfigurator.swift; sourceTree = "<group>"; };
 		3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		4BA133C6DFCF82F37CCF3E2E /* MainModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleInput.swift; sourceTree = "<group>"; };
+		5384479F9E1D06B6F0DC8ACA /* ExamplesViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = ExamplesViewController.xib; sourceTree = "<group>"; };
 		56F95283E4D118AA211740E9 /* FieldPresetsViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FieldPresetsViewController.xib; sourceTree = "<group>"; };
 		5AA232C7C5CAE14509DA3BDD /* InfoViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewInput.swift; sourceTree = "<group>"; };
+		5F71634A2601707557A0AB8A /* ExamplesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesViewController.swift; sourceTree = "<group>"; };
 		605125D246F3675AE0F347F6 /* FieldExampleModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExampleModuleOutput.swift; sourceTree = "<group>"; };
 		615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsPresenter.swift; sourceTree = "<group>"; };
 		630E0C3FED9158FF978B108A /* InfoViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoViewOutput.swift; sourceTree = "<group>"; };
@@ -223,6 +236,8 @@
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
 		90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUnderlinedTextField.xib; sourceTree = "<group>"; };
 		90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
+		9556DEEEFB2EB82141DAB99A /* ExamplesViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesViewInput.swift; sourceTree = "<group>"; };
+		979D3C66746F3E77F7B7C61A /* ExamplesModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesModuleInput.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		AE972E7FF3811A2D75880ABD /* FieldPresetsViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsViewOutput.swift; sourceTree = "<group>"; };
 		AF4D4556F235EF1B022FB3A7 /* InfoModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InfoModuleOutput.swift; sourceTree = "<group>"; };
@@ -237,6 +252,7 @@
 		E14964F04BCF85212773D5D6 /* MainTabBarModuleConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarModuleConfigurator.swift; sourceTree = "<group>"; };
 		EA394067C7424F429ED78B14 /* FieldExamplePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldExamplePresenter.swift; sourceTree = "<group>"; };
 		ED1BB72233F7DC23022ECDF6 /* MainModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainModuleOutput.swift; sourceTree = "<group>"; };
+		EE97F83A7AF8E6798D47E858 /* ExamplesModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesModuleOutput.swift; sourceTree = "<group>"; };
 		FD5CFB54B7AB93D8C3DC00E7 /* MainTabBarViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarViewInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +276,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05A7C411661B35B571005762 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				168FA7015C35580BCBC843DE /* ExamplesModuleConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		06D38422FD0E4C3EF61960AB /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				05A7C411661B35B571005762 /* Configurator */,
+				3FA5EEA7A0ABD3A1D7321844 /* Presenter */,
+				C71EBCFEB5F3AA6BB7467DE4 /* View */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		1B8AABC5BA4A01510C1F7382 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +312,16 @@
 				73245A6C949C684B8A40A291 /* View */,
 			);
 			path = FieldExample;
+			sourceTree = "<group>";
+		};
+		3FA5EEA7A0ABD3A1D7321844 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				171DEF9BC7871E21B094EDEC /* ExamplesPresenter.swift */,
+				979D3C66746F3E77F7B7C61A /* ExamplesModuleInput.swift */,
+				EE97F83A7AF8E6798D47E858 /* ExamplesModuleOutput.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		49C673D9ADDFA6FD2D54833A /* View */ = {
@@ -713,6 +757,7 @@
 			children = (
 				9082578123C3A3CD000767EB /* ExampleCoordinator.swift */,
 				9082578323C3A3D6000767EB /* ExampleCoordinatorOutput.swift */,
+				06D38422FD0E4C3EF61960AB /* Examples */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -806,6 +851,17 @@
 				8E24A44D4DDA795046DAD200 /* MainTabBarModuleOutput.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C71EBCFEB5F3AA6BB7467DE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5F71634A2601707557A0AB8A /* ExamplesViewController.swift */,
+				5384479F9E1D06B6F0DC8ACA /* ExamplesViewController.xib */,
+				9556DEEEFB2EB82141DAB99A /* ExamplesViewInput.swift */,
+				0DC759D69070E7F14B23CC44 /* ExamplesViewOutput.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CF541C66F7BF3F166D98211C /* Presenter */ = {
@@ -939,6 +995,7 @@
 				3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */,
 				A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */,
 				EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */,
+				15BB46562624C950CA740CB8 /* ExamplesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1198,13 @@
 				747E607743B8795BF4CA1462 /* MainTabBarViewController.swift in Sources */,
 				89B03271DB703408CF996E40 /* MainTabBarViewInput.swift in Sources */,
 				75521FA957AFD8679B600407 /* MainTabBarViewOutput.swift in Sources */,
+				E2626B4342D699A176957CC0 /* ExamplesModuleConfigurator.swift in Sources */,
+				8362A2E73F2D3A26466AF703 /* ExamplesPresenter.swift in Sources */,
+				B0B30A0404FFB8440C84EFC2 /* ExamplesModuleInput.swift in Sources */,
+				2D15B6C714461CEE94F2D7BB /* ExamplesModuleOutput.swift in Sources */,
+				7D3329C45040E3AD07113AC1 /* ExamplesViewController.swift in Sources */,
+				AB1F650313E13C7CACDACF3D /* ExamplesViewInput.swift in Sources */,
+				8B43783863D2AC05209F304B /* ExamplesViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
