@@ -31,6 +31,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var state: FieldState = .normal {
         didSet {
             updateUI()
+            perfromOnContainerStateChangedCall()
         }
     }
 
@@ -38,7 +39,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var hintMessage: String?
     private var maxLength: Int?
 
-    private var error: Bool = false
+    private var error: Bool = false {
+        didSet {
+            perfromOnContainerStateChangedCall()
+        }
+    }
     private var mode: TextFieldMode = .plain
     private var nextInput: UIResponder?
     private var previousInput: UIResponder?
@@ -101,6 +106,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var onValidateFail: ((UnderlinedTextField) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
     public var onDateChanged: ((Date) -> Void)?
+    public var onContainerStateChanged: ((FieldContainerState) -> Void)?
 
     // MARK: - Initialization
 
@@ -122,7 +128,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
     }
@@ -608,6 +614,14 @@ private extension UnderlinedTextField {
             isInteractionOccured = !textIsEmpty()
         }
         onTextChanged?(self)
+    }
+
+    func perfromOnContainerStateChangedCall() {
+        guard !error else {
+            onContainerStateChanged?(.error)
+            return
+        }
+        onContainerStateChanged?(state.containerState)
     }
 
 }

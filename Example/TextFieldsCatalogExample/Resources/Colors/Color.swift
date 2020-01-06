@@ -56,6 +56,7 @@ enum Color {
         static let tint = Color.Figma.active
         static let placeholder = Color.Figma.placeholderGray
         static let normal = Color.Figma.fieldNormal
+        static let text = Color.Figma.text
 
         enum ActionButton {
             static let normal = Color.Figma.placeholderGray

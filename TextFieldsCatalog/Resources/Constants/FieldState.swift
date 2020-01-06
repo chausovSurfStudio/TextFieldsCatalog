@@ -16,4 +16,18 @@ enum FieldState {
     case active
     /// state for disabled field
     case disabled
+
+    // MARK: - Properties
+
+    var containerState: FieldContainerState {
+        switch self {
+        case .normal:
+            return .normal
+        case .active:
+            return .active
+        case .disabled:
+            return .disabled
+        }
+    }
+
 }

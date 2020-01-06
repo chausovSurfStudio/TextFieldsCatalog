@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -71,6 +71,8 @@
 		90736CC721F8A350003B8B78 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC621F8A350003B8B78 /* UITableView.swift */; };
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
 		90736CCE21F8B830003B8B78 /* BorderedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */; };
+		9082577823C36B83000767EB /* BoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577723C36B83000767EB /* BoxTextField.swift */; };
+		9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9082577923C36BC3000767EB /* BoxTextField.xib */; };
 		909DB8892203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB8882203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift */; };
 		909F2584229BF365006926E7 /* UnderlinedTextViewPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F2583229BF365006926E7 /* UnderlinedTextViewPreset.swift */; };
 		909F25A1229C3DD7006926E7 /* FormatterMasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F25A0229C3DD7006926E7 /* FormatterMasks.swift */; };
@@ -190,6 +192,8 @@
 		90736CC621F8A350003B8B78 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		90736CCD21F8B830003B8B78 /* BorderedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedFieldPreset.swift; sourceTree = "<group>"; };
+		9082577723C36B83000767EB /* BoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTextField.swift; sourceTree = "<group>"; };
+		9082577923C36BC3000767EB /* BoxTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxTextField.xib; sourceTree = "<group>"; };
 		909975A8C366F00524A7937F /* MainViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		909DB8882203597B00F0C5B7 /* CustomUnderlinedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedFieldPreset.swift; sourceTree = "<group>"; };
 		909F2583229BF365006926E7 /* UnderlinedTextViewPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextViewPreset.swift; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 		904A19BB21F9EE6200B9A846 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				9082577623C36B51000767EB /* BoxTextField */,
 				90D3778621FB3F320068F5F8 /* CustomUnderlinedTextField */,
 			);
 			path = TextFields;
@@ -653,6 +658,15 @@
 			path = MainFieldTableViewCell;
 			sourceTree = "<group>";
 		};
+		9082577623C36B51000767EB /* BoxTextField */ = {
+			isa = PBXGroup;
+			children = (
+				9082577723C36B83000767EB /* BoxTextField.swift */,
+				9082577923C36BC3000767EB /* BoxTextField.xib */,
+			);
+			path = BoxTextField;
+			sourceTree = "<group>";
+		};
 		90D3778621FB3F320068F5F8 /* CustomUnderlinedTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -838,6 +852,7 @@
 				90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */,
 				90736CBF21F8A313003B8B78 /* MainMessageTableViewCell.xib in Resources */,
 				90D3778A21FB3F730068F5F8 /* CustomUnderlinedTextField.xib in Resources */,
+				9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
 				904A19B921F9E84300B9A846 /* FieldPresetTableViewCell.xib in Resources */,
 				90736CBB21F8A01E003B8B78 /* CommonTableHeader.xib in Resources */,
@@ -987,6 +1002,7 @@
 				914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */,
 				7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */,
 				90A32B9022899AE70036C634 /* Sex.swift in Sources */,
+				9082577823C36B83000767EB /* BoxTextField.swift in Sources */,
 				90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */,
 				6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */,
 				04F2D129C13DEAEAA11BE1E1 /* MainModuleOutput.swift in Sources */,
