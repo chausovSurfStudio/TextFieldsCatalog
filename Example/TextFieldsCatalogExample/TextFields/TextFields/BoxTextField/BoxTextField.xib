@@ -42,6 +42,9 @@
                         <constraint firstAttribute="height" constant="44" id="1aZ-bm-dcv"/>
                         <constraint firstAttribute="width" constant="56" id="F97-VN-got"/>
                     </constraints>
+                    <connections>
+                        <action selector="tapOnActionButton:" destination="-1" eventType="touchUpInside" id="wmF-yi-WIA"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDh-p6-Miu">
                     <rect key="frame" x="16" y="115" width="288" height="16"/>

@@ -72,7 +72,7 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
     }
 
     func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
-        guard let field = field as? BorderedTextField else {
+        guard let field = field as? BoxTextField else {
             return
         }
         apply(for: field, heightConstraint: heightConstraint)
@@ -84,7 +84,7 @@ enum BorderedFieldPreset: CaseIterable, AppliedPreset {
 
 private extension BorderedFieldPreset {
 
-    func apply(for textField: BorderedTextField, heightConstraint: NSLayoutConstraint) {
+    func apply(for textField: BoxTextField, heightConstraint: NSLayoutConstraint) {
         switch self {
         case .password:
             tuneFieldForPassword(textField, heightConstraint: heightConstraint)
@@ -109,7 +109,7 @@ private extension BorderedFieldPreset {
         }
     }
 
-    func tuneFieldForPassword(_ textField: BorderedTextField, heightConstraint: NSLayoutConstraint) {
+    func tuneFieldForPassword(_ textField: BoxTextField, heightConstraint: NSLayoutConstraint) {
         textField.configure(placeholder: L10n.Presets.Password.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.configure(heightConstraint: heightConstraint)
@@ -127,7 +127,7 @@ private extension BorderedFieldPreset {
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.password)
     }
 
-    func tuneFieldForName(_ textField: BorderedTextField) {
+    func tuneFieldForName(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Name.placeholder, maxLength: 20)
         textField.configure(correction: .no, keyboardType: .default)
         textField.configure(autocapitalizationType: .words)
@@ -146,41 +146,41 @@ private extension BorderedFieldPreset {
         }
     }
 
-    func tuneFieldForEmail(_ textField: BorderedTextField) {
+    func tuneFieldForEmail(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Email.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: SharedRegex.email)
     }
 
-    func tuneFieldForPhone(_ textField: BorderedTextField) {
+    func tuneFieldForPhone(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Phone.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .phonePad)
         textField.validator = TextFieldValidator(minLength: 18, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Phone.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
     }
 
-    func tuneFieldForCardExpirationDate(_ textField: BorderedTextField) {
+    func tuneFieldForCardExpirationDate(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Cardexpirationdate.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 5, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardExpirationDate)
     }
 
-    func tuneFieldForCvc(_ textField: BorderedTextField) {
+    func tuneFieldForCvc(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Cvc.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 3, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cvc.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
     }
 
-    func tuneFieldForCardNumber(_ textField: BorderedTextField) {
+    func tuneFieldForCardNumber(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Cardnumber.placeholder, maxLength: nil)
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
     }
 
-    func tuneFieldForQRCode(_ textField: BorderedTextField) {
+    func tuneFieldForQRCode(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Qrcode.placeholder, maxLength: 10)
         textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.setHint(L10n.Presets.Qrcode.hint)
@@ -195,7 +195,7 @@ private extension BorderedFieldPreset {
         }
     }
 
-    func tuneFieldForBirthday(_ textField: BorderedTextField) {
+    func tuneFieldForBirthday(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Birthday.placeholder, maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1,
                                                  maxLength: nil,
@@ -213,7 +213,7 @@ private extension BorderedFieldPreset {
         }
     }
 
-    func tuneFieldForSex(_ textField: BorderedTextField) {
+    func tuneFieldForSex(_ textField: BoxTextField) {
         textField.configure(placeholder: L10n.Presets.Sex.placeholder, maxLength: nil)
         textField.validator = TextFieldValidator(minLength: 1,
                                                  maxLength: nil,

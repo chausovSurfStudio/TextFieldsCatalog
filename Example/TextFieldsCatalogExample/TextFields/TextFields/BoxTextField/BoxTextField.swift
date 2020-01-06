@@ -68,6 +68,12 @@ private extension BoxTextField {
                                                                                     normal: Color.UnderlineTextField.text,
                                                                                     active: Color.UnderlineTextField.text,
                                                                                     disabled: Color.UnderlineTextField.placeholder))
+        configuration.hint = HintConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .regular),
+                                               lineHeight: 17,
+                                               colors: ColorConfiguration(error: Color.UnderlineTextField.error,
+                                                                          normal: Color.UnderlineTextField.placeholder,
+                                                                          active: Color.UnderlineTextField.placeholder,
+                                                                          disabled: Color.UnderlineTextField.placeholder))
         configuration.passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.customEyeOn),
                                                                secureModeOffImage: UIImage(asset: Asset.customEyeOff),
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
