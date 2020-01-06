@@ -56,6 +56,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     private var lastLinePosition: CGRect = .zero
+    /// This flag set to `true` after first text changes and first call of validate() method
+    private var isInteractionOccured = false
 
     // MARK: - Properties
 
@@ -70,8 +72,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var responder: UIResponder {
         return self.textView
     }
+    public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
+    public var isNativePlaceholder = false
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -184,6 +188,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
     }
 
     /// Reset only error state and update all UI elements
@@ -328,7 +333,7 @@ extension UnderlinedTextView: UITextViewDelegate {
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {
-        validate()
+        validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
@@ -346,8 +351,9 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
+        updatePlaceholderVisibility()
         removeError()
-        onTextChanged?(self)
+        performOnTextChangedCall()
     }
 
 }
@@ -362,6 +368,7 @@ private extension UnderlinedTextView {
 
         updatePlaceholderColor()
         updatePlaceholderPosition()
+        updatePlaceholderVisibility()
         updatePlaceholderFont()
 
         updateTextColor()
@@ -371,7 +378,25 @@ private extension UnderlinedTextView {
         updateLineFrame()
     }
 
+    func validateWithPolicy() {
+        switch validationPolicy {
+        case .always:
+            validate()
+        case .notEmptyText:
+            if !textIsEmpty() {
+                validate()
+            }
+        case .afterChanges:
+            if isInteractionOccured {
+                validate()
+            }
+        case .never:
+            break
+        }
+    }
+
     func validate() {
+        isInteractionOccured = true
         if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
@@ -415,6 +440,13 @@ private extension UnderlinedTextView {
                                                  color: hintLabel.textColor)
     }
 
+    func performOnTextChangedCall() {
+        if !isInteractionOccured {
+            isInteractionOccured = !textIsEmpty()
+        }
+        onTextChanged?(self)
+    }
+
 }
 
 // MARK: - Updating
@@ -447,6 +479,9 @@ private extension UnderlinedTextView {
     }
 
     func updatePlaceholderPosition() {
+        guard !isNativePlaceholder else {
+            return
+        }
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition()
         placeholder.frame = endPosition
@@ -512,6 +547,10 @@ private extension UnderlinedTextView {
 
     func updateClearButtonVisibility() {
         clearButton.isHidden = textView.text.isEmpty || hideClearButton
+    }
+
+    func updatePlaceholderVisibility() {
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }
