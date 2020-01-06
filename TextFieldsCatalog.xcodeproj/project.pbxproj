@@ -16,8 +16,6 @@
 		902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2F421FF70C500AC21D4 /* TextFieldValidator.swift */; };
 		902CE2F821FF70E500AC21D4 /* ConfigurationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2F721FF70E500AC21D4 /* ConfigurationParameters.swift */; };
 		902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2F921FF710400AC21D4 /* TextFieldConfigurations.swift */; };
-		902CE2FD21FF712900AC21D4 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2FB21FF712900AC21D4 /* BorderedTextField.swift */; };
-		902CE2FE21FF712900AC21D4 /* BorderedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 902CE2FC21FF712900AC21D4 /* BorderedTextField.xib */; };
 		902CE30121FF719B00AC21D4 /* UnderlinedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 902CE2FF21FF719B00AC21D4 /* UnderlinedTextField.xib */; };
 		902CE30221FF719B00AC21D4 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE30021FF719B00AC21D4 /* UnderlinedTextField.swift */; };
 		903863DF21FF550D00BAA761 /* TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903863D521FF550D00BAA761 /* TextFieldsCatalog.framework */; };
@@ -92,8 +90,6 @@
 		902CE2F421FF70C500AC21D4 /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
 		902CE2F721FF70E500AC21D4 /* ConfigurationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationParameters.swift; sourceTree = "<group>"; };
 		902CE2F921FF710400AC21D4 /* TextFieldConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldConfigurations.swift; sourceTree = "<group>"; };
-		902CE2FB21FF712900AC21D4 /* BorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
-		902CE2FC21FF712900AC21D4 /* BorderedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BorderedTextField.xib; sourceTree = "<group>"; };
 		902CE2FF21FF719B00AC21D4 /* UnderlinedTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderlinedTextField.xib; sourceTree = "<group>"; };
 		902CE30021FF719B00AC21D4 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		903863D521FF550D00BAA761 /* TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				902CE2F621FF70D700AC21D4 /* Configuration */,
-				903863FC21FF58E100BAA761 /* BorderedTextField */,
 				903863FB21FF58D500BAA761 /* UnderlinedTextField */,
 				909F257E229BE12D006926E7 /* UnderlinedTextView */,
 			);
@@ -374,15 +369,6 @@
 				902CE2FF21FF719B00AC21D4 /* UnderlinedTextField.xib */,
 			);
 			path = UnderlinedTextField;
-			sourceTree = "<group>";
-		};
-		903863FC21FF58E100BAA761 /* BorderedTextField */ = {
-			isa = PBXGroup;
-			children = (
-				902CE2FB21FF712900AC21D4 /* BorderedTextField.swift */,
-				902CE2FC21FF712900AC21D4 /* BorderedTextField.xib */,
-			);
-			path = BorderedTextField;
 			sourceTree = "<group>";
 		};
 		909F257E229BE12D006926E7 /* UnderlinedTextView */ = {
@@ -547,7 +533,6 @@
 				90BB4731220065F000F6DB39 /* eyeOn@3x.png in Resources */,
 				90A32B8E228991900036C634 /* rightArrow.png in Resources */,
 				90BB4733220065F000F6DB39 /* eyeOff.png in Resources */,
-				902CE2FE21FF712900AC21D4 /* BorderedTextField.xib in Resources */,
 				902CE2E821FF6D6D00AC21D4 /* Localizable.strings in Resources */,
 				909F259E229C39DF006926E7 /* close@2x.png in Resources */,
 				90BB4732220065F000F6DB39 /* eyeOn.png in Resources */,
@@ -665,7 +650,6 @@
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
 				903863FE21FF590700BAA761 /* Color.swift in Sources */,
-				902CE2FD21FF712900AC21D4 /* BorderedTextField.swift in Sources */,
 				909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */,
 				90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,

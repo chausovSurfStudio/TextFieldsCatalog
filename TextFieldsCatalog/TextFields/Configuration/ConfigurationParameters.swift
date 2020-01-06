@@ -116,24 +116,6 @@ public final class TextFieldConfiguration {
     }
 }
 
-/// Configuration class with parameters for text field border in BorderedTextField
-public final class TextFieldBorderConfiguration {
-    /// Corner radius for text field border
-    let cornerRadius: CGFloat
-    /// Text field border width
-    let width: CGFloat
-    /// Colors for text field border in various states
-    let colors: ColorConfiguration
-
-    public init(cornerRadius: CGFloat,
-                width: CGFloat,
-                colors: ColorConfiguration) {
-        self.cornerRadius = cornerRadius
-        self.width = width
-        self.colors = colors
-    }
-}
-
 /// Configuration class with parameters for hint label
 public final class HintConfiguration {
     /// Text font for hint label
