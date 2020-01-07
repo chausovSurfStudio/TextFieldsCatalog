@@ -58,6 +58,8 @@
 		90BB4732220065F000F6DB39 /* eyeOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472C220065F000F6DB39 /* eyeOn.png */; };
 		90BB4733220065F000F6DB39 /* eyeOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472D220065F000F6DB39 /* eyeOff.png */; };
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
+		90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */; };
+		90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
 		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
@@ -135,6 +137,8 @@
 		90BB472C220065F000F6DB39 /* eyeOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeOn.png; sourceTree = "<group>"; };
 		90BB472D220065F000F6DB39 /* eyeOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eyeOff.png; sourceTree = "<group>"; };
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
+		90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPlaceholderService.swift; sourceTree = "<group>"; };
+		90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldProtocol.swift; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 		90BEBBF623C4CC5A00991105 /* AppearanceServices */ = {
 			isa = PBXGroup;
 			children = (
+				90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */,
 			);
 			path = AppearanceServices;
 			sourceTree = "<group>";
@@ -402,9 +407,26 @@
 		90BEBBF723C4CC6600991105 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				90BEBBFA23C4D3E400991105 /* Support */,
 				90BEBBF623C4CC5A00991105 /* AppearanceServices */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		90BEBBFA23C4D3E400991105 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				90BEBBFB23C4D3E900991105 /* InputField */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		90BEBBFB23C4D3E900991105 /* InputField */ = {
+			isa = PBXGroup;
+			children = (
+				90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */,
+			);
+			path = InputField;
 			sourceTree = "<group>";
 		};
 		90FAC49F228880250032A7F1 /* Pickers */ = {
@@ -656,6 +678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
+				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
@@ -669,6 +692,7 @@
 				909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */,
 				90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
+				90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
 				90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */,
 				90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */,
