@@ -563,4 +563,3 @@ private extension UnderlinedTextView {
     }
 
 }
-
