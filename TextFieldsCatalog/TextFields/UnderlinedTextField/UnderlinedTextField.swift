@@ -524,15 +524,19 @@ private extension UnderlinedTextField {
     func updateUI(animated: Bool = false) {
         updateHintLabelColor()
         updateHintLabelVisibility()
-        updateLineViewColor()
-        updateLineViewHeight()
-        updateTextColor()
+
         updatePlaceholderColor()
         updatePlaceholderPosition()
         updatePlaceholderFont()
-        updateViewHeight()
-        updatePasswordButtonVisibility()
         updatePlaceholderVisibility()
+
+        updateTextColor()
+        updateViewHeight()
+
+        updateLineViewColor()
+        updateLineViewHeight()
+
+        updatePasswordButtonVisibility()
     }
 
     func updatePasswordButtonIcon() {
