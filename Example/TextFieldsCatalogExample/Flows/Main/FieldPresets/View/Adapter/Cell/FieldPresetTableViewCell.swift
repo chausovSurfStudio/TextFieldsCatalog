@@ -1,0 +1,60 @@
+//
+//  FieldPresetTableViewCell.swift
+//  TextFieldsCatalog
+//
+//  Created by Александр Чаусов on 24/01/2019.
+//  Copyright © 2019 Александр Чаусов. All rights reserved.
+//
+
+import UIKit
+
+final class FieldPresetTableViewCell: UITableViewCell {
+
+    // MARK: - Constants
+
+    private enum Constants {
+        static let animationDuration: TimeInterval = 0.3
+    }
+
+    // MARK: - IBOutlets
+
+    @IBOutlet private weak var nameLabel: UILabel!
+
+    // MARK: - UITableViewCell
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupInitialState()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+            self?.contentView.backgroundColor = selected ? Color.Cell.container : Color.Cell.background
+        }
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+            self?.contentView.backgroundColor = highlighted ? Color.Cell.container : Color.Cell.background
+        }
+    }
+
+    // MARK: - Internal Methods
+
+    func configure(with preset: AppliedPreset) {
+        nameLabel.text = preset.name
+    }
+
+}
+
+// MARK: - Configure
+
+private extension FieldPresetTableViewCell {
+
+    func setupInitialState() {
+        contentView.backgroundColor = Color.Cell.background
+        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        nameLabel.textColor = Color.Text.white
+    }
+
+}

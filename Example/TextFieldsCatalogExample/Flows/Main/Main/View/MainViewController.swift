@@ -61,7 +61,6 @@ private extension MainViewController {
 
     func configureNavigationBar(with title: String) {
         configureNavigationTitle(with: title)
-        addRightBarButton(.info, selector: #selector(tapOnInfo))
     }
 
     func configureAdapter(with models: [MainModuleViewModel]) {
@@ -72,17 +71,6 @@ private extension MainViewController {
         adapter?.onFieldTypeSelect = { [weak self] type in
             self?.output?.openField(with: type)
         }
-    }
-
-}
-
-// MARK: - Configure
-
-private extension MainViewController {
-
-    @objc
-    func tapOnInfo() {
-        output?.openInfo()
     }
 
 }

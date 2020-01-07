@@ -11,7 +11,6 @@ final class MainPresenter: MainModuleOutput {
     // MARK: - MainModuleOutput
 
     var onFieldOpen: TextFieldTypeClosure?
-    var onInfoOpen: EmptyClosure?
 
     // MARK: - Properties
 
@@ -35,10 +34,6 @@ extension MainPresenter: MainViewOutput {
 
     func openField(with type: TextFieldType) {
         onFieldOpen?(type)
-    }
-
-    func openInfo() {
-        onInfoOpen?()
     }
 
 }

@@ -56,6 +56,11 @@ enum Asset {
     static let regular = ColorAsset(name: "regular")
     static let text = ColorAsset(name: "text")
   }
+  enum MainTab {
+    static let catalog = ImageAsset(name: "MainTab/catalog")
+    static let example = ImageAsset(name: "MainTab/example")
+    static let info = ImageAsset(name: "MainTab/info")
+  }
   static let close = ImageAsset(name: "close")
   static let customEyeOff = ImageAsset(name: "customEyeOff")
   static let customEyeOn = ImageAsset(name: "customEyeOn")
@@ -76,6 +81,9 @@ enum Asset {
     Colors.text,
   ]
   static let allImages: [ImageAsset] = [
+    MainTab.catalog,
+    MainTab.example,
+    MainTab.info,
     close,
     customEyeOff,
     customEyeOn,

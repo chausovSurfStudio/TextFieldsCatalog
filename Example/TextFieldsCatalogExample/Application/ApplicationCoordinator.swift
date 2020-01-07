@@ -13,7 +13,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Coordinator
 
     override func start(with deepLinkOption: DeepLinkOption?) {
-        runMainFlow()
+        runMainTabBarFlow()
     }
 
 }
@@ -22,13 +22,9 @@ final class ApplicationCoordinator: BaseCoordinator {
 
 private extension ApplicationCoordinator {
 
-    func runMainFlow(deepLinkOption: DeepLinkOption? = nil) {
+    func runMainTabBarFlow(deepLinkOption: DeepLinkOption? = nil) {
         let router = MainRouter()
-        let coordinator = MainCoordinator(router: router)
-        coordinator.finishFlow = { [weak self, weak coordinator] in
-            self?.start(with: deepLinkOption)
-            self?.removeDependency(coordinator)
-        }
+        let coordinator = MainTabBarCoordinator(router: router)
         self.addDependency(coordinator)
         coordinator.start()
     }
