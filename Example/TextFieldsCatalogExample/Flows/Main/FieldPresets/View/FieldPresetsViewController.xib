@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldPresetsViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldPresetsViewController" customModule="TextFieldsCatalogExample" customModuleProvider="target">
             <connections>
-                <outlet property="container" destination="4vY-4l-IWu" id="oUL-18-TCf"/>
                 <outlet property="tableView" destination="bRR-Kp-joC" id="OA9-en-62k"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
             </connections>
@@ -22,31 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vY-4l-IWu">
-                    <rect key="frame" x="20" y="70" width="280" height="448"/>
-                    <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRR-Kp-joC">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="448"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </tableView>
-                    </subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRR-Kp-joC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="bRR-Kp-joC" firstAttribute="top" secondItem="4vY-4l-IWu" secondAttribute="top" id="Ycu-7X-0KF"/>
-                        <constraint firstAttribute="bottom" secondItem="bRR-Kp-joC" secondAttribute="bottom" id="djl-Wj-8NR"/>
-                        <constraint firstItem="bRR-Kp-joC" firstAttribute="leading" secondItem="4vY-4l-IWu" secondAttribute="leading" id="hAA-1x-MbU"/>
-                        <constraint firstAttribute="trailing" secondItem="bRR-Kp-joC" secondAttribute="trailing" id="rhZ-6y-SJz"/>
-                    </constraints>
-                </view>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FnX-Pp-h8K" firstAttribute="trailing" secondItem="4vY-4l-IWu" secondAttribute="trailing" constant="20" id="ag4-OC-end"/>
-                <constraint firstItem="FnX-Pp-h8K" firstAttribute="bottom" secondItem="4vY-4l-IWu" secondAttribute="bottom" constant="50" id="dYF-wE-Ttg"/>
-                <constraint firstItem="4vY-4l-IWu" firstAttribute="top" secondItem="FnX-Pp-h8K" secondAttribute="top" constant="50" id="gaC-NP-vOl"/>
-                <constraint firstItem="4vY-4l-IWu" firstAttribute="leading" secondItem="FnX-Pp-h8K" secondAttribute="leading" constant="20" id="ocI-Zd-2PZ"/>
+                <constraint firstAttribute="bottom" secondItem="bRR-Kp-joC" secondAttribute="bottom" id="0JB-jn-zqc"/>
+                <constraint firstItem="FnX-Pp-h8K" firstAttribute="trailing" secondItem="bRR-Kp-joC" secondAttribute="trailing" id="1VZ-ak-7aq"/>
+                <constraint firstItem="bRR-Kp-joC" firstAttribute="top" secondItem="FnX-Pp-h8K" secondAttribute="top" id="8A7-6c-KSB"/>
+                <constraint firstItem="bRR-Kp-joC" firstAttribute="leading" secondItem="FnX-Pp-h8K" secondAttribute="leading" id="vg3-cl-BUv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="FnX-Pp-h8K"/>
+            <point key="canvasLocation" x="133" y="154"/>
         </view>
     </objects>
 </document>

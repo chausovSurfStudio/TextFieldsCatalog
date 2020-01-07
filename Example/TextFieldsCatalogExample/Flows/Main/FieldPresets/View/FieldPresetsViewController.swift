@@ -12,7 +12,6 @@ final class FieldPresetsViewController: UIViewController {
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var container: UIView!
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: - Properties
@@ -48,23 +47,9 @@ extension FieldPresetsViewController: FieldPresetsViewInput {
 private extension FieldPresetsViewController {
 
     func configureAppearance() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         tableView.backgroundColor = Color.Main.container
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        configureContainer()
-        configureGestures()
-    }
-
-    func configureContainer() {
-        container.layer.cornerRadius = 12
-        container.layer.masksToBounds = true
-    }
-
-    func configureGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
-        tapGesture.delegate = self
-        view.addGestureRecognizer(tapGesture)
     }
 
     func configureAdapter(with presets: [AppliedPreset]) {
@@ -72,27 +57,6 @@ private extension FieldPresetsViewController {
         adapter?.onPresetSelect = { [weak self] preset in
             self?.output?.selectPreset(preset)
         }
-    }
-
-}
-
-// MARK: - Actions
-
-private extension FieldPresetsViewController {
-
-    @objc
-    func handleBackgroundTap() {
-        output?.close()
-    }
-
-}
-
-// MARK: - UIGestureRecognizerDelegate
-
-extension FieldPresetsViewController: UIGestureRecognizerDelegate {
-
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        return touch.view == view
     }
 
 }
