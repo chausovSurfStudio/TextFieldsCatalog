@@ -29,13 +29,13 @@ final class FieldPresetTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.contentView.backgroundColor = selected ? Color.Cell.pressed : Color.Cell.container
+            self?.contentView.backgroundColor = selected ? Color.Cell.container : Color.Cell.background
         }
     }
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.contentView.backgroundColor = highlighted ? Color.Cell.pressed : Color.Cell.container
+            self?.contentView.backgroundColor = highlighted ? Color.Cell.container : Color.Cell.background
         }
     }
 
@@ -52,7 +52,7 @@ final class FieldPresetTableViewCell: UITableViewCell {
 private extension FieldPresetTableViewCell {
 
     func setupInitialState() {
-        contentView.backgroundColor = Color.Cell.container
+        contentView.backgroundColor = Color.Cell.background
         nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         nameLabel.textColor = Color.Text.white
     }

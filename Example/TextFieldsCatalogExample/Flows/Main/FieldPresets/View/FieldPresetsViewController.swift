@@ -36,8 +36,7 @@ final class FieldPresetsViewController: UIViewController {
 extension FieldPresetsViewController: FieldPresetsViewInput {
 
     func setupInitialState(with presets: [AppliedPreset]) {
-        configureAppearance()
-        configureAdapter(with: presets)
+        configureAppearance(with: presets)
     }
 
 }
@@ -46,8 +45,18 @@ extension FieldPresetsViewController: FieldPresetsViewInput {
 
 private extension FieldPresetsViewController {
 
-    func configureAppearance() {
-        tableView.backgroundColor = Color.Main.container
+    func configureAppearance(with presets: [AppliedPreset]) {
+        configureNavigationBar()
+        configureTableView()
+        configureAdapter(with: presets)
+    }
+
+    func configureNavigationBar() {
+        addRightBarButton(.close, selector: #selector(closeModule))
+    }
+
+    func configureTableView() {
+        tableView.backgroundColor = Color.Main.background
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
@@ -57,6 +66,17 @@ private extension FieldPresetsViewController {
         adapter?.onPresetSelect = { [weak self] preset in
             self?.output?.selectPreset(preset)
         }
+    }
+
+}
+
+// MARK: - Actions
+
+private extension FieldPresetsViewController {
+
+    @objc
+    func closeModule() {
+        output?.close()
     }
 
 }

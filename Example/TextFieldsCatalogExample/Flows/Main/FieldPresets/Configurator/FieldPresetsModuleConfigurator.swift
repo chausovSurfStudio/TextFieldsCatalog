@@ -17,7 +17,10 @@ final class FieldPresetsModuleConfigurator {
         presenter.view = view
         view.output = presenter
 
-        return (view, presenter)
+        let navigationController = CommonNavigationController(rootViewController: view)
+        let container = StorkContainerViewController(navController: navigationController)
+
+        return (container, presenter)
     }
 
 }
