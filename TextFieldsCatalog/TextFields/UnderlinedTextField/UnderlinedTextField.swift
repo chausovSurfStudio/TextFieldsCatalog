@@ -42,7 +42,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     private let placeholder: CATextLayer = CATextLayer()
-    private var hintMessage: String?
     private var maxLength: Int?
 
     private var error: Bool = false {
@@ -62,6 +61,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     private var placeholderService: FloatingPlaceholderService?
     private var lineService: LineService?
+    private var hintService: HintService?
 
     // MARK: - Properties
 
@@ -88,6 +88,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
         didSet {
+            hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
             switch heightLayoutPolicy {
             case .fixed:
                 hintLabel.numberOfLines = 1
@@ -127,6 +128,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textField,
                                                         configuration: configuration.placeholder)
+        hintService = HintService(hintLabel: hintLabel,
+                                  configuration: configuration.hint,
+                                  heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   lineView: lineView,
                                   field: textField,
@@ -148,6 +152,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textField,
                                                         configuration: configuration.placeholder)
+        hintService = HintService(hintLabel: hintLabel,
+                                  configuration: configuration.hint,
+                                  heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   lineView: lineView,
                                   field: textField,
@@ -254,7 +261,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         if let message = errorMessage {
-            setupHintText(message)
+            hintService?.setupHintText(message)
         }
         updateUI()
     }
@@ -273,7 +280,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textField.text = ""
-        setupHintText(hintMessage ?? "")
+        hintService?.setupHintIfNeeded()
         error = false
         updateUI()
     }
@@ -317,8 +324,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         guard !hint.isEmpty else {
             return
         }
-        hintMessage = hint
-        setupHintText(hint)
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     /// Return true, if field is current firstResponder
@@ -356,12 +363,13 @@ private extension UnderlinedTextField {
 
     func configureAppearance() {
         placeholderService?.setup(configuration: configuration.placeholder)
+        hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
 
         configureBackground()
         placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
         configureTextField()
-        configureHintLabel()
+        hintService?.configureHintLabel()
         configureActionButton()
         lineService?.configureLineView(fieldState: state)
     }
@@ -378,14 +386,6 @@ private extension UnderlinedTextField {
         textField.returnKeyType = .done
         textField.textPadding = configuration.textField.defaultPadding
         textField.addTarget(self, action: #selector(textfieldEditingChange(_:)), for: .editingChanged)
-    }
-
-    func configureHintLabel() {
-        hintLabel.textColor = configuration.hint.colors.normal
-        hintLabel.font = configuration.hint.font
-        hintLabel.text = ""
-        hintLabel.numberOfLines = 1
-        hintLabel.alpha = 0
     }
 
     func configureActionButton() {
@@ -529,8 +529,8 @@ extension UnderlinedTextField: PickerTextField {
 private extension UnderlinedTextField {
 
     func updateUI(animated: Bool = false) {
-        updateHintLabelColor()
-        updateHintLabelVisibility()
+        hintService?.updateHintLabelColor(containerState: containerState)
+        hintService?.updateHintLabelVisibility(containerState: containerState)
 
         placeholderService?.updatePlaceholderColor(fieldState: state,
                                                    containerState: containerState)
@@ -582,13 +582,13 @@ private extension UnderlinedTextField {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
             if let message = errorMessage, !isValid {
-                setupHintText(message)
+                hintService?.setupHintText(message)
             }
         } else if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                setupHintText(message)
+                hintService?.setupHintText(message)
             }
         }
         if error {
@@ -598,25 +598,15 @@ private extension UnderlinedTextField {
 
     func removeError() {
         if error {
-            setupHintText(hintMessage ?? "")
+            hintService?.setupHintIfNeeded()
             error = false
             updateUI()
         }
     }
 
-    func shouldShowHint() -> Bool {
-        return (state == .active && hintMessage != nil) || error
-    }
-
     /// Return true, if current input string is empty
     func textIsEmpty() -> Bool {
         return textField.text?.isEmpty ?? true
-    }
-
-    func setupHintText(_ hintText: String) {
-        hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
-                                                 font: configuration.hint.font,
-                                                 color: hintLabel.textColor)
     }
 
     func performOnTextChangedCall() {
@@ -636,26 +626,6 @@ private extension UnderlinedTextField {
 
 private extension UnderlinedTextField {
 
-    func updateHintLabelColor() {
-        hintLabel.textColor = hintTextColor()
-    }
-
-    func updateHintLabelVisibility() {
-        let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        var duration: TimeInterval = Constants.animationDuration
-        switch heightLayoutPolicy {
-        case .fixed:
-            // update always with animation
-            break
-        case .flexible(_, _):
-            // update with animation on hint appear
-            duration = shouldShowHint() ? Constants.animationDuration : 0
-        }
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.hintLabel.alpha = alpha
-        }
-    }
-
     func updateTextColor() {
         textField.textColor = textColor()
     }
@@ -665,7 +635,7 @@ private extension UnderlinedTextField {
         case .fixed:
             break
         case .flexible(let minHeight, let bottomSpace):
-            let hintHeight: CGFloat = hintLabelHeight()
+            let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
             let viewHeight = max(minHeight, actualViewHeight)
             guard lastViewHeight != viewHeight else {
@@ -702,20 +672,8 @@ private extension UnderlinedTextField {
 
 private extension UnderlinedTextField {
 
-    func hintLabelHeight() -> CGFloat {
-        let hintIsVisible = shouldShowHint()
-        if let hint = hintLabel.text, !hint.isEmpty, hintIsVisible {
-            return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
-        }
-        return 0
-    }
-
     func textColor() -> UIColor {
         return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func hintTextColor() -> UIColor {
-        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
 }
