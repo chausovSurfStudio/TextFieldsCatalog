@@ -10,8 +10,8 @@ final class LineService {
 
     // MARK: - Private Properties
 
+    private let lineView = UIView()
     private let superview: InnerDesignableView
-    private let lineView: UIView
     private let field: InputField?
     private let flexibleTopSpace: Bool
 
@@ -21,12 +21,10 @@ final class LineService {
     // MARK: - Initialization
 
     init(superview: InnerDesignableView,
-         lineView: UIView,
          field: InputField?,
          flexibleTopSpace: Bool,
          configuration: LineConfiguration) {
         self.superview = superview
-        self.lineView = lineView
         self.field = field
         self.flexibleTopSpace = flexibleTopSpace
         self.configuration = configuration

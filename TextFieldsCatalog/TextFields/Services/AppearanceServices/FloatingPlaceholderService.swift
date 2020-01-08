@@ -10,8 +10,8 @@ final class FloatingPlaceholderService {
 
     // MARK: - Private Properties
 
+    private let placeholder: CATextLayer = CATextLayer()
     private let superview: InnerDesignableView
-    private let placeholder: CATextLayer
     private let field: InputField?
 
     private var configuration: FloatingPlaceholderConfiguration
@@ -19,11 +19,9 @@ final class FloatingPlaceholderService {
     // MARK: - Initialization
 
     init(superview: InnerDesignableView,
-         placeholder: CATextLayer,
          field: InputField?,
          configuration: FloatingPlaceholderConfiguration) {
         self.superview = superview
-        self.placeholder = placeholder
         self.field = field
         self.configuration = configuration
     }
@@ -32,6 +30,10 @@ final class FloatingPlaceholderService {
 
     func setup(configuration: FloatingPlaceholderConfiguration) {
         self.configuration = configuration
+    }
+
+    func setup(placeholder: String?) {
+        self.placeholder.string = placeholder
     }
 
     func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {

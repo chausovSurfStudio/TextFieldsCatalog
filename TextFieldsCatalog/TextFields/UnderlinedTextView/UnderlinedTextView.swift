@@ -27,7 +27,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Private Properties
 
-    private let lineView = UIView()
     private var state: FieldState = .normal {
         didSet {
             updateUI()
@@ -40,7 +39,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         return state.containerState
     }
 
-    private let placeholder: CATextLayer = CATextLayer()
     private var maxLength: Int?
 
     private var error: Bool = false
@@ -85,14 +83,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     override public init(frame: CGRect) {
         super.init(frame: frame)
         placeholderService = FloatingPlaceholderService(superview: self,
-                                                        placeholder: placeholder,
                                                         field: textView,
                                                         configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
                                   heightLayoutPolicy: .flexible(0, 0))
         lineService = LineService(superview: self,
-                                  lineView: lineView,
                                   field: textView,
                                   flexibleTopSpace: true,
                                   configuration: configuration.line)
@@ -109,14 +105,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     override open func awakeFromNib() {
         super.awakeFromNib()
         placeholderService = FloatingPlaceholderService(superview: self,
-                                                        placeholder: placeholder,
                                                         field: textView,
                                                         configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
                                   heightLayoutPolicy: .flexible(0, 0))
         lineService = LineService(superview: self,
-                                  lineView: lineView,
                                   field: textView,
                                   flexibleTopSpace: true,
                                   configuration: configuration.line)
@@ -133,7 +127,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
     public func configure(placeholder: String?, maxLength: Int?) {
-        self.placeholder.string = placeholder
+        placeholderService?.setup(placeholder: placeholder)
         self.maxLength = maxLength
     }
 
