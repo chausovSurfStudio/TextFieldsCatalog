@@ -40,21 +40,21 @@ final class FloatingPlaceholderService {
         self.configuration = configuration
     }
 
-    func configurePlaceholder(state: FieldContainerState) {
+    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperlayer()
         placeholder.string = ""
         placeholder.font = configuration.font
         placeholder.fontSize = configuration.bigFontSize
-        placeholder.foregroundColor = placeholderColor(state: state)
+        placeholder.foregroundColor = placeholderColor(fieldState: fieldState, containerState: containerState)
         placeholder.contentsScale = UIScreen.main.scale
-        placeholder.frame = placeholderPosition(state: state)
+        placeholder.frame = placeholderPosition(fieldState: fieldState)
         placeholder.truncationMode = CATextLayerTruncationMode.end
         superview.layer.addSublayer(placeholder)
     }
 
-    func updatePlaceholderColor(state: FieldContainerState) {
+    func updatePlaceholderColor(fieldState: FieldState, containerState: FieldContainerState) {
         let startColor: CGColor = currentPlaceholderColor()
-        let endColor: CGColor = placeholderColor(state: state)
+        let endColor: CGColor = placeholderColor(fieldState: fieldState, containerState: containerState)
         placeholder.foregroundColor = endColor
 
         let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
@@ -65,12 +65,12 @@ final class FloatingPlaceholderService {
         placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition(isNativePlaceholder: Bool, state: FieldContainerState) {
+    func updatePlaceholderPosition(isNativePlaceholder: Bool, fieldState: FieldState) {
         guard !isNativePlaceholder else {
             return
         }
         let startPosition: CGRect = currentPlaceholderPosition()
-        let endPosition: CGRect = placeholderPosition(state: state)
+        let endPosition: CGRect = placeholderPosition(fieldState: fieldState)
         placeholder.frame = endPosition
 
         let frameAnimation = CABasicAnimation(keyPath: "frame")
@@ -85,9 +85,9 @@ final class FloatingPlaceholderService {
         placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
-    func updatePlaceholderFont(state: FieldContainerState) {
+    func updatePlaceholderFont(fieldState: FieldState) {
         let startFontSize: CGFloat = currentPlaceholderFontSize()
-        let endFontSize: CGFloat = placeholderFontSize(state: state)
+        let endFontSize: CGFloat = placeholderFontSize(fieldState: fieldState)
         placeholder.fontSize = endFontSize
 
         let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
@@ -108,18 +108,18 @@ private extension FloatingPlaceholderService {
         return placeholder.foregroundColor ?? configuration.bottomColors.normal.cgColor
     }
 
-    func placeholderColor(state: FieldContainerState) -> CGColor {
-        let placeholderOnTop = shouldMovePlaceholderOnTop(state: state)
+    func placeholderColor(fieldState: FieldState, containerState: FieldContainerState) -> CGColor {
+        let placeholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
         let colors = placeholderOnTop ? configuration.topColors : configuration.bottomColors
-        return colors.suitableColor(state: state).cgColor
+        return colors.suitableColor(state: containerState).cgColor
     }
 
     func currentPlaceholderPosition() -> CGRect {
         return placeholder.frame
     }
 
-    func placeholderPosition(state: FieldContainerState) -> CGRect {
-        let placeholderOnTop = shouldMovePlaceholderOnTop(state: state)
+    func placeholderPosition(fieldState: FieldState) -> CGRect {
+        let placeholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
         let targetInsets = placeholderOnTop ? configuration.topInsets : configuration.bottomInsets
         var placeholderFrame = superview.view.bounds.inset(by: targetInsets)
         placeholderFrame.size.height = configuration.height
@@ -130,12 +130,12 @@ private extension FloatingPlaceholderService {
         return placeholder.fontSize
     }
 
-    func placeholderFontSize(state: FieldContainerState) -> CGFloat {
-        return shouldMovePlaceholderOnTop(state: state) ? configuration.smallFontSize : configuration.bigFontSize
+    func placeholderFontSize(fieldState: FieldState) -> CGFloat {
+        return shouldMovePlaceholderOnTop(state: fieldState) ? configuration.smallFontSize : configuration.bigFontSize
     }
 
     /// Return true, if floating placeholder should placed on top in current state, false in other case
-    func shouldMovePlaceholderOnTop(state: FieldContainerState) -> Bool {
+    func shouldMovePlaceholderOnTop(state: FieldState) -> Bool {
         return state == .active || !textIsEmpty()
     }
 

@@ -267,7 +267,7 @@ private extension UnderlinedTextView {
         placeholderService?.setup(configuration: configuration.placeholder)
 
         configureBackground()
-        placeholderService?.configurePlaceholder(state: containerState)
+        placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
         configureTextView()
         configureHintLabel()
         configureLineView()
@@ -374,10 +374,11 @@ private extension UnderlinedTextView {
         updateHintLabelColor()
         updateHintLabelVisibility()
 
-        placeholderService?.updatePlaceholderColor(state: containerState)
+        placeholderService?.updatePlaceholderColor(fieldState: state,
+                                                   containerState: containerState)
         placeholderService?.updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder,
-                                                      state: containerState)
-        placeholderService?.updatePlaceholderFont(state: containerState)
+                                                      fieldState: state)
+        placeholderService?.updatePlaceholderFont(fieldState: state)
         placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
 
         updateTextColor()
