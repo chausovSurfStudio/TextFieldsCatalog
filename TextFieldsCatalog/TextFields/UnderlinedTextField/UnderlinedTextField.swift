@@ -370,8 +370,8 @@ private extension UnderlinedTextField {
         placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
         configureTextField()
         hintService?.configureHintLabel()
-        configureActionButton()
         lineService?.configureLineView(fieldState: state)
+        configureActionButton()
     }
 
     func configureBackground() {
