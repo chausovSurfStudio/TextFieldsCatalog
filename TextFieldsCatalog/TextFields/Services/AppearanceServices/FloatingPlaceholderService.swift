@@ -14,7 +14,7 @@ final class FloatingPlaceholderService {
         static let animationDuration: TimeInterval = 0.3
     }
 
-    // MARK: - Properties
+    // MARK: - Private Properties
 
     private let superview: InnerDesignableView
     private let placeholder: CATextLayer

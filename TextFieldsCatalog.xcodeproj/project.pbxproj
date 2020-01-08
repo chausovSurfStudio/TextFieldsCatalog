@@ -60,6 +60,7 @@
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
 		90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */; };
 		90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */; };
+		90C6AC7023C617A400D13B8D /* LineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6AC6F23C617A400D13B8D /* LineService.swift */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
 		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
@@ -139,6 +140,7 @@
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
 		90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPlaceholderService.swift; sourceTree = "<group>"; };
 		90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldProtocol.swift; sourceTree = "<group>"; };
+		90C6AC6F23C617A400D13B8D /* LineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineService.swift; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */,
+				90C6AC6F23C617A400D13B8D /* LineService.swift */,
 			);
 			path = AppearanceServices;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C6AC7023C617A400D13B8D /* LineService.swift in Sources */,
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,

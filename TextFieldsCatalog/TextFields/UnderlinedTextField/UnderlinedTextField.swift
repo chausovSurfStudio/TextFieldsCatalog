@@ -61,6 +61,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Services
 
     private var placeholderService: FloatingPlaceholderService?
+    private var lineService: LineService?
 
     // MARK: - Properties
 
@@ -126,6 +127,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textField,
                                                         configuration: configuration.placeholder)
+        lineService = LineService(superview: self,
+                                  lineView: lineView,
+                                  field: textField,
+                                  flexibleTopSpace: false,
+                                  configuration: configuration.line)
         configureAppearance()
         updateUI()
     }
@@ -142,6 +148,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textField,
                                                         configuration: configuration.placeholder)
+        lineService = LineService(superview: self,
+                                  lineView: lineView,
+                                  field: textField,
+                                  flexibleTopSpace: false,
+                                  configuration: configuration.line)
         configureAppearance()
         updateUI()
     }
@@ -345,13 +356,14 @@ private extension UnderlinedTextField {
 
     func configureAppearance() {
         placeholderService?.setup(configuration: configuration.placeholder)
+        lineService?.setup(configuration: configuration.line)
 
         configureBackground()
         placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
         configureTextField()
         configureHintLabel()
         configureActionButton()
-        configureLineView()
+        lineService?.configureLineView(fieldState: state)
     }
 
     func configureBackground() {
@@ -378,19 +390,6 @@ private extension UnderlinedTextField {
 
     func configureActionButton() {
         actionButton.isHidden = true
-    }
-
-    func configureLineView() {
-        let superview = configuration.line.superview ?? view
-        if lineView.superview == nil || lineView.superview != superview {
-            lineView.removeFromSuperview()
-            superview.addSubview(lineView)
-        }
-        lineView.frame = linePosition()
-        lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
-        lineView.layer.cornerRadius = configuration.line.cornerRadius
-        lineView.layer.masksToBounds = true
-        lineView.backgroundColor = configuration.line.colors.normal
     }
 
 }
@@ -543,8 +542,8 @@ private extension UnderlinedTextField {
         updateTextColor()
         updateViewHeight()
 
-        updateLineViewColor()
-        updateLineViewHeight()
+        lineService?.updateLineViewColor(containerState: containerState)
+        lineService?.updateLineViewHeight(fieldState: state)
 
         updatePasswordButtonVisibility()
     }
@@ -657,20 +656,6 @@ private extension UnderlinedTextField {
         }
     }
 
-    func updateLineViewColor() {
-        let color = lineColor()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.backgroundColor = color
-        }
-    }
-
-    func updateLineViewHeight() {
-        let height = lineHeight()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.frame.size.height = height
-        }
-    }
-
     func updateTextColor() {
         textField.textColor = textColor()
     }
@@ -727,22 +712,6 @@ private extension UnderlinedTextField {
 
     func textColor() -> UIColor {
         return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func lineColor() -> UIColor {
-        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func linePosition() -> CGRect {
-        let height = lineHeight()
-        let superview = configuration.line.superview ?? view
-        var lineFrame = superview.bounds.inset(by: configuration.line.insets)
-        lineFrame.size.height = height
-        return lineFrame
-    }
-
-    func lineHeight() -> CGFloat {
-        return state == .active ? configuration.line.increasedHeight : configuration.line.defaultHeight
     }
 
     func hintTextColor() -> UIColor {

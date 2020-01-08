@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol InputField {
+protocol InputField: UIView {
     var inputText: String? { get }
 }
 

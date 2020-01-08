@@ -61,13 +61,13 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var error: Bool = false
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
-    private var lastLinePosition: CGRect = .zero
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
 
     // MARK: - Services
 
     private var placeholderService: FloatingPlaceholderService?
+    private var lineService: LineService?
 
     // MARK: - Properties
 
@@ -102,6 +102,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textView,
                                                         configuration: configuration.placeholder)
+        lineService = LineService(superview: self,
+                                  lineView: lineView,
+                                  field: textView,
+                                  flexibleTopSpace: true,
+                                  configuration: configuration.line)
         configureAppearance()
         updateUI()
     }
@@ -118,6 +123,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
                                                         placeholder: placeholder,
                                                         field: textView,
                                                         configuration: configuration.placeholder)
+        lineService = LineService(superview: self,
+                                  lineView: lineView,
+                                  field: textView,
+                                  flexibleTopSpace: true,
+                                  configuration: configuration.line)
         configureAppearance()
         updateUI()
     }
@@ -265,12 +275,13 @@ private extension UnderlinedTextView {
 
     func configureAppearance() {
         placeholderService?.setup(configuration: configuration.placeholder)
+        lineService?.setup(configuration: configuration.line)
 
         configureBackground()
         placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
         configureTextView()
         configureHintLabel()
-        configureLineView()
+        lineService?.configureLineView(fieldState: state)
         configureClearButton()
     }
 
@@ -296,20 +307,6 @@ private extension UnderlinedTextView {
         hintLabel.text = ""
         hintLabel.numberOfLines = 0
         hintLabel.alpha = 0
-    }
-
-    func configureLineView() {
-        let superview = configuration.line.superview ?? view
-        if lineView.superview == nil || lineView.superview != superview {
-            lineView.removeFromSuperview()
-            superview.addSubview(lineView)
-        }
-        lineView.frame = linePosition()
-        lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
-        lineView.layer.cornerRadius = configuration.line.cornerRadius
-        lineView.layer.masksToBounds = true
-        lineView.backgroundColor = configuration.line.colors.normal
-        lastLinePosition = lineView.frame
     }
 
     func configureClearButton() {
@@ -384,8 +381,8 @@ private extension UnderlinedTextView {
         updateTextColor()
         updateViewHeight()
 
-        updateLineViewColor()
-        updateLineFrame()
+        lineService?.updateLineViewColor(containerState: containerState)
+        lineService?.updateLineFrame(fieldState: state)
     }
 
     func validateWithPolicy() {
@@ -426,7 +423,7 @@ private extension UnderlinedTextView {
             updateUI()
         } else {
             updateViewHeight()
-            updateLineFrame()
+            lineService?.updateLineFrame(fieldState: state)
         }
     }
 
@@ -491,23 +488,6 @@ private extension UnderlinedTextView {
         onHeightChanged?(viewHeight)
     }
 
-    func updateLineViewColor() {
-        let color = lineColor()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.backgroundColor = color
-        }
-    }
-
-    func updateLineFrame() {
-        let actualPosition = linePosition()
-        guard lastLinePosition != actualPosition else {
-            return
-        }
-        lastLinePosition = actualPosition
-        lineView.frame = actualPosition
-        view.layoutIfNeeded()
-    }
-
     func updateClearButtonVisibility() {
         clearButton.isHidden = textView.text.isEmpty || hideClearButton
     }
@@ -532,23 +512,6 @@ private extension UnderlinedTextView {
 
     func textColor() -> UIColor {
         return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func lineColor() -> UIColor {
-        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func linePosition() -> CGRect {
-        let height = lineHeight()
-        let superview = configuration.line.superview ?? view
-        var lineFrame = superview.bounds.inset(by: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
-        lineFrame.size.height = height
-        lineFrame.origin.y += textView.frame.maxY
-        return lineFrame
-    }
-
-    func lineHeight() -> CGFloat {
-        return state == .active ? configuration.line.increasedHeight : configuration.line.defaultHeight
     }
 
     func hintTextColor() -> UIColor {
