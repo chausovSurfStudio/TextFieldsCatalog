@@ -48,6 +48,25 @@ final class FloatingPlaceholderService {
         superview.layer.addSublayer(placeholder)
     }
 
+    func updateContent(fieldState: FieldState,
+                       containerState: FieldContainerState,
+                       isNativePlaceholder: Bool) {
+        updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
+        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+        updatePlaceholderFont(fieldState: fieldState)
+        updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+    }
+
+    func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
+        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
+    }
+
+}
+
+// MARK: - Private Updates
+
+private extension FloatingPlaceholderService {
+
     func updatePlaceholderColor(fieldState: FieldState, containerState: FieldContainerState) {
         let startColor: CGColor = currentPlaceholderColor()
         let endColor: CGColor = placeholderColor(fieldState: fieldState, containerState: containerState)
@@ -75,10 +94,6 @@ final class FloatingPlaceholderService {
         frameAnimation.duration = AnimationTime.default
         frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(frameAnimation, forKey: nil)
-    }
-
-    func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
-        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
     func updatePlaceholderFont(fieldState: FieldState) {

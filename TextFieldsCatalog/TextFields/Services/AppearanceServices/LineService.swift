@@ -8,6 +8,13 @@
 
 final class LineService {
 
+    // MARK: - Nested Types
+
+    enum LineUpdateStrategy {
+        case height
+        case frame
+    }
+
     // MARK: - Private Properties
 
     private let lineView = UIView()
@@ -50,10 +57,15 @@ final class LineService {
         lastLinePosition = lineView.frame
     }
 
-    func updateLineViewColor(containerState: FieldContainerState) {
-        let color = lineColor(containerState: containerState)
-        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
-            self?.lineView.backgroundColor = color
+    func updateContent(fieldState: FieldState,
+                       containerState: FieldContainerState,
+                       strategy: LineUpdateStrategy) {
+        updateLineViewColor(containerState: containerState)
+        switch strategy {
+        case .height:
+            updateLineViewHeight(fieldState: fieldState)
+        case .frame:
+            updateLineFrame(fieldState: fieldState)
         }
     }
 
@@ -65,6 +77,19 @@ final class LineService {
         lastLinePosition = actualPosition
         lineView.frame = actualPosition
         superview.view.layoutIfNeeded()
+    }
+
+}
+
+// MARK: - Private Updates
+
+private extension LineService {
+
+    func updateLineViewColor(containerState: FieldContainerState) {
+        let color = lineColor(containerState: containerState)
+        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
+            self?.lineView.backgroundColor = color
+        }
     }
 
     func updateLineViewHeight(fieldState: FieldState) {

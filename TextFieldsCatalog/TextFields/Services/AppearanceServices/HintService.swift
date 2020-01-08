@@ -41,6 +41,16 @@ final class HintService {
         self.heightLayoutPolicy = heightLayoutPolicy
     }
 
+    func setupHintText(_ hintText: String) {
+        hintLabel.attributedText = hintText.with(lineHeight: configuration.lineHeight,
+                                                 font: configuration.font,
+                                                 color: hintLabel.textColor)
+    }
+
+    func setupHintIfNeeded() {
+        setupHintText(hintMessage ?? "")
+    }
+
     func configureHintLabel() {
         hintLabel.textColor = configuration.colors.normal
         hintLabel.font = configuration.font
@@ -48,6 +58,30 @@ final class HintService {
         hintLabel.numberOfLines = 0
         hintLabel.alpha = 0
     }
+
+    func updateContent(containerState: FieldContainerState) {
+        updateHintLabelColor(containerState: containerState)
+        updateHintLabelVisibility(containerState: containerState)
+    }
+
+    func hintLabelHeight(containerState: FieldContainerState) -> CGFloat {
+        guard
+            let hint = hintLabel.text,
+            !hint.isEmpty,
+            shouldShowHint(containerState: containerState)
+        else {
+            return 0
+        }
+        return hint.height(forWidth: hintLabel.bounds.size.width,
+                           font: configuration.font,
+                           lineHeight: configuration.lineHeight)
+    }
+
+}
+
+// MARK: - Private Updates
+
+private extension HintService {
 
     func updateHintLabelColor(containerState: FieldContainerState) {
         hintLabel.textColor = hintTextColor(containerState: containerState)
@@ -68,29 +102,6 @@ final class HintService {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.hintLabel.alpha = alpha
         }
-    }
-
-    func setupHintText(_ hintText: String) {
-        hintLabel.attributedText = hintText.with(lineHeight: configuration.lineHeight,
-                                                 font: configuration.font,
-                                                 color: hintLabel.textColor)
-    }
-
-    func setupHintIfNeeded() {
-        setupHintText(hintMessage ?? "")
-    }
-
-    func hintLabelHeight(containerState: FieldContainerState) -> CGFloat {
-        guard
-            let hint = hintLabel.text,
-            !hint.isEmpty,
-            shouldShowHint(containerState: containerState)
-        else {
-            return 0
-        }
-        return hint.height(forWidth: hintLabel.bounds.size.width,
-                           font: configuration.font,
-                           lineHeight: configuration.lineHeight)
     }
 
 }

@@ -82,16 +82,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        placeholderService = FloatingPlaceholderService(superview: self,
-                                                        field: textView,
-                                                        configuration: configuration.placeholder)
-        hintService = HintService(hintLabel: hintLabel,
-                                  configuration: configuration.hint,
-                                  heightLayoutPolicy: .flexible(0, 0))
-        lineService = LineService(superview: self,
-                                  field: textView,
-                                  flexibleTopSpace: true,
-                                  configuration: configuration.line)
+        configureServices()
         configureAppearance()
         updateUI()
     }
@@ -104,16 +95,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     override open func awakeFromNib() {
         super.awakeFromNib()
-        placeholderService = FloatingPlaceholderService(superview: self,
-                                                        field: textView,
-                                                        configuration: configuration.placeholder)
-        hintService = HintService(hintLabel: hintLabel,
-                                  configuration: configuration.hint,
-                                  heightLayoutPolicy: .flexible(0, 0))
-        lineService = LineService(superview: self,
-                                  field: textView,
-                                  flexibleTopSpace: true,
-                                  configuration: configuration.line)
+        configureServices()
         configureAppearance()
         updateUI()
     }
@@ -259,6 +241,19 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
 private extension UnderlinedTextView {
 
+    func configureServices() {
+        placeholderService = FloatingPlaceholderService(superview: self,
+                                                        field: textView,
+                                                        configuration: configuration.placeholder)
+        hintService = HintService(hintLabel: hintLabel,
+                                  configuration: configuration.hint,
+                                  heightLayoutPolicy: .flexible(0, 0))
+        lineService = LineService(superview: self,
+                                  field: textView,
+                                  flexibleTopSpace: true,
+                                  configuration: configuration.line)
+    }
+
     func configureAppearance() {
         placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
@@ -347,21 +342,16 @@ extension UnderlinedTextView: UITextViewDelegate {
 private extension UnderlinedTextView {
 
     func updateUI(animated: Bool = false) {
-        hintService?.updateHintLabelColor(containerState: containerState)
-        hintService?.updateHintLabelVisibility(containerState: containerState)
-
-        placeholderService?.updatePlaceholderColor(fieldState: state,
-                                                   containerState: containerState)
-        placeholderService?.updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder,
-                                                      fieldState: state)
-        placeholderService?.updatePlaceholderFont(fieldState: state)
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        hintService?.updateContent(containerState: containerState)
+        placeholderService?.updateContent(fieldState: state,
+                                          containerState: containerState,
+                                          isNativePlaceholder: isNativePlaceholder)
+        lineService?.updateContent(fieldState: state,
+                                   containerState: containerState,
+                                   strategy: .frame)
 
         updateTextColor()
         updateViewHeight()
-
-        lineService?.updateLineViewColor(containerState: containerState)
-        lineService?.updateLineFrame(fieldState: state)
     }
 
     func validateWithPolicy() {
