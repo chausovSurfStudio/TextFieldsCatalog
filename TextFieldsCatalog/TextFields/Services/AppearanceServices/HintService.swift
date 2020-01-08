@@ -8,12 +8,6 @@
 
 final class HintService {
 
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - Private Properties
 
     private let hintLabel: UILabel
@@ -62,14 +56,14 @@ final class HintService {
     func updateHintLabelVisibility(containerState: FieldContainerState) {
         let hintIsVisible = shouldShowHint(containerState: containerState)
         let alpha: CGFloat = hintIsVisible ? 1 : 0
-        var duration: TimeInterval = Constants.animationDuration
+        var duration: TimeInterval = AnimationTime.default
         switch heightLayoutPolicy {
         case .fixed:
             // update always with animation
             break
         case .flexible(_, _):
             // update with animation on hint appear
-            duration = hintIsVisible ? Constants.animationDuration : 0
+            duration = hintIsVisible ? AnimationTime.default : 0
         }
         UIView.animate(withDuration: duration) { [weak self] in
             self?.hintLabel.alpha = alpha

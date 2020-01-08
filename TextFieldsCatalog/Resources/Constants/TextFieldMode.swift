@@ -17,10 +17,3 @@ public enum TextFieldMode {
     /// mode for textField with custom action button
     case custom(ActionButtonConfiguration)
 }
-
-public enum TextFieldPasswordModeBehavior {
-    /// password button always visible
-    case alwaysVisible
-    /// password button visible only if text is not empty
-    case visibleOnNotEmptyText
-}

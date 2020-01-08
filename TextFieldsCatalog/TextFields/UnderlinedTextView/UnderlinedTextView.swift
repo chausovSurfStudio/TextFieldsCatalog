@@ -13,20 +13,6 @@ import UIKit
 /// Standart height equals 77.
 open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
-    // MARK: - Struct
-
-    public struct FlexibleHeightPolicy {
-        let minHeight: CGFloat
-        /// offset between hint label and view bottom
-        let bottomOffset: CGFloat
-    }
-
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - IBOutlets
 
     @IBOutlet private weak var textView: UITextView!

@@ -13,12 +13,6 @@ import InputMask
 /// Standart height equals 77.
 open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - IBOutlets
 
     @IBOutlet private weak var textField: InnerTextField!
@@ -660,7 +654,7 @@ private extension UnderlinedTextField {
         guard alpha != actionButton.alpha else {
             return
         }
-        let duration = alpha == 0 ? 0 : Constants.animationDuration
+        let duration = alpha == 0 ? 0 : AnimationTime.default
         UIView.animate(withDuration: duration) { [weak self] in
             self?.actionButton.alpha = alpha
         }

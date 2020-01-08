@@ -8,12 +8,6 @@
 
 final class FloatingPlaceholderService {
 
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - Private Properties
 
     private let superview: InnerDesignableView
@@ -60,7 +54,7 @@ final class FloatingPlaceholderService {
         let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
         colorAnimation.fromValue = startColor
         colorAnimation.toValue = endColor
-        colorAnimation.duration = Constants.animationDuration
+        colorAnimation.duration = AnimationTime.default
         colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(colorAnimation, forKey: nil)
     }
@@ -76,7 +70,7 @@ final class FloatingPlaceholderService {
         let frameAnimation = CABasicAnimation(keyPath: "frame")
         frameAnimation.fromValue = startPosition
         frameAnimation.toValue = endPosition
-        frameAnimation.duration = Constants.animationDuration
+        frameAnimation.duration = AnimationTime.default
         frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(frameAnimation, forKey: nil)
     }
@@ -93,7 +87,7 @@ final class FloatingPlaceholderService {
         let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
         fontSizeAnimation.fromValue = startFontSize
         fontSizeAnimation.toValue = endFontSize
-        fontSizeAnimation.duration = Constants.animationDuration
+        fontSizeAnimation.duration = AnimationTime.default
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(fontSizeAnimation, forKey: nil)
     }

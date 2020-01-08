@@ -8,12 +8,6 @@
 
 final class LineService {
 
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - Private Properties
 
     private let superview: InnerDesignableView
@@ -60,7 +54,7 @@ final class LineService {
 
     func updateLineViewColor(containerState: FieldContainerState) {
         let color = lineColor(containerState: containerState)
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
             self?.lineView.backgroundColor = color
         }
     }
@@ -77,7 +71,7 @@ final class LineService {
 
     func updateLineViewHeight(fieldState: FieldState) {
         let height = lineHeight(fieldState: fieldState)
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
+        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
             self?.lineView.frame.size.height = height
         }
     }
