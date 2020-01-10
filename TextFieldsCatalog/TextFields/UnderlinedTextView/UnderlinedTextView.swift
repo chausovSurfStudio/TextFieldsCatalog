@@ -346,12 +346,13 @@ private extension UnderlinedTextView {
         placeholderService?.updateContent(fieldState: state,
                                           containerState: containerState,
                                           isNativePlaceholder: isNativePlaceholder)
-        lineService?.updateContent(fieldState: state,
-                                   containerState: containerState,
-                                   strategy: .frame)
 
         updateTextColor()
         updateViewHeight()
+
+        lineService?.updateContent(fieldState: state,
+                                   containerState: containerState,
+                                   strategy: .frame)
     }
 
     func validateWithPolicy() {
