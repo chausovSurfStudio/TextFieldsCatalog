@@ -224,4 +224,17 @@ public final class ColorConfiguration {
         }
     }
 
+    func suitableColor(state: FieldContainerState) -> UIColor {
+        switch state {
+        case .error:
+            return error
+        case .active:
+            return active
+        case .normal:
+            return normal
+        case .disabled:
+            return disabled
+        }
+    }
+
 }
