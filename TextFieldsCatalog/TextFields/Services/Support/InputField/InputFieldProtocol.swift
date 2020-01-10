@@ -10,6 +10,8 @@ import UIKit
 
 protocol InputField: UIView {
     var inputText: String? { get }
+    var textColor: UIColor? { get set }
+    var backgroundColor: UIColor? { get set }
 }
 
 extension InnerTextField: InputField {

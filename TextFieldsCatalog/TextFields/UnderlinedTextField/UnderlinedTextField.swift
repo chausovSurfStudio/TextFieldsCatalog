@@ -51,6 +51,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Services
 
+    private var fieldService: FieldService?
     private var placeholderService: FloatingPlaceholderService?
     private var lineService: LineService?
     private var hintService: HintService?
@@ -332,6 +333,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 private extension UnderlinedTextField {
 
     func configureServices() {
+        fieldService = FieldService(field: textField,
+                                    configuration: configuration.textField,
+                                    backgroundConfiguration: configuration.background)
         placeholderService = FloatingPlaceholderService(superview: self,
                                                         field: textField,
                                                         configuration: configuration.placeholder)
@@ -345,29 +349,21 @@ private extension UnderlinedTextField {
     }
 
     func configureAppearance() {
+        fieldService?.setup(configuration: configuration.textField,
+                            backgroundConfiguration: configuration.background)
         placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
 
-        configureBackground()
-        placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
-        configureTextField()
+        fieldService?.configureBackground()
+        fieldService?.configure(textField: textField)
+        placeholderService?.configurePlaceholder(fieldState: state,
+                                                 containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+
         configureActionButton()
-    }
-
-    func configureBackground() {
-        view.backgroundColor = configuration.background.color
-    }
-
-    func configureTextField() {
         textField.delegate = maskFormatter?.delegateForTextField() ?? self
-        textField.font = configuration.textField.font
-        textField.textColor = configuration.textField.colors.normal
-        textField.tintColor = configuration.textField.tintColor
-        textField.returnKeyType = .done
-        textField.textPadding = configuration.textField.defaultPadding
         textField.addTarget(self, action: #selector(textfieldEditingChange(_:)), for: .editingChanged)
     }
 
@@ -512,6 +508,7 @@ extension UnderlinedTextField: PickerTextField {
 private extension UnderlinedTextField {
 
     func updateUI(animated: Bool = false) {
+        fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
         placeholderService?.updateContent(fieldState: state,
                                           containerState: containerState,
@@ -520,9 +517,7 @@ private extension UnderlinedTextField {
                                    containerState: containerState,
                                    strategy: .height)
 
-        updateTextColor()
         updateViewHeight()
-
         updatePasswordButtonVisibility()
     }
 
@@ -604,10 +599,6 @@ private extension UnderlinedTextField {
 
 private extension UnderlinedTextField {
 
-    func updateTextColor() {
-        textField.textColor = textColor()
-    }
-
     func updateViewHeight() {
         switch heightLayoutPolicy {
         case .fixed:
@@ -642,16 +633,6 @@ private extension UnderlinedTextField {
         UIView.animate(withDuration: duration) { [weak self] in
             self?.actionButton.alpha = alpha
         }
-    }
-
-}
-
-// MARK: - Computed values
-
-private extension UnderlinedTextField {
-
-    func textColor() -> UIColor {
-        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
     }
 
 }

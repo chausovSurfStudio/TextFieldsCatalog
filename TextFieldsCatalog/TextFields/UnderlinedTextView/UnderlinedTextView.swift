@@ -49,6 +49,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Services
 
+    private var fieldService: FieldService?
     private var placeholderService: FloatingPlaceholderService?
     private var hintService: HintService?
     private var lineService: LineService?
@@ -242,6 +243,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 private extension UnderlinedTextView {
 
     func configureServices() {
+        fieldService = FieldService(field: textView,
+                                    configuration: configuration.textField,
+                                    backgroundConfiguration: configuration.background)
         placeholderService = FloatingPlaceholderService(superview: self,
                                                         field: textView,
                                                         configuration: configuration.placeholder)
@@ -255,32 +259,21 @@ private extension UnderlinedTextView {
     }
 
     func configureAppearance() {
+        fieldService?.setup(configuration: configuration.textField,
+                            backgroundConfiguration: configuration.background)
         placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
 
-        configureBackground()
-        placeholderService?.configurePlaceholder(fieldState: state, containerState: containerState)
-        configureTextView()
+        fieldService?.configureBackground()
+        fieldService?.configure(textView: textView)
+        placeholderService?.configurePlaceholder(fieldState: state,
+                                                 containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+
         configureClearButton()
-    }
-
-    func configureBackground() {
-        view.backgroundColor = configuration.background.color
-        textView.backgroundColor = UIColor.clear
-    }
-
-    func configureTextView() {
         textView.delegate = self
-        textView.font = configuration.textField.font
-        textView.textColor = configuration.textField.colors.normal
-        textView.tintColor = configuration.textField.tintColor
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        textView.textContainer.lineFragmentPadding = 0
-        textView.contentOffset = CGPoint(x: 0, y: 0)
-        textView.isScrollEnabled = false
     }
 
     func configureClearButton() {
@@ -321,8 +314,9 @@ extension UnderlinedTextView: UITextViewDelegate {
         guard
             let currentText = textView.text,
             let textRange = Range(range, in: currentText),
-            let maxLength = self.maxLength else {
-                return true
+            let maxLength = self.maxLength
+        else {
+            return true
         }
         let newText = currentText.replacingCharacters(in: textRange, with: text)
         return newText.count <= maxLength
@@ -342,12 +336,12 @@ extension UnderlinedTextView: UITextViewDelegate {
 private extension UnderlinedTextView {
 
     func updateUI(animated: Bool = false) {
+        fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
         placeholderService?.updateContent(fieldState: state,
                                           containerState: containerState,
                                           isNativePlaceholder: isNativePlaceholder)
 
-        updateTextColor()
         updateViewHeight()
 
         lineService?.updateContent(fieldState: state,
@@ -415,10 +409,6 @@ private extension UnderlinedTextView {
 
 private extension UnderlinedTextView {
 
-    func updateTextColor() {
-        textView.textColor = textColor()
-    }
-
     func updateViewHeight() {
         let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
         let textHeight = textViewHeight()
@@ -445,10 +435,6 @@ private extension UnderlinedTextView {
 // MARK: - Computed values
 
 private extension UnderlinedTextView {
-
-    func textColor() -> UIColor {
-        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
 
     func freeVerticalSpace() -> CGFloat {
         return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
