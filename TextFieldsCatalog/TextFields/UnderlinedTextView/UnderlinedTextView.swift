@@ -354,7 +354,7 @@ private extension UnderlinedTextView {
         case .always:
             validate()
         case .notEmptyText:
-            if !textIsEmpty() {
+            if !textView.isEmpty {
                 validate()
             }
         case .afterChanges:
@@ -391,14 +391,9 @@ private extension UnderlinedTextView {
         }
     }
 
-    /// Return true, if current input string is empty
-    func textIsEmpty() -> Bool {
-        return textView.text.isEmpty
-    }
-
     func performOnTextChangedCall() {
         if !isInteractionOccured {
-            isInteractionOccured = !textIsEmpty()
+            isInteractionOccured = !textView.isEmpty
         }
         onTextChanged?(self)
     }

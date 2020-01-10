@@ -63,6 +63,8 @@
 		90BB4734220065F000F6DB39 /* eyeOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472E220065F000F6DB39 /* eyeOff@3x.png */; };
 		90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */; };
 		90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */; };
+		90C0992623C8EF8000312628 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0992523C8EF8000312628 /* UITextField.swift */; };
+		90C0992823C8F2FF00312628 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0992723C8F2FF00312628 /* UITextView.swift */; };
 		90C6AC7023C617A400D13B8D /* LineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6AC6F23C617A400D13B8D /* LineService.swift */; };
 		90C6AC7223C6201000D13B8D /* HintService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6AC7123C6201000D13B8D /* HintService.swift */; };
 		90C6C57223C8E360008DFBED /* FieldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C57123C8E360008DFBED /* FieldService.swift */; };
@@ -148,6 +150,8 @@
 		90BB472E220065F000F6DB39 /* eyeOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@3x.png"; sourceTree = "<group>"; };
 		90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPlaceholderService.swift; sourceTree = "<group>"; };
 		90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldProtocol.swift; sourceTree = "<group>"; };
+		90C0992523C8EF8000312628 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		90C0992723C8F2FF00312628 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		90C6AC6F23C617A400D13B8D /* LineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineService.swift; sourceTree = "<group>"; };
 		90C6AC7123C6201000D13B8D /* HintService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintService.swift; sourceTree = "<group>"; };
 		90C6C57123C8E360008DFBED /* FieldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldService.swift; sourceTree = "<group>"; };
@@ -279,9 +283,8 @@
 		903863F221FF581300BAA761 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				90C0992423C8EF6A00312628 /* UIKit */,
 				9038640921FF59D300BAA761 /* Foundation.swift */,
-				903863FF21FF592100BAA761 /* UIColor.swift */,
-				9038640121FF595300BAA761 /* UIImage.swift */,
 				909DB886220355F000F0C5B7 /* String.swift */,
 			);
 			path = Extensions;
@@ -453,6 +456,17 @@
 				90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */,
 			);
 			path = InputField;
+			sourceTree = "<group>";
+		};
+		90C0992423C8EF6A00312628 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				903863FF21FF592100BAA761 /* UIColor.swift */,
+				9038640121FF595300BAA761 /* UIImage.swift */,
+				90C0992523C8EF8000312628 /* UITextField.swift */,
+				90C0992723C8F2FF00312628 /* UITextView.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		90FAC49F228880250032A7F1 /* Pickers */ = {
@@ -712,6 +726,7 @@
 				9038640221FF595300BAA761 /* UIImage.swift in Sources */,
 				90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */,
 				90C6C57223C8E360008DFBED /* FieldService.swift in Sources */,
+				90C0992623C8EF8000312628 /* UITextField.swift in Sources */,
 				90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */,
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
@@ -727,6 +742,7 @@
 				90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */,
 				9038640421FF597600BAA761 /* CommonButton.swift in Sources */,
 				9038640E21FF5A1300BAA761 /* TextFieldValidation.swift in Sources */,
+				90C0992823C8F2FF00312628 /* UITextView.swift in Sources */,
 				90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */,
 				90A32B81228984540036C634 /* GuidedTextField.swift in Sources */,
 				9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */,

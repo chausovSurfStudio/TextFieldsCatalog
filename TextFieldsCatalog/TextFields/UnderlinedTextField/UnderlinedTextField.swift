@@ -537,7 +537,7 @@ private extension UnderlinedTextField {
         case .always:
             validate()
         case .notEmptyText:
-            if !textIsEmpty() {
+            if !textField.isEmpty {
                 validate()
             }
         case .afterChanges:
@@ -577,14 +577,9 @@ private extension UnderlinedTextField {
         }
     }
 
-    /// Return true, if current input string is empty
-    func textIsEmpty() -> Bool {
-        return textField.text?.isEmpty ?? true
-    }
-
     func performOnTextChangedCall() {
         if !isInteractionOccured {
-            isInteractionOccured = !textIsEmpty()
+            isInteractionOccured = !textField.isEmpty
         }
         onTextChanged?(self)
     }
@@ -624,8 +619,7 @@ private extension UnderlinedTextField {
             actionButton.alpha = 1
             return
         }
-        let textIsEmpty = textField.text?.isEmpty ?? true
-        let alpha: CGFloat = textIsEmpty ? 0 : 1
+        let alpha: CGFloat = textField.isEmpty ? 0 : 1
         guard alpha != actionButton.alpha else {
             return
         }
