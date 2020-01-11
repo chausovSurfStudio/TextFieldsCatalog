@@ -10,6 +10,7 @@
 
 "Button.changePreset" = "Изменить пресет";
 "Button.reset" = "Сбросить";
+"Button.done" = "Готово";
 
 // MARK: - Constants
 
