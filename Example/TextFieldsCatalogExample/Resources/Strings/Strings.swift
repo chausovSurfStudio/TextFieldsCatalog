@@ -11,6 +11,8 @@ enum L10n {
   enum Button {
     /// Изменить пресет
     static let changePreset = L10n.tr("Localizable", "Button.changePreset")
+    /// Готово
+    static let done = L10n.tr("Localizable", "Button.done")
     /// Сбросить
     static let reset = L10n.tr("Localizable", "Button.reset")
   }
