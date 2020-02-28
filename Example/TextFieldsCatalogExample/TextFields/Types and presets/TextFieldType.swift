@@ -10,17 +10,17 @@ import UIKit
 import TextFieldsCatalog
 
 enum TextFieldType: CaseIterable {
-    case bordered
     case underlined
+    case box
     case customUnderlined
     case underlinedTextView
 
     var title: String {
         switch self {
-        case .bordered:
-            return L10n.Textfieldtype.Bordered.title
         case .underlined:
             return L10n.Textfieldtype.Underlined.title
+        case .box:
+            return L10n.Textfieldtype.Box.title
         case .customUnderlined:
             return L10n.Textfieldtype.Customunderlined.title
         case .underlinedTextView:
@@ -30,10 +30,10 @@ enum TextFieldType: CaseIterable {
 
     var description: String {
         switch self {
-        case .bordered:
-            return L10n.Textfieldtype.Bordered.description
         case .underlined:
             return L10n.Textfieldtype.Underlined.description
+        case .box:
+            return L10n.Textfieldtype.Box.description
         case .customUnderlined:
             return L10n.Textfieldtype.Customunderlined.description
         case .underlinedTextView:
@@ -43,12 +43,8 @@ enum TextFieldType: CaseIterable {
 
     var presets: [AppliedPreset] {
         switch self {
-        case .bordered:
-            return BorderedFieldPreset.allCases
-        case .underlined:
+        case .underlined, .box, .customUnderlined:
             return UnderlinedFieldPreset.allCases
-        case .customUnderlined:
-            return CustomUnderlinedFieldPreset.allCases
         case .underlinedTextView:
             return UnderlinedTextViewPreset.allCases
         }
@@ -57,10 +53,13 @@ enum TextFieldType: CaseIterable {
     /// Returns new instance of needed text field and its default height
     func createField(for frame: CGRect) -> (UIView, CGFloat) {
         switch self {
-        case .bordered:
-            return (BorderedTextField(frame: frame), 130)
         case .underlined:
-            return (UnderlinedTextField(frame: frame), 77)
+            let height: CGFloat = 77
+            let field = UnderlinedTextField(frame: frame)
+            field.heightLayoutPolicy = .flexible(height, 5)
+            return (field, height)
+        case .box:
+            return (BoxTextField(frame: frame), 130)
         case .customUnderlined:
             return (CustomUnderlinedTextField(frame: frame), 64)
         case .underlinedTextView:

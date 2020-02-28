@@ -48,13 +48,18 @@ enum Asset {
     static let active = ColorAsset(name: "active")
     static let activePress = ColorAsset(name: "activePress")
     static let background = ColorAsset(name: "background")
-    static let buttonPress = ColorAsset(name: "buttonPress")
     static let error = ColorAsset(name: "error")
     static let fieldNormal = ColorAsset(name: "fieldNormal")
+    static let highlighted = ColorAsset(name: "highlighted")
     static let mainButtonText = ColorAsset(name: "mainButtonText")
     static let placeholderGray = ColorAsset(name: "placeholderGray")
     static let regular = ColorAsset(name: "regular")
     static let text = ColorAsset(name: "text")
+  }
+  enum MainTab {
+    static let catalog = ImageAsset(name: "MainTab/catalog")
+    static let example = ImageAsset(name: "MainTab/example")
+    static let info = ImageAsset(name: "MainTab/info")
   }
   static let close = ImageAsset(name: "close")
   static let customEyeOff = ImageAsset(name: "customEyeOff")
@@ -67,15 +72,18 @@ enum Asset {
     Colors.active,
     Colors.activePress,
     Colors.background,
-    Colors.buttonPress,
     Colors.error,
     Colors.fieldNormal,
+    Colors.highlighted,
     Colors.mainButtonText,
     Colors.placeholderGray,
     Colors.regular,
     Colors.text,
   ]
   static let allImages: [ImageAsset] = [
+    MainTab.catalog,
+    MainTab.example,
+    MainTab.info,
     close,
     customEyeOff,
     customEyeOn,

@@ -11,11 +11,22 @@ enum L10n {
   enum Button {
     /// Изменить пресет
     static let changePreset = L10n.tr("Localizable", "Button.changePreset")
+    /// Готово
+    static let done = L10n.tr("Localizable", "Button.done")
     /// Сбросить
     static let reset = L10n.tr("Localizable", "Button.reset")
   }
 
   enum Constants {
+
+    enum Maintab {
+      /// Каталог
+      static let catalog = L10n.tr("Localizable", "Constants.MainTab.catalog")
+      /// Примеры
+      static let example = L10n.tr("Localizable", "Constants.MainTab.example")
+      /// Инфо
+      static let info = L10n.tr("Localizable", "Constants.MainTab.info")
+    }
 
     enum Sex {
       /// Женский
@@ -25,17 +36,21 @@ enum L10n {
     }
   }
 
+  enum Example {
+    /// Примеры
+    static let title = L10n.tr("Localizable", "Example.title")
+  }
+
+  enum Info {
+    /// Данный проект содержит каталог полей ввода, большая часть из которых имеет одинаковый API для взаимодействия с ними. Наличие встроенных валидаторов и форматтеров позволяет широко кастомизировать поведение полей ввода для различных целей: пароль, email, номер телефона и т.п. Более подробно ознакомиться с полями на деле можно открыв экран с примером и посмотреть работу в различных конфигурациях, часть которых из наиболее часто используемых уже включена в проект.\n\n• Если вам необходимо посмотреть на исходный код полей - он находится в дирректории TextFieldsCatalog/TextFields/TextFields.\n• Если вам необходимо посмотреть на исходный код настройки полей в различных конфигурациях - он находится в каталоге TextFieldsCatalog/TextFields/Types and presets/Presets.\n• Если вы - разработчик, и вы хотите добавить новое поле в данный каталог - то необходимо добавить исходный код своего поля ввода в соответствующую дирректорию, добавить новое значение в enum TextFieldType, реализовать свой файл с пресетами и поправить все возникшие ошибки, решение которых приведет к тому, что ваше поле ввода появится в каталоге.
+    static let description = L10n.tr("Localizable", "Info.description")
+    /// Инфо
+    static let title = L10n.tr("Localizable", "Info.title")
+  }
+
   enum Main {
-
-    enum Info {
-      /// Данный проект содержит каталог полей ввода, большая часть из которых имеет одинаковый API для взаимодействия с ними. Наличие встроенных валидаторов и форматтеров позволяет широко кастомизировать поведение полей ввода для различных целей: пароль, email, номер телефона и т.п. Более подробно ознакомиться с полями на деле можно открыв экран с примером и посмотреть работу в различных конфигурациях, часть которых из наиболее часто используемых уже включена в проект.\n\n• Если вам необходимо посмотреть на исходный код полей - он находится в дирректории TextFieldsCatalog/TextFields/TextFields.\n• Если вам необходимо посмотреть на исходный код настройки полей в различных конфигурациях - он находится в каталоге TextFieldsCatalog/TextFields/Types and presets/Presets.\n• Если вы - разработчик, и вы хотите добавить новое поле в данный каталог - то необходимо добавить исходный код своего поля ввода в соответствующую дирректорию, добавить новое значение в enum TextFieldType, реализовать свой файл с пресетами и поправить все возникшие ошибки, решение которых приведет к тому, что ваше поле ввода появится в каталоге.
-      static let description = L10n.tr("Localizable", "Main.Info.description")
-    }
-
-    enum Main {
-      /// Каталог
-      static let title = L10n.tr("Localizable", "Main.Main.title")
-    }
+    /// Каталог
+    static let title = L10n.tr("Localizable", "Main.title")
   }
 
   enum Presets {
@@ -176,11 +191,11 @@ enum L10n {
 
   enum Textfieldtype {
 
-    enum Bordered {
+    enum Box {
       /// • Границы поля ввода скруглены и подсвечены.\n• Имеется плейсхолдер над полем ввода.\n• Информационное-сообщение или сообщение об ошибке внизу, в одну строку.\n• Кастомизируется под ввод пароля.\n• Поддержка валидаторов и форматтеров.
-      static let description = L10n.tr("Localizable", "TextFieldType.Bordered.description")
+      static let description = L10n.tr("Localizable", "TextFieldType.Box.description")
       /// Поле ввода с обводкой
-      static let title = L10n.tr("Localizable", "TextFieldType.Bordered.title")
+      static let title = L10n.tr("Localizable", "TextFieldType.Box.title")
     }
 
     enum Customunderlined {

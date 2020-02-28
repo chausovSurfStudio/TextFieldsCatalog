@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SPStorkController
 
 /// Provides methods and properties for all navigation operations.
 /// Instantiate, and use the object of this class in coordinators.
@@ -36,7 +37,16 @@ class MainRouter: Router {
     }
 
     func present(_ module: Presentable?, animated: Bool, completion: (() -> Void)?) {
-        if let controller = module?.toPresent() {
+        guard let controller = module?.toPresent() else {
+            return
+        }
+        if let storkContainer = controller as? StorkContainerViewController, !UIDevice.isAvailableIos13 {
+            let delegate = storkTransitionDelegate()
+            storkContainer.transitioningDelegate = delegate
+            storkContainer.modalPresentationStyle = .custom
+            storkContainer.modalPresentationCapturesStatusBarAppearance = true
+            self.topViewController?.present(storkContainer, animated: animated, completion: completion)
+        } else {
             self.topViewController?.present(controller, animated: animated, completion: completion)
         }
     }
@@ -89,4 +99,16 @@ class MainRouter: Router {
     func setTab(_ index: Int) {
         tabBarController?.selectedIndex = index
     }
+}
+
+// MARK: - SPStorkController Support
+
+private extension MainRouter {
+
+    func storkTransitionDelegate() -> SPStorkTransitioningDelegate {
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        transitionDelegate.showIndicator = false
+        return transitionDelegate
+    }
+
 }

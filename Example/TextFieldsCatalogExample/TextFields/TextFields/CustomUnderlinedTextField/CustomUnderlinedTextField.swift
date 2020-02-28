@@ -38,7 +38,6 @@ final class CustomUnderlinedTextField: UnderlinedTextField {
 private extension CustomUnderlinedTextField {
 
     func configureAppearance() {
-        validationPolicy = .afterChanges
         let configuration = UnderlinedTextFieldConfiguration()
         configuration.line = LineConfiguration(insets: UIEdgeInsets(top: 62, left: 16, bottom: 0, right: 16),
                                                defaultHeight: 1,
@@ -67,16 +66,18 @@ private extension CustomUnderlinedTextField {
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 36),
                                                          tintColor: Color.UnderlineTextField.tint,
-                                                         colors: ColorConfiguration(error: Color.UnderlineTextField.normal,
-                                                                                    normal: Color.UnderlineTextField.normal,
-                                                                                    active: Color.UnderlineTextField.normal,
+                                                         colors: ColorConfiguration(error: Color.UnderlineTextField.text,
+                                                                                    normal: Color.UnderlineTextField.text,
+                                                                                    active: Color.UnderlineTextField.text,
                                                                                     disabled: Color.UnderlineTextField.placeholder))
         configuration.passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.customEyeOn),
                                                                secureModeOffImage: UIImage(asset: Asset.customEyeOff),
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
                                                                pressedColor: Color.UnderlineTextField.ActionButton.pressed)
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
+
         self.configuration = configuration
+        self.validationPolicy = .afterChanges
     }
 
 }

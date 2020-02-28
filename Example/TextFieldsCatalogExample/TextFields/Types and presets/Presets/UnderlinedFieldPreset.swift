@@ -117,7 +117,6 @@ private extension UnderlinedFieldPreset {
         textField.setHint(L10n.Presets.Password.hint)
         textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password(.visibleOnNotEmptyText))
-        textField.heightLayoutPolicy = .flexible(77, 5)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText
@@ -202,10 +201,7 @@ private extension UnderlinedFieldPreset {
                                                  regex: nil,
                                                  globalErrorMessage: L10n.Presets.Birthday.hint)
 
-        let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
-        let inputView = DatePickerView.view(size: inputViewSize,
-                                            textField: textField)
-        inputView.datePicker.backgroundColor = .white
+        let inputView = DatePickerView.default(for: textField)
         textField.inputView = inputView
 
         textField.onDateChanged = { date in
@@ -220,11 +216,8 @@ private extension UnderlinedFieldPreset {
                                                  regex: nil,
                                                  globalErrorMessage: L10n.Presets.Sex.hint)
 
-        let inputViewSize = CGSize(width: UIScreen.main.bounds.width, height: 261)
-        let inputView = PlainPickerView.view(size: inputViewSize,
-                                             textField: textField,
-                                             data: Sex.allCases.map { $0.value })
-        inputView.picker.backgroundColor = .white
+        let inputView = PlainPickerView.default(for: textField,
+                                                data: Sex.allCases.map { $0.value })
         textField.inputView = inputView
 
         textField.onTextChanged = { field in

@@ -17,7 +17,7 @@ enum Color {
         static let active = Asset.Colors.active.color
         static let activePress = Asset.Colors.activePress.color
         static let text = Asset.Colors.text.color
-        static let buttonPressed = Asset.Colors.buttonPress.color
+        static let highlighted = Asset.Colors.highlighted.color
         static let error = Asset.Colors.error.color
         static let placeholderGray = Asset.Colors.placeholderGray.color
         static let fieldNormal = Asset.Colors.fieldNormal.color
@@ -25,29 +25,36 @@ enum Color {
     }
     /// Main colors of application
     enum Main {
-        static let background = Color.Figma.bold
-        static let container = Color.Figma.regular
+        static let background = Figma.bold
+        static let container = Figma.regular
     }
     /// Colors for labels and button text
     enum Text {
-        static let white = Color.Figma.text
+        static let white = Figma.text
     }
     /// Colors for buttons
     enum Button {
-        static let active = Color.Figma.active
-        static let pressed = Color.Figma.activePress
-        static let text = Color.Figma.mainButtonText
+        static let active = Figma.active
+        static let pressed = Figma.activePress
+        static let text = Figma.mainButtonText
     }
     /// Colors for navigation bar
     enum NavBar {
-        static let background = Color.Figma.bold
-        static let tint = Color.Figma.active
-        static let text = Color.Figma.text
+        static let background = Figma.bold
+        static let tint = Figma.active
+        static let text = Figma.text
+    }
+    /// Colors for tab bar
+    enum TabBar {
+        static let itemTint = Figma.text
+        static let selectedItemTint = Figma.active
+        static let background = Figma.bold
+        static let separator = Figma.bold
     }
     /// Colors for cells(buttons)
     enum Cell {
         static let container = Color.Figma.regular
-        static let pressed = Color.Figma.buttonPressed
+        static let pressed = Color.Figma.highlighted
         static let background = Color.Figma.bold
     }
     /// Custom Underline TextField
@@ -56,6 +63,7 @@ enum Color {
         static let tint = Color.Figma.active
         static let placeholder = Color.Figma.placeholderGray
         static let normal = Color.Figma.fieldNormal
+        static let text = Color.Figma.text
 
         enum ActionButton {
             static let normal = Color.Figma.placeholderGray

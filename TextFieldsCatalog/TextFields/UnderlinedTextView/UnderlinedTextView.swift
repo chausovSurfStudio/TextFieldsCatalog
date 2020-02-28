@@ -13,20 +13,6 @@ import UIKit
 /// Standart height equals 77.
 open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
-    // MARK: - Struct
-
-    public struct FlexibleHeightPolicy {
-        let minHeight: CGFloat
-        /// offset between hint label and view bottom
-        let bottomOffset: CGFloat
-    }
-
-    // MARK: - Constants
-
-    private enum Constants {
-        static let animationDuration: TimeInterval = 0.3
-    }
-
     // MARK: - IBOutlets
 
     @IBOutlet private weak var textView: UITextView!
@@ -41,23 +27,32 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Private Properties
 
-    private let lineView = UIView()
     private var state: FieldState = .normal {
         didSet {
             updateUI()
         }
     }
+    private var containerState: FieldContainerState {
+        guard !error else {
+            return .error
+        }
+        return state.containerState
+    }
 
-    private let placeholder: CATextLayer = CATextLayer()
-    private var hintMessage: String?
     private var maxLength: Int?
 
     private var error: Bool = false
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
-    private var lastLinePosition: CGRect = .zero
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
+
+    // MARK: - Services
+
+    private var fieldService: FieldService?
+    private var placeholderService: FloatingPlaceholderService?
+    private var hintService: HintService?
+    private var lineService: LineService?
 
     // MARK: - Properties
 
@@ -88,6 +83,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
+        configureServices()
         configureAppearance()
         updateUI()
     }
@@ -100,6 +96,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     override open func awakeFromNib() {
         super.awakeFromNib()
+        configureServices()
         configureAppearance()
         updateUI()
     }
@@ -113,7 +110,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
     public func configure(placeholder: String?, maxLength: Int?) {
-        self.placeholder.string = placeholder
+        placeholderService?.setup(placeholder: placeholder)
         self.maxLength = maxLength
     }
 
@@ -165,7 +162,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         if let message = errorMessage {
-            setupHintText(message)
+            hintService?.setupHintText(message)
         }
         updateUI()
     }
@@ -184,11 +181,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textView.text = ""
-        setupHintText(hintMessage ?? "")
+        hintService?.setupHintIfNeeded()
         error = false
         updateUI()
         updateClearButtonVisibility()
-        updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
     }
 
     /// Reset only error state and update all UI elements
@@ -225,8 +222,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         guard !hint.isEmpty else {
             return
         }
-        hintMessage = hint
-        setupHintText(hint)
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     /// Return true, if field is current firstResponder
@@ -245,63 +242,38 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
 private extension UnderlinedTextView {
 
+    func configureServices() {
+        fieldService = FieldService(field: textView,
+                                    configuration: configuration.textField,
+                                    backgroundConfiguration: configuration.background)
+        placeholderService = FloatingPlaceholderService(superview: self,
+                                                        field: textView,
+                                                        configuration: configuration.placeholder)
+        hintService = HintService(hintLabel: hintLabel,
+                                  configuration: configuration.hint,
+                                  heightLayoutPolicy: .flexible(0, 0))
+        lineService = LineService(superview: self,
+                                  field: textView,
+                                  flexibleTopSpace: true,
+                                  configuration: configuration.line)
+    }
+
     func configureAppearance() {
-        configureBackground()
-        configurePlaceholder()
-        configureTextView()
-        configureHintLabel()
-        configureLineView()
+        fieldService?.setup(configuration: configuration.textField,
+                            backgroundConfiguration: configuration.background)
+        placeholderService?.setup(configuration: configuration.placeholder)
+        hintService?.setup(configuration: configuration.hint)
+        lineService?.setup(configuration: configuration.line)
+
+        fieldService?.configureBackground()
+        fieldService?.configure(textView: textView)
+        placeholderService?.configurePlaceholder(fieldState: state,
+                                                 containerState: containerState)
+        hintService?.configureHintLabel()
+        lineService?.configureLineView(fieldState: state)
+
         configureClearButton()
-    }
-
-    func configureBackground() {
-        view.backgroundColor = configuration.background.color
-        textView.backgroundColor = UIColor.clear
-    }
-
-    func configurePlaceholder() {
-        placeholder.removeFromSuperlayer()
-        placeholder.string = ""
-        placeholder.font = configuration.placeholder.font
-        placeholder.fontSize = configuration.placeholder.bigFontSize
-        placeholder.foregroundColor = placeholderColor()
-        placeholder.contentsScale = UIScreen.main.scale
-        placeholder.frame = placeholderPosition()
-        placeholder.truncationMode = CATextLayerTruncationMode.end
-        self.layer.addSublayer(placeholder)
-    }
-
-    func configureTextView() {
         textView.delegate = self
-        textView.font = configuration.textField.font
-        textView.textColor = configuration.textField.colors.normal
-        textView.tintColor = configuration.textField.tintColor
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        textView.textContainer.lineFragmentPadding = 0
-        textView.contentOffset = CGPoint(x: 0, y: 0)
-        textView.isScrollEnabled = false
-    }
-
-    func configureHintLabel() {
-        hintLabel.textColor = configuration.hint.colors.normal
-        hintLabel.font = configuration.hint.font
-        hintLabel.text = ""
-        hintLabel.numberOfLines = 0
-        hintLabel.alpha = 0
-    }
-
-    func configureLineView() {
-        let superview = configuration.line.superview ?? view
-        if lineView.superview == nil || lineView.superview != superview {
-            lineView.removeFromSuperview()
-            superview.addSubview(lineView)
-        }
-        lineView.frame = linePosition()
-        lineView.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
-        lineView.layer.cornerRadius = configuration.line.cornerRadius
-        lineView.layer.masksToBounds = true
-        lineView.backgroundColor = configuration.line.colors.normal
-        lastLinePosition = lineView.frame
     }
 
     func configureClearButton() {
@@ -342,8 +314,9 @@ extension UnderlinedTextView: UITextViewDelegate {
         guard
             let currentText = textView.text,
             let textRange = Range(range, in: currentText),
-            let maxLength = self.maxLength else {
-                return true
+            let maxLength = self.maxLength
+        else {
+            return true
         }
         let newText = currentText.replacingCharacters(in: textRange, with: text)
         return newText.count <= maxLength
@@ -351,7 +324,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         removeError()
         performOnTextChangedCall()
     }
@@ -363,19 +336,17 @@ extension UnderlinedTextView: UITextViewDelegate {
 private extension UnderlinedTextView {
 
     func updateUI(animated: Bool = false) {
-        updateHintLabelColor()
-        updateHintLabelVisibility()
+        fieldService?.updateContent(containerState: containerState)
+        hintService?.updateContent(containerState: containerState)
+        placeholderService?.updateContent(fieldState: state,
+                                          containerState: containerState,
+                                          isNativePlaceholder: isNativePlaceholder)
 
-        updatePlaceholderColor()
-        updatePlaceholderPosition()
-        updatePlaceholderVisibility()
-        updatePlaceholderFont()
-
-        updateTextColor()
         updateViewHeight()
 
-        updateLineViewColor()
-        updateLineFrame()
+        lineService?.updateContent(fieldState: state,
+                                   containerState: containerState,
+                                   strategy: .frame)
     }
 
     func validateWithPolicy() {
@@ -383,7 +354,7 @@ private extension UnderlinedTextView {
         case .always:
             validate()
         case .notEmptyText:
-            if !textIsEmpty() {
+            if !textView.isEmpty {
                 validate()
             }
         case .afterChanges:
@@ -401,7 +372,7 @@ private extension UnderlinedTextView {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                setupHintText(message)
+                hintService?.setupHintText(message)
             }
         }
         if error {
@@ -411,38 +382,18 @@ private extension UnderlinedTextView {
 
     func removeError() {
         if error {
-            setupHintText(hintMessage ?? "")
+            hintService?.setupHintIfNeeded()
             error = false
             updateUI()
         } else {
             updateViewHeight()
-            updateLineFrame()
+            lineService?.updateLineFrame(fieldState: state)
         }
-    }
-
-    func shouldShowHint() -> Bool {
-        return (state == .active && hintMessage != nil) || error
-    }
-
-    /// Return true, if floating placeholder should placed on top in current state, false in other case
-    func shouldMovePlaceholderOnTop() -> Bool {
-        return state == .active || !textIsEmpty()
-    }
-
-    /// Return true, if current input string is empty
-    func textIsEmpty() -> Bool {
-        return textView.text.isEmpty
-    }
-
-    func setupHintText(_ hintText: String) {
-        hintLabel.attributedText = hintText.with(lineHeight: configuration.hint.lineHeight,
-                                                 font: configuration.hint.font,
-                                                 color: hintLabel.textColor)
     }
 
     func performOnTextChangedCall() {
         if !isInteractionOccured {
-            isInteractionOccured = !textIsEmpty()
+            isInteractionOccured = !textView.isEmpty
         }
         onTextChanged?(self)
     }
@@ -453,66 +404,8 @@ private extension UnderlinedTextView {
 
 private extension UnderlinedTextView {
 
-    func updateHintLabelColor() {
-        hintLabel.textColor = hintTextColor()
-    }
-
-    func updateHintLabelVisibility() {
-        let alpha: CGFloat = shouldShowHint() ? 1 : 0
-        let duration: TimeInterval = shouldShowHint() ? Constants.animationDuration : 0
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.hintLabel.alpha = alpha
-        }
-    }
-
-    func updatePlaceholderColor() {
-        let startColor: CGColor = currentPlaceholderColor()
-        let endColor: CGColor = placeholderColor()
-        placeholder.foregroundColor = endColor
-
-        let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
-        colorAnimation.fromValue = startColor
-        colorAnimation.toValue = endColor
-        colorAnimation.duration = Constants.animationDuration
-        colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(colorAnimation, forKey: nil)
-    }
-
-    func updatePlaceholderPosition() {
-        guard !isNativePlaceholder else {
-            return
-        }
-        let startPosition: CGRect = currentPlaceholderPosition()
-        let endPosition: CGRect = placeholderPosition()
-        placeholder.frame = endPosition
-
-        let frameAnimation = CABasicAnimation(keyPath: "frame")
-        frameAnimation.fromValue = startPosition
-        frameAnimation.toValue = endPosition
-        frameAnimation.duration = Constants.animationDuration
-        frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(frameAnimation, forKey: nil)
-    }
-
-    func updatePlaceholderFont() {
-        let startFontSize: CGFloat = currentPlaceholderFontSize()
-        let endFontSize: CGFloat = placeholderFontSize()
-        placeholder.fontSize = endFontSize
-
-        let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
-        fontSizeAnimation.fromValue = startFontSize
-        fontSizeAnimation.toValue = endFontSize
-        fontSizeAnimation.duration = Constants.animationDuration
-        fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(fontSizeAnimation, forKey: nil)
-    }
-
-    func updateTextColor() {
-        textView.textColor = textColor()
-    }
-
     func updateViewHeight() {
-        let hintHeight = hintLabelHeight()
+        let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
         let textHeight = textViewHeight()
         let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
@@ -528,29 +421,8 @@ private extension UnderlinedTextView {
         onHeightChanged?(viewHeight)
     }
 
-    func updateLineViewColor() {
-        let color = lineColor()
-        UIView.animate(withDuration: Constants.animationDuration) { [weak self] in
-            self?.lineView.backgroundColor = color
-        }
-    }
-
-    func updateLineFrame() {
-        let actualPosition = linePosition()
-        guard lastLinePosition != actualPosition else {
-            return
-        }
-        lastLinePosition = actualPosition
-        lineView.frame = actualPosition
-        view.layoutIfNeeded()
-    }
-
     func updateClearButtonVisibility() {
         clearButton.isHidden = textView.text.isEmpty || hideClearButton
-    }
-
-    func updatePlaceholderVisibility() {
-        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
     }
 
 }
@@ -558,67 +430,6 @@ private extension UnderlinedTextView {
 // MARK: - Computed values
 
 private extension UnderlinedTextView {
-
-    func hintLabelHeight() -> CGFloat {
-        let hintIsVisible = shouldShowHint()
-        if let hint = hintLabel.text, !hint.isEmpty, hintIsVisible {
-            return hint.height(forWidth: hintLabel.bounds.size.width, font: configuration.hint.font, lineHeight: configuration.hint.lineHeight)
-        }
-        return 0
-    }
-
-    func textColor() -> UIColor {
-        return configuration.textField.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func currentPlaceholderColor() -> CGColor {
-        return placeholder.foregroundColor ?? configuration.placeholder.bottomColors.normal.cgColor
-    }
-
-    func placeholderColor() -> CGColor {
-        let colorsConfiguration = shouldMovePlaceholderOnTop() ? configuration.placeholder.topColors : configuration.placeholder.bottomColors
-        return colorsConfiguration.suitableColor(fieldState: state, isActiveError: error).cgColor
-    }
-
-    func currentPlaceholderPosition() -> CGRect {
-        return placeholder.frame
-    }
-
-    func placeholderPosition() -> CGRect {
-        let targetInsets = shouldMovePlaceholderOnTop() ? configuration.placeholder.topInsets : configuration.placeholder.bottomInsets
-        var placeholderFrame = view.bounds.inset(by: targetInsets)
-        placeholderFrame.size.height = configuration.placeholder.height
-        return placeholderFrame
-    }
-
-    func currentPlaceholderFontSize() -> CGFloat {
-        return placeholder.fontSize
-    }
-
-    func placeholderFontSize() -> CGFloat {
-        return shouldMovePlaceholderOnTop() ? configuration.placeholder.smallFontSize : configuration.placeholder.bigFontSize
-    }
-
-    func lineColor() -> UIColor {
-        return configuration.line.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
-
-    func linePosition() -> CGRect {
-        let height = lineHeight()
-        let superview = configuration.line.superview ?? view
-        var lineFrame = superview.bounds.inset(by: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16))
-        lineFrame.size.height = height
-        lineFrame.origin.y += textView.frame.maxY
-        return lineFrame
-    }
-
-    func lineHeight() -> CGFloat {
-        return state == .active ? configuration.line.increasedHeight : configuration.line.defaultHeight
-    }
-
-    func hintTextColor() -> UIColor {
-        return configuration.hint.colors.suitableColor(fieldState: state, isActiveError: error)
-    }
 
     func freeVerticalSpace() -> CGFloat {
         return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
