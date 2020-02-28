@@ -40,8 +40,9 @@ extension MainTabBarViewController: MainTabBarViewInput {
     func selectTab(_ tab: MainTab) {
         guard
             let view = viewControllers?[safe: tab.rawValue],
-            tabBarController(self, shouldSelect: view) else {
-                return
+            tabBarController(self, shouldSelect: view)
+        else {
+            return
         }
         selectedIndex = tab.rawValue
         tabBarController(self, didSelect: view)
@@ -56,7 +57,10 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let navigationController = viewController as? UINavigationController
         var isStackEmpty = true
-        if let isEmpty = navigationController?.viewControllers.isEmpty, !isEmpty {
+        if
+            let isEmpty = navigationController?.viewControllers.isEmpty,
+            !isEmpty
+        {
             isStackEmpty = navigationController?.visibleViewController == navigationController?.viewControllers[0]
         }
         isSelectableStackEmpty = isStackEmpty

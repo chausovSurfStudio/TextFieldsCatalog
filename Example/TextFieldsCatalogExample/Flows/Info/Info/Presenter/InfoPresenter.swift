@@ -26,7 +26,8 @@ extension InfoPresenter: InfoModuleInput {
 extension InfoPresenter: InfoViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState(with: L10n.Main.Info.description)
+        view?.setupInitialState(with: L10n.Info.description,
+                                title: L10n.Info.title)
     }
 
 }

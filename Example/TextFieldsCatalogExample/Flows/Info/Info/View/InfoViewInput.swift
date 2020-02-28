@@ -8,5 +8,5 @@
 
 protocol InfoViewInput: class {
     /// Method for setup initial state of view
-    func setupInitialState(with description: String)
+    func setupInitialState(with description: String, title: String)
 }

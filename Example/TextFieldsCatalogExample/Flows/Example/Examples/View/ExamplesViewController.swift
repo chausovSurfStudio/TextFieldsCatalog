@@ -27,9 +27,9 @@ final class ExamplesViewController: UIViewController {
 
 extension ExamplesViewController: ExamplesViewInput {
 
-    func setupInitialState() {
+    func setupInitialState(with title: String) {
         view.backgroundColor = Color.Main.background
-        navigationItem.title = "Примеры"
+        navigationItem.title = title
     }
 
 }

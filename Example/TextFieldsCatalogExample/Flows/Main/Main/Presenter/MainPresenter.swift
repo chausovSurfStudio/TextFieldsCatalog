@@ -29,7 +29,7 @@ extension MainPresenter: MainViewOutput {
 
     func viewLoaded() {
         let models = TextFieldType.allCases.map { MainModuleViewModel.field($0) }
-        view?.setupInitialState(with: models, title: L10n.Main.Main.title)
+        view?.setupInitialState(with: models, title: L10n.Main.title)
     }
 
     func openField(with type: TextFieldType) {

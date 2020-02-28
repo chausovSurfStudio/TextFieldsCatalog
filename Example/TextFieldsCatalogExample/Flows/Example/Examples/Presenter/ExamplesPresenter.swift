@@ -26,7 +26,7 @@ extension ExamplesPresenter: ExamplesModuleInput {
 extension ExamplesPresenter: ExamplesViewOutput {
 
     func viewLoaded() {
-        view?.setupInitialState()
+        view?.setupInitialState(with: L10n.Example.title)
     }
 
 }
