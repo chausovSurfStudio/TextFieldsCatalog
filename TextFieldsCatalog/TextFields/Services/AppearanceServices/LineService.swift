@@ -114,8 +114,12 @@ private extension LineService {
         let superview = configuration.superview ?? self.superview.view
         var lineFrame = superview.bounds.inset(by: configuration.insets)
         lineFrame.size.height = height
-        if flexibleTopSpace {
-            lineFrame.origin.y = 5 + (field?.frame.maxY ?? 0)
+        if
+//            flexibleTopSpace,
+            let field = field
+        {
+            let fuckingFrame = superview.convert(field.frame, to: superview)
+            lineFrame.origin.y = configuration.insets.top + fuckingFrame.maxY
         }
         return lineFrame
     }

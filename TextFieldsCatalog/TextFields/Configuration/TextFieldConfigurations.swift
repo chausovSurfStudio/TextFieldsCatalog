@@ -43,7 +43,7 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
     // MARK: - Initialization
 
     public init() {
-        let line = LineConfiguration(insets: UIEdgeInsets(top: 53, left: 16, bottom: 0, right: 16),
+        let line = LineConfiguration(insets: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
                                      defaultHeight: 1,
                                      increasedHeight: 2,
                                      cornerRadius: 1,
@@ -104,7 +104,7 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
     // MARK: - Initialization
 
     public init() {
-        let line = LineConfiguration(insets: UIEdgeInsets(top: 53, left: 16, bottom: 0, right: 16),
+        let line = LineConfiguration(insets: UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 16),
                                      defaultHeight: 1,
                                      increasedHeight: 2,
                                      cornerRadius: 1,
