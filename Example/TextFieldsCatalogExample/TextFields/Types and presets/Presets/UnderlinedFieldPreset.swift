@@ -189,7 +189,7 @@ private extension UnderlinedFieldPreset {
                                                            normalColor: Color.Button.active,
                                                            pressedColor: Color.Button.pressed)
         textField.setTextFieldMode(.custom(actionButtonConfig))
-        textField.onActionButtonTap = { field in
+        textField.onActionButtonTap = { field, _ in
             field.setText("qrcode1234")
         }
     }
