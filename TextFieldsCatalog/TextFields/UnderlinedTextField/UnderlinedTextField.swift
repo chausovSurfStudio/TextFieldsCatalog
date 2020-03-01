@@ -344,7 +344,6 @@ private extension UnderlinedTextField {
                                   heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   field: textField,
-                                  flexibleTopSpace: false,
                                   configuration: configuration.line)
     }
 

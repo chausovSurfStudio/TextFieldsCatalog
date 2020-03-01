@@ -10,7 +10,8 @@ import UIKit
 
 /// Configuration class with parameters for line in UnderlinedTextField
 public final class LineConfiguration {
-    /// Insets for line, set it to .zero if you don't want to show it
+    /// Insets for line, set it to .zero if you don't want to show it.
+    /// Top offset in insets - its offset between bottom of the textField/textView and top of line view
     let insets: UIEdgeInsets
     /// This height will be applied when text field is inactive
     let defaultHeight: CGFloat
