@@ -17,7 +17,7 @@ target 'TextFieldsCatalog' do
   common_pods
 
   target 'TextFieldsCatalogTests' do
-    inherit! :search_paths
+    common_pods
   end
 
 end
