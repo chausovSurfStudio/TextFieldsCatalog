@@ -102,6 +102,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             textField.inputView = newValue
         }
     }
+    public var isSecureTextEntry: Bool = false {
+        didSet {
+            textField.isSecureTextEntry = isSecureTextEntry
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
