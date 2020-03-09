@@ -7,7 +7,18 @@
 //
 
 public struct FlexibleHeightPolicy {
+
+    // MARK: - Properties
+
     let minHeight: CGFloat
     /// offset between hint label and view bottom
     let bottomOffset: CGFloat
+
+    // MARK: - Initialization
+
+    public init(minHeight: CGFloat, bottomOffset: CGFloat) {
+        self.minHeight = minHeight
+        self.bottomOffset = bottomOffset
+    }
+
 }

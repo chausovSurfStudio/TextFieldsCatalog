@@ -102,12 +102,17 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             textField.inputView = newValue
         }
     }
+    public var isSecureTextEntry: Bool = false {
+        didSet {
+            textField.isSecureTextEntry = isSecureTextEntry
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
     public var onTextChanged: ((UnderlinedTextField) -> Void)?
     public var onShouldReturn: ((UnderlinedTextField) -> Void)?
-    public var onActionButtonTap: ((UnderlinedTextField) -> Void)?
+    public var onActionButtonTap: ((UnderlinedTextField, UIButton) -> Void)?
     public var onValidateFail: ((UnderlinedTextField) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
     public var onDateChanged: ((Date) -> Void)?
@@ -344,7 +349,6 @@ private extension UnderlinedTextField {
                                   heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   field: textField,
-                                  flexibleTopSpace: false,
                                   configuration: configuration.line)
     }
 
@@ -378,7 +382,7 @@ private extension UnderlinedTextField {
 private extension UnderlinedTextField {
 
     @IBAction func tapOnActionButton(_ sender: UIButton) {
-        onActionButtonTap?(self)
+        onActionButtonTap?(self, sender)
         guard case .password = mode else {
             return
         }

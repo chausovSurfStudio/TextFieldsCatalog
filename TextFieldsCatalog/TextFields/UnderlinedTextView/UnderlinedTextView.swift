@@ -254,7 +254,6 @@ private extension UnderlinedTextView {
                                   heightLayoutPolicy: .flexible(0, 0))
         lineService = LineService(superview: self,
                                   field: textView,
-                                  flexibleTopSpace: true,
                                   configuration: configuration.line)
     }
 
