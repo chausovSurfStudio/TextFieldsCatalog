@@ -55,6 +55,7 @@ private extension BoxTextField {
                                                                      height: 19,
                                                                      topInsets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
                                                                      bottomInsets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
+                                                                     increasedRightPadding: 16,
                                                                      smallFontSize: 14,
                                                                      bigFontSize: 14,
                                                                      topColors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),

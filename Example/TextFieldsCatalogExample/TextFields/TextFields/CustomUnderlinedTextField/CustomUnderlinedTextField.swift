@@ -52,6 +52,7 @@ private extension CustomUnderlinedTextField {
                                                                      height: 24,
                                                                      topInsets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16),
                                                                      bottomInsets: UIEdgeInsets(top: 21, left: 15, bottom: 0, right: 16),
+                                                                     increasedRightPadding: 60,
                                                                      smallFontSize: 14,
                                                                      bigFontSize: 16,
                                                                      topColors: ColorConfiguration(error: Color.UnderlineTextField.error,

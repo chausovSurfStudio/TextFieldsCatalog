@@ -205,6 +205,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
+        placeholderService?.useIncreasedRightPadding = !actionButton.isHidden
+        placeholderService?.updatePlaceholderFrame(isNativePlaceholder: isNativePlaceholder,
+                                                   fieldState: state)
     }
 
     /// Allows you to set text in textField and update all UI elements
