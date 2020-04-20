@@ -124,7 +124,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         super.init(frame: frame)
         configureServices()
         configureAppearance()
-        updateUI()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -137,7 +136,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         super.awakeFromNib()
         configureServices()
         configureAppearance()
-        updateUI()
     }
 
     override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -145,6 +143,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
         perfromOnContainerStateChangedCall()
         setTextFieldMode(mode)
+    }
+
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
+        updateUI()
     }
 
     // MARK: - Public Methods
@@ -202,6 +205,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
+        placeholderService?.useIncreasedRightPadding = !actionButton.isHidden
+        placeholderService?.updatePlaceholderFrame(isNativePlaceholder: isNativePlaceholder,
+                                                   fieldState: state)
     }
 
     /// Allows you to set text in textField and update all UI elements
