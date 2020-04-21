@@ -85,7 +85,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         super.init(frame: frame)
         configureServices()
         configureAppearance()
-        updateUI()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -98,11 +97,15 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         super.awakeFromNib()
         configureServices()
         configureAppearance()
-        updateUI()
     }
 
     override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
+
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
         updateUI()
     }
 

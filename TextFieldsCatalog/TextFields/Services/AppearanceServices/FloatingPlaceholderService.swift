@@ -8,6 +8,10 @@
 
 final class FloatingPlaceholderService {
 
+    // MARK: - Properties
+
+    var useIncreasedRightPadding = false
+
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
@@ -59,6 +63,10 @@ final class FloatingPlaceholderService {
 
     func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
         placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
+    }
+
+    func updatePlaceholderFrame(isNativePlaceholder: Bool, fieldState: FieldState) {
+        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
     }
 
 }
@@ -131,7 +139,10 @@ private extension FloatingPlaceholderService {
 
     func placeholderPosition(fieldState: FieldState) -> CGRect {
         let placeholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
-        let targetInsets = placeholderOnTop ? configuration.topInsets : configuration.bottomInsets
+        var targetInsets = placeholderOnTop ? configuration.topInsets : configuration.bottomInsets
+        if useIncreasedRightPadding {
+            targetInsets.right = configuration.increasedRightPadding
+        }
         var placeholderFrame = superview.view.bounds.inset(by: targetInsets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
