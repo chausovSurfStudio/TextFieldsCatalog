@@ -106,7 +106,6 @@ private extension FieldServiceTests {
                                                    tintColor: Constants.tintColor,
                                                    colors: Constants.colors)
         let backgroundConfig = BackgroundConfiguration(color: Constants.backgroundColor)
-
         return FieldService(field: field,
                             configuration: configuration,
                             backgroundConfiguration: backgroundConfig)
