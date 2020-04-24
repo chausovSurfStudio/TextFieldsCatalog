@@ -48,6 +48,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
+    /// This flag is set to true and never changes again
+    /// after the user has changed the text in the field for the first time
+    private var isTextChanged = false
 
     // MARK: - Services
 
@@ -400,9 +403,9 @@ private extension UnderlinedTextField {
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
-        updatePasswordButtonVisibility()
         placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         performOnTextChangedCall()
+        updatePasswordButtonVisibility()
     }
 
 }
@@ -458,9 +461,9 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
-        updatePasswordButtonVisibility()
         placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         performOnTextChangedCall()
+        updatePasswordButtonVisibility()
     }
 
 }
@@ -588,9 +591,8 @@ private extension UnderlinedTextField {
     }
 
     func performOnTextChangedCall() {
-        if !isInteractionOccured {
-            isInteractionOccured = !textField.isEmpty
-        }
+        isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textField.isEmpty
+        isTextChanged = isTextChanged ? isTextChanged : !textField.isEmpty
         onTextChanged?(self)
     }
 
@@ -625,11 +627,18 @@ private extension UnderlinedTextField {
         guard case .password(let behavior) = mode else {
             return
         }
-        guard behavior == .visibleOnNotEmptyText else {
+
+        let alpha: CGFloat
+        switch behavior {
+        case .alwaysVisible:
             actionButton.alpha = 1
             return
+        case .visibleOnNotEmptyText:
+            alpha = textField.isEmpty ? 0 : 1
+        case .visibleAfterFirstEntry:
+            alpha = isTextChanged ? 1 : 0
         }
-        let alpha: CGFloat = textField.isEmpty ? 0 : 1
+
         guard alpha != actionButton.alpha else {
             return
         }
