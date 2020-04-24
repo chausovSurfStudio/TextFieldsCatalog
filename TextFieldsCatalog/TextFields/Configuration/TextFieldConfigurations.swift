@@ -56,6 +56,7 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                            height: 19,
                                                            topInsets: UIEdgeInsets(top: 2, left: 16, bottom: 0, right: 16),
                                                            bottomInsets: UIEdgeInsets(top: 23, left: 15, bottom: 0, right: 16),
+                                                           increasedRightPadding: 70,
                                                            smallFontSize: 12,
                                                            bigFontSize: 16,
                                                            topColors: ColorConfiguration(error: Color.Text.gray,
@@ -115,8 +116,9 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
                                                                 disabled: Color.Main.container))
         let placeholder = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                            height: 19,
-                                                           topInsets: UIEdgeInsets(top: 2, left: 16, bottom: 0, right: 16),
+                                                           topInsets: UIEdgeInsets(top: 2, left: 16, bottom: 0, right: 50),
                                                            bottomInsets: UIEdgeInsets(top: 23, left: 15, bottom: 0, right: 16),
+                                                           increasedRightPadding: 0,
                                                            smallFontSize: 12,
                                                            bigFontSize: 16,
                                                            topColors: ColorConfiguration(error: Color.Text.gray,

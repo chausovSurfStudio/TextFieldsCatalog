@@ -49,6 +49,10 @@ public final class FloatingPlaceholderConfiguration {
     let topInsets: UIEdgeInsets
     /// This is insets for placeholder in bottom position. Bottom value is ignored, position is relative to the top.
     let bottomInsets: UIEdgeInsets
+    /// This padding for text in placeholder layer will be applied when action button will be shown.
+    /// Right inset from topInsets/bottomInsets will be ignored when action button will be shown.
+    /// This increased padding ignored for textView.
+    let increasedRightPadding: CGFloat
     /// Font size for placeholder in top position
     let smallFontSize: CGFloat
     /// Font size for placeholder in bottom position
@@ -62,6 +66,7 @@ public final class FloatingPlaceholderConfiguration {
                 height: CGFloat,
                 topInsets: UIEdgeInsets,
                 bottomInsets: UIEdgeInsets,
+                increasedRightPadding: CGFloat,
                 smallFontSize: CGFloat,
                 bigFontSize: CGFloat,
                 topColors: ColorConfiguration,
@@ -70,6 +75,7 @@ public final class FloatingPlaceholderConfiguration {
         self.height = height
         self.topInsets = topInsets
         self.bottomInsets = bottomInsets
+        self.increasedRightPadding = increasedRightPadding
         self.smallFontSize = smallFontSize
         self.bigFontSize = bigFontSize
         self.topColors = topColors
