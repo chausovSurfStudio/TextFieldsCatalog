@@ -26,8 +26,8 @@ jobs:
     - name: Build
       run: |
         set -o pipefail
-        xcodebuild clean build-for-testing -sdk iphonesimulator -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO | xcpretty -c
+        xcodebuild clean build-for-testing -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO 'platform=iOS Simulator,name=iPhone 11,OS=13.1' | xcpretty -c
     - name: Test
       run: |
-        xcodebuild test-without-building -sdk iphonesimulator -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO | xcpretty -c
+        xcodebuild test-without-building -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO 'platform=iOS Simulator,name=iPhone 11,OS=13.1' | xcpretty -c
         
