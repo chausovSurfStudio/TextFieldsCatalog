@@ -73,6 +73,7 @@
 		90D18FCE2452ED1D0072BD2C /* MaskTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FCD2452ED1D0072BD2C /* MaskTextFieldFormatter.swift */; };
 		90D18FD02452EF760072BD2C /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FCF2452EF760072BD2C /* TextFieldValidator.swift */; };
 		90D18FD42452FCFA0072BD2C /* ColorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FD32452FCFA0072BD2C /* ColorConfiguration.swift */; };
+		90D18FD7245307040072BD2C /* FieldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FD6245307040072BD2C /* FieldService.swift */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
 		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
@@ -166,6 +167,7 @@
 		90D18FCD2452ED1D0072BD2C /* MaskTextFieldFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTextFieldFormatter.swift; sourceTree = "<group>"; };
 		90D18FCF2452EF760072BD2C /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
 		90D18FD32452FCFA0072BD2C /* ColorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConfiguration.swift; sourceTree = "<group>"; };
+		90D18FD6245307040072BD2C /* FieldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldService.swift; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 		90D18FD5245300F10072BD2C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				90D18FD6245307040072BD2C /* FieldService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D18FD02452EF760072BD2C /* TextFieldValidator.swift in Sources */,
+				90D18FD7245307040072BD2C /* FieldService.swift in Sources */,
 				90D18FCE2452ED1D0072BD2C /* MaskTextFieldFormatter.swift in Sources */,
 				90D18FD42452FCFA0072BD2C /* ColorConfiguration.swift in Sources */,
 				90B644F0240C124C00FB7716 /* UITextField.swift in Sources */,
