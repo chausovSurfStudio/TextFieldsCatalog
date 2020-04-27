@@ -25,9 +25,8 @@ jobs:
         sudo xcode-select -switch /Applications/Xcode_11.2.1.app
     - name: Build
       run: |
-        set -o pipefail
-        xcodebuild clean build-for-testing -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO 'platform=iOS Simulator,name=iPhone 11,OS=13.1' | xcpretty -c
+        make build
     - name: Test
       run: |
-        xcodebuild test-without-building -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO 'platform=iOS Simulator,name=iPhone 11,OS=13.1' | xcpretty -c
+        make test
         
