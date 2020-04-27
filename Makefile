@@ -34,6 +34,14 @@ init:
 	-bundle exec pod repo update
 	-bundle exec pod install
 
+## Used to build target. Usually, it is not called manually, it is necessary for the CI to work.
+build:
+	bundle exec fastlane build clean:true
+
+## Run tests
+test:
+	bundle exec fastlane tests
+
 ## Allows you to perfrom swiftlint lint command.
 lint:
 	./Pods/SwiftLint/swiftlint lint --config .swiftlint.yml
