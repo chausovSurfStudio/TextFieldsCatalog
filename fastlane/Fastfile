@@ -32,7 +32,6 @@ platform :ios do
   "
   lane :build do |options|
     xcodebuild(
-      # workspace: workspace_file,
       scheme: prod_scheme,
       configuration: "Debug",
       clean: options[:clean],
@@ -46,12 +45,12 @@ platform :ios do
   desc "Run tests"
   lane :tests do
     run_tests(
-      # workspace: workspace_file,
       devices: ["iPhone SE"],
       scheme: prod_scheme,
       code_coverage: false,
       test_without_building: true,
-      skip_build: true
+      skip_build: true,
+      derived_data_path: derived_data_path
   )
   end
 
