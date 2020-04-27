@@ -11,4 +11,7 @@ public enum TextFieldPasswordModeBehavior {
     case alwaysVisible
     /// password button visible only if text is not empty
     case visibleOnNotEmptyText
+    /// password button becomes visible after the user enters the first character,
+    /// and never disappears again.
+    case visibleAfterFirstEntry
 }
