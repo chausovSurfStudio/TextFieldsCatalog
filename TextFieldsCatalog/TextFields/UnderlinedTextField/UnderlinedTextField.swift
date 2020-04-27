@@ -67,6 +67,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             updateUI()
         }
     }
+    public var extraPlaceholderConfiguration: ExtraPlaceholderConfiguration? {
+        didSet {
+            placeholderService?.setup(extraPlaceholderConfiguration: extraPlaceholderConfiguration)
+            placeholderService?.configureExtraPlaceholder(containerState: containerState)
+        }
+    }
     public var validator: TextFieldValidation?
     public var maskFormatter: MaskTextFieldFormatter? {
         didSet {
@@ -158,6 +164,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func configure(placeholder: String?, maxLength: Int?) {
         placeholderService?.setup(placeholder: placeholder)
         self.maxLength = maxLength
+    }
+
+    /// Allows you to install additional placeholder, but before you have to provide configuration for it
+    /// (extraPlaceholderConfiguration property)
+    public func configure(extraPlaceholder: String?) {
+        placeholderService?.setup(extraPlaceholder: extraPlaceholder)
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
@@ -370,6 +382,7 @@ private extension UnderlinedTextField {
         fieldService?.configure(textField: textField)
         placeholderService?.configurePlaceholder(fieldState: state,
                                                  containerState: containerState)
+        placeholderService?.configureExtraPlaceholder(containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
 
@@ -401,7 +414,7 @@ private extension UnderlinedTextField {
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
-        placeholderService?.updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }
@@ -459,7 +472,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
-        placeholderService?.updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }

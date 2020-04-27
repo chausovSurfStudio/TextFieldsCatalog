@@ -187,7 +187,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
     /// Reset only error state and update all UI elements
@@ -325,7 +325,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
         removeError()
         performOnTextChangedCall()
     }

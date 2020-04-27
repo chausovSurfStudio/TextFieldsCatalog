@@ -83,17 +83,23 @@ public final class FloatingPlaceholderConfiguration {
     }
 }
 
-/// Configuration class with parameters for static placeholder
-public final class PlaceholderConfiguration {
+/// Configuration class with parameters for extra placeholder
+/// (extra placeholder, that presents in place of real text if input text is empty)
+public final class ExtraPlaceholderConfiguration {
     /// Font of placeholder
     let font: UIFont
+    /// These are insets for determining the position of a placeholder.
+    /// Bottom value is ignored, position is relative to the top.
+    let insets: UIEdgeInsets
     /// Colors for placeholder in various states
     let colors: ColorConfiguration
 
     public init(font: UIFont,
-                colors: ColorConfiguration) {
+                colors: ColorConfiguration,
+                insets: UIEdgeInsets) {
         self.font = font
         self.colors = colors
+        self.insets = insets
     }
 }
 

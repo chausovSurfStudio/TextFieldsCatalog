@@ -177,6 +177,9 @@ private extension UnderlinedFieldPreset {
         textField.configure(correction: .no, keyboardType: .numberPad)
         textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
+
+        // works only for CustomUnderlinedTextField
+        textField.configure(extraPlaceholder: "XXXX XXXX XXXX XXXX")
     }
 
     func tuneFieldForQRCode(_ textField: UnderlinedTextField) {

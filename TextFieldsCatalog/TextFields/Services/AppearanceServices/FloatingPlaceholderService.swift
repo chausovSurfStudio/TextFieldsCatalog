@@ -15,10 +15,12 @@ final class FloatingPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
+    private let extraPlaceholder: CATextLayer = CATextLayer()
     private let superview: InnerDesignableView
     private let field: InputField?
 
     private var configuration: FloatingPlaceholderConfiguration
+    private var extraPlaceholderConfiguration: ExtraPlaceholderConfiguration?
 
     // MARK: - Initialization
 
@@ -36,8 +38,16 @@ final class FloatingPlaceholderService {
         self.configuration = configuration
     }
 
+    func setup(extraPlaceholderConfiguration: ExtraPlaceholderConfiguration?) {
+        self.extraPlaceholderConfiguration = extraPlaceholderConfiguration
+    }
+
     func setup(placeholder: String?) {
         self.placeholder.string = placeholder
+    }
+
+    func setup(extraPlaceholder: String?) {
+        self.extraPlaceholder.string = extraPlaceholder
     }
 
     func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
@@ -52,17 +62,32 @@ final class FloatingPlaceholderService {
         superview.layer.addSublayer(placeholder)
     }
 
+    func configureExtraPlaceholder(containerState: FieldContainerState) {
+        guard let config = extraPlaceholderConfiguration else {
+            return
+        }
+        extraPlaceholder.removeFromSuperlayer()
+        extraPlaceholder.string = ""
+        extraPlaceholder.font = config.font
+        extraPlaceholder.fontSize = config.font.pointSize
+        extraPlaceholder.foregroundColor = config.colors.suitableColor(state: containerState).cgColor
+        extraPlaceholder.contentsScale = UIScreen.main.scale
+        extraPlaceholder.frame = superview.view.bounds.inset(by: config.insets)
+        extraPlaceholder.truncationMode = CATextLayerTruncationMode.end
+        superview.layer.addSublayer(extraPlaceholder)
+    }
+
     func updateContent(fieldState: FieldState,
                        containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
         updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
-        updatePlaceholderVisibility()
+        updatePlaceholderVisibility(fieldState: fieldState)
+        updateExtraPlaceholderColor(containerState: containerState)
     }
 
-    func updatePlaceholderVisibility() {
-        // TODO: скорее всего так и останется, для совместимости с другими такими сервисами
-        placeholder.isHidden = false //isNativePlaceholder && !textIsEmpty()
+    func updatePlaceholderVisibility(fieldState: FieldState) {
+        updateExtraPlaceholderVisibility(fieldState: fieldState)
     }
 
     func updatePlaceholderFrame(fieldState: FieldState) {
@@ -112,6 +137,25 @@ private extension FloatingPlaceholderService {
         fontSizeAnimation.duration = AnimationTime.default
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(fontSizeAnimation, forKey: nil)
+    }
+
+    func updateExtraPlaceholderVisibility(fieldState: FieldState) {
+        guard extraPlaceholderConfiguration != nil else {
+            return
+        }
+        let mainPlaceholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
+        let extraPlaceholderAlpha: Float = mainPlaceholderOnTop && textIsEmpty() ? 1 : 0
+        guard extraPlaceholder.opacity != extraPlaceholderAlpha else {
+            return
+        }
+        extraPlaceholder.opacity = extraPlaceholderAlpha
+    }
+
+    func updateExtraPlaceholderColor(containerState: FieldContainerState) {
+        guard let config = extraPlaceholderConfiguration else {
+            return
+        }
+        extraPlaceholder.foregroundColor = config.colors.suitableColor(state: containerState).cgColor
     }
 
 }

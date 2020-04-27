@@ -79,6 +79,9 @@ private extension CustomUnderlinedTextField {
 
         self.configuration = configuration
         self.validationPolicy = .afterChanges
+        self.extraPlaceholderConfiguration = ExtraPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                                           colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
+                                                                           insets: UIEdgeInsets(top: 33, left: 17, bottom: 0, right: 16))
     }
 
 }
