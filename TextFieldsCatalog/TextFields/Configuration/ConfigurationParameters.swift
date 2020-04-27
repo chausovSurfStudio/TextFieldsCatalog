@@ -90,15 +90,19 @@ public final class StaticPlaceholderConfiguration {
     /// These are insets for determining the position of a placeholder.
     /// Bottom value is ignored, position is relative to the top.
     let insets: UIEdgeInsets
+    /// Height of static placeholder
+    let height: CGFloat
     /// Colors for placeholder in various states
     let colors: ColorConfiguration
 
     public init(font: UIFont,
-                colors: ColorConfiguration,
-                insets: UIEdgeInsets) {
+                height: CGFloat,
+                insets: UIEdgeInsets,
+                colors: ColorConfiguration) {
         self.font = font
-        self.colors = colors
         self.insets = insets
+        self.height = height
+        self.colors = colors
     }
 }
 

@@ -14,8 +14,8 @@ final class PlaceholderServiceFactory {
         switch type {
         case .floating(let config):
             return FloatingPlaceholderService(superview: superview, field: field, configuration: config)
-        case .static:
-            fatalError("still do not implemented")
+        case .static(let config):
+            return StaticPlaceholderService(superview: superview, field: field, configuration: config)
         }
     }
 
