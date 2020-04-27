@@ -6,21 +6,15 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class FloatingPlaceholderService {
-
-    // MARK: - Properties
-
-    var useIncreasedRightPadding = false
+final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
-    private let extraPlaceholder: CATextLayer = CATextLayer()
     private let superview: InnerDesignableView
     private let field: InputField?
 
     private var configuration: FloatingPlaceholderConfiguration
-    private var extraPlaceholderConfiguration: ExtraPlaceholderConfiguration?
 
     // MARK: - Initialization
 
@@ -32,22 +26,12 @@ final class FloatingPlaceholderService {
         self.configuration = configuration
     }
 
-    // MARK: - Internal Methods
+    // MARK: - AbstractPlaceholderService
 
-    func setup(configuration: FloatingPlaceholderConfiguration) {
-        self.configuration = configuration
-    }
-
-    func setup(extraPlaceholderConfiguration: ExtraPlaceholderConfiguration?) {
-        self.extraPlaceholderConfiguration = extraPlaceholderConfiguration
-    }
+    var useIncreasedRightPadding = false
 
     func setup(placeholder: String?) {
         self.placeholder.string = placeholder
-    }
-
-    func setup(extraPlaceholder: String?) {
-        self.extraPlaceholder.string = extraPlaceholder
     }
 
     func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
@@ -62,32 +46,11 @@ final class FloatingPlaceholderService {
         superview.layer.addSublayer(placeholder)
     }
 
-    func configureExtraPlaceholder(containerState: FieldContainerState) {
-        guard let config = extraPlaceholderConfiguration else {
-            return
-        }
-        extraPlaceholder.removeFromSuperlayer()
-        extraPlaceholder.string = ""
-        extraPlaceholder.font = config.font
-        extraPlaceholder.fontSize = config.font.pointSize
-        extraPlaceholder.foregroundColor = config.colors.suitableColor(state: containerState).cgColor
-        extraPlaceholder.contentsScale = UIScreen.main.scale
-        extraPlaceholder.frame = superview.view.bounds.inset(by: config.insets)
-        extraPlaceholder.truncationMode = CATextLayerTruncationMode.end
-        superview.layer.addSublayer(extraPlaceholder)
-    }
-
     func updateContent(fieldState: FieldState,
                        containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
         updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
-        updatePlaceholderVisibility(fieldState: fieldState)
-        updateExtraPlaceholderColor(containerState: containerState)
-    }
-
-    func updatePlaceholderVisibility(fieldState: FieldState) {
-        updateExtraPlaceholderVisibility(fieldState: fieldState)
     }
 
     func updatePlaceholderFrame(fieldState: FieldState) {
@@ -137,25 +100,6 @@ private extension FloatingPlaceholderService {
         fontSizeAnimation.duration = AnimationTime.default
         fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         placeholder.add(fontSizeAnimation, forKey: nil)
-    }
-
-    func updateExtraPlaceholderVisibility(fieldState: FieldState) {
-        guard extraPlaceholderConfiguration != nil else {
-            return
-        }
-        let mainPlaceholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
-        let extraPlaceholderAlpha: Float = mainPlaceholderOnTop && textIsEmpty() ? 1 : 0
-        guard extraPlaceholder.opacity != extraPlaceholderAlpha else {
-            return
-        }
-        extraPlaceholder.opacity = extraPlaceholderAlpha
-    }
-
-    func updateExtraPlaceholderColor(containerState: FieldContainerState) {
-        guard let config = extraPlaceholderConfiguration else {
-            return
-        }
-        extraPlaceholder.foregroundColor = config.colors.suitableColor(state: containerState).cgColor
     }
 
 }

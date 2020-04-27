@@ -83,9 +83,8 @@ public final class FloatingPlaceholderConfiguration {
     }
 }
 
-/// Configuration class with parameters for extra placeholder
-/// (extra placeholder, that presents in place of real text if input text is empty)
-public final class ExtraPlaceholderConfiguration {
+/// Configuration class with parameters for static placeholders
+public final class StaticPlaceholderConfiguration {
     /// Font of placeholder
     let font: UIFont
     /// These are insets for determining the position of a placeholder.

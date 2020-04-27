@@ -48,21 +48,22 @@ private extension CustomUnderlinedTextField {
                                                                           normal: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5),
                                                                           active: Color.UnderlineTextField.tint,
                                                                           disabled: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5)))
-        configuration.placeholder = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                                     height: 24,
-                                                                     topInsets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16),
-                                                                     bottomInsets: UIEdgeInsets(top: 21, left: 15, bottom: 0, right: 16),
-                                                                     increasedRightPadding: 60,
-                                                                     smallFontSize: 14,
-                                                                     bigFontSize: 16,
-                                                                     topColors: ColorConfiguration(error: Color.UnderlineTextField.error,
-                                                                                                   normal: Color.UnderlineTextField.placeholder,
-                                                                                                   active: Color.UnderlineTextField.tint,
-                                                                                                   disabled: Color.UnderlineTextField.placeholder),
-                                                                     bottomColors: ColorConfiguration(error: Color.UnderlineTextField.placeholder,
-                                                                                                      normal: Color.UnderlineTextField.placeholder,
-                                                                                                      active: Color.UnderlineTextField.placeholder,
-                                                                                                      disabled: Color.UnderlineTextField.placeholder))
+        let placeholderConfig = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                                 height: 24,
+                                                                 topInsets: UIEdgeInsets(top: 10, left: 16, bottom: 0, right: 16),
+                                                                 bottomInsets: UIEdgeInsets(top: 21, left: 15, bottom: 0, right: 16),
+                                                                 increasedRightPadding: 60,
+                                                                 smallFontSize: 14,
+                                                                 bigFontSize: 16,
+                                                                 topColors: ColorConfiguration(error: Color.UnderlineTextField.error,
+                                                                                               normal: Color.UnderlineTextField.placeholder,
+                                                                                               active: Color.UnderlineTextField.tint,
+                                                                                               disabled: Color.UnderlineTextField.placeholder),
+                                                                 bottomColors: ColorConfiguration(error: Color.UnderlineTextField.placeholder,
+                                                                                                  normal: Color.UnderlineTextField.placeholder,
+                                                                                                  active: Color.UnderlineTextField.placeholder,
+                                                                                                  disabled: Color.UnderlineTextField.placeholder))
+        configuration.placeholder = .floating(config: placeholderConfig)
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 36),
@@ -79,9 +80,6 @@ private extension CustomUnderlinedTextField {
 
         self.configuration = configuration
         self.validationPolicy = .afterChanges
-        self.extraPlaceholderConfiguration = ExtraPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                                           colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
-                                                                           insets: UIEdgeInsets(top: 33, left: 17, bottom: 0, right: 16))
     }
 
 }

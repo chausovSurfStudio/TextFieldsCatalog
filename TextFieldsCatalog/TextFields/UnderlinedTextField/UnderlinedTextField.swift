@@ -55,9 +55,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Services
 
     private var fieldService: FieldService?
-    private var placeholderService: FloatingPlaceholderService?
     private var lineService: LineService?
     private var hintService: HintService?
+    private var placeholderService: AbstractPlaceholderService?
 
     // MARK: - Properties
 
@@ -65,12 +65,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         didSet {
             configureAppearance()
             updateUI()
-        }
-    }
-    public var extraPlaceholderConfiguration: ExtraPlaceholderConfiguration? {
-        didSet {
-            placeholderService?.setup(extraPlaceholderConfiguration: extraPlaceholderConfiguration)
-            placeholderService?.configureExtraPlaceholder(containerState: containerState)
         }
     }
     public var validator: TextFieldValidation?
@@ -164,12 +158,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func configure(placeholder: String?, maxLength: Int?) {
         placeholderService?.setup(placeholder: placeholder)
         self.maxLength = maxLength
-    }
-
-    /// Allows you to install additional placeholder, but before you have to provide configuration for it
-    /// (extraPlaceholderConfiguration property)
-    public func configure(extraPlaceholder: String?) {
-        placeholderService?.setup(extraPlaceholder: extraPlaceholder)
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
@@ -360,29 +348,30 @@ private extension UnderlinedTextField {
         fieldService = FieldService(field: textField,
                                     configuration: configuration.textField,
                                     backgroundConfiguration: configuration.background)
-        placeholderService = FloatingPlaceholderService(superview: self,
-                                                        field: textField,
-                                                        configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
                                   heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   field: textField,
                                   configuration: configuration.line)
+        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
+                                                                 superview: self,
+                                                                 field: textField)
     }
 
     func configureAppearance() {
         fieldService?.setup(configuration: configuration.textField,
                             backgroundConfiguration: configuration.background)
-        placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
+        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
+                                                                 superview: self,
+                                                                 field: textField)
 
         fieldService?.configureBackground()
         fieldService?.configure(textField: textField)
         placeholderService?.configurePlaceholder(fieldState: state,
                                                  containerState: containerState)
-        placeholderService?.configureExtraPlaceholder(containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
 
@@ -414,7 +403,6 @@ private extension UnderlinedTextField {
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
-        placeholderService?.updatePlaceholderVisibility(fieldState: state)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }
@@ -472,7 +460,6 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
-        placeholderService?.updatePlaceholderVisibility(fieldState: state)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }
@@ -534,11 +521,11 @@ private extension UnderlinedTextField {
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
-        placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
+        placeholderService?.updateContent(fieldState: state,
+                                          containerState: containerState)
 
         updateViewHeight()
         updatePasswordButtonVisibility()

@@ -76,6 +76,9 @@
 		90D18FD7245307040072BD2C /* FieldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FD6245307040072BD2C /* FieldService.swift */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
 		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
+		90EE54B7245724E60099C048 /* AbstractPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */; };
+		90EE54B9245725AD0099C048 /* PlaceholderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54B8245725AD0099C048 /* PlaceholderType.swift */; };
+		90EE54BC24572E0F0099C048 /* PlaceholderServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
@@ -170,6 +173,9 @@
 		90D18FD6245307040072BD2C /* FieldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldService.swift; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
+		90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlaceholderService.swift; sourceTree = "<group>"; };
+		90EE54B8245725AD0099C048 /* PlaceholderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderType.swift; sourceTree = "<group>"; };
+		90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderServiceFactory.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		90FAC49D22887EFB0032A7F1 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		90FAC4A1228880420032A7F1 /* PickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopView.swift; sourceTree = "<group>"; };
@@ -383,6 +389,7 @@
 				9040B90323C636F600998989 /* Internal */,
 				9082577423C367B5000767EB /* FieldContainerState.swift */,
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
+				90EE54B8245725AD0099C048 /* PlaceholderType.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
 				9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */,
@@ -450,8 +457,8 @@
 		90BEBBF623C4CC5A00991105 /* AppearanceServices */ = {
 			isa = PBXGroup;
 			children = (
+				90EE54BA24572DF10099C048 /* Placeholder */,
 				90C6C57123C8E360008DFBED /* FieldService.swift */,
-				90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */,
 				90C6AC7123C6201000D13B8D /* HintService.swift */,
 				90C6AC6F23C617A400D13B8D /* LineService.swift */,
 			);
@@ -470,17 +477,10 @@
 		90BEBBFA23C4D3E400991105 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				90BEBBFB23C4D3E900991105 /* InputField */,
+				90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */,
+				90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		90BEBBFB23C4D3E900991105 /* InputField */ = {
-			isa = PBXGroup;
-			children = (
-				90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */,
-			);
-			path = InputField;
 			sourceTree = "<group>";
 		};
 		90C0992423C8EF6A00312628 /* UIKit */ = {
@@ -527,6 +527,15 @@
 				90D18FD6245307040072BD2C /* FieldService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		90EE54BA24572DF10099C048 /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */,
+				90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */,
+			);
+			path = Placeholder;
 			sourceTree = "<group>";
 		};
 		90FAC49F228880250032A7F1 /* Pickers */ = {
@@ -809,12 +818,15 @@
 				90C0992623C8EF8000312628 /* UITextField.swift in Sources */,
 				90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */,
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
+				90EE54B7245724E60099C048 /* AbstractPlaceholderService.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
+				90EE54BC24572E0F0099C048 /* PlaceholderServiceFactory.swift in Sources */,
 				903863FE21FF590700BAA761 /* Color.swift in Sources */,
 				909F2580229BE146006926E7 /* UnderlinedTextView.swift in Sources */,
 				90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */,
+				90EE54B9245725AD0099C048 /* PlaceholderType.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
 				90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
