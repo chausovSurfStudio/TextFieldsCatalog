@@ -53,20 +53,20 @@ final class FloatingPlaceholderService {
     }
 
     func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState,
-                       isNativePlaceholder: Bool) {
+                       containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+        updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
-        updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        updatePlaceholderVisibility()
     }
 
-    func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
-        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
+    func updatePlaceholderVisibility() {
+        // TODO: скорее всего так и останется, для совместимости с другими такими сервисами
+        placeholder.isHidden = false //isNativePlaceholder && !textIsEmpty()
     }
 
-    func updatePlaceholderFrame(isNativePlaceholder: Bool, fieldState: FieldState) {
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+    func updatePlaceholderFrame(fieldState: FieldState) {
+        updatePlaceholderPosition(fieldState: fieldState)
     }
 
 }
@@ -88,10 +88,7 @@ private extension FloatingPlaceholderService {
         placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition(isNativePlaceholder: Bool, fieldState: FieldState) {
-        guard !isNativePlaceholder else {
-            return
-        }
+    func updatePlaceholderPosition(fieldState: FieldState) {
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition(fieldState: fieldState)
         placeholder.frame = endPosition

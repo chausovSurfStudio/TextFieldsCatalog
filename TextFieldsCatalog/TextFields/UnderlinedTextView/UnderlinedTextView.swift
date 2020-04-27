@@ -70,7 +70,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
-    public var isNativePlaceholder = false
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -188,7 +187,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        placeholderService?.updatePlaceholderVisibility()
     }
 
     /// Reset only error state and update all UI elements
@@ -326,7 +325,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        placeholderService?.updatePlaceholderVisibility()
         removeError()
         performOnTextChangedCall()
     }
@@ -341,8 +340,7 @@ private extension UnderlinedTextView {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
         placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState,
-                                          isNativePlaceholder: isNativePlaceholder)
+                                          containerState: containerState)
 
         updateViewHeight()
 

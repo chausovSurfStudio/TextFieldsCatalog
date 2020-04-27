@@ -93,7 +93,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var isNativePlaceholder = false
     public var responder: UIResponder {
         return self.textField
     }
@@ -209,8 +208,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              pressedColor: actionButtonConfig.pressedColor)
         }
         placeholderService?.useIncreasedRightPadding = !actionButton.isHidden
-        placeholderService?.updatePlaceholderFrame(isNativePlaceholder: isNativePlaceholder,
-                                                   fieldState: state)
+        placeholderService?.updatePlaceholderFrame(fieldState: state)
     }
 
     /// Allows you to set text in textField and update all UI elements
@@ -403,7 +401,7 @@ private extension UnderlinedTextField {
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        placeholderService?.updatePlaceholderVisibility()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }
@@ -461,7 +459,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
+        placeholderService?.updatePlaceholderVisibility()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
     }
@@ -524,8 +522,7 @@ private extension UnderlinedTextField {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
         placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState,
-                                          isNativePlaceholder: isNativePlaceholder)
+                                          containerState: containerState)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
