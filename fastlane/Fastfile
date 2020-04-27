@@ -52,5 +52,6 @@ platform :ios do
       skip_build: true,
       derived_data_path: derived_data_path
   )
+  end
 
 end
