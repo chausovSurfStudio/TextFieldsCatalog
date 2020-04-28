@@ -9,4 +9,5 @@
 public enum PlaceholderType {
     case floating(config: FloatingPlaceholderConfiguration)
     case `static`(config: StaticPlaceholderConfiguration)
+    case native(config: NativePlaceholderConfiguration)
 }

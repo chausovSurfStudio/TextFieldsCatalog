@@ -15,7 +15,9 @@ final class PlaceholderServiceFactory {
         case .floating(let config):
             return FloatingPlaceholderService(superview: superview, field: field, configuration: config)
         case .static(let config):
-            return StaticPlaceholderService(superview: superview, field: field, configuration: config)
+            return StaticPlaceholderService(superview: superview, configuration: config)
+        case .native(let config):
+            return NativePlaceholderService(superview: superview, field: field, configuration: config)
         }
     }
 

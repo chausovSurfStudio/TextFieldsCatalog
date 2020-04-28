@@ -80,6 +80,8 @@
 		90EE54B9245725AD0099C048 /* PlaceholderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54B8245725AD0099C048 /* PlaceholderType.swift */; };
 		90EE54BC24572E0F0099C048 /* PlaceholderServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */; };
 		90EE54BE245740AE0099C048 /* StaticPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54BD245740AE0099C048 /* StaticPlaceholderService.swift */; };
+		90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4870624582BBA00931146 /* NativePlaceholderService.swift */; };
+		90F487092458329800931146 /* NativePlaceholderBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F487082458329800931146 /* NativePlaceholderBehavior.swift */; };
 		90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */; };
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
@@ -178,6 +180,8 @@
 		90EE54B8245725AD0099C048 /* PlaceholderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderType.swift; sourceTree = "<group>"; };
 		90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderServiceFactory.swift; sourceTree = "<group>"; };
 		90EE54BD245740AE0099C048 /* StaticPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticPlaceholderService.swift; sourceTree = "<group>"; };
+		90F4870624582BBA00931146 /* NativePlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePlaceholderService.swift; sourceTree = "<group>"; };
+		90F487082458329800931146 /* NativePlaceholderBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePlaceholderBehavior.swift; sourceTree = "<group>"; };
 		90FAC49B22886E5C0032A7F1 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		90FAC49D22887EFB0032A7F1 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		90FAC4A1228880420032A7F1 /* PickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopView.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 				9040B90323C636F600998989 /* Internal */,
 				9082577423C367B5000767EB /* FieldContainerState.swift */,
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
+				90F487082458329800931146 /* NativePlaceholderBehavior.swift */,
 				90EE54B8245725AD0099C048 /* PlaceholderType.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
@@ -537,6 +542,7 @@
 				90EE54BB24572E0F0099C048 /* PlaceholderServiceFactory.swift */,
 				90BEBBF823C4D26E00991105 /* FloatingPlaceholderService.swift */,
 				90EE54BD245740AE0099C048 /* StaticPlaceholderService.swift */,
+				90F4870624582BBA00931146 /* NativePlaceholderService.swift */,
 			);
 			path = Placeholder;
 			sourceTree = "<group>";
@@ -811,6 +817,7 @@
 			files = (
 				90C6AC7023C617A400D13B8D /* LineService.swift in Sources */,
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
+				90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
@@ -832,6 +839,7 @@
 				90EE54B9245725AD0099C048 /* PlaceholderType.swift in Sources */,
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
 				90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */,
+				90F487092458329800931146 /* NativePlaceholderBehavior.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
 				90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */,
 				90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */,
