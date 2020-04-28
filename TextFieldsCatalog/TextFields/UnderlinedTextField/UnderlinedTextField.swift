@@ -58,6 +58,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var lineService: LineService?
     private var hintService: HintService?
     private var placeholderService: AbstractPlaceholderService?
+    private var supportPlaceholderService: AbstractPlaceholderService?
 
     // MARK: - Properties
 
@@ -185,6 +186,17 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.textContentType = contentType
     }
 
+    /// Allows you to setup support placeholder,
+    /// but you have to provide configuration for it
+    public func configure(supportPlaceholder: String, configuration: NativePlaceholderConfiguration) {
+        supportPlaceholderService = PlaceholderServiceFactory().produce(type: .native(config: configuration),
+                                                                        superview: self,
+                                                                        field: textField)
+        supportPlaceholderService?.configurePlaceholder(fieldState: state,
+                                                        containerState: containerState)
+        supportPlaceholderService?.setup(placeholder: supportPlaceholder)
+    }
+
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
@@ -207,8 +219,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
-        placeholderService?.useIncreasedRightPadding = !actionButton.isHidden
-        placeholderService?.updatePlaceholderFrame(fieldState: state)
+        for var service in [placeholderService, supportPlaceholderService] {
+            service?.useIncreasedRightPadding = !actionButton.isHidden
+            service?.updatePlaceholderFrame(fieldState: state)
+        }
     }
 
     /// Allows you to set text in textField and update all UI elements
@@ -370,10 +384,12 @@ private extension UnderlinedTextField {
 
         fieldService?.configureBackground()
         fieldService?.configure(textField: textField)
-        placeholderService?.configurePlaceholder(fieldState: state,
-                                                 containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+        for service in [placeholderService, supportPlaceholderService] {
+            service?.configurePlaceholder(fieldState: state,
+                                          containerState: containerState)
+        }
 
         configureActionButton()
         textField.delegate = maskFormatter?.delegateForTextField() ?? self
@@ -406,6 +422,7 @@ private extension UnderlinedTextField {
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         placeholderService?.updatePlaceholderVisibility(fieldState: state)
+        supportPlaceholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }
@@ -464,6 +481,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         placeholderService?.updatePlaceholderVisibility(fieldState: state)
+        supportPlaceholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }
@@ -526,8 +544,8 @@ private extension UnderlinedTextField {
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
-        placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState)
+        placeholderService?.updateContent(fieldState: state, containerState: containerState)
+        supportPlaceholderService?.updateContent(fieldState: state, containerState: containerState)
 
         updateViewHeight()
         updatePasswordButtonVisibility()

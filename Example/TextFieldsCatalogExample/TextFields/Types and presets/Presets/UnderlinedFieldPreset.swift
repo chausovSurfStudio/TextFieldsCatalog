@@ -190,7 +190,13 @@ private extension UnderlinedFieldPreset {
                                                            pressedColor: Color.Button.pressed)
         textField.setTextFieldMode(.custom(actionButtonConfig))
         textField.onActionButtonTap = { field, _ in
-            field.setText("qrcode1234")
+            field.setText("12 345-678")
+        }
+
+        if let boxTextField = textField as? BoxTextField {
+            boxTextField.configure(supportPlaceholder: "XX XXX-XXX")
+        } else if type(of: textField) == UnderlinedTextField.self {
+            textField.setup(supportPlaceholder: "XX XXX-XXX")
         }
     }
 

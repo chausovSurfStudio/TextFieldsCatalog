@@ -37,6 +37,19 @@ final class BoxTextField: UnderlinedTextField {
         configureContainer()
     }
 
+    // MARK: - Internal Methods
+
+    func configure(supportPlaceholder: String) {
+        let placeholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                               height: 24,
+                                                               insets: UIEdgeInsets(top: 67, left: 32, bottom: 0, right: 32),
+                                                               colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
+                                                               behavior: .hideOnFocus,
+                                                               useAsMainPlaceholder: true,
+                                                               increasedRightPadding: 32)
+        configure(supportPlaceholder: supportPlaceholder, configuration: placeholderConfig)
+    }
+
 }
 
 // MARK: - Configure
