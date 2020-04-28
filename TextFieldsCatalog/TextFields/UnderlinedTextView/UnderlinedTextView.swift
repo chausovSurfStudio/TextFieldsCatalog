@@ -328,6 +328,7 @@ extension UnderlinedTextView: UITextViewDelegate {
         updateClearButtonVisibility()
         removeError()
         performOnTextChangedCall()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }

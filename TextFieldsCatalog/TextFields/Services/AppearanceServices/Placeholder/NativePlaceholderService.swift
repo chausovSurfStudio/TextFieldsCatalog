@@ -55,20 +55,18 @@ final class NativePlaceholderService: AbstractPlaceholderService {
     }
 
     func updatePlaceholderVisibility(fieldState: FieldState) {
-        let visibilityByPurpose = configuration.useAsMainPlaceholder ? true : fieldState == .active
-        let visibilityByBehavior: Bool
-        switch configuration.behavior {
-        case .hideOnFocus:
-            visibilityByBehavior = fieldState != .active
-        case .hideOnInput:
-            visibilityByBehavior = textIsEmpty()
+        guard textIsEmpty() else {
+            setupPlaceholderVisibility(isVisible: false)
+            return
         }
-        let isVisible = visibilityByPurpose && visibilityByBehavior
 
-        let animationTime = isVisible ? AnimationTime.default : 0
-        UIView.animate(withDuration: animationTime) { [weak self] in
-            self?.placeholder.alpha = isVisible ? 1 : 0
+        let isVisible: Bool
+        if configuration.useAsMainPlaceholder {
+            isVisible = !(fieldState == .active && configuration.behavior == .hideOnFocus)
+        } else {
+            isVisible = fieldState == .active && configuration.behavior == .hideOnInput
         }
+        setupPlaceholderVisibility(isVisible: isVisible)
     }
 
 }
@@ -93,6 +91,13 @@ private extension NativePlaceholderService {
 
     func textIsEmpty() -> Bool {
         return field?.inputText?.isEmpty ?? true
+    }
+
+    func setupPlaceholderVisibility(isVisible: Bool) {
+        let animationTime = isVisible ? AnimationTime.default : 0
+        UIView.animate(withDuration: animationTime) { [weak self] in
+            self?.placeholder.alpha = isVisible ? 1 : 0
+        }
     }
 
 }

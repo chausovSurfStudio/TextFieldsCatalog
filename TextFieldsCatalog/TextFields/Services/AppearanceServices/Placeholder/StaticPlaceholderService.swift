@@ -47,10 +47,6 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
         updatePlaceholderColor(containerState: containerState)
     }
 
-    func updatePlaceholderFrame(fieldState: FieldState) {
-        // this method doesn't use in this service
-    }
-
 }
 
 // MARK: - Private Methods

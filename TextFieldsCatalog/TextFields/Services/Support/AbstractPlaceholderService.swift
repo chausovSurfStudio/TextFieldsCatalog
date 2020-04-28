@@ -21,6 +21,18 @@ protocol AbstractPlaceholderService {
     func updateContent(fieldState: FieldState,
                        containerState: FieldContainerState)
 
+    // optional method
     func updatePlaceholderFrame(fieldState: FieldState)
+
+    // optional method
+    func updatePlaceholderVisibility(fieldState: FieldState)
+
+}
+
+extension AbstractPlaceholderService {
+
+    func updatePlaceholderFrame(fieldState: FieldState) {}
+
+    func updatePlaceholderVisibility(fieldState: FieldState) {}
 
 }

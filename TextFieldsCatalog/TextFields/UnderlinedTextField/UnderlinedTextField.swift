@@ -405,6 +405,7 @@ private extension UnderlinedTextField {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }
@@ -462,6 +463,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }
