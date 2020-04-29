@@ -30,13 +30,6 @@
 
 На данный момент в проекте имеются следующие виды полей ввода:
 
-### BorderedTextField
-<p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/BorderedTextField.png" />
-</p>
-
-Отличительная особенность поля - оно имеет статичный плейсхолдер, а UITextField имеет границу.
-
 ### UnderlinedTextField
 <p align="center">
 	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/UnderlinedTextField.png" />
@@ -45,7 +38,7 @@
 Отличительными особенностями данного поля являются:
 
 * возможность показа под полем ввода подчеркивающей линии (или вы можете скрыть ее)
-* плейсхолдер выполнен как CATextLayer, что дает возможность менять текст, кегль шрифта и положение плейсхолдера при переходе между состояниями анимационно одновременно
+* возможность изменения типа плейсхолдера (может быть плавающим, статичным или имитировать поведение статичного плейсхолдера)
 
 ### UnderlinedTextView
 <p align="center">
@@ -88,6 +81,11 @@ func configure(autocapitalizationType: UITextAutocapitalizationType)
 func configureContentType(_ contentType: UITextContentType)
 ````
 Метод позволяет установить `UITextContentType` для поля ввода.
+
+````swift
+func configure(supportPlaceholder: String, configuration: NativePlaceholderConfiguration)
+````
+Метод позволяет установить "вспомогательный плейсхолдер". Подробнее о том, что это и зачем, можно почитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md).
 
 ````swift
 func setText(_ text: String?)
@@ -184,6 +182,7 @@ func setReturnKeyType(_ type: UIReturnKeyType)
 * ```var onActionButtonTap: ((UnderlinedTextField) -> Void)?``` - в случае нажатия кнопки внутри поля ввода
 * ```var onValidateFail: ((UnderlinedTextField) -> Void)?``` - в случае, если введенное в поле ввода значение не прошло проверку
 * ```var onHeightChanged: ((CGFloat) -> Void)?``` - при смене высоты элемента
+* ```var onContainerStateChanged: ((FieldContainerState) -> Void)?``` - вызывается при смене состояния поля ввода
 
 ## HeightLayoutPolicy
 
@@ -203,16 +202,12 @@ func setReturnKeyType(_ type: UIReturnKeyType)
 * `.afterChanges` - валидация происходит после первого изменения текста в поле ввода (позволяет получить ошибку в предыдущем описанном варианте, то есть валидация происходит при снятии фокуса после первого взаимодействия с полем)
 * `.never` - валидация никогда не выполняется (не знаю, зачем вам может понадобится такой вариант, но вдруг?)
 
-## NativePlaceholder
-
-В UnderlinedTextField и UnderlinedTextView добавлена возможность сделать плейсхолдер максимально похожим на нативную реализацию. Плейсхолдер перестает плавать, если задать значение isNativePlaceholder = true. Однако нужно понимать, что для того, чтобы добиться корректного эффекта, необходимо в кастомной реализации этих полей задать корректные позиции и цвета для плейсхолдера в активном состоянии. В таком случае поведение плейсходера будет максимально похоже на нативное поле ввода. 
-
 ## TextFieldMode
 
 Поля ввода (кроме UnderlinedTextView) имеют возможность установки так называемого `мода`, которым регулируется наличие и поведение кастомной кнопки внутри поля:
 
 * `.plain` - простое поле ввода без дополнительных кнопок
-* `.password(TextFieldPasswordModeBehavior)` - в данном режиме поле ввода заточено под работу с паролем: кнопка принимает форму 'глазика', при нажатии на кнопку меняется свойство поля isSecureTextEntry (поведение, когда текст заменяется точками). С помощью значения `TextFieldPasswordModeBehavior` можно управлять поведением видимости этой кнопки. У enum'а два значения: если установить `.alwaysVisible` - кнопка будет видна всегда, если установить `.visibleOnNotEmptyText` - будет видна когда текст в поле ввода не пуст
+* `.password(TextFieldPasswordModeBehavior)` - в данном режиме поле ввода заточено под работу с паролем: кнопка принимает форму 'глазика', при нажатии на кнопку меняется свойство поля isSecureTextEntry (поведение, когда текст заменяется точками). С помощью значения `TextFieldPasswordModeBehavior` можно управлять поведением видимости этой кнопки. У enum'а три значения: если установить `.alwaysVisible` - кнопка будет видна всегда, если установить `.visibleOnNotEmptyText` - будет видна когда текст в поле ввода не пуст, при установке `visibleAfterFirstEntry` - кнопка появится после ввода хотя бы одного символа и больше никогда не скроется.
 * `.custom(ActionButtonConfiguration)` - позволяет добавить к полю ввода любую кнопку на ваше усмотрение. Нажатие же на нее можно отловить с помощью замыкания `onActionButtonTap`
 
 ## Кастомные клавиатуры и переключение полей
@@ -423,15 +418,6 @@ textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
 
 **Важно**: в силу использования сторонней библиотеки, баги данной библиотеки могут наложится на нее и усилить эффект. В частности, не всегда корректно работает вставка текста в поле, в котором определен форматтер (после вставки курсор может оказаться в неожиданном месте).
 
-Также можно использовать форматтеры текстовых полей для форматирования текста. Для этого необходимо инициализировать объект класса `MaskTextFieldFormatter`  и вызвать метод `format`.
-
-Пример использования: 
-
-```swift
-let formatter = MaskTextFieldFormatter(mask: mask)
-return formatter.format(string: text)
-```
-
 ## Особенности UnderlinedTextView
 
 Отдельным особняком в данном каталоге стоит такое поле, как `UnderlinedTextView`. На данный момент это пока единственная обертка над `UITextView`.
@@ -460,22 +446,16 @@ return formatter.format(string: text)
 
 ### MaskTextFieldFormatter
 
-Данный класс можно использовать сам по себе, без привязки к полю ввода. В частности, можно написать подобную обертку:
+Можно использовать форматтеры текстовых полей для форматирования текста. Для этого необходимо инициализировать объект класса `MaskTextFieldFormatter` и вызвать метод `format`.
 
-````swift
-final class TextFormatter {
+Пример использования: 
 
-    func formatText(_ text: String?, mask: String) -> String? {
-        let textField = UITextField()
-        let formatter = MaskTextFieldFormatter(mask: mask)
-        formatter.format(string: text, field: textField)
-        return textField.text
-    }
+```swift
+let formatter = MaskTextFieldFormatter(mask: mask)
+return formatter.format(string: text)
+```
 
-}
-````
-
-Данный класс отвечает за преобразование строки к определенному виду в соответствие с маской. К примеру, у вас есть номер телефона "9129999999", тогда данный класс вместе с нужной маской вполне смогут привести его к виду "+7 (912) 999-99-99".
+Данный код отвечает за преобразование строки к определенному виду в соответствие с маской. К примеру, у вас есть номер телефона "9129999999", тогда данный класс вместе с нужной маской вполне смогут привести его к виду "+7 (912) 999-99-99".
 
 ## Кастомизация
 
