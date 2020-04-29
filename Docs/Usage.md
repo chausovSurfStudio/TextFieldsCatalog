@@ -7,7 +7,6 @@
 - [Замыкания](#Замыкания)
 - [HeightLayoutPolicy](#HeightLayoutPolicy)
 - [ValidationPolicy](#ValidationPolicy)
-- [NativePlaceholder](#NativePlaceholder)
 - [TextFieldMode](#TextFieldMode)
 - [Кастомные клавиатуры и переключение полей](#Кастомные-клавиатуры-и-переключение-полей)
 	- [DatePickerView](#DatePickerView)
@@ -23,6 +22,7 @@
 	- [InnerTextField](#InnerTextField)
 	- [MaskTextFieldFormatter](#MaskTextFieldFormatter)
 - [Кастомизация](#Кастомизация)
+- [Заметки разработчика](#Заметки-разработчика)
 
 ## Существующие типы полей
 
@@ -460,3 +460,7 @@ return formatter.format(string: text)
 ## Кастомизация
 
 В следующем [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
+
+## Заметки разработчика
+
+В данном [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/DevNotes.md) собрана вспомогательная информация, полученная во время разработки - мысли, заметки, и тд. Все, что поможет в будущем понять тот или иной кусок логики.
