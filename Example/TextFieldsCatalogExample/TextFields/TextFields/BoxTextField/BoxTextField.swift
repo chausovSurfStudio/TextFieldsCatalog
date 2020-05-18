@@ -37,6 +37,19 @@ final class BoxTextField: UnderlinedTextField {
         configureContainer()
     }
 
+    // MARK: - Internal Methods
+
+    func configure(supportPlaceholder: String) {
+        let placeholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                               height: 24,
+                                                               insets: UIEdgeInsets(top: 67, left: 32, bottom: 0, right: 32),
+                                                               colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
+                                                               behavior: .hideOnFocus,
+                                                               useAsMainPlaceholder: true,
+                                                               increasedRightPadding: 32)
+        configure(supportPlaceholder: supportPlaceholder, configuration: placeholderConfig)
+    }
+
 }
 
 // MARK: - Configure
@@ -51,15 +64,11 @@ private extension BoxTextField {
                                                cornerRadius: 0,
                                                superview: nil,
                                                colors: ColorConfiguration(color: UIColor.clear))
-        configuration.placeholder = FloatingPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
-                                                                     height: 19,
-                                                                     topInsets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
-                                                                     bottomInsets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
-                                                                     increasedRightPadding: 16,
-                                                                     smallFontSize: 14,
-                                                                     bigFontSize: 14,
-                                                                     topColors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
-                                                                     bottomColors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
+        let placeholderConfig = StaticPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                                                               height: 19,
+                                                               insets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
+                                                               colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
+        configuration.placeholder = .static(config: placeholderConfig)
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                          defaultPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
                                                          increasedPadding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 56),

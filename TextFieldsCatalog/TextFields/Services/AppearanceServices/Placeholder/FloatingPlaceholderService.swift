@@ -6,11 +6,7 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class FloatingPlaceholderService {
-
-    // MARK: - Properties
-
-    var useIncreasedRightPadding = false
+final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
@@ -30,11 +26,9 @@ final class FloatingPlaceholderService {
         self.configuration = configuration
     }
 
-    // MARK: - Internal Methods
+    // MARK: - AbstractPlaceholderService
 
-    func setup(configuration: FloatingPlaceholderConfiguration) {
-        self.configuration = configuration
-    }
+    var useIncreasedRightPadding = false
 
     func setup(placeholder: String?) {
         self.placeholder.string = placeholder
@@ -53,20 +47,14 @@ final class FloatingPlaceholderService {
     }
 
     func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState,
-                       isNativePlaceholder: Bool) {
+                       containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+        updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
-        updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
     }
 
-    func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
-        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
-    }
-
-    func updatePlaceholderFrame(isNativePlaceholder: Bool, fieldState: FieldState) {
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+    func updatePlaceholderFrame(fieldState: FieldState) {
+        updatePlaceholderPosition(fieldState: fieldState)
     }
 
 }
@@ -88,10 +76,7 @@ private extension FloatingPlaceholderService {
         placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition(isNativePlaceholder: Bool, fieldState: FieldState) {
-        guard !isNativePlaceholder else {
-            return
-        }
+    func updatePlaceholderPosition(fieldState: FieldState) {
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition(fieldState: fieldState)
         placeholder.frame = endPosition

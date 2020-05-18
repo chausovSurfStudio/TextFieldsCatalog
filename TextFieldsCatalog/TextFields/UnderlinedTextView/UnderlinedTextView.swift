@@ -50,9 +50,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     // MARK: - Services
 
     private var fieldService: FieldService?
-    private var placeholderService: FloatingPlaceholderService?
     private var hintService: HintService?
     private var lineService: LineService?
+    private var placeholderService: AbstractPlaceholderService?
 
     // MARK: - Properties
 
@@ -70,7 +70,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
-    public var isNativePlaceholder = false
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -188,7 +187,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         error = false
         updateUI()
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
     }
 
     /// Reset only error state and update all UI elements
@@ -249,23 +247,25 @@ private extension UnderlinedTextView {
         fieldService = FieldService(field: textView,
                                     configuration: configuration.textField,
                                     backgroundConfiguration: configuration.background)
-        placeholderService = FloatingPlaceholderService(superview: self,
-                                                        field: textView,
-                                                        configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
                                   heightLayoutPolicy: .flexible(0, 0))
         lineService = LineService(superview: self,
                                   field: textView,
                                   configuration: configuration.line)
+        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
+                                                                 superview: self,
+                                                                 field: textView)
     }
 
     func configureAppearance() {
         fieldService?.setup(configuration: configuration.textField,
                             backgroundConfiguration: configuration.background)
-        placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
+        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
+                                                                 superview: self,
+                                                                 field: textView)
 
         fieldService?.configureBackground()
         fieldService?.configure(textView: textView)
@@ -326,9 +326,9 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     public func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         removeError()
         performOnTextChangedCall()
+        placeholderService?.updatePlaceholderVisibility(fieldState: state)
     }
 
 }
@@ -341,8 +341,7 @@ private extension UnderlinedTextView {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
         placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState,
-                                          isNativePlaceholder: isNativePlaceholder)
+                                          containerState: containerState)
 
         updateViewHeight()
 

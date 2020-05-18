@@ -99,6 +99,7 @@
 		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		90D3778821FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */; };
 		90D3778A21FB3F730068F5F8 /* CustomUnderlinedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */; };
+		90F4870C2458A5B800931146 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4870B2458A5B800931146 /* UnderlinedTextField.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */; };
 		940C82E87B01A75021D62269 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 909975A8C366F00524A7937F /* MainViewController.xib */; };
@@ -244,6 +245,7 @@
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
 		90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUnderlinedTextField.xib; sourceTree = "<group>"; };
 		90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
+		90F4870B2458A5B800931146 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		9556DEEEFB2EB82141DAB99A /* ExamplesViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesViewInput.swift; sourceTree = "<group>"; };
 		979D3C66746F3E77F7B7C61A /* ExamplesModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesModuleInput.swift; sourceTree = "<group>"; };
 		AA96401BD5D56186C0F4D774 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				90BD758123CA1C22006A579C /* InputViews */,
 				9082577623C36B51000767EB /* BoxTextField */,
 				90D3778621FB3F320068F5F8 /* CustomUnderlinedTextField */,
+				90F4870A2458A59500931146 /* UnderlinedTextField */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -807,6 +810,14 @@
 				90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */,
 			);
 			path = CustomUnderlinedTextField;
+			sourceTree = "<group>";
+		};
+		90F4870A2458A59500931146 /* UnderlinedTextField */ = {
+			isa = PBXGroup;
+			children = (
+				90F4870B2458A5B800931146 /* UnderlinedTextField.swift */,
+			);
+			path = UnderlinedTextField;
 			sourceTree = "<group>";
 		};
 		92363513AD4BDB3330A97626 /* Frameworks */ = {
@@ -1149,6 +1160,7 @@
 				90736C7121F87EAD003B8B78 /* UIColor.swift in Sources */,
 				909F25A1229C3DD7006926E7 /* FormatterMasks.swift in Sources */,
 				90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */,
+				90F4870C2458A5B800931146 /* UnderlinedTextField.swift in Sources */,
 				90736C9721F88CF2003B8B78 /* MainCoordinatorOutput.swift in Sources */,
 				90736C8821F88B0A003B8B78 /* Presentable.swift in Sources */,
 				904A19C121F9FAC200B9A846 /* UnderlinedFieldPreset.swift in Sources */,
