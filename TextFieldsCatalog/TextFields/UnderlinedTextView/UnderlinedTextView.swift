@@ -77,6 +77,14 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var onShouldReturn: ((UnderlinedTextView) -> Void)?
     public var onValidateFail: ((UnderlinedTextView) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
+    public var toolbarView: UIView? {
+        get {
+            return textView.inputAccessoryView
+        }
+        set {
+            textView.inputAccessoryView = newValue
+        }
+    }
 
     // MARK: - Initialization
 
