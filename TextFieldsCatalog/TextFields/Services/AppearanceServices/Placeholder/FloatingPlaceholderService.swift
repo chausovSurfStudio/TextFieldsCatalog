@@ -11,24 +11,31 @@ final class FloatingPlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
-    private let superview: InnerDesignableView
-    private let field: InputField?
-
+    private var superview: UIView?
+    private var field: InputField?
     private var configuration: FloatingPlaceholderConfiguration
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         field: InputField?,
-         configuration: FloatingPlaceholderConfiguration) {
-        self.superview = superview
-        self.field = field
+    init(configuration: FloatingPlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
     var useIncreasedRightPadding = false
+
+    func provide(superview: UIView, field: InputField?) {
+        self.superview = superview
+        self.field = field
+    }
+
+    func setup(configuration: Any) {
+        guard let config = configuration as? FloatingPlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
+    }
 
     func setup(placeholder: String?) {
         self.placeholder.string = placeholder
@@ -43,7 +50,7 @@ final class FloatingPlaceholderService: AbstractPlaceholderService {
         placeholder.contentsScale = UIScreen.main.scale
         placeholder.frame = placeholderPosition(fieldState: fieldState)
         placeholder.truncationMode = CATextLayerTruncationMode.end
-        superview.layer.addSublayer(placeholder)
+        superview?.layer.addSublayer(placeholder)
     }
 
     func updateContent(fieldState: FieldState,
@@ -123,12 +130,15 @@ private extension FloatingPlaceholderService {
     }
 
     func placeholderPosition(fieldState: FieldState) -> CGRect {
+        guard let superview = superview else {
+            return .zero
+        }
         let placeholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
         var targetInsets = placeholderOnTop ? configuration.topInsets : configuration.bottomInsets
         if useIncreasedRightPadding {
             targetInsets.right = configuration.increasedRightPadding
         }
-        var placeholderFrame = superview.view.bounds.inset(by: targetInsets)
+        var placeholderFrame = superview.bounds.inset(by: targetInsets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

@@ -57,8 +57,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var fieldService: FieldService?
     private var lineService: LineService?
     private var hintService: HintService?
-    private var placeholderService: AbstractPlaceholderService?
-    private var supportPlaceholderService: AbstractPlaceholderService?
+    private var placeholderServices: [AbstractPlaceholderService]?
 
     // MARK: - Properties
 
@@ -171,9 +170,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     // MARK: - Public Methods
 
-    /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
-    public func configure(placeholder: String?, maxLength: Int?) {
-        placeholderService?.setup(placeholder: placeholder)
+    /// Allows you to install maximum allowed length of input string
+    public func configure(maxLength: Int?) {
         self.maxLength = maxLength
     }
 
@@ -202,17 +200,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.textContentType = contentType
     }
 
-    /// Allows you to setup support placeholder,
-    /// but you have to provide configuration for it
-    public func configure(supportPlaceholder: String, configuration: NativePlaceholderConfiguration) {
-        supportPlaceholderService = PlaceholderServiceFactory().produce(type: .native(config: configuration),
-                                                                        superview: self,
-                                                                        field: textField)
-        supportPlaceholderService?.configurePlaceholder(fieldState: state,
-                                                        containerState: containerState)
-        supportPlaceholderService?.setup(placeholder: supportPlaceholder)
-    }
-
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
@@ -235,9 +222,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
-        for var service in [placeholderService, supportPlaceholderService] {
-            service?.useIncreasedRightPadding = !actionButton.isHidden
-            service?.updatePlaceholderFrame(fieldState: state)
+        for var service in placeholderServices ?? [] {
+            service.useIncreasedRightPadding = !actionButton.isHidden
+            service.updatePlaceholderFrame(fieldState: state)
         }
     }
 
@@ -384,9 +371,6 @@ private extension UnderlinedTextField {
         lineService = LineService(superview: self,
                                   field: textField,
                                   configuration: configuration.line)
-        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
-                                                                 superview: self,
-                                                                 field: textField)
     }
 
     func configureAppearance() {
@@ -394,17 +378,17 @@ private extension UnderlinedTextField {
                             backgroundConfiguration: configuration.background)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
-        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
-                                                                 superview: self,
-                                                                 field: textField)
+        for service in placeholderServices ?? [] {
+            service.provide(superview: self.view, field: textField)
+        }
 
         fieldService?.configureBackground()
         fieldService?.configure(textField: textField)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
-        for service in [placeholderService, supportPlaceholderService] {
-            service?.configurePlaceholder(fieldState: state,
-                                          containerState: containerState)
+        for service in placeholderServices ?? [] {
+            service.configurePlaceholder(fieldState: state,
+                                         containerState: containerState)
         }
 
         configureActionButton()
@@ -437,8 +421,9 @@ private extension UnderlinedTextField {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(fieldState: state)
-        supportPlaceholderService?.updatePlaceholderVisibility(fieldState: state)
+        for service in placeholderServices ?? [] {
+            service.updatePlaceholderVisibility(fieldState: state)
+        }
     }
 
 }
@@ -496,8 +481,9 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
-        placeholderService?.updatePlaceholderVisibility(fieldState: state)
-        supportPlaceholderService?.updatePlaceholderVisibility(fieldState: state)
+        for service in placeholderServices ?? [] {
+            service.updatePlaceholderVisibility(fieldState: state)
+        }
     }
 
 }
@@ -560,8 +546,9 @@ private extension UnderlinedTextField {
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
-        placeholderService?.updateContent(fieldState: state, containerState: containerState)
-        supportPlaceholderService?.updateContent(fieldState: state, containerState: containerState)
+        for service in placeholderServices ?? [] {
+            service.updateContent(fieldState: state, containerState: containerState)
+        }
 
         updateViewHeight()
         updatePasswordButtonVisibility()

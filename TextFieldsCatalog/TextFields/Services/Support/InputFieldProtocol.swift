@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol InputField: UIView {
+public protocol InputField: UIView {
     var inputText: String? { get }
     var textColor: UIColor? { get set }
     var backgroundColor: UIColor? { get set }
 }
 
 extension InnerTextField: InputField {
-    var inputText: String? {
+    public var inputText: String? {
         return text
     }
 }
 
 extension UITextView: InputField {
-    var inputText: String? {
+    public var inputText: String? {
         return text
     }
 }

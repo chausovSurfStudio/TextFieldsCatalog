@@ -11,15 +11,12 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private let superview: InnerDesignableView
-
+    private var superview: UIView?
     private var configuration: StaticPlaceholderConfiguration
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         configuration: StaticPlaceholderConfiguration) {
-        self.superview = superview
+    init(configuration: StaticPlaceholderConfiguration) {
         self.configuration = configuration
     }
 
@@ -27,6 +24,17 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // this value doesn't uses in this service
     var useIncreasedRightPadding = false
+
+    func provide(superview: UIView, field: InputField?) {
+        self.superview = superview
+    }
+
+    func setup(configuration: Any) {
+        guard let config = configuration as? StaticPlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
+    }
 
     func setup(placeholder: String?) {
         self.placeholder.text = placeholder
@@ -39,7 +47,7 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
         placeholder.textColor = configuration.colors.suitableColor(state: containerState)
         placeholder.frame = placeholderPosition()
         placeholder.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        superview.addSubview(placeholder)
+        superview?.addSubview(placeholder)
     }
 
     func updateContent(fieldState: FieldState,
@@ -54,7 +62,10 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
 private extension StaticPlaceholderService {
 
     func placeholderPosition() -> CGRect {
-        var placeholderFrame = superview.view.bounds.inset(by: configuration.insets)
+        guard let superview = superview else {
+            return .zero
+        }
+        var placeholderFrame = superview.bounds.inset(by: configuration.insets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

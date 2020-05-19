@@ -52,7 +52,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var fieldService: FieldService?
     private var hintService: HintService?
     private var lineService: LineService?
-    private var placeholderService: AbstractPlaceholderService?
+    private var placeholderServices: [AbstractPlaceholderService]?
 
     // MARK: - Properties
 
@@ -118,9 +118,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Public Methods
 
-    /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string length
-    public func configure(placeholder: String?, maxLength: Int?) {
-        placeholderService?.setup(placeholder: placeholder)
+    /// Allows you to install maximum allowed length of input string
+    public func configure(maxLength: Int?) {
         self.maxLength = maxLength
     }
 
@@ -261,9 +260,6 @@ private extension UnderlinedTextView {
         lineService = LineService(superview: self,
                                   field: textView,
                                   configuration: configuration.line)
-        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
-                                                                 superview: self,
-                                                                 field: textView)
     }
 
     func configureAppearance() {
@@ -271,16 +267,18 @@ private extension UnderlinedTextView {
                             backgroundConfiguration: configuration.background)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
-        placeholderService = PlaceholderServiceFactory().produce(type: configuration.placeholder,
-                                                                 superview: self,
-                                                                 field: textView)
+        for service in placeholderServices ?? [] {
+            service.provide(superview: self.view, field: textView)
+        }
 
         fieldService?.configureBackground()
         fieldService?.configure(textView: textView)
-        placeholderService?.configurePlaceholder(fieldState: state,
-                                                 containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+        for service in placeholderServices ?? [] {
+            service.configurePlaceholder(fieldState: state,
+                                         containerState: containerState)
+        }
 
         configureClearButton()
         textView.delegate = self
@@ -336,7 +334,9 @@ extension UnderlinedTextView: UITextViewDelegate {
         updateClearButtonVisibility()
         removeError()
         performOnTextChangedCall()
-        placeholderService?.updatePlaceholderVisibility(fieldState: state)
+        for service in placeholderServices ?? [] {
+            service.updatePlaceholderVisibility(fieldState: state)
+        }
     }
 
 }
@@ -348,11 +348,11 @@ private extension UnderlinedTextView {
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
-        placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState)
+        for service in placeholderServices ?? [] {
+            service.updateContent(fieldState: state, containerState: containerState)
+        }
 
         updateViewHeight()
-
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .frame)

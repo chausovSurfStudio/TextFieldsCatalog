@@ -11,24 +11,31 @@ final class NativePlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private let superview: InnerDesignableView
-    private let field: InputField?
-
+    private var superview: UIView?
+    private var field: InputField?
     private var configuration: NativePlaceholderConfiguration
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         field: InputField?,
-         configuration: NativePlaceholderConfiguration) {
-        self.superview = superview
-        self.field = field
+    init(configuration: NativePlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
     var useIncreasedRightPadding = false
+
+    func provide(superview: UIView, field: InputField?) {
+        self.superview = superview
+        self.field = field
+    }
+
+    func setup(configuration: Any) {
+        guard let config = configuration as? NativePlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
+    }
 
     func setup(placeholder: String?) {
         self.placeholder.text = placeholder
@@ -41,7 +48,7 @@ final class NativePlaceholderService: AbstractPlaceholderService {
         placeholder.textColor = configuration.colors.suitableColor(state: containerState)
         placeholder.frame = placeholderPosition()
         placeholder.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        superview.addSubview(placeholder)
+        superview?.addSubview(placeholder)
     }
 
     func updateContent(fieldState: FieldState,
@@ -76,11 +83,14 @@ final class NativePlaceholderService: AbstractPlaceholderService {
 private extension NativePlaceholderService {
 
     func placeholderPosition() -> CGRect {
+        guard let superview = superview else {
+            return .zero
+        }
         var insets = configuration.insets
         if useIncreasedRightPadding {
             insets.right = configuration.increasedRightPadding
         }
-        var placeholderFrame = superview.view.bounds.inset(by: insets)
+        var placeholderFrame = superview.bounds.inset(by: insets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

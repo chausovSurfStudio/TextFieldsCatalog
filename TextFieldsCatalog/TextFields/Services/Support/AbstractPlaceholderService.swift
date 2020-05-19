@@ -6,13 +6,17 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-protocol AbstractPlaceholderService {
+public protocol AbstractPlaceholderService {
 
     // MARK: - Properties
 
     var useIncreasedRightPadding: Bool { get set }
 
     // MARK: - Methods
+
+    func provide(superview: UIView, field: InputField?)
+
+    func setup(configuration: Any)
 
     func setup(placeholder: String?)
 
