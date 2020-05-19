@@ -14,7 +14,6 @@ public class BaseFieldConfiguration {
 
     public var textField: TextFieldConfiguration
     public var line: LineConfiguration
-    public var placeholders: [AbstractPlaceholderService]
     public var hint: HintConfiguration
     public var background: BackgroundConfiguration
 
@@ -22,12 +21,10 @@ public class BaseFieldConfiguration {
 
     init(textField: TextFieldConfiguration,
          line: LineConfiguration,
-         placeholders: [AbstractPlaceholderService],
          hint: HintConfiguration,
          background: BackgroundConfiguration) {
         self.textField = textField
         self.line = line
-        self.placeholders = placeholders
         self.hint = hint
         self.background = background
     }
@@ -67,7 +64,6 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                                 active: Color.Text.gray,
                                                                 disabled: Color.Text.gray))
         let background = BackgroundConfiguration(color: Color.Main.background)
-        let placeholder = FloatingPlaceholderService(configuration: .defaultForTextField)
 
         passwordMode = PasswordModeConfiguration(secureModeOnImage: AssetManager().getImage("eyeOn"),
                                                  secureModeOffImage: AssetManager().getImage("eyeOff"),
@@ -75,7 +71,6 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                  pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   placeholders: [placeholder],
                    hint: hint,
                    background: background)
     }
@@ -115,14 +110,12 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
                                                                 active: Color.Text.gray,
                                                                 disabled: Color.Text.gray))
         let background = BackgroundConfiguration(color: Color.Main.background)
-        let palceholder = FloatingPlaceholderService(configuration: .defaultForTextView)
 
         clearButton = ActionButtonConfiguration(image: AssetManager().getImage("close"),
                                                 normalColor: Color.Button.active,
                                                 pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   placeholders: [palceholder],
                    hint: hint,
                    background: background)
     }

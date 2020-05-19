@@ -48,11 +48,6 @@ private extension SumTextField {
                                                                           normal: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5),
                                                                           active: Color.UnderlineTextField.tint,
                                                                           disabled: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5)))
-        let placeholderConfig = StaticPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
-                                                               height: 20,
-                                                               insets: UIEdgeInsets(top: 3, left: 16, bottom: 0, right: 16),
-                                                               colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
-        configuration.placeholders = [StaticPlaceholderService(configuration: placeholderConfig)]
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 50, weight: .regular),
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets.zero,
@@ -62,8 +57,14 @@ private extension SumTextField {
                                                                                     active: Color.UnderlineTextField.text,
                                                                                     disabled: Color.UnderlineTextField.placeholder))
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
-
         self.configuration = configuration
+
+        let placeholderConfig = StaticPlaceholderConfiguration(font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                                                               height: 20,
+                                                               insets: UIEdgeInsets(top: 3, left: 16, bottom: 0, right: 16),
+                                                               colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
+        self.setup(placeholderServices: [StaticPlaceholderService(configuration: placeholderConfig)])
+
         self.heightLayoutPolicy = .flexible(112, 5)
         self.validationPolicy = .afterChanges
         self.textVerticalAlignment = .bottom

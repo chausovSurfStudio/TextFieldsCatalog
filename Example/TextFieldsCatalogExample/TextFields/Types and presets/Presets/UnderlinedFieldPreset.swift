@@ -196,9 +196,9 @@ private extension UnderlinedFieldPreset {
         }
 
         if let boxTextField = textField as? BoxTextField {
-//            boxTextField.configure(supportPlaceholder: "XX XXX-XXX")
+            boxTextField.configure(supportPlaceholder: "XX XXX-XXX")
         } else if type(of: textField) == UnderlinedTextField.self {
-//            textField.setup(supportPlaceholder: "XX XXX-XXX")
+            textField.setup(supportPlaceholder: "XX XXX-XXX")
         }
     }
 

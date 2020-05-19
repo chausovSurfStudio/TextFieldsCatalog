@@ -57,13 +57,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var fieldService: FieldService?
     private var lineService: LineService?
     private var hintService: HintService?
-    private var placeholderServices: [AbstractPlaceholderService] = []
+    private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
     // MARK: - Properties
 
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
-            placeholderServices = configuration.placeholders
             configureAppearance()
             updateUI()
         }
@@ -141,7 +140,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        placeholderServices = configuration.placeholders
         configureServices()
         configureAppearance()
     }
@@ -154,7 +152,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     override open func awakeFromNib() {
         super.awakeFromNib()
-        placeholderServices = configuration.placeholders
         configureServices()
         configureAppearance()
     }
@@ -172,6 +169,26 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     // MARK: - Public Methods
+
+    /// Allows you to change placeholder services for text field
+    public func setup(placeholderServices: [AbstractPlaceholderService]) {
+        self.placeholderServices = placeholderServices
+        for service in placeholderServices {
+            service.provide(superview: self.view, field: textField)
+            service.configurePlaceholder(fieldState: state,
+                                         containerState: containerState)
+            service.updateContent(fieldState: state, containerState: containerState)
+        }
+    }
+
+    /// Allows you to add new placeholder service
+    public func add(placeholderService service: AbstractPlaceholderService) {
+        service.provide(superview: self.view, field: textField)
+        service.configurePlaceholder(fieldState: state,
+                                     containerState: containerState)
+        service.updateContent(fieldState: state, containerState: containerState)
+        placeholderServices.append(service)
+    }
 
     /// Allows you to install placeholder in first placeholder service.
     /// If you will use more than one service - install placeholder to it manually.
