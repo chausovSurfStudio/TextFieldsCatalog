@@ -6,7 +6,7 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class NativePlaceholderService: AbstractPlaceholderService {
+public final class NativePlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
@@ -17,31 +17,31 @@ final class NativePlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Initialization
 
-    init(configuration: NativePlaceholderConfiguration) {
+    public init(configuration: NativePlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
-    var useIncreasedRightPadding = false
+    public var useIncreasedRightPadding = false
 
-    func provide(superview: UIView, field: InputField?) {
+    public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
         self.field = field
     }
 
-    func setup(configuration: Any) {
+    public func setup(configuration: Any) {
         guard let config = configuration as? NativePlaceholderConfiguration else {
             return
         }
         self.configuration = config
     }
 
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = ""
         placeholder.font = configuration.font
@@ -51,17 +51,17 @@ final class NativePlaceholderService: AbstractPlaceholderService {
         superview?.addSubview(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
         updatePlaceholderVisibility(fieldState: fieldState)
     }
 
-    func updatePlaceholderFrame(fieldState: FieldState) {
+    public func updatePlaceholderFrame(fieldState: FieldState) {
         placeholder.frame = placeholderPosition()
     }
 
-    func updatePlaceholderVisibility(fieldState: FieldState) {
+    public func updatePlaceholderVisibility(fieldState: FieldState) {
         guard textIsEmpty() else {
             setupPlaceholderVisibility(isVisible: false)
             return

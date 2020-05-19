@@ -6,7 +6,7 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class StaticPlaceholderService: AbstractPlaceholderService {
+public final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
@@ -16,31 +16,31 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Initialization
 
-    init(configuration: StaticPlaceholderConfiguration) {
+    public init(configuration: StaticPlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
     // this value doesn't uses in this service
-    var useIncreasedRightPadding = false
+    public var useIncreasedRightPadding = false
 
-    func provide(superview: UIView, field: InputField?) {
+    public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
     }
 
-    func setup(configuration: Any) {
+    public func setup(configuration: Any) {
         guard let config = configuration as? StaticPlaceholderConfiguration else {
             return
         }
         self.configuration = config
     }
 
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = ""
         placeholder.font = configuration.font
@@ -50,8 +50,8 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
         superview?.addSubview(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
     }
 

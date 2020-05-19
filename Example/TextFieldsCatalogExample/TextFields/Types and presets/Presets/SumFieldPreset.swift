@@ -47,7 +47,8 @@ private extension SumFieldPreset {
     }
 
     func tuneFieldForSum(_ textField: SumTextField, heightConstraint: NSLayoutConstraint) {
-        textField.configure(placeholder: "Сумма", maxLength: 14)
+        textField.configure(placeholder: "Сумма")
+        textField.configure(maxLength: 14)
         textField.configure(correction: .no, keyboardType: .decimalPad)
         textField.configure(heightConstraint: heightConstraint)
         textField.setHint("Введите сумму")

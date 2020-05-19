@@ -6,7 +6,7 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class FloatingPlaceholderService: AbstractPlaceholderService {
+public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
@@ -17,31 +17,31 @@ final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Initialization
 
-    init(configuration: FloatingPlaceholderConfiguration) {
+    public init(configuration: FloatingPlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
-    var useIncreasedRightPadding = false
+    public var useIncreasedRightPadding = false
 
-    func provide(superview: UIView, field: InputField?) {
+    public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
         self.field = field
     }
 
-    func setup(configuration: Any) {
+    public func setup(configuration: Any) {
         guard let config = configuration as? FloatingPlaceholderConfiguration else {
             return
         }
         self.configuration = config
     }
 
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.string = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperlayer()
         placeholder.string = ""
         placeholder.font = configuration.font
@@ -53,14 +53,14 @@ final class FloatingPlaceholderService: AbstractPlaceholderService {
         superview?.layer.addSublayer(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
         updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
     }
 
-    func updatePlaceholderFrame(fieldState: FieldState) {
+    public func updatePlaceholderFrame(fieldState: FieldState) {
         updatePlaceholderPosition(fieldState: fieldState)
     }
 

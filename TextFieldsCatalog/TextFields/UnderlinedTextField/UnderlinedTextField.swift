@@ -57,12 +57,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var fieldService: FieldService?
     private var lineService: LineService?
     private var hintService: HintService?
-    private var placeholderServices: [AbstractPlaceholderService]?
+    private var placeholderServices: [AbstractPlaceholderService] = []
 
     // MARK: - Properties
 
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
+            placeholderServices = configuration.placeholders
             configureAppearance()
             updateUI()
         }
@@ -140,6 +141,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
+        placeholderServices = configuration.placeholders
         configureServices()
         configureAppearance()
     }
@@ -152,6 +154,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
     override open func awakeFromNib() {
         super.awakeFromNib()
+        placeholderServices = configuration.placeholders
         configureServices()
         configureAppearance()
     }
@@ -169,6 +172,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
 
     // MARK: - Public Methods
+
+    /// Allows you to install placeholder in first placeholder service.
+    /// If you will use more than one service - install placeholder to it manually.
+    public func configure(placeholder: String?) {
+        self.placeholderServices.first?.setup(placeholder: placeholder)
+    }
 
     /// Allows you to install maximum allowed length of input string
     public func configure(maxLength: Int?) {
@@ -222,7 +231,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
-        for var service in placeholderServices ?? [] {
+        for var service in placeholderServices {
             service.useIncreasedRightPadding = !actionButton.isHidden
             service.updatePlaceholderFrame(fieldState: state)
         }
@@ -378,7 +387,7 @@ private extension UnderlinedTextField {
                             backgroundConfiguration: configuration.background)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
-        for service in placeholderServices ?? [] {
+        for service in placeholderServices {
             service.provide(superview: self.view, field: textField)
         }
 
@@ -386,7 +395,7 @@ private extension UnderlinedTextField {
         fieldService?.configure(textField: textField)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
-        for service in placeholderServices ?? [] {
+        for service in placeholderServices {
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
         }
@@ -421,7 +430,7 @@ private extension UnderlinedTextField {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
-        for service in placeholderServices ?? [] {
+        for service in placeholderServices {
             service.updatePlaceholderVisibility(fieldState: state)
         }
     }
@@ -481,7 +490,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
-        for service in placeholderServices ?? [] {
+        for service in placeholderServices {
             service.updatePlaceholderVisibility(fieldState: state)
         }
     }
@@ -546,7 +555,7 @@ private extension UnderlinedTextField {
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
-        for service in placeholderServices ?? [] {
+        for service in placeholderServices {
             service.updateContent(fieldState: state, containerState: containerState)
         }
 

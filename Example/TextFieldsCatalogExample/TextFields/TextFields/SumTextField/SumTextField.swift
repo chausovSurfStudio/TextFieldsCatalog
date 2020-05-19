@@ -52,7 +52,7 @@ private extension SumTextField {
                                                                height: 20,
                                                                insets: UIEdgeInsets(top: 3, left: 16, bottom: 0, right: 16),
                                                                colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
-        configuration.placeholder = .static(config: placeholderConfig)
+        configuration.placeholders = [StaticPlaceholderService(configuration: placeholderConfig)]
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 50, weight: .regular),
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets.zero,

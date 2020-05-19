@@ -47,7 +47,8 @@ private extension UnderlinedTextViewPreset {
     }
 
     func tuneFieldForComment(_ textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
-        textView.configure(placeholder: L10n.Presets.Comment.placeholder, maxLength: 200)
+        textView.configure(placeholder: L10n.Presets.Comment.placeholder)
+        textView.configure(maxLength: 200)
         textView.configure(correction: .no, keyboardType: .default)
         textView.configure(heightConstraint: heightConstraint)
         textView.setHint(L10n.Presets.Comment.hint)

@@ -58,7 +58,7 @@ private extension CustomUnderlinedTextField {
                                                                behavior: .hideOnInput,
                                                                useAsMainPlaceholder: true,
                                                                increasedRightPadding: 60)
-        configuration.placeholder = .native(config: placeholderConfig)
+        configuration.placeholders = [NativePlaceholderService(configuration: placeholderConfig)]
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 36),

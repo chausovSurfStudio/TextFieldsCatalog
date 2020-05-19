@@ -35,8 +35,8 @@ public protocol AbstractPlaceholderService {
 
 extension AbstractPlaceholderService {
 
-    func updatePlaceholderFrame(fieldState: FieldState) {}
+    public func updatePlaceholderFrame(fieldState: FieldState) {}
 
-    func updatePlaceholderVisibility(fieldState: FieldState) {}
+    public func updatePlaceholderVisibility(fieldState: FieldState) {}
 
 }
