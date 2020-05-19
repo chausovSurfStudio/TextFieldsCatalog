@@ -248,9 +248,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
                                              normalColor: actionButtonConfig.normalColor,
                                              pressedColor: actionButtonConfig.pressedColor)
         }
-        for var service in placeholderServices {
-            service.useIncreasedRightPadding = !actionButton.isHidden
-            service.updatePlaceholderFrame(fieldState: state)
+        for service in placeholderServices {
+            service.update(useIncreasedRightPadding: !actionButton.isHidden,
+                           fieldState: state)
         }
     }
 
@@ -448,7 +448,7 @@ private extension UnderlinedTextField {
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
-            service.updatePlaceholderVisibility(fieldState: state)
+            service.updateAfterTextChanged(fieldState: state)
         }
     }
 
@@ -508,7 +508,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
-            service.updatePlaceholderVisibility(fieldState: state)
+            service.updateAfterTextChanged(fieldState: state)
         }
     }
 

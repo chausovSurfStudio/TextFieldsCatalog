@@ -98,6 +98,7 @@
 		90CB29C72473EE28001E7563 /* SumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29C62473EE28001E7563 /* SumTextField.swift */; };
 		90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB29C82473EE2F001E7563 /* SumTextField.xib */; };
 		90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CA2473F430001E7563 /* SumFieldPreset.swift */; };
+		90CB29CD247453A2001E7563 /* CurrencyPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */; };
 		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
 		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		90D3778821FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */; };
@@ -246,6 +247,7 @@
 		90CB29C62473EE28001E7563 /* SumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextField.swift; sourceTree = "<group>"; };
 		90CB29C82473EE2F001E7563 /* SumTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SumTextField.xib; sourceTree = "<group>"; };
 		90CB29CA2473F430001E7563 /* SumFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFieldPreset.swift; sourceTree = "<group>"; };
+		90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPlaceholderService.swift; sourceTree = "<group>"; };
 		90D3778221FB21180068F5F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		90D3778421FB2FF80068F5F8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 			children = (
 				90CB29C62473EE28001E7563 /* SumTextField.swift */,
 				90CB29C82473EE2F001E7563 /* SumTextField.xib */,
+				90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */,
 			);
 			path = SumTextField;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				90736CB821F8A000003B8B78 /* CommonTableHeader.swift in Sources */,
 				90736C9321F88CBE003B8B78 /* ApplicationCoordinator.swift in Sources */,
 				904A19B121F9DBA500B9A846 /* AppliedPreset.swift in Sources */,
+				90CB29CD247453A2001E7563 /* CurrencyPlaceholderService.swift in Sources */,
 				90736CB421F89D38003B8B78 /* String.swift in Sources */,
 				904A19B521F9E83100B9A846 /* FieldPresetsAdapter.swift in Sources */,
 				9082578B23C3A859000767EB /* MainTab.swift in Sources */,

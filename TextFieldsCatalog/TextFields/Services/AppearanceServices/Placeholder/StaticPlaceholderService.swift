@@ -22,9 +22,6 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - AbstractPlaceholderService
 
-    // this value doesn't uses in this service
-    public var useIncreasedRightPadding = false
-
     public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
     }

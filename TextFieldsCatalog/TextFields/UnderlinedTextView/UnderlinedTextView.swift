@@ -361,7 +361,7 @@ extension UnderlinedTextView: UITextViewDelegate {
         removeError()
         performOnTextChangedCall()
         for service in placeholderServices {
-            service.updatePlaceholderVisibility(fieldState: state)
+            service.updateAfterTextChanged(fieldState: state)
         }
     }
 

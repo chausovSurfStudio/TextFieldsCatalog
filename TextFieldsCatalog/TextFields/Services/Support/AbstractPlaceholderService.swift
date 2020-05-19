@@ -8,14 +8,11 @@
 
 public protocol AbstractPlaceholderService {
 
-    // MARK: - Properties
-
-    var useIncreasedRightPadding: Bool { get set }
-
     // MARK: - Methods
 
     func provide(superview: UIView, field: InputField?)
 
+    /// Method for inner logic only, you may leave it empty
     func setup(configuration: Any)
 
     func setup(placeholder: String?)
@@ -26,17 +23,17 @@ public protocol AbstractPlaceholderService {
                        containerState: FieldContainerState)
 
     // optional method
-    func updatePlaceholderFrame(fieldState: FieldState)
+    func update(useIncreasedRightPadding: Bool, fieldState: FieldState)
 
     // optional method
-    func updatePlaceholderVisibility(fieldState: FieldState)
+    func updateAfterTextChanged(fieldState: FieldState)
 
 }
 
 extension AbstractPlaceholderService {
 
-    public func updatePlaceholderFrame(fieldState: FieldState) {}
+    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {}
 
-    public func updatePlaceholderVisibility(fieldState: FieldState) {}
+    public func updateAfterTextChanged(fieldState: FieldState) {}
 
 }

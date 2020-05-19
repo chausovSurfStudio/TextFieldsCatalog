@@ -14,6 +14,7 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
     private var superview: UIView?
     private var field: InputField?
     private var configuration: NativePlaceholderConfiguration
+    private var useIncreasedRightPadding = false
 
     // MARK: - Initialization
 
@@ -22,8 +23,6 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
     }
 
     // MARK: - AbstractPlaceholderService
-
-    public var useIncreasedRightPadding = false
 
     public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
@@ -54,14 +53,15 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
     public func updateContent(fieldState: FieldState,
                               containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
-        updatePlaceholderVisibility(fieldState: fieldState)
+        updateAfterTextChanged(fieldState: fieldState)
     }
 
-    public func updatePlaceholderFrame(fieldState: FieldState) {
+    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
+        self.useIncreasedRightPadding = useIncreasedRightPadding
         placeholder.frame = placeholderPosition()
     }
 
-    public func updatePlaceholderVisibility(fieldState: FieldState) {
+    public func updateAfterTextChanged(fieldState: FieldState) {
         guard textIsEmpty() else {
             setupPlaceholderVisibility(isVisible: false)
             return

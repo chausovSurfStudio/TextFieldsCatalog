@@ -14,6 +14,7 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
     private var superview: UIView?
     private var field: InputField?
     private var configuration: FloatingPlaceholderConfiguration
+    private var useIncreasedRightPadding = false
 
     // MARK: - Initialization
 
@@ -22,8 +23,6 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
     }
 
     // MARK: - AbstractPlaceholderService
-
-    public var useIncreasedRightPadding = false
 
     public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
@@ -60,7 +59,8 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
         updatePlaceholderFont(fieldState: fieldState)
     }
 
-    public func updatePlaceholderFrame(fieldState: FieldState) {
+    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
+        self.useIncreasedRightPadding = useIncreasedRightPadding
         updatePlaceholderPosition(fieldState: fieldState)
     }
 
