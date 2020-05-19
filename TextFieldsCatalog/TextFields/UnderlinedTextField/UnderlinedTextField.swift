@@ -110,6 +110,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             textField.isSecureTextEntry = isSecureTextEntry
         }
     }
+    public var toolbarView: UIView? {
+        get {
+            return textField.inputAccessoryView
+        }
+        set {
+            textField.inputAccessoryView = newValue
+        }
+    }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
