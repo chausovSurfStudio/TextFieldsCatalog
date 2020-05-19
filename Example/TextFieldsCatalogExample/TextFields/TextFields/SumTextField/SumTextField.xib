@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SumTextField" customModule="TextFieldsCatalogExample" customModuleProvider="target">
+            <connections>
+                <outlet property="actionButton" destination="ZwW-E5-sBn" id="KD8-yX-Zb0"/>
+                <outlet property="hintLabel" destination="wau-2e-dTL" id="3av-bG-oMH"/>
+                <outlet property="textField" destination="5Tb-Dk-jrc" id="9BI-H7-eAe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tb-Dk-jrc" customClass="InnerTextField" customModule="TextFieldsCatalog">
+                    <rect key="frame" x="16" y="37" width="288" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="2s8-eB-ONL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwW-E5-sBn" customClass="IconButton" customModule="TextFieldsCatalog">
+                    <rect key="frame" x="260" y="42" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="qfn-E9-r3Z"/>
+                        <constraint firstAttribute="height" constant="44" id="w5N-lc-Ery"/>
+                    </constraints>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wau-2e-dTL">
+                    <rect key="frame" x="16" y="107" width="288" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5Tb-Dk-jrc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="37" id="95V-F5-kbe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Tb-Dk-jrc" secondAttribute="trailing" constant="16" id="DJx-2m-lVs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wau-2e-dTL" secondAttribute="trailing" constant="16" id="OO3-gZ-J1y"/>
+                <constraint firstItem="wau-2e-dTL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="XCL-PX-cOg"/>
+                <constraint firstItem="wau-2e-dTL" firstAttribute="top" secondItem="5Tb-Dk-jrc" secondAttribute="bottom" constant="16" id="arZ-xK-9Wm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZwW-E5-sBn" secondAttribute="trailing" constant="16" id="fxe-Wg-agq"/>
+                <constraint firstItem="5Tb-Dk-jrc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mIx-mC-95W"/>
+                <constraint firstItem="ZwW-E5-sBn" firstAttribute="centerY" secondItem="5Tb-Dk-jrc" secondAttribute="centerY" id="vat-bB-ZMV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.25" y="-120.95070422535211"/>
+        </view>
+    </objects>
+</document>

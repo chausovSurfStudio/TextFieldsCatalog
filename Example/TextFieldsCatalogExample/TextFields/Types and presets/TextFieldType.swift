@@ -14,6 +14,7 @@ enum TextFieldType: CaseIterable {
     case box
     case customUnderlined
     case underlinedTextView
+    case sumTextField
 
     var title: String {
         switch self {
@@ -25,6 +26,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Customunderlined.title
         case .underlinedTextView:
             return L10n.Textfieldtype.Underlinedtextview.title
+        case .sumTextField:
+            return "Поле ввода суммы"
         }
     }
 
@@ -38,6 +41,8 @@ enum TextFieldType: CaseIterable {
             return L10n.Textfieldtype.Customunderlined.description
         case .underlinedTextView:
             return L10n.Textfieldtype.Underlinedtextview.description
+        case .sumTextField:
+            return "Пример использования полей для ввода сумм"
         }
     }
 
@@ -47,6 +52,8 @@ enum TextFieldType: CaseIterable {
             return UnderlinedFieldPreset.allCases
         case .underlinedTextView:
             return UnderlinedTextViewPreset.allCases
+        case .sumTextField:
+            return SumFieldPreset.allCases
         }
     }
 
@@ -54,16 +61,15 @@ enum TextFieldType: CaseIterable {
     func createField(for frame: CGRect) -> (UIView, CGFloat) {
         switch self {
         case .underlined:
-            let height: CGFloat = 77
-            let field = UnderlinedTextField(frame: frame)
-            field.heightLayoutPolicy = .flexible(height, 5)
-            return (field, height)
+            return (UnderlinedTextField(frame: frame), 77)
         case .box:
             return (BoxTextField(frame: frame), 130)
         case .customUnderlined:
             return (CustomUnderlinedTextField(frame: frame), 64)
         case .underlinedTextView:
             return (UnderlinedTextView(frame: frame), 77)
+        case .sumTextField:
+            return (SumTextField(frame: frame), 112)
         }
     }
 

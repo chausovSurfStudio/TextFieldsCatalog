@@ -83,7 +83,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
-    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
+    public var heightLayoutPolicy: HeightLayoutPolicy = .flexible(77, 5) {
         didSet {
             hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
             switch heightLayoutPolicy {
@@ -116,6 +116,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         set {
             textField.inputAccessoryView = newValue
+        }
+    }
+    public var textVerticalAlignment: UIControl.ContentVerticalAlignment {
+        get {
+            return textField.contentVerticalAlignment
+        }
+        set {
+            textField.contentVerticalAlignment = newValue
         }
     }
 

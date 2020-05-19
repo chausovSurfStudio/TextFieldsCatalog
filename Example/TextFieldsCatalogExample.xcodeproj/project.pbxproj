@@ -95,6 +95,9 @@
 		90BEBBF223C4B23900991105 /* StorkContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF023C4B23900991105 /* StorkContainerViewController.swift */; };
 		90BEBBF323C4B23900991105 /* StorkContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90BEBBF123C4B23900991105 /* StorkContainerViewController.xib */; };
 		90BEBBF523C4B45800991105 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF423C4B45800991105 /* UIDevice.swift */; };
+		90CB29C72473EE28001E7563 /* SumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29C62473EE28001E7563 /* SumTextField.swift */; };
+		90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB29C82473EE2F001E7563 /* SumTextField.xib */; };
+		90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CA2473F430001E7563 /* SumFieldPreset.swift */; };
 		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
 		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		90D3778821FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */; };
@@ -240,6 +243,9 @@
 		90BEBBF023C4B23900991105 /* StorkContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorkContainerViewController.swift; sourceTree = "<group>"; };
 		90BEBBF123C4B23900991105 /* StorkContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StorkContainerViewController.xib; sourceTree = "<group>"; };
 		90BEBBF423C4B45800991105 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		90CB29C62473EE28001E7563 /* SumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextField.swift; sourceTree = "<group>"; };
+		90CB29C82473EE2F001E7563 /* SumTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SumTextField.xib; sourceTree = "<group>"; };
+		90CB29CA2473F430001E7563 /* SumFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFieldPreset.swift; sourceTree = "<group>"; };
 		90D3778221FB21180068F5F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		90D3778421FB2FF80068F5F8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
@@ -447,6 +453,7 @@
 		904A19A721F9D3C400B9A846 /* Presets */ = {
 			isa = PBXGroup;
 			children = (
+				90CB29CA2473F430001E7563 /* SumFieldPreset.swift */,
 				904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */,
 				909F2583229BF365006926E7 /* UnderlinedTextViewPreset.swift */,
 			);
@@ -477,6 +484,7 @@
 				90BD758123CA1C22006A579C /* InputViews */,
 				9082577623C36B51000767EB /* BoxTextField */,
 				90D3778621FB3F320068F5F8 /* CustomUnderlinedTextField */,
+				90CB29C52473EE08001E7563 /* SumTextField */,
 				90F4870A2458A59500931146 /* UnderlinedTextField */,
 			);
 			path = TextFields;
@@ -803,6 +811,15 @@
 			path = StorkContainerViewController;
 			sourceTree = "<group>";
 		};
+		90CB29C52473EE08001E7563 /* SumTextField */ = {
+			isa = PBXGroup;
+			children = (
+				90CB29C62473EE28001E7563 /* SumTextField.swift */,
+				90CB29C82473EE2F001E7563 /* SumTextField.xib */,
+			);
+			path = SumTextField;
+			sourceTree = "<group>";
+		};
 		90D3778621FB3F320068F5F8 /* CustomUnderlinedTextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1049,7 @@
 				940C82E87B01A75021D62269 /* MainViewController.xib in Resources */,
 				90736CB021F899D8003B8B78 /* CustomTitleView.xib in Resources */,
 				3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */,
+				90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */,
 				90BEBBF323C4B23900991105 /* StorkContainerViewController.xib in Resources */,
 				A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */,
 				EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */,
@@ -1170,6 +1188,7 @@
 				90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */,
 				90736C7521F886B2003B8B78 /* Assets.swift in Sources */,
 				90BD758323CA1C4A006A579C /* InputViews.swift in Sources */,
+				90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */,
 				904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */,
 				9082578723C3A79F000767EB /* InfoCoordinator.swift in Sources */,
 				90736C7E21F88891003B8B78 /* Strings.swift in Sources */,
@@ -1183,6 +1202,7 @@
 				7C0A272FC067CA9C308B9869 /* MainPresenter.swift in Sources */,
 				90A32B9022899AE70036C634 /* Sex.swift in Sources */,
 				9082577823C36B83000767EB /* BoxTextField.swift in Sources */,
+				90CB29C72473EE28001E7563 /* SumTextField.swift in Sources */,
 				9082577F23C3A345000767EB /* MainTabBarCoordinatorOutput.swift in Sources */,
 				90736C8C21F88B3B003B8B78 /* UIApplication.swift in Sources */,
 				6670098EB60FB428E14DB205 /* MainModuleInput.swift in Sources */,
