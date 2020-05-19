@@ -81,7 +81,7 @@ private extension SumTextField {
                                                                      colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
         let supportPlaceholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 50, weight: .regular),
                                                                       height: 54,
-                                                                      insets: UIEdgeInsets(top: 37, left: 16, bottom: 0, right: 16),
+                                                                      insets: UIEdgeInsets(top: 34, left: 16, bottom: 0, right: 16),
                                                                       colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
                                                                       behavior: .hideOnInput,
                                                                       useAsMainPlaceholder: true,
