@@ -42,8 +42,7 @@ final class SumTextField: UnderlinedTextField {
     }
 
     func configure(currencyPlaceholder: String) {
-        let service = CurrencyPlaceholderService(leftOffset: 10,
-                                                 topOffset: 34,
+        let service = CurrencyPlaceholderService(insets: UIEdgeInsets(top: 37, left: 10, bottom: 0, right: 16),
                                                  height: 54,
                                                  font: UIFont.systemFont(ofSize: 50, weight: .regular),
                                                  color: Color.UnderlineTextField.placeholder)
@@ -91,7 +90,7 @@ private extension SumTextField {
                                                                      colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
         let supportPlaceholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 50, weight: .regular),
                                                                       height: 54,
-                                                                      insets: UIEdgeInsets(top: 34, left: 16, bottom: 0, right: 16),
+                                                                      insets: UIEdgeInsets(top: 37, left: 16, bottom: 0, right: 16),
                                                                       colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder),
                                                                       behavior: .hideOnInput,
                                                                       useAsMainPlaceholder: true,
@@ -103,7 +102,6 @@ private extension SumTextField {
 
         self.heightLayoutPolicy = .flexible(112, 5)
         self.validationPolicy = .afterChanges
-        self.textVerticalAlignment = .bottom
     }
 
 }

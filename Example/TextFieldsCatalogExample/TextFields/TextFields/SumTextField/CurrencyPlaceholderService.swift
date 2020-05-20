@@ -13,8 +13,7 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private let leftOffset: CGFloat
-    private let topOffset: CGFloat
+    private let insets: UIEdgeInsets
     private let height: CGFloat
     private let font: UIFont
     private let color: UIColor
@@ -24,16 +23,15 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
     private var textIsEmpty: Bool {
         return field?.inputText?.isEmpty ?? true
     }
+    private var placeholderWidth: CGFloat = 0
 
     // MARK: - Initialization
 
-    init(leftOffset: CGFloat,
-         topOffset: CGFloat,
+    init(insets: UIEdgeInsets,
          height: CGFloat,
          font: UIFont,
          color: UIColor) {
-        self.leftOffset = leftOffset
-        self.topOffset = topOffset
+        self.insets = insets
         self.height = height
         self.font = font
         self.color = color
@@ -48,6 +46,7 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
 
     public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
+        placeholderWidth = calculatePlaceholderWidth()
         updatePlaceholderWidth()
     }
 
@@ -78,25 +77,31 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
 private extension CurrencyPlaceholderService {
 
     func initialPosition() -> CGRect {
-        let width = placeholderWidth()
-        let frame = CGRect(x: 0, y: topOffset, width: width, height: height)
-        return frame
+        return CGRect(x: 0,
+                      y: insets.top,
+                      width: placeholderWidth,
+                      height: height)
     }
 
     func updatePlaceholderOffset() {
         let attributes: [NSAttributedString.Key: Any] = [.font: placeholder.font as Any]
-        let width = (field?.inputText ?? "").width(forHeight: height, attributes: attributes)
-        let xPosition = (field?.frame.minX ?? 0) + width + leftOffset
-        print(xPosition)
+        let textWidth = (field?.inputText ?? "").width(forHeight: height, attributes: attributes)
+        var xPosition = (field?.frame.minX ?? 0) + textWidth + insets.left
+
+        let maxX = xPosition + placeholderWidth
+        let superviewWidth = superview?.bounds.width ?? 0
+        if maxX + insets.right > superviewWidth {
+            xPosition = superviewWidth - insets.right - placeholderWidth
+        }
+
         placeholder.frame.origin.x = xPosition
     }
 
     func updatePlaceholderWidth() {
-        let width = placeholderWidth()
-        placeholder.frame.size = CGSize(width: width, height: placeholder.frame.height)
+        placeholder.frame.size = CGSize(width: placeholderWidth, height: placeholder.frame.height)
     }
 
-    func placeholderWidth() -> CGFloat {
+    func calculatePlaceholderWidth() -> CGFloat {
         let attributes = [NSAttributedString.Key.font: font]
         return (placeholder.text ?? "").width(forHeight: height, attributes: attributes)
     }
