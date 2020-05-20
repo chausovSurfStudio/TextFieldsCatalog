@@ -56,7 +56,7 @@ enum TextFieldType: CaseIterable {
         case .underlined:
             let height: CGFloat = 77
             let field = UnderlinedTextField(frame: frame)
-            field.heightLayoutPolicy = .flexible(height, 5)
+            field.heightLayoutPolicy = .elastic(minHeight: height, bottomSpace: 5, ignoreEmptyHint: false)
             return (field, height)
         case .box:
             return (BoxTextField(frame: frame), 130)
