@@ -69,7 +69,7 @@ enum TextFieldType: CaseIterable {
         case .underlinedTextView:
             return (UnderlinedTextView(frame: frame), 77)
         case .sumTextField:
-            return (SumTextField(frame: frame), 112)
+            return (SumTextField(frame: frame), 102)
         }
     }
 

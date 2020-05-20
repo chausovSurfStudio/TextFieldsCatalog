@@ -92,7 +92,7 @@ private extension BoxTextField {
                                                                insets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
                                                                colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
         self.setup(placeholderServices: [StaticPlaceholderService(configuration: placeholderConfig)])
-        self.heightLayoutPolicy = .flexible(130, 5)
+        self.heightLayoutPolicy = .elastic(minHeight: 130, bottomSpace: 5, ignoreEmptyHint: false)
         self.validationPolicy = .always
     }
 

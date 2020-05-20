@@ -10,7 +10,7 @@ import UIKit
 import TextFieldsCatalog
 
 /// Custom subclass for Underlined text field.
-/// Standart height equals 112.
+/// Standart height equals 102.
 final class SumTextField: UnderlinedTextField {
 
     // MARK: - Private Properties
@@ -100,7 +100,7 @@ private extension SumTextField {
         self.setup(placeholderServices: [StaticPlaceholderService(configuration: staticPlaceholderConfig),
                                          supportPlaceholderService])
 
-        self.heightLayoutPolicy = .flexible(112, 5)
+        self.heightLayoutPolicy = .elastic(minHeight: 102, bottomSpace: 5, ignoreEmptyHint: true)
         self.validationPolicy = .afterChanges
     }
 
