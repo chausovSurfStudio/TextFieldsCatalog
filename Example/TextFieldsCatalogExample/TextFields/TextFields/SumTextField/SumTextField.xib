@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tb-Dk-jrc" customClass="InnerTextField" customModule="TextFieldsCatalog">
-                    <rect key="frame" x="16" y="37" width="288" height="54"/>
+                    <rect key="frame" x="16" y="37" width="254" height="54"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="54" id="2s8-eB-ONL"/>
                     </constraints>
@@ -45,7 +45,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="5Tb-Dk-jrc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="37" id="95V-F5-kbe"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Tb-Dk-jrc" secondAttribute="trailing" constant="16" id="DJx-2m-lVs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Tb-Dk-jrc" secondAttribute="trailing" constant="50" id="DJx-2m-lVs"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wau-2e-dTL" secondAttribute="trailing" constant="16" id="OO3-gZ-J1y"/>
                 <constraint firstItem="wau-2e-dTL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="XCL-PX-cOg"/>
                 <constraint firstItem="wau-2e-dTL" firstAttribute="top" secondItem="5Tb-Dk-jrc" secondAttribute="bottom" constant="16" id="arZ-xK-9Wm"/>

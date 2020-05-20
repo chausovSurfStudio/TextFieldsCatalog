@@ -22,16 +22,6 @@ extension String {
         return ceil(boundingBox.height)
     }
 
-    func width(forHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
-        let rect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: rect,
-                                            options: .usesLineFragmentOrigin,
-                                            attributes: attributes,
-                                            context: nil)
-        return ceil(boundingBox.width)
-    }
-
     func with(lineHeight: CGFloat, font: UIFont, color: UIColor) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineHeight - font.lineHeight
