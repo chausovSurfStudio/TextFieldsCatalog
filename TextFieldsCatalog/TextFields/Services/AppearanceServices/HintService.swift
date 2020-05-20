@@ -95,7 +95,7 @@ private extension HintService {
         case .fixed:
             // update always with animation
             break
-        case .flexible(_, _):
+        case .flexible, .elastic:
             // update with animation on hint appear
             duration = hintIsVisible ? AnimationTime.default : 0
         }
