@@ -26,13 +26,6 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
         self.superview = superview
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? StaticPlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
     public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
@@ -50,6 +43,13 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
     public func updateContent(fieldState: FieldState,
                               containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
+    }
+
+    public func setup(configuration: Any) {
+        guard let config = configuration as? StaticPlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
     }
 
 }

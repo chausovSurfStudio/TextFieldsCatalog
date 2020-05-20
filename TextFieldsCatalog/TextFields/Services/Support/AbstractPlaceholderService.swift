@@ -12,15 +12,15 @@ public protocol AbstractPlaceholderService {
 
     func provide(superview: UIView, field: InputField?)
 
-    /// Method for inner logic only, you may leave it empty
-    func setup(configuration: Any)
-
     func setup(placeholder: String?)
 
     func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState)
 
     func updateContent(fieldState: FieldState,
                        containerState: FieldContainerState)
+
+    // optional method
+    func setup(configuration: Any)
 
     // optional method
     func update(useIncreasedRightPadding: Bool, fieldState: FieldState)
@@ -31,6 +31,8 @@ public protocol AbstractPlaceholderService {
 }
 
 extension AbstractPlaceholderService {
+
+    public func setup(configuration: Any) {}
 
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {}
 

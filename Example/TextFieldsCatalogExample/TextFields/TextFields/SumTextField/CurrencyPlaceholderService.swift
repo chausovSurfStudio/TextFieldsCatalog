@@ -10,17 +10,36 @@ import TextFieldsCatalog
 
 final class CurrencyPlaceholderService: AbstractPlaceholderService {
 
+    // MARK: - Constants
+
+    private enum Constants {
+        static let placeholderHeight: CGFloat = 50
+    }
+
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
+    private let offset: CGFloat
+    private let font: UIFont
+    private let color: UIColor
+    private let insets: UIEdgeInsets
+
     private var superview: UIView?
     private var field: InputField?
-    private var offset: CGFloat
+    private var textIsEmpty: Bool {
+        return field?.inputText?.isEmpty ?? true
+    }
 
     // MARK: - Initialization
 
-    public init(offset: CGFloat) {
+    init(offset: CGFloat,
+         font: UIFont,
+         color: UIColor,
+         insets: UIEdgeInsets) {
         self.offset = offset
+        self.font = font
+        self.color = color
+        self.insets = insets
     }
 
     // MARK: - AbstractPlaceholderService
@@ -30,9 +49,6 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
         self.field = field
     }
 
-    public func setup(configuration: Any) {
-    }
-
     public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
@@ -40,20 +56,40 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
     public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = ""
-//        placeholder.font = configuration.font
-//        placeholder.textColor = configuration.colors.suitableColor(state: containerState)
-//        placeholder.frame = placeholderPosition()
+        placeholder.font = font
+        placeholder.textColor = color
+        placeholder.frame = placeholderPosition()
         placeholder.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         superview?.addSubview(placeholder)
     }
 
     public func updateContent(fieldState: FieldState,
                               containerState: FieldContainerState) {
-//        updatePlaceholderColor(containerState: containerState)
-//        updateAfterTextChanged(fieldState: fieldState)
+        updateAfterTextChanged(fieldState: fieldState)
     }
 
     public func updateAfterTextChanged(fieldState: FieldState) {
+        placeholder.frame = placeholderPosition()
+        setupPlaceholderVisibility(isVisible: !textIsEmpty)
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension CurrencyPlaceholderService {
+
+    func placeholderPosition() -> CGRect {
+        guard let superview = superview else {
+            return .zero
+        }
+        var placeholderFrame = superview.bounds.inset(by: insets)
+        placeholderFrame.size.height = Constants.placeholderHeight
+        return placeholderFrame
+    }
+
+    func setupPlaceholderVisibility(isVisible: Bool) {
+        placeholder.alpha = isVisible ? 1 : 0
     }
 
 }

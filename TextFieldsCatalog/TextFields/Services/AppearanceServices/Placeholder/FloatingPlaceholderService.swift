@@ -29,13 +29,6 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
         self.field = field
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? FloatingPlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
     public func setup(placeholder: String?) {
         self.placeholder.string = placeholder
     }
@@ -57,6 +50,13 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
         updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
+    }
+
+    public func setup(configuration: Any) {
+        guard let config = configuration as? FloatingPlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
     }
 
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {

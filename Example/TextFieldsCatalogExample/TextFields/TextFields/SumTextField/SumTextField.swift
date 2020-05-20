@@ -41,6 +41,15 @@ final class SumTextField: UnderlinedTextField {
         supportPlaceholderService?.setup(placeholder: supportPlaceholder)
     }
 
+    func configure(currencyPlaceholder: String) {
+        let service = CurrencyPlaceholderService(offset: 10,
+                                                 font: UIFont.systemFont(ofSize: 50, weight: .regular),
+                                                 color: Color.UnderlineTextField.placeholder,
+                                                 insets: UIEdgeInsets(top: 34, left: 16, bottom: 0, right: 16))
+        add(placeholderService: service)
+        service.setup(placeholder: currencyPlaceholder)
+    }
+
 }
 
 // MARK: - Configure

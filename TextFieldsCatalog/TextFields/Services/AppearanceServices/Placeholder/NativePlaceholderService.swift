@@ -29,13 +29,6 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
         self.field = field
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? NativePlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
     public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
@@ -54,6 +47,13 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
                               containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
         updateAfterTextChanged(fieldState: fieldState)
+    }
+
+    public func setup(configuration: Any) {
+        guard let config = configuration as? NativePlaceholderConfiguration else {
+            return
+        }
+        self.configuration = config
     }
 
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
