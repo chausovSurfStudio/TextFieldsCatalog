@@ -81,7 +81,7 @@ private extension BoxTextField {
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
 
         self.configuration = configuration
-        self.heightLayoutPolicy = .flexible(130, 5)
+        self.heightLayoutPolicy = .elastic(minHeight: 130, bottomSpace: 5, ignoreEmptyHint: false)
         self.validationPolicy = .always
     }
 

@@ -88,7 +88,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             switch heightLayoutPolicy {
             case .fixed:
                 hintLabel.numberOfLines = 1
-            case .flexible(_, _):
+            case .flexible, .elastic:
                 hintLabel.numberOfLines = 0
             }
         }
@@ -614,6 +614,23 @@ private extension UnderlinedTextField {
             let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
             let viewHeight = max(minHeight, actualViewHeight)
+            guard lastViewHeight != viewHeight else {
+                return
+            }
+            lastViewHeight = viewHeight
+            heightConstraint?.constant = viewHeight
+            onHeightChanged?(viewHeight)
+        case .elastic(let minHeight, let bottomSpace, let ignoreEmptyHint):
+            let viewHeight: CGFloat
+            let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
+
+            if hintHeight != 0 || !ignoreEmptyHint {
+                let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
+                viewHeight = max(minHeight, actualViewHeight)
+            } else {
+                viewHeight = minHeight
+            }
+
             guard lastViewHeight != viewHeight else {
                 return
             }

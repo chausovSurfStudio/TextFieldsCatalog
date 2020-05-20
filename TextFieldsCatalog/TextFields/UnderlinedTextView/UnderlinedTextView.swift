@@ -254,7 +254,7 @@ private extension UnderlinedTextView {
                                                         configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
-                                  heightLayoutPolicy: .flexible(0, 0))
+                                  heightLayoutPolicy: .elastic(minHeight: 0, bottomSpace: 0, ignoreEmptyHint: false))
         lineService = LineService(superview: self,
                                   field: textView,
                                   configuration: configuration.line)
