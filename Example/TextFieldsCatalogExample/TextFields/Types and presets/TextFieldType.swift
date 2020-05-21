@@ -27,7 +27,7 @@ enum TextFieldType: CaseIterable {
         case .underlinedTextView:
             return L10n.Textfieldtype.Underlinedtextview.title
         case .sumTextField:
-            return "Поле ввода суммы"
+            return L10n.Textfieldtype.Sumtextfield.title
         }
     }
 
@@ -42,7 +42,7 @@ enum TextFieldType: CaseIterable {
         case .underlinedTextView:
             return L10n.Textfieldtype.Underlinedtextview.description
         case .sumTextField:
-            return "Пример использования полей для ввода сумм"
+            return L10n.Textfieldtype.Sumtextfield.description
         }
     }
 

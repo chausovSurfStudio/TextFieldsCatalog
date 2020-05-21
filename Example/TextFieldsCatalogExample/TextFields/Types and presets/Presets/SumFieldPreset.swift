@@ -15,14 +15,14 @@ enum SumFieldPreset: CaseIterable, AppliedPreset {
     var name: String {
         switch self {
         case .sum:
-            return "Сумма"
+            return L10n.Presets.Sum.name
         }
     }
 
     var description: String {
         switch self {
         case .sum:
-            return "Простейший пример поля для ввода суммы"
+            return L10n.Presets.Sum.description
         }
     }
 
@@ -47,7 +47,7 @@ private extension SumFieldPreset {
     }
 
     func tuneFieldForSum(_ textField: SumTextField, heightConstraint: NSLayoutConstraint) {
-        textField.configure(placeholder: "Сумма")
+        textField.configure(placeholder: L10n.Presets.Sum.placeholder)
         textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
         textField.configure(currencyPlaceholder: "₽")
         textField.configure(maxLength: 14)
