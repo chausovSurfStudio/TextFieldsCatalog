@@ -48,7 +48,7 @@ private extension SumFieldPreset {
 
     func tuneFieldForSum(_ textField: SumTextField, heightConstraint: NSLayoutConstraint) {
         textField.configure(placeholder: "Сумма")
-        textField.configure(supportPlaceholder: "1 ₽")
+        textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
         textField.configure(currencyPlaceholder: "₽")
         textField.configure(maxLength: 14)
         textField.configure(correction: .no, keyboardType: .decimalPad)
@@ -57,6 +57,7 @@ private extension SumFieldPreset {
         let validator = TextFieldValidator(minLength: 1, maxLength: 14, regex: nil)
         textField.validator = validator
 
+        textField.configureForSum()
     }
 
 }
