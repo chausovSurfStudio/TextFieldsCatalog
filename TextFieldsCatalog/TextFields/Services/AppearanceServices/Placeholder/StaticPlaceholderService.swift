@@ -16,7 +16,7 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private var superview: UIView?
+    private weak var superview: UIView?
     private var configuration: StaticPlaceholderConfiguration
 
     // MARK: - Initialization

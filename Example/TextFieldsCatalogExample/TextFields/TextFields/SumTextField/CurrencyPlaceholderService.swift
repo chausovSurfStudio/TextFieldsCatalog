@@ -18,8 +18,8 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
     private let font: UIFont
     private let color: UIColor
 
-    private var superview: UIView?
-    private var field: InputField?
+    private weak var superview: UIView?
+    private weak var field: InputField?
     private var textIsEmpty: Bool {
         return field?.inputText?.isEmpty ?? true
     }

@@ -18,8 +18,8 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
-    private var superview: UIView?
-    private var field: InputField?
+    private weak var superview: UIView?
+    private weak var field: InputField?
     private var configuration: FloatingPlaceholderConfiguration
     private var useIncreasedRightPadding = false
 

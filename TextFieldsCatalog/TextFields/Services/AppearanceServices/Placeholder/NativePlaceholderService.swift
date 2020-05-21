@@ -18,8 +18,8 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private var superview: UIView?
-    private var field: InputField?
+    private weak var superview: UIView?
+    private weak var field: InputField?
     private var configuration: NativePlaceholderConfiguration
     private var useIncreasedRightPadding = false
 
