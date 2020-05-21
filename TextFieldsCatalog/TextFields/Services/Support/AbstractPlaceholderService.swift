@@ -18,7 +18,7 @@ public protocol AbstractPlaceholderService {
     // MARK: - Methods
 
     /**
-     Method setups input field (textField or textView) with superview in you placeholder.
+     Method setups input field (textField or textView) with superview on your placeholder.
 
      In this method you can add you placeholder container (eg UILabel or CATextLayer) on superview or handle weak link on you field/superview.
 
@@ -75,15 +75,6 @@ public protocol AbstractPlaceholderService {
                        containerState: FieldContainerState)
 
     /**
-     Method allows you to setup predefined configuration into the service.
-
-     - Parameters:
-        - configuration: Configuration object for the service
-     - Important: This is optional method. Uses for inner services only, for ustom services - it's useless.
-     */
-    func setup(configuration: Any)
-
-    /**
      This method will be called when you add/remove additional action button.
 
      In this method you have to place logic for refreshing placeholder frame, so that it does not overlap the button.
@@ -107,8 +98,6 @@ public protocol AbstractPlaceholderService {
 }
 
 extension AbstractPlaceholderService {
-
-    public func setup(configuration: Any) {}
 
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {}
 

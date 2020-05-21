@@ -50,13 +50,6 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
         updatePlaceholderColor(containerState: containerState)
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? StaticPlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
 }
 
 // MARK: - Private Methods

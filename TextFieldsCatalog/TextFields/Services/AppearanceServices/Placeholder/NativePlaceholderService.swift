@@ -56,13 +56,6 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
         updateAfterTextChanged(fieldState: fieldState)
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? NativePlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
         self.useIncreasedRightPadding = useIncreasedRightPadding
         placeholder.frame = placeholderPosition()

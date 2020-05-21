@@ -59,13 +59,6 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
         updatePlaceholderFont(fieldState: fieldState)
     }
 
-    public func setup(configuration: Any) {
-        guard let config = configuration as? FloatingPlaceholderConfiguration else {
-            return
-        }
-        self.configuration = config
-    }
-
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
         self.useIncreasedRightPadding = useIncreasedRightPadding
         updatePlaceholderPosition(fieldState: fieldState)

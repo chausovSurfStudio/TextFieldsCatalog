@@ -82,7 +82,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
-    public var heightLayoutPolicy: HeightLayoutPolicy = .flexible(77, 5) {
+    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false) {
         didSet {
             hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
             switch heightLayoutPolicy {
