@@ -6,55 +6,62 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class NativePlaceholderService: AbstractPlaceholderService {
+/**
+ Default variant of placeholder service which implements logic of `native`-placeholder.
+
+ This service allows you to imitate behavior of default native placeholder.
+ - Attention:
+    - For more information - see also info about `NativePlaceholderConfiguration` in documentation.
+*/
+public final class NativePlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private let superview: InnerDesignableView
-    private let field: InputField?
-
+    private weak var superview: UIView?
+    private weak var field: InputField?
     private var configuration: NativePlaceholderConfiguration
+    private var useIncreasedRightPadding = false
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         field: InputField?,
-         configuration: NativePlaceholderConfiguration) {
-        self.superview = superview
-        self.field = field
+    public init(configuration: NativePlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
-    var useIncreasedRightPadding = false
+    public func provide(superview: UIView, field: InputField?) {
+        self.superview = superview
+        self.field = field
+    }
 
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = ""
         placeholder.font = configuration.font
         placeholder.textColor = configuration.colors.suitableColor(state: containerState)
         placeholder.frame = placeholderPosition()
         placeholder.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        superview.addSubview(placeholder)
+        superview?.addSubview(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
-        updatePlaceholderVisibility(fieldState: fieldState)
+        updateAfterTextChanged(fieldState: fieldState)
     }
 
-    func updatePlaceholderFrame(fieldState: FieldState) {
+    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
+        self.useIncreasedRightPadding = useIncreasedRightPadding
         placeholder.frame = placeholderPosition()
     }
 
-    func updatePlaceholderVisibility(fieldState: FieldState) {
+    public func updateAfterTextChanged(fieldState: FieldState) {
         guard textIsEmpty() else {
             setupPlaceholderVisibility(isVisible: false)
             return
@@ -76,11 +83,14 @@ final class NativePlaceholderService: AbstractPlaceholderService {
 private extension NativePlaceholderService {
 
     func placeholderPosition() -> CGRect {
+        guard let superview = superview else {
+            return .zero
+        }
         var insets = configuration.insets
         if useIncreasedRightPadding {
             insets.right = configuration.increasedRightPadding
         }
-        var placeholderFrame = superview.view.bounds.inset(by: insets)
+        var placeholderFrame = superview.bounds.inset(by: insets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

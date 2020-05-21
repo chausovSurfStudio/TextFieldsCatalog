@@ -6,44 +6,47 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class StaticPlaceholderService: AbstractPlaceholderService {
+/**
+ Default variant of placeholder service which implements logic of `static`-placeholder.
+
+ Placeholder-container in this service is UILabel which have static textColor, font and position, which wouldn't be change on field state change.
+*/
+public final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
     private let placeholder = UILabel()
-    private let superview: InnerDesignableView
-
+    private weak var superview: UIView?
     private var configuration: StaticPlaceholderConfiguration
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         configuration: StaticPlaceholderConfiguration) {
-        self.superview = superview
+    public init(configuration: StaticPlaceholderConfiguration) {
         self.configuration = configuration
     }
 
     // MARK: - AbstractPlaceholderService
 
-    // this value doesn't uses in this service
-    var useIncreasedRightPadding = false
+    public func provide(superview: UIView, field: InputField?) {
+        self.superview = superview
+    }
 
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.text = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = ""
         placeholder.font = configuration.font
         placeholder.textColor = configuration.colors.suitableColor(state: containerState)
         placeholder.frame = placeholderPosition()
         placeholder.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-        superview.addSubview(placeholder)
+        superview?.addSubview(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(containerState: containerState)
     }
 
@@ -54,7 +57,10 @@ final class StaticPlaceholderService: AbstractPlaceholderService {
 private extension StaticPlaceholderService {
 
     func placeholderPosition() -> CGRect {
-        var placeholderFrame = superview.view.bounds.inset(by: configuration.insets)
+        guard let superview = superview else {
+            return .zero
+        }
+        var placeholderFrame = superview.bounds.inset(by: configuration.insets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

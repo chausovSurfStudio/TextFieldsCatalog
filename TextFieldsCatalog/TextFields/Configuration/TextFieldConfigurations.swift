@@ -14,7 +14,6 @@ public class BaseFieldConfiguration {
 
     public var textField: TextFieldConfiguration
     public var line: LineConfiguration
-    public var placeholder: PlaceholderType
     public var hint: HintConfiguration
     public var background: BackgroundConfiguration
 
@@ -22,12 +21,10 @@ public class BaseFieldConfiguration {
 
     init(textField: TextFieldConfiguration,
          line: LineConfiguration,
-         placeholder: PlaceholderType,
          hint: HintConfiguration,
          background: BackgroundConfiguration) {
         self.textField = textField
         self.line = line
-        self.placeholder = placeholder
         self.hint = hint
         self.background = background
     }
@@ -74,7 +71,6 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                  pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   placeholder: .floating(config: .defaultForTextField),
                    hint: hint,
                    background: background)
     }
@@ -120,7 +116,6 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
                                                 pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   placeholder: .floating(config: .defaultForTextView),
                    hint: hint,
                    background: background)
     }

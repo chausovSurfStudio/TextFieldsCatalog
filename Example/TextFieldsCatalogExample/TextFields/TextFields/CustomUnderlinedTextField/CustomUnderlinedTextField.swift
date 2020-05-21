@@ -48,17 +48,6 @@ private extension CustomUnderlinedTextField {
                                                                           normal: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5),
                                                                           active: Color.UnderlineTextField.tint,
                                                                           disabled: Color.UnderlineTextField.placeholder.withAlphaComponent(0.5)))
-        let placeholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
-                                                               height: 24,
-                                                               insets: UIEdgeInsets(top: 30, left: 16, bottom: 0, right: 16),
-                                                               colors: ColorConfiguration(error: Color.UnderlineTextField.error,
-                                                                                          normal: Color.UnderlineTextField.normal,
-                                                                                          active: Color.UnderlineTextField.tint,
-                                                                                          disabled: Color.UnderlineTextField.placeholder),
-                                                               behavior: .hideOnInput,
-                                                               useAsMainPlaceholder: true,
-                                                               increasedRightPadding: 60)
-        configuration.placeholder = .native(config: placeholderConfig)
         configuration.textField = TextFieldConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
                                                          defaultPadding: UIEdgeInsets.zero,
                                                          increasedPadding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 36),
@@ -72,8 +61,20 @@ private extension CustomUnderlinedTextField {
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
                                                                pressedColor: Color.UnderlineTextField.ActionButton.pressed)
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
-
         self.configuration = configuration
+
+        let placeholderConfig = NativePlaceholderConfiguration(font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                                                               height: 24,
+                                                               insets: UIEdgeInsets(top: 30, left: 16, bottom: 0, right: 16),
+                                                               colors: ColorConfiguration(error: Color.UnderlineTextField.error,
+                                                                                          normal: Color.UnderlineTextField.normal,
+                                                                                          active: Color.UnderlineTextField.tint,
+                                                                                          disabled: Color.UnderlineTextField.placeholder),
+                                                               behavior: .hideOnInput,
+                                                               useAsMainPlaceholder: true,
+                                                               increasedRightPadding: 60)
+        self.setup(placeholderServices: [NativePlaceholderService(configuration: placeholderConfig)])
+
         self.validationPolicy = .afterChanges
     }
 
