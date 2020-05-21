@@ -6,6 +6,13 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+/**
+ Default variant of placeholder service which implements logic of `floating`-placeholder.
+
+ Placeholder-container in this service is a CATextLayer, which changes his color, font and position when field changed his state.
+ - Attention:
+    - For more information - see also info about `FloatingPlaceholderConfiguration` in documentation.
+ */
 public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties

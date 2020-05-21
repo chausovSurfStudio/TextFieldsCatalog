@@ -6,6 +6,13 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+/**
+ Default variant of placeholder service which implements logic of `native`-placeholder.
+
+ This service allows you to imitate behavior of default native placeholder.
+ - Attention:
+    - For more information - see also info about `NativePlaceholderConfiguration` in documentation.
+*/
 public final class NativePlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties

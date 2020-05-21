@@ -6,6 +6,11 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+/**
+ Default variant of placeholder service which implements logic of `static`-placeholder.
+
+ Placeholder-container in this service is UILabel which have static textColor, font and position, which wouldn't be change on field state change.
+*/
 public final class StaticPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
