@@ -13,9 +13,12 @@ import InputMask
 /// Standart height equals 77.
 open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
+    // MARK: - Public IBOutlets
+
+    @IBOutlet public internal(set) weak var textField: InnerTextField!
+
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var textField: InnerTextField!
     @IBOutlet private weak var hintLabel: UILabel!
     @IBOutlet private weak var actionButton: IconButton!
 
@@ -95,35 +98,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     }
     public var responder: UIResponder {
         return self.textField
-    }
-    override open var inputView: UIView? {
-        get {
-            return textField.inputView
-        }
-        set {
-            textField.inputView = newValue
-        }
-    }
-    public var isSecureTextEntry: Bool = false {
-        didSet {
-            textField.isSecureTextEntry = isSecureTextEntry
-        }
-    }
-    public var toolbarView: UIView? {
-        get {
-            return textField.inputAccessoryView
-        }
-        set {
-            textField.inputAccessoryView = newValue
-        }
-    }
-    public var textVerticalAlignment: UIControl.ContentVerticalAlignment {
-        get {
-            return textField.contentVerticalAlignment
-        }
-        set {
-            textField.contentVerticalAlignment = newValue
-        }
     }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
@@ -206,26 +180,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         self.heightConstraint = heightConstraint
     }
 
-    /// Allows you to set autocorrection and keyboardType for textField
-    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
-        if let correction = correction {
-            textField.autocorrectionType = correction
-        }
-        if let keyboardType = keyboardType {
-            textField.keyboardType = keyboardType
-        }
-    }
-
-    /// Allows you to set autocapitalization type for textField
-    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
-        textField.autocapitalizationType = autocapitalizationType
-    }
-
-    /// Allows you to set textContent type for textField
-    public func configureContentType(_ contentType: UITextContentType) {
-        textField.textContentType = contentType
-    }
-
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
@@ -263,16 +217,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         validate()
         updateUI()
-    }
-
-    /// Return current input string in textField
-    public func currentText() -> String? {
-        return textField.text
-    }
-
-    /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
-    public func hideKeyboard() {
-        textField.inputView = UIView()
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -317,18 +261,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Disable paste action for textField
-    public func disablePasteAction() {
-        textField.pasteActionEnabled = false
-    }
-
     /// Disable text field
     public func disableTextField() {
         state = .disabled
         textField.isEnabled = false
         updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
+        let text = textField.text
+        textField.text = text
     }
 
     /// Enable text field
@@ -337,7 +277,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.isEnabled = true
         updateUI()
         /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
+        let text = textField.text
+        textField.text = text
     }
 
     /// Return true if current state allows you to interact with this field
@@ -374,11 +315,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     /// Makes textField is current first responder
     public func makeFirstResponder() {
         _ = textField.becomeFirstResponder()
-    }
-
-    /// Allows you to manage keyboard returnKeyType
-    public func setReturnKeyType(_ type: UIReturnKeyType) {
-        textField.returnKeyType = type
     }
 
 }
