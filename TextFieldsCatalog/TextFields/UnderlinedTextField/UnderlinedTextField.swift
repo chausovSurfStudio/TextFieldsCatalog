@@ -13,12 +13,9 @@ import InputMask
 /// Standart height equals 77.
 open class UnderlinedTextField: InnerDesignableView, ResetableField {
 
-    // MARK: - Public IBOutlets
-
-    @IBOutlet public internal(set) weak var textField: InnerTextField!
-
     // MARK: - IBOutlets
 
+    @IBOutlet private weak var textField: InnerTextField!
     @IBOutlet private weak var hintLabel: UILabel!
     @IBOutlet private weak var actionButton: IconButton!
 
@@ -62,8 +59,19 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var hintService: HintService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
-    // MARK: - Properties
+    // MARK: - Public Properties
 
+    public var field: InnerTextField {
+        return textField
+    }
+    public var text: String? {
+        get {
+            return textField.text
+        }
+        set {
+            setText(newValue)
+        }
+    }
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()

@@ -51,8 +51,9 @@ private extension SumFieldPreset {
         textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
         textField.configure(currencyPlaceholder: "₽")
         textField.configure(maxLength: 14)
-        textField.configure(correction: .no, keyboardType: .decimalPad)
         textField.configure(heightConstraint: heightConstraint)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .decimalPad
 
         let validator = TextFieldValidator(minLength: 1, maxLength: 14, regex: nil)
         textField.validator = validator

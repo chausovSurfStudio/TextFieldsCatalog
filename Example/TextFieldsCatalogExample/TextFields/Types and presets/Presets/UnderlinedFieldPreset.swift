@@ -111,12 +111,12 @@ private extension UnderlinedFieldPreset {
 
     func tuneFieldForPassword(_ textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
         textField.configure(placeholder: L10n.Presets.Password.placeholder)
-        textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.configure(heightConstraint: heightConstraint)
-        textField.disablePasteAction()
         textField.setHint(L10n.Presets.Password.hint)
-        textField.setReturnKeyType(.next)
         textField.setTextFieldMode(.password(.visibleOnNotEmptyText))
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .asciiCapable
+        textField.field.returnKeyType = .next
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
         validator.shortErrorText = L10n.Presets.Password.shortErrorText
@@ -129,9 +129,10 @@ private extension UnderlinedFieldPreset {
     func tuneFieldForName(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Name.placeholder)
         textField.configure(maxLength: 20)
-        textField.configure(correction: .no, keyboardType: .default)
-        textField.configure(autocapitalizationType: .words)
         textField.setHint(L10n.Presets.Name.hint)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .default
+        textField.field.autocapitalizationType = .words
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
 
@@ -141,51 +142,65 @@ private extension UnderlinedFieldPreset {
         textField.validator = validator
 
         textField.onEndEditing = { field in
-            let text = field.currentText()
-            field.setText(text?.trimmingCharacters(in: .whitespacesAndNewlines))
+            field.setText(field.text?.trimmingCharacters(in: .whitespacesAndNewlines))
         }
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Email.placeholder)
-        textField.configure(correction: .no, keyboardType: .emailAddress)
         textField.validator = TextFieldValidator(minLength: 1, maxLength: nil, regex: SharedRegex.email)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .emailAddress
     }
 
     func tuneFieldForPhone(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Phone.placeholder)
-        textField.configure(correction: .no, keyboardType: .phonePad)
         textField.validator = TextFieldValidator(minLength: 18, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Phone.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .phonePad
     }
 
     func tuneFieldForCardExpirationDate(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cardexpirationdate.placeholder)
-        textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 5, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
+        textField.validator = TextFieldValidator(minLength: 5,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardExpirationDate)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .numberPad
     }
 
     func tuneFieldForCvc(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cvc.placeholder)
-        textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 3, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cvc.errorMessage)
+        textField.validator = TextFieldValidator(minLength: 3,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: L10n.Presets.Cvc.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .numberPad
     }
 
     func tuneFieldForCardNumber(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Cardnumber.placeholder)
-        textField.configure(correction: .no, keyboardType: .numberPad)
-        textField.validator = TextFieldValidator(minLength: 19, maxLength: nil, regex: nil, globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
+        textField.validator = TextFieldValidator(minLength: 19,
+                                                 maxLength: nil,
+                                                 regex: nil,
+                                                 globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .numberPad
     }
 
     func tuneFieldForQRCode(_ textField: UnderlinedTextField) {
         textField.configure(placeholder: L10n.Presets.Qrcode.placeholder)
         textField.configure(maxLength: 10)
-        textField.configure(correction: .no, keyboardType: .asciiCapable)
         textField.setHint(L10n.Presets.Qrcode.hint)
         textField.validator = TextFieldValidator(minLength: 10, maxLength: 10, regex: nil)
+        textField.field.autocorrectionType = .no
+        textField.field.keyboardType = .asciiCapable
 
         let actionButtonConfig = ActionButtonConfiguration(image: UIImage(asset: Asset.qrCode),
                                                            normalColor: Color.Button.active,
@@ -208,9 +223,7 @@ private extension UnderlinedFieldPreset {
                                                  maxLength: nil,
                                                  regex: nil,
                                                  globalErrorMessage: L10n.Presets.Birthday.hint)
-
-        let inputView = DatePickerView.default(for: textField)
-        textField.inputView = inputView
+        textField.field.inputView = DatePickerView.default(for: textField)
 
         textField.onDateChanged = { date in
             print("this is selected date - \(date)")
@@ -223,13 +236,11 @@ private extension UnderlinedFieldPreset {
                                                  maxLength: nil,
                                                  regex: nil,
                                                  globalErrorMessage: L10n.Presets.Sex.hint)
-
-        let inputView = PlainPickerView.default(for: textField,
-                                                data: Sex.allCases.map { $0.value })
-        textField.inputView = inputView
+        textField.field.inputView = PlainPickerView.default(for: textField,
+                                                            data: Sex.allCases.map { $0.value })
 
         textField.onTextChanged = { field in
-            if let value = Sex.sex(by: field.currentText()) {
+            if let value = Sex.sex(by: field.text) {
                 print(value)
             } else {
                 print("sex is undefined")
