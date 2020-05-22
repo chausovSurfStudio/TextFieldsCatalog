@@ -116,6 +116,21 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             setup(textFieldMode: mode)
         }
     }
+    public var isEnabled: Bool {
+        get {
+            return state != .disabled
+        }
+        set {
+            if newValue {
+                enableTextField()
+            } else {
+                disableTextField()
+            }
+        }
+    }
+    public var isValid: Bool {
+        return !error
+    }
 
     // MARK: - Events
 
@@ -229,11 +244,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         updateUI()
     }
 
-    // TODO: сделать отдельно проперти isValid и метод validate
-    /// Allows you to know current state: return true in case of current state is valid
+    /// Method performs validate logic, updates all UI elements and returns you `isValid` value
     @discardableResult
-    public func isValidState(forceValidate: Bool = false) -> Bool {
-        if !error || forceValidate {
+    public func validate(force: Bool = false) -> Bool {
+        if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
             updateUI()
@@ -253,32 +267,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public func resetErrorState() {
         error = false
         updateUI()
-    }
-
-    /// Disable text field
-    public func disableTextField() {
-        state = .disabled
-        textField.isEnabled = false
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        let text = textField.text
-        textField.text = text
-    }
-
-    // TODO: override для системного проперти??
-    /// Enable text field
-    public func enableTextField() {
-        state = .normal
-        textField.isEnabled = true
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        let text = textField.text
-        textField.text = text
-    }
-
-    /// Return true if current state allows you to interact with this field
-    public func isEnabled() -> Bool {
-        return state != .disabled
     }
 
 }
@@ -559,6 +547,24 @@ private extension UnderlinedTextField {
             error = false
             updateUI()
         }
+    }
+
+    func enableTextField() {
+        state = .normal
+        textField.isEnabled = true
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
+    }
+
+    func disableTextField() {
+        state = .disabled
+        textField.isEnabled = false
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
     }
 
     func performOnTextChangedCall() {
