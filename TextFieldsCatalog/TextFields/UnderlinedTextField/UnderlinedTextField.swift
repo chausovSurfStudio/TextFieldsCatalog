@@ -39,7 +39,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         }
     }
 
-    private var mode: TextFieldMode = .plain
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
@@ -112,6 +111,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             }
         }
     }
+    public var mode: TextFieldMode = .plain {
+        didSet {
+            setup(textFieldMode: mode)
+        }
+    }
 
     // MARK: - Events
 
@@ -149,7 +153,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
         perfromOnContainerStateChangedCall()
-        setTextFieldMode(mode)
+        setup(textFieldMode: mode)
     }
 
     override open func draw(_ rect: CGRect) {
@@ -206,35 +210,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         }
         hintService?.setup(hintMessage: hint)
         hintService?.setupHintText(hint)
-    }
-
-    // TODO: вынести код сеттером к проперти??
-    /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: TextFieldMode) {
-        self.mode = mode
-        switch mode {
-        case .plain:
-            actionButton.isHidden = true
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.defaultPadding
-        case .password:
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = true
-            textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordButtonIcon()
-            updatePasswordButtonVisibility()
-        case .custom(let actionButtonConfig):
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.increasedPadding
-            actionButton.setImageForAllState(actionButtonConfig.image,
-                                             normalColor: actionButtonConfig.normalColor,
-                                             pressedColor: actionButtonConfig.pressedColor)
-        }
-        for service in placeholderServices {
-            service.update(useIncreasedRightPadding: !actionButton.isHidden,
-                           fieldState: state)
-        }
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -505,17 +480,6 @@ private extension UnderlinedTextField {
         updatePasswordButtonVisibility()
     }
 
-    func updatePasswordButtonIcon() {
-        guard case .password = mode else {
-            return
-        }
-        let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
-        actionButton.setImageForAllState(image,
-                                         normalColor: configuration.passwordMode.normalColor,
-                                         pressedColor: configuration.passwordMode.pressedColor)
-    }
-
     func validateWithPolicy() {
         switch validationPolicy {
         case .always:
@@ -561,6 +525,32 @@ private extension UnderlinedTextField {
         }
         validate()
         updateUI()
+    }
+
+    func setup(textFieldMode: TextFieldMode) {
+        switch textFieldMode {
+        case .plain:
+            actionButton.isHidden = true
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.defaultPadding
+        case .password:
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = true
+            textField.textPadding = configuration.textField.increasedPadding
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
+        case .custom(let actionButtonConfig):
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.increasedPadding
+            actionButton.setImageForAllState(actionButtonConfig.image,
+                                             normalColor: actionButtonConfig.normalColor,
+                                             pressedColor: actionButtonConfig.pressedColor)
+        }
+        for service in placeholderServices {
+            service.update(useIncreasedRightPadding: !actionButton.isHidden,
+                           fieldState: state)
+        }
     }
 
     func removeError() {
@@ -619,6 +609,17 @@ private extension UnderlinedTextField {
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
         }
+    }
+
+    func updatePasswordButtonIcon() {
+        guard case .password = mode else {
+            return
+        }
+        let isSecure = textField.isSecureTextEntry
+        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
+        actionButton.setImageForAllState(image,
+                                         normalColor: configuration.passwordMode.normalColor,
+                                         pressedColor: configuration.passwordMode.pressedColor)
     }
 
     func updatePasswordButtonVisibility() {
