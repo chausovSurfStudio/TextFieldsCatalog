@@ -358,17 +358,17 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text), !validateWithFormatter else {
+        guard
+            let text = textField.text,
+            let textRange = Range(range, in: text),
+            !validateWithFormatter,
+            let maxLength = self.maxLength
+        else {
             return true
         }
 
         let newText = text.replacingCharacters(in: textRange, with: string)
-        var isValid = true
-        if let maxLength = self.maxLength {
-            isValid = newText.count <= maxLength
-        }
-
-        return isValid
+        return newText.count <= maxLength
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
