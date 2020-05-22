@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExamplesViewController" customModule="TextFieldsCatalogExample" customModuleProvider="target">
             <connections>
+                <outlet property="emailField" destination="RJI-fl-7jP" id="yvI-6l-7v6"/>
+                <outlet property="emailHeightConstraint" destination="cJb-z2-Atf" id="1W5-UE-hKq"/>
+                <outlet property="passwordField" destination="47G-cB-7qD" id="va3-Ta-Baz"/>
+                <outlet property="passwordHeightConstraint" destination="EGM-4x-bi7" id="wyQ-rG-ec1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
             </connections>
         </placeholder>
@@ -17,9 +21,33 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJI-fl-7jP" customClass="BoxTextField" customModule="TextFieldsCatalogExample" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20" width="320" height="130"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="cJb-z2-Atf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47G-cB-7qD" customClass="BoxTextField" customModule="TextFieldsCatalogExample" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="150" width="320" height="130"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="EGM-4x-bi7"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="47G-cB-7qD" firstAttribute="leading" secondItem="UCy-nU-wgy" secondAttribute="leading" id="7Hi-ej-7tb"/>
+                <constraint firstItem="47G-cB-7qD" firstAttribute="trailing" secondItem="UCy-nU-wgy" secondAttribute="trailing" id="NYC-32-flf"/>
+                <constraint firstItem="47G-cB-7qD" firstAttribute="top" secondItem="RJI-fl-7jP" secondAttribute="bottom" id="PGY-rI-hev"/>
+                <constraint firstItem="RJI-fl-7jP" firstAttribute="leading" secondItem="UCy-nU-wgy" secondAttribute="leading" id="arI-CD-bQt"/>
+                <constraint firstItem="RJI-fl-7jP" firstAttribute="top" secondItem="UCy-nU-wgy" secondAttribute="top" constant="20" id="j46-N2-raW"/>
+                <constraint firstItem="RJI-fl-7jP" firstAttribute="trailing" secondItem="UCy-nU-wgy" secondAttribute="trailing" id="vkG-xn-tRR"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="UCy-nU-wgy"/>
-            <point key="canvasLocation" x="131" y="154"/>
+            <point key="canvasLocation" x="129.375" y="153.16901408450704"/>
         </view>
     </objects>
 </document>

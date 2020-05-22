@@ -11,7 +11,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77.
-open class UnderlinedTextField: InnerDesignableView, ResetableField {
+open class UnderlinedTextField: InnerDesignableView, ResetableField, RespondableField {
 
     // MARK: - IBOutlets
 
@@ -33,17 +33,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         return state.containerState
     }
-
-    private var maxLength: Int?
-
     private var error: Bool = false {
         didSet {
             perfromOnContainerStateChangedCall()
         }
     }
-    private var mode: TextFieldMode = .plain
-    private var nextInput: UIResponder?
-    private var previousInput: UIResponder?
+
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
@@ -59,8 +54,30 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     private var hintService: HintService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
-    // MARK: - Properties
+    // MARK: - Public Properties
 
+    public var field: InnerTextField {
+        return textField
+    }
+    public var text: String? {
+        get {
+            return textField.text
+        }
+        set {
+            setText(newValue)
+        }
+    }
+    /// Property allows you to install placeholder into the first placeholder service.
+    /// If you will use more than one service - install placeholder to it manually.
+    /// Getter returns only nil value.
+    public var placeholder: String? {
+        get {
+            return nil
+        }
+        set {
+            placeholderServices.first?.setup(placeholder: newValue)
+        }
+    }
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
@@ -79,6 +96,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
+    public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
@@ -93,38 +111,28 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var responder: UIResponder {
-        return self.textField
-    }
-    override open var inputView: UIView? {
-        get {
-            return textField.inputView
-        }
-        set {
-            textField.inputView = newValue
-        }
-    }
-    public var isSecureTextEntry: Bool = false {
+    public var mode: TextFieldMode = .plain {
         didSet {
-            textField.isSecureTextEntry = isSecureTextEntry
+            setup(textFieldMode: mode)
         }
     }
-    public var toolbarView: UIView? {
+    public var isEnabled: Bool {
         get {
-            return textField.inputAccessoryView
+            return state != .disabled
         }
         set {
-            textField.inputAccessoryView = newValue
+            if newValue {
+                enableTextField()
+            } else {
+                disableTextField()
+            }
         }
     }
-    public var textVerticalAlignment: UIControl.ContentVerticalAlignment {
-        get {
-            return textField.contentVerticalAlignment
-        }
-        set {
-            textField.contentVerticalAlignment = newValue
-        }
+    public var isValid: Bool {
+        return !error
     }
+
+    // MARK: - Events
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
@@ -160,12 +168,27 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
         perfromOnContainerStateChangedCall()
-        setTextFieldMode(mode)
+        setup(textFieldMode: mode)
     }
 
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         updateUI()
+    }
+
+    // MARK: - RespondableField
+
+    public var nextInput: UIResponder? {
+        didSet {
+            textField.returnKeyType = nextInput == nil ? .default : .next
+        }
+    }
+    public var previousInput: UIResponder?
+    open override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
+    open override func becomeFirstResponder() -> Bool {
+        return textField.becomeFirstResponder()
     }
 
     // MARK: - Public Methods
@@ -190,89 +213,18 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         placeholderServices.append(service)
     }
 
-    /// Allows you to install placeholder in first placeholder service.
-    /// If you will use more than one service - install placeholder to it manually.
-    public func configure(placeholder: String?) {
-        self.placeholderServices.first?.setup(placeholder: placeholder)
-    }
-
-    /// Allows you to install maximum allowed length of input string
-    public func configure(maxLength: Int?) {
-        self.maxLength = maxLength
-    }
-
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func configure(heightConstraint: NSLayoutConstraint) {
+    public func setup(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
     }
 
-    /// Allows you to set autocorrection and keyboardType for textField
-    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
-        if let correction = correction {
-            textField.autocorrectionType = correction
+    /// Allows you to set some string as hint message
+    public func setup(hint: String) {
+        guard !hint.isEmpty else {
+            return
         }
-        if let keyboardType = keyboardType {
-            textField.keyboardType = keyboardType
-        }
-    }
-
-    /// Allows you to set autocapitalization type for textField
-    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
-        textField.autocapitalizationType = autocapitalizationType
-    }
-
-    /// Allows you to set textContent type for textField
-    public func configureContentType(_ contentType: UITextContentType) {
-        textField.textContentType = contentType
-    }
-
-    /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: TextFieldMode) {
-        self.mode = mode
-        switch mode {
-        case .plain:
-            actionButton.isHidden = true
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.defaultPadding
-        case .password:
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = true
-            textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordButtonIcon()
-            updatePasswordButtonVisibility()
-        case .custom(let actionButtonConfig):
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.increasedPadding
-            actionButton.setImageForAllState(actionButtonConfig.image,
-                                             normalColor: actionButtonConfig.normalColor,
-                                             pressedColor: actionButtonConfig.pressedColor)
-        }
-        for service in placeholderServices {
-            service.update(useIncreasedRightPadding: !actionButton.isHidden,
-                           fieldState: state)
-        }
-    }
-
-    /// Allows you to set text in textField and update all UI elements
-    public func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
-        validate()
-        updateUI()
-    }
-
-    /// Return current input string in textField
-    public func currentText() -> String? {
-        return textField.text
-    }
-
-    /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
-    public func hideKeyboard() {
-        textField.inputView = UIView()
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -292,10 +244,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Allows you to know current state: return true in case of current state is valid
+    /// Method performs validate logic, updates all UI elements and returns you `isValid` value
     @discardableResult
-    public func isValidState(forceValidate: Bool = false) -> Bool {
-        if !error || forceValidate {
+    public func validate(force: Bool = false) -> Bool {
+        if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
             updateUI()
@@ -315,70 +267,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     public func resetErrorState() {
         error = false
         updateUI()
-    }
-
-    /// Disable paste action for textField
-    public func disablePasteAction() {
-        textField.pasteActionEnabled = false
-    }
-
-    /// Disable text field
-    public func disableTextField() {
-        state = .disabled
-        textField.isEnabled = false
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
-    }
-
-    /// Enable text field
-    public func enableTextField() {
-        state = .normal
-        textField.isEnabled = true
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
-    }
-
-    /// Return true if current state allows you to interact with this field
-    public func isEnabled() -> Bool {
-        return state != .disabled
-    }
-
-    /// Allows you to set some string as hint message
-    public func setHint(_ hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
-    }
-
-    /// Return true, if field is current firstResponder
-    public func isCurrentFirstResponder() -> Bool {
-        return textField.isFirstResponder
-    }
-
-    /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
-    public func setNextResponder(_ nextResponder: UIResponder) {
-        textField.returnKeyType = .next
-        nextInput = nextResponder
-    }
-
-    /// Sets previous responder, which will be activated after 'Back' button in keyboard toolbar will be pressed.
-    /// 'Back' button appears only into the topView in custom input views, which you can find in this library.
-    public func setPreviousResponder(_ nextResponder: UIResponder) {
-        previousInput = nextResponder
-    }
-
-    /// Makes textField is current first responder
-    public func makeFirstResponder() {
-        _ = textField.becomeFirstResponder()
-    }
-
-    /// Allows you to manage keyboard returnKeyType
-    public func setReturnKeyType(_ type: UIReturnKeyType) {
-        textField.returnKeyType = type
     }
 
 }
@@ -470,17 +358,17 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text), !validateWithFormatter else {
+        guard
+            let text = textField.text,
+            let textRange = Range(range, in: text),
+            !validateWithFormatter,
+            let maxLength = self.maxLength
+        else {
             return true
         }
 
         let newText = text.replacingCharacters(in: textRange, with: string)
-        var isValid = true
-        if let maxLength = self.maxLength {
-            isValid = newText.count <= maxLength
-        }
-
-        return isValid
+        return newText.count <= maxLength
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -580,17 +468,6 @@ private extension UnderlinedTextField {
         updatePasswordButtonVisibility()
     }
 
-    func updatePasswordButtonIcon() {
-        guard case .password = mode else {
-            return
-        }
-        let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
-        actionButton.setImageForAllState(image,
-                                         normalColor: configuration.passwordMode.normalColor,
-                                         pressedColor: configuration.passwordMode.pressedColor)
-    }
-
     func validateWithPolicy() {
         switch validationPolicy {
         case .always:
@@ -628,12 +505,66 @@ private extension UnderlinedTextField {
         }
     }
 
+    func setText(_ text: String?) {
+        if let formatter = maskFormatter {
+            formatter.format(string: text, field: textField)
+        } else {
+            textField.text = text
+        }
+        validate()
+        updateUI()
+    }
+
+    func setup(textFieldMode: TextFieldMode) {
+        switch textFieldMode {
+        case .plain:
+            actionButton.isHidden = true
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.defaultPadding
+        case .password:
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = true
+            textField.textPadding = configuration.textField.increasedPadding
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
+        case .custom(let actionButtonConfig):
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.increasedPadding
+            actionButton.setImageForAllState(actionButtonConfig.image,
+                                             normalColor: actionButtonConfig.normalColor,
+                                             pressedColor: actionButtonConfig.pressedColor)
+        }
+        for service in placeholderServices {
+            service.update(useIncreasedRightPadding: !actionButton.isHidden,
+                           fieldState: state)
+        }
+    }
+
     func removeError() {
         if error {
             hintService?.setupHintIfNeeded()
             error = false
             updateUI()
         }
+    }
+
+    func enableTextField() {
+        state = .normal
+        textField.isEnabled = true
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
+    }
+
+    func disableTextField() {
+        state = .disabled
+        textField.isEnabled = false
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
     }
 
     func performOnTextChangedCall() {
@@ -684,6 +615,17 @@ private extension UnderlinedTextField {
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
         }
+    }
+
+    func updatePasswordButtonIcon() {
+        guard case .password = mode else {
+            return
+        }
+        let isSecure = textField.isSecureTextEntry
+        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
+        actionButton.setImageForAllState(image,
+                                         normalColor: configuration.passwordMode.normalColor,
+                                         pressedColor: configuration.passwordMode.pressedColor)
     }
 
     func updatePasswordButtonVisibility() {

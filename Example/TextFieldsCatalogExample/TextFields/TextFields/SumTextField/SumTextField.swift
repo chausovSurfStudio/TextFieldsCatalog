@@ -54,22 +54,22 @@ final class SumTextField: UnderlinedTextField {
     func configureForSum() {
         self.onTextChanged = { [weak self] field in
             guard
-                let text = field.currentText(),
+                let text = field.text,
                 !text.isEmpty
             else {
                 self?.lastValidValue = ""
                 return
             }
             guard let sum = self?.formatPrice(text) else {
-                field.setText(self?.lastValidValue)
+                field.text = self?.lastValidValue
                 return
             }
             self?.lastValidValue = sum
-            field.setText(sum)
+            field.text = sum
         }
         self.onEndEditing = { [weak self] field in
             guard
-                let text = field.currentText(),
+                let text = field.text,
                 !text.isEmpty,
                 let sum = self?.finalFormatPrice(text)
             else {
@@ -77,7 +77,7 @@ final class SumTextField: UnderlinedTextField {
             }
             self?.lastValidValue = sum
             self?.configure(supportPlaceholder: sum + "\u{2009}₽")
-            field.setText(sum)
+            field.text = sum
         }
     }
 

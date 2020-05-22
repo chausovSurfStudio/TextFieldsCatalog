@@ -47,11 +47,11 @@ private extension UnderlinedTextViewPreset {
     }
 
     func tuneFieldForComment(_ textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
-        textView.configure(placeholder: L10n.Presets.Comment.placeholder)
-        textView.configure(maxLength: 200)
-        textView.configure(correction: .no, keyboardType: .default)
-        textView.configure(heightConstraint: heightConstraint)
-        textView.setHint(L10n.Presets.Comment.hint)
+        textView.placeholder = L10n.Presets.Comment.placeholder
+        textView.maxLength = 200
+        textView.field.autocorrectionType = .no
+        textView.setup(heightConstraint: heightConstraint)
+        textView.setup(hint: L10n.Presets.Comment.hint)
 
         let validator = TextFieldValidator(minLength: 30, maxLength: 200, regex: nil)
         validator.shortErrorText = L10n.Presets.Comment.errorMessage

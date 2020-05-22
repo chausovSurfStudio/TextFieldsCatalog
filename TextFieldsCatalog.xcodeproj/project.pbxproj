@@ -74,6 +74,7 @@
 		90D18FD02452EF760072BD2C /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FCF2452EF760072BD2C /* TextFieldValidator.swift */; };
 		90D18FD42452FCFA0072BD2C /* ColorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FD32452FCFA0072BD2C /* ColorConfiguration.swift */; };
 		90D18FD7245307040072BD2C /* FieldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FD6245307040072BD2C /* FieldService.swift */; };
+		90D821742477C061000E9BCA /* RespondableField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D821732477C061000E9BCA /* RespondableField.swift */; };
 		90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DAE2320FCAA004995E4 /* FieldState.swift */; };
 		90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E13DB02320FD3C004995E4 /* TextFieldMode.swift */; };
 		90EE54B7245724E60099C048 /* AbstractPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */; };
@@ -172,6 +173,7 @@
 		90D18FCF2452EF760072BD2C /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
 		90D18FD32452FCFA0072BD2C /* ColorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConfiguration.swift; sourceTree = "<group>"; };
 		90D18FD6245307040072BD2C /* FieldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldService.swift; sourceTree = "<group>"; };
+		90D821732477C061000E9BCA /* RespondableField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondableField.swift; sourceTree = "<group>"; };
 		90E13DAE2320FCAA004995E4 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		90E13DB02320FD3C004995E4 /* TextFieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMode.swift; sourceTree = "<group>"; };
 		90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPlaceholderService.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				90A32B80228984540036C634 /* GuidedTextField.swift */,
 				90A32B7E2289792D0036C634 /* PickerTextField.swift */,
 				9038640B21FF5A0100BAA761 /* ResetableField.swift */,
+				90D821732477C061000E9BCA /* RespondableField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				90C0992823C8F2FF00312628 /* UITextView.swift in Sources */,
 				90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */,
 				90A32B81228984540036C634 /* GuidedTextField.swift in Sources */,
+				90D821742477C061000E9BCA /* RespondableField.swift in Sources */,
 				9038640621FF599D00BAA761 /* InnerDesignableView.swift in Sources */,
 				90BB47272200651800F6DB39 /* AssetManager.swift in Sources */,
 				9040B90923C637A200998989 /* FlexibleHeightPolicy.swift in Sources */,
