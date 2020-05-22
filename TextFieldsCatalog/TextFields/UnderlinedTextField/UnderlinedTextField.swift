@@ -11,7 +11,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77.
-open class UnderlinedTextField: InnerDesignableView, ResetableField {
+open class UnderlinedTextField: InnerDesignableView, ResetableField, RespondableField {
 
     // MARK: - IBOutlets
 
@@ -33,17 +33,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         return state.containerState
     }
-
-    private var maxLength: Int?
-
     private var error: Bool = false {
         didSet {
             perfromOnContainerStateChangedCall()
         }
     }
+
+    private var maxLength: Int?
     private var mode: TextFieldMode = .plain
-    private var nextInput: UIResponder?
-    private var previousInput: UIResponder?
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
@@ -104,8 +101,19 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var responder: UIResponder {
-        return self.textField
+
+    // TODO: вынести в марк свой
+    public var nextInput: UIResponder? {
+        didSet {
+            textField.returnKeyType = nextInput == nil ? .default : .next
+        }
+    }
+    public var previousInput: UIResponder?
+    open override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
+    open override func becomeFirstResponder() -> Bool {
+        return textField.becomeFirstResponder()
     }
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
@@ -172,22 +180,26 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         placeholderServices.append(service)
     }
 
+    // TODO: его тоже можно вынести в проперти
     /// Allows you to install placeholder in first placeholder service.
     /// If you will use more than one service - install placeholder to it manually.
     public func configure(placeholder: String?) {
         self.placeholderServices.first?.setup(placeholder: placeholder)
     }
 
+    // TODO: заменить на проперти
     /// Allows you to install maximum allowed length of input string
     public func configure(maxLength: Int?) {
         self.maxLength = maxLength
     }
 
+    // TODO: назвать setup?
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
     public func configure(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
     }
 
+    // TODO: вынести код сеттером к проперти??
     /// Allows you to change current mode
     public func setTextFieldMode(_ mode: TextFieldMode) {
         self.mode = mode
@@ -216,6 +228,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
     }
 
+    // TODO: сделать как private
     /// Allows you to set text in textField and update all UI elements
     public func setText(_ text: String?) {
         if let formatter = maskFormatter {
@@ -244,6 +257,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    // TODO: сделать отдельно проперти isValid и метод validate
     /// Allows you to know current state: return true in case of current state is valid
     @discardableResult
     public func isValidState(forceValidate: Bool = false) -> Bool {
@@ -279,6 +293,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         textField.text = text
     }
 
+    // TODO: override для системного проперти??
     /// Enable text field
     public func enableTextField() {
         state = .normal
@@ -294,6 +309,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         return state != .disabled
     }
 
+    // TODO: назвать setup??
     /// Allows you to set some string as hint message
     public func setHint(_ hint: String) {
         guard !hint.isEmpty else {
@@ -301,28 +317,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         hintService?.setup(hintMessage: hint)
         hintService?.setupHintText(hint)
-    }
-
-    /// Return true, if field is current firstResponder
-    public func isCurrentFirstResponder() -> Bool {
-        return textField.isFirstResponder
-    }
-
-    /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
-    public func setNextResponder(_ nextResponder: UIResponder) {
-        textField.returnKeyType = .next
-        nextInput = nextResponder
-    }
-
-    /// Sets previous responder, which will be activated after 'Back' button in keyboard toolbar will be pressed.
-    /// 'Back' button appears only into the topView in custom input views, which you can find in this library.
-    public func setPreviousResponder(_ nextResponder: UIResponder) {
-        previousInput = nextResponder
-    }
-
-    /// Makes textField is current first responder
-    public func makeFirstResponder() {
-        _ = textField.becomeFirstResponder()
     }
 
 }

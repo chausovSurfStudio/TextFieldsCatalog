@@ -10,6 +10,16 @@ import UIKit
 
 final class ExamplesViewController: UIViewController {
 
+    // MARK: - IBOutlets
+
+    @IBOutlet private weak var emailField: BoxTextField!
+    @IBOutlet private weak var passwordField: BoxTextField!
+
+    // MARK: - NSLayoutConstraints
+
+    @IBOutlet private weak var emailHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var passwordHeightConstraint: NSLayoutConstraint!
+
     // MARK: - Properties
 
     var output: ExamplesViewOutput?
@@ -28,8 +38,58 @@ final class ExamplesViewController: UIViewController {
 extension ExamplesViewController: ExamplesViewInput {
 
     func setupInitialState(with title: String) {
-        view.backgroundColor = Color.Main.background
+        configureAppearance(with: title)
+    }
+
+}
+
+// MARK: - Appearance
+
+private extension ExamplesViewController {
+
+    func configureAppearance(with title: String) {
+        configureNavigationBar(with: title)
+        configureBackground()
+        configureGestures()
+        configureFields()
+    }
+
+    func configureNavigationBar(with title: String) {
         navigationItem.title = title
+    }
+
+    func configureBackground() {
+        view.backgroundColor = Color.Main.background
+    }
+
+    func configureGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    func configureFields() {
+        guard
+            let emailField = emailField,
+            let passwordField = passwordField
+        else {
+            return
+        }
+
+        UnderlinedFieldPreset.email.apply(for: emailField, with: emailHeightConstraint)
+        UnderlinedFieldPreset.password.apply(for: passwordField, with: passwordHeightConstraint)
+        emailField.nextInput = passwordField
+        passwordField.field.returnKeyType = .done
+    }
+
+}
+
+// MARK: - Actions
+
+private extension ExamplesViewController {
+
+    @objc
+    func closeKeyboard() {
+        view.endEditing(true)
     }
 
 }
