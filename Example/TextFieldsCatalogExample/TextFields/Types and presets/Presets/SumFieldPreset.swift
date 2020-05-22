@@ -47,13 +47,13 @@ private extension SumFieldPreset {
     }
 
     func tuneFieldForSum(_ textField: SumTextField, heightConstraint: NSLayoutConstraint) {
-        textField.configure(placeholder: L10n.Presets.Sum.placeholder)
-        textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
-        textField.configure(currencyPlaceholder: "₽")
-        textField.configure(maxLength: 14)
-        textField.configure(heightConstraint: heightConstraint)
+        textField.placeholder = L10n.Presets.Sum.placeholder
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .decimalPad
+        textField.maxLength = 14
+        textField.setup(heightConstraint: heightConstraint)
+        textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
+        textField.configure(currencyPlaceholder: "₽")
 
         let validator = TextFieldValidator(minLength: 1, maxLength: 14, regex: nil)
         textField.validator = validator
