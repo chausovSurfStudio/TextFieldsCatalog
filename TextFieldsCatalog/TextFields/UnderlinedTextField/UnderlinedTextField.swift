@@ -39,7 +39,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         }
     }
 
-    private var maxLength: Int?
     private var mode: TextFieldMode = .plain
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
@@ -69,6 +68,17 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             setText(newValue)
         }
     }
+    /// Property allows you to install placeholder into the first placeholder service.
+    /// If you will use more than one service - install placeholder to it manually.
+    /// Getter returns only nil value.
+    public var placeholder: String? {
+        get {
+            return nil
+        }
+        set {
+            placeholderServices.first?.setup(placeholder: newValue)
+        }
+    }
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
@@ -87,6 +97,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             }
         }
     }
+    public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
@@ -102,19 +113,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         }
     }
 
-    // TODO: вынести в марк свой
-    public var nextInput: UIResponder? {
-        didSet {
-            textField.returnKeyType = nextInput == nil ? .default : .next
-        }
-    }
-    public var previousInput: UIResponder?
-    open override var isFirstResponder: Bool {
-        return textField.isFirstResponder
-    }
-    open override func becomeFirstResponder() -> Bool {
-        return textField.becomeFirstResponder()
-    }
+    // MARK: - Events
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
@@ -158,6 +157,21 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         updateUI()
     }
 
+    // MARK: - RespondableField
+
+    public var nextInput: UIResponder? {
+        didSet {
+            textField.returnKeyType = nextInput == nil ? .default : .next
+        }
+    }
+    public var previousInput: UIResponder?
+    open override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
+    open override func becomeFirstResponder() -> Bool {
+        return textField.becomeFirstResponder()
+    }
+
     // MARK: - Public Methods
 
     /// Allows you to change placeholder services for text field
@@ -180,23 +194,18 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         placeholderServices.append(service)
     }
 
-    // TODO: его тоже можно вынести в проперти
-    /// Allows you to install placeholder in first placeholder service.
-    /// If you will use more than one service - install placeholder to it manually.
-    public func configure(placeholder: String?) {
-        self.placeholderServices.first?.setup(placeholder: placeholder)
-    }
-
-    // TODO: заменить на проперти
-    /// Allows you to install maximum allowed length of input string
-    public func configure(maxLength: Int?) {
-        self.maxLength = maxLength
-    }
-
-    // TODO: назвать setup?
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func configure(heightConstraint: NSLayoutConstraint) {
+    public func setup(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
+    }
+
+    /// Allows you to set some string as hint message
+    public func setup(hint: String) {
+        guard !hint.isEmpty else {
+            return
+        }
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     // TODO: вынести код сеттером к проперти??
@@ -226,18 +235,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             service.update(useIncreasedRightPadding: !actionButton.isHidden,
                            fieldState: state)
         }
-    }
-
-    // TODO: сделать как private
-    /// Allows you to set text in textField and update all UI elements
-    public func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
-        validate()
-        updateUI()
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -307,16 +304,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     /// Return true if current state allows you to interact with this field
     public func isEnabled() -> Bool {
         return state != .disabled
-    }
-
-    // TODO: назвать setup??
-    /// Allows you to set some string as hint message
-    public func setHint(_ hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
     }
 
 }
@@ -564,6 +551,16 @@ private extension UnderlinedTextField {
         if error {
             onValidateFail?(self)
         }
+    }
+
+    func setText(_ text: String?) {
+        if let formatter = maskFormatter {
+            formatter.format(string: text, field: textField)
+        } else {
+            textField.text = text
+        }
+        validate()
+        updateUI()
     }
 
     func removeError() {
