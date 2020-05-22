@@ -114,6 +114,7 @@ private extension UnderlinedFieldPreset {
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .asciiCapable
         textField.field.returnKeyType = .next
+        textField.field.pasteActionEnabled = false
         textField.mode = .password(.visibleOnNotEmptyText)
         textField.setup(heightConstraint: heightConstraint)
         textField.setup(hint: L10n.Presets.Password.hint)
@@ -129,7 +130,6 @@ private extension UnderlinedFieldPreset {
     func tuneFieldForName(_ textField: UnderlinedTextField) {
         textField.placeholder = L10n.Presets.Name.placeholder
         textField.field.autocorrectionType = .no
-        textField.field.keyboardType = .default
         textField.field.autocapitalizationType = .words
         textField.maxLength = 20
         textField.setup(hint: L10n.Presets.Name.hint)
