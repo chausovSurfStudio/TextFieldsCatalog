@@ -11,7 +11,7 @@ import UIKit
 /// Class for custom textView. Contains UITextView, top floating placeholder, underline line under textView and bottom label with some info.
 /// Also have button for text clear, but you can hide it.
 /// Standart height equals 77.
-open class UnderlinedTextView: InnerDesignableView, ResetableField {
+open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableField {
 
     // MARK: - IBOutlets
 
@@ -30,6 +30,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     private var state: FieldState = .normal {
         didSet {
             updateUI()
+            perfromOnContainerStateChangedCall()
         }
     }
     private var containerState: FieldContainerState {
@@ -38,10 +39,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         }
         return state.containerState
     }
+    private var error: Bool = false {
+        didSet {
+            perfromOnContainerStateChangedCall()
+        }
+    }
 
-    private var maxLength: Int?
-
-    private var error: Bool = false
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
@@ -56,6 +59,28 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
 
     // MARK: - Properties
 
+    public var field: UITextView {
+        return textView
+    }
+    public var text: String {
+        get {
+            return textView.text
+        }
+        set {
+            setText(newValue)
+        }
+    }
+    /// Property allows you to install placeholder into the first placeholder service.
+    /// If you will use more than one service - install placeholder to it manually.
+    /// Getter returns only nil value.
+    public var placeholder: String? {
+        get {
+            return nil
+        }
+        set {
+            placeholderServices.first?.setup(placeholder: newValue)
+        }
+    }
     public var configuration = UnderlinedTextViewConfiguration() {
         didSet {
             configureAppearance()
@@ -63,13 +88,28 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         }
     }
     public var validator: TextFieldValidation?
+    public var maxLength: Int?
     public var hideClearButton = false
-    public var responder: UIResponder {
-        return self.textView
-    }
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
+    public var isEnabled: Bool {
+        get {
+            return state != .disabled
+        }
+        set {
+            if newValue {
+                enableTextField()
+            } else {
+                disableTextField()
+            }
+        }
+    }
+    public var isValid: Bool {
+        return !error
+    }
+
+    // MARK: - Events
 
     public var onBeginEditing: ((UnderlinedTextView) -> Void)?
     public var onEndEditing: ((UnderlinedTextView) -> Void)?
@@ -77,14 +117,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public var onShouldReturn: ((UnderlinedTextView) -> Void)?
     public var onValidateFail: ((UnderlinedTextView) -> Void)?
     public var onHeightChanged: ((CGFloat) -> Void)?
-    public var toolbarView: UIView? {
-        get {
-            return textView.inputAccessoryView
-        }
-        set {
-            textView.inputAccessoryView = newValue
-        }
-    }
+    public var onContainerStateChanged: ((FieldContainerState) -> Void)?
 
     // MARK: - Initialization
 
@@ -109,11 +142,23 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
+        perfromOnContainerStateChangedCall()
     }
 
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
         updateUI()
+    }
+
+    // MARK: - RespondableField
+
+    public var nextInput: UIResponder?
+    public var previousInput: UIResponder?
+    open override var isFirstResponder: Bool {
+        return textView.isFirstResponder
+    }
+    open override func becomeFirstResponder() -> Bool {
+        return textView.becomeFirstResponder()
     }
 
     // MARK: - Public Methods
@@ -138,52 +183,18 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         placeholderServices.append(service)
     }
 
-    /// Allows you to install placeholder in first placeholder service.
-    /// If you will use more than one service - install placeholder to it manually.
-    public func configure(placeholder: String?) {
-        self.placeholderServices.first?.setup(placeholder: placeholder)
-    }
-
-    /// Allows you to install maximum allowed length of input string
-    public func configure(maxLength: Int?) {
-        self.maxLength = maxLength
-    }
-
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func configure(heightConstraint: NSLayoutConstraint) {
+    public func setup(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
     }
 
-    /// Allows you to set autocorrection and keyboardType for textView
-    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
-        if let correction = correction {
-            textView.autocorrectionType = correction
+    /// Allows you to set some string as hint message
+    public func setup(hint: String) {
+        guard !hint.isEmpty else {
+            return
         }
-        if let keyboardType = keyboardType {
-            textView.keyboardType = keyboardType
-        }
-    }
-
-    /// Allows you to set autocapitalization type for textView
-    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
-        textView.autocapitalizationType = autocapitalizationType
-    }
-
-    /// Allows you to set textContent type for textView
-    public func configureContentType(_ contentType: UITextContentType) {
-        textView.textContentType = contentType
-    }
-
-    /// Allows you to set text in textView and update all UI elements
-    public func setText(_ text: String?) {
-        textView.text = text ?? ""
-        validate()
-        updateUI()
-    }
-
-    /// Return current input string in textView
-    public func currentText() -> String {
-        return textView.text
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
@@ -202,10 +213,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Allows you to know current state: return true in case of current state is valid
+    /// Method performs validate logic, updates all UI elements and returns you `isValid` value
     @discardableResult
-    public func isValidState(forceValidate: Bool = false) -> Bool {
-        if !error || forceValidate {
+    public func validate(force: Bool = false) -> Bool {
+        if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
             updateUI()
@@ -226,48 +237,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField {
     public func resetErrorState() {
         error = false
         updateUI()
-    }
-
-    /// Disable textView
-    public func disableTextField() {
-        state = .disabled
-        textView.isEditable = false
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textView.text = currentText()
-    }
-
-    /// Enable text field
-    public func enableTextField() {
-        state = .normal
-        textView.isEditable = true
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textView.text = currentText()
-    }
-
-    /// Return true if current state allows you to interact with this field
-    public func isEnabled() -> Bool {
-        return state != .disabled
-    }
-
-    /// Allows you to set some string as hint message
-    public func setHint(_ hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
-    }
-
-    /// Return true, if field is current firstResponder
-    public func isCurrentFirstResponder() -> Bool {
-        return textView.isFirstResponder
-    }
-
-    /// Makes textField is current first responder
-    public func makeFirstResponder() {
-        _ = textView.becomeFirstResponder()
     }
 
 }
@@ -415,6 +384,12 @@ private extension UnderlinedTextView {
         }
     }
 
+    func setText(_ text: String?) {
+        textView.text = text ?? ""
+        validate()
+        updateUI()
+    }
+
     func removeError() {
         if error {
             hintService?.setupHintIfNeeded()
@@ -426,11 +401,31 @@ private extension UnderlinedTextView {
         }
     }
 
+    func disableTextField() {
+        state = .disabled
+        textView.isEditable = false
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textView.text
+        textView.text = text
+    }
+
+    func enableTextField() {
+        state = .normal
+        textView.isEditable = true
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textView.text
+        textView.text = text
+    }
+
     func performOnTextChangedCall() {
-        if !isInteractionOccured {
-            isInteractionOccured = !textView.isEmpty
-        }
+        isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textView.isEmpty
         onTextChanged?(self)
+    }
+
+    func perfromOnContainerStateChangedCall() {
+        onContainerStateChanged?(containerState)
     }
 
 }

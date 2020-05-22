@@ -18,6 +18,7 @@ public protocol RespondableField {
      - Important:
         - When you setup non-nill object - your `returnKeyType` will set with `.next` value.
         - If you provide nill object - `returnKeyType` will set with `.default` value.
+        - This rules doesn't apply into the TextView.
         - This property will be used separatly for your needs, but also it can be used with picker views from library (which have custom toolbar view with next/previous arrow buttons).
      */
     var nextInput: UIResponder? { get set }
