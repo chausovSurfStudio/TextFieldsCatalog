@@ -11,7 +11,7 @@ import InputMask
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77.
-open class UnderlinedTextField: InnerDesignableView, ResetableField {
+open class UnderlinedTextField: InnerDesignableView, ResetableField, RespondableField {
 
     // MARK: - IBOutlets
 
@@ -33,17 +33,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         }
         return state.containerState
     }
-
-    private var maxLength: Int?
-
     private var error: Bool = false {
         didSet {
             perfromOnContainerStateChangedCall()
         }
     }
-    private var mode: TextFieldMode = .plain
-    private var nextInput: UIResponder?
-    private var previousInput: UIResponder?
+
     private var heightConstraint: NSLayoutConstraint?
     private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
@@ -55,12 +50,34 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
     // MARK: - Services
 
     private var fieldService: FieldService?
-    private var placeholderService: FloatingPlaceholderService?
     private var lineService: LineService?
     private var hintService: HintService?
+    private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
-    // MARK: - Properties
+    // MARK: - Public Properties
 
+    public var field: InnerTextField {
+        return textField
+    }
+    public var text: String? {
+        get {
+            return textField.text
+        }
+        set {
+            setText(newValue)
+        }
+    }
+    /// Property allows you to install placeholder into the first placeholder service.
+    /// If you will use more than one service - install placeholder to it manually.
+    /// Getter returns only nil value.
+    public var placeholder: String? {
+        get {
+            return nil
+        }
+        set {
+            placeholderServices.first?.setup(placeholder: newValue)
+        }
+    }
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
@@ -79,10 +96,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
+    public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
-    public var heightLayoutPolicy: HeightLayoutPolicy = .fixed {
+    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false) {
         didSet {
             hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
             switch heightLayoutPolicy {
@@ -93,23 +111,28 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
             }
         }
     }
-    public var isNativePlaceholder = false
-    public var responder: UIResponder {
-        return self.textField
+    public var mode: TextFieldMode = .plain {
+        didSet {
+            setup(textFieldMode: mode)
+        }
     }
-    override open var inputView: UIView? {
+    public var isEnabled: Bool {
         get {
-            return textField.inputView
+            return state != .disabled
         }
         set {
-            textField.inputView = newValue
+            if newValue {
+                enableTextField()
+            } else {
+                disableTextField()
+            }
         }
     }
-    public var isSecureTextEntry: Bool = false {
-        didSet {
-            textField.isSecureTextEntry = isSecureTextEntry
-        }
+    public var isValid: Bool {
+        return !error
     }
+
+    // MARK: - Events
 
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
@@ -145,7 +168,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
         perfromOnContainerStateChangedCall()
-        setTextFieldMode(mode)
+        setup(textFieldMode: mode)
     }
 
     override open func draw(_ rect: CGRect) {
@@ -153,85 +176,55 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
+    // MARK: - RespondableField
+
+    public var nextInput: UIResponder? {
+        didSet {
+            textField.returnKeyType = nextInput == nil ? .default : .next
+        }
+    }
+    public var previousInput: UIResponder?
+    open override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
+    open override func becomeFirstResponder() -> Bool {
+        return textField.becomeFirstResponder()
+    }
+
     // MARK: - Public Methods
 
-    /// Allows you to install a placeholder, infoString in bottom label and maximum allowed string
-    public func configure(placeholder: String?, maxLength: Int?) {
-        placeholderService?.setup(placeholder: placeholder)
-        self.maxLength = maxLength
+    /// Allows you to change placeholder services for text field
+    public func setup(placeholderServices: [AbstractPlaceholderService]) {
+        self.placeholderServices = placeholderServices
+        for service in placeholderServices {
+            service.provide(superview: self.view, field: textField)
+            service.configurePlaceholder(fieldState: state,
+                                         containerState: containerState)
+            service.updateContent(fieldState: state, containerState: containerState)
+        }
+    }
+
+    /// Allows you to add new placeholder service
+    public func add(placeholderService service: AbstractPlaceholderService) {
+        service.provide(superview: self.view, field: textField)
+        service.configurePlaceholder(fieldState: state,
+                                     containerState: containerState)
+        service.updateContent(fieldState: state, containerState: containerState)
+        placeholderServices.append(service)
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func configure(heightConstraint: NSLayoutConstraint) {
+    public func setup(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint
     }
 
-    /// Allows you to set autocorrection and keyboardType for textField
-    public func configure(correction: UITextAutocorrectionType?, keyboardType: UIKeyboardType?) {
-        if let correction = correction {
-            textField.autocorrectionType = correction
+    /// Allows you to set some string as hint message
+    public func setup(hint: String) {
+        guard !hint.isEmpty else {
+            return
         }
-        if let keyboardType = keyboardType {
-            textField.keyboardType = keyboardType
-        }
-    }
-
-    /// Allows you to set autocapitalization type for textField
-    public func configure(autocapitalizationType: UITextAutocapitalizationType) {
-        textField.autocapitalizationType = autocapitalizationType
-    }
-
-    /// Allows you to set textContent type for textField
-    public func configureContentType(_ contentType: UITextContentType) {
-        textField.textContentType = contentType
-    }
-
-    /// Allows you to change current mode
-    public func setTextFieldMode(_ mode: TextFieldMode) {
-        self.mode = mode
-        switch mode {
-        case .plain:
-            actionButton.isHidden = true
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.defaultPadding
-        case .password:
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = true
-            textField.textPadding = configuration.textField.increasedPadding
-            updatePasswordButtonIcon()
-            updatePasswordButtonVisibility()
-        case .custom(let actionButtonConfig):
-            actionButton.isHidden = false
-            textField.isSecureTextEntry = false
-            textField.textPadding = configuration.textField.increasedPadding
-            actionButton.setImageForAllState(actionButtonConfig.image,
-                                             normalColor: actionButtonConfig.normalColor,
-                                             pressedColor: actionButtonConfig.pressedColor)
-        }
-        placeholderService?.useIncreasedRightPadding = !actionButton.isHidden
-        placeholderService?.updatePlaceholderFrame(isNativePlaceholder: isNativePlaceholder,
-                                                   fieldState: state)
-    }
-
-    /// Allows you to set text in textField and update all UI elements
-    public func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
-        validate()
-        updateUI()
-    }
-
-    /// Return current input string in textField
-    public func currentText() -> String? {
-        return textField.text
-    }
-
-    /// This method hide keyboard, when textField will be activated (e.g., for textField with date, which connectes with DatePicker)
-    public func hideKeyboard() {
-        textField.inputView = UIView()
+        hintService?.setup(hintMessage: hint)
+        hintService?.setupHintText(hint)
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -251,10 +244,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Allows you to know current state: return true in case of current state is valid
+    /// Method performs validate logic, updates all UI elements and returns you `isValid` value
     @discardableResult
-    public func isValidState(forceValidate: Bool = false) -> Bool {
-        if !error || forceValidate {
+    public func validate(force: Bool = false) -> Bool {
+        if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
             updateUI()
@@ -276,70 +269,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField {
         updateUI()
     }
 
-    /// Disable paste action for textField
-    public func disablePasteAction() {
-        textField.pasteActionEnabled = false
-    }
-
-    /// Disable text field
-    public func disableTextField() {
-        state = .disabled
-        textField.isEnabled = false
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
-    }
-
-    /// Enable text field
-    public func enableTextField() {
-        state = .normal
-        textField.isEnabled = true
-        updateUI()
-        /// fix for bug, when text field not changing his textColor on iphone 6+
-        textField.text = currentText()
-    }
-
-    /// Return true if current state allows you to interact with this field
-    public func isEnabled() -> Bool {
-        return state != .disabled
-    }
-
-    /// Allows you to set some string as hint message
-    public func setHint(_ hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
-    }
-
-    /// Return true, if field is current firstResponder
-    public func isCurrentFirstResponder() -> Bool {
-        return textField.isFirstResponder
-    }
-
-    /// Sets next responder, which will be activated after 'Next' button in keyboard will be pressed
-    public func setNextResponder(_ nextResponder: UIResponder) {
-        textField.returnKeyType = .next
-        nextInput = nextResponder
-    }
-
-    /// Sets previous responder, which will be activated after 'Back' button in keyboard toolbar will be pressed.
-    /// 'Back' button appears only into the topView in custom input views, which you can find in this library.
-    public func setPreviousResponder(_ nextResponder: UIResponder) {
-        previousInput = nextResponder
-    }
-
-    /// Makes textField is current first responder
-    public func makeFirstResponder() {
-        _ = textField.becomeFirstResponder()
-    }
-
-    /// Allows you to manage keyboard returnKeyType
-    public func setReturnKeyType(_ type: UIReturnKeyType) {
-        textField.returnKeyType = type
-    }
-
 }
 
 // MARK: - Configure
@@ -350,9 +279,6 @@ private extension UnderlinedTextField {
         fieldService = FieldService(field: textField,
                                     configuration: configuration.textField,
                                     backgroundConfiguration: configuration.background)
-        placeholderService = FloatingPlaceholderService(superview: self,
-                                                        field: textField,
-                                                        configuration: configuration.placeholder)
         hintService = HintService(hintLabel: hintLabel,
                                   configuration: configuration.hint,
                                   heightLayoutPolicy: heightLayoutPolicy)
@@ -364,16 +290,20 @@ private extension UnderlinedTextField {
     func configureAppearance() {
         fieldService?.setup(configuration: configuration.textField,
                             backgroundConfiguration: configuration.background)
-        placeholderService?.setup(configuration: configuration.placeholder)
         hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
+        for service in placeholderServices {
+            service.provide(superview: self.view, field: textField)
+        }
 
         fieldService?.configureBackground()
         fieldService?.configure(textField: textField)
-        placeholderService?.configurePlaceholder(fieldState: state,
-                                                 containerState: containerState)
         hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+        for service in placeholderServices {
+            service.configurePlaceholder(fieldState: state,
+                                         containerState: containerState)
+        }
 
         configureActionButton()
         textField.delegate = maskFormatter?.delegateForTextField() ?? self
@@ -403,9 +333,11 @@ private extension UnderlinedTextField {
     @objc
     func textfieldEditingChange(_ textField: UITextField) {
         removeError()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
+        for service in placeholderServices {
+            service.updateAfterTextChanged(fieldState: state)
+        }
     }
 
 }
@@ -426,17 +358,17 @@ extension UnderlinedTextField: UITextFieldDelegate {
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text), !validateWithFormatter else {
+        guard
+            let text = textField.text,
+            let textRange = Range(range, in: text),
+            !validateWithFormatter,
+            let maxLength = self.maxLength
+        else {
             return true
         }
 
         let newText = text.replacingCharacters(in: textRange, with: string)
-        var isValid = true
-        if let maxLength = self.maxLength {
-            isValid = newText.count <= maxLength
-        }
-
-        return isValid
+        return newText.count <= maxLength
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -461,9 +393,11 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
     public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
-        placeholderService?.updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
+        for service in placeholderServices {
+            service.updateAfterTextChanged(fieldState: state)
+        }
     }
 
 }
@@ -523,26 +457,15 @@ private extension UnderlinedTextField {
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
         hintService?.updateContent(containerState: containerState)
-        placeholderService?.updateContent(fieldState: state,
-                                          containerState: containerState,
-                                          isNativePlaceholder: isNativePlaceholder)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
+        for service in placeholderServices {
+            service.updateContent(fieldState: state, containerState: containerState)
+        }
 
         updateViewHeight()
         updatePasswordButtonVisibility()
-    }
-
-    func updatePasswordButtonIcon() {
-        guard case .password = mode else {
-            return
-        }
-        let isSecure = textField.isSecureTextEntry
-        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
-        actionButton.setImageForAllState(image,
-                                         normalColor: configuration.passwordMode.normalColor,
-                                         pressedColor: configuration.passwordMode.pressedColor)
     }
 
     func validateWithPolicy() {
@@ -582,12 +505,66 @@ private extension UnderlinedTextField {
         }
     }
 
+    func setText(_ text: String?) {
+        if let formatter = maskFormatter {
+            formatter.format(string: text, field: textField)
+        } else {
+            textField.text = text
+        }
+        validate()
+        updateUI()
+    }
+
+    func setup(textFieldMode: TextFieldMode) {
+        switch textFieldMode {
+        case .plain:
+            actionButton.isHidden = true
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.defaultPadding
+        case .password:
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = true
+            textField.textPadding = configuration.textField.increasedPadding
+            updatePasswordButtonIcon()
+            updatePasswordButtonVisibility()
+        case .custom(let actionButtonConfig):
+            actionButton.isHidden = false
+            textField.isSecureTextEntry = false
+            textField.textPadding = configuration.textField.increasedPadding
+            actionButton.setImageForAllState(actionButtonConfig.image,
+                                             normalColor: actionButtonConfig.normalColor,
+                                             pressedColor: actionButtonConfig.pressedColor)
+        }
+        for service in placeholderServices {
+            service.update(useIncreasedRightPadding: !actionButton.isHidden,
+                           fieldState: state)
+        }
+    }
+
     func removeError() {
         if error {
             hintService?.setupHintIfNeeded()
             error = false
             updateUI()
         }
+    }
+
+    func enableTextField() {
+        state = .normal
+        textField.isEnabled = true
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
+    }
+
+    func disableTextField() {
+        state = .disabled
+        textField.isEnabled = false
+        updateUI()
+        /// fix for bug, when text field not changing his textColor on iphone 6+
+        let text = textField.text
+        textField.text = text
     }
 
     func performOnTextChangedCall() {
@@ -638,6 +615,17 @@ private extension UnderlinedTextField {
             heightConstraint?.constant = viewHeight
             onHeightChanged?(viewHeight)
         }
+    }
+
+    func updatePasswordButtonIcon() {
+        guard case .password = mode else {
+            return
+        }
+        let isSecure = textField.isSecureTextEntry
+        let image = isSecure ? configuration.passwordMode.secureModeOffImage : configuration.passwordMode.secureModeOnImage
+        actionButton.setImageForAllState(image,
+                                         normalColor: configuration.passwordMode.normalColor,
+                                         pressedColor: configuration.passwordMode.pressedColor)
     }
 
     func updatePasswordButtonVisibility() {

@@ -6,41 +6,41 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
-final class FloatingPlaceholderService {
+/**
+ Default variant of placeholder service which implements logic of `floating`-placeholder.
 
-    // MARK: - Properties
-
-    var useIncreasedRightPadding = false
+ Placeholder-container in this service is a CATextLayer, which changes his color, font and position when field changed his state.
+ - Attention:
+    - For more information - see also info about `FloatingPlaceholderConfiguration` in documentation.
+ */
+public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
-    private let superview: InnerDesignableView
-    private let field: InputField?
-
+    private weak var superview: UIView?
+    private weak var field: InputField?
     private var configuration: FloatingPlaceholderConfiguration
+    private var useIncreasedRightPadding = false
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
-         field: InputField?,
-         configuration: FloatingPlaceholderConfiguration) {
+    public init(configuration: FloatingPlaceholderConfiguration) {
+        self.configuration = configuration
+    }
+
+    // MARK: - AbstractPlaceholderService
+
+    public func provide(superview: UIView, field: InputField?) {
         self.superview = superview
         self.field = field
-        self.configuration = configuration
     }
 
-    // MARK: - Internal Methods
-
-    func setup(configuration: FloatingPlaceholderConfiguration) {
-        self.configuration = configuration
-    }
-
-    func setup(placeholder: String?) {
+    public func setup(placeholder: String?) {
         self.placeholder.string = placeholder
     }
 
-    func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperlayer()
         placeholder.string = ""
         placeholder.font = configuration.font
@@ -49,24 +49,19 @@ final class FloatingPlaceholderService {
         placeholder.contentsScale = UIScreen.main.scale
         placeholder.frame = placeholderPosition(fieldState: fieldState)
         placeholder.truncationMode = CATextLayerTruncationMode.end
-        superview.layer.addSublayer(placeholder)
+        superview?.layer.addSublayer(placeholder)
     }
 
-    func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState,
-                       isNativePlaceholder: Bool) {
+    public func updateContent(fieldState: FieldState,
+                              containerState: FieldContainerState) {
         updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+        updatePlaceholderPosition(fieldState: fieldState)
         updatePlaceholderFont(fieldState: fieldState)
-        updatePlaceholderVisibility(isNativePlaceholder: isNativePlaceholder)
     }
 
-    func updatePlaceholderVisibility(isNativePlaceholder: Bool) {
-        placeholder.isHidden = isNativePlaceholder && !textIsEmpty()
-    }
-
-    func updatePlaceholderFrame(isNativePlaceholder: Bool, fieldState: FieldState) {
-        updatePlaceholderPosition(isNativePlaceholder: isNativePlaceholder, fieldState: fieldState)
+    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
+        self.useIncreasedRightPadding = useIncreasedRightPadding
+        updatePlaceholderPosition(fieldState: fieldState)
     }
 
 }
@@ -88,10 +83,7 @@ private extension FloatingPlaceholderService {
         placeholder.add(colorAnimation, forKey: nil)
     }
 
-    func updatePlaceholderPosition(isNativePlaceholder: Bool, fieldState: FieldState) {
-        guard !isNativePlaceholder else {
-            return
-        }
+    func updatePlaceholderPosition(fieldState: FieldState) {
         let startPosition: CGRect = currentPlaceholderPosition()
         let endPosition: CGRect = placeholderPosition(fieldState: fieldState)
         placeholder.frame = endPosition
@@ -138,12 +130,15 @@ private extension FloatingPlaceholderService {
     }
 
     func placeholderPosition(fieldState: FieldState) -> CGRect {
+        guard let superview = superview else {
+            return .zero
+        }
         let placeholderOnTop = shouldMovePlaceholderOnTop(state: fieldState)
         var targetInsets = placeholderOnTop ? configuration.topInsets : configuration.bottomInsets
         if useIncreasedRightPadding {
             targetInsets.right = configuration.increasedRightPadding
         }
-        var placeholderFrame = superview.view.bounds.inset(by: targetInsets)
+        var placeholderFrame = superview.bounds.inset(by: targetInsets)
         placeholderFrame.size.height = configuration.height
         return placeholderFrame
     }

@@ -83,18 +83,70 @@ public final class FloatingPlaceholderConfiguration {
     }
 }
 
-/// Configuration class with parameters for static placeholder
-public final class PlaceholderConfiguration {
+/// Configuration class with parameters for static placeholders
+public class StaticPlaceholderConfiguration {
     /// Font of placeholder
     let font: UIFont
+    /// These are insets for determining the position of a placeholder.
+    /// Bottom value is ignored, position is relative to the top.
+    let insets: UIEdgeInsets
+    /// Height of static placeholder
+    let height: CGFloat
     /// Colors for placeholder in various states
     let colors: ColorConfiguration
 
     public init(font: UIFont,
+                height: CGFloat,
+                insets: UIEdgeInsets,
                 colors: ColorConfiguration) {
         self.font = font
+        self.insets = insets
+        self.height = height
         self.colors = colors
     }
+}
+
+/// Configuration class for native placeholder.
+/// Inherited from StaticPlaceholderConfiguration, so you also can use object of this class in init method.
+/// Carefully study the description and purpose of the calss fields in the documentation,
+/// because some cases do not make sense (eg. behavior == .hideOnFocus && useAsMainPlaceholder == false)
+public final class NativePlaceholderConfiguration: StaticPlaceholderConfiguration {
+    /// You can manage placeholder hide behavior with this value
+    let behavior: NativePlaceholderBehavior
+    /// If you want to use this placeholder as main field placeholder - provide 'true' value.
+    /// Otherwise, with 'false' value - placeholder will work like support placeholder for other main placeholder
+    /// (at the level of internal logic - in 'false' case it will present only in active case without input text)
+    let useAsMainPlaceholder: Bool
+    /// This padding for text in placeholder layer will be applied when action button will be shown.
+    /// Right inset from insets property will be ignored when action button will be shown.
+    let increasedRightPadding: CGFloat
+
+    public init(font: UIFont,
+                height: CGFloat,
+                insets: UIEdgeInsets,
+                colors: ColorConfiguration,
+                behavior: NativePlaceholderBehavior,
+                useAsMainPlaceholder: Bool,
+                increasedRightPadding: CGFloat) {
+        self.behavior = behavior
+        self.useAsMainPlaceholder = useAsMainPlaceholder
+        self.increasedRightPadding = increasedRightPadding
+        super.init(font: font, height: height, insets: insets, colors: colors)
+    }
+
+    public init(configuration: StaticPlaceholderConfiguration,
+                behavior: NativePlaceholderBehavior,
+                useAsMainPlaceholder: Bool,
+                increasedRightPadding: CGFloat) {
+        self.behavior = behavior
+        self.useAsMainPlaceholder = useAsMainPlaceholder
+        self.increasedRightPadding = increasedRightPadding
+        super.init(font: configuration.font,
+                   height: configuration.height,
+                   insets: configuration.insets,
+                   colors: configuration.colors)
+    }
+
 }
 
 /// Configuration class with parameters for inner text field inside custom text fields

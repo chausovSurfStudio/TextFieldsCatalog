@@ -12,8 +12,20 @@ extension String {
 
     func height(forWidth width: CGFloat, attributes: [NSAttributedString.Key: Any]) -> CGFloat {
         let rect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: rect, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        let boundingBox = self.boundingRect(with: rect,
+                                            options: .usesLineFragmentOrigin,
+                                            attributes: attributes,
+                                            context: nil)
         return ceil(boundingBox.height)
+    }
+
+    func width(forHeight height: CGFloat, attributes: [NSAttributedString.Key: Any]) -> CGFloat {
+        let rect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: rect,
+                                            options: .usesLineFragmentOrigin,
+                                            attributes: attributes,
+                                            context: nil)
+        return ceil(boundingBox.width)
     }
 
 }

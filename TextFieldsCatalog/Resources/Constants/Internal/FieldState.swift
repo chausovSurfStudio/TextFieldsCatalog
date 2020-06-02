@@ -9,7 +9,7 @@
 import Foundation
 
 /// Possible textField/textView states
-enum FieldState {
+public enum FieldState {
     /// field not in focus
     case normal
     /// state for active field

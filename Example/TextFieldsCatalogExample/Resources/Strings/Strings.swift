@@ -187,6 +187,15 @@ enum L10n {
       /// Пол
       static let placeholder = L10n.tr("Localizable", "Presets.sex.placeholder")
     }
+
+    enum Sum {
+      /// Пример работы поля для ввода суммы.\n\n• Не самая простая его реализация.\n• Имеет три плейсхолдера, один - статический, второй - нативный. Третий же - кастомный, отвечает за символ валюты, перемещающийся вслед за текстом.\n• При ввода какого-либо валидного значения - оно устанавливается в нативный плейсхолдер.\n• Имеется обработка разных граничных значений при ввода, а также при снятии фокуса.\n• Коряво работает перемещение каретки ввода при добавлении символов или их удалении, если они проводятся не в конце вводимой строки, простите :(
+      static let description = L10n.tr("Localizable", "Presets.sum.description")
+      /// Сумма
+      static let name = L10n.tr("Localizable", "Presets.sum.name")
+      /// Сумма
+      static let placeholder = L10n.tr("Localizable", "Presets.sum.placeholder")
+    }
   }
 
   enum Textfieldtype {
@@ -203,6 +212,13 @@ enum L10n {
       static let description = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.description")
       /// Кастомизированое поле ввода с подчеркивание
       static let title = L10n.tr("Localizable", "TextFieldType.CustomUnderlined.title")
+    }
+
+    enum Sumtextfield {
+      /// • Пример кастомизации полей для случая ввода суммы.\n• Имеет целых три плейхолдера, один из которых - кастомный.\n• Логика для обработки введенных значений не привязана к библиотеке, реализована в качестве примера.\n• Помимо прочего - введенный текст уменьшается, если не влезает в границы поля.
+      static let description = L10n.tr("Localizable", "TextFieldType.SumTextField.description")
+      /// Поле ввода суммы
+      static let title = L10n.tr("Localizable", "TextFieldType.SumTextField.title")
     }
 
     enum Underlined {

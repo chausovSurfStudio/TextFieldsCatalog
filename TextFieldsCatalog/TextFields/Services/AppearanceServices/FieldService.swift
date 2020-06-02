@@ -10,7 +10,7 @@ final class FieldService {
 
     // MARK: - Private Properties
 
-    private let field: InputField?
+    private weak var field: InputField?
     private var configuration: TextFieldConfiguration
     private var backgroundConfiguration: BackgroundConfiguration
 
