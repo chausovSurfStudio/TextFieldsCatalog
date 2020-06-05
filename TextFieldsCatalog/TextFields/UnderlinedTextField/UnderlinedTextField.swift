@@ -229,7 +229,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     /// Allows you to set optional string as text.
     /// Also you can disable automatic validation on this action.
-    func setup(text: String?, validateText: Bool = true) {
+    public func setup(text: String?, validateText: Bool = true) {
         if let formatter = maskFormatter {
             formatter.format(string: text, field: textField)
         } else {
@@ -360,18 +360,18 @@ private extension UnderlinedTextField {
 
 extension UnderlinedTextField: UITextFieldDelegate {
 
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         state = .active
         onBeginEditing?(self)
     }
 
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
 
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard
             let text = textField.text,
             let textRange = Range(range, in: text),
@@ -385,7 +385,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
         return newText.count <= maxLength
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = nextInput {
             nextField.becomeFirstResponder()
         } else {
