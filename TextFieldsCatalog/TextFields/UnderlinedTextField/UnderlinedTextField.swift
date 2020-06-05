@@ -332,9 +332,9 @@ private extension UnderlinedTextField {
 
 // MARK: - Actions
 
-private extension UnderlinedTextField {
+extension UnderlinedTextField {
 
-    @IBAction func tapOnActionButton(_ sender: UIButton) {
+    @IBAction private func tapOnActionButton(_ sender: UIButton) {
         onActionButtonTap?(self, sender)
         guard case .password = mode else {
             return
@@ -345,7 +345,7 @@ private extension UnderlinedTextField {
     }
 
     @objc
-    func textfieldEditingChange(_ textField: UITextField) {
+    open func textfieldEditingChange(_ textField: UITextField) {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
@@ -404,7 +404,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
 
 extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
-    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+    open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         performOnTextChangedCall()
