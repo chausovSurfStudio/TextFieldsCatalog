@@ -59,12 +59,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var field: InnerTextField {
         return textField
     }
-    public var text: String? {
+    public var text: String {
         get {
-            return textField.text
+            return textField.text ?? ""
         }
         set {
-            setText(newValue)
+            setup(text: newValue)
         }
     }
     /// Property allows you to install placeholder into the first placeholder service.
@@ -225,6 +225,20 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         }
         hintService?.setup(hintMessage: hint)
         hintService?.setupHintText(hint)
+    }
+
+    /// Allows you to set optional string as text.
+    /// Also you can disable automatic validation on this action.
+    func setup(text: String?, validateText: Bool = true) {
+        if let formatter = maskFormatter {
+            formatter.format(string: text, field: textField)
+        } else {
+            textField.text = text
+        }
+        if validateText {
+            validate()
+        }
+        updateUI()
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -433,7 +447,7 @@ extension UnderlinedTextField: GuidedTextField {
 extension UnderlinedTextField: DateTextField {
 
     public func processDateChange(_ date: Date, text: String) {
-        setText(text)
+        setup(text: text)
         onDateChanged?(date)
     }
 
@@ -444,7 +458,7 @@ extension UnderlinedTextField: DateTextField {
 extension UnderlinedTextField: PickerTextField {
 
     public func processValueChange(_ value: String) {
-        setText(value)
+        setup(text: value)
         performOnTextChangedCall()
     }
 
@@ -503,16 +517,6 @@ private extension UnderlinedTextField {
         if error {
             onValidateFail?(self)
         }
-    }
-
-    func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
-        validate()
-        updateUI()
     }
 
     func setup(textFieldMode: TextFieldMode) {

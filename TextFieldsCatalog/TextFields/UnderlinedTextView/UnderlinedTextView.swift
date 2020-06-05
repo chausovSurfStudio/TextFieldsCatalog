@@ -67,7 +67,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             return textView.text
         }
         set {
-            setText(newValue)
+            setup(text: newValue)
         }
     }
     /// Property allows you to install placeholder into the first placeholder service.
@@ -195,6 +195,16 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         }
         hintService?.setup(hintMessage: hint)
         hintService?.setupHintText(hint)
+    }
+
+    /// Allows you to set optional string as text.
+    /// Also you can disable automatic validation on this action.
+    func setup(text: String?, validateText: Bool = true) {
+        textView.text = text ?? ""
+        if validateText {
+            validate()
+        }
+        updateUI()
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
@@ -382,12 +392,6 @@ private extension UnderlinedTextView {
         if error {
             onValidateFail?(self)
         }
-    }
-
-    func setText(_ text: String?) {
-        textView.text = text ?? ""
-        validate()
-        updateUI()
     }
 
     func removeError() {
