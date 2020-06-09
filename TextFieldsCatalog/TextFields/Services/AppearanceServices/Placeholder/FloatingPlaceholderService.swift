@@ -42,7 +42,7 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperlayer()
-        placeholder.string = ""
+        placeholder.string = placeholder.string ?? ""
         placeholder.font = configuration.font
         placeholder.fontSize = configuration.bigFontSize
         placeholder.foregroundColor = placeholderColor(fieldState: fieldState, containerState: containerState)

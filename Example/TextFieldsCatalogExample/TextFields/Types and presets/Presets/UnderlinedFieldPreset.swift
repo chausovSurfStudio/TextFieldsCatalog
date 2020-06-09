@@ -142,7 +142,7 @@ private extension UnderlinedFieldPreset {
         textField.validator = validator
 
         textField.onEndEditing = { field in
-            field.text = field.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            field.text = field.text.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
 

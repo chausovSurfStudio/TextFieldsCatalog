@@ -37,7 +37,7 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
 
     public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
-        placeholder.text = ""
+        placeholder.text = placeholder.text ?? ""
         placeholder.font = configuration.font
         placeholder.textColor = configuration.colors.suitableColor(state: containerState)
         placeholder.frame = placeholderPosition()

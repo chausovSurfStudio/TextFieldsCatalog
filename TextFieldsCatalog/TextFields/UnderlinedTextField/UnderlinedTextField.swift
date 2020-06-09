@@ -59,12 +59,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var field: InnerTextField {
         return textField
     }
-    public var text: String? {
+    public var text: String {
         get {
-            return textField.text
+            return textField.text ?? ""
         }
         set {
-            setText(newValue)
+            setup(text: newValue)
         }
     }
     /// Property allows you to install placeholder into the first placeholder service.
@@ -227,6 +227,20 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         hintService?.setupHintText(hint)
     }
 
+    /// Allows you to set optional string as text.
+    /// Also you can disable automatic validation on this action.
+    public func setup(text: String?, validateText: Bool = true) {
+        if let formatter = maskFormatter {
+            formatter.format(string: text, field: textField)
+        } else {
+            textField.text = text
+        }
+        if validateText {
+            validate()
+        }
+        updateUI()
+    }
+
     /// Allows to set accessibilityIdentifier for textField and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier
@@ -318,9 +332,9 @@ private extension UnderlinedTextField {
 
 // MARK: - Actions
 
-private extension UnderlinedTextField {
+extension UnderlinedTextField {
 
-    @IBAction func tapOnActionButton(_ sender: UIButton) {
+    @IBAction private func tapOnActionButton(_ sender: UIButton) {
         onActionButtonTap?(self, sender)
         guard case .password = mode else {
             return
@@ -331,7 +345,7 @@ private extension UnderlinedTextField {
     }
 
     @objc
-    func textfieldEditingChange(_ textField: UITextField) {
+    open func textfieldEditingChange(_ textField: UITextField) {
         removeError()
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
@@ -346,18 +360,18 @@ private extension UnderlinedTextField {
 
 extension UnderlinedTextField: UITextFieldDelegate {
 
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         state = .active
         onBeginEditing?(self)
     }
 
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
 
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard
             let text = textField.text,
             let textRange = Range(range, in: text),
@@ -371,7 +385,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
         return newText.count <= maxLength
     }
 
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = nextInput {
             nextField.becomeFirstResponder()
         } else {
@@ -390,7 +404,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
 
 extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
-    public func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+    open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
         removeError()
         performOnTextChangedCall()
@@ -433,7 +447,7 @@ extension UnderlinedTextField: GuidedTextField {
 extension UnderlinedTextField: DateTextField {
 
     public func processDateChange(_ date: Date, text: String) {
-        setText(text)
+        setup(text: text)
         onDateChanged?(date)
     }
 
@@ -444,7 +458,7 @@ extension UnderlinedTextField: DateTextField {
 extension UnderlinedTextField: PickerTextField {
 
     public func processValueChange(_ value: String) {
-        setText(value)
+        setup(text: value)
         performOnTextChangedCall()
     }
 
@@ -503,16 +517,6 @@ private extension UnderlinedTextField {
         if error {
             onValidateFail?(self)
         }
-    }
-
-    func setText(_ text: String?) {
-        if let formatter = maskFormatter {
-            formatter.format(string: text, field: textField)
-        } else {
-            textField.text = text
-        }
-        validate()
-        updateUI()
     }
 
     func setup(textFieldMode: TextFieldMode) {

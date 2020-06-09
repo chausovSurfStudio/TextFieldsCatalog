@@ -67,7 +67,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             return textView.text
         }
         set {
-            setText(newValue)
+            setup(text: newValue)
         }
     }
     /// Property allows you to install placeholder into the first placeholder service.
@@ -197,6 +197,16 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         hintService?.setupHintText(hint)
     }
 
+    /// Allows you to set optional string as text.
+    /// Also you can disable automatic validation on this action.
+    public func setup(text: String?, validateText: Bool = true) {
+        textView.text = text ?? ""
+        if validateText {
+            validate()
+        }
+        updateUI()
+    }
+
     /// Allows to set accessibilityIdentifier for textView and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier
@@ -302,18 +312,18 @@ private extension UnderlinedTextView {
 
 extension UnderlinedTextView: UITextViewDelegate {
 
-    public func textViewDidBeginEditing(_ textView: UITextView) {
+    open func textViewDidBeginEditing(_ textView: UITextView) {
         state = .active
         onBeginEditing?(self)
     }
 
-    public func textViewDidEndEditing(_ textView: UITextView) {
+    open func textViewDidEndEditing(_ textView: UITextView) {
         validateWithPolicy()
         state = .normal
         onEndEditing?(self)
     }
 
-    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard
             let currentText = textView.text,
             let textRange = Range(range, in: currentText),
@@ -325,7 +335,7 @@ extension UnderlinedTextView: UITextViewDelegate {
         return newText.count <= maxLength
     }
 
-    public func textViewDidChange(_ textView: UITextView) {
+    open func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
         removeError()
         performOnTextChangedCall()
@@ -382,12 +392,6 @@ private extension UnderlinedTextView {
         if error {
             onValidateFail?(self)
         }
-    }
-
-    func setText(_ text: String?) {
-        textView.text = text ?? ""
-        validate()
-        updateUI()
     }
 
     func removeError() {

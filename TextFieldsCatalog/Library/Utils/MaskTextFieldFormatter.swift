@@ -49,7 +49,7 @@ public final class MaskTextFieldFormatter: NSObject {
         if inputIsCompleted {
             return (true, nil)
         }
-        if rawValue?.isEmpty == true {
+        if rawValue?.isEmpty ?? true == true {
             return (false, emptyStringErrorMessage)
         }
         return (false, incorrectStringErrorMessage)
