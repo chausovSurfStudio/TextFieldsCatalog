@@ -93,6 +93,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5)
+    public var maxTextContainerHeight: CGFloat?
     public var isEnabled: Bool {
         get {
             return state != .disabled
@@ -440,7 +441,7 @@ private extension UnderlinedTextView {
 
     func updateViewHeight() {
         let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
-        let textHeight = textViewHeight()
+        let textHeight = min(textViewHeight(), maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
         let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
