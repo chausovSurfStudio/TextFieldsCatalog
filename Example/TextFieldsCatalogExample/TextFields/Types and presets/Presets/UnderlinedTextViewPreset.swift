@@ -50,7 +50,6 @@ private extension UnderlinedTextViewPreset {
         textView.placeholder = L10n.Presets.Comment.placeholder
         textView.maxLength = 200
         textView.maxTextContainerHeight = 96
-        textView.field.isScrollEnabled = true
         textView.field.autocorrectionType = .no
         textView.setup(heightConstraint: heightConstraint)
         textView.setup(hint: L10n.Presets.Comment.hint)

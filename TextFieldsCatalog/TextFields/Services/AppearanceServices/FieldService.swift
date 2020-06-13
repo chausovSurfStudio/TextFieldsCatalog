@@ -52,7 +52,6 @@ final class FieldService {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textView.textContainer.lineFragmentPadding = 0
         textView.contentOffset = CGPoint(x: 0, y: 0)
-        textView.isScrollEnabled = false
     }
 
     func updateContent(containerState: FieldContainerState) {
