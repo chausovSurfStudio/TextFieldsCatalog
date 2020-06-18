@@ -53,3 +53,7 @@ format:
 ## Allows you to perform pod install command via bundler settings. Use it instead plain pod install command.
 pod:
 	bundle exec pod install
+
+## Generate framework documentation
+doc:
+	bundle exec jazzy --clean --build-tool-arguments -scheme,TextFieldsCatalog,-workspace,TextFieldsCatalog.xcworkspace,-sdk,iphonesimulator --output Docs/swift_output
