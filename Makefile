@@ -56,4 +56,4 @@ pod:
 
 ## Generate framework documentation
 doc:
-	bundle exec jazzy --clean --build-tool-arguments -scheme,TextFieldsCatalog,-workspace,TextFieldsCatalog.xcworkspace,-sdk,iphonesimulator --output docs
+	bundle exec jazzy --clean --build-tool-arguments -scheme,TextFieldsCatalog,-workspace,TextFieldsCatalog.xcworkspace,-sdk,iphonesimulator --output "docs"
