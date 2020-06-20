@@ -16,20 +16,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: CocoaPods
-      run: |
-        gem install xcpretty -N
-        make init
-    - name: Force xcode 11
-      run: |
-        sudo xcode-select -switch /Applications/Xcode_11.2.1.app
-    - name: Build
-      run: |
-        make build
-    - name: Test
-      run: |
-        make test
+    # - name: CocoaPods
+    #   run: |
+    #     gem install xcpretty -N
+    #     make init
+    # - name: Force xcode 11
+    #   run: |
+    #     sudo xcode-select -switch /Applications/Xcode_11.2.1.app
+    # - name: Build
+    #   run: |
+    #     make build
+    # - name: Test
+    #   run: |
+    #     make test
     - name: documentation
-      if: ${{ github.ref == 'master' }}
+      if: ${{ github.ref == 'ref/head/master' }}
       run: |
         make doc
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        author_name: chausovSurfStudio
+        author_email: chausov@surfstudio.ru
+        message: "Updates for documentation"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
