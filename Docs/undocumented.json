@@ -1,1048 +1,1048 @@
 {
   "warnings": [
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerDesignableView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerDesignableView.swift",
       "line": 22,
       "symbol": "InnerDesignableView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 16,
       "symbol": "InnerTextField.pasteActionEnabled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 17,
       "symbol": "InnerTextField.textPadding",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 18,
       "symbol": "InnerTextField.placeholderPadding",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 22,
       "symbol": "InnerTextField.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 27,
       "symbol": "InnerTextField.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 31,
       "symbol": "InnerTextField.awakeFromNib()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 38,
       "symbol": "InnerTextField.canPerformAction(_:withSender:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 45,
       "symbol": "InnerTextField.textRect(forBounds:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 49,
       "symbol": "InnerTextField.editingRect(forBounds:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 53,
       "symbol": "InnerTextField.placeholderRect(forBounds:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 57,
       "symbol": "InnerTextField.isSecureTextEntry",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 65,
       "symbol": "InnerTextField.becomeFirstResponder()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/BaseClasses/InnerTextField.swift",
       "line": 76,
       "symbol": "InnerTextField.fixCursorPosition()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/DateTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/DateTextField.swift",
       "line": 13,
       "symbol": "DateTextField.processDateChange(_:text:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
       "line": 13,
       "symbol": "GuidedTextField.havePreviousInput",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
       "line": 14,
       "symbol": "GuidedTextField.haveNextInput",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
       "line": 16,
       "symbol": "GuidedTextField.processReturnAction()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
       "line": 17,
       "symbol": "GuidedTextField.switchToPreviousInput()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/GuidedTextField.swift",
       "line": 18,
       "symbol": "GuidedTextField.switchToNextInput()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/PickerTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/PickerTextField.swift",
       "line": 13,
       "symbol": "PickerTextField.processValueChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/ResetableField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextField/ResetableField.swift",
       "line": 13,
       "symbol": "ResetableField.reset()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextFieldValidation.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextFieldValidation.swift",
       "line": 11,
       "symbol": "TextFieldValidation",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextFieldValidation.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Protocols/TextFieldValidation.swift",
       "line": 12,
       "symbol": "TextFieldValidation.validate(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/DatePickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/DatePickerView.swift",
       "line": 24,
       "symbol": "DatePickerView.datePicker",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/DatePickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/DatePickerView.swift",
       "line": 25,
       "symbol": "DatePickerView.topViewConfiguration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 26,
       "symbol": "PlainPickerView.picker",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 27,
       "symbol": "PlainPickerView.topViewConfiguration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 117,
       "symbol": "PlainPickerView.numberOfComponents(in:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 121,
       "symbol": "PlainPickerView.pickerView(_:numberOfRowsInComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 131,
       "symbol": "PlainPickerView.pickerView(_:rowHeightForComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 135,
       "symbol": "PlainPickerView.pickerView(_:titleForRow:forComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/PlainPickerView.swift",
       "line": 139,
       "symbol": "PlainPickerView.pickerView(_:didSelectRow:inComponent:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
       "line": 20,
       "symbol": "PickerTopViewConfiguration.init(backgroundColor:separatorsColor:button:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
       "line": 28,
       "symbol": "PickerTopViewConfiguration.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Reusable/Pickers/TopView/PickerTopViewConfiguration.swift",
       "line": 46,
       "symbol": "PickerTopViewButtonConfiguration.init(text:activeColor:highlightedColor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
       "line": 15,
       "symbol": "FormatterMasks.password",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
       "line": 16,
       "symbol": "FormatterMasks.phone",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
       "line": 17,
       "symbol": "FormatterMasks.cardExpirationDate",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
       "line": 18,
       "symbol": "FormatterMasks.cvc",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/FormatterMasks.swift",
       "line": 19,
       "symbol": "FormatterMasks.cardNumber",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/MaskTextFieldFormatter.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/MaskTextFieldFormatter.swift",
       "line": 35,
       "symbol": "MaskTextFieldFormatter.init(mask:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/MaskTextFieldFormatter.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/MaskTextFieldFormatter.swift",
       "line": 39,
       "symbol": "MaskTextFieldFormatter.init(mask:notations:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/TextFieldValidator.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/TextFieldValidator.swift",
       "line": 49,
       "symbol": "TextFieldValidator.init(minLength:maxLength:regex:globalErrorMessage:requiredField:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Library/Utils/TextFieldValidator.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Library/Utils/TextFieldValidator.swift",
       "line": 75,
       "symbol": "TextFieldValidator.validate(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/HeightLayoutPolicy.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/HeightLayoutPolicy.swift",
       "line": 11,
       "symbol": "HeightLayoutPolicy",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/NativePlaceholderBehavior.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/NativePlaceholderBehavior.swift",
       "line": 9,
       "symbol": "NativePlaceholderBehavior",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
       "line": 11,
       "symbol": "SharedRegex",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
       "line": 12,
       "symbol": "SharedRegex.email",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
       "line": 13,
       "symbol": "SharedRegex.everything",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/SharedRegex.swift",
       "line": 14,
       "symbol": "SharedRegex.password",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/Resources/Constants/TextFieldPasswordModeBehavior.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/Resources/Constants/TextFieldPasswordModeBehavior.swift",
       "line": 9,
       "symbol": "TextFieldPasswordModeBehavior",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 27,
       "symbol": "LineConfiguration.init(insets:defaultHeight:increasedHeight:cornerRadius:superview:colors:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 65,
       "symbol": "FloatingPlaceholderConfiguration.init(font:height:topInsets:bottomInsets:increasedRightPadding:smallFontSize:bigFontSize:topColors:bottomColors:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 98,
       "symbol": "StaticPlaceholderConfiguration.init(font:height:insets:colors:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 124,
       "symbol": "NativePlaceholderConfiguration.init(font:height:insets:colors:behavior:useAsMainPlaceholder:increasedRightPadding:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 137,
       "symbol": "NativePlaceholderConfiguration.init(configuration:behavior:useAsMainPlaceholder:increasedRightPadding:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 165,
       "symbol": "TextFieldConfiguration.init(font:defaultPadding:increasedPadding:tintColor:colors:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 187,
       "symbol": "HintConfiguration.init(font:lineHeight:colors:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 205,
       "symbol": "PasswordModeConfiguration.init(secureModeOnImage:secureModeOffImage:normalColor:pressedColor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 216,
       "symbol": "ActionButtonConfiguration",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 224,
       "symbol": "ActionButtonConfiguration.init(image:normalColor:pressedColor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 238,
       "symbol": "BackgroundConfiguration.init(color:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 256,
       "symbol": "ColorConfiguration.init(error:normal:active:disabled:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/ConfigurationParameters.swift",
       "line": 263,
       "symbol": "ColorConfiguration.init(color:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/FlexibleHeightPolicy.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/FlexibleHeightPolicy.swift",
       "line": 9,
       "symbol": "FlexibleHeightPolicy",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/FlexibleHeightPolicy.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/FlexibleHeightPolicy.swift",
       "line": 19,
       "symbol": "FlexibleHeightPolicy.init(minHeight:bottomOffset:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 11,
       "symbol": "BaseFieldConfiguration",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 15,
       "symbol": "BaseFieldConfiguration.textField",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 16,
       "symbol": "BaseFieldConfiguration.line",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 17,
       "symbol": "BaseFieldConfiguration.hint",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 18,
       "symbol": "BaseFieldConfiguration.background",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 34,
       "symbol": "UnderlinedTextFieldConfiguration",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 38,
       "symbol": "UnderlinedTextFieldConfiguration.passwordMode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 42,
       "symbol": "UnderlinedTextFieldConfiguration.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 80,
       "symbol": "UnderlinedTextViewConfiguration",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 84,
       "symbol": "UnderlinedTextViewConfiguration.clearButton",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/TextFieldConfigurations.swift",
       "line": 88,
       "symbol": "UnderlinedTextViewConfiguration.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/FloatingPlaceholderService.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/FloatingPlaceholderService.swift",
       "line": 28,
       "symbol": "FloatingPlaceholderService.init(configuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/NativePlaceholderService.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/NativePlaceholderService.swift",
       "line": 28,
       "symbol": "NativePlaceholderService.init(configuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/StaticPlaceholderService.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Services/AppearanceServices/Placeholder/StaticPlaceholderService.swift",
       "line": 24,
       "symbol": "StaticPlaceholderService.init(configuration:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Services/Support/InputFieldProtocol.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Services/Support/InputFieldProtocol.swift",
       "line": 21,
       "symbol": "InputField.textColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Services/Support/InputFieldProtocol.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/Services/Support/InputFieldProtocol.swift",
       "line": 22,
       "symbol": "InputField.backgroundColor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 59,
       "symbol": "UnderlinedTextField.field",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 62,
       "symbol": "UnderlinedTextField.text",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 81,
       "symbol": "UnderlinedTextField.configuration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 87,
       "symbol": "UnderlinedTextField.validator",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 88,
       "symbol": "UnderlinedTextField.maskFormatter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 99,
       "symbol": "UnderlinedTextField.maxLength",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 100,
       "symbol": "UnderlinedTextField.hideOnReturn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 101,
       "symbol": "UnderlinedTextField.validateWithFormatter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 102,
       "symbol": "UnderlinedTextField.validationPolicy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 103,
       "symbol": "UnderlinedTextField.heightLayoutPolicy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 114,
       "symbol": "UnderlinedTextField.mode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 119,
       "symbol": "UnderlinedTextField.isEnabled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 131,
       "symbol": "UnderlinedTextField.isValid",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 137,
       "symbol": "UnderlinedTextField.onBeginEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 138,
       "symbol": "UnderlinedTextField.onEndEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 139,
       "symbol": "UnderlinedTextField.onTextChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 140,
       "symbol": "UnderlinedTextField.onShouldReturn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 141,
       "symbol": "UnderlinedTextField.onActionButtonTap",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 142,
       "symbol": "UnderlinedTextField.onValidateFail",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 143,
       "symbol": "UnderlinedTextField.onHeightChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 144,
       "symbol": "UnderlinedTextField.onDateChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 145,
       "symbol": "UnderlinedTextField.onContainerStateChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 149,
       "symbol": "UnderlinedTextField.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 155,
       "symbol": "UnderlinedTextField.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 161,
       "symbol": "UnderlinedTextField.awakeFromNib()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 167,
       "symbol": "UnderlinedTextField.traitCollectionDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 174,
       "symbol": "UnderlinedTextField.draw(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 348,
       "symbol": "UnderlinedTextField.textfieldEditingChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 363,
       "symbol": "UnderlinedTextField.textFieldDidBeginEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 368,
       "symbol": "UnderlinedTextField.textFieldDidEndEditing(_:reason:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 374,
       "symbol": "UnderlinedTextField.textField(_:shouldChangeCharactersIn:replacementString:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 388,
       "symbol": "UnderlinedTextField.textFieldShouldReturn(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 423,
       "symbol": "UnderlinedTextField.havePreviousInput",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 427,
       "symbol": "UnderlinedTextField.haveNextInput",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 431,
       "symbol": "UnderlinedTextField.processReturnAction()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 435,
       "symbol": "UnderlinedTextField.switchToPreviousInput()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 439,
       "symbol": "UnderlinedTextField.switchToNextInput()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 449,
       "symbol": "UnderlinedTextField.processDateChange(_:text:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextField/UnderlinedTextField.swift",
       "line": 460,
       "symbol": "UnderlinedTextField.processValueChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 62,
       "symbol": "UnderlinedTextView.field",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 65,
       "symbol": "UnderlinedTextView.text",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 84,
       "symbol": "UnderlinedTextView.configuration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 90,
       "symbol": "UnderlinedTextView.validator",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 91,
       "symbol": "UnderlinedTextView.maxLength",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 92,
       "symbol": "UnderlinedTextView.hideClearButton",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 93,
       "symbol": "UnderlinedTextView.validationPolicy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 94,
       "symbol": "UnderlinedTextView.flexibleHeightPolicy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 96,
       "symbol": "UnderlinedTextView.maxTextContainerHeight",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 97,
       "symbol": "UnderlinedTextView.isEnabled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 109,
       "symbol": "UnderlinedTextView.isValid",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 115,
       "symbol": "UnderlinedTextView.onBeginEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 116,
       "symbol": "UnderlinedTextView.onEndEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 117,
       "symbol": "UnderlinedTextView.onTextChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 118,
       "symbol": "UnderlinedTextView.onShouldReturn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 119,
       "symbol": "UnderlinedTextView.onValidateFail",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 120,
       "symbol": "UnderlinedTextView.onHeightChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 121,
       "symbol": "UnderlinedTextView.onContainerStateChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 125,
       "symbol": "UnderlinedTextView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 131,
       "symbol": "UnderlinedTextView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 137,
       "symbol": "UnderlinedTextView.awakeFromNib()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 143,
       "symbol": "UnderlinedTextView.traitCollectionDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 149,
       "symbol": "UnderlinedTextView.draw(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 316,
       "symbol": "UnderlinedTextView.textViewDidBeginEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 321,
       "symbol": "UnderlinedTextView.textViewDidEndEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 327,
       "symbol": "UnderlinedTextView.textView(_:shouldChangeTextIn:replacementText:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
+      "file": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
       "line": 339,
       "symbol": "UnderlinedTextView.textViewDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/runner/runners/2.263.0/work/TextFieldsCatalog/TextFieldsCatalog"
+  "source_directory": "/Users/chausov/Documents/SurfProjects/textFieldsCatalog"
 }

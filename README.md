@@ -12,7 +12,7 @@
 Данный репозиторий содержит коллекцию различных полей ввода, предоставляющих богатые возможности по проверке введенных значений и форматированию текста при вводе. К тому же, они просто симпатичные и хорошо кастомизируются :)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/TextFieldsCatalog_video.gif" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/TextFieldsCatalog_video.gif" />
 </p>
 
 ## Installation
@@ -62,8 +62,8 @@ TextFieldsCatalog распространяется под MIT [лицензие�
 
 
 
-[configuration]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md
-[exampleProject]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/ExampleProject.md
-[podProject]:		https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/PodProject.md
-[usage]:			https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Usage.md
+[configuration]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md
+[exampleProject]:	https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/ExampleProject.md
+[podProject]:		https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/PodProject.md
+[usage]:			https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Usage.md
 [license]:			https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/LICENSE
