@@ -30,7 +30,7 @@ jobs:
     #   run: |
     #     make test
     - name: documentation
-      if: ${{ github.ref == 'ref/head/master' }}
+      if: github.ref == 'refs/heads/master'
       run: |
         make doc
     - name: Commit changes
