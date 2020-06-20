@@ -9,5 +9,5 @@
 Чтобы понять, почему именно так, а не как-то иначе - ниже предоставлено фото, которое объясняет взаимосвязь жизненных кейсов и логику внутри этого метода:
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/NativePlaceholderService.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/NativePlaceholderService.png" />
 </p>

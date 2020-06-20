@@ -32,7 +32,7 @@
 
 ### UnderlinedTextField
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/UnderlinedTextField.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/UnderlinedTextField.png" />
 </p>
 
 Отличительными особенностями данного поля являются:
@@ -42,7 +42,7 @@
 
 ### UnderlinedTextView
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/UnderlinedTextView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/UnderlinedTextView.png" />
 </p>
 
 Данное поле - обертка над UITextView, а не над UITextField, как предыдущие. Область применения - поля ввода, где ожидается наличие большого количества текста, который пользователь должен видеть полностью, потому поле при увеличении количества текста растягивается в высоту.
@@ -56,7 +56,7 @@ func setup(placeholderServices: [AbstractPlaceholderService])
 func add(placeholderService service: AbstractPlaceholderService)
 ````
 
-Позволяют установить/добавить сервисы, отвечающие за отрисовку плейсхолдеров (более подробно можно прочитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md))
+Позволяют установить/добавить сервисы, отвечающие за отрисовку плейсхолдеров (более подробно можно прочитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md))
 
 ````swift
 func configure(placeholder: String?)
@@ -100,7 +100,7 @@ func configureContentType(_ contentType: UITextContentType)
 ````swift
 func configure(supportPlaceholder: String, configuration: NativePlaceholderConfiguration)
 ````
-Метод позволяет установить "вспомогательный плейсхолдер". Подробнее о том, что это и зачем, можно почитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md).
+Метод позволяет установить "вспомогательный плейсхолдер". Подробнее о том, что это и зачем, можно почитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md).
 
 ````swift
 func setText(_ text: String?)
@@ -232,7 +232,7 @@ func setReturnKeyType(_ type: UIReturnKeyType)
 ### DatePickerView
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/DatePickerView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/DatePickerView.png" />
 </p>
 
 Клавиатура представляет собой обертку над обычным UIDatePicker. В самом простом случае - вам будет достаточно выполнить следующие шаги:
@@ -305,13 +305,13 @@ field.inputView = DatePickerView.default(for: field)
 В результате, DatePickerView может выглядеть следующим образом:
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/DatePickerViewCustomized.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/DatePickerViewCustomized.png" />
 </p>
 
 ### PlainPickerView
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/Docs/Images/PlainPickerView.png" />
+	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/PlainPickerView.png" />
 </p>
 
 Представляет собой обертку над самым обычным UIPickerView. Принцип работы и кастомизации аналогичен DatePickerView, потому в данной секции будут описаны только особенности PlainPickerView:
@@ -474,8 +474,8 @@ return formatter.format(string: text)
 
 ## Кастомизация
 
-В следующем [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
+В следующем [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md) вы можете найти подробную инструкцию о возможностях кастомизации полей ввода.
 
 ## Заметки разработчика
 
-В данном [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/Docs/DevNotes.md) собрана вспомогательная информация, полученная во время разработки - мысли, заметки, и тд. Все, что поможет в будущем понять тот или иной кусок логики.
+В данном [документе](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/DevNotes.md) собрана вспомогательная информация, полученная во время разработки - мысли, заметки, и тд. Все, что поможет в будущем понять тот или иной кусок логики.
