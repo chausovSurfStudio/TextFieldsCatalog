@@ -1,6 +1,7 @@
 # TextFieldsCatalog
 
 [![GitHubActions Build Status](https://github.com/chausovSurfStudio/TextFieldsCatalog/workflows/CI/badge.svg)](https://github.com/chausovSurfStudio/TextFieldsCatalog/actions)
+[Documentation](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/docs/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
 [![Platform](https://img.shields.io/cocoapods/p/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
 [![License](https://img.shields.io/cocoapods/l/TextFieldsCatalog.svg?style=flat)](https://cocoapods.org/pods/TextFieldsCatalog)
@@ -14,6 +15,8 @@
 <p align="center">
 	<img src="https://raw.githubusercontent.com/chausovSurfStudio/TextFieldsCatalog/master/tech_docs/Images/TextFieldsCatalog_video.gif" />
 </p>
+
+Полная документация - доступна на [GitHub Pages](https://chausovsurfstudio.github.io/TextFieldsCatalog/)
 
 ## Installation
 
