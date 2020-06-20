@@ -30,6 +30,6 @@ jobs:
       run: |
         make test
     - name: documentation
-      if: $({ github.ref == 'master' })
+      if: ${{ github.ref == 'master' }}
       run: |
         make doc
