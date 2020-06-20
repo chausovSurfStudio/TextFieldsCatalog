@@ -29,4 +29,24 @@ jobs:
     - name: Test
       run: |
         make test
-        
+
+name: Documentation
+
+on:
+  push:
+      branches:
+        - master
+
+jobs:
+  build:
+
+      runs-on: macos-latest
+
+      steps:
+      - uses: actions/checkout@v2
+      - name: generate_docs
+        run: |
+          make doc
+      - mame: commit
+        run: |
+          git commit -a -m "Updates for documentation"
