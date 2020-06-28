@@ -18,6 +18,7 @@ target 'TextFieldsCatalog' do
 
   target 'TextFieldsCatalogTests' do
     common_pods
+    pod 'iOSSnapshotTestCase', '6.2.0'
   end
 
 end
