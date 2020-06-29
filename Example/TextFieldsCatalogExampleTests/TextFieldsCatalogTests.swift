@@ -7,11 +7,14 @@
 //
 
 import XCTest
+import FBSnapshotTestCase
 @testable import TextFieldsCatalog
 
-class TextFieldsCatalogTests: XCTestCase {
+class TextFieldsCatalogTests: FBSnapshotTestCase {
 
     override func setUp() {
+        super.setUp()
+        self.recordMode = true
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -20,6 +23,8 @@ class TextFieldsCatalogTests: XCTestCase {
     }
 
     func testExample() {
+        let field = UnderlinedTextField(frame: CGRect(x: 0, y: 0, width: 375, height: 77))
+        FBSnapshotVerifyView(field)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

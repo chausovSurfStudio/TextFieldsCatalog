@@ -983,6 +983,7 @@
 				90736C3321F8609B003B8B78 /* Sources */,
 				90736C3421F8609B003B8B78 /* Frameworks */,
 				90736C3521F8609B003B8B78 /* Resources */,
+				B99E4C8B555B6E7BA06A99E6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1144,6 +1145,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		B99E4C8B555B6E7BA06A99E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		D56EE1966639A5C6A92F1FA2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
