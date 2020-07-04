@@ -99,4 +99,15 @@ final class UnderlinedFieldTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(field)
     }
 
+    func testMultilineErrorMessage() {
+        let field = UnderlinedTextField(frame: Constants.frame)
+        field.onHeightChanged = { height in
+            field.frame.size.height = height
+        }
+        field.placeholder = "Placeholder"
+        field.text = "Text"
+        field.setError(with: "Error\nmessage", animated: false)
+        FBSnapshotVerifyView(field)
+    }
+
 }
