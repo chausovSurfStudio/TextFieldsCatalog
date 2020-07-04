@@ -19,7 +19,6 @@ target 'TextFieldsCatalog' do
   target 'TextFieldsCatalogTests' do
     inherit! :search_paths
     common_pods
-    pod 'iOSSnapshotTestCase', '6.2.0'
   end
 
 end

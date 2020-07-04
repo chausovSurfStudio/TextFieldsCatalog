@@ -56,7 +56,6 @@
 		90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */; };
 		90B644F0240C124C00FB7716 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B644EF240C124C00FB7716 /* UITextField.swift */; };
 		90B644F2240C159400FB7716 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B644F1240C159400FB7716 /* UITextView.swift */; };
-		90B7ADA624A8FAEE00F3E8C5 /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B7ADA524A8FAEE00F3E8C5 /* SnapshotTests.swift */; };
 		90BB47272200651800F6DB39 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB47262200651800F6DB39 /* AssetManager.swift */; };
 		90BB472F220065F000F6DB39 /* eyeOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB4729220065F000F6DB39 /* eyeOff@2x.png */; };
 		90BB4730220065F000F6DB39 /* eyeOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90BB472A220065F000F6DB39 /* eyeOn@2x.png */; };
@@ -156,7 +155,6 @@
 		90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightLayoutPolicy.swift; sourceTree = "<group>"; };
 		90B644EF240C124C00FB7716 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		90B644F1240C159400FB7716 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		90B7ADA524A8FAEE00F3E8C5 /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		90BB47262200651800F6DB39 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		90BB4729220065F000F6DB39 /* eyeOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOff@2x.png"; sourceTree = "<group>"; };
 		90BB472A220065F000F6DB39 /* eyeOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeOn@2x.png"; sourceTree = "<group>"; };
@@ -461,14 +459,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		90B7ADA424A8FAC800F3E8C5 /* SnapshotTests */ = {
-			isa = PBXGroup;
-			children = (
-				90B7ADA524A8FAEE00F3E8C5 /* SnapshotTests.swift */,
-			);
-			path = SnapshotTests;
-			sourceTree = "<group>";
-		};
 		90BEBBF623C4CC5A00991105 /* AppearanceServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,7 +512,6 @@
 		90D18FD12452FCE20072BD2C /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				90B7ADA424A8FAC800F3E8C5 /* SnapshotTests */,
 				90D18FD22452FCEA0072BD2C /* Configuration */,
 				90D18FD5245300F10072BD2C /* Services */,
 			);
@@ -880,7 +869,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D18FD02452EF760072BD2C /* TextFieldValidator.swift in Sources */,
-				90B7ADA624A8FAEE00F3E8C5 /* SnapshotTests.swift in Sources */,
 				90D18FD7245307040072BD2C /* FieldService.swift in Sources */,
 				90D18FCE2452ED1D0072BD2C /* MaskTextFieldFormatter.swift in Sources */,
 				90D18FD42452FCFA0072BD2C /* ColorConfiguration.swift in Sources */,
@@ -1100,7 +1088,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
@@ -1120,7 +1108,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2E9721A780F7BB9DF0720B41 /* Pods-TextFieldsCatalogTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
