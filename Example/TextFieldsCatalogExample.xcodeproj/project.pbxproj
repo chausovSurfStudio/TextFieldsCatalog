@@ -34,6 +34,7 @@
 		8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29BF97393846546F44A61 /* MainViewInput.swift */; };
 		89B03271DB703408CF996E40 /* MainTabBarViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CFB54B7AB93D8C3DC00E7 /* MainTabBarViewInput.swift */; };
 		8B43783863D2AC05209F304B /* ExamplesViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC759D69070E7F14B23CC44 /* ExamplesViewOutput.swift */; };
+		90191CEF24B0B7B8001774DD /* UnderlinedFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */; };
 		904A19B121F9DBA500B9A846 /* AppliedPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B021F9DBA500B9A846 /* AppliedPreset.swift */; };
 		904A19B521F9E83100B9A846 /* FieldPresetsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B421F9E83100B9A846 /* FieldPresetsAdapter.swift */; };
 		904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B621F9E84300B9A846 /* FieldPresetTableViewCell.swift */; };
@@ -42,7 +43,6 @@
 		90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C2621F86099003B8B78 /* AppDelegate.swift */; };
 		90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2D21F8609A003B8B78 /* Assets.xcassets */; };
 		90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */; };
-		90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */; };
 		90736C6321F87A5E003B8B78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6221F87A5E003B8B78 /* Color.swift */; };
 		90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6721F87B7A003B8B78 /* Foundation.swift */; };
 		90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6B21F87D65003B8B78 /* UIImage.swift */; };
@@ -175,6 +175,7 @@
 		8412C6AC0801EE7F4018F298 /* Pods-TextFieldsCatalogExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample.release.xcconfig"; sourceTree = "<group>"; };
 		87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
 		8E24A44D4DDA795046DAD200 /* MainTabBarModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarModuleOutput.swift; sourceTree = "<group>"; };
+		90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedFieldTests.swift; sourceTree = "<group>"; };
 		904A19B021F9DBA500B9A846 /* AppliedPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedPreset.swift; sourceTree = "<group>"; };
 		904A19B421F9E83100B9A846 /* FieldPresetsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPresetsAdapter.swift; sourceTree = "<group>"; };
 		904A19B621F9E84300B9A846 /* FieldPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPresetTableViewCell.swift; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 		90736C3021F8609A003B8B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90736C3221F8609A003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C3721F8609B003B8B78 /* TextFieldsCatalogExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsCatalogTests.swift; sourceTree = "<group>"; };
 		90736C3D21F8609B003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C6221F87A5E003B8B78 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		90736C6721F87B7A003B8B78 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
@@ -443,6 +443,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		90191CED24B0B791001774DD /* FieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */,
+			);
+			path = FieldTests;
+			sourceTree = "<group>";
+		};
 		904A19A621F9D3B000B9A846 /* Types and presets */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,7 +536,7 @@
 		90736C3A21F8609B003B8B78 /* TextFieldsCatalogExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */,
+				90191CED24B0B791001774DD /* FieldTests */,
 				90736C3D21F8609B003B8B78 /* Info.plist */,
 			);
 			path = TextFieldsCatalogExampleTests;
@@ -1298,7 +1306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */,
+				90191CEF24B0B7B8001774DD /* UnderlinedFieldTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
