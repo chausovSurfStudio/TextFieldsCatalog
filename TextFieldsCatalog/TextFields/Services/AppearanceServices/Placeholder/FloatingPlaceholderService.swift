@@ -29,6 +29,12 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
         self.configuration = configuration
     }
 
+    // MARK: - Deinitialization
+
+    deinit {
+        placeholder.removeFromSuperlayer()
+    }
+
     // MARK: - AbstractPlaceholderService
 
     public func provide(superview: UIView, field: InputField?) {
