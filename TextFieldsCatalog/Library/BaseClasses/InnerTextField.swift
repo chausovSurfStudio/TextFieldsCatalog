@@ -14,6 +14,9 @@ public final class InnerTextField: UITextField {
     // MARK: - Properties
 
     public var pasteActionEnabled: Bool = true
+    /// if set to true, the textfield's default behavior applies:
+    /// In inSecureTextEntry mode the text will be reset after trying to continue typing
+    public var resetSecureInput: Bool = false
     public var textPadding: UIEdgeInsets = UIEdgeInsets.zero
     public var placeholderPadding: UIEdgeInsets = UIEdgeInsets.zero
 
@@ -52,6 +55,26 @@ public final class InnerTextField: UITextField {
 
     override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: placeholderPadding)
+    }
+
+    override public var isSecureTextEntry: Bool {
+        didSet {
+            if isFirstResponder {
+                _ = becomeFirstResponder()
+            }
+        }
+    }
+
+    override public func becomeFirstResponder() -> Bool {
+        let success = super.becomeFirstResponder()
+        if
+            isSecureTextEntry,
+            !clearSecureText,
+            let text = self.text {
+            self.text?.removeAll()
+            insertText(text)
+        }
+        return success
     }
 
     // MARK: - Internal Methods
