@@ -69,7 +69,7 @@ public final class InnerTextField: UITextField {
         let success = super.becomeFirstResponder()
         if
             isSecureTextEntry,
-            !clearSecureText,
+            !resetSecureInput,
             let text = self.text {
             self.text?.removeAll()
             insertText(text)
