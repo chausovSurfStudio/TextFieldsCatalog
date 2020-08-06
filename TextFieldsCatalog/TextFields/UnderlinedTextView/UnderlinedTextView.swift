@@ -92,7 +92,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
-                                                           bottomOffset: 5)
+                                                           bottomOffset: 5,
+                                                           ignoreEmptyHint: true)
     public var maxTextContainerHeight: CGFloat?
     public var isEnabled: Bool {
         get {
@@ -442,7 +443,8 @@ private extension UnderlinedTextView {
     func updateViewHeight() {
         let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
         let textHeight = min(textViewHeight(), maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
-        let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
+        let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
+        let actualViewHeight = textHeight + hintHeight + freeSpace
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
@@ -466,8 +468,13 @@ private extension UnderlinedTextView {
 
 private extension UnderlinedTextView {
 
-    func freeVerticalSpace() -> CGFloat {
-        return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
+    func freeVerticalSpace(isEmptyHint: Bool) -> CGFloat {
+        let values = [
+            textViewTopConstraint.constant,
+            textViewBottomConstraint.constant,
+            isEmptyHint && flexibleHeightPolicy.ignoreEmptyHint ? 0 : flexibleHeightPolicy.bottomOffset
+        ]
+        return values.reduce(0, +)
     }
 
     func textViewHeight() -> CGFloat {
