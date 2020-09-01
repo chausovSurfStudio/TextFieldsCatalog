@@ -464,8 +464,8 @@
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/Configuration/FlexibleHeightPolicy.swift",
-      "line": 19,
-      "symbol": "FlexibleHeightPolicy.init(minHeight:bottomOffset:)",
+      "line": 25,
+      "symbol": "FlexibleHeightPolicy.init(minHeight:bottomOffset:ignoreEmptyHint:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -912,133 +912,133 @@
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 96,
+      "line": 97,
       "symbol": "UnderlinedTextView.maxTextContainerHeight",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 97,
+      "line": 98,
       "symbol": "UnderlinedTextView.isEnabled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 109,
+      "line": 110,
       "symbol": "UnderlinedTextView.isValid",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 115,
+      "line": 116,
       "symbol": "UnderlinedTextView.onBeginEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 116,
+      "line": 117,
       "symbol": "UnderlinedTextView.onEndEditing",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 117,
+      "line": 118,
       "symbol": "UnderlinedTextView.onTextChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 118,
+      "line": 119,
       "symbol": "UnderlinedTextView.onShouldReturn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 119,
+      "line": 120,
       "symbol": "UnderlinedTextView.onValidateFail",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 120,
+      "line": 121,
       "symbol": "UnderlinedTextView.onHeightChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 121,
+      "line": 122,
       "symbol": "UnderlinedTextView.onContainerStateChanged",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 125,
+      "line": 126,
       "symbol": "UnderlinedTextView.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 131,
+      "line": 132,
       "symbol": "UnderlinedTextView.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 137,
+      "line": 138,
       "symbol": "UnderlinedTextView.awakeFromNib()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 143,
+      "line": 144,
       "symbol": "UnderlinedTextView.traitCollectionDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 149,
+      "line": 150,
       "symbol": "UnderlinedTextView.draw(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 316,
+      "line": 317,
       "symbol": "UnderlinedTextView.textViewDidBeginEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 321,
+      "line": 322,
       "symbol": "UnderlinedTextView.textViewDidEndEditing(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 327,
+      "line": 328,
       "symbol": "UnderlinedTextView.textView(_:shouldChangeTextIn:replacementText:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/TextFieldsCatalog/TextFieldsCatalog/TextFieldsCatalog/TextFields/UnderlinedTextView/UnderlinedTextView.swift",
-      "line": 339,
+      "line": 340,
       "symbol": "UnderlinedTextView.textViewDidChange(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
