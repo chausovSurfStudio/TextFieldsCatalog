@@ -32,7 +32,11 @@ public final class PlainPickerView: UIView {
 
     // MARK: - Private Properties
 
-    private weak var textField: PickerTextField?
+    private weak var textField: PickerTextField? {
+        didSet {
+            topView?.textField = textField
+        }
+    }
     private var data: [String] = []
     private var topView: PickerTopView?
 
@@ -55,7 +59,7 @@ public final class PlainPickerView: UIView {
         view.textField = textField
         view.data = data
         view.picker.reloadAllComponents()
-        view.updateNavigationButtonsVisibility()
+        view.topView?.updateNavigationButtons()
         return view
     }
 
@@ -89,23 +93,8 @@ private extension PlainPickerView {
                                                   y: 0,
                                                   width: bounds.width,
                                                   height: Constants.topViewHeight))
-        topView.onReturn = { [weak self] in
-            self?.textField?.processReturnAction()
-        }
-        topView.onSwitchToPreviousInput = { [weak self] in
-            self?.textField?.switchToPreviousInput()
-        }
-        topView.onSwitchToNextInput = { [weak self] in
-            self?.textField?.switchToNextInput()
-        }
         self.topView = topView
         addSubview(topView)
-    }
-
-    func updateNavigationButtonsVisibility() {
-        let showBackButton = textField?.havePreviousInput ?? false
-        let showNextButton = textField?.haveNextInput ?? false
-        topView?.configureNavigationButtons(showBackButton: showBackButton, nextButton: showNextButton)
     }
 
 }
