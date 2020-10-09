@@ -34,7 +34,7 @@ public final class PlainPickerView: UIView {
 
     private weak var textField: PickerTextField? {
         didSet {
-            topView?.textField = textField
+            topView?.guidedField = textField
         }
     }
     private var data: [String] = []

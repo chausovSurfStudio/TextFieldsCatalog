@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class PickerTopView: InnerDesignableView {
+public final class PickerTopView: InnerDesignableView, ToolBarInterface {
 
     // MARK: - IBOutlets
 
@@ -24,7 +24,7 @@ public final class PickerTopView: InnerDesignableView {
 
     // MARK: - Public Properties
 
-    public weak var textField: GuidedTextField?
+    public weak var guidedField: GuidedTextField?
     public var configuration = PickerTopViewConfiguration() {
         didSet {
             configureAppearance()
@@ -49,11 +49,11 @@ public final class PickerTopView: InnerDesignableView {
         configureAppearance()
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
-    func updateNavigationButtons() {
-        leftNavigationButton.isHidden = !(textField?.havePreviousInput ?? false)
-        rightNavigationButton.isHidden = !(textField?.haveNextInput ?? false)
+    public func updateNavigationButtons() {
+        leftNavigationButton.isHidden = !(guidedField?.havePreviousInput ?? false)
+        rightNavigationButton.isHidden = !(guidedField?.haveNextInput ?? false)
 
         let leftButtonWidth: CGFloat = leftNavigationButton.isHidden ? 0 : 35
         leftNavigationButtonWidth.constant = leftButtonWidth
@@ -100,15 +100,15 @@ private extension PickerTopView {
 private extension PickerTopView {
 
     @IBAction func performAction(_ sender: CommonButton) {
-        textField?.processReturnAction()
+        guidedField?.processReturnAction()
     }
 
     @IBAction func switchToPreviousInput(_ sender: IconButton) {
-        textField?.switchToPreviousInput()
+        guidedField?.switchToPreviousInput()
     }
 
     @IBAction func switchToNextInput(_ sender: IconButton) {
-        textField?.switchToNextInput()
+        guidedField?.switchToNextInput()
     }
 
 }

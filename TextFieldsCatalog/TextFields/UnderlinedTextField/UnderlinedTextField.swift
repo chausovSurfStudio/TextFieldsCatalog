@@ -96,10 +96,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             }
         }
     }
-    public var toolbar: PickerTopView? {
+    public var toolbar: ToolBarInterface? {
         didSet {
             textField.inputAccessoryView = toolbar
-            toolbar?.textField = self
+            toolbar?.guidedField = self
             toolbar?.updateNavigationButtons()
         }
     }
