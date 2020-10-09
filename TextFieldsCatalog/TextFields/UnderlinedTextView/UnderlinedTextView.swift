@@ -88,6 +88,13 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         }
     }
     public var validator: TextFieldValidation?
+    public var toolbar: ToolBarInterface? {
+        didSet {
+            textView.inputAccessoryView = toolbar
+            toolbar?.guidedField = self
+            toolbar?.updateNavigationButtons()
+        }
+    }
     public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
@@ -306,6 +313,36 @@ private extension UnderlinedTextView {
 
     @IBAction func tapOnClearButton(_ sender: UIButton) {
         reset()
+    }
+
+}
+
+// MARK: - GuidedTextField
+
+extension UnderlinedTextView: GuidedTextField {
+
+    public var havePreviousInput: Bool {
+        return previousInput != nil
+    }
+
+    public var haveNextInput: Bool {
+        return nextInput != nil
+    }
+
+    public func processReturnAction() {
+        if let returnAction = onShouldReturn {
+            returnAction(self)
+        } else {
+            textView.resignFirstResponder()
+        }
+    }
+
+    public func switchToPreviousInput() {
+        previousInput?.becomeFirstResponder()
+    }
+
+    public func switchToNextInput() {
+        nextInput?.becomeFirstResponder()
     }
 
 }
