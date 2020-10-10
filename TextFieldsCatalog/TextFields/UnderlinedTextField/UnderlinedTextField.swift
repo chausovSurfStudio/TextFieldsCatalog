@@ -96,6 +96,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             }
         }
     }
+    public var toolbar: PickerTopView? {
+        didSet {
+            textField.inputAccessoryView = toolbar
+            toolbar?.textField = self
+            toolbar?.updateNavigationButtons()
+        }
+    }
     public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
@@ -181,9 +188,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var nextInput: UIResponder? {
         didSet {
             textField.returnKeyType = nextInput == nil ? .default : .next
+            toolbar?.updateNavigationButtons()
         }
     }
-    public var previousInput: UIResponder?
+    public var previousInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
     open override var isFirstResponder: Bool {
         return textField.isFirstResponder
     }
@@ -429,7 +441,11 @@ extension UnderlinedTextField: GuidedTextField {
     }
 
     public func processReturnAction() {
-        textField.resignFirstResponder()
+        if let returnAction = onShouldReturn {
+            returnAction(self)
+        } else {
+            textField.resignFirstResponder()
+        }
     }
 
     public func switchToPreviousInput() {
