@@ -161,8 +161,16 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - RespondableField
 
-    public var nextInput: UIResponder?
-    public var previousInput: UIResponder?
+    public var nextInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
+    public var previousInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
     open override var isFirstResponder: Bool {
         return textView.isFirstResponder
     }
