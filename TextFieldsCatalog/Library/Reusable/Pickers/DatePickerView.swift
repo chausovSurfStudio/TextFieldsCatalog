@@ -32,7 +32,7 @@ public final class DatePickerView: UIView {
 
     private weak var textField: DateTextField? {
         didSet {
-            topView?.textField = textField
+            topView?.guidedField = textField
         }
     }
     private var dateFormat = "dd.MM.yyyy"
