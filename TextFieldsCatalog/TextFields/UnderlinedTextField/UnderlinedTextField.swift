@@ -240,9 +240,16 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     }
 
     /// Allows you to set optional string as text.
-    /// Also you can disable automatic validation on this action.
-    public func setup(text: String?, validateText: Bool = true) {
-        if let formatter = maskFormatter {
+    /// - Parameters:
+    ///     - text: text for setup
+    ///     - ignoreFormatter: allows you apply format from `maskFormatter` or ignore it,
+    ///     false by default
+    ///     - validateText: allows you disable automatic text validation on this action,
+    ///     true by default
+    public func setup(text: String?,
+                      ignoreFormatter: Bool = false,
+                      validateText: Bool = true) {
+        if let formatter = maskFormatter, !ignoreFormatter {
             formatter.format(string: text, field: textField)
         } else {
             textField.text = text
