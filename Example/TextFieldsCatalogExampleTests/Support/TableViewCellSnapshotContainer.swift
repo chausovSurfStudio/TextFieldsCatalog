@@ -66,9 +66,6 @@ final class TableViewCellSnapshotContainer<Cell: UITableViewCell>: UIView, UITab
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? Cell else {
-//            return UITableViewCell()
-//        }
         guard let cell = tableView.dequeueReusableCell(Cell.self, indexPath: indexPath) else {
             return UITableViewCell()
         }

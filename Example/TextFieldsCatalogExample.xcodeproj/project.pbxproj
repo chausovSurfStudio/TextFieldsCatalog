@@ -41,7 +41,6 @@
 		904A19B921F9E84300B9A846 /* FieldPresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 904A19B721F9E84300B9A846 /* FieldPresetTableViewCell.xib */; };
 		904A19C121F9FAC200B9A846 /* UnderlinedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */; };
 		904B2E3A24B39EA000FD2921 /* TableViewCellSnapshotContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B2E3924B39EA000FD2921 /* TableViewCellSnapshotContainer.swift */; };
-		904B2E3D24B3A05800FD2921 /* MainFieldTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B2E3C24B3A05800FD2921 /* MainFieldTableViewCellTests.swift */; };
 		90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C2621F86099003B8B78 /* AppDelegate.swift */; };
 		90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2D21F8609A003B8B78 /* Assets.xcassets */; };
 		90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */; };
@@ -79,6 +78,7 @@
 		90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */; };
 		90736CC721F8A350003B8B78 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC621F8A350003B8B78 /* UITableView.swift */; };
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
+		907CC10C253C964D007F78DD /* UnderlinedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */; };
 		9082577823C36B83000767EB /* BoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577723C36B83000767EB /* BoxTextField.swift */; };
 		9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9082577923C36BC3000767EB /* BoxTextField.xib */; };
 		9082577D23C3A339000767EB /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */; };
@@ -184,7 +184,6 @@
 		904A19B721F9E84300B9A846 /* FieldPresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldPresetTableViewCell.xib; sourceTree = "<group>"; };
 		904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedFieldPreset.swift; sourceTree = "<group>"; };
 		904B2E3924B39EA000FD2921 /* TableViewCellSnapshotContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellSnapshotContainer.swift; sourceTree = "<group>"; };
-		904B2E3C24B3A05800FD2921 /* MainFieldTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFieldTableViewCellTests.swift; sourceTree = "<group>"; };
 		90736C2321F86099003B8B78 /* TextFieldsCatalogExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldsCatalogExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C2621F86099003B8B78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90736C2D21F8609A003B8B78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,6 +227,7 @@
 		90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFieldTableViewCell.xib; sourceTree = "<group>"; };
 		90736CC621F8A350003B8B78 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedViewTests.swift; sourceTree = "<group>"; };
 		9082577723C36B83000767EB /* BoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTextField.swift; sourceTree = "<group>"; };
 		9082577923C36BC3000767EB /* BoxTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxTextField.xib; sourceTree = "<group>"; };
 		9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -451,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */,
+				907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */,
 			);
 			path = FieldTests;
 			sourceTree = "<group>";
@@ -512,14 +513,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		904B2E3B24B3A04600FD2921 /* CellsTests */ = {
-			isa = PBXGroup;
-			children = (
-				904B2E3C24B3A05800FD2921 /* MainFieldTableViewCellTests.swift */,
-			);
-			path = CellsTests;
-			sourceTree = "<group>";
-		};
 		90736C1A21F86099003B8B78 = {
 			isa = PBXGroup;
 			children = (
@@ -556,7 +549,6 @@
 		90736C3A21F8609B003B8B78 /* TextFieldsCatalogExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				904B2E3B24B3A04600FD2921 /* CellsTests */,
 				90191CED24B0B791001774DD /* FieldTests */,
 				904B2E3824B39E9600FD2921 /* Support */,
 				90736C3D21F8609B003B8B78 /* Info.plist */,
@@ -1328,9 +1320,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907CC10C253C964D007F78DD /* UnderlinedViewTests.swift in Sources */,
 				90191CEF24B0B7B8001774DD /* UnderlinedFieldTests.swift in Sources */,
 				904B2E3A24B39EA000FD2921 /* TableViewCellSnapshotContainer.swift in Sources */,
-				904B2E3D24B3A05800FD2921 /* MainFieldTableViewCellTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,7 +1520,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
@@ -1550,7 +1542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
