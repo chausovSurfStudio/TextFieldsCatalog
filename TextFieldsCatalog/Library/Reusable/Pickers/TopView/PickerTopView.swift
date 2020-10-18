@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PickerTopView: InnerDesignableView {
+public final class PickerTopView: InnerDesignableView, ToolBarInterface {
 
     // MARK: - IBOutlets
 
@@ -22,12 +22,10 @@ final class PickerTopView: InnerDesignableView {
 
     @IBOutlet private weak var leftNavigationButtonWidth: NSLayoutConstraint!
 
-    // MARK: - Properties
+    // MARK: - Public Properties
 
-    var onReturn: (() -> Void)?
-    var onSwitchToPreviousInput: (() -> Void)?
-    var onSwitchToNextInput: (() -> Void)?
-    var configuration = PickerTopViewConfiguration() {
+    public weak var guidedField: GuidedTextField?
+    public var configuration = PickerTopViewConfiguration() {
         didSet {
             configureAppearance()
         }
@@ -35,30 +33,31 @@ final class PickerTopView: InnerDesignableView {
 
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         configureAppearance()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     // MARK: - UIView
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         configureAppearance()
     }
 
-    // MARK: - Internal Methods
+    // MARK: - Public Methods
 
-    func configureNavigationButtons(showBackButton backButton: Bool, nextButton: Bool) {
-        leftNavigationButton.isHidden = !backButton
-        rightNavigationButton.isHidden = !nextButton
-        if !backButton {
-            leftNavigationButtonWidth.constant = 0
-        }
+    public func updateNavigationButtons() {
+        leftNavigationButton.isHidden = !(guidedField?.havePreviousInput ?? false)
+        rightNavigationButton.isHidden = !(guidedField?.haveNextInput ?? false)
+
+        let leftButtonWidth: CGFloat = leftNavigationButton.isHidden ? 0 : 35
+        leftNavigationButtonWidth.constant = leftButtonWidth
+        layoutIfNeeded()
     }
 
 }
@@ -101,15 +100,15 @@ private extension PickerTopView {
 private extension PickerTopView {
 
     @IBAction func performAction(_ sender: CommonButton) {
-        onReturn?()
+        guidedField?.processReturnAction()
     }
 
     @IBAction func switchToPreviousInput(_ sender: IconButton) {
-        onSwitchToPreviousInput?()
+        guidedField?.switchToPreviousInput()
     }
 
     @IBAction func switchToNextInput(_ sender: IconButton) {
-        onSwitchToNextInput?()
+        guidedField?.switchToNextInput()
     }
 
 }

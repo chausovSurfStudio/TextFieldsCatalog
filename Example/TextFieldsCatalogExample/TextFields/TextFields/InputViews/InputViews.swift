@@ -11,6 +11,7 @@ import TextFieldsCatalog
 
 fileprivate enum Constants {
     static let inputViewHeight: CGFloat = 261
+    static let toolbarHeight: CGFloat = 44
 }
 
 extension DatePickerView {
@@ -38,6 +39,20 @@ extension PlainPickerView {
                                         data: data)
         view.picker.backgroundColor = Color.Main.container
         view.topViewConfiguration = PickerTopViewConfiguration.default()
+        return view
+    }
+
+}
+
+extension PickerTopView {
+
+    /// Default configuration for plain textField toolbar
+    static func `default`() -> PickerTopView {
+        let viewFrame = CGRect(x: 0,
+                               y: 0,
+                               width: UIScreen.main.bounds.width,
+                               height: Constants.toolbarHeight)
+        let view = PickerTopView(frame: viewFrame)
         return view
     }
 

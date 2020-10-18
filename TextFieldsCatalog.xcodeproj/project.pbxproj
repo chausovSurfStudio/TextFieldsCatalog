@@ -42,6 +42,7 @@
 		909F259D229C39DD006926E7 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2594229C22D8006926E7 /* close.png */; };
 		909F259E229C39DF006926E7 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2596229C22D8006926E7 /* close@2x.png */; };
 		909F259F229C39E1006926E7 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2595229C22D8006926E7 /* close@3x.png */; };
+		90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */; };
 		90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */; };
 		90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7C228975730036C634 /* PlainPickerView.swift */; };
 		90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7E2289792D0036C634 /* PickerTextField.swift */; };
@@ -141,6 +142,7 @@
 		909F2594229C22D8006926E7 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		909F2595229C22D8006926E7 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		909F2596229C22D8006926E7 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarInterface.swift; sourceTree = "<group>"; };
 		90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopViewConfiguration.swift; sourceTree = "<group>"; };
 		90A32B7C228975730036C634 /* PlainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPickerView.swift; sourceTree = "<group>"; };
 		90A32B7E2289792D0036C634 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			children = (
 				90A32B82228985840036C634 /* TextField */,
 				9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */,
+				90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				90C6AC7023C617A400D13B8D /* LineService.swift in Sources */,
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */,
+				90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
@@ -1045,7 +1049,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.12.1;
+				MARKETING_VERSION = 0.12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1075,7 +1079,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.12.1;
+				MARKETING_VERSION = 0.12.3;
 				PRODUCT_BUNDLE_IDENTIFIER = surf.TextFieldsCatalog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

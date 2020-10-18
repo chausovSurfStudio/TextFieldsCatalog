@@ -181,6 +181,7 @@ private extension UnderlinedFieldPreset {
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .numberPad
+        textField.toolbar = PickerTopView.default()
     }
 
     func tuneFieldForCardNumber(_ textField: UnderlinedTextField) {

@@ -29,6 +29,12 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
         self.configuration = configuration
     }
 
+    // MARK: - Deinitialization
+
+    deinit {
+        placeholder.removeFromSuperview()
+    }
+
     // MARK: - AbstractPlaceholderService
 
     public func provide(superview: UIView, field: InputField?) {

@@ -96,6 +96,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             }
         }
     }
+    public var toolbar: ToolBarInterface? {
+        didSet {
+            textField.inputAccessoryView = toolbar
+            toolbar?.guidedField = self
+            toolbar?.updateNavigationButtons()
+        }
+    }
     public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
@@ -181,9 +188,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var nextInput: UIResponder? {
         didSet {
             textField.returnKeyType = nextInput == nil ? .default : .next
+            toolbar?.updateNavigationButtons()
         }
     }
-    public var previousInput: UIResponder?
+    public var previousInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
     open override var isFirstResponder: Bool {
         return textField.isFirstResponder
     }
@@ -228,9 +240,16 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     }
 
     /// Allows you to set optional string as text.
-    /// Also you can disable automatic validation on this action.
-    public func setup(text: String?, validateText: Bool = true) {
-        if let formatter = maskFormatter {
+    /// - Parameters:
+    ///     - text: text for setup
+    ///     - ignoreFormatter: allows you apply format from `maskFormatter` or ignore it,
+    ///     false by default
+    ///     - validateText: allows you disable automatic text validation on this action,
+    ///     true by default
+    public func setup(text: String?,
+                      ignoreFormatter: Bool = false,
+                      validateText: Bool = true) {
+        if let formatter = maskFormatter, !ignoreFormatter {
             formatter.format(string: text, field: textField)
         } else {
             textField.text = text
@@ -429,7 +448,11 @@ extension UnderlinedTextField: GuidedTextField {
     }
 
     public func processReturnAction() {
-        textField.resignFirstResponder()
+        if let returnAction = onShouldReturn {
+            returnAction(self)
+        } else {
+            textField.resignFirstResponder()
+        }
     }
 
     public func switchToPreviousInput() {

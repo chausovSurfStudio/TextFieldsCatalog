@@ -88,11 +88,19 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         }
     }
     public var validator: TextFieldValidation?
+    public var toolbar: ToolBarInterface? {
+        didSet {
+            textView.inputAccessoryView = toolbar
+            toolbar?.guidedField = self
+            toolbar?.updateNavigationButtons()
+        }
+    }
     public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
-                                                           bottomOffset: 5)
+                                                           bottomOffset: 5,
+                                                           ignoreEmptyHint: true)
     public var maxTextContainerHeight: CGFloat?
     public var isEnabled: Bool {
         get {
@@ -153,8 +161,16 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - RespondableField
 
-    public var nextInput: UIResponder?
-    public var previousInput: UIResponder?
+    public var nextInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
+    public var previousInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
     open override var isFirstResponder: Bool {
         return textView.isFirstResponder
     }
@@ -309,6 +325,36 @@ private extension UnderlinedTextView {
 
 }
 
+// MARK: - GuidedTextField
+
+extension UnderlinedTextView: GuidedTextField {
+
+    public var havePreviousInput: Bool {
+        return previousInput != nil
+    }
+
+    public var haveNextInput: Bool {
+        return nextInput != nil
+    }
+
+    public func processReturnAction() {
+        if let returnAction = onShouldReturn {
+            returnAction(self)
+        } else {
+            textView.resignFirstResponder()
+        }
+    }
+
+    public func switchToPreviousInput() {
+        previousInput?.becomeFirstResponder()
+    }
+
+    public func switchToNextInput() {
+        nextInput?.becomeFirstResponder()
+    }
+
+}
+
 // MARK: - UITextViewDelegate
 
 extension UnderlinedTextView: UITextViewDelegate {
@@ -442,7 +488,8 @@ private extension UnderlinedTextView {
     func updateViewHeight() {
         let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
         let textHeight = min(textViewHeight(), maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
-        let actualViewHeight = textHeight + hintHeight + freeVerticalSpace()
+        let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
+        let actualViewHeight = textHeight + hintHeight + freeSpace
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
@@ -466,8 +513,13 @@ private extension UnderlinedTextView {
 
 private extension UnderlinedTextView {
 
-    func freeVerticalSpace() -> CGFloat {
-        return textViewTopConstraint.constant + textViewBottomConstraint.constant + flexibleHeightPolicy.bottomOffset
+    func freeVerticalSpace(isEmptyHint: Bool) -> CGFloat {
+        let values = [
+            textViewTopConstraint.constant,
+            textViewBottomConstraint.constant,
+            isEmptyHint && flexibleHeightPolicy.ignoreEmptyHint ? 0 : flexibleHeightPolicy.bottomOffset
+        ]
+        return values.reduce(0, +)
     }
 
     func textViewHeight() -> CGFloat {

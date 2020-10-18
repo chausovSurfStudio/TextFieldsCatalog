@@ -30,7 +30,11 @@ public final class DatePickerView: UIView {
 
     // MARK: - Private Properties
 
-    private weak var textField: DateTextField?
+    private weak var textField: DateTextField? {
+        didSet {
+            topView?.guidedField = textField
+        }
+    }
     private var dateFormat = "dd.MM.yyyy"
     private var topView: PickerTopView?
 
@@ -54,7 +58,7 @@ public final class DatePickerView: UIView {
         if let dateFormat = dateFormat {
             view.dateFormat = dateFormat
         }
-        view.updateNavigationButtonsVisibility()
+        view.topView?.updateNavigationButtons()
         return view
     }
 
@@ -90,23 +94,8 @@ private extension DatePickerView {
                                                   y: 0,
                                                   width: bounds.width,
                                                   height: Constants.topViewHeight))
-        topView.onReturn = { [weak self] in
-            self?.textField?.processReturnAction()
-        }
-        topView.onSwitchToPreviousInput = { [weak self] in
-            self?.textField?.switchToPreviousInput()
-        }
-        topView.onSwitchToNextInput = { [weak self] in
-            self?.textField?.switchToNextInput()
-        }
         self.topView = topView
         addSubview(topView)
-    }
-
-    func updateNavigationButtonsVisibility() {
-        let showBackButton = textField?.havePreviousInput ?? false
-        let showNextButton = textField?.haveNextInput ?? false
-        topView?.configureNavigationButtons(showBackButton: showBackButton, nextButton: showNextButton)
     }
 
 }
