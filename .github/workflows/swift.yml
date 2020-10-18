@@ -20,9 +20,9 @@ jobs:
       run: |
         gem install xcpretty -N
         make init
-    - name: Force xcode 11
+    - name: Force xcode 12
       run: |
-        sudo xcode-select -switch /Applications/Xcode_11.2.1.app
+        sudo xcode-select -switch /Applications/Xcode_12.0.1.app
     - name: Build
       run: |
         make build
