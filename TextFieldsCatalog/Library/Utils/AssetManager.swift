@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import UIKit
 
 final class AssetManager {
 
     func getImage(_ name: String) -> UIImage {
         let traitCollection = UITraitCollection(displayScale: UIScreen.main.scale)
-        var bundle = Bundle(for: AssetManager.self)
-
+        var bundle: Bundle
+        #if SWIFT_PACKAGE
+        bundle = Bundle.module
+        #else
+        bundle = Bundle(for: AssetManager.self)
+        #endif
         if let resource = bundle.resourcePath, let resourceBundle = Bundle(path: resource + "/TextFieldsCatalog.bundle") {
             bundle = resourceBundle
         }

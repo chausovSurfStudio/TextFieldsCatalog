@@ -6,8 +6,8 @@
 //  Copyright © 2019 Александр Чаусов. All rights reserved.
 //
 
-import UIKit
 import InputMask
+import UIKit
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77.

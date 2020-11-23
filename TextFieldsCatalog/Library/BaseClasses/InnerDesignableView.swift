@@ -30,7 +30,19 @@ open class InnerDesignableView: UIView {
     }
 
     func setup() -> UIView? {
-        let view = Bundle(for: type(of: self)).loadNibNamed(self.nameOfClass, owner: self, options: nil)?.first as? UIView
+        let bundle: Bundle
+        #if SWIFT_PACKAGE
+        if Bundle.module.path(forResource: self.nameOfClass, ofType: "nib") != nil {
+            bundle = Bundle.module
+        } else {
+            bundle = Bundle(for: type(of: self))
+        }
+        #else
+        bundle = Bundle(for: type(of: self))
+        #endif
+
+        bundle.load()
+        let view = bundle.loadNibNamed(self.nameOfClass, owner: self, options: nil)?.first as? UIView
         if let v = view {
             addSubview(v)
             v.frame = self.bounds
