@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
 
 
   s.framework  = "UIKit"
-  s.dependency "InputMask", '4.0.2'
+  s.dependency "InputMask", '6.0.0'
 
 end

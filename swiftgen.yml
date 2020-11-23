@@ -1,4 +1,7 @@
 strings:
-  paths: TextFieldsCatalog/Resources/Strings/en.lproj/Localizable.strings
-  templateName: structured-swift4
-  output: TextFieldsCatalog/Resources/Strings/Strings.swift
+  inputs: TextFieldsCatalog/Resources/Strings/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      params:
+        publicAccess: true
+      output: TextFieldsCatalog/Resources/Strings/Strings.swift

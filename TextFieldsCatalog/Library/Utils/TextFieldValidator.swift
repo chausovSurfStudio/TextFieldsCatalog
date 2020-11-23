@@ -19,11 +19,11 @@ public final class TextFieldValidator {
     // MARK: - Constants
 
     private enum Constant {
-        static let emptyErrorText = L10n.Errors.Textfield.empty
+        static let emptyErrorText = L10n.Errors.TextField.empty
         static func shortErrorText(minLength: Int) -> String {
-            return L10n.Errors.Textfield.short(String(minLength))
+            return L10n.Errors.TextField.short(String(minLength))
         }
-        static let notValidErrorText = L10n.Errors.Textfield.notValid
+        static let notValidErrorText = L10n.Errors.TextField.notValid
     }
 
     // MARK: - Private Properties
