@@ -456,10 +456,16 @@ extension UnderlinedTextField: GuidedTextField {
     }
 
     public func switchToPreviousInput() {
+        guard previousInput?.canBecomeFirstResponder == true else {
+            return
+        }
         previousInput?.becomeFirstResponder()
     }
 
     public func switchToNextInput() {
+        guard nextInput?.canBecomeFirstResponder == true else {
+            return
+        }
         nextInput?.becomeFirstResponder()
     }
 
