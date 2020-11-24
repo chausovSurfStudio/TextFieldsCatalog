@@ -459,11 +459,11 @@ extension UnderlinedTextField: GuidedTextField {
     }
 
     public func switchToPreviousInput() {
-        switchToResponder(responder: previousInput)
+        switchToResponder(previousInput)
     }
 
     public func switchToNextInput() {
-        switchToResponder(responder: nextInput)
+        switchToResponder(nextInput)
     }
 
 }
@@ -607,7 +607,7 @@ private extension UnderlinedTextField {
         onContainerStateChanged?(containerState)
     }
 
-    func switchToResponder(responder: UIResponder?) {
+    func switchToResponder(_ responder: UIResponder?) {
         if let input = responder as? RespondableField {
             guard input.canBecomeFirstResponder else {
                 return
