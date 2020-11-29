@@ -489,7 +489,7 @@ private extension UnderlinedTextView {
             }
             _ = input.becomeFirstResponder()
         } else {
-            previousInput?.becomeFirstResponder()
+            responder?.becomeFirstResponder()
         }
     }
 

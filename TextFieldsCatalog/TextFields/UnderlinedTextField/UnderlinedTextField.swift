@@ -614,7 +614,7 @@ private extension UnderlinedTextField {
             }
             _ = input.becomeFirstResponder()
         } else {
-            previousInput?.becomeFirstResponder()
+            responder?.becomeFirstResponder()
         }
     }
 
