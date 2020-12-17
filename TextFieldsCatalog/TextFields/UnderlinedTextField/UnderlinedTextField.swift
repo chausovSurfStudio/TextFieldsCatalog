@@ -107,6 +107,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
+    public var trimSpaces: Bool = false
     public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false) {
         didSet {
             hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
@@ -387,6 +388,9 @@ extension UnderlinedTextField: UITextFieldDelegate {
     open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         validateWithPolicy()
         state = .normal
+        if trimSpaces {
+            textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
         onEndEditing?(self)
     }
 
