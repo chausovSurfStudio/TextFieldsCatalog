@@ -365,12 +365,16 @@ extension UnderlinedTextView: UITextViewDelegate {
         onBeginEditing?(self)
     }
 
-    open func textViewDidEndEditing(_ textView: UITextView) {
-        validateWithPolicy()
-        state = .normal
+    open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         if trimSpaces {
             textView.text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
+        return true
+    }
+
+    open func textViewDidEndEditing(_ textView: UITextView) {
+        validateWithPolicy()
+        state = .normal
         onEndEditing?(self)
     }
 

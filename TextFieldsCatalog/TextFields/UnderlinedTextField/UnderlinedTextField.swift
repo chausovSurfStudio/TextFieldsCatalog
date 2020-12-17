@@ -385,12 +385,16 @@ extension UnderlinedTextField: UITextFieldDelegate {
         onBeginEditing?(self)
     }
 
-    open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        validateWithPolicy()
-        state = .normal
+    open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if trimSpaces {
             textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
+        return true
+    }
+
+    open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        validateWithPolicy()
+        state = .normal
         onEndEditing?(self)
     }
 
