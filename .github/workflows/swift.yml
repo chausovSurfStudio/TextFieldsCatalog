@@ -29,6 +29,9 @@ jobs:
     - name: Test
       run: |
         make test
+    - name: Package build
+      run: |
+        swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios12.1-simulator" -Xswiftc "-lswiftUIKit"
     - name: documentation
       if: github.ref == 'refs/heads/master'
       run: |
