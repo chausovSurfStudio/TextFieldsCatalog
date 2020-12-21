@@ -98,6 +98,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
+    public var trimSpaces: Bool = false
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5,
                                                            ignoreEmptyHint: true)
@@ -365,6 +366,13 @@ extension UnderlinedTextView: UITextViewDelegate {
     open func textViewDidBeginEditing(_ textView: UITextView) {
         state = .active
         onBeginEditing?(self)
+    }
+
+    open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        if trimSpaces {
+            textView.text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return true
     }
 
     open func textViewDidEndEditing(_ textView: UITextView) {
