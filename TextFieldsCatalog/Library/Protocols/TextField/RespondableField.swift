@@ -32,6 +32,8 @@ public protocol RespondableField {
     var previousInput: UIResponder? { get set }
     /// Returns a Boolean value indicating whether this object is the first responder.
     var isFirstResponder: Bool { get }
+    /// Returns a Boolean value indicating whether this object can become the first responder.
+    var canBecomeFirstResponder: Bool { get }
 
     /// Asks UIKit to make this object the first responder in its window.
     func becomeFirstResponder() -> Bool

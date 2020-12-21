@@ -178,6 +178,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     open override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
     }
+    open override var canBecomeFirstResponder: Bool {
+        return self.window != nil
+    }
 
     // MARK: - Public Methods
 
@@ -347,11 +350,11 @@ extension UnderlinedTextView: GuidedTextField {
     }
 
     public func switchToPreviousInput() {
-        previousInput?.becomeFirstResponder()
+        switchToResponder(previousInput)
     }
 
     public func switchToNextInput() {
-        nextInput?.becomeFirstResponder()
+        switchToResponder(nextInput)
     }
 
 }
@@ -485,6 +488,17 @@ private extension UnderlinedTextView {
 
     func perfromOnContainerStateChangedCall() {
         onContainerStateChanged?(containerState)
+    }
+
+    func switchToResponder(_ responder: UIResponder?) {
+        if let input = responder as? RespondableField {
+            guard input.canBecomeFirstResponder else {
+                return
+            }
+            _ = input.becomeFirstResponder()
+        } else {
+            responder?.becomeFirstResponder()
+        }
     }
 
 }

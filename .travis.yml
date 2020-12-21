@@ -1,5 +1,5 @@
 language: Swift
-osx_image: xcode11.2
+osx_image: xcode12.1
 xcode_project: TextFieldsCatalog.xcodeproj
 xcode_scheme: TextFieldsCatalog
 before_install:
@@ -8,3 +8,4 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild clean build -sdk iphonesimulator -workspace TextFieldsCatalog.xcworkspace -scheme TextFieldsCatalog CODE_SIGNING_REQUIRED=NO | xcpretty -c
+  - swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios12.1-simulator" -Xswiftc "-lswiftUIKit"
