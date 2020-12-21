@@ -14,7 +14,7 @@
     <a title="UnderlinedTextView Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">TextFieldsCatalog 0.12.3 Docs</a> (49% documented)</p>
+        <p><a href="../index.html">TextFieldsCatalog 0.12.3 Docs</a> (48% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -76,6 +76,9 @@
                 <a href="../Classes/PasswordModeConfiguration.html">PasswordModeConfiguration</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/PickerTopView.html">PickerTopView</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/PickerTopViewButtonConfiguration.html">PickerTopViewButtonConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -124,6 +127,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/HeightLayoutPolicy.html">HeightLayoutPolicy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/L10n.html">L10n</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/L10n/Button.html">– Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/L10n/Errors.html">– Errors</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/NativePlaceholderBehavior.html">NativePlaceholderBehavior</a>
@@ -177,6 +189,9 @@
               <li class="nav-group-task">
                 <a href="../Protocols/TextFieldValidation.html">TextFieldValidation</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ToolBarInterface.html">ToolBarInterface</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -196,6 +211,7 @@
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UnderlinedTextView</span> <span class="p">:</span> <span class="kt"><a href="../Classes/InnerDesignableView.html">InnerDesignableView</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/ResetableField.html">ResetableField</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/RespondableField.html">RespondableField</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UnderlinedTextView</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GuidedTextField.html">GuidedTextField</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UnderlinedTextView</span><span class="p">:</span> <span class="kt">UITextViewDelegate</span></code></pre>
 
                 </div>
@@ -357,6 +373,33 @@ Getter returns only nil value.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC7toolbarAA16ToolBarInterface_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/toolbar" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC7toolbarAA16ToolBarInterface_pSgvp">toolbar</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">toolbar</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ToolBarInterface.html">ToolBarInterface</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC9maxLengthSiSgvp"></a>
                     <a name="//apple_ref/swift/Property/maxLength" class="dashAnchor"></a>
                     <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC9maxLengthSiSgvp">maxLength</a>
@@ -429,6 +472,33 @@ Getter returns only nil value.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">validationPolicy</span><span class="p">:</span> <span class="kt"><a href="../Enums/ValidationPolicy.html">ValidationPolicy</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC10trimSpacesSbvp"></a>
+                    <a name="//apple_ref/swift/Property/trimSpaces" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC10trimSpacesSbvp">trimSpaces</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">trimSpaces</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -938,7 +1008,7 @@ Getter returns only nil value.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">nextInput</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">nextInput</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -964,7 +1034,7 @@ Getter returns only nil value.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">previousInput</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">previousInput</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1017,6 +1087,32 @@ Getter returns only nil value.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">becomeFirstResponder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog16RespondableFieldP23canBecomeFirstResponderSbvp"></a>
+                    <a name="//apple_ref/swift/Property/canBecomeFirstResponder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog16RespondableFieldP23canBecomeFirstResponderSbvp">canBecomeFirstResponder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">canBecomeFirstResponder</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -1312,6 +1408,154 @@ Also you can disable automatic validation on this action.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/GuidedTextField"></a>
+                <a name="//apple_ref/swift/Section/GuidedTextField" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/GuidedTextField"></a>
+                  <h3 class="section-name"><p>GuidedTextField</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC17havePreviousInputSbvp"></a>
+                    <a name="//apple_ref/swift/Property/havePreviousInput" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC17havePreviousInputSbvp">havePreviousInput</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">havePreviousInput</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC13haveNextInputSbvp"></a>
+                    <a name="//apple_ref/swift/Property/haveNextInput" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC13haveNextInputSbvp">haveNextInput</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">haveNextInput</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC19processReturnActionyyF"></a>
+                    <a name="//apple_ref/swift/Method/processReturnAction()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC19processReturnActionyyF">processReturnAction()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">processReturnAction</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC21switchToPreviousInputyyF"></a>
+                    <a name="//apple_ref/swift/Method/switchToPreviousInput()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC21switchToPreviousInputyyF">switchToPreviousInput()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">switchToPreviousInput</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog010UnderlinedA4ViewC17switchToNextInputyyF"></a>
+                    <a name="//apple_ref/swift/Method/switchToNextInput()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog010UnderlinedA4ViewC17switchToNextInputyyF">switchToNextInput()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">switchToNextInput</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/UITextViewDelegate"></a>
                 <a name="//apple_ref/swift/Section/UITextViewDelegate" class="dashAnchor"></a>
                 <div class="section-name-container">
@@ -1342,6 +1586,33 @@ Also you can disable automatic validation on this action.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">textViewDidBeginEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@TextFieldsCatalog@objc(cs)UnderlinedTextView(im)textViewShouldEndEditing:"></a>
+                    <a name="//apple_ref/swift/Method/textViewShouldEndEditing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@TextFieldsCatalog@objc(cs)UnderlinedTextView(im)textViewShouldEndEditing:">textViewShouldEndEditing(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">textViewShouldEndEditing</span><span class="p">(</span><span class="n">_</span> <span class="nv">textView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -1434,7 +1705,7 @@ Also you can disable automatic validation on this action.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/chausovSurfStudio/TextFieldsCatalog" target="_blank" rel="external">Alexander Chausov</a>. All rights reserved. (Last updated: 2020-09-01)</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/chausovSurfStudio/TextFieldsCatalog" target="_blank" rel="external">Alexander Chausov</a>. All rights reserved. (Last updated: 2020-12-21)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
