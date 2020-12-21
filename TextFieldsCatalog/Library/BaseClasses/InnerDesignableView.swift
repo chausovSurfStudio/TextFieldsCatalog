@@ -30,12 +30,39 @@ open class InnerDesignableView: UIView {
     }
 
     func setup() -> UIView? {
-        let view = Bundle(for: type(of: self)).loadNibNamed(self.nameOfClass, owner: self, options: nil)?.first as? UIView
+        var bundle: Bundle
+        #if SWIFT_PACKAGE
+        if Bundle.module.path(forResource: self.nameOfClass, ofType: "nib") != nil {
+            bundle = Bundle.module
+        } else {
+            bundle = Bundle(for: type(of: self))
+        }
+
+        // helper for TextFieldCatalog package use in different package with xibs
+        if bundle.path(forResource: self.nameOfClass, ofType: "nib") == nil,
+           let resourceBundle = getResourcesBundle(for: bundle) {
+            bundle = resourceBundle
+        }
+        #else
+        bundle = Bundle(for: type(of: self))
+        #endif
+
+        bundle.load()
+        let view = bundle.loadNibNamed(self.nameOfClass, owner: self, options: nil)?.first as? UIView
         if let v = view {
             addSubview(v)
             v.frame = self.bounds
         }
         return view
+    }
+
+    // MARK: - Private methods
+
+    private func getResourcesBundle(for bundle: Bundle) -> Bundle? {
+        let packageName = NSStringFromClass(type(of: self)).components(separatedBy: ".").first ?? ""
+        let bundleName = packageName + "_" + packageName + ".bundle"
+        let resource = bundle.resourcePath ?? ""
+        return Bundle(path: resource + "/" + bundleName)
     }
 
 }

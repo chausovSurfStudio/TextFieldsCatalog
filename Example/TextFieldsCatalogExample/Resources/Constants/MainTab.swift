@@ -34,11 +34,11 @@ enum MainTab: Int, CaseIterable {
     var title: String {
         switch self {
         case .catalog:
-            return L10n.Constants.Maintab.catalog
+            return L10n.Constants.MainTab.catalog
         case .example:
-            return L10n.Constants.Maintab.example
+            return L10n.Constants.MainTab.example
         case .info:
-            return L10n.Constants.Maintab.info
+            return L10n.Constants.MainTab.info
         }
     }
 

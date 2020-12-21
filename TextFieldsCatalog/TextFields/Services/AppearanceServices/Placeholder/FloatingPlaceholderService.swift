@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 /**
  Default variant of placeholder service which implements logic of `floating`-placeholder.
 

@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 /**
  Abstract protocol that give you ability to control under responder chain for text fields.
  */

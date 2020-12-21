@@ -21,6 +21,8 @@ DerivedData
 *dSYM
 *dSYM.zip
 *.mobileprovision
+.build/
+.swiftpm/
 
 # CocoaPods
 #

@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 final class LineService {
 
     // MARK: - Nested Types

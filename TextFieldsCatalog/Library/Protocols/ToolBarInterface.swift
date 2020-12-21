@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 /// Abstract protocol for fields input accessory views.
 /// You can add buttons to switch between input fields, guidedField will help you with this.
 /// Or you can ignore this field and create your own custom toolbar!

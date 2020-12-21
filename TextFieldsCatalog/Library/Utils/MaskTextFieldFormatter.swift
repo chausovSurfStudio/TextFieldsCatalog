@@ -8,6 +8,7 @@
 
 import Foundation
 import InputMask
+import UIKit
 
 /// Special formatter for input field with mask (work only with text field)
 public final class MaskTextFieldFormatter: NSObject {
@@ -15,9 +16,9 @@ public final class MaskTextFieldFormatter: NSObject {
     // MARK: - Properties
 
     /// Error message for case, when user leave empty text field
-    public var emptyStringErrorMessage: String = L10n.Errors.Textfield.empty
+    public var emptyStringErrorMessage: String = L10n.Errors.TextField.empty
     /// Error message for case, when user leave incorrect text field
-    public var incorrectStringErrorMessage: String = L10n.Errors.Textfield.notValid
+    public var incorrectStringErrorMessage: String = L10n.Errors.TextField.notValid
 
     // MARK: - Private Properties
 
@@ -66,7 +67,9 @@ public final class MaskTextFieldFormatter: NSObject {
         guard let text = string else {
             return nil
         }
-        let result = maskedDelegate.primaryMask.apply(toText: CaretString(string: text, caretPosition: text.endIndex), autocomplete: true)
+        let result = maskedDelegate.primaryMask.apply(
+            toText: CaretString(string: text, caretPosition: text.endIndex, caretGravity: .forward(autocomplete: true))
+        )
         return result.formattedText.string
     }
 
