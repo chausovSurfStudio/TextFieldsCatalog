@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import Foundation
+
 enum AnimationTime {
     static let `default`: TimeInterval = 0.3
 }

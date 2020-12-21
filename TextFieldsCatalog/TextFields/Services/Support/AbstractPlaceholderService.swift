@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 /**
  Protocol for abstract service, which contains logic for drawing placeholder.
 

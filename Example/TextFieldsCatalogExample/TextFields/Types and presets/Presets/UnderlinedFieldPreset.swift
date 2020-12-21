@@ -32,13 +32,13 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .phone:
             return L10n.Presets.Phone.name
         case .cardExpirationDate:
-            return L10n.Presets.Cardexpirationdate.name
+            return L10n.Presets.CardExpirationDate.name
         case .cvc:
             return L10n.Presets.Cvc.name
         case .cardNumber:
-            return L10n.Presets.Cardnumber.name
+            return L10n.Presets.CardNumber.name
         case .qrCode:
-            return L10n.Presets.Qrcode.name
+            return L10n.Presets.QrCode.name
         case .birthday:
             return L10n.Presets.Birthday.name
         case .sex:
@@ -57,13 +57,13 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         case .phone:
             return L10n.Presets.Phone.description
         case .cardExpirationDate:
-            return L10n.Presets.Cardexpirationdate.description
+            return L10n.Presets.CardExpirationDate.description
         case .cvc:
             return L10n.Presets.Cvc.description
         case .cardNumber:
-            return L10n.Presets.Cardnumber.description
+            return L10n.Presets.CardNumber.description
         case .qrCode:
-            return L10n.Presets.Qrcode.description
+            return L10n.Presets.QrCode.description
         case .birthday:
             return L10n.Presets.Birthday.description
         case .sex:
@@ -162,11 +162,11 @@ private extension UnderlinedFieldPreset {
     }
 
     func tuneFieldForCardExpirationDate(_ textField: UnderlinedTextField) {
-        textField.placeholder = L10n.Presets.Cardexpirationdate.placeholder
+        textField.placeholder = L10n.Presets.CardExpirationDate.placeholder
         textField.validator = TextFieldValidator(minLength: 5,
                                                  maxLength: nil,
                                                  regex: nil,
-                                                 globalErrorMessage: L10n.Presets.Cardexpirationdate.errorMessage)
+                                                 globalErrorMessage: L10n.Presets.CardExpirationDate.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardExpirationDate)
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .numberPad
@@ -181,26 +181,27 @@ private extension UnderlinedFieldPreset {
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cvc)
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .numberPad
+        textField.toolbar = PickerTopView.default()
     }
 
     func tuneFieldForCardNumber(_ textField: UnderlinedTextField) {
-        textField.placeholder = L10n.Presets.Cardnumber.placeholder
+        textField.placeholder = L10n.Presets.CardNumber.placeholder
         textField.validator = TextFieldValidator(minLength: 19,
                                                  maxLength: nil,
                                                  regex: nil,
-                                                 globalErrorMessage: L10n.Presets.Cardnumber.errorMessage)
+                                                 globalErrorMessage: L10n.Presets.CardNumber.errorMessage)
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.cardNumber)
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .numberPad
     }
 
     func tuneFieldForQRCode(_ textField: UnderlinedTextField) {
-        textField.placeholder = L10n.Presets.Qrcode.placeholder
+        textField.placeholder = L10n.Presets.QrCode.placeholder
         textField.validator = TextFieldValidator(minLength: 10, maxLength: 10, regex: nil)
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .asciiCapable
         textField.maxLength = 10
-        textField.setup(hint: L10n.Presets.Qrcode.hint)
+        textField.setup(hint: L10n.Presets.QrCode.hint)
 
         let actionButtonConfig = ActionButtonConfiguration(image: UIImage(asset: Asset.qrCode),
                                                            normalColor: Color.Button.active,

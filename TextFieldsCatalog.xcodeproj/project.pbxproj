@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50B6430D7DAE7D25EA168780 /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */; };
+		7F638D51D41E729487900C9C /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D90AA463DFFF21B3B7A640F /* Pods_TextFieldsCatalogTests.framework */; };
 		902CE2E821FF6D6D00AC21D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 902CE2EA21FF6D6D00AC21D4 /* Localizable.strings */; };
 		902CE2ED21FF6D9C00AC21D4 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2EC21FF6D9C00AC21D4 /* Strings.swift */; };
 		902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */; };
@@ -41,6 +42,7 @@
 		909F259D229C39DD006926E7 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2594229C22D8006926E7 /* close.png */; };
 		909F259E229C39DF006926E7 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2596229C22D8006926E7 /* close@2x.png */; };
 		909F259F229C39E1006926E7 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909F2595229C22D8006926E7 /* close@3x.png */; };
+		90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */; };
 		90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */; };
 		90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7C228975730036C634 /* PlainPickerView.swift */; };
 		90A32B7F2289792D0036C634 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A32B7E2289792D0036C634 /* PickerTextField.swift */; };
@@ -85,7 +87,6 @@
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
 		90FAC4A42288804A0032A7F1 /* PickerTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FAC4A32288804A0032A7F1 /* PickerTopView.xib */; };
-		E217C1DAD30E4638BD4E9825 /* Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B676555EA33FF26658EB66 /* Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 /* Begin PBXFileReference section */
 		0E399E5C3940B6E1236F5F44 /* Pods-TextFieldsCatalog-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2544D9C7000E4E9EEFE58E84 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
+		2D90AA463DFFF21B3B7A640F /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9721A780F7BB9DF0720B41 /* Pods-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		495724198506E09563838E8F /* Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		902CE2E921FF6D6D00AC21D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		909F2594229C22D8006926E7 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		909F2595229C22D8006926E7 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		909F2596229C22D8006926E7 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarInterface.swift; sourceTree = "<group>"; };
 		90A32B7A228960640036C634 /* PickerTopViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopViewConfiguration.swift; sourceTree = "<group>"; };
 		90A32B7C228975730036C634 /* PlainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainPickerView.swift; sourceTree = "<group>"; };
 		90A32B7E2289792D0036C634 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
@@ -187,7 +190,6 @@
 		AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85FAD03B2BFDDF9E9787A91 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E5B676555EA33FF26658EB66 /* Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				903863DF21FF550D00BAA761 /* TextFieldsCatalog.framework in Frameworks */,
-				E217C1DAD30E4638BD4E9825 /* Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework in Frameworks */,
+				7F638D51D41E729487900C9C /* Pods_TextFieldsCatalogTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */,
-				E5B676555EA33FF26658EB66 /* Pods_TextFieldsCatalog_TextFieldsCatalogTests.framework */,
+				2D90AA463DFFF21B3B7A640F /* Pods_TextFieldsCatalogTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -321,6 +323,7 @@
 			children = (
 				90A32B82228985840036C634 /* TextField */,
 				9038640D21FF5A1300BAA761 /* TextFieldValidation.swift */,
+				90A0668F2530B59D0065CCD7 /* ToolBarInterface.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -723,7 +726,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalog-TextFieldsCatalogTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TextFieldsCatalogTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -794,15 +797,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -815,6 +818,7 @@
 				90C6AC7023C617A400D13B8D /* LineService.swift in Sources */,
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */,
+				90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
 				90FAC49C22886E5C0032A7F1 /* DatePickerView.swift in Sources */,
@@ -1086,9 +1090,9 @@
 		};
 		903863ED21FF550D00BAA761 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E399E5C3940B6E1236F5F44 /* Pods-TextFieldsCatalog-TextFieldsCatalogTests.debug.xcconfig */;
+			baseConfigurationReference = E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;
@@ -1106,9 +1110,9 @@
 		};
 		903863EE21FF550D00BAA761 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 495724198506E09563838E8F /* Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig */;
+			baseConfigurationReference = 2E9721A780F7BB9DF0720B41 /* Pods-TextFieldsCatalogTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
 				INFOPLIST_FILE = TextFieldsCatalogTests/Info.plist;

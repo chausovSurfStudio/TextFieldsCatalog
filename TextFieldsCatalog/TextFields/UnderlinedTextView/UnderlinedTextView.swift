@@ -88,9 +88,17 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         }
     }
     public var validator: TextFieldValidation?
+    public var toolbar: ToolBarInterface? {
+        didSet {
+            textView.inputAccessoryView = toolbar
+            toolbar?.guidedField = self
+            toolbar?.updateNavigationButtons()
+        }
+    }
     public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
+    public var trimSpaces: Bool = false
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5,
                                                            ignoreEmptyHint: true)
@@ -154,13 +162,24 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - RespondableField
 
-    public var nextInput: UIResponder?
-    public var previousInput: UIResponder?
+    public var nextInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
+    public var previousInput: UIResponder? {
+        didSet {
+            toolbar?.updateNavigationButtons()
+        }
+    }
     open override var isFirstResponder: Bool {
         return textView.isFirstResponder
     }
     open override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
+    }
+    open override var canBecomeFirstResponder: Bool {
+        return self.window != nil
     }
 
     // MARK: - Public Methods
@@ -310,6 +329,36 @@ private extension UnderlinedTextView {
 
 }
 
+// MARK: - GuidedTextField
+
+extension UnderlinedTextView: GuidedTextField {
+
+    public var havePreviousInput: Bool {
+        return previousInput != nil
+    }
+
+    public var haveNextInput: Bool {
+        return nextInput != nil
+    }
+
+    public func processReturnAction() {
+        if let returnAction = onShouldReturn {
+            returnAction(self)
+        } else {
+            textView.resignFirstResponder()
+        }
+    }
+
+    public func switchToPreviousInput() {
+        switchToResponder(previousInput)
+    }
+
+    public func switchToNextInput() {
+        switchToResponder(nextInput)
+    }
+
+}
+
 // MARK: - UITextViewDelegate
 
 extension UnderlinedTextView: UITextViewDelegate {
@@ -317,6 +366,13 @@ extension UnderlinedTextView: UITextViewDelegate {
     open func textViewDidBeginEditing(_ textView: UITextView) {
         state = .active
         onBeginEditing?(self)
+    }
+
+    open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        if trimSpaces {
+            textView.text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return true
     }
 
     open func textViewDidEndEditing(_ textView: UITextView) {
@@ -432,6 +488,17 @@ private extension UnderlinedTextView {
 
     func perfromOnContainerStateChangedCall() {
         onContainerStateChanged?(containerState)
+    }
+
+    func switchToResponder(_ responder: UIResponder?) {
+        if let input = responder as? RespondableField {
+            guard input.canBecomeFirstResponder else {
+                return
+            }
+            _ = input.becomeFirstResponder()
+        } else {
+            responder?.becomeFirstResponder()
+        }
     }
 
 }

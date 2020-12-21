@@ -3,13 +3,13 @@ platform :ios, '10.0'
 inhibit_all_warnings!
 
 def utils
-    pod 'SwiftGen', '5.2.1'
-    pod 'SwiftLint', '0.29.4'
+    pod 'SwiftGen', '6.4.0'
+    pod 'SwiftLint', '0.41.0'
 end
 
 def common_pods
     utils
-    pod 'InputMask', '4.0.2'
+    pod 'InputMask', '6.0.0'
 end
 
 target 'TextFieldsCatalog' do
@@ -17,7 +17,16 @@ target 'TextFieldsCatalog' do
   common_pods
 
   target 'TextFieldsCatalogTests' do
+    inherit! :search_paths
     common_pods
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
 end

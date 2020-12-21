@@ -34,15 +34,16 @@
 		8438070FE691B8242C2D20F2 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A29BF97393846546F44A61 /* MainViewInput.swift */; };
 		89B03271DB703408CF996E40 /* MainTabBarViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CFB54B7AB93D8C3DC00E7 /* MainTabBarViewInput.swift */; };
 		8B43783863D2AC05209F304B /* ExamplesViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC759D69070E7F14B23CC44 /* ExamplesViewOutput.swift */; };
+		90191CEF24B0B7B8001774DD /* UnderlinedFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */; };
 		904A19B121F9DBA500B9A846 /* AppliedPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B021F9DBA500B9A846 /* AppliedPreset.swift */; };
 		904A19B521F9E83100B9A846 /* FieldPresetsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B421F9E83100B9A846 /* FieldPresetsAdapter.swift */; };
 		904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19B621F9E84300B9A846 /* FieldPresetTableViewCell.swift */; };
 		904A19B921F9E84300B9A846 /* FieldPresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 904A19B721F9E84300B9A846 /* FieldPresetTableViewCell.xib */; };
 		904A19C121F9FAC200B9A846 /* UnderlinedFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */; };
+		904B2E3A24B39EA000FD2921 /* TableViewCellSnapshotContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904B2E3924B39EA000FD2921 /* TableViewCellSnapshotContainer.swift */; };
 		90736C2721F86099003B8B78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C2621F86099003B8B78 /* AppDelegate.swift */; };
 		90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2D21F8609A003B8B78 /* Assets.xcassets */; };
 		90736C3121F8609A003B8B78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90736C2F21F8609A003B8B78 /* LaunchScreen.storyboard */; };
-		90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */; };
 		90736C6321F87A5E003B8B78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6221F87A5E003B8B78 /* Color.swift */; };
 		90736C6821F87B7A003B8B78 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6721F87B7A003B8B78 /* Foundation.swift */; };
 		90736C6C21F87D65003B8B78 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736C6B21F87D65003B8B78 /* UIImage.swift */; };
@@ -77,6 +78,7 @@
 		90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */; };
 		90736CC721F8A350003B8B78 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC621F8A350003B8B78 /* UITableView.swift */; };
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
+		907CC10C253C964D007F78DD /* UnderlinedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */; };
 		9082577823C36B83000767EB /* BoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577723C36B83000767EB /* BoxTextField.swift */; };
 		9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9082577923C36BC3000767EB /* BoxTextField.xib */; };
 		9082577D23C3A339000767EB /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */; };
@@ -175,18 +177,19 @@
 		8412C6AC0801EE7F4018F298 /* Pods-TextFieldsCatalogExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogExample/Pods-TextFieldsCatalogExample.release.xcconfig"; sourceTree = "<group>"; };
 		87CFAB258D648BA3020F9A3E /* MainViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
 		8E24A44D4DDA795046DAD200 /* MainTabBarModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainTabBarModuleOutput.swift; sourceTree = "<group>"; };
+		90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedFieldTests.swift; sourceTree = "<group>"; };
 		904A19B021F9DBA500B9A846 /* AppliedPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedPreset.swift; sourceTree = "<group>"; };
 		904A19B421F9E83100B9A846 /* FieldPresetsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPresetsAdapter.swift; sourceTree = "<group>"; };
 		904A19B621F9E84300B9A846 /* FieldPresetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldPresetTableViewCell.swift; sourceTree = "<group>"; };
 		904A19B721F9E84300B9A846 /* FieldPresetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldPresetTableViewCell.xib; sourceTree = "<group>"; };
 		904A19C021F9FAC200B9A846 /* UnderlinedFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedFieldPreset.swift; sourceTree = "<group>"; };
+		904B2E3924B39EA000FD2921 /* TableViewCellSnapshotContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellSnapshotContainer.swift; sourceTree = "<group>"; };
 		90736C2321F86099003B8B78 /* TextFieldsCatalogExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextFieldsCatalogExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90736C2621F86099003B8B78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90736C2D21F8609A003B8B78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90736C3021F8609A003B8B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90736C3221F8609A003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C3721F8609B003B8B78 /* TextFieldsCatalogExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextFieldsCatalogExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsCatalogTests.swift; sourceTree = "<group>"; };
 		90736C3D21F8609B003B8B78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90736C6221F87A5E003B8B78 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		90736C6721F87B7A003B8B78 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 		90736CC321F8A330003B8B78 /* MainFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFieldTableViewCell.xib; sourceTree = "<group>"; };
 		90736CC621F8A350003B8B78 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedViewTests.swift; sourceTree = "<group>"; };
 		9082577723C36B83000767EB /* BoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTextField.swift; sourceTree = "<group>"; };
 		9082577923C36BC3000767EB /* BoxTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxTextField.xib; sourceTree = "<group>"; };
 		9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -443,6 +447,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		90191CED24B0B791001774DD /* FieldTests */ = {
+			isa = PBXGroup;
+			children = (
+				90191CEE24B0B7B8001774DD /* UnderlinedFieldTests.swift */,
+				907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */,
+			);
+			path = FieldTests;
+			sourceTree = "<group>";
+		};
 		904A19A621F9D3B000B9A846 /* Types and presets */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +505,14 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		904B2E3824B39E9600FD2921 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				904B2E3924B39EA000FD2921 /* TableViewCellSnapshotContainer.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		90736C1A21F86099003B8B78 = {
 			isa = PBXGroup;
 			children = (
@@ -528,7 +549,8 @@
 		90736C3A21F8609B003B8B78 /* TextFieldsCatalogExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				90736C3B21F8609B003B8B78 /* TextFieldsCatalogTests.swift */,
+				90191CED24B0B791001774DD /* FieldTests */,
+				904B2E3824B39E9600FD2921 /* Support */,
 				90736C3D21F8609B003B8B78 /* Info.plist */,
 			);
 			path = TextFieldsCatalogExampleTests;
@@ -983,6 +1005,7 @@
 				90736C3321F8609B003B8B78 /* Sources */,
 				90736C3421F8609B003B8B78 /* Frameworks */,
 				90736C3521F8609B003B8B78 /* Resources */,
+				B99E4C8B555B6E7BA06A99E6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1145,6 +1168,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		B99E4C8B555B6E7BA06A99E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TextFieldsCatalogExampleTests/Pods-TextFieldsCatalogExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D56EE1966639A5C6A92F1FA2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1280,7 +1320,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90736C3C21F8609B003B8B78 /* TextFieldsCatalogTests.swift in Sources */,
+				907CC10C253C964D007F78DD /* UnderlinedViewTests.swift in Sources */,
+				90191CEF24B0B7B8001774DD /* UnderlinedFieldTests.swift in Sources */,
+				904B2E3A24B39EA000FD2921 /* TableViewCellSnapshotContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1478,7 +1520,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A8222E22148D7E6EE783131 /* Pods-TextFieldsCatalogExampleTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;
@@ -1500,7 +1542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3ED89315F9CFD802414DB7DE /* Pods-TextFieldsCatalogExampleTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B9639RHZFT;

@@ -19,30 +19,30 @@ enum TextFieldType: CaseIterable {
     var title: String {
         switch self {
         case .underlined:
-            return L10n.Textfieldtype.Underlined.title
+            return L10n.TextFieldType.Underlined.title
         case .box:
-            return L10n.Textfieldtype.Box.title
+            return L10n.TextFieldType.Box.title
         case .customUnderlined:
-            return L10n.Textfieldtype.Customunderlined.title
+            return L10n.TextFieldType.CustomUnderlined.title
         case .underlinedTextView:
-            return L10n.Textfieldtype.Underlinedtextview.title
+            return L10n.TextFieldType.UnderlinedTextView.title
         case .sumTextField:
-            return L10n.Textfieldtype.Sumtextfield.title
+            return L10n.TextFieldType.SumTextField.title
         }
     }
 
     var description: String {
         switch self {
         case .underlined:
-            return L10n.Textfieldtype.Underlined.description
+            return L10n.TextFieldType.Underlined.description
         case .box:
-            return L10n.Textfieldtype.Box.description
+            return L10n.TextFieldType.Box.description
         case .customUnderlined:
-            return L10n.Textfieldtype.Customunderlined.description
+            return L10n.TextFieldType.CustomUnderlined.description
         case .underlinedTextView:
-            return L10n.Textfieldtype.Underlinedtextview.description
+            return L10n.TextFieldType.UnderlinedTextView.description
         case .sumTextField:
-            return L10n.Textfieldtype.Sumtextfield.description
+            return L10n.TextFieldType.SumTextField.description
         }
     }
 

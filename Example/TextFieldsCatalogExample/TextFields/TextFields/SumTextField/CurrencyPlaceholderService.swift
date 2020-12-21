@@ -7,6 +7,7 @@
 //
 
 import TextFieldsCatalog
+import UIKit
 
 final class CurrencyPlaceholderService: AbstractPlaceholderService {
 

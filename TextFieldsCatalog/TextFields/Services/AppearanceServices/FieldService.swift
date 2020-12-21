@@ -6,6 +6,9 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import Foundation
+import UIKit
+
 final class FieldService {
 
     // MARK: - Private Properties

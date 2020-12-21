@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "InputMask",
+        "repositoryURL": "https://github.com/RedMadRobot/input-mask-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "f78e7c8fe6f0f2b6512b69006ec595aa1224592f",
+          "version": "6.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

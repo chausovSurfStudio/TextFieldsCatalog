@@ -6,6 +6,8 @@
 //  Copyright © 2020 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 public struct FlexibleHeightPolicy {
 
     // MARK: - Properties
