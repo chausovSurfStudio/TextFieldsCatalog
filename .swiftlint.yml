@@ -93,6 +93,10 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - .bundle
   - Example
+  # следующего пути тут быть не должно, но без него jazzy не генерит документацию
+  # jazzy перед генерацией документации собирает проект и запускает свифтлинт, натравливая его на эту папку
+  # проверяя все подряд, в том числе и сторонние библиотеки
+  - .build
 
 custom_rules:
   realm_in_ui:
