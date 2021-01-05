@@ -240,6 +240,13 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         hintService.setup(plainHint: hint)
     }
 
+    /// Allows you to refresh set of states, when hint message or error message
+    /// should be visible
+    public func setup(visibleHintStates: HintVisibleStates) {
+        self.hintService.setup(visibleHintStates: visibleHintStates)
+        updateUI()
+    }
+
     /// Allows you to set optional string as text.
     /// - Parameters:
     ///     - text: text for setup

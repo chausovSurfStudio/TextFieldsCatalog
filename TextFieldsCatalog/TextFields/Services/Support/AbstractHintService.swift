@@ -18,5 +18,6 @@ public protocol AbstractHintService {
     func setup(plainHint: String?)
     func setup(errorHint: String?)
     func showHint()
+    func setup(visibleHintStates: HintVisibleStates)
 
 }

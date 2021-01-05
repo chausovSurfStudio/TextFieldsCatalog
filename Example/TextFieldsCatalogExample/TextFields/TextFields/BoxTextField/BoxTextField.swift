@@ -91,7 +91,8 @@ private extension BoxTextField {
                                                                  colors: ColorConfiguration(error: Color.UnderlineTextField.error,
                                                                                             normal: Color.UnderlineTextField.placeholder,
                                                                                             active: Color.UnderlineTextField.placeholder,
-                                                                                            disabled: Color.UnderlineTextField.placeholder))))
+                                                                                            disabled: Color.UnderlineTextField.placeholder)),
+                                            visibleHintStates: .all))
         self.heightLayoutPolicy = .elastic(policy: .init(minHeight: 130,
                                                          bottomOffset: 5,
                                                          ignoreEmptyHint: false))

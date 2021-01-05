@@ -13,13 +13,16 @@ public class HintService: AbstractHintService {
     // MARK: - Private Properties
 
     private let configuration: HintConfiguration
+    private var visibleHintStates: HintVisibleStates
     private var hintLabel: UILabel?
     private var hintMessage: String?
 
     // MARK: - Initialization
 
-    public init(configuration: HintConfiguration) {
+    public init(configuration: HintConfiguration,
+                visibleHintStates: HintVisibleStates = [.error, .active]) {
         self.configuration = configuration
+        self.visibleHintStates = visibleHintStates
     }
 
     // MARK: - AbstractHintService
@@ -73,6 +76,10 @@ public class HintService: AbstractHintService {
         setup(hintText: hintMessage)
     }
 
+    public func setup(visibleHintStates: HintVisibleStates) {
+        self.visibleHintStates = visibleHintStates
+    }
+
 }
 
 // MARK: - Private Updates
@@ -119,13 +126,18 @@ private extension HintService {
     }
 
     func shouldShowHint(containerState: FieldContainerState) -> Bool {
+        guard !(hintLabel?.text?.isEmpty ?? true) else {
+            return false
+        }
         switch containerState {
         case .error:
-            return true
-        case .disabled, .normal:
-            return false
+            return visibleHintStates.contains(.error)
+        case .disabled:
+            return visibleHintStates.contains(.disabled)
+        case .normal:
+            return visibleHintStates.contains(.normal)
         case .active:
-            return hintMessage != nil
+            return visibleHintStates.contains(.active)
         }
     }
 

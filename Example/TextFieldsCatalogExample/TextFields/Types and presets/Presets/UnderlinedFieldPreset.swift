@@ -133,6 +133,7 @@ private extension UnderlinedFieldPreset {
         textField.field.autocapitalizationType = .words
         textField.maxLength = 20
         textField.setup(hint: L10n.Presets.Name.hint)
+        textField.setup(visibleHintStates: [.normal, .active, .error])
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
 
