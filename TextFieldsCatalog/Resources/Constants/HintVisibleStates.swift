@@ -6,6 +6,11 @@
 //  Copyright © 2021 Александр Чаусов. All rights reserved.
 //
 
+/// Option set for managing possible visible states for fields hint message.
+///
+/// You can provide needed set to hint service init method or
+/// change this set for specific field with appropriate method.
+/// Hint or error messages will be shown only for specified states.
 public struct HintVisibleStates: OptionSet {
 
     // MARK: - Public Properties

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Default service for hint messages presentation in textField/textView.
+/// You can find documentation for it's methods in `AbstractHintService` protocol documentation.
 public class HintService: AbstractHintService {
 
     // MARK: - Private Properties
