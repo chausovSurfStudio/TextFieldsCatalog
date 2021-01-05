@@ -219,6 +219,15 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         placeholderServices.append(service)
     }
 
+    /// Allows you to change default hint service
+    public func setup(hintService: AbstractHintService) {
+        self.hintService = hintService
+        hintService.provide(label: hintLabel)
+        hintService.configureAppearance()
+        hintService.updateContent(containerState: containerState,
+                                  heightLayoutPolicy: heightLayoutPolicy)
+    }
+
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
     public func setup(heightConstraint: NSLayoutConstraint) {
         self.heightConstraint = heightConstraint

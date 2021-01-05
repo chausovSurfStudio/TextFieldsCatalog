@@ -6,6 +6,8 @@
 //  Copyright © 2021 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 public class HintService: AbstractHintService {
 
     // MARK: - Private Properties

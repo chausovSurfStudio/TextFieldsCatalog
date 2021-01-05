@@ -103,12 +103,6 @@ private extension SumTextField {
                                                                                     normal: Color.UnderlineTextField.text,
                                                                                     active: Color.UnderlineTextField.text,
                                                                                     disabled: Color.UnderlineTextField.placeholder))
-        configuration.hint = HintConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .regular),
-                                               lineHeight: 17,
-                                               colors: ColorConfiguration(error: Color.UnderlineTextField.error,
-                                                                          normal: Color.UnderlineTextField.placeholder,
-                                                                          active: Color.UnderlineTextField.placeholder,
-                                                                          disabled: Color.UnderlineTextField.placeholder))
         configuration.background = BackgroundConfiguration(color: Color.Main.background)
         self.configuration = configuration
 
@@ -127,7 +121,12 @@ private extension SumTextField {
         self.supportPlaceholderService = supportPlaceholderService
         self.setup(placeholderServices: [StaticPlaceholderService(configuration: staticPlaceholderConfig),
                                          supportPlaceholderService])
-
+        self.setup(hintService: HintService(configuration: .init(font: UIFont.systemFont(ofSize: 13, weight: .regular),
+                                                                 lineHeight: 17,
+                                                                 colors: ColorConfiguration(error: Color.UnderlineTextField.error,
+                                                                                            normal: Color.UnderlineTextField.placeholder,
+                                                                                            active: Color.UnderlineTextField.placeholder,
+                                                                                            disabled: Color.UnderlineTextField.placeholder))))
         self.heightLayoutPolicy = .elastic(minHeight: 102, bottomSpace: 5, ignoreEmptyHint: true)
         self.validationPolicy = .afterChanges
     }

@@ -6,6 +6,8 @@
 //  Copyright © 2021 Александр Чаусов. All rights reserved.
 //
 
+import UIKit
+
 public protocol AbstractHintService {
 
     func provide(label: UILabel)
