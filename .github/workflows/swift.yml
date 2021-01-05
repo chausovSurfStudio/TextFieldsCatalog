@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - '**'
-    types: [ opened, edited ]
+    types: [ opened, edited, synchronize ]
 
 jobs:
   build:
