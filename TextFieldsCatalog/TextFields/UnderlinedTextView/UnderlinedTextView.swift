@@ -210,9 +210,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         hintService.provide(label: hintLabel)
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: .elastic(minHeight: flexibleHeightPolicy.minHeight,
-                                                               bottomSpace: flexibleHeightPolicy.bottomOffset,
-                                                               ignoreEmptyHint: flexibleHeightPolicy.ignoreEmptyHint))
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
     }
 
     /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
@@ -413,9 +411,7 @@ private extension UnderlinedTextView {
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: .elastic(minHeight: flexibleHeightPolicy.minHeight,
-                                                               bottomSpace: flexibleHeightPolicy.bottomOffset,
-                                                               ignoreEmptyHint: flexibleHeightPolicy.ignoreEmptyHint))
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
         for service in placeholderServices {
             service.updateContent(fieldState: state, containerState: containerState)
         }

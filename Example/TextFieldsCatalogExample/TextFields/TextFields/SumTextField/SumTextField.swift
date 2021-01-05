@@ -127,7 +127,9 @@ private extension SumTextField {
                                                                                             normal: Color.UnderlineTextField.placeholder,
                                                                                             active: Color.UnderlineTextField.placeholder,
                                                                                             disabled: Color.UnderlineTextField.placeholder))))
-        self.heightLayoutPolicy = .elastic(minHeight: 102, bottomSpace: 5, ignoreEmptyHint: true)
+        self.heightLayoutPolicy = .elastic(policy: .init(minHeight: 102,
+                                                         bottomOffset: 5,
+                                                         ignoreEmptyHint: true))
         self.validationPolicy = .afterChanges
     }
 

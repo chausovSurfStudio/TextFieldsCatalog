@@ -92,7 +92,9 @@ private extension BoxTextField {
                                                                                             normal: Color.UnderlineTextField.placeholder,
                                                                                             active: Color.UnderlineTextField.placeholder,
                                                                                             disabled: Color.UnderlineTextField.placeholder))))
-        self.heightLayoutPolicy = .elastic(minHeight: 130, bottomSpace: 5, ignoreEmptyHint: false)
+        self.heightLayoutPolicy = .elastic(policy: .init(minHeight: 130,
+                                                         bottomOffset: 5,
+                                                         ignoreEmptyHint: false))
         self.validationPolicy = .always
     }
 

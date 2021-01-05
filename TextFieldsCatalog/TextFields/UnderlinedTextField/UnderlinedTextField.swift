@@ -108,7 +108,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
     public var trimSpaces: Bool = false
-    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false)
+    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(policy: .init(minHeight: 77,
+                                                                               bottomOffset: 5,
+                                                                               ignoreEmptyHint: false))
     public var mode: TextFieldMode = .plain {
         didSet {
             setup(textFieldMode: mode)
@@ -627,24 +629,14 @@ private extension UnderlinedTextField {
         switch heightLayoutPolicy {
         case .fixed:
             break
-        case .flexible(let minHeight, let bottomSpace):
-            let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
-            let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
-            let viewHeight = max(minHeight, actualViewHeight)
-            guard lastViewHeight != viewHeight else {
-                return
-            }
-            lastViewHeight = viewHeight
-            heightConstraint?.constant = viewHeight
-            onHeightChanged?(viewHeight)
-        case .elastic(let minHeight, let bottomSpace, let ignoreEmptyHint):
+        case .elastic(let policy):
             let viewHeight: CGFloat
             let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
-            if hintHeight != 0 || !ignoreEmptyHint {
-                let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
-                viewHeight = max(minHeight, actualViewHeight)
+            if hintHeight != 0 || !policy.ignoreEmptyHint {
+                let actualViewHeight = hintLabel.frame.origin.y + hintHeight + policy.bottomOffset
+                viewHeight = max(policy.minHeight, actualViewHeight)
             } else {
-                viewHeight = minHeight
+                viewHeight = policy.minHeight
             }
 
             guard lastViewHeight != viewHeight else {
