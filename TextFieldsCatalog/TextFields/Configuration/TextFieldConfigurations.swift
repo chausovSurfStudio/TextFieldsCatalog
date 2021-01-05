@@ -14,18 +14,15 @@ public class BaseFieldConfiguration {
 
     public var textField: TextFieldConfiguration
     public var line: LineConfiguration
-    public var hint: HintConfiguration
     public var background: BackgroundConfiguration
 
     // MARK: - Initialization
 
     init(textField: TextFieldConfiguration,
          line: LineConfiguration,
-         hint: HintConfiguration,
          background: BackgroundConfiguration) {
         self.textField = textField
         self.line = line
-        self.hint = hint
         self.background = background
     }
 
@@ -57,12 +54,6 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                                           normal: Color.Text.white,
                                                                           active: Color.Text.white,
                                                                           disabled: Color.Text.gray))
-        let hint = HintConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .regular),
-                                     lineHeight: 16,
-                                     colors: ColorConfiguration(error: Color.Main.red,
-                                                                normal: Color.Text.gray,
-                                                                active: Color.Text.gray,
-                                                                disabled: Color.Text.gray))
         let background = BackgroundConfiguration(color: Color.Main.background)
 
         passwordMode = PasswordModeConfiguration(secureModeOnImage: AssetManager().getImage("eyeOn"),
@@ -71,7 +62,6 @@ public final class UnderlinedTextFieldConfiguration: BaseFieldConfiguration {
                                                  pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   hint: hint,
                    background: background)
     }
 
@@ -103,12 +93,6 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
                                                                           normal: Color.Text.white,
                                                                           active: Color.Text.white,
                                                                           disabled: Color.Text.gray))
-        let hint = HintConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .regular),
-                                     lineHeight: 16,
-                                     colors: ColorConfiguration(error: Color.Main.red,
-                                                                normal: Color.Text.gray,
-                                                                active: Color.Text.gray,
-                                                                disabled: Color.Text.gray))
         let background = BackgroundConfiguration(color: Color.Main.background)
 
         clearButton = ActionButtonConfiguration(image: AssetManager().getImage("close"),
@@ -116,7 +100,6 @@ public final class UnderlinedTextViewConfiguration: BaseFieldConfiguration {
                                                 pressedColor: Color.Button.pressed)
         super.init(textField: textField,
                    line: line,
-                   hint: hint,
                    background: background)
     }
 
@@ -148,6 +131,19 @@ extension FloatingPlaceholderConfiguration {
                                                                                  normal: Color.Text.white,
                                                                                  active: Color.Text.active,
                                                                                  disabled: Color.Text.gray))
+    }
+
+}
+
+extension HintConfiguration {
+
+    static var `default`: HintConfiguration {
+        return HintConfiguration(font: UIFont.systemFont(ofSize: 12, weight: .regular),
+                                 lineHeight: 16,
+                                 colors: ColorConfiguration(error: Color.Main.red,
+                                                            normal: Color.Text.gray,
+                                                            active: Color.Text.gray,
+                                                            disabled: Color.Text.gray))
     }
 
 }

@@ -51,7 +51,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     private var fieldService: FieldService?
     private var lineService: LineService?
-    private var hintService: HintService?
+    private var hintService: AbstractHintService = HintService(configuration: .default)
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
     // MARK: - Public Properties
@@ -108,17 +108,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
     public var trimSpaces: Bool = false
-    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false) {
-        didSet {
-            hintService?.setup(heightLayoutPolicy: heightLayoutPolicy)
-            switch heightLayoutPolicy {
-            case .fixed:
-                hintLabel.numberOfLines = 1
-            case .flexible, .elastic:
-                hintLabel.numberOfLines = 0
-            }
-        }
-    }
+    public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(minHeight: 77, bottomSpace: 5, ignoreEmptyHint: false)
     public var mode: TextFieldMode = .plain {
         didSet {
             setup(textFieldMode: mode)
@@ -236,11 +226,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     /// Allows you to set some string as hint message
     public func setup(hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
+        hintService.setup(plainHint: hint)
     }
 
     /// Allows you to set optional string as text.
@@ -275,9 +261,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous info message
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
-        if let message = errorMessage {
-            hintService?.setupHintText(message)
-        }
+        hintService.setup(errorHint: errorMessage)
         updateUI()
     }
 
@@ -295,7 +279,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textField.text = ""
-        hintService?.setupHintIfNeeded()
+        hintService.showHint()
         error = false
         updateUI()
     }
@@ -316,9 +300,6 @@ private extension UnderlinedTextField {
         fieldService = FieldService(field: textField,
                                     configuration: configuration.textField,
                                     backgroundConfiguration: configuration.background)
-        hintService = HintService(hintLabel: hintLabel,
-                                  configuration: configuration.hint,
-                                  heightLayoutPolicy: heightLayoutPolicy)
         lineService = LineService(superview: self,
                                   field: textField,
                                   configuration: configuration.line)
@@ -327,16 +308,16 @@ private extension UnderlinedTextField {
     func configureAppearance() {
         fieldService?.setup(configuration: configuration.textField,
                             backgroundConfiguration: configuration.background)
-        hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
+        hintService.provide(label: self.hintLabel)
         for service in placeholderServices {
             service.provide(superview: self.view, field: textField)
         }
 
         fieldService?.configureBackground()
         fieldService?.configure(textField: textField)
-        hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+        hintService.configureAppearance()
         for service in placeholderServices {
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
@@ -504,10 +485,11 @@ private extension UnderlinedTextField {
 
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
-        hintService?.updateContent(containerState: containerState)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
                                    strategy: .height)
+        hintService.updateContent(containerState: containerState,
+                                  heightLayoutPolicy: heightLayoutPolicy)
         for service in placeholderServices {
             service.updateContent(fieldState: state, containerState: containerState)
         }
@@ -539,13 +521,13 @@ private extension UnderlinedTextField {
             let (isValid, errorMessage) = formatter.validate()
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintService?.setupHintText(message)
+                hintService.setup(errorHint: message)
             }
         } else if let currentValidator = validator {
             let (isValid, errorMessage) = currentValidator.validate(textField.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintService?.setupHintText(message)
+                hintService.setup(errorHint: message)
             }
         }
         if error {
@@ -581,7 +563,7 @@ private extension UnderlinedTextField {
 
     func removeError() {
         if error {
-            hintService?.setupHintIfNeeded()
+            hintService.showHint()
             error = false
             updateUI()
         }
@@ -637,7 +619,7 @@ private extension UnderlinedTextField {
         case .fixed:
             break
         case .flexible(let minHeight, let bottomSpace):
-            let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
+            let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
             let viewHeight = max(minHeight, actualViewHeight)
             guard lastViewHeight != viewHeight else {
@@ -648,8 +630,7 @@ private extension UnderlinedTextField {
             onHeightChanged?(viewHeight)
         case .elastic(let minHeight, let bottomSpace, let ignoreEmptyHint):
             let viewHeight: CGFloat
-            let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
-
+            let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
             if hintHeight != 0 || !ignoreEmptyHint {
                 let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
                 viewHeight = max(minHeight, actualViewHeight)
