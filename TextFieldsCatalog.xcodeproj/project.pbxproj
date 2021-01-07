@@ -34,6 +34,8 @@
 		9040B90523C6371000998989 /* TextFieldPasswordModeBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */; };
 		9040B90723C6374400998989 /* AnimationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90623C6374400998989 /* AnimationTime.swift */; };
 		9040B90923C637A200998989 /* FlexibleHeightPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90823C637A200998989 /* FlexibleHeightPolicy.swift */; };
+		9051E2C525A7514C00E24B46 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9051E2C425A7514C00E24B46 /* Character.swift */; };
+		9051E2CE25A752AF00E24B46 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9051E2CD25A752AF00E24B46 /* Character.swift */; };
 		9082577523C367B5000767EB /* FieldContainerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577423C367B5000767EB /* FieldContainerState.swift */; };
 		909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CE8E623534E50001E3B7F /* ValidationPolicy.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
@@ -134,6 +136,8 @@
 		9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPasswordModeBehavior.swift; sourceTree = "<group>"; };
 		9040B90623C6374400998989 /* AnimationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTime.swift; sourceTree = "<group>"; };
 		9040B90823C637A200998989 /* FlexibleHeightPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeightPolicy.swift; sourceTree = "<group>"; };
+		9051E2C425A7514C00E24B46 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		9051E2CD25A752AF00E24B46 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9082577423C367B5000767EB /* FieldContainerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainerState.swift; sourceTree = "<group>"; };
 		909CE8E623534E50001E3B7F /* ValidationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPolicy.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				90C0992423C8EF6A00312628 /* UIKit */,
+				9051E2C425A7514C00E24B46 /* Character.swift */,
 				9038640921FF59D300BAA761 /* Foundation.swift */,
 				909DB886220355F000F0C5B7 /* String.swift */,
 			);
@@ -456,6 +461,7 @@
 		90B644EE240C123800FB7716 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9051E2CD25A752AF00E24B46 /* Character.swift */,
 				90B644EF240C124C00FB7716 /* UITextField.swift */,
 				90B644F1240C159400FB7716 /* UITextView.swift */,
 			);
@@ -830,6 +836,7 @@
 				90A32B7B228960640036C634 /* PickerTopViewConfiguration.swift in Sources */,
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				90EE54B7245724E60099C048 /* AbstractPlaceholderService.swift in Sources */,
+				9051E2C525A7514C00E24B46 /* Character.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
@@ -879,6 +886,7 @@
 				90B644F0240C124C00FB7716 /* UITextField.swift in Sources */,
 				90D18FCC2452EAD80072BD2C /* AssetManager.swift in Sources */,
 				90B644F2240C159400FB7716 /* UITextView.swift in Sources */,
+				9051E2CE25A752AF00E24B46 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
