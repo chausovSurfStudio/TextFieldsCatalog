@@ -21,11 +21,11 @@ extension Character {
                 $0.properties.generalCategory == .otherSymbol
             }
             // 🏴󠁧󠁢󠁥󠁮󠁧󠁿, 🏴󠁧󠁢󠁳󠁣󠁴󠁿, 🏴󠁧󠁢󠁷󠁬󠁳󠁿
-            let isOtherEmoji = unicodeScalars.count > 1 && unicodeScalars.first?.properties.isEmoji ?? false
+            let isCombinedIntoEmoji = unicodeScalars.count > 1 && unicodeScalars.first?.properties.isEmoji ?? false
             return [
                 containsSpecificSymbols,
                 containsEmojiOrOtherSymbol,
-                isOtherEmoji
+                isCombinedIntoEmoji
             ].contains(true)
         } else {
             return false
