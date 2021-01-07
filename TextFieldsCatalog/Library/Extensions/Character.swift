@@ -12,6 +12,10 @@ extension Character {
      Returns true, if character is emoji, false in other case
 
      Warning: works only for ios higher than 10.2, for lower versions always returns false
+
+     Recources for help:
+        - https://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
+        - https://medium.com/better-programming/understanding-swift-strings-characters-and-scalars-a4b82f2d8fde
      */
     var isEmoji: Bool {
         if #available(iOS 10.2, *) {
