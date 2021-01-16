@@ -64,7 +64,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     }
     public var text: String {
         get {
-            return textView.text
+            return trimSpaces ? trimmedText() : textView.text
         }
         set {
             setup(text: newValue)
@@ -370,7 +370,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         if trimSpaces {
-            textView.text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            textView.text = trimmedText()
         }
         return true
     }
@@ -499,6 +499,10 @@ private extension UnderlinedTextView {
         } else {
             responder?.becomeFirstResponder()
         }
+    }
+
+    func trimmedText() -> String {
+        return textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
 }
