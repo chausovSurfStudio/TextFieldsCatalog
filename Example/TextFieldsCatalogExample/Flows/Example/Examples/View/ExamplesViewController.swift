@@ -68,15 +68,8 @@ private extension ExamplesViewController {
     }
 
     func configureFields() {
-        guard
-            let emailField = emailField,
-            let passwordField = passwordField
-        else {
-            return
-        }
-
-        UnderlinedFieldPreset.email.apply(for: emailField, with: emailHeightConstraint)
-        UnderlinedFieldPreset.password.apply(for: passwordField, with: passwordHeightConstraint)
+        UnderlinedFieldPreset.email.apply(for: emailField as Any)
+        UnderlinedFieldPreset.password.apply(for: passwordField as Any)
         emailField.nextInput = passwordField
         passwordField.field.returnKeyType = .done
     }

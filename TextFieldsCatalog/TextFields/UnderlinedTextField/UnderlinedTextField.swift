@@ -38,9 +38,15 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             perfromOnContainerStateChangedCall()
         }
     }
+    private var lastViewHeight: CGFloat = 77 {
+        didSet {
+            if oldValue != lastViewHeight {
+                invalidateIntrinsicContentSize()
+                onHeightChanged?(lastViewHeight)
+            }
+        }
+    }
 
-    private var heightConstraint: NSLayoutConstraint?
-    private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
     /// This flag is set to true and never changes again
@@ -185,6 +191,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         updateUI()
     }
 
+    override open var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -228,11 +238,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
                                      containerState: containerState)
         service.updateContent(fieldState: state, containerState: containerState)
         placeholderServices.append(service)
-    }
-
-    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func setup(heightConstraint: NSLayoutConstraint) {
-        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set some string as hint message
@@ -644,30 +649,15 @@ private extension UnderlinedTextField {
         case .flexible(let minHeight, let bottomSpace):
             let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
             let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
-            let viewHeight = max(minHeight, actualViewHeight)
-            guard lastViewHeight != viewHeight else {
-                return
-            }
-            lastViewHeight = viewHeight
-            heightConstraint?.constant = viewHeight
-            onHeightChanged?(viewHeight)
+            lastViewHeight = max(minHeight, actualViewHeight)
         case .elastic(let minHeight, let bottomSpace, let ignoreEmptyHint):
-            let viewHeight: CGFloat
             let hintHeight: CGFloat = hintService?.hintLabelHeight(containerState: containerState) ?? 0
-
             if hintHeight != 0 || !ignoreEmptyHint {
                 let actualViewHeight = hintLabel.frame.origin.y + hintHeight + bottomSpace
-                viewHeight = max(minHeight, actualViewHeight)
+                lastViewHeight = max(minHeight, actualViewHeight)
             } else {
-                viewHeight = minHeight
+                lastViewHeight = minHeight
             }
-
-            guard lastViewHeight != viewHeight else {
-                return
-            }
-            lastViewHeight = viewHeight
-            heightConstraint?.constant = viewHeight
-            onHeightChanged?(viewHeight)
         }
     }
 
