@@ -133,6 +133,7 @@ private extension UnderlinedFieldPreset {
         textField.field.autocapitalizationType = .words
         textField.maxLength = 20
         textField.setup(hint: L10n.Presets.Name.hint)
+        textField.trimSpaces = true
         textField.setup(visibleHintStates: [.normal, .active, .error])
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
@@ -141,10 +142,6 @@ private extension UnderlinedFieldPreset {
         validator.notValidErrorText = L10n.Presets.Name.notValidError
         validator.largeErrorText = L10n.Presets.Name.largeTextError
         textField.validator = validator
-
-        textField.onEndEditing = { field in
-            field.text = field.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {
