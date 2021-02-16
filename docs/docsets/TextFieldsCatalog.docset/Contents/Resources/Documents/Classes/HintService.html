@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GuidedTextField Protocol Reference</title>
+    <title>HintService Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/GuidedTextField" class="dashAnchor"></a>
-    <a title="GuidedTextField Protocol Reference"></a>
+    <a name="//apple_ref/swift/Class/HintService" class="dashAnchor"></a>
+    <a title="HintService Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">TextFieldsCatalog 0.13.0 Docs</a> (51% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">TextFieldsCatalog Reference</a>
         <img id="carat" src="../img/carat.png" />
-        GuidedTextField Protocol Reference
+        HintService Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -207,25 +207,35 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>GuidedTextField</h1>
+            <h1>HintService</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GuidedTextField</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">HintService</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/AbstractHintService.html">AbstractHintService</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Protocols for manageable text field, which can switch responder or resign it</p>
+            <p>Default service for hint messages presentation in textField/textView.
+You can find documentation for it&rsquo;s methods in <code><a href="../Protocols/AbstractHintService.html">AbstractHintService</a></code> protocol documentation.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initialization"></a>
+                  <h3 class="section-name"><p>Initialization</p>
+</h3>
+                </div>
+              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17TextFieldsCatalog06GuidedA5FieldP17havePreviousInputSbvp"></a>
-                    <a name="//apple_ref/swift/Property/havePreviousInput" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17TextFieldsCatalog06GuidedA5FieldP17havePreviousInputSbvp">havePreviousInput</a>
+                    <a name="/s:17TextFieldsCatalog11HintServiceC13configuration07visibleD6StatesAcA0D13ConfigurationC_AA0d7VisibleH0Vtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(configuration:visibleHintStates:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog11HintServiceC13configuration07visibleD6StatesAcA0D13ConfigurationC_AA0d7VisibleH0Vtcfc">init(configuration:<wbr>visibleHintStates:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -240,7 +250,47 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">havePreviousInput</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="kt"><a href="../Classes/HintConfiguration.html">HintConfiguration</a></span><span class="p">,</span>
+            <span class="nv">visibleHintStates</span><span class="p">:</span> <span class="kt"><a href="../Structs/HintVisibleStates.html">HintVisibleStates</a></span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="o">.</span><span class="n">active</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/AbstractHintService"></a>
+                <a name="//apple_ref/swift/Section/AbstractHintService" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/AbstractHintService"></a>
+                  <h3 class="section-name"><p>AbstractHintService</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP7provide5labelySo7UILabelC_tF"></a>
+                    <a name="//apple_ref/swift/Method/provide(label:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP7provide5labelySo7UILabelC_tF">provide(label:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">provide</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="kt">UILabel</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -250,9 +300,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17TextFieldsCatalog06GuidedA5FieldP13haveNextInputSbvp"></a>
-                    <a name="//apple_ref/swift/Property/haveNextInput" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17TextFieldsCatalog06GuidedA5FieldP13haveNextInputSbvp">haveNextInput</a>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP19configureAppearanceyyF"></a>
+                    <a name="//apple_ref/swift/Method/configureAppearance()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP19configureAppearanceyyF">configureAppearance()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -260,14 +310,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">haveNextInput</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">configureAppearance</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -277,9 +326,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17TextFieldsCatalog06GuidedA5FieldP19processReturnActionyyF"></a>
-                    <a name="//apple_ref/swift/Method/processReturnAction()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17TextFieldsCatalog06GuidedA5FieldP19processReturnActionyyF">processReturnAction()</a>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP13updateContent14containerState18heightLayoutPolicyyAA014FieldContainerJ0O_AA06HeightlM0OtF"></a>
+                    <a name="//apple_ref/swift/Method/updateContent(containerState:heightLayoutPolicy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP13updateContent14containerState18heightLayoutPolicyyAA014FieldContainerJ0O_AA06HeightlM0OtF">updateContent(containerState:<wbr>heightLayoutPolicy:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -287,14 +336,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">processReturnAction</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">updateContent</span><span class="p">(</span><span class="nv">containerState</span><span class="p">:</span> <span class="kt"><a href="../Enums/FieldContainerState.html">FieldContainerState</a></span><span class="p">,</span>
+                          <span class="nv">heightLayoutPolicy</span><span class="p">:</span> <span class="kt"><a href="../Enums/HeightLayoutPolicy.html">HeightLayoutPolicy</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -304,9 +353,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17TextFieldsCatalog06GuidedA5FieldP21switchToPreviousInputyyF"></a>
-                    <a name="//apple_ref/swift/Method/switchToPreviousInput()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17TextFieldsCatalog06GuidedA5FieldP21switchToPreviousInputyyF">switchToPreviousInput()</a>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP10hintHeight14containerState12CoreGraphics7CGFloatVAA014FieldContainerJ0O_tF"></a>
+                    <a name="//apple_ref/swift/Method/hintHeight(containerState:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP10hintHeight14containerState12CoreGraphics7CGFloatVAA014FieldContainerJ0O_tF">hintHeight(containerState:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -314,14 +363,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">switchToPreviousInput</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hintHeight</span><span class="p">(</span><span class="nv">containerState</span><span class="p">:</span> <span class="kt"><a href="../Enums/FieldContainerState.html">FieldContainerState</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
 
                         </div>
                       </div>
@@ -331,9 +379,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:17TextFieldsCatalog06GuidedA5FieldP17switchToNextInputyyF"></a>
-                    <a name="//apple_ref/swift/Method/switchToNextInput()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:17TextFieldsCatalog06GuidedA5FieldP17switchToNextInputyyF">switchToNextInput()</a>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP5setup05plainE0ySSSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/setup(plainHint:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP5setup05plainE0ySSSg_tF">setup(plainHint:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -341,14 +389,91 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">switchToNextInput</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">plainHint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP5setup05errorE0ySSSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/setup(errorHint:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP5setup05errorE0ySSSg_tF">setup(errorHint:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">errorHint</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP04showE0yyF"></a>
+                    <a name="//apple_ref/swift/Method/showHint()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP04showE0yyF">showHint()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">showHint</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17TextFieldsCatalog19AbstractHintServiceP5setup07visibleE6StatesyAA0e7VisibleI0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/setup(visibleHintStates:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17TextFieldsCatalog19AbstractHintServiceP5setup07visibleE6StatesyAA0e7VisibleI0V_tF">setup(visibleHintStates:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">visibleHintStates</span><span class="p">:</span> <span class="kt"><a href="../Structs/HintVisibleStates.html">HintVisibleStates</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
