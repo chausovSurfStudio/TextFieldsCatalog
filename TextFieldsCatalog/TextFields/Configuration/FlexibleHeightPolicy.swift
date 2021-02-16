@@ -8,12 +8,16 @@
 
 import UIKit
 
+/**
+ Flexible height policy for text field/view.
+ Also allows you to configure minimal height for input field and bottom space value under hint label.
+ */
 public struct FlexibleHeightPolicy {
 
     // MARK: - Properties
 
     let minHeight: CGFloat
-    /// additional offset (usually used for offset between hintLabel and textView)
+    /// additional offset (usually used for offset between hintLabel and textField/textView)
     let bottomOffset: CGFloat
     /**
     Final height depends on `ignoreEmptyHint` value:
@@ -26,7 +30,7 @@ public struct FlexibleHeightPolicy {
 
     public init(minHeight: CGFloat,
                 bottomOffset: CGFloat,
-                ignoreEmptyHint: Bool = false) {
+                ignoreEmptyHint: Bool) {
         self.minHeight = minHeight
         self.bottomOffset = bottomOffset
         self.ignoreEmptyHint = ignoreEmptyHint

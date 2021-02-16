@@ -74,12 +74,6 @@ private extension BoxTextField {
                                                                                     normal: Color.UnderlineTextField.text,
                                                                                     active: Color.UnderlineTextField.text,
                                                                                     disabled: Color.UnderlineTextField.placeholder))
-        configuration.hint = HintConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .regular),
-                                               lineHeight: 17,
-                                               colors: ColorConfiguration(error: Color.UnderlineTextField.error,
-                                                                          normal: Color.UnderlineTextField.placeholder,
-                                                                          active: Color.UnderlineTextField.placeholder,
-                                                                          disabled: Color.UnderlineTextField.placeholder))
         configuration.passwordMode = PasswordModeConfiguration(secureModeOnImage: UIImage(asset: Asset.customEyeOn),
                                                                secureModeOffImage: UIImage(asset: Asset.customEyeOff),
                                                                normalColor: Color.UnderlineTextField.ActionButton.normal,
@@ -92,7 +86,16 @@ private extension BoxTextField {
                                                                insets: UIEdgeInsets(top: 13, left: 16, bottom: 0, right: 16),
                                                                colors: ColorConfiguration(color: Color.UnderlineTextField.placeholder))
         self.setup(placeholderServices: [StaticPlaceholderService(configuration: placeholderConfig)])
-        self.heightLayoutPolicy = .elastic(minHeight: 136, bottomSpace: 5, ignoreEmptyHint: false)
+        self.setup(hintService: HintService(configuration: .init(font: UIFont.systemFont(ofSize: 13, weight: .regular),
+                                                                 lineHeight: 17,
+                                                                 colors: ColorConfiguration(error: Color.UnderlineTextField.error,
+                                                                                            normal: Color.UnderlineTextField.placeholder,
+                                                                                            active: Color.UnderlineTextField.placeholder,
+                                                                                            disabled: Color.UnderlineTextField.placeholder)),
+                                            visibleHintStates: .all))
+        self.heightLayoutPolicy = .elastic(policy: .init(minHeight: 130,
+                                                         bottomOffset: 5,
+                                                         ignoreEmptyHint: false))
         self.validationPolicy = .always
     }
 
