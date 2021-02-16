@@ -44,9 +44,15 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             perfromOnContainerStateChangedCall()
         }
     }
+    private var lastViewHeight: CGFloat = 77 {
+        didSet {
+            if oldValue != lastViewHeight {
+                invalidateIntrinsicContentSize()
+                onHeightChanged?(lastViewHeight)
+            }
+        }
+    }
 
-    private var heightConstraint: NSLayoutConstraint?
-    private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
 
@@ -160,6 +166,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         updateUI()
     }
 
+    override open var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -211,11 +221,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
                                   heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
-    }
-
-    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func setup(heightConstraint: NSLayoutConstraint) {
-        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set some string as hint message
@@ -528,13 +533,7 @@ private extension UnderlinedTextView {
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
-
-        guard lastViewHeight != viewHeight else {
-            return
-        }
         lastViewHeight = viewHeight
-        heightConstraint?.constant = viewHeight
-        onHeightChanged?(viewHeight)
     }
 
     func updateClearButtonVisibility() {

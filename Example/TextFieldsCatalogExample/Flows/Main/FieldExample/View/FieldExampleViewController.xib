@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldExampleViewController" customModule="TextFieldsCatalog" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FieldExampleViewController" customModule="TextFieldsCatalogExample" customModuleProvider="target">
             <connections>
                 <outlet property="changePresetButton" destination="U6W-02-dgj" id="see-El-JJX"/>
                 <outlet property="descriptionLabel" destination="TSs-fx-08U" id="JNy-kl-Fis"/>
                 <outlet property="textFieldContainer" destination="2Xp-dD-FUW" id="IG8-8Y-AjC"/>
-                <outlet property="textFieldContainerHeight" destination="BRu-4X-I9t" id="6Uq-bn-UGY"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Q3p-Ee-1CD"/>
             </connections>
         </placeholder>
@@ -30,14 +27,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rn3-M9-xws">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="281"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-dD-FUW">
+                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="2Xp-dD-FUW">
                                     <rect key="frame" x="0.0" y="10" width="320" height="130"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="130" id="BRu-4X-I9t"/>
-                                    </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6W-02-dgj" customClass="MainButton" customModule="TextFieldsCatalog" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6W-02-dgj" customClass="MainButton" customModule="TextFieldsCatalogExample" customModuleProvider="target">
                                     <rect key="frame" x="16" y="170" width="94" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="YaG-5P-idw"/>
@@ -79,6 +73,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="rBa-lK-ZEj"/>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8zG-m9-dei" firstAttribute="leading" secondItem="rBa-lK-ZEj" secondAttribute="leading" id="NI9-vQ-6zd"/>
@@ -87,7 +82,6 @@
                 <constraint firstItem="rBa-lK-ZEj" firstAttribute="bottom" secondItem="8zG-m9-dei" secondAttribute="bottom" id="jWd-Ei-q3I"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="rBa-lK-ZEj"/>
             <point key="canvasLocation" x="48.75" y="-98.767605633802816"/>
         </view>
     </objects>

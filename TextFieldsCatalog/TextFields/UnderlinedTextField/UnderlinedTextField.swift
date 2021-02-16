@@ -38,9 +38,15 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             perfromOnContainerStateChangedCall()
         }
     }
+    private var lastViewHeight: CGFloat = 77 {
+        didSet {
+            if oldValue != lastViewHeight {
+                invalidateIntrinsicContentSize()
+                onHeightChanged?(lastViewHeight)
+            }
+        }
+    }
 
-    private var heightConstraint: NSLayoutConstraint?
-    private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
     /// This flag is set to true and never changes again
@@ -177,6 +183,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         updateUI()
     }
 
+    override open var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -229,11 +239,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
                                   heightLayoutPolicy: heightLayoutPolicy)
-    }
-
-    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func setup(heightConstraint: NSLayoutConstraint) {
-        self.heightConstraint = heightConstraint
     }
 
     /// Allows you to set some string as hint message
@@ -642,21 +647,13 @@ private extension UnderlinedTextField {
         case .fixed:
             break
         case .elastic(let policy):
-            let viewHeight: CGFloat
             let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
             if hintHeight != 0 || !policy.ignoreEmptyHint {
                 let actualViewHeight = hintLabel.frame.origin.y + hintHeight + policy.bottomOffset
-                viewHeight = max(policy.minHeight, actualViewHeight)
+                lastViewHeight = max(policy.minHeight, actualViewHeight)
             } else {
-                viewHeight = policy.minHeight
+                lastViewHeight = policy.minHeight
             }
-
-            guard lastViewHeight != viewHeight else {
-                return
-            }
-            lastViewHeight = viewHeight
-            heightConstraint?.constant = viewHeight
-            onHeightChanged?(viewHeight)
         }
     }
 

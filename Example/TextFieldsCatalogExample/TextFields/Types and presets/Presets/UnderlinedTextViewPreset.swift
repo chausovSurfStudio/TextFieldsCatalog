@@ -26,11 +26,11 @@ enum UnderlinedTextViewPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
+    func apply(for field: Any) {
         guard let field = field as? UnderlinedTextView else {
             return
         }
-        apply(for: field, heightConstraint: heightConstraint)
+        apply(for: field)
     }
 
 }
@@ -39,19 +39,18 @@ enum UnderlinedTextViewPreset: CaseIterable, AppliedPreset {
 
 private extension UnderlinedTextViewPreset {
 
-    func apply(for textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
+    func apply(for textView: UnderlinedTextView) {
         switch self {
         case .comment:
-            tuneFieldForComment(textView, heightConstraint: heightConstraint)
+            tuneFieldForComment(textView)
         }
     }
 
-    func tuneFieldForComment(_ textView: UnderlinedTextView, heightConstraint: NSLayoutConstraint) {
+    func tuneFieldForComment(_ textView: UnderlinedTextView) {
         textView.placeholder = L10n.Presets.Comment.placeholder
         textView.maxLength = 200
         textView.maxTextContainerHeight = 96
         textView.field.autocorrectionType = .no
-        textView.setup(heightConstraint: heightConstraint)
         textView.setup(hint: L10n.Presets.Comment.hint)
 
         let validator = TextFieldValidator(minLength: 30, maxLength: 200, regex: nil)

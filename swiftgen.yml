@@ -3,5 +3,5 @@ strings:
   outputs:
     - templateName: structured-swift4
       params:
-        publicAccess: true
+        publicAccess: false
       output: TextFieldsCatalog/Resources/Strings/Strings.swift

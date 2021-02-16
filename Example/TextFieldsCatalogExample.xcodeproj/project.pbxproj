@@ -101,6 +101,7 @@
 		90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB29C82473EE2F001E7563 /* SumTextField.xib */; };
 		90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CA2473F430001E7563 /* SumFieldPreset.swift */; };
 		90CB29CD247453A2001E7563 /* CurrencyPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */; };
+		90CDFD6025B4C219007B560B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDFD5F25B4C219007B560B /* UIView.swift */; };
 		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
 		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		90D3778821FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */; };
@@ -252,6 +253,7 @@
 		90CB29C82473EE2F001E7563 /* SumTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SumTextField.xib; sourceTree = "<group>"; };
 		90CB29CA2473F430001E7563 /* SumFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFieldPreset.swift; sourceTree = "<group>"; };
 		90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPlaceholderService.swift; sourceTree = "<group>"; };
+		90CDFD5F25B4C219007B560B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		90D3778221FB21180068F5F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		90D3778421FB2FF80068F5F8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				90736C6B21F87D65003B8B78 /* UIImage.swift */,
 				90736CC621F8A350003B8B78 /* UITableView.swift */,
 				90736CC821F8A371003B8B78 /* UITableViewCell.swift */,
+				90CDFD5F25B4C219007B560B /* UIView.swift */,
 				90D3778221FB21180068F5F8 /* UIViewController.swift */,
 			);
 			path = Extensions;
@@ -1234,6 +1237,7 @@
 				90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */,
 				904A19B821F9E84300B9A846 /* FieldPresetTableViewCell.swift in Sources */,
 				9082578723C3A79F000767EB /* InfoCoordinator.swift in Sources */,
+				90CDFD6025B4C219007B560B /* UIView.swift in Sources */,
 				90736C7E21F88891003B8B78 /* Strings.swift in Sources */,
 				90736C8421F88ACE003B8B78 /* BaseCoordinator.swift in Sources */,
 				90736CC421F8A330003B8B78 /* MainFieldTableViewCell.swift in Sources */,
