@@ -12,5 +12,5 @@ import UIKit
 protocol AppliedPreset {
     var name: String { get }
     var description: String { get }
-    func apply(for field: Any, with heightConstraint: NSLayoutConstraint)
+    func apply(for field: Any)
 }

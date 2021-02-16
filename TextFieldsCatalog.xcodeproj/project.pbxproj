@@ -34,6 +34,9 @@
 		9040B90523C6371000998989 /* TextFieldPasswordModeBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */; };
 		9040B90723C6374400998989 /* AnimationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90623C6374400998989 /* AnimationTime.swift */; };
 		9040B90923C637A200998989 /* FlexibleHeightPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9040B90823C637A200998989 /* FlexibleHeightPolicy.swift */; };
+		90793BA025A4B90200BC8582 /* AbstractHintService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90793B9F25A4B90200BC8582 /* AbstractHintService.swift */; };
+		90793BA825A4BAB000BC8582 /* HintService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90793BA725A4BAB000BC8582 /* HintService.swift */; };
+		90793C0025A4D47600BC8582 /* HintVisibleStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90793BFF25A4D47600BC8582 /* HintVisibleStates.swift */; };
 		9082577523C367B5000767EB /* FieldContainerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577423C367B5000767EB /* FieldContainerState.swift */; };
 		909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909CE8E623534E50001E3B7F /* ValidationPolicy.swift */; };
 		909DB887220355F000F0C5B7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909DB886220355F000F0C5B7 /* String.swift */; };
@@ -69,7 +72,6 @@
 		90C0992623C8EF8000312628 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0992523C8EF8000312628 /* UITextField.swift */; };
 		90C0992823C8F2FF00312628 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C0992723C8F2FF00312628 /* UITextView.swift */; };
 		90C6AC7023C617A400D13B8D /* LineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6AC6F23C617A400D13B8D /* LineService.swift */; };
-		90C6AC7223C6201000D13B8D /* HintService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6AC7123C6201000D13B8D /* HintService.swift */; };
 		90C6C57223C8E360008DFBED /* FieldService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C57123C8E360008DFBED /* FieldService.swift */; };
 		90D18FCC2452EAD80072BD2C /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FCB2452EAD80072BD2C /* AssetManager.swift */; };
 		90D18FCE2452ED1D0072BD2C /* MaskTextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D18FCD2452ED1D0072BD2C /* MaskTextFieldFormatter.swift */; };
@@ -134,6 +136,9 @@
 		9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPasswordModeBehavior.swift; sourceTree = "<group>"; };
 		9040B90623C6374400998989 /* AnimationTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTime.swift; sourceTree = "<group>"; };
 		9040B90823C637A200998989 /* FlexibleHeightPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeightPolicy.swift; sourceTree = "<group>"; };
+		90793B9F25A4B90200BC8582 /* AbstractHintService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractHintService.swift; sourceTree = "<group>"; };
+		90793BA725A4BAB000BC8582 /* HintService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintService.swift; sourceTree = "<group>"; };
+		90793BFF25A4D47600BC8582 /* HintVisibleStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintVisibleStates.swift; sourceTree = "<group>"; };
 		9082577423C367B5000767EB /* FieldContainerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldContainerState.swift; sourceTree = "<group>"; };
 		909CE8E623534E50001E3B7F /* ValidationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationPolicy.swift; sourceTree = "<group>"; };
 		909DB886220355F000F0C5B7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -169,7 +174,6 @@
 		90C0992523C8EF8000312628 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		90C0992723C8F2FF00312628 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		90C6AC6F23C617A400D13B8D /* LineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineService.swift; sourceTree = "<group>"; };
-		90C6AC7123C6201000D13B8D /* HintService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintService.swift; sourceTree = "<group>"; };
 		90C6C57123C8E360008DFBED /* FieldService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldService.swift; sourceTree = "<group>"; };
 		90D18FCB2452EAD80072BD2C /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		90D18FCD2452ED1D0072BD2C /* MaskTextFieldFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskTextFieldFormatter.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				9040B90323C636F600998989 /* Internal */,
 				9082577423C367B5000767EB /* FieldContainerState.swift */,
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
+				90793BFF25A4D47600BC8582 /* HintVisibleStates.swift */,
 				90F487082458329800931146 /* NativePlaceholderBehavior.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
@@ -467,7 +472,7 @@
 			children = (
 				90EE54BA24572DF10099C048 /* Placeholder */,
 				90C6C57123C8E360008DFBED /* FieldService.swift */,
-				90C6AC7123C6201000D13B8D /* HintService.swift */,
+				90793BA725A4BAB000BC8582 /* HintService.swift */,
 				90C6AC6F23C617A400D13B8D /* LineService.swift */,
 			);
 			path = AppearanceServices;
@@ -486,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				90BEBBFC23C4D3FB00991105 /* InputFieldProtocol.swift */,
+				90793B9F25A4B90200BC8582 /* AbstractHintService.swift */,
 				90EE54B6245724E60099C048 /* AbstractPlaceholderService.swift */,
 			);
 			path = Support;
@@ -817,6 +823,7 @@
 			files = (
 				90C6AC7023C617A400D13B8D /* LineService.swift in Sources */,
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
+				90793C0025A4D47600BC8582 /* HintVisibleStates.swift in Sources */,
 				90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */,
 				90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
@@ -839,6 +846,7 @@
 				9038640C21FF5A0100BAA761 /* ResetableField.swift in Sources */,
 				90BEBBF923C4D26E00991105 /* FloatingPlaceholderService.swift in Sources */,
 				90F487092458329800931146 /* NativePlaceholderBehavior.swift in Sources */,
+				90793BA825A4BAB000BC8582 /* HintService.swift in Sources */,
 				9038640821FF59BC00BAA761 /* InnerTextField.swift in Sources */,
 				90A32B7D228975730036C634 /* PlainPickerView.swift in Sources */,
 				90E13DAF2320FCAA004995E4 /* FieldState.swift in Sources */,
@@ -863,7 +871,7 @@
 				909CE8E8235350FF001E3B7F /* ValidationPolicy.swift in Sources */,
 				90A5D38D228E9AEF000322A2 /* AccessibilityIdentifiers.swift in Sources */,
 				902CE2F121FF707E00AC21D4 /* FormatterMasks.swift in Sources */,
-				90C6AC7223C6201000D13B8D /* HintService.swift in Sources */,
+				90793BA025A4B90200BC8582 /* AbstractHintService.swift in Sources */,
 				9038640A21FF59D300BAA761 /* Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,10 +18,6 @@ final class FieldExampleViewController: UIViewController {
     @IBOutlet private weak var textFieldContainer: UIView!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
-    // MARK: - NSLayoutConstraints
-
-    @IBOutlet private weak var textFieldContainerHeight: NSLayoutConstraint!
-
     // MARK: - Properties
 
     var output: FieldExampleViewOutput?
@@ -60,13 +56,12 @@ extension FieldExampleViewController: FieldExampleViewInput {
         guard let fieldType = fieldType else {
             return
         }
-        let (newField, height) = fieldType.createField(for: textFieldContainer.bounds)
-        newField.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        let newField = fieldType.createField(for: textFieldContainer.bounds)
         textFieldContainer.addSubview(newField)
+        textFieldContainer.stretch(newField)
         textField = newField
-        textFieldContainerHeight.constant = height
         view.layoutIfNeeded()
-        preset.apply(for: newField, with: textFieldContainerHeight)
+        preset.apply(for: newField)
     }
 
 }

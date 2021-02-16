@@ -9,21 +9,21 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
-public enum L10n {
+internal enum L10n {
 
-  public enum Button {
+  internal enum Button {
     /// Done
-    public static let done = L10n.tr("Localizable", "Button.Done")
+    internal static let done = L10n.tr("Localizable", "Button.Done")
   }
 
-  public enum Errors {
-    public enum TextField {
+  internal enum Errors {
+    internal enum TextField {
       /// Field must be filled
-      public static let empty = L10n.tr("Localizable", "Errors.TextField.empty")
+      internal static let empty = L10n.tr("Localizable", "Errors.TextField.empty")
       /// Wrong format
-      public static let notValid = L10n.tr("Localizable", "Errors.TextField.notValid")
+      internal static let notValid = L10n.tr("Localizable", "Errors.TextField.notValid")
       /// The field must contain at least %@ characters.
-      public static func short(_ p1: Any) -> String {
+      internal static func short(_ p1: Any) -> String {
         return L10n.tr("Localizable", "Errors.TextField.short", String(describing: p1))
       }
     }

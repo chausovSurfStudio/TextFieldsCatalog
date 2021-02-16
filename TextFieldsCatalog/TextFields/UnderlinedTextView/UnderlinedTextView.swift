@@ -44,16 +44,22 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             perfromOnContainerStateChangedCall()
         }
     }
+    private var lastViewHeight: CGFloat = 77 {
+        didSet {
+            if oldValue != lastViewHeight {
+                invalidateIntrinsicContentSize()
+                onHeightChanged?(lastViewHeight)
+            }
+        }
+    }
 
-    private var heightConstraint: NSLayoutConstraint?
-    private var lastViewHeight: CGFloat = 0
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
 
     // MARK: - Services
 
     private var fieldService: FieldService?
-    private var hintService: HintService?
+    private var hintService: AbstractHintService = HintService(configuration: .default)
     private var lineService: LineService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextView)]
 
@@ -64,7 +70,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     }
     public var text: String {
         get {
-            return textView.text
+            return trimSpaces ? trimmedText() : textView.text
         }
         set {
             setup(text: newValue)
@@ -160,6 +166,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         updateUI()
     }
 
+    override open var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -204,18 +214,25 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         placeholderServices.append(service)
     }
 
-    /// Allows you to set constraint on view height, this constraint will be changed if view height is changed later
-    public func setup(heightConstraint: NSLayoutConstraint) {
-        self.heightConstraint = heightConstraint
+    /// Allows you to change default hint service
+    public func setup(hintService: AbstractHintService) {
+        self.hintService = hintService
+        hintService.provide(label: hintLabel)
+        hintService.configureAppearance()
+        hintService.updateContent(containerState: containerState,
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
     }
 
     /// Allows you to set some string as hint message
     public func setup(hint: String) {
-        guard !hint.isEmpty else {
-            return
-        }
-        hintService?.setup(hintMessage: hint)
-        hintService?.setupHintText(hint)
+        hintService.setup(plainHint: hint)
+    }
+
+    /// Allows you to refresh set of states, when hint message or error message
+    /// should be visible
+    public func setup(visibleHintStates: HintVisibleStates) {
+        self.hintService.setup(visibleHintStates: visibleHintStates)
+        updateUI()
     }
 
     /// Allows you to set optional string as text.
@@ -238,9 +255,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     /// Allows to set view in 'error' state, optionally allows you to set the error message. If errorMessage is nil - label keeps the previous info message
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
-        if let message = errorMessage {
-            hintService?.setupHintText(message)
-        }
+        hintService.setup(errorHint: errorMessage)
         updateUI()
     }
 
@@ -258,7 +273,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     /// Clear text, reset error and update all UI elements - reset to default state
     public func reset() {
         textView.text = ""
-        hintService?.setupHintIfNeeded()
+        hintService.showHint()
         error = false
         updateUI()
         updateClearButtonVisibility()
@@ -280,9 +295,6 @@ private extension UnderlinedTextView {
         fieldService = FieldService(field: textView,
                                     configuration: configuration.textField,
                                     backgroundConfiguration: configuration.background)
-        hintService = HintService(hintLabel: hintLabel,
-                                  configuration: configuration.hint,
-                                  heightLayoutPolicy: .elastic(minHeight: 0, bottomSpace: 0, ignoreEmptyHint: false))
         lineService = LineService(superview: self,
                                   field: textView,
                                   configuration: configuration.line)
@@ -291,16 +303,16 @@ private extension UnderlinedTextView {
     func configureAppearance() {
         fieldService?.setup(configuration: configuration.textField,
                             backgroundConfiguration: configuration.background)
-        hintService?.setup(configuration: configuration.hint)
         lineService?.setup(configuration: configuration.line)
+        hintService.provide(label: hintLabel)
         for service in placeholderServices {
             service.provide(superview: self.view, field: textView)
         }
 
         fieldService?.configureBackground()
         fieldService?.configure(textView: textView)
-        hintService?.configureHintLabel()
         lineService?.configureLineView(fieldState: state)
+        hintService.configureAppearance()
         for service in placeholderServices {
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
@@ -370,7 +382,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     open func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         if trimSpaces {
-            textView.text = textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            textView.text = trimmedText()
         }
         return true
     }
@@ -410,7 +422,8 @@ private extension UnderlinedTextView {
 
     func updateUI(animated: Bool = false) {
         fieldService?.updateContent(containerState: containerState)
-        hintService?.updateContent(containerState: containerState)
+        hintService.updateContent(containerState: containerState,
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
         for service in placeholderServices {
             service.updateContent(fieldState: state, containerState: containerState)
         }
@@ -444,7 +457,7 @@ private extension UnderlinedTextView {
             let (isValid, errorMessage) = currentValidator.validate(textView.text)
             error = !isValid
             if let message = errorMessage, !isValid {
-                hintService?.setupHintText(message)
+                hintService.setup(errorHint: message)
             }
         }
         if error {
@@ -454,7 +467,7 @@ private extension UnderlinedTextView {
 
     func removeError() {
         if error {
-            hintService?.setupHintIfNeeded()
+            hintService.showHint()
             error = false
             updateUI()
         } else {
@@ -501,6 +514,10 @@ private extension UnderlinedTextView {
         }
     }
 
+    func trimmedText() -> String {
+        return textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
 }
 
 // MARK: - Updating
@@ -508,7 +525,7 @@ private extension UnderlinedTextView {
 private extension UnderlinedTextView {
 
     func updateViewHeight() {
-        let hintHeight = hintService?.hintLabelHeight(containerState: containerState) ?? 0
+        let hintHeight = hintService.hintHeight(containerState: containerState)
         let textHeight = min(textViewHeight(), maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
         let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
         let actualViewHeight = textHeight + hintHeight + freeSpace
@@ -516,13 +533,7 @@ private extension UnderlinedTextView {
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
-
-        guard lastViewHeight != viewHeight else {
-            return
-        }
         lastViewHeight = viewHeight
-        heightConstraint?.constant = viewHeight
-        onHeightChanged?(viewHeight)
     }
 
     func updateClearButtonVisibility() {

@@ -57,19 +57,19 @@ enum TextFieldType: CaseIterable {
         }
     }
 
-    /// Returns new instance of needed text field and its default height
-    func createField(for frame: CGRect) -> (UIView, CGFloat) {
+    /// Returns new instance of needed text field
+    func createField(for frame: CGRect) -> UIView {
         switch self {
         case .underlined:
-            return (UnderlinedTextField(frame: frame), 77)
+            return UnderlinedTextField(frame: frame)
         case .box:
-            return (BoxTextField(frame: frame), 130)
+            return BoxTextField(frame: frame)
         case .customUnderlined:
-            return (CustomUnderlinedTextField(frame: frame), 64)
+            return CustomUnderlinedTextField(frame: frame)
         case .underlinedTextView:
-            return (UnderlinedTextView(frame: frame), 77)
+            return UnderlinedTextView(frame: frame)
         case .sumTextField:
-            return (SumTextField(frame: frame), 102)
+            return SumTextField(frame: frame)
         }
     }
 

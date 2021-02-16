@@ -71,11 +71,11 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
+    func apply(for field: Any) {
         guard let field = field as? UnderlinedTextField else {
             return
         }
-        apply(for: field, heightConstraint: heightConstraint)
+        apply(for: field)
     }
 
 }
@@ -84,10 +84,10 @@ enum UnderlinedFieldPreset: CaseIterable, AppliedPreset {
 
 private extension UnderlinedFieldPreset {
 
-    func apply(for textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
+    func apply(for textField: UnderlinedTextField) {
         switch self {
         case .password:
-            tuneFieldForPassword(textField, heightConstraint: heightConstraint)
+            tuneFieldForPassword(textField)
         case .name:
             tuneFieldForName(textField)
         case .email:
@@ -109,14 +109,13 @@ private extension UnderlinedFieldPreset {
         }
     }
 
-    func tuneFieldForPassword(_ textField: UnderlinedTextField, heightConstraint: NSLayoutConstraint) {
+    func tuneFieldForPassword(_ textField: UnderlinedTextField) {
         textField.placeholder = L10n.Presets.Password.placeholder
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .asciiCapable
         textField.field.returnKeyType = .next
         textField.field.pasteActionEnabled = false
         textField.mode = .password(.visibleOnNotEmptyText)
-        textField.setup(heightConstraint: heightConstraint)
         textField.setup(hint: L10n.Presets.Password.hint)
 
         let validator = TextFieldValidator(minLength: 8, maxLength: 20, regex: SharedRegex.password)
@@ -133,6 +132,8 @@ private extension UnderlinedFieldPreset {
         textField.field.autocapitalizationType = .words
         textField.maxLength = 20
         textField.setup(hint: L10n.Presets.Name.hint)
+        textField.trimSpaces = true
+        textField.setup(visibleHintStates: [.normal, .active, .error])
 
         textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
 
@@ -140,10 +141,6 @@ private extension UnderlinedFieldPreset {
         validator.notValidErrorText = L10n.Presets.Name.notValidError
         validator.largeErrorText = L10n.Presets.Name.largeTextError
         textField.validator = validator
-
-        textField.onEndEditing = { field in
-            field.text = field.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
     }
 
     func tuneFieldForEmail(_ textField: UnderlinedTextField) {

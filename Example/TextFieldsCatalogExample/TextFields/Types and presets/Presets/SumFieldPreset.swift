@@ -26,11 +26,11 @@ enum SumFieldPreset: CaseIterable, AppliedPreset {
         }
     }
 
-    func apply(for field: Any, with heightConstraint: NSLayoutConstraint) {
+    func apply(for field: Any) {
         guard let field = field as? SumTextField else {
             return
         }
-        apply(for: field, heightConstraint: heightConstraint)
+        apply(for: field)
     }
 
 }
@@ -39,19 +39,18 @@ enum SumFieldPreset: CaseIterable, AppliedPreset {
 
 private extension SumFieldPreset {
 
-    func apply(for textField: SumTextField, heightConstraint: NSLayoutConstraint) {
+    func apply(for textField: SumTextField) {
         switch self {
         case .sum:
-            tuneFieldForSum(textField, heightConstraint: heightConstraint)
+            tuneFieldForSum(textField)
         }
     }
 
-    func tuneFieldForSum(_ textField: SumTextField, heightConstraint: NSLayoutConstraint) {
+    func tuneFieldForSum(_ textField: SumTextField) {
         textField.placeholder = L10n.Presets.Sum.placeholder
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .decimalPad
         textField.maxLength = 14
-        textField.setup(heightConstraint: heightConstraint)
         textField.configure(supportPlaceholder: "1\u{2009}000\u{2009}₽")
         textField.configure(currencyPlaceholder: "₽")
 
