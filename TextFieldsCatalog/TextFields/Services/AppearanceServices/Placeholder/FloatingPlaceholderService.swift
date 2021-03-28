@@ -17,6 +17,12 @@ import UIKit
  */
 public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
+    // MARK: - Nestes Types
+
+    enum UpdateType: CaseIterable {
+        case font, frame, color
+    }
+
     // MARK: - Private Properties
 
     private let placeholder: CATextLayer = CATextLayer()
@@ -62,14 +68,12 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
     public func updateContent(fieldState: FieldState,
                               containerState: FieldContainerState) {
-        updatePlaceholderColor(fieldState: fieldState, containerState: containerState)
-        updatePlaceholderPosition(fieldState: fieldState)
-        updatePlaceholderFont(fieldState: fieldState)
+        updateTypes(UpdateType.allCases, fieldState: fieldState, containerState: containerState)
     }
 
     public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
         self.useIncreasedRightPadding = useIncreasedRightPadding
-        updatePlaceholderPosition(fieldState: fieldState)
+        updateTypes([.frame], fieldState: fieldState, containerState: nil)
     }
 
 }
@@ -78,43 +82,65 @@ public final class FloatingPlaceholderService: AbstractPlaceholderService {
 
 private extension FloatingPlaceholderService {
 
-    func updatePlaceholderColor(fieldState: FieldState, containerState: FieldContainerState) {
-        let startColor: CGColor = currentPlaceholderColor()
-        let endColor: CGColor = placeholderColor(fieldState: fieldState, containerState: containerState)
-        placeholder.foregroundColor = endColor
+    func updateTypes(_ types: [UpdateType],
+                     fieldState: FieldState,
+                     containerState: FieldContainerState?) {
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.animations = types.flatMap {
+            return getAnimationsForUpdateType($0,
+                                              fieldState: fieldState,
+                                              containerState: containerState)
+        }
+        groupAnimation.fillMode = .forwards
+        groupAnimation.duration = AnimationTime.default
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
 
-        let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
-        colorAnimation.fromValue = startColor
-        colorAnimation.toValue = endColor
-        colorAnimation.duration = AnimationTime.default
-        colorAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(colorAnimation, forKey: nil)
+        placeholder.removeAllAnimations()
+        placeholder.add(groupAnimation, forKey: "mixed_animation")
     }
 
-    func updatePlaceholderPosition(fieldState: FieldState) {
-        let startPosition: CGRect = currentPlaceholderPosition()
-        let endPosition: CGRect = placeholderPosition(fieldState: fieldState)
-        placeholder.frame = endPosition
+    func getAnimationsForUpdateType(_ type: UpdateType,
+                                     fieldState: FieldState,
+                                     containerState: FieldContainerState?) -> [CAAnimation] {
+        switch type {
+        case .color:
+            guard let containerState = containerState else {
+                return []
+            }
+            let startColor: CGColor = currentPlaceholderColor()
+            let endColor: CGColor = placeholderColor(fieldState: fieldState, containerState: containerState)
 
-        let frameAnimation = CABasicAnimation(keyPath: "frame")
-        frameAnimation.fromValue = startPosition
-        frameAnimation.toValue = endPosition
-        frameAnimation.duration = AnimationTime.default
-        frameAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(frameAnimation, forKey: nil)
-    }
+            let colorAnimation = CABasicAnimation(keyPath: "foregroundColor")
+            colorAnimation.fromValue = startColor
+            colorAnimation.toValue = endColor
 
-    func updatePlaceholderFont(fieldState: FieldState) {
-        let startFontSize: CGFloat = currentPlaceholderFontSize()
-        let endFontSize: CGFloat = placeholderFontSize(fieldState: fieldState)
-        placeholder.fontSize = endFontSize
+            placeholder.foregroundColor = endColor
+            return [colorAnimation]
+        case .font:
+            let startFontSize: CGFloat = currentPlaceholderFontSize()
+            let endFontSize: CGFloat = placeholderFontSize(fieldState: fieldState)
 
-        let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
-        fontSizeAnimation.fromValue = startFontSize
-        fontSizeAnimation.toValue = endFontSize
-        fontSizeAnimation.duration = AnimationTime.default
-        fontSizeAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        placeholder.add(fontSizeAnimation, forKey: nil)
+            let fontSizeAnimation = CABasicAnimation(keyPath: "fontSize")
+            fontSizeAnimation.fromValue = startFontSize
+            fontSizeAnimation.toValue = endFontSize
+
+            placeholder.fontSize = endFontSize
+            return [fontSizeAnimation]
+        case .frame:
+            let fromFrame = currentPlaceholderPosition()
+            let toFrame = placeholderPosition(fieldState: fieldState)
+
+            let positionAnimation = CABasicAnimation(keyPath: "position")
+            positionAnimation.fromValue = CGPoint(x: fromFrame.midX, y: fromFrame.midY)
+            positionAnimation.toValue = CGPoint(x: toFrame.midX, y: toFrame.midY)
+
+            let boundsAnimation = CABasicAnimation(keyPath: "bounds")
+            boundsAnimation.fromValue = CGRect(origin: .zero, size: fromFrame.size)
+            boundsAnimation.toValue = CGRect(origin: .zero, size: toFrame.size)
+
+            placeholder.frame = toFrame
+            return [positionAnimation, boundsAnimation]
+        }
     }
 
 }
@@ -124,7 +150,7 @@ private extension FloatingPlaceholderService {
 private extension FloatingPlaceholderService {
 
     func currentPlaceholderColor() -> CGColor {
-        return placeholder.foregroundColor ?? configuration.bottomColors.normal.cgColor
+        return placeholder.presentation()?.foregroundColor ?? placeholder.foregroundColor ?? configuration.bottomColors.normal.cgColor
     }
 
     func placeholderColor(fieldState: FieldState, containerState: FieldContainerState) -> CGColor {
@@ -134,7 +160,7 @@ private extension FloatingPlaceholderService {
     }
 
     func currentPlaceholderPosition() -> CGRect {
-        return placeholder.frame
+        return placeholder.presentation()?.frame ?? placeholder.frame
     }
 
     func placeholderPosition(fieldState: FieldState) -> CGRect {
@@ -152,7 +178,7 @@ private extension FloatingPlaceholderService {
     }
 
     func currentPlaceholderFontSize() -> CGFloat {
-        return placeholder.fontSize
+        return placeholder.presentation()?.fontSize ?? placeholder.fontSize
     }
 
     func placeholderFontSize(fieldState: FieldState) -> CGFloat {
