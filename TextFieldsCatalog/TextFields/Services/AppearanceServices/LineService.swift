@@ -60,11 +60,12 @@ final class LineService {
 
     func updateContent(fieldState: FieldState,
                        containerState: FieldContainerState,
-                       strategy: LineUpdateStrategy) {
-        updateLineViewColor(containerState: containerState)
+                       strategy: LineUpdateStrategy,
+                       animated: Bool) {
+        updateLineViewColor(containerState: containerState, animated: animated)
         switch strategy {
         case .height:
-            updateLineViewHeight(fieldState: fieldState)
+            updateLineViewHeight(fieldState: fieldState, animated: animated)
         case .frame:
             updateLineFrame(fieldState: fieldState)
         }
@@ -86,18 +87,29 @@ final class LineService {
 
 private extension LineService {
 
-    func updateLineViewColor(containerState: FieldContainerState) {
+    func updateLineViewColor(containerState: FieldContainerState, animated: Bool) {
         let color = lineColor(containerState: containerState)
-        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
-            self?.lineView.backgroundColor = color
+        let animationBlock: () -> Void = {
+            self.lineView.backgroundColor = color
+        }
+        if animated {
+            UIView.animate(withDuration: AnimationTime.default, animations: animationBlock)
+        } else {
+            animationBlock()
         }
     }
 
-    func updateLineViewHeight(fieldState: FieldState) {
+    func updateLineViewHeight(fieldState: FieldState, animated: Bool) {
         let height = lineHeight(fieldState: fieldState)
-        UIView.animate(withDuration: AnimationTime.default) { [weak self] in
-            self?.lineView.frame.size.height = height
+        let animationBlock: () -> Void = {
+            self.lineView.frame.size.height = height
         }
+        if animated {
+            UIView.animate(withDuration: AnimationTime.default, animations: animationBlock)
+        } else {
+            animationBlock()
+        }
+
     }
 
 }

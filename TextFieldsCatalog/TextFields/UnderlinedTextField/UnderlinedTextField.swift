@@ -88,7 +88,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var configuration = UnderlinedTextFieldConfiguration() {
         didSet {
             configureAppearance()
-            updateUI()
+            updateUI(animated: false)
         }
     }
     public var validator: TextFieldValidation?
@@ -173,14 +173,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        updateUI()
+        updateUI(animated: false)
         perfromOnContainerStateChangedCall()
         setup(textFieldMode: mode)
     }
 
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-        updateUI()
+        updateUI(animated: false)
     }
 
     override open var intrinsicContentSize: CGSize {
@@ -219,7 +219,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             service.provide(superview: self.view, field: textField)
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
-            service.updateContent(fieldState: state, containerState: containerState)
+            service.updateContent(fieldState: state,
+                                  containerState: containerState,
+                                  animated: false)
         }
     }
 
@@ -228,7 +230,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         service.provide(superview: self.view, field: textField)
         service.configurePlaceholder(fieldState: state,
                                      containerState: containerState)
-        service.updateContent(fieldState: state, containerState: containerState)
+        service.updateContent(fieldState: state,
+                              containerState: containerState,
+                              animated: false)
         placeholderServices.append(service)
     }
 
@@ -238,7 +242,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         hintService.provide(label: hintLabel)
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: heightLayoutPolicy)
+                                  heightLayoutPolicy: heightLayoutPolicy,
+                                  animated: false)
     }
 
     /// Allows you to set some string as hint message
@@ -250,17 +255,19 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     /// should be visible
     public func setup(visibleHintStates: HintVisibleStates) {
         self.hintService.setup(visibleHintStates: visibleHintStates)
-        updateUI()
+        updateUI(animated: false)
     }
 
     /// Allows you to set optional string as text.
     /// - Parameters:
     ///     - text: text for setup
+    ///     - animated: allows you to process action with/without animation
     ///     - ignoreFormatter: allows you apply format from `maskFormatter` or ignore it,
     ///     false by default
     ///     - validateText: allows you disable automatic text validation on this action,
     ///     true by default
     public func setup(text: String?,
+                      animated: Bool = true,
                       ignoreFormatter: Bool = false,
                       validateText: Bool = true) {
         if let formatter = maskFormatter, !ignoreFormatter {
@@ -271,7 +278,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         if validateText {
             validate()
         }
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -286,7 +293,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         hintService.setup(errorHint: errorMessage)
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Method performs validate logic, updates all UI elements and returns you `isValid` value
@@ -301,11 +308,11 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     }
 
     /// Clear text, reset error and update all UI elements - reset to default state
-    public func reset() {
+    public func reset(animated: Bool) {
         textField.text = ""
         hintService.showHint()
         error = false
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Reset only error state and update all UI elements
@@ -507,15 +514,19 @@ extension UnderlinedTextField: PickerTextField {
 
 private extension UnderlinedTextField {
 
-    func updateUI(animated: Bool = false) {
+    func updateUI(animated: Bool = true) {
         fieldService?.updateContent(containerState: containerState)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
-                                   strategy: .height)
+                                   strategy: .height,
+                                   animated: animated)
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: heightLayoutPolicy)
+                                  heightLayoutPolicy: heightLayoutPolicy,
+                                  animated: animated)
         for service in placeholderServices {
-            service.updateContent(fieldState: state, containerState: containerState)
+            service.updateContent(fieldState: state,
+                                  containerState: containerState,
+                                  animated: animated)
         }
 
         updateViewHeight()
@@ -581,7 +592,8 @@ private extension UnderlinedTextField {
         }
         for service in placeholderServices {
             service.update(useIncreasedRightPadding: !actionButton.isHidden,
-                           fieldState: state)
+                           fieldState: state,
+                           animated: false)
         }
     }
 
@@ -589,7 +601,7 @@ private extension UnderlinedTextField {
         if error {
             hintService.showHint()
             error = false
-            updateUI()
+            updateUI(animated: false)
         }
     }
 
@@ -687,9 +699,15 @@ private extension UnderlinedTextField {
         guard alpha != actionButton.alpha else {
             return
         }
-        let duration = alpha == 0 ? 0 : AnimationTime.default
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.actionButton.alpha = alpha
+        let animationBlock: () -> Void = {
+            self.actionButton.alpha = alpha
+        }
+        if alpha == 0 {
+            animationBlock()
+        } else {
+            UIView.animate(withDuration: AnimationTime.default) { [weak self] in
+                animationBlock()
+            }
         }
     }
 

@@ -74,7 +74,8 @@ public protocol AbstractPlaceholderService {
         - and when UI have some significant changes (eg user enter text, error occured, etc)
     */
     func updateContent(fieldState: FieldState,
-                       containerState: FieldContainerState)
+                       containerState: FieldContainerState,
+                       animated: Bool)
 
     /**
      This method will be called when you add/remove additional action button.
@@ -86,7 +87,9 @@ public protocol AbstractPlaceholderService {
         - fieldState: State of field
      - Important: This is optional method. You can leave it empty if you doesn't use action button or if you placeholder never overlap it.
     */
-    func update(useIncreasedRightPadding: Bool, fieldState: FieldState)
+    func update(useIncreasedRightPadding: Bool,
+                fieldState: FieldState,
+                animated: Bool)
 
     /**
      This method will be called when user enter some text in field, but state of field doesn't changed.
@@ -101,7 +104,9 @@ public protocol AbstractPlaceholderService {
 
 extension AbstractPlaceholderService {
 
-    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {}
+    public func update(useIncreasedRightPadding: Bool,
+                       fieldState: FieldState,
+                       animated: Bool) {}
 
     public func updateAfterTextChanged(fieldState: FieldState) {}
 

@@ -10,5 +10,5 @@ import Foundation
 
 /// Describes type of field which can reset its state
 public protocol ResetableField {
-    func reset()
+    func reset(animated: Bool)
 }
