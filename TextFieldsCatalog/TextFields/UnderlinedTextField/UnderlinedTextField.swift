@@ -670,8 +670,10 @@ private extension UnderlinedTextField {
         case .elastic(let policy):
             let hintHeight: CGFloat = hintService.hintHeight(containerState: containerState)
             if hintHeight != 0 || !policy.ignoreEmptyHint {
-                let actualViewHeight = hintLabel.frame.origin.y + hintHeight + policy.bottomOffset
-                lastViewHeight = max(policy.minHeight, actualViewHeight)
+                let maxHintY = hintLabel.frame.height == 0
+                    ? 0
+                    : hintLabel.frame.origin.y + hintHeight + policy.bottomOffset
+                lastViewHeight = max(policy.minHeight, maxHintY)
             } else {
                 lastViewHeight = policy.minHeight
             }
