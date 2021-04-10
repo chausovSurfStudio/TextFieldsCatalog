@@ -13,9 +13,9 @@ import TextFieldsCatalog
 /// Standart height equals 130.
 final class BoxTextField: UnderlinedTextField {
 
-    // MARK: - IBOutlets
+    // MARK: - Subviews
 
-    @IBOutlet private weak var containerView: UIView!
+    private let containerView = UIView()
 
     // MARK: - Initialization
 
@@ -97,14 +97,36 @@ private extension BoxTextField {
                                                          bottomOffset: 5,
                                                          ignoreEmptyHint: false))
         self.validationPolicy = .always
+
+        let layoutServiceConstants = TextFieldLayoutServiceDefaultConstants(textFieldTopMargin: 49,
+                                                                            textFieldLeadingMargin: 16,
+                                                                            textFieldTrailingMargin: 16,
+                                                                            textFieldHeight: 60,
+                                                                            textFieldBottomMarginToHintLabel: 6,
+                                                                            actionButtonHeight: 56,
+                                                                            actionButtonWidth: 44,
+                                                                            actionButtonTrailingMargin: 16,
+                                                                            hintLabelLeadingMargin: 16,
+                                                                            hintLabelTrailingMargin: 16,
+                                                                            hintLabelMinHeight: 16,
+                                                                            hintLabelHeight: nil)
+        self.setup(layoutService: TextFieldLayoutServiceDefault(constants: layoutServiceConstants))
     }
 
     func configureContainer() {
+        addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.isUserInteractionEnabled = false
         containerView.backgroundColor = .clear
         containerView.layer.borderWidth = 2
         containerView.layer.cornerRadius = 6
         containerView.layer.borderColor = Color.UnderlineTextField.normal.cgColor
+        NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            containerView.topAnchor.constraint(equalTo: topAnchor, constant: 49),
+            containerView.heightAnchor.constraint(equalToConstant: 60)
+        ])
 
         onContainerStateChanged = { [weak self] state in
             self?.updateContainerBorder(for: state)

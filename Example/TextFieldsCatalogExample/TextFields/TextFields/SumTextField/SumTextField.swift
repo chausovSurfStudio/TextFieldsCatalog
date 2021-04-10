@@ -131,6 +131,20 @@ private extension SumTextField {
                                                          bottomOffset: 5,
                                                          ignoreEmptyHint: true))
         self.validationPolicy = .afterChanges
+
+        let layoutServiceConstants = TextFieldLayoutServiceDefaultConstants(textFieldTopMargin: 37,
+                                                                            textFieldLeadingMargin: 16,
+                                                                            textFieldTrailingMargin: 50,
+                                                                            textFieldHeight: 54,
+                                                                            textFieldBottomMarginToHintLabel: 16,
+                                                                            actionButtonHeight: 44,
+                                                                            actionButtonWidth: 44,
+                                                                            actionButtonTrailingMargin: 16,
+                                                                            hintLabelLeadingMargin: 16,
+                                                                            hintLabelTrailingMargin: 16,
+                                                                            hintLabelMinHeight: 15,
+                                                                            hintLabelHeight: nil)
+        self.setup(layoutService: TextFieldLayoutServiceDefault(constants: layoutServiceConstants))
     }
 
 }

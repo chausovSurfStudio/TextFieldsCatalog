@@ -8,15 +8,22 @@
 
 import UIKit
 
-public final class PickerTopView: InnerDesignableView, ToolBarInterface {
+public final class PickerTopView: UIView, ToolBarInterface {
 
-    // MARK: - IBOutlets
+    // MARK: - Constants
 
-    @IBOutlet private weak var topSeparator: UIView!
-    @IBOutlet private weak var bottomSeparator: UIView!
-    @IBOutlet private weak var returnButton: CommonButton!
-    @IBOutlet private weak var leftNavigationButton: IconButton!
-    @IBOutlet private weak var rightNavigationButton: IconButton!
+    private enum Constants {
+        static let navigationButtonWidth: CGFloat = 35
+        static let defaultMargin: CGFloat = 10
+    }
+
+    // MARK: - Subviews
+
+    private let topSeparator = UIView()
+    private let bottomSeparator = UIView()
+    private let returnButton = CommonButton()
+    private let leftNavigationButton = IconButton()
+    private let rightNavigationButton = IconButton()
 
     // MARK: - NSLayoutConstraints
 
@@ -67,30 +74,105 @@ public final class PickerTopView: InnerDesignableView, ToolBarInterface {
 private extension PickerTopView {
 
     func configureAppearance() {
-        view.backgroundColor = configuration.backgroundColor
+        backgroundColor = configuration.backgroundColor
         configureSeparators()
         configureNavigationButtons()
         configureReturnButton()
     }
 
     func configureSeparators() {
-        topSeparator.backgroundColor = configuration.separatorsColor
-        bottomSeparator.backgroundColor = configuration.separatorsColor
+        topSeparator.apply {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+
+            $0.backgroundColor = configuration.separatorsColor
+
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+                $0.topAnchor.constraint(equalTo: topAnchor),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+                $0.heightAnchor.constraint(equalToConstant: 1)
+            ])
+        }
+
+        bottomSeparator.apply {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+
+            $0.backgroundColor = configuration.separatorsColor
+
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+                $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+                $0.heightAnchor.constraint(equalToConstant: 1)
+            ])
+        }
+
+        
     }
 
     func configureNavigationButtons() {
-        leftNavigationButton.setImageForAllState(AssetManager().getImage("leftArrow"),
-                                                 normalColor: configuration.button.activeColor,
-                                                 pressedColor: configuration.button.highlightedColor)
-        rightNavigationButton.setImageForAllState(AssetManager().getImage("rightArrow"),
-                                                  normalColor: configuration.button.activeColor,
-                                                  pressedColor: configuration.button.highlightedColor)
+        leftNavigationButton.apply {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+
+            $0.setImageForAllState(AssetManager().getImage("leftArrow"),
+                                   normalColor: configuration.button.activeColor,
+                                   pressedColor: configuration.button.highlightedColor)
+
+            leftNavigationButtonWidth = $0.widthAnchor.constraint(equalToConstant: Constants.navigationButtonWidth)
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                            constant: Constants.defaultMargin),
+                $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+                $0.topAnchor.constraint(equalTo: topAnchor),
+                leftNavigationButtonWidth
+            ])
+
+            $0.addTarget(self, action: #selector(switchToPreviousInput(_:)), for: .touchUpInside)
+        }
+
+        rightNavigationButton.apply {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+
+            $0.setImageForAllState(AssetManager().getImage("rightArrow"),
+                                   normalColor: configuration.button.activeColor,
+                                   pressedColor: configuration.button.highlightedColor)
+
+            NSLayoutConstraint.activate([
+                $0.leadingAnchor.constraint(equalTo: leftNavigationButton.trailingAnchor),
+                $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+                $0.topAnchor.constraint(equalTo: topAnchor),
+                $0.widthAnchor.constraint(equalToConstant: Constants.navigationButtonWidth)
+            ])
+
+            $0.addTarget(self, action: #selector(switchToNextInput(_:)), for: .touchUpInside)
+        }
+
+
     }
 
     func configureReturnButton() {
-        returnButton.setTitleForAllState(configuration.button.text)
-        returnButton.activeTitleColor = configuration.button.activeColor
-        returnButton.highlightedTitleColor = configuration.button.highlightedColor
+        returnButton.apply {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+
+            $0.setTitleForAllState(configuration.button.text)
+            $0.activeTitleColor = configuration.button.activeColor
+            $0.highlightedTitleColor = configuration.button.highlightedColor
+
+            NSLayoutConstraint.activate([
+                $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.defaultMargin),
+                $0.topAnchor.constraint(equalTo: topAnchor),
+                $0.leadingAnchor.constraint(greaterThanOrEqualTo: rightNavigationButton.trailingAnchor,
+                                            constant: Constants.defaultMargin)
+            ])
+
+            $0.addTarget(self, action: #selector(performAction(_:)), for: .touchUpInside)
+        }
     }
 
 }
@@ -99,15 +181,18 @@ private extension PickerTopView {
 
 private extension PickerTopView {
 
-    @IBAction func performAction(_ sender: CommonButton) {
+    @objc
+    func performAction(_ sender: CommonButton) {
         guidedField?.processReturnAction()
     }
 
-    @IBAction func switchToPreviousInput(_ sender: IconButton) {
+    @objc
+    func switchToPreviousInput(_ sender: IconButton) {
         guidedField?.switchToPreviousInput()
     }
 
-    @IBAction func switchToNextInput(_ sender: IconButton) {
+    @objc
+    func switchToNextInput(_ sender: IconButton) {
         guidedField?.switchToNextInput()
     }
 

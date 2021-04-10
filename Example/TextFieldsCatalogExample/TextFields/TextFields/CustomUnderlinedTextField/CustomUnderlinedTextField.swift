@@ -24,13 +24,6 @@ final class CustomUnderlinedTextField: UnderlinedTextField {
         super.init(coder: aDecoder)
     }
 
-    // MARK: - UIView
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configureAppearance()
-    }
-
 }
 
 // MARK: - Configure
@@ -76,6 +69,12 @@ private extension CustomUnderlinedTextField {
         self.setup(placeholderServices: [NativePlaceholderService(configuration: placeholderConfig)])
 
         self.validationPolicy = .afterChanges
+
+        var layoutServiceConstants = TextFieldLayoutServiceDefaultConstants.default
+        layoutServiceConstants.textFieldTopMargin = 28
+        layoutServiceConstants.hintLabelHeight = 0
+        layoutServiceConstants.hintLabelMinHeight = nil
+        self.setup(layoutService: TextFieldLayoutServiceDefault(constants: layoutServiceConstants))
     }
 
 }

@@ -11,13 +11,13 @@ import UIKit
 
 /// Class for custom textField. Contains UITextFiled, top floating placeholder, underline line under textField and bottom label with some info.
 /// Standart height equals 77.
-open class UnderlinedTextField: InnerDesignableView, ResetableField, RespondableField {
+open class UnderlinedTextField: UIView, ResetableField, RespondableField {
 
-    // MARK: - IBOutlets
+    // MARK: - Subviews
 
-    @IBOutlet private weak var textField: InnerTextField!
-    @IBOutlet private weak var hintLabel: UILabel!
-    @IBOutlet private weak var actionButton: IconButton!
+    private let textField = InnerTextField()
+    private let hintLabel = UILabel()
+    private let actionButton = IconButton()
 
     // MARK: - Private Properties
 
@@ -59,6 +59,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     private var lineService: LineService?
     private var hintService: AbstractHintService = HintService(configuration: .default)
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
+    private var layoutService: TextFieldLayoutServiceAbstract = TextFieldLayoutServiceDefault(constants: .default)
 
     // MARK: - Public Properties
 
@@ -187,6 +188,12 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
     }
 
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        lineService?.updateLineFrame(fieldState: state)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -216,7 +223,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public func setup(placeholderServices: [AbstractPlaceholderService]) {
         self.placeholderServices = placeholderServices
         for service in placeholderServices {
-            service.provide(superview: self.view, field: textField)
+            service.provide(superview: self, field: textField)
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
             service.updateContent(fieldState: state, containerState: containerState)
@@ -225,7 +232,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     /// Allows you to add new placeholder service
     public func add(placeholderService service: AbstractPlaceholderService) {
-        service.provide(superview: self.view, field: textField)
+        service.provide(superview: self, field: textField)
         service.configurePlaceholder(fieldState: state,
                                      containerState: containerState)
         service.updateContent(fieldState: state, containerState: containerState)
@@ -239,6 +246,16 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
                                   heightLayoutPolicy: heightLayoutPolicy)
+    }
+
+    /// Allows you to change default layout service
+    public func setup(layoutService: TextFieldLayoutServiceAbstract) {
+        self.layoutService = layoutService
+        layoutService.layout(textField: textField,
+                             hintLabel: hintLabel,
+                             actionButton: actionButton,
+                             in: self)
+        setNeedsLayout()
     }
 
     /// Allows you to set some string as hint message
@@ -276,7 +293,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
-        view.accessibilityIdentifier = identifier
+        accessibilityIdentifier = identifier
         textField.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
         actionButton.accessibilityIdentifier = identifier + AccessibilityIdentifiers.button
         hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
@@ -335,7 +352,7 @@ private extension UnderlinedTextField {
         lineService?.setup(configuration: configuration.line)
         hintService.provide(label: self.hintLabel)
         for service in placeholderServices {
-            service.provide(superview: self.view, field: textField)
+            service.provide(superview: self, field: textField)
         }
 
         fieldService?.configureBackground()
@@ -347,6 +364,8 @@ private extension UnderlinedTextField {
                                          containerState: containerState)
         }
 
+        setup(layoutService: layoutService)
+
         configureActionButton()
         textField.delegate = maskFormatter?.delegateForTextField() ?? self
         textField.addTarget(self, action: #selector(textfieldEditingChange(_:)), for: .editingChanged)
@@ -354,6 +373,7 @@ private extension UnderlinedTextField {
 
     func configureActionButton() {
         actionButton.isHidden = true
+        actionButton.addTarget(self, action: #selector(tapOnActionButton(_:)), for: .touchUpInside)
     }
 
 }
@@ -362,7 +382,8 @@ private extension UnderlinedTextField {
 
 extension UnderlinedTextField {
 
-    @IBAction private func tapOnActionButton(_ sender: UIButton) {
+    @objc
+    private func tapOnActionButton(_ sender: UIButton) {
         onActionButtonTap?(self, sender)
         guard case .password = mode else {
             return
