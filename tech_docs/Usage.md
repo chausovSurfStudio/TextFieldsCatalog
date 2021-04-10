@@ -59,6 +59,16 @@ func add(placeholderService service: AbstractPlaceholderService)
 Позволяют установить/добавить сервисы, отвечающие за отрисовку плейсхолдеров (более подробно можно прочитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md))
 
 ````swift
+// UITextField
+func setup(layoutService: TextFieldLayoutServiceAbstract)
+
+// UITextView
+func setup(layoutService: TextViewLayoutServiceAbstract)
+````
+
+Подзволяет установить собвстенный сервис верстки (более подробно можно прочитать [здесь](https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/master/tech_docs/Configuration.md))
+
+````swift
 func configure(placeholder: String?)
 ````
 

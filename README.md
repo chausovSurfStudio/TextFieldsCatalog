@@ -35,8 +35,7 @@ pod 'TextFieldsCatalog'
 Вам необходимо выполнить следующие шаги:
 
 * добавить в Podfile `pod 'TextFieldsCatalog'`, выполнить `pod install`, открыть `.workspace`
-* добавить на экран UIView, изменить его класс на `UnderlinedTextField`, установить высоту равной 77
-* во ViewController сделать `IBOutlet` на это поле, назвать, к примеру, `textField`
+* добавить на экран `UnderlinedTextField`
 * сконфигурировать поле ввода
 ````swift
 textField.configure(placeholder: "Имя", maxLength: 25)

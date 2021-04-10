@@ -80,7 +80,6 @@
 		90736CC921F8A371003B8B78 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90736CC821F8A371003B8B78 /* UITableViewCell.swift */; };
 		907CC10C253C964D007F78DD /* UnderlinedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */; };
 		9082577823C36B83000767EB /* BoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577723C36B83000767EB /* BoxTextField.swift */; };
-		9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9082577923C36BC3000767EB /* BoxTextField.xib */; };
 		9082577D23C3A339000767EB /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */; };
 		9082577F23C3A345000767EB /* MainTabBarCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082577E23C3A345000767EB /* MainTabBarCoordinatorOutput.swift */; };
 		9082578223C3A3CD000767EB /* ExampleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082578123C3A3CD000767EB /* ExampleCoordinator.swift */; };
@@ -98,14 +97,12 @@
 		90BEBBF323C4B23900991105 /* StorkContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90BEBBF123C4B23900991105 /* StorkContainerViewController.xib */; };
 		90BEBBF523C4B45800991105 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BEBBF423C4B45800991105 /* UIDevice.swift */; };
 		90CB29C72473EE28001E7563 /* SumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29C62473EE28001E7563 /* SumTextField.swift */; };
-		90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90CB29C82473EE2F001E7563 /* SumTextField.xib */; };
 		90CB29CB2473F430001E7563 /* SumFieldPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CA2473F430001E7563 /* SumFieldPreset.swift */; };
 		90CB29CD247453A2001E7563 /* CurrencyPlaceholderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */; };
 		90CDFD6025B4C219007B560B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDFD5F25B4C219007B560B /* UIView.swift */; };
 		90D3778321FB21180068F5F8 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778221FB21180068F5F8 /* UIViewController.swift */; };
 		90D3778521FB2FF80068F5F8 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778421FB2FF80068F5F8 /* MainButton.swift */; };
 		90D3778821FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */; };
-		90D3778A21FB3F730068F5F8 /* CustomUnderlinedTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */; };
 		90F4870C2458A5B800931146 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4870B2458A5B800931146 /* UnderlinedTextField.swift */; };
 		914150D68B8B0199C0D698FB /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53A69A585FD0DA9FD9006A /* MainModuleConfigurator.swift */; };
 		9258ECC1928EC54C0CE5B584 /* FieldPresetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615B85EC11337A02B8ADB733 /* FieldPresetsPresenter.swift */; };
@@ -230,7 +227,6 @@
 		90736CC821F8A371003B8B78 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		907CC10B253C964D007F78DD /* UnderlinedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedViewTests.swift; sourceTree = "<group>"; };
 		9082577723C36B83000767EB /* BoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxTextField.swift; sourceTree = "<group>"; };
-		9082577923C36BC3000767EB /* BoxTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxTextField.xib; sourceTree = "<group>"; };
 		9082577C23C3A339000767EB /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		9082577E23C3A345000767EB /* MainTabBarCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinatorOutput.swift; sourceTree = "<group>"; };
 		9082578123C3A3CD000767EB /* ExampleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCoordinator.swift; sourceTree = "<group>"; };
@@ -250,14 +246,12 @@
 		90BEBBF123C4B23900991105 /* StorkContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StorkContainerViewController.xib; sourceTree = "<group>"; };
 		90BEBBF423C4B45800991105 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		90CB29C62473EE28001E7563 /* SumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumTextField.swift; sourceTree = "<group>"; };
-		90CB29C82473EE2F001E7563 /* SumTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SumTextField.xib; sourceTree = "<group>"; };
 		90CB29CA2473F430001E7563 /* SumFieldPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumFieldPreset.swift; sourceTree = "<group>"; };
 		90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPlaceholderService.swift; sourceTree = "<group>"; };
 		90CDFD5F25B4C219007B560B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		90D3778221FB21180068F5F8 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		90D3778421FB2FF80068F5F8 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedTextField.swift; sourceTree = "<group>"; };
-		90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomUnderlinedTextField.xib; sourceTree = "<group>"; };
 		90ED18F11B2B8774FE8B6492 /* FieldPresetsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FieldPresetsModuleOutput.swift; sourceTree = "<group>"; };
 		90F4870B2458A5B800931146 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		9556DEEEFB2EB82141DAB99A /* ExamplesViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExamplesViewInput.swift; sourceTree = "<group>"; };
@@ -786,7 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				9082577723C36B83000767EB /* BoxTextField.swift */,
-				9082577923C36BC3000767EB /* BoxTextField.xib */,
 			);
 			path = BoxTextField;
 			sourceTree = "<group>";
@@ -842,7 +835,6 @@
 			isa = PBXGroup;
 			children = (
 				90CB29C62473EE28001E7563 /* SumTextField.swift */,
-				90CB29C82473EE2F001E7563 /* SumTextField.xib */,
 				90CB29CC247453A2001E7563 /* CurrencyPlaceholderService.swift */,
 			);
 			path = SumTextField;
@@ -852,7 +844,6 @@
 			isa = PBXGroup;
 			children = (
 				90D3778721FB3F5A0068F5F8 /* CustomUnderlinedTextField.swift */,
-				90D3778921FB3F730068F5F8 /* CustomUnderlinedTextField.xib */,
 			);
 			path = CustomUnderlinedTextField;
 			sourceTree = "<group>";
@@ -1070,15 +1061,12 @@
 				90736C7921F88737003B8B78 /* Localizable.strings in Resources */,
 				90736CC521F8A330003B8B78 /* MainFieldTableViewCell.xib in Resources */,
 				90736CBF21F8A313003B8B78 /* MainMessageTableViewCell.xib in Resources */,
-				90D3778A21FB3F730068F5F8 /* CustomUnderlinedTextField.xib in Resources */,
-				9082577A23C36BC3000767EB /* BoxTextField.xib in Resources */,
 				90736C2E21F8609A003B8B78 /* Assets.xcassets in Resources */,
 				904A19B921F9E84300B9A846 /* FieldPresetTableViewCell.xib in Resources */,
 				90736CBB21F8A01E003B8B78 /* CommonTableHeader.xib in Resources */,
 				940C82E87B01A75021D62269 /* MainViewController.xib in Resources */,
 				90736CB021F899D8003B8B78 /* CustomTitleView.xib in Resources */,
 				3467393DD934A4B1D73E0F01 /* FieldExampleViewController.xib in Resources */,
-				90CB29C92473EE2F001E7563 /* SumTextField.xib in Resources */,
 				90BEBBF323C4B23900991105 /* StorkContainerViewController.xib in Resources */,
 				A8277DC4F473915F0338B4B6 /* FieldPresetsViewController.xib in Resources */,
 				EED1CBE3F2BD962010F628D0 /* InfoViewController.xib in Resources */,

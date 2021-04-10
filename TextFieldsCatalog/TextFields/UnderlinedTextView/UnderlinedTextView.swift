@@ -11,19 +11,19 @@ import UIKit
 /// Class for custom textView. Contains UITextView, top floating placeholder, underline line under textView and bottom label with some info.
 /// Also have button for text clear, but you can hide it.
 /// Standart height equals 77.
-open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableField {
+open class UnderlinedTextView: UIView, ResetableField, RespondableField {
 
-    // MARK: - IBOutlets
+    // MARK: - Subviews
 
-    @IBOutlet private weak var textView: UITextView!
-    @IBOutlet private weak var hintLabel: UILabel!
-    @IBOutlet private weak var clearButton: IconButton!
+    private let textView = UITextView()
+    private let hintLabel = UILabel()
+    private let clearButton = IconButton()
 
     // MARK: - NSLayoutConstraints
 
-    @IBOutlet private weak var textViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var textViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var textViewBottomConstraint: NSLayoutConstraint!
+    private var textViewHeightConstraint: NSLayoutConstraint!
+    private var textViewTopConstraint: NSLayoutConstraint!
+    private var textViewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
@@ -62,6 +62,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     private var hintService: AbstractHintService = HintService(configuration: .default)
     private var lineService: LineService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextView)]
+    private var layoutService: TextViewLayoutServiceAbstract = TextViewLayoutServiceDefault(constants: .default)
 
     // MARK: - Properties
 
@@ -170,6 +171,12 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         return CGSize(width: UIView.noIntrinsicMetric, height: lastViewHeight)
     }
 
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        lineService?.updateLineFrame(fieldState: state)
+    }
+
     // MARK: - RespondableField
 
     public var nextInput: UIResponder? {
@@ -198,7 +205,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public func setup(placeholderServices: [AbstractPlaceholderService]) {
         self.placeholderServices = placeholderServices
         for service in placeholderServices {
-            service.provide(superview: self.view, field: textView)
+            service.provide(superview: self, field: textView)
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
             service.updateContent(fieldState: state, containerState: containerState)
@@ -207,7 +214,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     /// Allows you to add new placeholder service
     public func add(placeholderService service: AbstractPlaceholderService) {
-        service.provide(superview: self.view, field: textView)
+        service.provide(superview: self, field: textView)
         service.configurePlaceholder(fieldState: state,
                                      containerState: containerState)
         service.updateContent(fieldState: state, containerState: containerState)
@@ -235,6 +242,17 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         updateUI()
     }
 
+    public func setup(layoutService: TextViewLayoutServiceAbstract) {
+        self.layoutService = layoutService
+        let layoutOutput = layoutService.layout(textView: textView,
+                                                hintLabel: hintLabel,
+                                                clearButton: clearButton,
+                                                in: self)
+        textViewHeightConstraint = layoutOutput.textViewHeightConstraint
+        textViewTopConstraint = layoutOutput.textViewTopConstraint
+        textViewBottomConstraint = layoutOutput.textViewBottomConstraint
+    }
+
     /// Allows you to set optional string as text.
     /// Also you can disable automatic validation on this action.
     public func setup(text: String?, validateText: Bool = true) {
@@ -247,7 +265,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
-        view.accessibilityIdentifier = identifier
+        accessibilityIdentifier = identifier
         textView.accessibilityIdentifier = identifier + AccessibilityIdentifiers.field
         hintLabel.accessibilityIdentifier = identifier + AccessibilityIdentifiers.hint
     }
@@ -306,7 +324,7 @@ private extension UnderlinedTextView {
         lineService?.setup(configuration: configuration.line)
         hintService.provide(label: hintLabel)
         for service in placeholderServices {
-            service.provide(superview: self.view, field: textView)
+            service.provide(superview: self, field: textView)
         }
 
         fieldService?.configureBackground()
@@ -318,6 +336,8 @@ private extension UnderlinedTextView {
                                          containerState: containerState)
         }
 
+        setup(layoutService: layoutService)
+
         configureClearButton()
         textView.delegate = self
     }
@@ -326,6 +346,7 @@ private extension UnderlinedTextView {
         clearButton.setImageForAllState(configuration.clearButton.image,
                                         normalColor: configuration.clearButton.normalColor,
                                         pressedColor: configuration.clearButton.pressedColor)
+        clearButton.addTarget(self, action: #selector(tapOnClearButton(_:)), for: .touchUpInside)
         updateClearButtonVisibility()
     }
 
@@ -335,7 +356,8 @@ private extension UnderlinedTextView {
 
 private extension UnderlinedTextView {
 
-    @IBAction func tapOnClearButton(_ sender: UIButton) {
+    @objc
+    func tapOnClearButton(_ sender: UIButton) {
         reset()
     }
 
@@ -532,7 +554,7 @@ private extension UnderlinedTextView {
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
 
         textViewHeightConstraint.constant = textHeight
-        view.layoutIfNeeded()
+        layoutIfNeeded()
         lastViewHeight = viewHeight
     }
 

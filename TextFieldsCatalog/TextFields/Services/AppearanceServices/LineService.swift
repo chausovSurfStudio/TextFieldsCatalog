@@ -20,7 +20,7 @@ final class LineService {
     // MARK: - Private Properties
 
     private let lineView = UIView()
-    private weak var superview: InnerDesignableView?
+    private weak var superview: UIView?
     private weak var field: InputField?
 
     private var configuration: LineConfiguration
@@ -28,7 +28,7 @@ final class LineService {
 
     // MARK: - Initialization
 
-    init(superview: InnerDesignableView,
+    init(superview: UIView,
          field: InputField?,
          configuration: LineConfiguration) {
         self.superview = superview
@@ -43,7 +43,7 @@ final class LineService {
     }
 
     func configureLineView(fieldState: FieldState) {
-        guard let superview = configuration.superview ?? self.superview?.view else {
+        guard let superview = configuration.superview ?? self.superview else {
             return
         }
         if lineView.superview == nil || lineView.superview != superview {
@@ -77,7 +77,7 @@ final class LineService {
         }
         lastLinePosition = actualPosition
         lineView.frame = actualPosition
-        superview?.view.layoutIfNeeded()
+        superview?.layoutIfNeeded()
     }
 
 }
@@ -112,7 +112,7 @@ private extension LineService {
 
     func linePosition(fieldState: FieldState) -> CGRect {
         guard
-            let superview = configuration.superview ?? self.superview?.view,
+            let superview = configuration.superview ?? self.superview,
             let field = field
         else {
             return .zero
