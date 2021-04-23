@@ -104,6 +104,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
+    public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5,
@@ -401,8 +402,24 @@ extension UnderlinedTextView: UITextViewDelegate {
         else {
             return true
         }
-        let newText = currentText.replacingCharacters(in: textRange, with: text)
-        return newText.count <= maxLength
+
+        var newText = currentText.replacingCharacters(in: textRange, with: text)
+        switch pasteOverflowPolicy {
+        case .noChanges:
+            return newText.count <= maxLength
+        case .textThatFits:
+            guard newText.count > maxLength else {
+                return true
+            }
+
+            newText = String(newText.prefix(maxLength))
+            setup(text: newText)
+
+            let maxOffset = (newText as NSString).length
+            let offset = min(maxOffset, range.location + (text as NSString).length)
+            moveCursorPosition(offset: offset)
+            return false
+        }
     }
 
     open func textViewDidChange(_ textView: UITextView) {
@@ -516,6 +533,25 @@ private extension UnderlinedTextView {
 
     func trimmedText() -> String {
         return textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func moveCursorPosition(offset: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let textView = self?.textView else {
+                return
+            }
+
+            let contentOffset = textView.contentOffset
+            if let newPosition = textView.position(from: textView.beginningOfDocument, offset: offset) {
+                textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
+            }
+            textView.setContentOffset(contentOffset, animated: false)
+
+            if let start = textView.selectedTextRange?.start {
+                let caret = textView.caretRect(for: start)
+                textView.scrollRectToVisible(caret, animated: true)
+            }
+        }
     }
 
 }

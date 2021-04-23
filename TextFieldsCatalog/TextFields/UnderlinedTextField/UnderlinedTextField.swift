@@ -114,6 +114,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
+    public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
     public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(policy: .init(minHeight: 77,
                                                                                bottomOffset: 5,
@@ -416,8 +417,23 @@ extension UnderlinedTextField: UITextFieldDelegate {
             return true
         }
 
-        let newText = text.replacingCharacters(in: textRange, with: string)
-        return newText.count <= maxLength
+        var newText = text.replacingCharacters(in: textRange, with: string)
+        switch pasteOverflowPolicy {
+        case .noChanges:
+            return newText.count <= maxLength
+        case .textThatFits:
+            guard newText.count > maxLength else {
+                return true
+            }
+
+            newText = String(newText.prefix(maxLength))
+            setup(text: newText)
+
+            let maxOffset = (newText as NSString).length
+            let offset = min(maxOffset, range.location + (string as NSString).length)
+            moveCursorPosition(offset: offset)
+            return false
+        }
     }
 
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -634,6 +650,17 @@ private extension UnderlinedTextField {
 
     func trimmedText() -> String? {
         return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func moveCursorPosition(offset: Int) {
+        DispatchQueue.main.async { [weak self] in
+            guard let field = self?.field else {
+                return
+            }
+            if let newPosition = field.position(from: field.beginningOfDocument, offset: offset) {
+                field.selectedTextRange = field.textRange(from: newPosition, to: newPosition)
+            }
+        }
     }
 
 }

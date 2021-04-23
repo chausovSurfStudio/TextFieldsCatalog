@@ -89,6 +89,7 @@
 		90FAC49E22887EFB0032A7F1 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC49D22887EFB0032A7F1 /* DateTextField.swift */; };
 		90FAC4A2228880420032A7F1 /* PickerTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAC4A1228880420032A7F1 /* PickerTopView.swift */; };
 		90FAC4A42288804A0032A7F1 /* PickerTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FAC4A32288804A0032A7F1 /* PickerTopView.xib */; };
+		BCA359E726316955002D121C /* PasteOverflowPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA359E626316955002D121C /* PasteOverflowPolicy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		90FAC4A1228880420032A7F1 /* PickerTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTopView.swift; sourceTree = "<group>"; };
 		90FAC4A32288804A0032A7F1 /* PickerTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTopView.xib; sourceTree = "<group>"; };
 		AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA359E626316955002D121C /* PasteOverflowPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteOverflowPolicy.swift; sourceTree = "<group>"; };
 		C85FAD03B2BFDDF9E9787A91 /* Pods-TextFieldsCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.debug.xcconfig"; sourceTree = "<group>"; };
 		E30534D5194689C73C18CE1A /* Pods-TextFieldsCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -406,6 +408,7 @@
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
 				9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */,
 				909CE8E623534E50001E3B7F /* ValidationPolicy.swift */,
+				BCA359E626316955002D121C /* PasteOverflowPolicy.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				902CE2FA21FF710400AC21D4 /* TextFieldConfigurations.swift in Sources */,
 				90793C0025A4D47600BC8582 /* HintVisibleStates.swift in Sources */,
 				90F4870724582BBA00931146 /* NativePlaceholderService.swift in Sources */,
+				BCA359E726316955002D121C /* PasteOverflowPolicy.swift in Sources */,
 				90A066902530B59D0065CCD7 /* ToolBarInterface.swift in Sources */,
 				90BEBBFD23C4D3FB00991105 /* InputFieldProtocol.swift in Sources */,
 				9082577523C367B5000767EB /* FieldContainerState.swift in Sources */,
