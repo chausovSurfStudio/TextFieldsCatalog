@@ -29,7 +29,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     private var state: FieldState = .normal {
         didSet {
-            updateUI()
+            updateUI(animated: true)
             perfromOnContainerStateChangedCall()
         }
     }
@@ -242,7 +242,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     /// Allows you to set optional string as text.
     /// Also you can disable automatic validation on this action.
-    public func setup(text: String?, animated: Bool = true,validateText: Bool = true) {
+    public func setup(text: String?, animated: Bool = true, validateText: Bool = true) {
         textView.text = text ?? ""
         if validateText {
             validate()
@@ -270,7 +270,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
-            updateUI()
+            updateUI(animated: true)
         }
         return !error
     }
@@ -287,7 +287,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     /// Reset only error state and update all UI elements
     public func resetErrorState() {
         error = false
-        updateUI()
+        updateUI(animated: true)
     }
 
 }
@@ -425,7 +425,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
 private extension UnderlinedTextView {
 
-    func updateUI(animated: Bool = true) {
+    func updateUI(animated: Bool) {
         fieldService?.updateContent(containerState: containerState)
         hintService.updateContent(containerState: containerState,
                                   heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy),
@@ -478,7 +478,7 @@ private extension UnderlinedTextView {
         if error {
             hintService.showHint()
             error = false
-            updateUI()
+            updateUI(animated: true)
         } else {
             updateViewHeight()
             lineService?.updateLineFrame(fieldState: state)
@@ -488,7 +488,7 @@ private extension UnderlinedTextView {
     func disableTextField() {
         state = .disabled
         textView.isEditable = false
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textView.text
         textView.text = text
@@ -497,7 +497,7 @@ private extension UnderlinedTextView {
     func enableTextField() {
         state = .normal
         textView.isEditable = true
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textView.text
         textView.text = text

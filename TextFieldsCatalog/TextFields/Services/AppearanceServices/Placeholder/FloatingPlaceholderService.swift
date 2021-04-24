@@ -98,7 +98,7 @@ private extension FloatingPlaceholderService {
         // The idea of updating layer with animation was to do it with `CAAnimationGroup` (how realized below).
         // While animation without animation should be made without `CAAnimationGroup` - just
         // fill with final properties inside `CATransaction` (to avoid implicit animation).
-        // Bust in practice, CATextLayer animated in CATransaction very bad - sometimes implicit animation
+        // But in practice, CATextLayer animated in CATransaction very bad - sometimes implicit animation
         // still exists.
         // The solution of this problem - to make changing state of layer with `CAAnimationGroup` with
         // very small `duration`

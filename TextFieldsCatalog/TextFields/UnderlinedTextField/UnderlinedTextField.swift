@@ -23,7 +23,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     private var state: FieldState = .normal {
         didSet {
-            updateUI()
+            updateUI(animated: true)
             perfromOnContainerStateChangedCall()
         }
     }
@@ -302,7 +302,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
-            updateUI()
+            updateUI(animated: true)
         }
         return !error
     }
@@ -318,7 +318,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     /// Reset only error state and update all UI elements
     public func resetErrorState() {
         error = false
-        updateUI()
+        updateUI(animated: true)
     }
 
 }
@@ -514,7 +514,7 @@ extension UnderlinedTextField: PickerTextField {
 
 private extension UnderlinedTextField {
 
-    func updateUI(animated: Bool = true) {
+    func updateUI(animated: Bool) {
         fieldService?.updateContent(containerState: containerState)
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
@@ -608,7 +608,7 @@ private extension UnderlinedTextField {
     func enableTextField() {
         state = .normal
         textField.isEnabled = true
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textField.text
         textField.text = text
@@ -617,7 +617,7 @@ private extension UnderlinedTextField {
     func disableTextField() {
         state = .disabled
         textField.isEnabled = false
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textField.text
         textField.text = text
