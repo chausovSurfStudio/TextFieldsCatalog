@@ -62,7 +62,8 @@ final class CurrencyPlaceholderService: AbstractPlaceholderService {
     }
 
     public func updateContent(fieldState: FieldState,
-                              containerState: FieldContainerState) {
+                              containerState: FieldContainerState,
+                              animated: Bool) {
         updateAfterTextChanged(fieldState: fieldState)
     }
 

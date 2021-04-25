@@ -43,7 +43,8 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
         self.placeholder.text = placeholder
     }
 
-    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState,
+                                     containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = placeholder.text ?? ""
         placeholder.font = configuration.font
@@ -54,7 +55,8 @@ public final class StaticPlaceholderService: AbstractPlaceholderService {
     }
 
     public func updateContent(fieldState: FieldState,
-                              containerState: FieldContainerState) {
+                              containerState: FieldContainerState,
+                              animated: Bool) {
         updatePlaceholderColor(containerState: containerState)
     }
 

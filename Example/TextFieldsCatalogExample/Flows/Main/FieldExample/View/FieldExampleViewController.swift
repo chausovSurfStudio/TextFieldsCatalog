@@ -73,7 +73,7 @@ private extension FieldExampleViewController {
     @objc
     func tapOnResetButton() {
         if let textField = textField as? ResetableField {
-            textField.reset()
+            textField.reset(animated: true)
         }
     }
 

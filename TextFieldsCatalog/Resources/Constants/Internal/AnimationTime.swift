@@ -9,5 +9,5 @@
 import Foundation
 
 enum AnimationTime {
-    static let `default`: TimeInterval = 0.3
+    static let `default`: TimeInterval = 0.25
 }

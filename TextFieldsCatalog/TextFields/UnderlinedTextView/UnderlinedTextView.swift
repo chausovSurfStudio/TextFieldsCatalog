@@ -29,7 +29,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     private var state: FieldState = .normal {
         didSet {
-            updateUI()
+            updateUI(animated: true)
             perfromOnContainerStateChangedCall()
         }
     }
@@ -90,7 +90,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var configuration = UnderlinedTextViewConfiguration() {
         didSet {
             configureAppearance()
-            updateUI()
+            updateUI(animated: false)
         }
     }
     public var validator: TextFieldValidation?
@@ -157,13 +157,13 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     override open  func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        updateUI()
+        updateUI(animated: false)
         perfromOnContainerStateChangedCall()
     }
 
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-        updateUI()
+        updateUI(animated: false)
     }
 
     override open var intrinsicContentSize: CGSize {
@@ -201,7 +201,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             service.provide(superview: self.view, field: textView)
             service.configurePlaceholder(fieldState: state,
                                          containerState: containerState)
-            service.updateContent(fieldState: state, containerState: containerState)
+            service.updateContent(fieldState: state,
+                                  containerState: containerState,
+                                  animated: false)
         }
     }
 
@@ -210,7 +212,9 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         service.provide(superview: self.view, field: textView)
         service.configurePlaceholder(fieldState: state,
                                      containerState: containerState)
-        service.updateContent(fieldState: state, containerState: containerState)
+        service.updateContent(fieldState: state,
+                              containerState: containerState,
+                              animated: false)
         placeholderServices.append(service)
     }
 
@@ -220,7 +224,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         hintService.provide(label: hintLabel)
         hintService.configureAppearance()
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy),
+                                  animated: false)
     }
 
     /// Allows you to set some string as hint message
@@ -232,17 +237,17 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     /// should be visible
     public func setup(visibleHintStates: HintVisibleStates) {
         self.hintService.setup(visibleHintStates: visibleHintStates)
-        updateUI()
+        updateUI(animated: false)
     }
 
     /// Allows you to set optional string as text.
     /// Also you can disable automatic validation on this action.
-    public func setup(text: String?, validateText: Bool = true) {
+    public func setup(text: String?, animated: Bool = true, validateText: Bool = true) {
         textView.text = text ?? ""
         if validateText {
             validate()
         }
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
@@ -256,7 +261,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public func setError(with errorMessage: String?, animated: Bool) {
         error = true
         hintService.setup(errorHint: errorMessage)
-        updateUI()
+        updateUI(animated: animated)
     }
 
     /// Method performs validate logic, updates all UI elements and returns you `isValid` value
@@ -265,24 +270,24 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         if !error || force {
             // case if user didn't activate this text field (or you want force validate it)
             validate()
-            updateUI()
+            updateUI(animated: true)
         }
         return !error
     }
 
     /// Clear text, reset error and update all UI elements - reset to default state
-    public func reset() {
+    public func reset(animated: Bool) {
         textView.text = ""
         hintService.showHint()
         error = false
-        updateUI()
+        updateUI(animated: animated)
         updateClearButtonVisibility()
     }
 
     /// Reset only error state and update all UI elements
     public func resetErrorState() {
         error = false
-        updateUI()
+        updateUI(animated: true)
     }
 
 }
@@ -336,7 +341,7 @@ private extension UnderlinedTextView {
 private extension UnderlinedTextView {
 
     @IBAction func tapOnClearButton(_ sender: UIButton) {
-        reset()
+        reset(animated: true)
     }
 
 }
@@ -420,18 +425,22 @@ extension UnderlinedTextView: UITextViewDelegate {
 
 private extension UnderlinedTextView {
 
-    func updateUI(animated: Bool = false) {
+    func updateUI(animated: Bool) {
         fieldService?.updateContent(containerState: containerState)
         hintService.updateContent(containerState: containerState,
-                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy))
+                                  heightLayoutPolicy: .elastic(policy: flexibleHeightPolicy),
+                                  animated: animated)
         for service in placeholderServices {
-            service.updateContent(fieldState: state, containerState: containerState)
+            service.updateContent(fieldState: state,
+                                  containerState: containerState,
+                                  animated: animated)
         }
 
         updateViewHeight()
         lineService?.updateContent(fieldState: state,
                                    containerState: containerState,
-                                   strategy: .frame)
+                                   strategy: .frame,
+                                   animated: animated)
     }
 
     func validateWithPolicy() {
@@ -469,7 +478,7 @@ private extension UnderlinedTextView {
         if error {
             hintService.showHint()
             error = false
-            updateUI()
+            updateUI(animated: true)
         } else {
             updateViewHeight()
             lineService?.updateLineFrame(fieldState: state)
@@ -479,7 +488,7 @@ private extension UnderlinedTextView {
     func disableTextField() {
         state = .disabled
         textView.isEditable = false
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textView.text
         textView.text = text
@@ -488,7 +497,7 @@ private extension UnderlinedTextView {
     func enableTextField() {
         state = .normal
         textView.isEditable = true
-        updateUI()
+        updateUI(animated: true)
         /// fix for bug, when text field not changing his textColor on iphone 6+
         let text = textView.text
         textView.text = text
