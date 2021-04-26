@@ -721,7 +721,7 @@ private extension UnderlinedTextField {
         if alpha == 0 {
             animationBlock()
         } else {
-            UIView.animate(withDuration: AnimationTime.default) { [weak self] in
+            UIView.animate(withDuration: AnimationTime.default) {
                 animationBlock()
             }
         }
