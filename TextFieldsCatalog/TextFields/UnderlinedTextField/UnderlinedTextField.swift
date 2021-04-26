@@ -436,9 +436,9 @@ extension UnderlinedTextField: UITextFieldDelegate {
             newText = String(newText.prefix(maxLength))
             setup(text: newText, validateText: false)
 
-            let maxOffset = (newText as NSString).length
-            let offset = min(maxOffset, range.location + (string as NSString).length)
-            moveCursorPosition(offset: offset)
+            field.moveCursorPosition(text: newText,
+                                     pasteLocation: range.location,
+                                     replacementString: string)
             return false
         }
     }
@@ -662,17 +662,6 @@ private extension UnderlinedTextField {
 
     func trimmedText() -> String? {
         return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    func moveCursorPosition(offset: Int) {
-        DispatchQueue.main.async { [weak self] in
-            guard let field = self?.field else {
-                return
-            }
-            if let newPosition = field.position(from: field.beginningOfDocument, offset: offset) {
-                field.selectedTextRange = field.textRange(from: newPosition, to: newPosition)
-            }
-        }
     }
 
 }

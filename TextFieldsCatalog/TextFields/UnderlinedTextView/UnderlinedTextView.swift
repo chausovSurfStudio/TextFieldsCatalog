@@ -420,9 +420,9 @@ extension UnderlinedTextView: UITextViewDelegate {
             newText = String(newText.prefix(maxLength))
             setup(text: newText, validateText: false)
 
-            let maxOffset = (newText as NSString).length
-            let offset = min(maxOffset, range.location + (text as NSString).length)
-            moveCursorPosition(offset: offset)
+            textView.moveCursorPosition(text: newText,
+                                        pasteLocation: range.location,
+                                        replacementString: text)
             return false
         }
     }
@@ -542,25 +542,6 @@ private extension UnderlinedTextView {
 
     func trimmedText() -> String {
         return textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    func moveCursorPosition(offset: Int) {
-        DispatchQueue.main.async { [weak self] in
-            guard let textView = self?.textView else {
-                return
-            }
-
-            let contentOffset = textView.contentOffset
-            if let newPosition = textView.position(from: textView.beginningOfDocument, offset: offset) {
-                textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
-            }
-            textView.setContentOffset(contentOffset, animated: false)
-
-            if let start = textView.selectedTextRange?.start {
-                let caret = textView.caretRect(for: start)
-                textView.scrollRectToVisible(caret, animated: true)
-            }
-        }
     }
 
 }
