@@ -418,7 +418,7 @@ extension UnderlinedTextView: UITextViewDelegate {
             }
 
             newText = String(newText.prefix(maxLength))
-            setup(text: newText)
+            setup(text: newText, validateText: false)
 
             let maxOffset = (newText as NSString).length
             let offset = min(maxOffset, range.location + (text as NSString).length)

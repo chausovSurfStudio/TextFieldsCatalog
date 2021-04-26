@@ -434,7 +434,7 @@ extension UnderlinedTextField: UITextFieldDelegate {
             }
 
             newText = String(newText.prefix(maxLength))
-            setup(text: newText)
+            setup(text: newText, validateText: false)
 
             let maxOffset = (newText as NSString).length
             let offset = min(maxOffset, range.location + (string as NSString).length)
