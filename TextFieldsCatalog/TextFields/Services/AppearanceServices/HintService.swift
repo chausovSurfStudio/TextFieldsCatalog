@@ -42,10 +42,12 @@ public class HintService: AbstractHintService {
     }
 
     public func updateContent(containerState: FieldContainerState,
-                              heightLayoutPolicy: HeightLayoutPolicy) {
+                              heightLayoutPolicy: HeightLayoutPolicy,
+                              animated: Bool) {
         updateHintLabelColor(containerState: containerState)
         updateHintLabelVisibility(containerState: containerState,
-                                  heightLayoutPolicy: heightLayoutPolicy)
+                                  heightLayoutPolicy: heightLayoutPolicy,
+                                  animated: animated)
     }
 
     public func hintHeight(containerState: FieldContainerState) -> CGFloat {
@@ -93,21 +95,32 @@ private extension HintService {
     }
 
     func updateHintLabelVisibility(containerState: FieldContainerState,
-                                   heightLayoutPolicy: HeightLayoutPolicy) {
+                                   heightLayoutPolicy: HeightLayoutPolicy,
+                                   animated: Bool) {
         let hintIsVisible = shouldShowHint(containerState: containerState)
         let alpha: CGFloat = hintIsVisible ? 1 : 0
-        var duration: TimeInterval = AnimationTime.default
-        switch heightLayoutPolicy {
-        case .fixed:
-            // update always with animation
-            break
-        case .elastic:
-            // update with animation on hint appear
-            duration = hintIsVisible ? AnimationTime.default : 0
+        var duration: TimeInterval = 0
+        if animated {
+            switch heightLayoutPolicy {
+            case .fixed:
+                // update always with animation
+                duration = AnimationTime.default
+            case .elastic:
+                // update with animation on hint appear
+                duration = hintIsVisible ? AnimationTime.default : 0
+            }
         }
-        UIView.animate(withDuration: duration) { [weak self] in
-            self?.hintLabel?.alpha = alpha
+
+        let animationBlock: () -> Void = {
+            self.hintLabel?.alpha = alpha
         }
+
+        if duration == 0 {
+            animationBlock()
+        } else {
+            UIView.animate(withDuration: duration, animations: animationBlock)
+        }
+
     }
 
 }

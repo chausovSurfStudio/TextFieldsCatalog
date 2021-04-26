@@ -48,7 +48,8 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
         self.placeholder.text = placeholder
     }
 
-    public func configurePlaceholder(fieldState: FieldState, containerState: FieldContainerState) {
+    public func configurePlaceholder(fieldState: FieldState,
+                                     containerState: FieldContainerState) {
         placeholder.removeFromSuperview()
         placeholder.text = placeholder.text ?? ""
         placeholder.font = configuration.font
@@ -59,19 +60,32 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
     }
 
     public func updateContent(fieldState: FieldState,
-                              containerState: FieldContainerState) {
+                              containerState: FieldContainerState,
+                              animated: Bool) {
         updatePlaceholderColor(containerState: containerState)
-        updateAfterTextChanged(fieldState: fieldState)
+        updateAfterTextChangedPrivate(fieldState: fieldState, animated: animated)
     }
 
-    public func update(useIncreasedRightPadding: Bool, fieldState: FieldState) {
+    public func update(useIncreasedRightPadding: Bool,
+                       fieldState: FieldState,
+                       animated: Bool) {
         self.useIncreasedRightPadding = useIncreasedRightPadding
         placeholder.frame = placeholderPosition()
     }
 
     public func updateAfterTextChanged(fieldState: FieldState) {
+        updateAfterTextChangedPrivate(fieldState: fieldState, animated: true)
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension NativePlaceholderService {
+
+    func updateAfterTextChangedPrivate(fieldState: FieldState, animated: Bool) {
         guard textIsEmpty() else {
-            setupPlaceholderVisibility(isVisible: false)
+            setupPlaceholderVisibility(isVisible: false, animated: animated)
             return
         }
 
@@ -81,14 +95,8 @@ public final class NativePlaceholderService: AbstractPlaceholderService {
         } else {
             isVisible = fieldState == .active && configuration.behavior == .hideOnInput
         }
-        setupPlaceholderVisibility(isVisible: isVisible)
+        setupPlaceholderVisibility(isVisible: isVisible, animated: animated)
     }
-
-}
-
-// MARK: - Private Methods
-
-private extension NativePlaceholderService {
 
     func placeholderPosition() -> CGRect {
         guard let superview = superview else {
@@ -111,10 +119,14 @@ private extension NativePlaceholderService {
         return field?.inputText?.isEmpty ?? true
     }
 
-    func setupPlaceholderVisibility(isVisible: Bool) {
-        let animationTime = isVisible ? AnimationTime.default : 0
-        UIView.animate(withDuration: animationTime) { [weak self] in
-            self?.placeholder.alpha = isVisible ? 1 : 0
+    func setupPlaceholderVisibility(isVisible: Bool, animated: Bool) {
+        let animationBlock: () -> Void = {
+            self.placeholder.alpha = isVisible ? 1 : 0
+        }
+        if isVisible && animated {
+            UIView.animate(withDuration: AnimationTime.default, animations: animationBlock)
+        } else {
+            animationBlock()
         }
     }
 

@@ -27,7 +27,9 @@ public protocol AbstractHintService {
      Method invokes when field wants to update UI elements.
      You have to update visibility of you hint, it's color, etc.
      */
-    func updateContent(containerState: FieldContainerState, heightLayoutPolicy: HeightLayoutPolicy)
+    func updateContent(containerState: FieldContainerState,
+                       heightLayoutPolicy: HeightLayoutPolicy,
+                       animated: Bool)
     /**
      Method allows to calculate current hint message height,
      or returns zero if hint message doesn't exist or invisible
