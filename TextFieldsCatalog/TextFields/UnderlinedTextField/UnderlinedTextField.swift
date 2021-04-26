@@ -116,6 +116,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var validationPolicy: ValidationPolicy = .always
     public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
+    public var allowedCharacterSet: CharacterSet?
+    public var pasteAllowedChars = true
     public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(policy: .init(minHeight: 77,
                                                                                bottomOffset: 5,
                                                                                ignoreEmptyHint: false))
@@ -418,29 +420,41 @@ extension UnderlinedTextField: UITextFieldDelegate {
         guard
             let text = textField.text,
             let textRange = Range(range, in: text),
-            !validateWithFormatter,
-            let maxLength = self.maxLength
+            !validateWithFormatter
         else {
             return true
         }
 
-        var newText = text.replacingCharacters(in: textRange, with: string)
-        switch pasteOverflowPolicy {
-        case .noChanges:
-            return newText.count <= maxLength
-        case .textThatFits:
-            guard newText.count > maxLength else {
-                return true
-            }
+        var replacementString = string
+        if let set = allowedCharacterSet {
+            replacementString = replacementString.components(separatedBy: set.inverted).joined()
+        }
+        let newText = text.replacingCharacters(in: textRange, with: replacementString)
 
-            newText = String(newText.prefix(maxLength))
-            setup(text: newText, validateText: false)
-
-            field.moveCursorPosition(text: newText,
+        guard pasteAllowedChars || replacementString == string else {
+            // TODO иногда курсор куда-то улетает, даже если вернуть false
+            field.moveCursorPosition(text: field.text ?? "",
                                      pasteLocation: range.location,
-                                     replacementString: string)
+                                     replacementString: "")
             return false
         }
+
+        switch pasteOverflowPolicy {
+        case .noChanges:
+            if let maxLength = self.maxLength, newText.count > maxLength {
+                // TODO
+                field.moveCursorPosition(text: field.text ?? "",
+                                         pasteLocation: range.location,
+                                         replacementString: "")
+                return false
+            } else {
+                pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
+            }
+        case .textThatFits:
+            pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
+        }
+
+        return false
     }
 
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -662,6 +676,16 @@ private extension UnderlinedTextField {
 
     func trimmedText() -> String? {
         return textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func pasteText(_ newText: String, pasteLocation: Int, replacementString string: String) {
+        let maxLength = self.maxLength ?? newText.count
+        let newText = String(newText.prefix(maxLength))
+        setup(text: newText, validateText: false)
+
+        field.moveCursorPosition(text: newText,
+                                 pasteLocation: pasteLocation,
+                                 replacementString: string)
     }
 
 }

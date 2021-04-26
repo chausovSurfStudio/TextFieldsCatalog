@@ -404,11 +404,11 @@
 				90AE548F220582C50054E875 /* HeightLayoutPolicy.swift */,
 				90793BFF25A4D47600BC8582 /* HintVisibleStates.swift */,
 				90F487082458329800931146 /* NativePlaceholderBehavior.swift */,
+				BCA359E626316955002D121C /* PasteOverflowPolicy.swift */,
 				902CE2EE21FF702F00AC21D4 /* SharedRegex.swift */,
 				90E13DB02320FD3C004995E4 /* TextFieldMode.swift */,
 				9040B90423C6371000998989 /* TextFieldPasswordModeBehavior.swift */,
 				909CE8E623534E50001E3B7F /* ValidationPolicy.swift */,
-				BCA359E626316955002D121C /* PasteOverflowPolicy.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
