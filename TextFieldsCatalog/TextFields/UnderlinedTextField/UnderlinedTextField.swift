@@ -431,22 +431,17 @@ extension UnderlinedTextField: UITextFieldDelegate {
         }
         let newText = text.replacingCharacters(in: textRange, with: replacementString)
 
-        guard pasteAllowedChars || replacementString == string else {
-            // TODO иногда курсор куда-то улетает, даже если вернуть false
-            field.moveCursorPosition(text: field.text ?? "",
-                                     pasteLocation: range.location,
-                                     replacementString: "")
+        let hasNotAllowedChars = replacementString != string
+
+        guard pasteAllowedChars || !hasNotAllowedChars else {
+            field.fixCursorPosition(pasteLocation: range.location)
             return false
         }
 
         switch pasteOverflowPolicy {
         case .noChanges:
             if let maxLength = self.maxLength, newText.count > maxLength {
-                // TODO
-                field.moveCursorPosition(text: field.text ?? "",
-                                         pasteLocation: range.location,
-                                         replacementString: "")
-                return false
+                field.fixCursorPosition(pasteLocation: range.location)
             } else {
                 pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
             }
