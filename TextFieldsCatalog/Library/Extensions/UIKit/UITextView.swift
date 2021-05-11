@@ -15,8 +15,8 @@ extension UITextView {
         return text.isEmpty
     }
 
-    func moveCursorPosition(text: String?, pasteLocation: Int, replacementString: String) {
-        let maxOffset = ((text ?? self.text ?? "") as NSString).length
+    func moveCursorPosition(text: String, pasteLocation: Int, replacementString: String) {
+        let maxOffset = (text as NSString).length
         let offset = min(maxOffset, pasteLocation + (replacementString as NSString).length)
 
         DispatchQueue.main.async { [weak self] in
@@ -35,6 +35,10 @@ extension UITextView {
                 self.scrollRectToVisible(caret, animated: true)
             }
         }
+    }
+
+    func fixCursorPosition(pasteLocation: Int) {
+        moveCursorPosition(text: self.text ?? "", pasteLocation: pasteLocation, replacementString: "")
     }
 
 }
