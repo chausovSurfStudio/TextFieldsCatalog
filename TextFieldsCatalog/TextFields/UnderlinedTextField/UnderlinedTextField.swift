@@ -114,6 +114,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
+    public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
     public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(policy: .init(minHeight: 77,
                                                                                bottomOffset: 5,
@@ -423,8 +424,23 @@ extension UnderlinedTextField: UITextFieldDelegate {
             return true
         }
 
-        let newText = text.replacingCharacters(in: textRange, with: string)
-        return newText.count <= maxLength
+        var newText = text.replacingCharacters(in: textRange, with: string)
+        switch pasteOverflowPolicy {
+        case .noChanges:
+            return newText.count <= maxLength
+        case .textThatFits:
+            guard newText.count > maxLength else {
+                return true
+            }
+
+            newText = String(newText.prefix(maxLength))
+            setup(text: newText, validateText: false)
+
+            field.moveCursorPosition(text: newText,
+                                     pasteLocation: range.location,
+                                     replacementString: string)
+            return false
+        }
     }
 
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -705,7 +721,7 @@ private extension UnderlinedTextField {
         if alpha == 0 {
             animationBlock()
         } else {
-            UIView.animate(withDuration: AnimationTime.default) { [weak self] in
+            UIView.animate(withDuration: AnimationTime.default) {
                 animationBlock()
             }
         }

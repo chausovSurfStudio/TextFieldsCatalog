@@ -15,4 +15,18 @@ extension UITextField {
         return text?.isEmpty ?? true
     }
 
+    func moveCursorPosition(text: String, pasteLocation: Int, replacementString: String) {
+        let maxOffset = (text as NSString).length
+        let offset = min(maxOffset, pasteLocation + (replacementString as NSString).length)
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            if let newPosition = self.position(from: self.beginningOfDocument, offset: offset) {
+                self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
+            }
+        }
+    }
+
 }
