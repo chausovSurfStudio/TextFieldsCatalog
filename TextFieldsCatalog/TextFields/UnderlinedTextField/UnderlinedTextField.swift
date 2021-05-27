@@ -443,9 +443,16 @@ extension UnderlinedTextField: UITextFieldDelegate {
             if let maxLength = self.maxLength, newText.count > maxLength {
                 field.fixCursorPosition(pasteLocation: range.location)
             } else {
+                guard hasNotAllowedChars else {
+                    return true
+                }
                 pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
             }
         case .textThatFits:
+            let maxLength = self.maxLength ?? newText.count
+            guard hasNotAllowedChars || newText.count > maxLength else {
+                return true
+            }
             pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
         }
 

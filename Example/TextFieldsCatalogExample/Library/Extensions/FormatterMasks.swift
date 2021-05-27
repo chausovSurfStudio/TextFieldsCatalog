@@ -17,7 +17,7 @@ extension FormatterMasks {
     private enum Notations {
         enum RussianSymbolsAndSpaces {
             static let character: Character = "R"
-            static let set = CharacterSet(charactersIn: "абвгдеёжзийклмнопрстуфхцчшщъыьэюяФБВГДЕЁЖЗИЙКЛМНОПРСТУФКЦЧШЩЪЫЬЭЮЯ ")
+            static let set = CharacterSet(charactersIn: "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ ")
         }
     }
 
