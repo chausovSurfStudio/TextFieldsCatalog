@@ -117,6 +117,9 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
     public var allowedCharacterSet: CharacterSet?
+    /// Used when `allowedCharacterSet` is filled.
+    /// If `true` removes all not allowed charecters from paste string.
+    /// If `false` does not paste anything into field.
     public var pasteAllowedChars = true
     public var heightLayoutPolicy: HeightLayoutPolicy = .elastic(policy: .init(minHeight: 77,
                                                                                bottomOffset: 5,
