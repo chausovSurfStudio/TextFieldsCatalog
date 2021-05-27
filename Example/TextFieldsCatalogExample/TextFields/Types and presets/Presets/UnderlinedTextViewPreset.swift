@@ -50,12 +50,12 @@ private extension UnderlinedTextViewPreset {
         textView.placeholder = L10n.Presets.Comment.placeholder
         textView.maxLength = 200
         textView.maxTextContainerHeight = 96
-//        textView.pasteAllowedChars = true
-//        textView.pasteOverflowPolicy = .textThatFits
-//        textView.allowedCharacterSet = CharacterSet.letters
-//            .union(.decimalDigits)
-//            .union(.whitespacesAndNewlines)
-//            .union(.init(charactersIn: "№!@#$%^&*()_+1234567890-=><?.,\'\"`«»„“”;:[]{}₽–—`‘/\\"))
+        textView.pasteAllowedChars = true
+        textView.pasteOverflowPolicy = .textThatFits
+        textView.allowedCharacterSet = CharacterSet.letters
+            .union(.decimalDigits)
+            .union(.whitespacesAndNewlines)
+            .union(.init(charactersIn: "№!@#$%^&*()_+1234567890-=><?.,\'\"`«»„“”;:[]{}₽–—`‘/\\"))
         textView.field.autocorrectionType = .no
         textView.setup(hint: L10n.Presets.Comment.hint)
 

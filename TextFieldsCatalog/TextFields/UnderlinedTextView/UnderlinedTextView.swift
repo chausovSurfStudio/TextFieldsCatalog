@@ -427,9 +427,16 @@ extension UnderlinedTextView: UITextViewDelegate {
             if let maxLength = self.maxLength, newText.count > maxLength {
                 field.fixCursorPosition(pasteLocation: range.location)
             } else {
+                guard hasNotAllowedChars else {
+                    return true
+                }
                 pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
             }
         case .textThatFits:
+            let maxLength = self.maxLength ?? newText.count
+            guard hasNotAllowedChars || newText.count > maxLength else {
+                return true
+            }
             pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
         }
 
@@ -556,10 +563,7 @@ private extension UnderlinedTextView {
     func pasteText(_ text: String, pasteLocation: Int, replacementString string: String) {
         let maxLength = self.maxLength ?? text.count
         let newText = String(text.prefix(maxLength))
-//        DispatchQueue.main.async {
-            self.setup(text: newText, validateText: false)
-//        }
-
+        self.setup(text: newText, validateText: false)
         textView.moveCursorPosition(text: newText,
                                     pasteLocation: pasteLocation,
                                     replacementString: string)
