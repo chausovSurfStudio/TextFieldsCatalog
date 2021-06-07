@@ -106,6 +106,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     public var validationPolicy: ValidationPolicy = .always
     public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
     public var trimSpaces: Bool = false
+    public var allowedCharacterSet: CharacterSet?
+    public var pasteAllowedChars = true
     public var flexibleHeightPolicy = FlexibleHeightPolicy(minHeight: 77,
                                                            bottomOffset: 5,
                                                            ignoreEmptyHint: true)
@@ -402,29 +404,43 @@ extension UnderlinedTextView: UITextViewDelegate {
     open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard
             let currentText = textView.text,
-            let textRange = Range(range, in: currentText),
-            let maxLength = self.maxLength
+            let textRange = Range(range, in: currentText)
         else {
             return true
         }
 
-        var newText = currentText.replacingCharacters(in: textRange, with: text)
-        switch pasteOverflowPolicy {
-        case .noChanges:
-            return newText.count <= maxLength
-        case .textThatFits:
-            guard newText.count > maxLength else {
-                return true
-            }
+        var replacementString = text
+        if let set = allowedCharacterSet {
+            replacementString = replacementString.components(separatedBy: set.inverted).joined()
+        }
+        let newText = currentText.replacingCharacters(in: textRange, with: replacementString)
 
-            newText = String(newText.prefix(maxLength))
-            setup(text: newText, validateText: false)
+        let hasNotAllowedChars = replacementString != text
 
-            textView.moveCursorPosition(text: newText,
-                                        pasteLocation: range.location,
-                                        replacementString: text)
+        guard pasteAllowedChars || !hasNotAllowedChars else {
+            field.fixCursorPosition(pasteLocation: range.location)
             return false
         }
+
+        switch pasteOverflowPolicy {
+        case .noChanges:
+            if let maxLength = self.maxLength, newText.count > maxLength {
+                field.fixCursorPosition(pasteLocation: range.location)
+            } else {
+                guard hasNotAllowedChars else {
+                    return true
+                }
+                pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
+            }
+        case .textThatFits:
+            let maxLength = self.maxLength ?? newText.count
+            guard hasNotAllowedChars || newText.count > maxLength else {
+                return true
+            }
+            pasteText(newText, pasteLocation: range.location, replacementString: replacementString)
+        }
+
+        return false
     }
 
     open func textViewDidChange(_ textView: UITextView) {
@@ -544,6 +560,14 @@ private extension UnderlinedTextView {
         return textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
+    func pasteText(_ text: String, pasteLocation: Int, replacementString string: String) {
+        let maxLength = self.maxLength ?? text.count
+        let newText = String(text.prefix(maxLength))
+        self.setup(text: newText, validateText: false)
+        textView.moveCursorPosition(text: newText,
+                                    pasteLocation: pasteLocation,
+                                    replacementString: string)
+    }
 }
 
 // MARK: - Updating

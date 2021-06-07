@@ -134,8 +134,14 @@ private extension UnderlinedFieldPreset {
         textField.setup(hint: L10n.Presets.Name.hint)
         textField.trimSpaces = true
         textField.setup(visibleHintStates: [.normal, .active, .error])
+        textField.pasteAllowedChars = true
+        textField.pasteOverflowPolicy = .textThatFits
+        textField.allowedCharacterSet = CharacterSet.letters
+            .union(.decimalDigits)
+            .union(.whitespacesAndNewlines)
+            .union(.init(charactersIn: "№!@#$%^&*()_+1234567890-=><?.,\'\"`«»„“”;:[]{}₽–—`‘/\\"))
 
-        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
+//        textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.name, notations: FormatterMasks.customNotations())
 
         let validator = TextFieldValidator(minLength: 1, maxLength: 20, regex: SharedRegex.name)
         validator.notValidErrorText = L10n.Presets.Name.notValidError

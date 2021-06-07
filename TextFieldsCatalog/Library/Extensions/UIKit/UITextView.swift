@@ -37,4 +37,8 @@ extension UITextView {
         }
     }
 
+    func fixCursorPosition(pasteLocation: Int) {
+        moveCursorPosition(text: self.text ?? "", pasteLocation: pasteLocation, replacementString: "")
+    }
+
 }
