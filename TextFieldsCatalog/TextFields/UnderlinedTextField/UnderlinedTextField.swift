@@ -60,6 +60,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     private var hintService: AbstractHintService = HintService(configuration: .default)
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
+    // MARK: - Open Properties
+
+    open var maxLength: Int?
+
     // MARK: - Public Properties
 
     public var field: InnerTextField {
@@ -110,7 +114,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             toolbar?.updateNavigationButtons()
         }
     }
-    public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always

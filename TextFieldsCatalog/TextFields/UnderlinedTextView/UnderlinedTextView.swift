@@ -63,7 +63,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     private var lineService: LineService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextView)]
 
-    // MARK: - Properties
+    // MARK: - Open Properties
+
+    open var maxLength: Int?
+
+    // MARK: - Public Properties
 
     public var field: UITextView {
         return textView
@@ -101,7 +105,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             toolbar?.updateNavigationButtons()
         }
     }
-    public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
     public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
