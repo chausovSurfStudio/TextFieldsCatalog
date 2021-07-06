@@ -661,6 +661,7 @@ private extension UnderlinedTextField {
     func performOnTextChangedCall() {
         isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textField.isEmpty
         isTextChanged = isTextChanged ? isTextChanged : !textField.isEmpty
+        toolbar?.textDidChange(text: self.text)
         onTextChanged?(self)
     }
 

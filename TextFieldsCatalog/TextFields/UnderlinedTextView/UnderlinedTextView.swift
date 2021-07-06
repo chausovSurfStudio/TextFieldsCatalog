@@ -538,6 +538,7 @@ private extension UnderlinedTextView {
 
     func performOnTextChangedCall() {
         isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textView.isEmpty
+        toolbar?.textDidChange(text: self.text)
         onTextChanged?(self)
     }
 
