@@ -292,6 +292,13 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         removeError(animated: animated)
     }
 
+    /// Allows you to change base height for view
+    /// (inner property with last value of height),
+    /// recommend to call before working with field
+    public func updateBaseHeight(_ height: CGFloat) {
+        self.lastViewHeight = height
+    }
+
 }
 
 // MARK: - Configure
