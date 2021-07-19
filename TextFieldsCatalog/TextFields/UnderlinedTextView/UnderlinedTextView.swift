@@ -288,9 +288,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     }
 
     /// Reset only error state and update all UI elements
-    public func resetErrorState() {
-        error = false
-        updateUI(animated: true)
+    public func resetErrorState(animated: Bool = true) {
+        removeError(animated: animated)
     }
 
 }
@@ -445,7 +444,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     open func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        removeError()
+        removeError(animated: true)
         performOnTextChangedCall()
         for service in placeholderServices {
             service.updateAfterTextChanged(fieldState: state)
@@ -507,11 +506,11 @@ private extension UnderlinedTextView {
         }
     }
 
-    func removeError() {
+    func removeError(animated: Bool) {
         if error {
             hintService.showHint()
             error = false
-            updateUI(animated: true)
+            updateUI(animated: animated)
         } else {
             updateViewHeight()
             lineService?.updateLineFrame(fieldState: state)

@@ -322,9 +322,8 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     }
 
     /// Reset only error state and update all UI elements
-    public func resetErrorState() {
-        error = false
-        updateUI(animated: true)
+    public func resetErrorState(animated: Bool = true) {
+        removeError(animated: animated)
     }
 
 }
@@ -387,7 +386,7 @@ extension UnderlinedTextField {
 
     @objc
     open func textfieldEditingChange(_ textField: UITextField) {
-        removeError()
+        removeError(animated: false)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
@@ -483,7 +482,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
-        removeError()
+        removeError(animated: false)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
@@ -632,11 +631,11 @@ private extension UnderlinedTextField {
         }
     }
 
-    func removeError() {
+    func removeError(animated: Bool) {
         if error {
             hintService.showHint()
             error = false
-            updateUI(animated: false)
+            updateUI(animated: animated)
         }
     }
 
