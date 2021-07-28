@@ -288,6 +288,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             validate()
         }
         updateUI(animated: animated)
+        toolbar?.textDidChange(text: self.text)
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -691,7 +692,7 @@ private extension UnderlinedTextField {
         let maxLength = self.maxLength ?? newText.count
         let newText = String(newText.prefix(maxLength))
         setup(text: newText, validateText: false)
-
+        performOnTextChangedCall()
         field.moveCursorPosition(text: newText,
                                  pasteLocation: pasteLocation,
                                  replacementString: string)
