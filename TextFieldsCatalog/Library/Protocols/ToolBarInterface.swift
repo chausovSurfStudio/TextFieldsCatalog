@@ -17,6 +17,8 @@ public protocol ToolBarInterface: UIView {
     var guidedField: GuidedTextField? { get set }
     /// In this method you have to update your toolbars's appearance via field states
     func updateNavigationButtons()
+    /// Invokes when text in connected field did change
+    func textDidChange(text: String)
 }
 
 public extension ToolBarInterface {
@@ -28,6 +30,7 @@ public extension ToolBarInterface {
         }
     }
 
-    func updateNavigationButtons() {
-    }
+    func updateNavigationButtons() {}
+
+    func textDidChange(text: String) {}
 }
