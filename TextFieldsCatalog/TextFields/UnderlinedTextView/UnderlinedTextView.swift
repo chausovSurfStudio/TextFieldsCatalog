@@ -15,7 +15,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var textView: InnerTextView!
     @IBOutlet private weak var hintLabel: UILabel!
     @IBOutlet private weak var clearButton: IconButton!
 
@@ -65,7 +65,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - Properties
 
-    public var field: UITextView {
+    public var field: InnerTextView {
         return textView
     }
     public var text: String {
@@ -251,6 +251,14 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             validate()
         }
         updateUI(animated: animated)
+    }
+
+    /// Allows you to disable one or more edit actions
+    /// By default all actions are enabled
+    /// Set .all to disable all actions
+    /// Set nil to enable all actions after the disable has been applied
+    public func disable(editActions: [StandardEditActions]?) {
+        field.disableEditActions(only: editActions)
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements

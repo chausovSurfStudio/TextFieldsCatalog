@@ -114,7 +114,7 @@ private extension UnderlinedFieldPreset {
         textField.field.autocorrectionType = .no
         textField.field.keyboardType = .asciiCapable
         textField.field.returnKeyType = .next
-        textField.field.pasteActionEnabled = false
+        textField.disable(editActions: [.paste])
         textField.mode = .password(.visibleOnNotEmptyText)
         textField.setup(hint: L10n.Presets.Password.hint)
 

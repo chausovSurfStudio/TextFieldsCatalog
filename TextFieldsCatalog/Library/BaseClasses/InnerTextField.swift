@@ -11,9 +11,12 @@ import UIKit
 /// Class for UITextField with some extra features, it uses inside custom textFields in the project
 public final class InnerTextField: UITextField {
 
+    // MARK: - Private Properties
+
+    private var editActions: [StandardEditActions: Bool]? = nil
+
     // MARK: - Properties
 
-    public var pasteActionEnabled: Bool = true
     /// if set to true, the textfield's default behavior applies:
     /// In inSecureTextEntry mode the text will be reset after trying to continue typing
     public var resetSecureInput: Bool = false
@@ -39,8 +42,10 @@ public final class InnerTextField: UITextField {
     // MARK: - UITextField
 
     override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if !pasteActionEnabled, action == #selector(UIResponderStandardEditActions.paste(_:)) {
-            return false
+        if let actions = editActions {
+            for editAction in actions where editAction.key.selector == action {
+                return editAction.value
+            }
         }
         return super.canPerformAction(action, withSender: sender)
     }
@@ -78,6 +83,19 @@ public final class InnerTextField: UITextField {
     }
 
     // MARK: - Internal Methods
+
+    func disableEditActions(only actions: [StandardEditActions]?) {
+        guard let actions = actions else {
+            editActions = nil
+            return
+        }
+        editActions = [:]
+        actions.forEach {
+            editActions?[$0] = false
+        }
+    }
+
+    // MARK: - Public Methods
 
     public func fixCursorPosition() {
         let beginning = beginningOfDocument
