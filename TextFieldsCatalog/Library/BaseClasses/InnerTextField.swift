@@ -13,7 +13,7 @@ public final class InnerTextField: UITextField {
 
     // MARK: - Private Properties
 
-    private var editActions: [StandardEditActions: Bool]? = nil
+    private var disabledActions: [StandardEditActions]?
 
     // MARK: - Properties
 
@@ -42,12 +42,10 @@ public final class InnerTextField: UITextField {
     // MARK: - UITextField
 
     override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if let actions = editActions {
-            for editAction in actions where editAction.key.selector == action {
-                return editAction.value
-            }
+        guard disabledActions?.first(where: { $0.selector == action }) != nil else {
+            return super.canPerformAction(action, withSender: sender)
         }
-        return super.canPerformAction(action, withSender: sender)
+        return false
     }
 
     override public func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -85,14 +83,7 @@ public final class InnerTextField: UITextField {
     // MARK: - Internal Methods
 
     func disableEditActions(only actions: [StandardEditActions]?) {
-        guard let actions = actions else {
-            editActions = nil
-            return
-        }
-        editActions = [:]
-        actions.forEach {
-            editActions?[$0] = false
-        }
+        disabledActions = actions
     }
 
     // MARK: - Public Methods

@@ -40,7 +40,7 @@ public enum StandardEditActions {
 public extension Array where Element == StandardEditActions {
 
     static var all: [StandardEditActions] {
-        return [.cut, .copy, .paste, .selectAll, .delete]
+        return [.cut, .copy, .paste, .select, .selectAll, .delete]
     }
 
 }
