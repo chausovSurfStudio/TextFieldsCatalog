@@ -291,6 +291,14 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
         toolbar?.textDidChange(text: self.text)
     }
 
+    /// Allows you to disable one or more edit actions
+    /// By default all actions are enabled
+    /// Set .all to disable all actions
+    /// Set nil to enable all actions after the disable has been applied
+    public func disable(editActions: [StandardEditActions]?) {
+        field.disableEditActions(only: editActions)
+    }
+
     /// Allows to set accessibilityIdentifier for textField and its internal elements
     public func setTextFieldIdentifier(_ identifier: String) {
         view.accessibilityIdentifier = identifier

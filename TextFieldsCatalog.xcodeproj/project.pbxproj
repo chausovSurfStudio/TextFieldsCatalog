@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		397518DB26B97E4D00992617 /* StandardEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397518DA26B97E4D00992617 /* StandardEditActions.swift */; };
+		397518E526B9911300992617 /* InnerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397518E426B9911300992617 /* InnerTextView.swift */; };
 		50B6430D7DAE7D25EA168780 /* Pods_TextFieldsCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE597D7226F11C5666C0ACD9 /* Pods_TextFieldsCatalog.framework */; };
 		7F638D51D41E729487900C9C /* Pods_TextFieldsCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D90AA463DFFF21B3B7A640F /* Pods_TextFieldsCatalogTests.framework */; };
 		902CE2E821FF6D6D00AC21D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 902CE2EA21FF6D6D00AC21D4 /* Localizable.strings */; };
@@ -107,6 +109,8 @@
 		2544D9C7000E4E9EEFE58E84 /* Pods-TextFieldsCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog/Pods-TextFieldsCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		2D90AA463DFFF21B3B7A640F /* Pods_TextFieldsCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextFieldsCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9721A780F7BB9DF0720B41 /* Pods-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalogTests/Pods-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
+		397518DA26B97E4D00992617 /* StandardEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardEditActions.swift; sourceTree = "<group>"; };
+		397518E426B9911300992617 /* InnerTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InnerTextView.swift; sourceTree = "<group>"; };
 		495724198506E09563838E8F /* Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextFieldsCatalog-TextFieldsCatalogTests/Pods-TextFieldsCatalog-TextFieldsCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		902CE2E921FF6D6D00AC21D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		902CE2EB21FF6D7D00AC21D4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 			children = (
 				9038640321FF597600BAA761 /* CommonButton.swift */,
 				9038640521FF599D00BAA761 /* InnerDesignableView.swift */,
+				397518E426B9911300992617 /* InnerTextView.swift */,
 				9038640721FF59BC00BAA761 /* InnerTextField.swift */,
 			);
 			path = BaseClasses;
@@ -348,6 +353,7 @@
 			children = (
 				90BB47262200651800F6DB39 /* AssetManager.swift */,
 				902CE2F021FF707E00AC21D4 /* FormatterMasks.swift */,
+				397518DA26B97E4D00992617 /* StandardEditActions.swift */,
 				902CE2F221FF70B000AC21D4 /* MaskTextFieldFormatter.swift */,
 				902CE2F421FF70C500AC21D4 /* TextFieldValidator.swift */,
 			);
@@ -842,6 +848,7 @@
 				90AE5490220582C50054E875 /* HeightLayoutPolicy.swift in Sources */,
 				90EE54B7245724E60099C048 /* AbstractPlaceholderService.swift in Sources */,
 				902CE2F321FF70B000AC21D4 /* MaskTextFieldFormatter.swift in Sources */,
+				397518DB26B97E4D00992617 /* StandardEditActions.swift in Sources */,
 				902CE2F521FF70C500AC21D4 /* TextFieldValidator.swift in Sources */,
 				902CE2EF21FF702F00AC21D4 /* SharedRegex.swift in Sources */,
 				903863FE21FF590700BAA761 /* Color.swift in Sources */,
@@ -866,6 +873,7 @@
 				9038640021FF592100BAA761 /* UIColor.swift in Sources */,
 				9038641021FF5A3600BAA761 /* IconButton.swift in Sources */,
 				902CE30221FF719B00AC21D4 /* UnderlinedTextField.swift in Sources */,
+				397518E526B9911300992617 /* InnerTextView.swift in Sources */,
 				90EE54BE245740AE0099C048 /* StaticPlaceholderService.swift in Sources */,
 				902CE2F821FF70E500AC21D4 /* ConfigurationParameters.swift in Sources */,
 				90E13DB12320FD3C004995E4 /* TextFieldMode.swift in Sources */,
