@@ -60,6 +60,10 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     private var hintService: AbstractHintService = HintService(configuration: .default)
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextField)]
 
+    // MARK: - Open Properties
+
+    open var maxLength: Int?
+
     // MARK: - Public Properties
 
     public var field: InnerTextField {
@@ -110,7 +114,6 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             toolbar?.updateNavigationButtons()
         }
     }
-    public var maxLength: Int?
     public var hideOnReturn: Bool = true
     public var validateWithFormatter: Bool = false
     public var validationPolicy: ValidationPolicy = .always
@@ -285,6 +288,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
             validate()
         }
         updateUI(animated: animated)
+        toolbar?.textDidChange(text: self.text)
     }
 
     /// Allows to set accessibilityIdentifier for textField and its internal elements
@@ -322,9 +326,15 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
     }
 
     /// Reset only error state and update all UI elements
-    public func resetErrorState() {
-        error = false
-        updateUI(animated: true)
+    public func resetErrorState(animated: Bool = true) {
+        removeError(animated: animated)
+    }
+
+    /// Allows you to change base height for view
+    /// (inner property with last value of height),
+    /// recommend to call before working with field
+    public func updateBaseHeight(_ height: CGFloat) {
+        self.lastViewHeight = height
     }
 
 }
@@ -387,7 +397,7 @@ extension UnderlinedTextField {
 
     @objc
     open func textfieldEditingChange(_ textField: UITextField) {
-        removeError()
+        removeError(animated: false)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
@@ -483,7 +493,7 @@ extension UnderlinedTextField: MaskedTextFieldDelegateListener {
 
     open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
         maskFormatter?.textField(textField, didFillMandatoryCharacters: complete, didExtractValue: value)
-        removeError()
+        removeError(animated: false)
         performOnTextChangedCall()
         updatePasswordButtonVisibility()
         for service in placeholderServices {
@@ -632,11 +642,11 @@ private extension UnderlinedTextField {
         }
     }
 
-    func removeError() {
+    func removeError(animated: Bool) {
         if error {
             hintService.showHint()
             error = false
-            updateUI(animated: false)
+            updateUI(animated: animated)
         }
     }
 
@@ -661,6 +671,7 @@ private extension UnderlinedTextField {
     func performOnTextChangedCall() {
         isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textField.isEmpty
         isTextChanged = isTextChanged ? isTextChanged : !textField.isEmpty
+        toolbar?.textDidChange(text: self.text)
         onTextChanged?(self)
     }
 
@@ -687,7 +698,7 @@ private extension UnderlinedTextField {
         let maxLength = self.maxLength ?? newText.count
         let newText = String(newText.prefix(maxLength))
         setup(text: newText, validateText: false)
-
+        performOnTextChangedCall()
         field.moveCursorPosition(text: newText,
                                  pasteLocation: pasteLocation,
                                  replacementString: string)

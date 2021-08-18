@@ -63,7 +63,11 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     private var lineService: LineService?
     private var placeholderServices: [AbstractPlaceholderService] = [FloatingPlaceholderService(configuration: .defaultForTextView)]
 
-    // MARK: - Properties
+    // MARK: - Open Properties
+
+    open var maxLength: Int?
+
+    // MARK: - Public Properties
 
     public var field: UITextView {
         return textView
@@ -101,7 +105,6 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             toolbar?.updateNavigationButtons()
         }
     }
-    public var maxLength: Int?
     public var hideClearButton = false
     public var validationPolicy: ValidationPolicy = .always
     public var pasteOverflowPolicy: PasteOverflowPolicy = .textThatFits
@@ -251,6 +254,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
             validate()
         }
         updateUI(animated: animated)
+        toolbar?.textDidChange(text: self.text)
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
@@ -288,9 +292,15 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
     }
 
     /// Reset only error state and update all UI elements
-    public func resetErrorState() {
-        error = false
-        updateUI(animated: true)
+    public func resetErrorState(animated: Bool = true) {
+        removeError(animated: animated)
+    }
+
+    /// Allows you to change base height for view
+    /// (inner property with last value of height),
+    /// recommend to call before working with field
+    public func updateBaseHeight(_ height: CGFloat) {
+        self.lastViewHeight = height
     }
 
 }
@@ -445,7 +455,7 @@ extension UnderlinedTextView: UITextViewDelegate {
 
     open func textViewDidChange(_ textView: UITextView) {
         updateClearButtonVisibility()
-        removeError()
+        removeError(animated: true)
         performOnTextChangedCall()
         for service in placeholderServices {
             service.updateAfterTextChanged(fieldState: state)
@@ -507,11 +517,11 @@ private extension UnderlinedTextView {
         }
     }
 
-    func removeError() {
+    func removeError(animated: Bool) {
         if error {
             hintService.showHint()
             error = false
-            updateUI(animated: true)
+            updateUI(animated: animated)
         } else {
             updateViewHeight()
             lineService?.updateLineFrame(fieldState: state)
@@ -538,6 +548,7 @@ private extension UnderlinedTextView {
 
     func performOnTextChangedCall() {
         isInteractionOccured = isInteractionOccured ? isInteractionOccured : !textView.isEmpty
+        toolbar?.textDidChange(text: self.text)
         onTextChanged?(self)
     }
 
@@ -564,6 +575,7 @@ private extension UnderlinedTextView {
         let maxLength = self.maxLength ?? text.count
         let newText = String(text.prefix(maxLength))
         self.setup(text: newText, validateText: false)
+        performOnTextChangedCall()
         textView.moveCursorPosition(text: newText,
                                     pasteLocation: pasteLocation,
                                     replacementString: string)
