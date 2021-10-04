@@ -55,6 +55,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
+    /// This flag is set to `true` after textView reach maxHeight and used for smooth line break animation
+    private var isMaxHeightReached = false
 
     // MARK: - Services
 
@@ -592,6 +594,16 @@ private extension UnderlinedTextView {
         let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
         let actualViewHeight = textHeight + hintHeight + freeSpace
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
+
+        if isMaxHeightReached {
+            textView.isScrollEnabled = true
+        }
+        if let maxHeight = maxTextContainerHeight, textHeight == maxHeight {
+            isMaxHeightReached = true
+        } else {
+            isMaxHeightReached = false
+            textView.isScrollEnabled = false
+        }
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
