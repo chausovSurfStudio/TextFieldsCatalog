@@ -705,7 +705,8 @@ private extension UnderlinedTextField {
     func pasteText(_ newText: String, pasteLocation: Int, replacementString string: String) {
         let maxLength = self.maxLength ?? newText.count
         let newText = String(newText.prefix(maxLength))
-        setup(text: newText, validateText: false)
+        setup(text: newText, animated: false, validateText: false)
+        removeError(animated: false)
         performOnTextChangedCall()
         field.moveCursorPosition(text: newText,
                                  pasteLocation: pasteLocation,
