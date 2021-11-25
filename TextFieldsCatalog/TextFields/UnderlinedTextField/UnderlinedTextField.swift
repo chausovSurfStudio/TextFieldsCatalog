@@ -715,7 +715,6 @@ private extension UnderlinedTextField {
 
 }
 
-
 // MARK: - Updating
 
 private extension UnderlinedTextField {
