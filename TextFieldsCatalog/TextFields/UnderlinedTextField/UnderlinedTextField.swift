@@ -150,6 +150,7 @@ open class UnderlinedTextField: InnerDesignableView, ResetableField, Respondable
 
     // MARK: - Events
 
+    public var onShouldBeginEditing: ((UnderlinedTextField) -> Bool)?
     public var onBeginEditing: ((UnderlinedTextField) -> Void)?
     public var onEndEditing: ((UnderlinedTextField) -> Void)?
     public var onTextChanged: ((UnderlinedTextField) -> Void)?
@@ -410,6 +411,10 @@ extension UnderlinedTextField {
 // MARK: - UITextFieldDelegate
 
 extension UnderlinedTextField: UITextFieldDelegate {
+
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        onShouldBeginEditing?(self) ?? true
+    }
 
     open func textFieldDidBeginEditing(_ textField: UITextField) {
         state = .active
