@@ -22,7 +22,7 @@ jobs:
         make init
     - name: Force xcode 12
       run: |
-        sudo xcode-select -switch /Applications/Xcode_13.app
+        sudo xcode-select -switch /Applications/Xcode_13.1.app
     - name: Build
       run: |
         make build
@@ -44,4 +44,3 @@ jobs:
         message: "Updates for documentation"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
