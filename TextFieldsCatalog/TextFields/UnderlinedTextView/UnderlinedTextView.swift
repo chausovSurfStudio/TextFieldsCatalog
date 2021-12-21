@@ -584,7 +584,8 @@ private extension UnderlinedTextView {
     func pasteText(_ text: String, pasteLocation: Int, replacementString string: String) {
         let maxLength = self.maxLength ?? text.count
         let newText = String(text.prefix(maxLength))
-        self.setup(text: newText, validateText: false)
+        setup(text: newText, animated: false, validateText: false)
+        removeError(animated: false)
         performOnTextChangedCall()
         textView.moveCursorPosition(text: newText,
                                     pasteLocation: pasteLocation,
