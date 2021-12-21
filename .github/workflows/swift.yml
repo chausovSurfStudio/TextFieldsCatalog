@@ -22,7 +22,7 @@ jobs:
         make init
     - name: Force xcode 12
       run: |
-        sudo xcode-select -switch /Applications/Xcode_12.app
+        sudo xcode-select -switch /Applications/Xcode_13.1.app
     - name: Build
       run: |
         make build
