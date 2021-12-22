@@ -15,7 +15,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var textView: InnerTextView!
     @IBOutlet private weak var hintLabel: UILabel!
     @IBOutlet private weak var clearButton: IconButton!
 
@@ -55,6 +55,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     /// This flag set to `true` after first text changes and first call of validate() method
     private var isInteractionOccured = false
+    /// This flag is set to `true` after textView reach maxHeight and used for smooth line break animation
+    private var isMaxHeightReached = false
 
     // MARK: - Services
 
@@ -69,7 +71,7 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - Public Properties
 
-    public var field: UITextView {
+    public var field: InnerTextView {
         return textView
     }
     public var text: String {
@@ -255,6 +257,14 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
         }
         updateUI(animated: animated)
         toolbar?.textDidChange(text: self.text)
+    }
+
+    /// Allows you to disable one or more edit actions
+    /// By default all actions are enabled
+    /// Set .all to disable all actions
+    /// Set nil to enable all actions after the disable has been applied
+    public func disable(editActions: [StandardEditActions]?) {
+        field.disableEditActions(only: editActions)
     }
 
     /// Allows to set accessibilityIdentifier for textView and its internal elements
@@ -574,7 +584,8 @@ private extension UnderlinedTextView {
     func pasteText(_ text: String, pasteLocation: Int, replacementString string: String) {
         let maxLength = self.maxLength ?? text.count
         let newText = String(text.prefix(maxLength))
-        self.setup(text: newText, validateText: false)
+        setup(text: newText, animated: false, validateText: false)
+        removeError(animated: false)
         performOnTextChangedCall()
         textView.moveCursorPosition(text: newText,
                                     pasteLocation: pasteLocation,
@@ -592,6 +603,16 @@ private extension UnderlinedTextView {
         let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
         let actualViewHeight = textHeight + hintHeight + freeSpace
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
+
+        if isMaxHeightReached {
+            textView.isScrollEnabled = true
+        }
+        if let maxHeight = maxTextContainerHeight, textHeight == maxHeight {
+            isMaxHeightReached = true
+        } else {
+            isMaxHeightReached = false
+            textView.isScrollEnabled = false
+        }
 
         textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
