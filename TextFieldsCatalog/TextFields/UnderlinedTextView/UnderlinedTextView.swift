@@ -71,6 +71,8 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - Public Properties
 
+    public var preferredHeight: CGFloat?
+
     public var field: InnerTextView {
         return textView
     }
@@ -614,7 +616,7 @@ private extension UnderlinedTextView {
             textView.isScrollEnabled = false
         }
 
-        textViewHeightConstraint.constant = textHeight
+        textViewHeightConstraint.constant = preferredHeight ?? textHeight
         view.layoutIfNeeded()
         lastViewHeight = viewHeight
     }
