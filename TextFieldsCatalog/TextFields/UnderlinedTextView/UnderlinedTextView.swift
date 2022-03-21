@@ -71,7 +71,10 @@ open class UnderlinedTextView: InnerDesignableView, ResetableField, RespondableF
 
     // MARK: - Public Properties
 
-    public var preferredHeight: CGFloat?
+    /// This property sets a fixed initial height for the text field.
+    /// Affects auto expandability: if not null, then the text field will not auto expand.
+    /// Property **maxTextContainerHeight** will be ignored
+    public var fixedTextHeight: CGFloat?
 
     public var field: InnerTextView {
         return textView
@@ -601,7 +604,8 @@ private extension UnderlinedTextView {
 
     func updateViewHeight() {
         let hintHeight = hintService.hintHeight(containerState: containerState)
-        let textHeight = min(textViewHeight(), maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
+        let textHeight = fixedTextHeight ?? min(textViewHeight(),
+                                                maxTextContainerHeight ?? CGFloat.greatestFiniteMagnitude)
         let freeSpace = freeVerticalSpace(isEmptyHint: hintHeight == 0)
         let actualViewHeight = textHeight + hintHeight + freeSpace
         let viewHeight = max(flexibleHeightPolicy.minHeight, actualViewHeight)
@@ -616,7 +620,7 @@ private extension UnderlinedTextView {
             textView.isScrollEnabled = false
         }
 
-        textViewHeightConstraint.constant = preferredHeight ?? textHeight
+        textViewHeightConstraint.constant = textHeight
         view.layoutIfNeeded()
         lastViewHeight = viewHeight
     }
