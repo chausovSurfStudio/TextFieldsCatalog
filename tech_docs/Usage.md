@@ -471,7 +471,9 @@ textView.flexibleHeightPolicy = FlexibleHeightPolicy(
 ```
 Пример стилизованного под проект `TextView` наследника `UnderlineTextView`
 
-<img src="images/textView_scheme.png">
+<p align="center">
+    <img src="https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/4fe1c6449f01e3ef360199826bf678e79086fea1/tech_docs/Images/textView_scheme.png" />
+</p>
 
 
 ## Побочные фичи
