@@ -461,13 +461,13 @@ textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
 - Первый параметр определяет высоту контейнера, т.е. место где будет находиться сам текст (`UITextView`)
 - Второй параметр `FlexibleHeightPolicy` задает минимальную высоту всего UnderlineTextView, отступ от лейбла с подсказкой и `ignoreEmptyHint` - если лейбл с подсказкой (hint) пуст, то этот лейбл не учитывается для уввеличения/уменьшения высоты.
 
-```
-        textView.maxTextContainerHeight = 70
-        textView.flexibleHeightPolicy = FlexibleHeightPolicy(
-            minHeight: 52,
-            bottomOffset: 4,
-            ignoreEmptyHint: true
-        )
+```swift
+textView.maxTextContainerHeight = 70
+textView.flexibleHeightPolicy = FlexibleHeightPolicy(
+    minHeight: 52,
+    bottomOffset: 4,
+    ignoreEmptyHint: true
+)
 ```
 Пример стилизованного под проект `TextView` наследника `UnderlineTextView`
 
