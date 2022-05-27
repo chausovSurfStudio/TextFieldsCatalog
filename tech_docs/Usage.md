@@ -455,6 +455,29 @@ textField.maskFormatter = MaskTextFieldFormatter(mask: FormatterMasks.phone)
 
 Поле ввода имеет дополнительную фичу - при наборе текста, если длина введенного значения больше 0, появляется кнопка очистки содержимого. Ее можно скрыть полностью с помощью такой переменной поля, как `hideClearButton`, по умолчанию установленной в `false`. Но если вы не собираетесь ее скрывать - пристуствует возможность кастомизации данной кнопки.
 
+### Конфигурация высоты UnderlinedTextView:
+
+Для установки высоты нужно задать 2 параметра `maxTextContainerHeight` и `flexibleHeightPolicy`
+- Первый параметр определяет высоту контейнера, т.е. место где будет находиться сам текст (`UITextView`)
+- Второй параметр `FlexibleHeightPolicy` задает минимальную высоту всего UnderlineTextView, отступ от лейбла с подсказкой и `ignoreEmptyHint` - если лейбл с подсказкой (hint) пуст, то этот лейбл не учитывается для уввеличения/уменьшения высоты.
+
+```swift
+textView.maxTextContainerHeight = 70
+textView.flexibleHeightPolicy = FlexibleHeightPolicy(
+    minHeight: 52,
+    bottomOffset: 4,
+    ignoreEmptyHint: true
+)
+```
+Пример стилизованного под проект `TextView` наследника `UnderlineTextView`
+
+<p align="center">
+    <img src="https://github.com/chausovSurfStudio/TextFieldsCatalog/blob/4fe1c6449f01e3ef360199826bf678e79086fea1/tech_docs/Images/textView_scheme.png" />
+</p>
+
+Важные моменты:
+- UILabel для поля hint не привязан к нижней гнанице супер вью. Высота настраивается в зависимости от контента внутри `UnderlineTextView`
+
 ## Побочные фичи
 
 При написании библиотеки часть внутренних классов, используемых в ней, показалась достаточно важной и функционально насыщенной, в силу чего было принято решение сделать их открытыми для стороннего использования.
